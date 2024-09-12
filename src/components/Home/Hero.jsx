@@ -1,10 +1,9 @@
-import React from "react";
 import SearchBar from "./SearchBar";
 
 const Hero = () => {
   return (
     <div className="relative poppins-regular">
-      <div className="relative w-full h-[425px]">
+      <div className="relative w-full h-[225px] sm:h-[425px]">
         <img
           className=" w-full h-full object-cover"
           src="/src/assets//home-hero-bg.png"

@@ -29,7 +29,7 @@ const SearchBar = () => {
   ];
 
   return (
-    <div className="relative w-[370px] sm:w-[80vw] lg:w-[60vw] mx-auto p-2 bottom-40 rounded-lg border border-white border-opacity-40 bg-white flex items-center justify-between">
+    <div className="relative w-[370px] sm:w-[80vw] lg:w-[60vw] mx-auto py-2 px-1 sm:p-2 bottom-20 sm:bottom-40 rounded-lg border border-white border-opacity-40 bg-white flex items-center justify-between">
       {searchBarItems.map(({ id, label, placeholder, type, options }) => (
         <div
           key={id}
