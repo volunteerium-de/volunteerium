@@ -21,6 +21,9 @@ export default {
         warning: "#B25E09",
         danger: "#AC242F",
       },
+      fontFamily: {
+        'custom': ['Poppins', 'sans-serif'],
+      },
     },
   },
   plugins: [],
