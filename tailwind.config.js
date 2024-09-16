@@ -22,9 +22,10 @@ export default {
         danger: "#AC242F",
       },
       fontFamily: {
-        'custom': ['Poppins', 'sans-serif'],
+        'Poppins': ['Poppins', 'sans-serif'],
       },
     },
   },
   plugins: [],
 };
+
