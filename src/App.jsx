@@ -1,11 +1,18 @@
-
-import AppRouter from "./router/AppRouter";
+import AppRouter from './router/AppRouter'
+import { Provider } from 'react-redux'
+import { PersistGate } from 'redux-persist/integration/react'
+import store, { persistor } from './app/store'
 
 function App() {
-  return <div className="text-red-400 text-3xl">
-  <AppRouter/>
-
-  </div>;
+  return (
+    <>
+      <Provider store={store}>
+        <PersistGate loading={null} persistor={persistor}>
+          <AppRouter />
+        </PersistGate>
+      </Provider>
+    </>
+  )
 }
 
-export default App;
+export default App
