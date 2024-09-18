@@ -141,7 +141,7 @@ export const events = [
         organizationLogo:
           "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQzxwZpSs9IU4bCRfFrY-wXSDdbMR1cwod_TA&s",
         organizationDesc: "A non-profit organization focused on environmental sustainability.",
-        adressId: {
+        addressId: {
           _id: "650c5b3b1c4ae3b5e8bfcdc1",
           city: "Berlin",
           country: "Germany",
@@ -362,7 +362,7 @@ export const events = [
         organizationLogo:
           "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT15QO8AjFqJuNoFDKAvx4Ow1HsZIZl2IXsyw&s",
         organizationDesc: "A non-profit organization focused on health education.",
-        adressId: {
+        addressId: {
           _id: "650c8b3b1c4ae3b5e8bfcdc9",
           city: "Vienna",
           country: "Austria",
@@ -556,7 +556,7 @@ export const events = [
         organizationLogo:
           "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ7yDwG7NhBRs7iIBCuUNHJE5cgCqny-6su4g&s",
         organizationDesc: "A club focused on technological advancements and innovation.",
-        adressId: {
+        addressId: {
           _id: "650caa3b1c4ae3b5e8bfcdc1",
           city: "Zurich",
           country: "Switzerland",
@@ -750,7 +750,7 @@ export const events = [
         organizationLogo:
           "https://artloverssociety.com/cdn/shop/files/New_Project.webp?height=628&pad_color=ffffff&v=1712903613&width=1200",
         organizationDesc: "A society dedicated to promoting art and creativity.",
-        adressId: {
+        addressId: {
           _id: "1903tu6b1c4ae3t3e8bfcdc1",
           city: "Bruxelles",
           country: "Belgium",
@@ -787,7 +787,7 @@ export const events = [
     },
     title: "Art Exhibition",
     description: "An exhibition showcasing local artists and their work.",
-    adressId: {
+    addressId: {
       _id: "1903tu6b1c4ae3t3e8bfcdc1",
       city: "Bruxelles",
       country: "Belgium",
