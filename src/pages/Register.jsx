@@ -1,88 +1,79 @@
-import signUpImg from '../assets/login-img.png'
+import { IoIosArrowBack } from 'react-icons/io';
+import signUpImg from '../assets/login-img.png';
+import RegisterForm from '../components/Register/RegisterForm';
+import logo from '../assets/logo.png';
 
-function Register() {
+const Register = () => {
+
+
+  // const register = async (userInfo) => {
+  //   try {
+  //     const { data } = await axios.post(
+  //       `www.volunteerium.de/register`,
+  //       userInfo
+  //     );
+  //   } catch (error) {
+  //     console.error("Register failed", error);
+  //   }
+  // };
+
   return (
-    <div className="flex w-full h-full min-h-screen">
+    <div className="flex flex-col max-w-[1440px] mx-auto font-poppins">
+
+      {/* Header component */}
       
-      <div className="w-[40%] m-1 bg-primary-green overflow-hidden rounded-lg relative">
-  <img src={signUpImg} alt="" className='opacity-30 h-screen w-full object-cover'/>
-  
-  <div className="absolute inset-0 flex flex-col items-center justify-center">
-    <div className=''>
-    <p className="text-white text-3xl font-bold">Join Our <br /> <span className='text-5xl'> Community</span> </p>
-    <p className="text-white mt-4 text-lg">
-    Become a part of something <b>bigger</b>. <br />
-    Create an account and start making a <b>difference</b>.  <br />
-    <b>We can not wait to have you with us!</b>
-    </p>
+      {/* Main Div */}
+      <div className="flex flex-col md:flex-row max-w-[1440px] justify-center">
+
+        {/* Left side */}
+        <div className="hidden md:block max-w-full md:max-w-[608px] mx-2 md:mx-4 lg:mx-8 mb-8 w-full bg-primary-green overflow-hidden rounded-lg h-[calc(100vh-150px)]">
+  <div 
+    className="flex-grow h-full w-full bg-cover bg-center backdrop-blur-xl relative" 
+    style={{
+      backgroundImage: `url(${signUpImg})`,
+      backgroundBlendMode: 'overlay',
+    }}
+  >
+    <div className="h-full w-full flex flex-col justify-center px-5 md:px-0 bg-primary-green bg-opacity-60">
+      <div className='absolute top-0 left-0 w-full h-full bg-primary-green opacity-[0.4]' />
+      <div className="relative text-left ps-6 lg:px-8">
+        <p className="text-white text-[2rem] lg:text-[3rem] leading-8 font-semibold">
+          Join Our <br />
+          <span className="text-[3rem] lg:text-[4.125rem] md:leading-none">Community</span>
+        </p>
+        <p className="text-white mt-4 text-[1rem] lg:text-[1.125rem] font-normal">
+          Become a part of something <b>bigger</b>.<br />
+          <span className='text-[0.8rem] lg:text-[1rem]'>
+            Create an account and start <b>making a difference</b>.<br /><br />
+          </span>
+          <b>We cannot wait to have you with us!</b>
+        </p>
+      </div>
     </div>
   </div>
 </div>
 
-      {/* Sağ taraf form */}
-      <div className="w-[60%] flex flex-col justify-center p-8">
-        <h1 className="text-3xl font-bold mb-6">Create Your Account</h1>
 
-        <p className=''>
-        You’re creating an account as?
-        </p>
-
-        {/* Radio buttons */}
-        <div className="mb-6 flex items-center gap-20">
-          <div className="flex items-center border border-dark-gray-1 rounded-lg p-3">
-            <input type="radio" id="individual" name="accountType" className=''/>
-            <label htmlFor="individual" className="ml-2">As an Individual</label>
+        {/* Right Side */}
+        <div className="flex-grow flex flex-col justify-start p-4 md:p-8 w-full">
+          {/* ArrowBack Icon and Logo for Mobile Design */}
+          <div className="md:hidden flex flex-col items-center mb-6">
+            <IoIosArrowBack className="text-black text-3xl cursor-pointer self-start" />
+            <img src={logo} alt="Logo" className="h-16 w-auto" />
           </div>
-          <div className="flex items-center">
-            <input type="radio" id="organisation" name="accountType" />
-            <label htmlFor="organisation" className="ml-2">As an Organisation</label>
+
+          <div className="flex-grow">
+            <h1 className="text-black text-[1.75rem] text-center md:text-left md:text-[2rem] font-semibold mb-6">Create Your Account</h1>
+            <p className="text-gray-2 text-[1rem] mb-2">You’re creating an account as?</p>
+
+            {/* RegisterForm Component */}
+            <RegisterForm />
           </div>
         </div>
 
-        {/* Input fields */}
-        <form className="space-y-6">
-          <div>
-            <label htmlFor="fullName" className="block text-sm font-medium mb-1">Full Name</label>
-            <input type="text" id="fullName" className="w-full p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" />
-          </div>
-          <div>
-            <label htmlFor="email" className="block text-sm font-medium mb-1">Email Address</label>
-            <input type="email" id="email" className="w-full p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" />
-          </div>
-          <div>
-            <label htmlFor="password" className="block text-sm font-medium mb-1">Password</label>
-            <input type="password" id="password" className="w-full p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" />
-          </div>
-
-          {/* Create Account button */}
-          <button className="w-full bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 transition-colors duration-300">
-            Create Account
-          </button>
-        </form>
-
-        {/* Login link */}
-        <p className="mt-6 text-center text-gray-600">
-          Already have an account? <span className="text-blue-500 hover:underline cursor-pointer">Login</span>
-        </p>
-
-        {/* Divider */}
-        <hr className="my-6 border-gray-300" />
-
-        {/* Google sign-in button */}
-        <button className="flex items-center justify-center w-full bg-white border border-gray-300 py-2 px-4 rounded-md hover:bg-gray-100 transition-colors duration-300">
-          <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M20 10h-7v-9l-7 9H3v10l7-9h7V10z" />
-          </svg>
-          Continue with Google
-        </button>
-
-        {/* Terms and Privacy */}
-        <p className="mt-4 text-sm text-gray-600">
-          By continuing, you agree to the Terms of Service and acknowledge you’ve read our Privacy Policy.
-        </p>
       </div>
     </div>
   );
-}
+};
 
 export default Register;

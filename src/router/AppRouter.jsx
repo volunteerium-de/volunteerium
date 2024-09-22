@@ -4,6 +4,7 @@ import Login from "../pages/Login";
 import Register from "../pages/Register";
 import PrivateRouter from "./PrivateRouter";
 import NotFound from "../pages/NotFound";
+import EmailVerification from "../pages/EmailVerification";
 
 const AppRouter = () => {
   return (
@@ -11,7 +12,8 @@ const AppRouter = () => {
         <Routes>
             <Route path="/" element={<Home />} />
             <Route path="login" element={<Login />} />
-            <Route path="register" element={<Register />} />
+            <Route path="register" element={<Register/>} />
+            <Route path="register/email-verify" element={<EmailVerification/>} />
 
                 <Route  path="" element={<PrivateRouter />}>
                     {/* <Route path="profile/:userId" element={<Profile />} /> */}
