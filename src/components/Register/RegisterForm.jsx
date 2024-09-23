@@ -69,7 +69,7 @@ const RegisterForm = () => {
           <div className="mb-6 flex flex-row justify-between xl:justify-start space-x-4 lg:space-x-10">
             <div
               className={`flex items-center rounded-lg p-3 w-[50%] md:w-[49%] xl:w-[40%] h-[42px] md:h-[48px] 
-              ${values.userType === "individual" ? "bg-light-green font-medium text-primary-green border border-primary-green" : "border border-gray-1 text-gray-2"}`}
+              ${values.userType === "individual" ? "bg-light-green font-medium text-primary-green border border-primary-green" : "border border-gray-1 dark:border-white text-gray-2 dark:text-white"}`}
             >
               <Field
                 type="radio"
@@ -89,7 +89,7 @@ const RegisterForm = () => {
 
             <div
               className={`flex items-center border rounded-lg p-3 w-[55%] xl:w-[40%] h-[42px] md:h-[48px] 
-              ${values.userType === "organisation" ? "bg-light-green text-primary-green font-medium border-primary-green" : "border-gray-1 text-gray-2"}`}
+              ${values.userType === "organisation" ? "bg-light-green text-primary-green font-medium border-primary-green" : "border-gray-1 dark:border-white text-gray-2 dark:text-white"}`}
             >
               <Field
                 type="radio"
@@ -121,7 +121,7 @@ const RegisterForm = () => {
                   ? "Enter your full name"
                   : "Enter organisation name"
               }
-              className={`w-full border rounded-lg text-[1rem] placeholder-gray-2 p-3 h-[42px] md:h-[48px] focus:outline-none focus:border-primary-green 
+              className={`w-full border dark:border-white rounded-lg text-[1rem] placeholder-gray-2 dark:placeholder-white p-3 h-[42px] md:h-[48px] focus:outline-none focus:border-primary-green 
                 ${touched.fullName && errors.fullName ? "border-red" : "border-gray-1"}`}
             />
             <div className="h-[20px]">
@@ -138,7 +138,7 @@ const RegisterForm = () => {
               type="email"
               name="email"
               placeholder="Enter your email address"
-              className={`w-full border rounded-lg text-[1rem] placeholder-gray-2 p-3 h-[42px] md:h-[48px] focus:outline-none focus:border-primary-green 
+              className={`w-full border dark:border-white rounded-lg text-[1rem] placeholder-gray-2 dark:placeholder-white  p-3 h-[42px] md:h-[48px] focus:outline-none focus:border-primary-green 
                 ${touched.email && errors.email ? "border-red" : "border-gray-1"}`}
             />
             <div className="h-[20px]">
@@ -156,10 +156,10 @@ const RegisterForm = () => {
                 type={showPassword ? "text" : "password"}
                 name="password"
                 placeholder="Enter your password"
-                className={`w-full border rounded-lg text-[1rem] placeholder-gray-2 p-3 h-[42px] md:h-[48px] focus:outline-none focus:border-primary-green 
+                className={`w-full border dark:border-white rounded-lg text-[1rem] placeholder-gray-2 dark:placeholder-white  p-3 h-[42px] md:h-[48px] focus:outline-none focus:border-primary-green 
                   ${touched.password && errors.password ? "border-red" : "border-gray-1"}`}
               />
-              <div className="absolute inset-y-0 text-primary-green right-3 pr-3 flex items-center text-2xl cursor-pointer">
+              <div className="absolute inset-y-0 text-primary-green dark:text-light-green right-3 pr-3 flex items-center text-2xl cursor-pointer">
                 {showPassword ? (
                   <MdVisibilityOff onClick={togglePasswordVisibility} />
                 ) : (
@@ -184,7 +184,7 @@ const RegisterForm = () => {
             </button>
 
             <div className="text-center mt-4">
-              <span className="text-gray-2">Already have an account?</span>
+              <span className="text-gray-2 dark:text-white">Already have an account?</span>
               <Link to="/login" className="ml-1 text-primary-green font-semibold underline">
                 Login
               </Link>
@@ -194,13 +194,13 @@ const RegisterForm = () => {
             {values.userType === "individual" && (
               <div className="flex flex-col items-center">
             <div className="flex items-center my-4">
-              <div className="flex-1 border-t w-[300px] border-gray-2"></div>
-              <p className="text-gray-2 text-[0.875rem] text-center mx-5">or</p>
-              <div className="flex-1 border-t border-gray-2"></div>
+              <div className="flex-1 border-t w-[300px] border-gray-2 dark:border-white"></div>
+              <p className="text-gray-2 dark:text-white text-[0.875rem] text-center mx-5">or</p>
+              <div className="flex-1 border-t border-gray-2 dark:border-white"></div>
             </div>
 
-            <button className="flex items-center justify-center w-[60%] md:w-auto text-gray-2 text-sm md:text-base py-3 px-4 rounded-lg border border-gray-1 hover:bg-gray-100 transition-all duration-300 ease-in-out">
-              <FcGoogle className="text-xl md:text-2xl mr-2" />
+            <button className="flex items-center justify-center w-[60%] md:w-auto text-gray-2 text-sm md:text-base py-3 px-4 rounded-lg border border-gray-1 dark:border-white hover:bg-gray-100 transition-all duration-300 ease-in-out">
+              <FcGoogle className="text-xl dark:text-white md:text-2xl mr-2" />
               Continue with Google
             </button>
             </div>
@@ -208,14 +208,14 @@ const RegisterForm = () => {
 
 
             {/* Terms and Conditions */}
-            <p className="text-[0.75rem] mt-5 text-gray-2 text-center">
+            <p className="text-[0.75rem] mt-5 text-gray-2 dark:text-white text-center">
             By continuing, you agree to the {" "}
-              <Link to="/terms" className="text-primary-green underline font-semibold">
+              <Link to="/terms" className="text-primary-green dark:text-white underline font-semibold">
                 Terms of Service
               </Link>{" "} 
               <br />
               and acknowledge you’ve read our{" "}
-              <Link to="/privacy" className="text-primary-green underline font-semibold">
+              <Link to="/privacy" className="text-primary-green dark:text-white underline font-semibold">
                 Privacy Policy
               </Link>
               .

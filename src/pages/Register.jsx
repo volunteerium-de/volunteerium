@@ -63,8 +63,8 @@ const Register = () => {
           </div>
 
           <div className="flex-grow">
-            <h1 className="text-black text-[1.75rem] text-center md:text-left md:text-[2rem] font-semibold mb-6">Create Your Account</h1>
-            <p className="text-gray-2 text-[1rem] mb-2">You’re creating an account as?</p>
+            <h1 className="text-black dark:text-white text-[1.75rem] text-center md:text-left md:text-[2rem] font-semibold mb-6">Create Your Account</h1>
+            <p className="text-gray-2 dark:text-white text-[1rem] mb-2">You’re creating an account as?</p>
 
             {/* RegisterForm Component */}
             <RegisterForm />
