@@ -89,9 +89,11 @@ const LoginForm = () => {
               {touched.password && errors.password && (
                 <p className="text-red-500 text-[0.875rem]">{errors.password}</p>
               )}
-              <p className="text-sm justify-end text-dark-green underline cursor-pointer">
+              <Link to='/forgot-password'>
+              <p className="text-sm justify-end text-dark-green dark:text-white underline cursor-pointer">
                 Forgot your password?
               </p>
+              </Link>
             </div>
           </div>
 
@@ -104,15 +106,15 @@ const LoginForm = () => {
               Login
             </button>
 
-            <div className="text-center mt-4">
-              <span className="text-gray-2">Already have an account?</span>
+            <div className="text-center mt-6">
+              <span className="text-gray-2">Do not have an account yet?</span>
               <Link to="/register" className="ml-1 text-primary-green font-semibold underline">
                 Sign Up
               </Link>
             </div>
 
             {/* or and dividers */}
-            <div className="flex items-center my-4">
+            <div className="flex items-center my-5">
               <div className="flex-1 border-t w-[300px] border-gray-2 dark:border-white"></div>
               <p className="text-gray-2 dark:text-white text-[0.875rem] text-center mx-5">or</p>
               <div className="flex-1 border-t border-gray-2 dark:border-white"></div>
@@ -123,19 +125,6 @@ const LoginForm = () => {
               Continue with Google
             </button>
 
-            {/* Terms and Conditions */}
-            <p className="text-[0.75rem] mt-5 text-gray-2 text-center">
-              By continuing, you agree to the{" "}
-              <Link to="/terms" className="text-primary-green underline font-semibold">
-                Terms of Service
-              </Link>{" "}
-              <br />
-              and acknowledge you’ve read our{" "}
-              <Link to="/privacy" className="text-primary-green underline font-semibold">
-                Privacy Policy
-              </Link>
-              .
-            </p>
           </div>
         </Form>
       )}
