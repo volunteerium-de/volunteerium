@@ -1,7 +1,7 @@
 import { Formik, Field, Form } from "formik"
 import * as Yup from "yup"
 import { MdVisibility, MdVisibilityOff } from "react-icons/md"
-import { useState, useEffect, useRef } from "react"
+import { useState } from "react"
 import { FcGoogle } from "react-icons/fc"
 import { Link } from "react-router-dom"
 
@@ -11,7 +11,9 @@ const validationSchema = Yup.object({
     .min(3, "Must be at least 3 characters")
     .max(30, "Can be maximum 30 characters")
     .required("Name is a required field"),
-  email: Yup.string().email("Invalid email address").required("Email is a required field"),
+  email: Yup.string()
+  .matches(/^[^\s@]+@[^\s@]+\.[^\s@]+$/, "Invalid email address")
+  .required("Email is a required field"),
   password: Yup.string()
     .min(6, "Must be at least 6 characters!")
     .max(30, "Can be maximum 30 characters!")
@@ -25,10 +27,9 @@ const validationSchema = Yup.object({
 const RegisterForm = () => {
 
   const [userType, setUserType] = useState('individual');
-
   const [showPassword, setShowPassword] = useState(false)
-  const passwordTimeoutRef = useRef(null)
-
+  
+  
   // Handle radio button changes
   const handleRadioChange = (e, setFieldValue) => {
     const value = e.target.value;
@@ -36,16 +37,8 @@ const RegisterForm = () => {
     setFieldValue('userType', value);
   };
 
-  useEffect(() => {
-    return () => {
-      clearTimeout(passwordTimeoutRef.current)
-    }
-  }, [])
-
   const togglePasswordVisibility = () => {
-    setShowPassword((prev) => !prev)
-    clearTimeout(passwordTimeoutRef.current)
-    passwordTimeoutRef.current = setTimeout(() => setShowPassword(false), 5000)
+    setShowPassword((prev) => !prev);
   }
 
   return (
