@@ -3,8 +3,9 @@ import { createSlice } from "@reduxjs/toolkit"
 // {
 //   _id: "650c5a4f1c4ae3b5e8bfcdb0",
 //   userType: "organization",
-//   fullName: "Green Earth Org",
+//   fullName: "",
 //   email: "contact@greenearth.org",
+//   organizationName: "Green Earth Org",
 //   userDetailsId: {
 //     _id: "650c5a7a1c4ae3b5e8bfcdb3",
 //     userId: "650c5a4f1c4ae3b5e8bfcdb0",
@@ -16,7 +17,6 @@ import { createSlice } from "@reduxjs/toolkit"
 //     avatar: "",
 //     totalPoint: 0,
 //     interestIds: [],
-//     organizationName: "Green Earth Org",
 //     organizationLogo:
 //       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQzxwZpSs9IU4bCRfFrY-wXSDdbMR1cwod_TA&s",
 //     organizationDesc: "A non-profit organization focused on environmental sustainability.",

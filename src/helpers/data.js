@@ -124,8 +124,9 @@ export const events = [
     createdBy: {
       _id: "650c5a4f1c4ae3b5e8bfcdb0",
       userType: "organization",
-      fullName: "Green Earth Org",
+      fullName: "",
       email: "contact@greenearth.org",
+      organizationName: "Green Earth Org",
       userDetailsId: {
         _id: "650c5a7a1c4ae3b5e8bfcdb3",
         userId: "650c5a4f1c4ae3b5e8bfcdb0",
@@ -137,7 +138,7 @@ export const events = [
         avatar: "",
         totalPoint: 0,
         interestIds: [],
-        organizationName: "Green Earth Org",
+
         organizationLogo:
           "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQzxwZpSs9IU4bCRfFrY-wXSDdbMR1cwod_TA&s",
         organizationDesc: "A non-profit organization focused on environmental sustainability.",
@@ -345,8 +346,9 @@ export const events = [
     createdBy: {
       _id: "650c7e7f1c4ae3b5e8bfcdb5",
       userType: "organization",
-      fullName: "Health Awareness Foundation",
+      fullName: "",
       email: "contact@healthawareness.org",
+      organizationName: "Health Awareness Foundation",
       userDetailsId: {
         _id: "650c8b3a1c4ae3b5e8bfcdaf",
         userId: "650c7e7f1c4ae3b5e8bfcdb5",
@@ -358,7 +360,6 @@ export const events = [
         avatar: "",
         totalPoint: 0,
         interestIds: [],
-        organizationName: "Health Awareness Foundation",
         organizationLogo:
           "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT15QO8AjFqJuNoFDKAvx4Ow1HsZIZl2IXsyw&s",
         organizationDesc: "A non-profit organization focused on health education.",
@@ -450,6 +451,7 @@ export const events = [
       userType: "individual",
       fullName: "Liam Smith",
       email: "liam.smith@example.com",
+      organizationName: "",
       userDetailsId: {
         _id: "650c9b3a1c4ae3b5e8bfcdaf",
         userId: "650c8f7f1c4ae3b5e8bfcdb6",
@@ -465,7 +467,6 @@ export const events = [
           { _id: "f6g7h8i9j0k1l2m3n4o5p6q7", name: "cycling" },
           { _id: "g7h8i9j0k1l2m3n4o5p6q7r8", name: "outdoors" },
         ],
-        organizationName: "",
         organizationLogo: "",
         organizationDesc: "",
         addressId: {
@@ -539,8 +540,9 @@ export const events = [
     createdBy: {
       _id: "650c9f7f1c4ae3b5e8bfcdb7",
       userType: "organization",
-      fullName: "Tech Innovators Club",
+      fullName: "",
       email: "info@techinnovators.org",
+      organizationName: "Tech Innovators Club",
       userDetailsId: {
         _id: "650caa3a1c4ae3b5e8bfcdaf",
         userId: "650c9f7f1c4ae3b5e8bfcdb7",
@@ -552,7 +554,6 @@ export const events = [
         avatar: "",
         totalPoint: 0,
         interestIds: [],
-        organizationName: "Tech Innovators Club",
         organizationLogo:
           "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ7yDwG7NhBRs7iIBCuUNHJE5cgCqny-6su4g&s",
         organizationDesc: "A club focused on technological advancements and innovation.",
@@ -644,6 +645,7 @@ export const events = [
       userType: "individual",
       fullName: "Emma Wilson",
       email: "emma.wilson@example.com",
+      organizationName: "",
       userDetailsId: {
         _id: "650cbb3a1c4ae3b5e8bfcdaf",
         userId: "650cab7f1c4ae3b5e8bfcdb8",
@@ -659,7 +661,6 @@ export const events = [
           { _id: "i9j0k1l2m3n4o5p6q7r8s9t0", name: "travel" },
           { _id: "j0k1l2m3n4o5p6q7r8s9t0u1", name: "adventure" },
         ],
-        organizationName: "",
         organizationLogo: "",
         organizationDesc: "",
         addressId: {
@@ -733,8 +734,9 @@ export const events = [
     createdBy: {
       _id: "650cdb7f1c4ae3b5e8bfcdb9",
       userType: "organization",
-      fullName: "Art Lovers Society",
+      fullName: "",
       email: "contact@artlovers.org",
+      organizationName: "Art Lovers Society",
       userDetailsId: {
         _id: "650cdb3a1c4ae3b5e8bfcdaf",
         userId: "650cdb7f1c4ae3b5e8bfcdb9",
@@ -746,7 +748,6 @@ export const events = [
         avatar: "",
         totalPoint: 0,
         interestIds: [],
-        organizationName: "Art Lovers Society",
         organizationLogo:
           "https://artloverssociety.com/cdn/shop/files/New_Project.webp?height=628&pad_color=ffffff&v=1712903613&width=1200",
         organizationDesc: "A society dedicated to promoting art and creativity.",
@@ -838,6 +839,7 @@ export const events = [
       userType: "individual",
       fullName: "Lucas Johnson",
       email: "lucas.johnson@example.com",
+      organizationName: "",
       userDetailsId: {
         _id: "650ceaa1c4ae3b5e8bfcdaf",
         userId: "650ce97f1c4ae3b5e8bfcdb0",
@@ -853,7 +855,6 @@ export const events = [
           { _id: "l2m3n4o5p6q7r8s9t0u1v2w3", name: "food" },
           { _id: "m3n4o5p6q7r8s9t0u1v2w3x4", name: "cooking" },
         ],
-        organizationName: "",
         organizationLogo: "",
         organizationDesc: "",
         addressId: {
