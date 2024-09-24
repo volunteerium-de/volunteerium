@@ -18,7 +18,7 @@ const Register = () => {
   // };
 
   return (
-    <div className="flex flex-col max-w-[1440px] mx-auto font-poppins">
+    <div className="flex flex-col max-w-[1440px] mx-auto font-poppins dark:bg-black">
 
       {/* Header component */}
       
