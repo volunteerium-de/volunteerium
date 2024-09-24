@@ -18,7 +18,7 @@ const Login = () => {
   // };
 
   return (
-    <div className="flex flex-col max-w-[1440px] mx-auto font-poppins">
+    <div className="flex flex-col max-w-full h-screen w-[1440px] mx-auto font-poppins dark:bg-black">
 
       {/* Header component */}
       <div className='h-[90px] w-full bg-red-500'></div>

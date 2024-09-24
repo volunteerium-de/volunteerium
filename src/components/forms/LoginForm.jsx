@@ -55,7 +55,7 @@ const LoginForm = () => {
               type="email"
               name="email"
               placeholder="Enter your email address"
-              className={`w-full border rounded-lg text-[1rem] placeholder-gray-2 dark:placeholder-white p-3 h-[42px] md:h-[48px] focus:outline-none focus:border-primary-green 
+              className={`w-full border rounded-lg text-[1rem] placeholder-gray-2 dark:placeholder-white dark:bg-black p-3 h-[42px] md:h-[48px] focus:outline-none focus:border-primary-green 
                 ${touched.email && errors.email ? "border-red" : "border-gray-1"}`}
             />
             <div className="h-[20px]">
@@ -73,7 +73,7 @@ const LoginForm = () => {
                 type={showPassword ? "text" : "password"}
                 name="password"
                 placeholder="Enter your password"
-                className={`w-full border rounded-lg text-[1rem] placeholder-gray-2 dark:placeholder-white p-3 h-[42px] md:h-[48px] focus:outline-none focus:border-primary-green 
+                className={`w-full border rounded-lg text-[1rem] placeholder-gray-2 dark:placeholder-white dark:bg-black p-3 h-[42px] md:h-[48px] focus:outline-none focus:border-primary-green 
       ${touched.password && errors.password ? "border-red" : "border-gray-1"}`}
               />
               <div className="absolute inset-y-0 text-primary-green right-3 pr-3 flex items-center text-2xl cursor-pointer">
