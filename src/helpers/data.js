@@ -6,6 +6,7 @@ export const events = [
       userType: "individual",
       fullName: "Alice Johnson",
       email: "alice.johnson@example.com",
+      organizationName: "",
       userDetailsId: {
         _id: "650c6a3a1c4ae3b5e8bfcdac",
         userId: "650c697f1c4ae3b5e8bfcdb1",
@@ -22,7 +23,6 @@ export const events = [
           { _id: "b2c3d4e5f6g7h8i9j0k1l2m3", name: "environment" },
           { _id: "c3d4e5f6g7h8i9j0k1l2m3n4", name: "health" },
         ],
-        organizationName: "",
         organizationLogo: "",
         organizationDesc: "",
         addressId: {
