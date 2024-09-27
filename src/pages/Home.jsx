@@ -1,11 +1,7 @@
-import React from 'react'
-import GetToKnowUs from '../components/Home/GetToKnowUs'
+// import React from 'react'
 
 const Home = () => {
-  return (
-    <div>
-      <GetToKnowUs />
-    </div>
-  )
+  return <div>Home</div>
 }
+
 export default Home
