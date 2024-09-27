@@ -1,9 +1,11 @@
-// import React from 'react'
+import React from 'react'
+import GetToKnowUs from '../components/Home/GetToKnowUs'
 
 const Home = () => {
   return (
-    <div>Home</div>
+    <div>
+      <GetToKnowUs />
+    </div>
   )
 }
-
 export default Home
