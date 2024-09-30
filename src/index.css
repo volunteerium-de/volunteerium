@@ -13,6 +13,15 @@
   box-sizing: border-box;
 }
 
+body {
+  @apply bg-white;
+}
+
+.dark body {
+  @apply bg-black;
+}
+
+
 @layer base {
   html {
     font-family: 'Poppins', sans-serif;
@@ -20,22 +29,28 @@
 }
 
 @media (max-width: 1200px) {
+
   /* XL: Extra large screens-15px */
   :root {
-    font-size: 0.9375rem; /* For screens 1200px and smaller */
+    font-size: 0.9375rem;
+    /* For screens 1200px and smaller */
   }
 }
 
 @media (max-width: 768px) {
+
   /* MD: Medium screens-14px  */
   :root {
-    font-size: 0.875rem; /* For screens 768px and smaller */
+    font-size: 0.875rem;
+    /* For screens 768px and smaller */
   }
 }
 
 @media (max-width: 390px) {
+
   /* SM:Small screens -11px */
   :root {
-    font-size: 0.6875rem; /* For screens 390px and smaller */
+    font-size: 0.6875rem;
+    /* For screens 390px and smaller */
   }
 }
