@@ -53,7 +53,7 @@ const Setuporganization = () => {
 
   return (
     <div className="min-h-screen flex items-center justify-center font-poppins dark:bg-black">
-      <div className="bg-white max-w-4xl w-full px-6 py-12 rounded-lg shadow-md dark:bg-black">
+      <div className="bg-white max-w-4xl w-full px-6 py-12 rounded-lg dark:bg-black">
         {/* Progress indicator */}
         <div className="flex justify-center mb-8">
           <div className="flex space-x-4 p-2">
@@ -137,7 +137,7 @@ const Setuporganization = () => {
                       htmlFor="organizationDesc"
                       className="block text-gray-2 font-medium mb-1"
                     >
-                      Organization Description
+                      Organization Description*
                     </label>
                     <Field
                       type="text"
@@ -146,11 +146,11 @@ const Setuporganization = () => {
                       placeholder="Enter organization description"
                       className="w-full px-4 py-2 dark:text-white dark:bg-black border border-gray-2 rounded-md focus:outline-none focus:ring-1 focus:ring-primary-green"
                     />
-                    <div className="min-h-[1.5rem] text-[0.875rem]">
+                    <div className="min-h-[1.5rem] text-sm">
                       <ErrorMessage
                         name="organizationDesc"
                         component="div"
-                        className="text-red-500"
+                        className="text-danger"
                       />
                     </div>
                   </div>
@@ -160,7 +160,7 @@ const Setuporganization = () => {
                       htmlFor="organizationLogo"
                       className="block text-gray-2 font-medium mb-1"
                     >
-                      Organization Logo
+                      Organization Logo*
                     </label>
                     <div
                       className="flex w-full mx-auto items-center cursor-pointer border border-gray-2 rounded-md px-4 py-2"
@@ -192,11 +192,11 @@ const Setuporganization = () => {
                         <BiUpload className="text-2xl text-dark-gray-2 dark:text-white" />
                       </button>
                     </div>
-                    <div className="min-h-[1.5rem] text-[0.875rem]">
+                    <div className="min-h-[1.5rem] text-sm">
                       <ErrorMessage
                         name="organizationLogo"
                         component="div"
-                        className="text-red-500"
+                        className="text-danger"
                       />
                     </div>
 
@@ -268,11 +268,11 @@ const Setuporganization = () => {
                         placeholder="https://"
                         className="w-full px-4 py-2 border border-gray-2 rounded-md dark:bg-black dark:text-white focus:outline-none focus:ring-1 focus:ring-primary-green"
                       />
-                      <div className="min-h-[1.5rem] text-[0.875rem]">
+                      <div className="min-h-[1.5rem] text-sm">
                         <ErrorMessage
                           name="organizationUrl"
                           component="div"
-                          className="text-red-500"
+                          className="text-danger"
                         />
                       </div>
                     </div>
@@ -292,11 +292,11 @@ const Setuporganization = () => {
                           placeholder="Enter street name"
                           className="w-full px-4 py-2 border border-gray-2 rounded-md dark:bg-black dark:text-white focus:outline-none focus:ring-1 focus:ring-primary-green"
                         />
-                        <div className="min-h-[1.5rem] text-[0.875rem]">
+                        <div className="min-h-[1.5rem] text-sm">
                           <ErrorMessage
                             name="streetName"
                             component="div"
-                            className="text-red-500"
+                            className="text-danger"
                           />
                         </div>
                       </div>
@@ -315,11 +315,11 @@ const Setuporganization = () => {
                           placeholder="Nr"
                           className="w-full px-4 py-2 border border-gray-2 rounded-md dark:bg-black dark:text-white focus:outline-none focus:ring-1 focus:ring-primary-green"
                         />
-                        <div className="min-h-[1.5rem] text-[0.875rem]">
+                        <div className="min-h-[1.5rem] text-sm">
                           <ErrorMessage
                             name="streetNumber"
                             component="div"
-                            className="text-red-500"
+                            className="text-danger"
                           />
                         </div>
                       </div>
@@ -338,11 +338,11 @@ const Setuporganization = () => {
                           placeholder="Enter zip code"
                           className="w-full px-4 py-2 border border-gray-2 rounded-md dark:bg-black dark:text-white focus:outline-none focus:ring-1 focus:ring-primary-green"
                         />
-                        <div className="min-h-[1.5rem] text-[0.875rem]">
+                        <div className="min-h-[1.5rem] text-sm">
                           <ErrorMessage
                             name="zipCode"
                             component="div"
-                            className="text-red-500"
+                            className="text-danger"
                           />
                         </div>
                       </div>
@@ -368,11 +368,11 @@ const Setuporganization = () => {
                           placeholder="Enter city"
                           className="w-full px-4 py-2 border border-gray-2 rounded-md dark:bg-black dark:text-white focus:outline-none focus:ring-1 focus:ring-primary-green"
                         />
-                        <div className="min-h-[1.5rem] text-[0.875rem]">
+                        <div className="min-h-[1.5rem] text-sm">
                           <ErrorMessage
                             name="city"
                             component="div"
-                            className="text-red-500"
+                            className="text-danger"
                           />
                         </div>
                       </div>
@@ -390,11 +390,11 @@ const Setuporganization = () => {
                         placeholder="Enter country"
                         className="w-full px-4 py-2 border border-gray-2 rounded-md dark:bg-black dark:text-white focus:outline-none focus:ring-1 focus:ring-primary-green"
                       />
-                      <div className="min-h-[1.5rem] text-[0.875rem]">
+                      <div className="min-h-[1.5rem] text-sm">
                         <ErrorMessage
                           name="country"
                           component="div"
-                          className="text-red-500"
+                          className="text-danger"
                         />
                       </div>
                     </div>

@@ -1,84 +1,28 @@
 import { Link, useNavigate } from "react-router-dom"
 import { HiDotsHorizontal } from "react-icons/hi"
 import { FaCheck } from "react-icons/fa"
-import { useState, useRef, useEffect } from "react"
-import { ErrorMessage, Form, Formik } from "formik"
+import { useState } from "react"
+import { ErrorMessage, Form, Field, Formik } from "formik"
 import * as Yup from "yup"
-import { CiCircleCheck } from "react-icons/ci"
 
 // Validation schema
 export const updateUserDetailsSchema = Yup.object().shape({
-  gender: Yup.string().oneOf(["Male", "Female", "n/a"]).required("Please choose a gender"),
-  ageRange: Yup.string().oneOf(["16-25", "26-35", "35+"]).required("Please choose an age range"),
+  gender: Yup.string()
+    .oneOf(["Male", "Female", "Prefer not to say"], "Please choose a valid gender")
+    .required("Gender is reuired"),
+  ageRange: Yup.string()
+    .oneOf(["16-25", "26-35", "35+"], "Please choose a valid age range")
+    .required("Age is reuired"),
   interests: Yup.array().max(3, "Select up to 3 interests only"),
 })
-
-export const CustomDropdown = ({ label, options, name, value, setFieldValue }) => {
-  const [isOpen, setIsOpen] = useState(false)
-  const dropdownRef = useRef(null) //
-  const handleSelect = (option) => {
-    setFieldValue(name, option)
-    setIsOpen(false)
-  }
-
-  // Handle clicks outside of the dropdown
-  useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
-        setIsOpen(false) // Close the dropdown if clicked outside
-      }
-    }
-    // Add the event listener
-    document.addEventListener("mousedown", handleClickOutside)
-    // Cleanup the event listener on component unmount
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside)
-    }
-  }, [dropdownRef])
-
-  return (
-    <div className="relative w-4/5 mx-auto mb-4" ref={dropdownRef}>
-      <label className="block text-gray-2 font-medium mb-2 text-center">{label}</label>
-
-      <div
-        className={`bg-white dark:bg-black border ${isOpen ? "border-primary-green" : "border-gray-300"} font-medium ps-5 dark:text-white p-2 rounded-md cursor-pointer`}
-        onClick={() => setIsOpen(!isOpen)}
-      >
-        {value || `Choose ${label}`}
-      </div>
-      {isOpen && (
-        <ul className="absolute left-0 right-0 dark:text-gray-1  bg-white dark:bg-black border border-primary-green rounded-md mt-2 z-10 max-h-40 overflow-auto">
-          {options.map((option) => (
-            <li
-              key={option}
-              className={`px-4 py-2 cursor-pointer flex items-center gap-2 ${value === option ? "bg-white text-primary-green" : "hover:bg-light-green hover:text-gray-900"}`}
-              onClick={() => handleSelect(option)}
-            >
-             {option !== "Choose Age Range" && option !== "Choose Gender"  && (
-              <CiCircleCheck
-                className={`text-[1.25rem] ${value === option ? "text-primary-green " : "text-gray-1"}`}
-              />
-             )}
-              {option}
-            </li>
-          ))}
-        </ul>
-      )}
-      <ErrorMessage
-        name={name}
-        component="div"
-        className="min-h-[1.5rem] text-[0.875rem] text-red-500 text-center"
-      />
-    </div>
-  )
-}
 
 const SetupIndividual = () => {
   const [step, setStep] = useState(1)
   const navigate = useNavigate()
 
-  // Toggle between steps
-  const handleNext = (isValid, dirty) => {
+  const handleNext = (isValid, dirty, setFieldTouched) => {
+    setFieldTouched("ageRange", true) // Age range alanı touched olarak işaretlenir
+    setFieldTouched("gender", true) //
     if (isValid && dirty) {
       setStep(2)
     }
@@ -86,7 +30,7 @@ const SetupIndividual = () => {
 
   return (
     <div className="min-h-screen flex items-center justify-center font-poppins dark:bg-black">
-      <div className="bg-white max-w-4xl w-full px-6 py-12 rounded-lg shadow-md dark:bg-black">
+      <div className="bg-white max-w-4xl w-full px-6 py-12 rounded-lg dark:bg-black">
         <Formik
           initialValues={{
             ageRange: "",
@@ -98,11 +42,20 @@ const SetupIndividual = () => {
             console.log(values)
           }}
         >
-          {({ isValid, dirty, values, setFieldValue, handleSubmit }) => (
+          {({
+            isValid,
+            dirty,
+            values,
+            setFieldValue,
+            handleSubmit,
+            touched,
+            setFieldTouched,
+            errors,
+          }) => (
             <Form>
               {/* Progress indicator */}
               <div className="flex justify-center mb-8">
-                <div className="flex space-x-4 p-2">
+                <div className="flex space-x-4 p-1">
                   <Link
                     to="#"
                     className={`w-7 h-7 rounded-full border ${
@@ -122,14 +75,16 @@ const SetupIndividual = () => {
                     className={`w-7 h-7 rounded-full border ${
                       step === 2 && isValid && dirty
                         ? "font-semibold text-white border-2 bg-primary-green dark:text-black dark:bg-white dark:border-primary-green"
-                        : "text-gray-2 border-gray-1 dark:text-white dark:border-primary-green cursor-not-allowed"
+                        : "text-gray-2 border-gray-1 dark:text-white dark:border-primary-green "
                     } flex items-center justify-center hover:bg-light-green hover:text-gray-2 transition-colors`}
-                    onClick={() => {
-                      if (isValid && dirty) {
-                        setStep(2)
+                    onClick={(e) => {
+                      // Eğer ageRange veya gender doldurulmamışsa tıklamayı engelle
+                      if (!(isValid && dirty && values.ageRange && values.gender)) {
+                        e.preventDefault(); // Tıklamayı engelle
+                      } else {
+                        handleNext(isValid, dirty, setFieldTouched, values);
                       }
                     }}
-                    disabled={!isValid || !dirty}
                   >
                     2
                   </Link>
@@ -152,39 +107,70 @@ const SetupIndividual = () => {
                     Providing this information is optional but may be useful for certain events
                   </p>
 
-                  <div className="w-1/2 mx-auto">
-                    <CustomDropdown
-                      label="Age"
-                      options={["Choose Age Range", "16-25", "26-35", "35+"]}
+                  <div className="w-3/5 md:w-2/5 mx-auto">
+                  <label className=" block text-gray-2 text-sm font-medium mb-1 text-start">
+                      Age Range*
+                    </label>
+                   
+                    <Field
+                      as="select"
                       name="ageRange"
-                      value={values.ageRange}
-                      setFieldValue={setFieldValue}
-                    />
-                    
-                    
+                      className={`w-full bg-white dark:bg-black border ${
+      touched.ageRange && errors.ageRange
+        ? "border-danger"
+        : values.ageRange
+        ? "border-primary-green"
+        : "border-gray-1"
+    } font-medium ps-2 dark:text-white p-1 rounded-md cursor-pointer`}
+    onBlur={() => setFieldTouched('ageRange', true)}
+  >
+                      <option value="">Choose Age Range</option>
+                      <option value="16-25">16-25</option>
+                      <option value="26-35">26-35</option>
+                      <option value="35+">35+</option>
+                    </Field>
+                    <div className="min-h-[1.5rem]">
+                      <ErrorMessage
+                        name="ageRange"
+                        component="div"
+                        className=" text-danger text-sm"
+                      />
+                    </div>
                   </div>
-                  <div className="w-1/2 mx-auto">
-                    <CustomDropdown
-                      label="Gender"
-                      options={["Choose Gender", "Male", "Female", "Prefer not to say"]}
+
+                  <div className="w-3/5 md:w-2/5 mx-auto mb-4">
+                    <label className="block text-gray-2 text-sm font-medium mb-1 text-start">Gender*</label>
+                    <Field
+                      as="select"
                       name="gender"
-                      value={values.gender}
-                      setFieldValue={setFieldValue}
-                    />
-                     
-                    
+                      className={`w-full bg-white dark:bg-black border ${
+      touched.gender && errors.gender
+        ? "border-danger"
+        : values.gender
+        ? "border-primary-green"
+        : "border-gray-1"
+    } font-medium ps-2 dark:text-white p-1  rounded-md cursor-pointer`}
+    onBlur={() => setFieldTouched('gender', true)}
+  >
+                      <option value="">Choose Gender</option>
+                      <option value="Male">Male</option>
+                      <option value="Female">Female</option>
+                      <option value="Prefer not to say">Prefer not to say</option>
+                    </Field>
+                    <div className="min-h-[1.5rem]">
+                      <ErrorMessage
+                        name="gender"
+                        component="div"
+                        className=" text-danger text-sm"
+                      />
+                    </div>{" "}
                   </div>
 
                   <div className="text-center">
                     <button
                       type="button"
-                      onClick={() => handleNext(isValid, dirty)}
-                      disabled={!dirty || !isValid}
-                      className={`w-auto px-14 py-2 rounded-md transition-colors ${
-                        !dirty || !isValid
-                          ? "bg-gray-1 cursor-not-allowed"
-                          : "bg-primary-green text-white hover:bg-dark-green"
-                      }`}
+                      onClick={() => handleNext(isValid, dirty, setFieldTouched)}
+                      className="w-auto px-14 py-2 rounded-md transition-colors bg-primary-green text-white hover:bg-dark-green"
                     >
                       Next
                     </button>
@@ -195,17 +181,19 @@ const SetupIndividual = () => {
               {/* Step 2: Interests */}
               {step === 2 && (
                 <>
+                  {/* Step 2 içeriği */}
                   <div className="flex flex-col items-center text-center mb-10">
                     <h2 className="text-[1.75rem] dark:text-white font-bold mb-2">
                       Choose Your Interests
                     </h2>
-      <p className="text-dark-gray-1 w-4/5 dark:text-white mb-2 sm:block md:hidden">
-        Explore volunteer opportunities and make a meaningful impact
-      </p>
-      <p className="text-dark-gray-1 w-4/5 dark:text-white mb-2 hidden md:block">
-        Explore volunteer opportunities by selecting the areas that interest you. <br />
-        Make a meaningful impact in the fields you care about most!
-      </p>
+                    <p className="text-dark-gray-1 w-4/5 dark:text-white mb-2 sm:block md:hidden">
+                      Explore volunteer opportunities and make a meaningful impact
+                    </p>
+                    <p className="text-dark-gray-1 w-4/5 dark:text-white mb-2 hidden md:block">
+                      Explore volunteer opportunities by selecting the areas that interest you.{" "}
+                      <br />
+                      Make a meaningful impact in the fields you care about most!
+                    </p>
                   </div>
 
                   <div className="px:2 md:px-0 flex flex-wrap justify-center gap-2 md:gap-4 mb-8">
@@ -229,16 +217,24 @@ const SetupIndividual = () => {
                       <button
                         key={interest}
                         type="button"
-                        className={`w-1/3 sm:w-1/2  md:w-auto px-1 md:px-4 py-2 border rounded-md cursor-pointer ${values.interests.includes(interest) ? "bg-light-green text-dark-gray-1 border-1 border-primary-green" : "100 text-gray-2"}`}
+                        className={`w-1/3 sm:w-1/2  md:w-auto px-1 md:px-4 py-2 border rounded-md cursor-pointer ${
+                          values.interests.includes(interest)
+                            ? "bg-light-green text-dark-gray-1 border-1 border-primary-green"
+                            : "100 text-gray-2"
+                        }`}
                         onClick={() => {
-                          const newValue = interest
-                          setFieldValue(
-                            "interests",
-                            values.interests.includes(newValue)
-                              ? values.interests.filter((id) => id !== newValue)
-                              : [...values.interests, newValue]
-                          )
-                        }}
+                          if (values.interests.length < 3 || values.interests.includes(interest)) {
+          const newValue = interest;
+          setFieldValue(
+            "interests",
+            values.interests.includes(newValue)
+              ? values.interests.filter((id) => id !== newValue)
+              : [...values.interests, newValue]
+          );
+        }
+      }}
+            disabled={!values.interests.includes(interest) && values.interests.length >= 3}
+
                       >
                         {interest}
                       </button>
@@ -270,8 +266,6 @@ const SetupIndividual = () => {
                       Finish
                     </button>
                   </div>
-
-
                 </>
               )}
             </Form>
