@@ -9,8 +9,6 @@ import * as Yup from "yup"
 import { useNavigate } from "react-router-dom"
 import { UserDetailSchema } from "../validators/UserDetailValidator"
 
-
-
 const OrganizationSchema = Yup.object({
   organizationLogo: UserDetailSchema.fields.organizationLogo,
   organizationDesc: UserDetailSchema.fields.organizationDesc,
@@ -20,12 +18,12 @@ const OrganizationSchema = Yup.object({
   zipCode: UserDetailSchema.fields.zipCode,
   city: UserDetailSchema.fields.city,
   country: UserDetailSchema.fields.country,
-});
+})
 
-const Setuporganization = () => {
+const SetupOrganization = () => {
   const [step, setStep] = useState(1)
   const [logoPreview, setLogoPreview] = useState(null) // For logo preview
-  const navigate = useNavigate();
+  const navigate = useNavigate()
 
   // Toggle between steps
   const handleNext = () => {
@@ -40,9 +38,10 @@ const Setuporganization = () => {
           <div className="flex space-x-4 p-2">
             <Link
               to="#"
-              className={`w-8 h-8 rounded-full border ${step === 1
-                ? "font-semibold  text-white border-2 bg-primary-green  dark:text-black dark:bg-white dark:border-primary-green "
-                : " text-gray-2 border-gray-1 dark:text-white dark:border-primary-green"
+              className={`w-8 h-8 rounded-full border ${
+                step === 1
+                  ? "font-semibold  text-white border-2 bg-primary-green  dark:text-black dark:bg-white dark:border-primary-green "
+                  : " text-gray-2 border-gray-1 dark:text-white dark:border-primary-green"
               } flex items-center justify-center hover:bg-light-green hover:text-gray-2 transition-colors`}
               onClick={() => setStep(1)}
             >
@@ -57,12 +56,13 @@ const Setuporganization = () => {
             {/* Step 2 */}
             <Link
               to="#"
-              className={`w-8 h-8 rounded-full border ${step === 2
-                ? "font-semibold  text-white border-2 bg-primary-green  dark:text-black dark:bg-white dark:border-primary-green "
-                : " text-gray-2 border-gray-1 dark:text-white dark:border-primary-green"
+              className={`w-8 h-8 rounded-full border ${
+                step === 2
+                  ? "font-semibold  text-white border-2 bg-primary-green  dark:text-black dark:bg-white dark:border-primary-green "
+                  : " text-gray-2 border-gray-1 dark:text-white dark:border-primary-green"
               } flex items-center justify-center hover:bg-light-green hover:text-gray-2 transition-colors`}
               onClick={(e) => {
-                if (document.getElementById("organizationDesc").value === "" || !logoPreview) {
+                if (!document.getElementById("organizationDesc").value || !logoPreview) {
                   e.preventDefault()
                 } else {
                   setStep(2)
@@ -226,16 +226,14 @@ const Setuporganization = () => {
               onSubmit={(values, { resetForm, setSubmitting }) => {
                 resetForm()
                 setSubmitting(false)
-                navigate('/')
+                navigate("/")
                 console.log("Form values submitted: ", values)
               }}
             >
-
               {({ isValid }) => (
                 <Form>
                   <div className="flex flex-col">
-                    
-                  <div className="w-full">
+                    <div className="w-full">
                       <label
                         htmlFor="organizationUrl"
                         className="block text-gray-2 font-medium mb-1"
@@ -257,13 +255,10 @@ const Setuporganization = () => {
                         />
                       </div>
                     </div>
-                    
+
                     <div className="flex items-center space-x-2">
                       <div className="w-2/4">
-                        <label
-                          htmlFor="streetName"
-                          className="block text-gray-2 font-medium mb-1"
-                        >
+                        <label htmlFor="streetName" className="block text-gray-2 font-medium mb-1">
                           Street Name*
                         </label>
                         <Field
@@ -274,11 +269,7 @@ const Setuporganization = () => {
                           className="w-full px-4 py-2 border border-gray-2 rounded-md dark:bg-black dark:text-white focus:outline-none focus:ring-1 focus:ring-primary-green"
                         />
                         <div className="min-h-[1.5rem] text-sm">
-                          <ErrorMessage
-                            name="streetName"
-                            component="div"
-                            className="text-danger"
-                          />
+                          <ErrorMessage name="streetName" component="div" className="text-danger" />
                         </div>
                       </div>
 
@@ -306,10 +297,7 @@ const Setuporganization = () => {
                       </div>
 
                       <div className="w-1/4">
-                        <label
-                          htmlFor="zipCode"
-                          className="block text-gray-2 font-medium mb-1"
-                        >
+                        <label htmlFor="zipCode" className="block text-gray-2 font-medium mb-1">
                           Zip Code*
                         </label>
                         <Field
@@ -320,26 +308,14 @@ const Setuporganization = () => {
                           className="w-full px-4 py-2 border border-gray-2 rounded-md dark:bg-black dark:text-white focus:outline-none focus:ring-1 focus:ring-primary-green"
                         />
                         <div className="min-h-[1.5rem] text-sm">
-                          <ErrorMessage
-                            name="zipCode"
-                            component="div"
-                            className="text-danger"
-                          />
+                          <ErrorMessage name="zipCode" component="div" className="text-danger" />
                         </div>
                       </div>
-
-
                     </div>
-                   
-                   
-                    <div className="flex items-center space-x-2">
-                    
 
+                    <div className="flex items-center space-x-2">
                       <div className="w-1/2">
-                        <label
-                          htmlFor="city"
-                          className="block text-gray-2 font-medium mb-1"
-                        >
+                        <label htmlFor="city" className="block text-gray-2 font-medium mb-1">
                           City*
                         </label>
                         <Field
@@ -350,50 +326,36 @@ const Setuporganization = () => {
                           className="w-full px-4 py-2 border border-gray-2 rounded-md dark:bg-black dark:text-white focus:outline-none focus:ring-1 focus:ring-primary-green"
                         />
                         <div className="min-h-[1.5rem] text-sm">
-                          <ErrorMessage
-                            name="city"
-                            component="div"
-                            className="text-danger"
-                          />
+                          <ErrorMessage name="city" component="div" className="text-danger" />
                         </div>
                       </div>
                       <div className="w-1/2">
-                      <label
-                        htmlFor="country"
-                        className="block text-gray-2 font-medium mb-1"
-                      >
-                        Country*
-                      </label>
-                      <Field
-                        type="text"
-                        id="country"
-                        name="country"
-                        placeholder="Enter country"
-                        className="w-full px-4 py-2 border border-gray-2 rounded-md dark:bg-black dark:text-white focus:outline-none focus:ring-1 focus:ring-primary-green"
-                      />
-                      <div className="min-h-[1.5rem] text-sm">
-                        <ErrorMessage
+                        <label htmlFor="country" className="block text-gray-2 font-medium mb-1">
+                          Country*
+                        </label>
+                        <Field
+                          type="text"
+                          id="country"
                           name="country"
-                          component="div"
-                          className="text-danger"
+                          placeholder="Enter country"
+                          className="w-full px-4 py-2 border border-gray-2 rounded-md dark:bg-black dark:text-white focus:outline-none focus:ring-1 focus:ring-primary-green"
                         />
+                        <div className="min-h-[1.5rem] text-sm">
+                          <ErrorMessage name="country" component="div" className="text-danger" />
+                        </div>
                       </div>
                     </div>
-                    </div>
-
-                    
-
-                    
                   </div>
 
                   <div className="mt-8 text-center">
                     <button
                       type="submit"
                       disabled={!isValid}
-                      className={`w-auto px-14 py-2 ${!isValid
+                      className={`w-auto px-14 py-2 ${
+                        !isValid
                           ? "bg-gray-400 cursor-not-allowed"
                           : "bg-primary-green hover:bg-dark-green"
-                        } text-white rounded-md transition-colors`}
+                      } text-white rounded-md transition-colors`}
                     >
                       Finish
                     </button>
@@ -408,4 +370,4 @@ const Setuporganization = () => {
   )
 }
 
-export default Setuporganization
+export default SetupOrganization

@@ -19,10 +19,8 @@ const SetupIndividual = () => {
   const [step, setStep] = useState(1)
   const navigate = useNavigate()
 
-  const handleNext = (isValid, dirty, setFieldTouched) => {
-    setFieldTouched("ageRange", true) // Age range alanı touched olarak işaretlenir
-    setFieldTouched("gender", true) //
-    if (isValid && dirty) {
+  const handleNext = (isValid) => {
+    if (isValid) {
       setStep(2)
     }
   }
@@ -43,13 +41,11 @@ const SetupIndividual = () => {
         >
           {({
             isValid,
-            dirty,
             values,
             setFieldValue,
             handleSubmit,
             touched,
-            setFieldTouched,
-            errors,
+            errors
           }) => (
             <Form>
               {/* Progress indicator */}
@@ -72,16 +68,16 @@ const SetupIndividual = () => {
                   <Link
                     to="#"
                     className={`w-7 h-7 rounded-full border ${
-                      step === 2 && isValid && dirty
+                      step === 2 && isValid
                         ? "font-semibold text-white border-2 bg-primary-green dark:text-black dark:bg-white dark:border-primary-green"
                         : "text-gray-2 border-gray-1 dark:text-white dark:border-primary-green "
                     } flex items-center justify-center hover:bg-light-green hover:text-gray-2 transition-colors`}
                     onClick={(e) => {
-                      // Eğer ageRange veya gender doldurulmamışsa tıklamayı engelle
-                      if (!(isValid && dirty && values.ageRange && values.gender)) {
-                        e.preventDefault(); // Tıklamayı engelle
+                      // If ageRange or gender is not filled in, block the click
+                      if (!(isValid && values.ageRange && values.gender)) {
+                        e.preventDefault();
                       } else {
-                        handleNext(isValid, dirty, setFieldTouched, values);
+                        handleNext(isValid);
                       }
                     }}
                   >
@@ -121,7 +117,6 @@ const SetupIndividual = () => {
         ? "border-primary-green"
         : "border-gray-1"
     } font-medium ps-2 dark:text-white p-1 rounded-md cursor-pointer`}
-    onBlur={() => setFieldTouched('ageRange', true)}
   >
                       <option value="">Choose Age Range</option>
                       <option value="16-25">16-25</option>
@@ -149,7 +144,6 @@ const SetupIndividual = () => {
         ? "border-primary-green"
         : "border-gray-1"
     } font-medium ps-2 dark:text-white p-1  rounded-md cursor-pointer`}
-    onBlur={() => setFieldTouched('gender', true)}
   >
                       <option value="">Choose Gender</option>
                       <option value="Male">Male</option>
@@ -168,7 +162,7 @@ const SetupIndividual = () => {
                   <div className="text-center">
                     <button
                       type="button"
-                      onClick={() => handleNext(isValid, dirty, setFieldTouched)}
+                      onClick={() => handleNext(isValid)}
                       className="w-auto px-14 py-2 rounded-md transition-colors bg-primary-green text-white hover:bg-dark-green"
                     >
                       Next
@@ -180,7 +174,6 @@ const SetupIndividual = () => {
               {/* Step 2: Interests */}
               {step === 2 && (
                 <>
-                  {/* Step 2 içeriği */}
                   <div className="flex flex-col items-center text-center mb-10">
                     <h2 className="text-[1.75rem] dark:text-white font-bold mb-2">
                       Choose Your Interests
@@ -222,18 +215,15 @@ const SetupIndividual = () => {
                             : "100 text-gray-2"
                         }`}
                         onClick={() => {
-                          if (values.interests.length < 3 || values.interests.includes(interest)) {
-          const newValue = interest;
-          setFieldValue(
-            "interests",
-            values.interests.includes(newValue)
-              ? values.interests.filter((id) => id !== newValue)
-              : [...values.interests, newValue]
-          );
-        }
-      }}
+                          const newValue = interest;
+                          setFieldValue(
+                            "interests",
+                            values.interests.includes(newValue)
+                              ? values.interests.filter((id) => id !== newValue)
+                              : [...values.interests, newValue]
+                          );
+                        }}
             disabled={!values.interests.includes(interest) && values.interests.length >= 3}
-
                       >
                         {interest}
                       </button>
@@ -244,10 +234,10 @@ const SetupIndividual = () => {
                     <button
                       type="button"
                       onClick={() => {
-                        handleSubmit(isValid, dirty) // Verileri kaydet
-                        navigate("/") // Anasayfaya yönlendirme
+                        handleSubmit(isValid) 
+                        navigate("/") 
                       }}
-                      disabled={!dirty || !isValid}
+                      disabled={!isValid}
                       className="mt-4 block w-1/4 py-2 text-dark-gray-1 border border-gray-1 text-center  rounded-md transition-colors"
                     >
                       Skip for now
@@ -256,10 +246,10 @@ const SetupIndividual = () => {
                     <button
                       type="button"
                       onClick={() => {
-                        handleSubmit(isValid, dirty) // Verileri kaydet
-                        navigate("/") // Anasayfaya yönlendirme
+                        handleSubmit(isValid) 
+                        navigate("/") 
                       }}
-                      disabled={!dirty || !isValid}
+                      disabled={!isValid}
                       className="mt-4 block w-1/5 py-2 text-center bg-primary-green text-white rounded-md transition-colors"
                     >
                       Finish

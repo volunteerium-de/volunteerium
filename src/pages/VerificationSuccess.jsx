@@ -15,17 +15,17 @@ useEffect(() => {
     // Get the userType of the registered user.
     // You can get this from an API call or from localStorage.
     // Example: setUserType('individual') or setUserType('organization')
-    const fetchedUserType = 'organisation';
+    const fetchedUserType = 'organization';
     setUserType(fetchedUserType);
   }, []);
 
   const getUserTypeLink = () => {
     if (userType === 'individual') {
-      return '/register/email-verify/success/ind-setup';
-    } else if (userType === 'organisation') {
+      return '/register/email-verify/success/indv-setup';
+    } else if (userType === 'organization') {
       return '/register/email-verify/success/org-setup';
     } else {
-      return '/'; // Eğer userType belirlenmemişse veya hata varsa ana sayfaya yönlendirebiliriz.
+      return '/'; // If userType is not specified or there is an error, we can redirect to the home page.
     }
   };
 
