@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit"
 
-const initialTheme = localStorage.getItem("theme") ? localStorage.getItem("theme") : "light"
+const initialTheme = localStorage.getItem("theme") || "light"
 
 if (initialTheme === "dark") {
   document.documentElement.classList.add("dark")
