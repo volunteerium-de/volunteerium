@@ -60,7 +60,7 @@ const LoginForm = () => {
             />
             <div className="h-[20px]">
               {touched.email && errors.email && (
-                <p className="text-red-500 text-[0.875rem]">{errors.email}</p>
+                <p className="text-danger text-[0.875rem]">{errors.email}</p>
               )}
             </div>
           </div>
@@ -87,7 +87,7 @@ const LoginForm = () => {
 
             <div className="flex justify-between items-center mt-1">
               {touched.password && errors.password && (
-                <p className="text-red-500 text-[0.875rem]">{errors.password}</p>
+                <p className="text-danger text-[0.875rem]">{errors.password}</p>
               )}
               <Link to='/forgot-password'>
               <p className="text-sm justify-end text-dark-green dark:text-white underline cursor-pointer">
