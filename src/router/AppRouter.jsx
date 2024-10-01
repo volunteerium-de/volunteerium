@@ -9,20 +9,21 @@ import EmailVerification from "../pages/EmailVerification";
 import VerificationSuccess from "../pages/VerificationSuccess";
 import SetupOrganization from "../pages/SetupOrganization";
 import SetupIndividual from "../pages/SetupIndividual";
+import Profile from "../pages/Profile"
 
 const AppRouter = () => {
   return (
     <Router>
-        <Routes>
+    <Routes>
             <Route path="/" element={<Home />} />
             <Route path="login" element={<Login />} />
             <Route path="register" element={<Register/>} />
             <Route path="about" element={<AboutUs />} />
+ 	            <Route path="profile" element={<Profile />} />
             <Route path="register/email-verify" element={<EmailVerification/>} />
             <Route path="register/email-verify/success" element={<VerificationSuccess/>} />
             <Route path="/register/email-verify/success/org-setup" element={<SetupOrganization/>} />
             <Route path="/register/email-verify/success/indv-setup" element={<SetupIndividual/>} />
-
         <Route path="" element={<PrivateRouter />}>
           {/* <Route path="profile/:userId" element={<Profile />} /> */}
           {/* <Route path="" element={< />} /> */}
