@@ -3,18 +3,17 @@ import { HiDotsHorizontal } from "react-icons/hi"
 import { FaCheck } from "react-icons/fa"
 import { useState } from "react"
 import { ErrorMessage, Form, Field, Formik } from "formik"
-import * as Yup from "yup"
+import { UserDetailSchema } from "../validators/UserDetailValidator";
+import * as Yup from 'yup';
+
 
 // Validation schema
-export const updateUserDetailsSchema = Yup.object().shape({
-  gender: Yup.string()
-    .oneOf(["Male", "Female", "Prefer not to say"], "Please choose a valid gender")
-    .required("Gender is reuired"),
-  ageRange: Yup.string()
-    .oneOf(["16-25", "26-35", "35+"], "Please choose a valid age range")
-    .required("Age is reuired"),
-  interests: Yup.array().max(3, "Select up to 3 interests only"),
-})
+const IndividualSchema = Yup.object({
+  gender: UserDetailSchema.fields.gender,
+  ageRange: UserDetailSchema.fields.ageRange,
+  interests: UserDetailSchema.fields.interests,
+});
+
 
 const SetupIndividual = () => {
   const [step, setStep] = useState(1)
@@ -37,7 +36,7 @@ const SetupIndividual = () => {
             gender: "",
             interests: [],
           }}
-          validationSchema={updateUserDetailsSchema}
+          validationSchema={IndividualSchema}
           onSubmit={(values) => {
             console.log(values)
           }}

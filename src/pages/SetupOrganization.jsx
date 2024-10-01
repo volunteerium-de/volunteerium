@@ -7,39 +7,20 @@ import { useState } from "react"
 import { ErrorMessage, Field, Form, Formik } from "formik"
 import * as Yup from "yup"
 import { useNavigate } from "react-router-dom"
+import { UserDetailSchema } from "../validators/UserDetailValidator"
 
-export const updateUserDetailsSchema = Yup.object().shape({
-  organizationLogo: Yup.string().trim().required("Logo is required"),
-  organizationDesc: Yup.string().max(1000).trim().required("Description is required"),
-  organizationUrl: Yup.string().url("Invalid URL format.").optional(),
-  streetName: Yup.string()
-    .trim()
-    .matches(/^[a-zA-Z]+$/, "Must contain just letters")
-    .required("Street name is required")
-    .min(3, "Street name must contain min 3 character"),
-  streetNumber: Yup.string()
-    .required("Street nr is required")
-    .trim()
-    .matches(/^[0-9]+$/, "Must contain just digits")
-    .min(1, "Min 1 character")
-    .max(8, "Max 8 character"),
-  zipCode: Yup.string()
-    .required("Zip Code is required")
-    .trim()
-    .matches(/^[0-9]+$/, "Must contain just numbers")
-    .min(1, "Min 1 character")
-    .max(8, "Max 8 character"),
-  city: Yup.string()
-    .trim()
-    .required("City is required")
-    .matches(/^[a-zA-Z]+$/, "Must contain just letters")
-    .min(3, "City must contain min 3 character"),
-  country: Yup.string()
-    .trim()
-    .required("Country is required")
-    .matches(/^[a-zA-Z]+$/, "Must contain just letters")
-    .min(3, "Country must contain min 3 character"),
-})
+
+
+const OrganizationSchema = Yup.object({
+  organizationLogo: UserDetailSchema.fields.organizationLogo,
+  organizationDesc: UserDetailSchema.fields.organizationDesc,
+  organizationUrl: UserDetailSchema.fields.organizationUrl,
+  streetName: UserDetailSchema.fields.streetName,
+  streetNumber: UserDetailSchema.fields.streetNumber,
+  zipCode: UserDetailSchema.fields.zipCode,
+  city: UserDetailSchema.fields.city,
+  country: UserDetailSchema.fields.country,
+});
 
 const Setuporganization = () => {
   const [step, setStep] = useState(1)
@@ -125,7 +106,7 @@ const Setuporganization = () => {
                 city: "",
                 country: "",
               }}
-              validationSchema={updateUserDetailsSchema}
+              validationSchema={OrganizationSchema}
               onSubmit={(values) => {
                 console.log(values)
               }}
@@ -241,7 +222,7 @@ const Setuporganization = () => {
             </p>
 
             <Formik
-              validationSchema={updateUserDetailsSchema}
+              validationSchema={OrganizationSchema}
               onSubmit={(values, { resetForm, setSubmitting }) => {
                 resetForm()
                 setSubmitting(false)
