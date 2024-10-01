@@ -152,8 +152,7 @@ const ProfileCard = () => {
                     </div>
                     <div className="flex gap-2 text-sm sm:text-[0.9375rem] text-gray-2 dark:text-white">
                       <FaRegCalendarAlt className="mt-0.5 text-[1.1rem] text-gray-2 dark:text-white" />
-                      {new Date(event.startDate).toLocaleDateString()} -
-                      {new Date(event.endDate).toLocaleDateString()}
+                      {formatDate(event?.startDate)} - {formatDate(event?.endDate)}
                     </div>
 
                     <div className="flex gap-2 text-sm sm:text-[0.9375rem] text-gray-2 dark:text-white">
