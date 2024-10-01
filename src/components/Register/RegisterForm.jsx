@@ -119,7 +119,7 @@ const RegisterForm = () => {
             />
             <div className="h-[20px]">
               {touched.fullName && errors.fullName && (
-                <p className="text-red-500 text-[0.875rem]">{errors.fullName}</p>
+                <p className="text-danger text-[0.875rem]">{errors.fullName}</p>
               )}
             </div>
           </div>
@@ -136,7 +136,7 @@ const RegisterForm = () => {
             />
             <div className="h-[20px]">
               {touched.email && errors.email && (
-                <p className="text-red-500 text-[0.875rem]">{errors.email}</p>
+                <p className="text-danger text-[0.875rem]">{errors.email}</p>
               )}
             </div>
           </div>
@@ -162,7 +162,7 @@ const RegisterForm = () => {
             </div>
             <div className="h-[20px]">
               {touched.password && errors.password && (
-                <p className="text-red-500 text-[0.875rem]">{errors.password}</p>
+                <p className="text-danger text-[0.875rem]">{errors.password}</p>
               )}
             </div>
           </div>
