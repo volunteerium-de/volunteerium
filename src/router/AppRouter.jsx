@@ -7,6 +7,7 @@ import NotFound from "../pages/NotFound"
 import AboutUs from "../pages/AboutUs"
 import Profile from "../pages/Profile"
 import EmailVerification from "../pages/EmailVerification"
+import FAQuestion from "../pages/FAQuestion"
 
 const AppRouter = () => {
   return (
@@ -18,6 +19,8 @@ const AppRouter = () => {
         <Route path="register/email-verify" element={<EmailVerification />} />
         <Route path="about" element={<AboutUs />} />
         <Route path="profile" element={<Profile />} />
+        <Route path="faq" element={<FAQuestion />} />
+
         <Route path="" element={<PrivateRouter />}>
           {/* <Route path="profile/:userId" element={<Profile />} /> */}
           {/* <Route path="" element={< />} /> */}
