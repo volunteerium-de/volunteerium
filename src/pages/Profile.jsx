@@ -7,6 +7,7 @@ import ProfileCard from "../components/ui/Cards/ProfileCard"
 import { useNavigate } from "react-router-dom"
 import Footer from "../components/Home/Footer"
 import Header from "../components/Header/Header"
+import { formatDate } from "../helpers/formatDate"
 
 const Profile = () => {
   const navigate = useNavigate()
@@ -79,10 +80,7 @@ const Profile = () => {
     .map((lang) => lang.charAt(0).toUpperCase() + lang.slice(1))
     .join(", ")
 
-  const datesFormatted = new Date(currentUser.createdAt).toLocaleDateString("en-US", {
-    year: "numeric",
-    month: "long",
-  })
+  const datesFormatted = formatDate(currentUser.createdAt)
 
   const infoItems = [
     {
@@ -142,8 +140,8 @@ const Profile = () => {
                   if (items.description) {
                     return (
                       <div key={index}>
-                        <div className="flex gap-3 py-1 text-[0.9375rem] text-dark-gray-1 dark:text-white">
-                          <div className="mt-[1px] text-dark-gray-1 text-[1.3rem] dark:text-white dark:opacity-80">
+                        <div className="flex gap-3 py-1 text-[0.9375rem] text-gray-2 dark:text-white">
+                          <div className="mt-[1px] text-dark-gray-1 text-[1.3rem] dark:text-white">
                             {items.icon}
                           </div>
                           <p>{items.description}</p>
@@ -159,7 +157,7 @@ const Profile = () => {
             {/* Interest */}
             {currentUser?.userDetailsId.interestIds.length > 0 && (
               <div>
-                <h2 className="mt-6 opacity-55 font-semibold  dark:text-white dark:font-bold dark:opacity-100">
+                <h2 className="mt-6 font-semibold text-dark-gray-1 dark:text-white dark:font-bold ">
                   Interests
                 </h2>
                 <div className=" flex flex-wrap gap-2 my-2 text-dark-gray-1">
@@ -176,7 +174,7 @@ const Profile = () => {
 
             {/* About */}
             <div>
-              <h2 className="mt-6 opacity-55 font-semibold dark:text-white dark:opacity-100 dark:font-bold">
+              <h2 className="mt-6 font-semibold text-dark-gray-1 dark:text-white dark:font-bold">
                 About Me
               </h2>
               <p className="text-dark-gray-1 my-2  dark:text-white">
@@ -186,7 +184,7 @@ const Profile = () => {
 
             {/* Certification & Document  */}
             <div className="hidden sm:block max-w-[450px]">
-              <h2 className="my-6 opacity-55 font-semibold dark:text-white dark:opacity-100 dark:font-bold">
+              <h2 className="my-6 font-semibold text-dark-gray-1 dark:text-white dark:font-bold">
                 Certification & Document
               </h2>
               {currentUser?.documentIds.map((item, index) => (
@@ -198,9 +196,9 @@ const Profile = () => {
                     <p>{item.title}</p>
                     <div
                       onClick={() => navigate(item.fileUrl)}
-                      className="text-gray-600 dark:text-gray-400 cursor-pointer"
+                      className="text-dark-gray-1 dark:text-white cursor-pointer"
                     >
-                      <FaExternalLinkAlt className="opacity-65 dark:opacity-100" />
+                      <FaExternalLinkAlt className="opacity-65 dark:opacity-80" />
                     </div>
                   </div>
                 </div>
