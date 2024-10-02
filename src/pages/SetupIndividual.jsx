@@ -102,16 +102,16 @@ const SetupIndividual = () => {
                     Providing this information is optional but may be useful for certain events
                   </p>
 
-                  <div className="w-3/5 md:w-2/5 mx-auto">
+                  <div className="w-3/5 md:w-2/5 mx-auto mb-3">
                   <label className=" block text-gray-2 text-sm font-medium mb-1 text-start">
-                      Age Range*
+                      Age*
                     </label>
                    
                     <Field
                       as="select"
                       name="ageRange"
-                      className={`w-full bg-white dark:bg-black border ${
-      touched.ageRange && errors.ageRange
+                      className={`w-full bg-white  border-primary-green  dark:bg-black border-2 ${
+      errors.ageRange
         ? "border-danger"
         : values.ageRange
         ? "border-primary-green"
@@ -137,7 +137,7 @@ const SetupIndividual = () => {
                     <Field
                       as="select"
                       name="gender"
-                      className={`w-full bg-white dark:bg-black border ${
+                      className={`w-full bg-white border-primary-green  dark:bg-black border-2 ${
       touched.gender && errors.gender
         ? "border-danger"
         : values.gender
@@ -209,10 +209,10 @@ const SetupIndividual = () => {
                       <button
                         key={interest}
                         type="button"
-                        className={`w-1/3 sm:w-1/2  md:w-auto px-1 md:px-4 py-2 border rounded-md cursor-pointer ${
+                        className={`w-1/3 sm:w-1/2  md:w-auto px-1 md:px-4 py-2 border   rounded-md cursor-pointer ${
                           values.interests.includes(interest)
-                            ? "bg-light-green text-dark-gray-1 border-1 border-primary-green"
-                            : "100 text-gray-2"
+                            ? "bg-light-green text-dark-gray-1 border-1  border-primary-green "
+                            : "text-gray-2 border-gray-1"
                         }`}
                         onClick={() => {
                           const newValue = interest;
@@ -238,7 +238,7 @@ const SetupIndividual = () => {
                         navigate("/") 
                       }}
                       disabled={!isValid}
-                      className="mt-4 block w-1/4 py-2 text-dark-gray-1 border border-gray-1 text-center  rounded-md transition-colors"
+                      className="mt-4 block w-1/4 py-2 text-dark-gray-1 dark:text-light-green border border-gray-1 text-center  rounded-md transition-colors"
                     >
                       Skip for now
                     </button>
