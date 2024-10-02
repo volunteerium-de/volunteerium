@@ -6,6 +6,7 @@ export const events = [
       userType: "individual",
       fullName: "Alice Johnson",
       email: "alice.johnson@example.com",
+      organizationName: "",
       userDetailsId: {
         _id: "650c6a3a1c4ae3b5e8bfcdac",
         userId: "650c697f1c4ae3b5e8bfcdb1",
@@ -22,7 +23,6 @@ export const events = [
           { _id: "b2c3d4e5f6g7h8i9j0k1l2m3", name: "environment" },
           { _id: "c3d4e5f6g7h8i9j0k1l2m3n4", name: "health" },
         ],
-        organizationName: "",
         organizationLogo: "",
         organizationDesc: "",
         addressId: {
@@ -40,7 +40,8 @@ export const events = [
         organizationUrl: "",
       },
       isActive: true,
-      isSetup: true,
+      isEmailVerified: true,
+      isProfileSetup: true,
       documentIds: [],
       createdAt: "2023-09-18T14:34:56.789Z",
       updatedAt: "2023-09-18T14:34:56.789Z",
@@ -70,20 +71,20 @@ export const events = [
       {
         _id: "310c697f1d2ae3b5el4fcdb1",
         userId: "650c697f1c4ae3b5e8bfcdb1",
+        eventId: "650c6a9f1c4ae3b5e8bfcdb2",
         title: "Event-Photo-1",
-        fileUrl:
-          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS-JdqEW1DCmI8iJV6QIxhqK_Avy8V-R3cneQ&s",
+        file: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS-JdqEW1DCmI8iJV6QIxhqK_Avy8V-R3cneQ&s",
       },
       {
         _id: "3190ar7f1d2ae3r1el4fcdb1",
         userId: "650c697f1c4ae3b5e8bfcdb1",
+        eventId: "650c6a9f1c4ae3b5e8bfcdb2",
         title: "Event-Photo-2",
-        fileUrl:
-          "https://wehco.media.clients.ellingtoncms.com/img/photos/2021/03/13/cleanup_t600.jpeg?4326734cdb8e39baa3579048ef63ad7b451e7676",
+        file: "https://wehco.media.clients.ellingtoncms.com/img/photos/2021/03/13/cleanup_t600.jpeg?4326734cdb8e39baa3579048ef63ad7b451e7676",
       },
     ],
     isOnline: false,
-    isRegular: false,
+    isRepeat: false,
     isActive: true,
     maxParticipant: 50,
     eventParticipantIds: [
@@ -124,8 +125,9 @@ export const events = [
     createdBy: {
       _id: "650c5a4f1c4ae3b5e8bfcdb0",
       userType: "organization",
-      fullName: "Green Earth Org",
+      fullName: "",
       email: "contact@greenearth.org",
+      organizationName: "Green Earth Org",
       userDetailsId: {
         _id: "650c5a7a1c4ae3b5e8bfcdb3",
         userId: "650c5a4f1c4ae3b5e8bfcdb0",
@@ -137,7 +139,7 @@ export const events = [
         avatar: "",
         totalPoint: 0,
         interestIds: [],
-        organizationName: "Green Earth Org",
+
         organizationLogo:
           "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQzxwZpSs9IU4bCRfFrY-wXSDdbMR1cwod_TA&s",
         organizationDesc: "A non-profit organization focused on environmental sustainability.",
@@ -156,20 +158,22 @@ export const events = [
         organizationUrl: "https://greenearth.org",
       },
       isActive: true,
-      isSetup: true,
+      isEmailVerified: true,
+      isProfileSetup: true,
       documentIds: [
         {
           _id: "310c912e8q2ae3b5el4fcdb1",
           userId: "650c5a4f1c4ae3b5e8bfcdb0",
+          eventId: "650c5b9f1c4ae3b5e8bfcdb1",
           title: "Organization-Photo-1",
-          fileUrl: "https://www.robinage.com/wp-content/uploads/2022/06/green-earth.jpg",
+          file: "https://www.robinage.com/wp-content/uploads/2022/06/green-earth.jpg",
         },
         {
           _id: "190p4t7f1d2ae3r1el4fcdb1",
           userId: "650c5a4f1c4ae3b5e8bfcdb0",
+          eventId: "650c5b9f1c4ae3b5e8bfcdb1",
           title: "Organization-Photo-2",
-          fileUrl:
-            "https://t3.ftcdn.net/jpg/06/29/21/26/360_F_629212697_BrgbrBH0AF2mnGIKL3GR5arPTTuk9pj5.jpg",
+          file: "https://t3.ftcdn.net/jpg/06/29/21/26/360_F_629212697_BrgbrBH0AF2mnGIKL3GR5arPTTuk9pj5.jpg",
         },
       ],
       createdAt: "2023-09-18T12:34:56.789Z",
@@ -201,19 +205,17 @@ export const events = [
         _id: "983a4t2e8q2ae3b5el4fcdb1",
         userId: "650c5a4f1c4ae3b5e8bfcdb0",
         title: "Planting-Event-1",
-        fileUrl:
-          "https://www.vintagetreecare.com/wp-content/uploads/2023/06/planting-tree-1024x683.jpg",
+        file: "https://www.vintagetreecare.com/wp-content/uploads/2023/06/planting-tree-1024x683.jpg",
       },
       {
         _id: "712y5j7f1d2ae3r1el4fcdb1",
         userId: "650c5a4f1c4ae3b5e8bfcdb0",
         title: "Planting-Event-2",
-        fileUrl:
-          "https://base-prod.rspb-prod.magnolia-platform.com/.imaging/focalpoint/_WIDTH_x_HEIGHT_/dam/jcr:99683451-80f8-43ab-af2c-cac4ff276416/1101307937-People-man-and-boy-planting-tree.jpg.png",
+        file: "https://base-prod.rspb-prod.magnolia-platform.com/.imaging/focalpoint/_WIDTH_x_HEIGHT_/dam/jcr:99683451-80f8-43ab-af2c-cac4ff276416/1101307937-People-man-and-boy-planting-tree.jpg.png",
       },
     ],
     isOnline: false,
-    isRegular: false,
+    isRepeat: false,
     isActive: true,
     maxParticipant: 30,
     eventParticipantIds: [
@@ -256,6 +258,7 @@ export const events = [
       userType: "individual",
       fullName: "Maria Gonzales",
       email: "maria.gonzales@example.com",
+      organizationName: "",
       userDetailsId: {
         _id: "650c7b3a1c4ae3b5e8bfcdad",
         userId: "650c6d7f1c4ae3b5e8bfcdb4",
@@ -271,7 +274,6 @@ export const events = [
           { _id: "d4e5f6g7h8i9j0k1l2m3n4o5", name: "arts" },
           { _id: "e5f6g7h8i9j0k1l2m3n4o5p6", name: "community" },
         ],
-        organizationName: "",
         organizationLogo: "",
         organizationDesc: "",
         addressId: {
@@ -289,7 +291,8 @@ export const events = [
         organizationUrl: "",
       },
       isActive: true,
-      isSetup: true,
+      isEmailVerified: true,
+      isProfileSetup: true,
       documentIds: [],
       createdAt: "2023-09-19T14:34:56.789Z",
       updatedAt: "2023-09-19T14:34:56.789Z",
@@ -319,20 +322,20 @@ export const events = [
       {
         _id: "320c7a9f1d2ae3b5el4fcdb2",
         userId: "650c6d7f1c4ae3b5e8bfcdb4",
+        eventId: "650c7a9f1c4ae3b5e8bfcdb3",
         title: "Exhibition-Photo-1",
-        fileUrl:
-          "https://img.freepik.com/premium-photo/communitybased-art-exhibition-showcasing-local-artists-their-work_1154909-3328.jpg",
+        file: "https://img.freepik.com/premium-photo/communitybased-art-exhibition-showcasing-local-artists-their-work_1154909-3328.jpg",
       },
       {
         _id: "3290ar7f1d2ae3r1el4fcdb2",
         userId: "650c6d7f1c4ae3b5e8bfcdb4",
+        eventId: "650c7a9f1c4ae3b5e8bfcdb3",
         title: "Exhibition-Photo-2",
-        fileUrl:
-          "https://images.squarespace-cdn.com/content/v1/636b5e138fd7c9613e2a8b61/1693989481628-Q4BCBB26A92RZWPJY9GN/ilomoca3.jpg",
+        file: "https://images.squarespace-cdn.com/content/v1/636b5e138fd7c9613e2a8b61/1693989481628-Q4BCBB26A92RZWPJY9GN/ilomoca3.jpg",
       },
     ],
     isOnline: false,
-    isRegular: true,
+    isRepeat: true,
     isActive: true,
     maxParticipant: 100,
     eventParticipantIds: [],
@@ -345,8 +348,9 @@ export const events = [
     createdBy: {
       _id: "650c7e7f1c4ae3b5e8bfcdb5",
       userType: "organization",
-      fullName: "Health Awareness Foundation",
+      fullName: "",
       email: "contact@healthawareness.org",
+      organizationName: "Health Awareness Foundation",
       userDetailsId: {
         _id: "650c8b3a1c4ae3b5e8bfcdaf",
         userId: "650c7e7f1c4ae3b5e8bfcdb5",
@@ -358,7 +362,6 @@ export const events = [
         avatar: "",
         totalPoint: 0,
         interestIds: [],
-        organizationName: "Health Awareness Foundation",
         organizationLogo:
           "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT15QO8AjFqJuNoFDKAvx4Ow1HsZIZl2IXsyw&s",
         organizationDesc: "A non-profit organization focused on health education.",
@@ -377,21 +380,20 @@ export const events = [
         organizationUrl: "https://healthawareness.org",
       },
       isActive: true,
-      isSetup: true,
+      isEmailVerified: true,
+      isProfileSetup: true,
       documentIds: [
         {
           _id: "310c912e8q2ae3b5el4fcdb2",
           userId: "650c7e7f1c4ae3b5e8bfcdb5",
           title: "Foundation-Photo-1",
-          fileUrl:
-            "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/The_Colorado_Health_Foundation.JPG/800px-The_Colorado_Health_Foundation.JPG",
+          file: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/The_Colorado_Health_Foundation.JPG/800px-The_Colorado_Health_Foundation.JPG",
         },
         {
           _id: "190p4t7f1d2ae3r1el4fcdb2",
           userId: "650c7e7f1c4ae3b5e8bfcdb5",
           title: "Foundation-Photo-2",
-          fileUrl:
-            "https://images.squarespace-cdn.com/content/v1/580e432b8419c22267d53c6b/1485493189281-BB7KYMKKDTRWUHBKXVUP/DSCN1392.jpg?format=2500w",
+          file: "https://images.squarespace-cdn.com/content/v1/580e432b8419c22267d53c6b/1485493189281-BB7KYMKKDTRWUHBKXVUP/DSCN1392.jpg?format=2500w",
         },
       ],
       createdAt: "2023-09-20T12:34:56.789Z",
@@ -422,20 +424,20 @@ export const events = [
       {
         _id: "983a4t2e8q2ae3b5el4fcdb2",
         userId: "650c7e7f1c4ae3b5e8bfcdb5",
+        eventId: "650c8a9f1c4ae3b5e8bfcdb4",
         title: "Seminar-Photo-1",
-        fileUrl:
-          "https://www.unh.edu/health/sites/default/files/styles/max_width_480px/public/media/2022-08/well-being-wheel-simple-with-logo-final-4-3-transp.png?itok=glnYWPtN",
+        file: "https://www.unh.edu/health/sites/default/files/styles/max_width_480px/public/media/2022-08/well-being-wheel-simple-with-logo-final-4-3-transp.png?itok=glnYWPtN",
       },
       {
         _id: "712y5j7f1d2ae3r1el4fcdb2",
         userId: "650c7e7f1c4ae3b5e8bfcdb5",
+        eventId: "650c8a9f1c4ae3b5e8bfcdb4",
         title: "Seminar-Photo-2",
-        fileUrl:
-          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS8gpLWlAoppruAcsUJjDaPVQwZ0lgw0aYczQ&s",
+        file: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS8gpLWlAoppruAcsUJjDaPVQwZ0lgw0aYczQ&s",
       },
     ],
     isOnline: false,
-    isRegular: true,
+    isRepeat: true,
     isActive: true,
     maxParticipant: 70,
     eventParticipantIds: [],
@@ -450,6 +452,7 @@ export const events = [
       userType: "individual",
       fullName: "Liam Smith",
       email: "liam.smith@example.com",
+      organizationName: "",
       userDetailsId: {
         _id: "650c9b3a1c4ae3b5e8bfcdaf",
         userId: "650c8f7f1c4ae3b5e8bfcdb6",
@@ -465,7 +468,6 @@ export const events = [
           { _id: "f6g7h8i9j0k1l2m3n4o5p6q7", name: "cycling" },
           { _id: "g7h8i9j0k1l2m3n4o5p6q7r8", name: "outdoors" },
         ],
-        organizationName: "",
         organizationLogo: "",
         organizationDesc: "",
         addressId: {
@@ -483,7 +485,8 @@ export const events = [
         organizationUrl: "",
       },
       isActive: true,
-      isSetup: true,
+      isEmailVerified: true,
+      isProfileSetup: true,
       documentIds: [],
       createdAt: "2023-09-21T14:34:56.789Z",
       updatedAt: "2023-09-21T14:34:56.789Z",
@@ -513,20 +516,20 @@ export const events = [
       {
         _id: "320c9a9f1d2ae3b5el4fcdb3",
         userId: "650c8f7f1c4ae3b5e8bfcdb6",
+        eventId: "650c9a9f1c4ae3b5e8bfcdb6",
         title: "Cycling-Photo-1",
-        fileUrl:
-          "https://cdn.shopify.com/s/files/1/0551/0388/1250/files/cycling_benefits_styrkr.jpg?v=1676894320",
+        file: "https://cdn.shopify.com/s/files/1/0551/0388/1250/files/cycling_benefits_styrkr.jpg?v=1676894320",
       },
       {
         _id: "3290ar7f1d2ae3r1el4fcdb3",
         userId: "650c8f7f1c4ae3b5e8bfcdb6",
+        eventId: "650c9a9f1c4ae3b5e8bfcdb6",
         title: "Cycling-Photo-2",
-        fileUrl:
-          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ77cwA4ohMD_vZCfuMbkqYf0nUqcBN8QilQA&s",
+        file: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ77cwA4ohMD_vZCfuMbkqYf0nUqcBN8QilQA&s",
       },
     ],
     isOnline: false,
-    isRegular: true,
+    isRepeat: true,
     isActive: true,
     maxParticipant: 20,
     eventParticipantIds: [],
@@ -539,8 +542,9 @@ export const events = [
     createdBy: {
       _id: "650c9f7f1c4ae3b5e8bfcdb7",
       userType: "organization",
-      fullName: "Tech Innovators Club",
+      fullName: "",
       email: "info@techinnovators.org",
+      organizationName: "Tech Innovators Club",
       userDetailsId: {
         _id: "650caa3a1c4ae3b5e8bfcdaf",
         userId: "650c9f7f1c4ae3b5e8bfcdb7",
@@ -552,7 +556,6 @@ export const events = [
         avatar: "",
         totalPoint: 0,
         interestIds: [],
-        organizationName: "Tech Innovators Club",
         organizationLogo:
           "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ7yDwG7NhBRs7iIBCuUNHJE5cgCqny-6su4g&s",
         organizationDesc: "A club focused on technological advancements and innovation.",
@@ -571,21 +574,20 @@ export const events = [
         organizationUrl: "https://techinnovators.org",
       },
       isActive: true,
-      isSetup: true,
+      isEmailVerified: true,
+      isProfileSetup: true,
       documentIds: [
         {
           _id: "310c912e8q2ae3b5el4fcdb3",
           userId: "650c9f7f1c4ae3b5e8bfcdb7",
           title: "Tech-Club-Photo-1",
-          fileUrl:
-            "https://techntrade.ro/assets/homepage-club-image-b3fb53a85681e0e921315118f0e8552cb203d024.jpg",
+          file: "https://techntrade.ro/assets/homepage-club-image-b3fb53a85681e0e921315118f0e8552cb203d024.jpg",
         },
         {
           _id: "190p4t7f1d2ae3r1el4fcdb3",
           userId: "650c9f7f1c4ae3b5e8bfcdb7",
           title: "Tech-Club-Photo-2",
-          fileUrl:
-            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSiUXEjx_EQWbITkaCKa17l3WA25qcnLp0rVA&s",
+          file: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSiUXEjx_EQWbITkaCKa17l3WA25qcnLp0rVA&s",
         },
       ],
       createdAt: "2023-09-22T12:34:56.789Z",
@@ -616,20 +618,20 @@ export const events = [
       {
         _id: "983a4t2e8q2ae3b5el4fcdb3",
         userId: "650c9f7f1c4ae3b5e8bfcdb7",
+        eventId: "650caa9f1c4ae3b5e8bfcdb7",
         title: "Tech-Talk-Photo-1",
-        fileUrl:
-          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS8xsMlhU5gg0cVe8cZPrBJK3yrTWVtrwfVKg&s",
+        file: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS8xsMlhU5gg0cVe8cZPrBJK3yrTWVtrwfVKg&s",
       },
       {
         _id: "712y5j7f1d2ae3r1el4fcdb3",
         userId: "650c9f7f1c4ae3b5e8bfcdb7",
+        eventId: "650caa9f1c4ae3b5e8bfcdb7",
         title: "Tech-Talk-Photo-2",
-        fileUrl:
-          "https://d2ds8yldqp7gxv.cloudfront.net/Blog+Explanatory+Images/Top+Technology+Trends+1.webp",
+        file: "https://d2ds8yldqp7gxv.cloudfront.net/Blog+Explanatory+Images/Top+Technology+Trends+1.webp",
       },
     ],
     isOnline: false,
-    isRegular: true,
+    isRepeat: true,
     isActive: true,
     maxParticipant: 50,
     eventParticipantIds: [],
@@ -644,6 +646,7 @@ export const events = [
       userType: "individual",
       fullName: "Emma Wilson",
       email: "emma.wilson@example.com",
+      organizationName: "",
       userDetailsId: {
         _id: "650cbb3a1c4ae3b5e8bfcdaf",
         userId: "650cab7f1c4ae3b5e8bfcdb8",
@@ -659,7 +662,6 @@ export const events = [
           { _id: "i9j0k1l2m3n4o5p6q7r8s9t0", name: "travel" },
           { _id: "j0k1l2m3n4o5p6q7r8s9t0u1", name: "adventure" },
         ],
-        organizationName: "",
         organizationLogo: "",
         organizationDesc: "",
         addressId: {
@@ -677,7 +679,8 @@ export const events = [
         organizationUrl: "",
       },
       isActive: true,
-      isSetup: true,
+      isEmailVerified: true,
+      isProfileSetup: true,
       documentIds: [],
       createdAt: "2023-09-23T14:34:56.789Z",
       updatedAt: "2023-09-23T14:34:56.789Z",
@@ -707,20 +710,20 @@ export const events = [
       {
         _id: "320cbb9f1d2ae3b5el4fcdb4",
         userId: "650cab7f1c4ae3b5e8bfcdb8",
+        eventId: "650cba9f1c4ae3b5e8bfcdb8",
         title: "City-Walk-Photo-1",
-        fileUrl:
-          "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-674x446/10/3f/03/86.jpg",
+        file: "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-674x446/10/3f/03/86.jpg",
       },
       {
         _id: "3290ar7f1d2ae3r1el4fcdb4",
         userId: "650cab7f1c4ae3b5e8bfcdb8",
+        eventId: "650cba9f1c4ae3b5e8bfcdb8",
         title: "City-Walk-Photo-2",
-        fileUrl:
-          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTUJ2Ypl6Gy1kfGG7jUyhIrcM22icfBMTtEbg&s",
+        file: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTUJ2Ypl6Gy1kfGG7jUyhIrcM22icfBMTtEbg&s",
       },
     ],
     isOnline: false,
-    isRegular: true,
+    isRepeat: true,
     isActive: true,
     maxParticipant: 25,
     eventParticipantIds: [],
@@ -733,8 +736,9 @@ export const events = [
     createdBy: {
       _id: "650cdb7f1c4ae3b5e8bfcdb9",
       userType: "organization",
-      fullName: "Art Lovers Society",
+      fullName: "",
       email: "contact@artlovers.org",
+      organizationName: "Art Lovers Society",
       userDetailsId: {
         _id: "650cdb3a1c4ae3b5e8bfcdaf",
         userId: "650cdb7f1c4ae3b5e8bfcdb9",
@@ -746,7 +750,6 @@ export const events = [
         avatar: "",
         totalPoint: 0,
         interestIds: [],
-        organizationName: "Art Lovers Society",
         organizationLogo:
           "https://artloverssociety.com/cdn/shop/files/New_Project.webp?height=628&pad_color=ffffff&v=1712903613&width=1200",
         organizationDesc: "A society dedicated to promoting art and creativity.",
@@ -765,21 +768,20 @@ export const events = [
         organizationUrl: "https://artlovers.org",
       },
       isActive: true,
-      isSetup: true,
+      isEmailVerified: true,
+      isProfileSetup: true,
       documentIds: [
         {
           _id: "310cdb2e8q2ae3b5el4fcdb1",
           userId: "650cdb7f1c4ae3b5e8bfcdb9",
           title: "Art-Society-Photo-1",
-          fileUrl:
-            "https://artloverssociety.com/cdn/shop/articles/what-can-you-do-with-an-art-history-degree-791865.jpg?v=1717259698&width=533",
+          file: "https://artloverssociety.com/cdn/shop/articles/what-can-you-do-with-an-art-history-degree-791865.jpg?v=1717259698&width=533",
         },
         {
           _id: "190c5f7f1d2ae3r1el4fcdb1",
           userId: "650cdb7f1c4ae3b5e8bfcdb9",
           title: "Art-Society-Photo-2",
-          fileUrl:
-            "https://artloverssociety.com/cdn/shop/articles/why-is-art-history-important-511266.jpg?v=1717259701&width=533",
+          file: "https://artloverssociety.com/cdn/shop/articles/why-is-art-history-important-511266.jpg?v=1717259701&width=533",
         },
       ],
       createdAt: "2023-09-24T12:34:56.789Z",
@@ -810,20 +812,20 @@ export const events = [
       {
         _id: "320cda9f1d2ae3b5el4fcdb5",
         userId: "650cdb7f1c4ae3b5e8bfcdb9",
+        eventId: "650cda9f1c4ae3b5e8bfcdb9",
         title: "Art-Exhibition-Photo-1",
-        fileUrl:
-          "https://cdn.tatlerasia.com/tatlerasia/i/2021/08/05093456-stpi_cover_2000x1333.jpg",
+        file: "https://cdn.tatlerasia.com/tatlerasia/i/2021/08/05093456-stpi_cover_2000x1333.jpg",
       },
       {
         _id: "3290ar7f1d2ae3r1el4fcdb5",
         userId: "650cdb7f1c4ae3b5e8bfcdb9",
+        eventId: "650cda9f1c4ae3b5e8bfcdb9",
         title: "Art-Exhibition-Photo-2",
-        fileUrl:
-          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSOoLYL9H-iMVCKLRIdB9MB1aSlbtQLfzVCK0J-n6D0wfEZSXvu-TPHz7QiSlJhnq5z5DE&usqp=CAU",
+        file: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSOoLYL9H-iMVCKLRIdB9MB1aSlbtQLfzVCK0J-n6D0wfEZSXvu-TPHz7QiSlJhnq5z5DE&usqp=CAU",
       },
     ],
     isOnline: false,
-    isRegular: false,
+    isRepeat: false,
     isActive: true,
     maxParticipant: 100,
     eventParticipantIds: [],
@@ -838,6 +840,7 @@ export const events = [
       userType: "individual",
       fullName: "Lucas Johnson",
       email: "lucas.johnson@example.com",
+      organizationName: "",
       userDetailsId: {
         _id: "650ceaa1c4ae3b5e8bfcdaf",
         userId: "650ce97f1c4ae3b5e8bfcdb0",
@@ -853,7 +856,6 @@ export const events = [
           { _id: "l2m3n4o5p6q7r8s9t0u1v2w3", name: "food" },
           { _id: "m3n4o5p6q7r8s9t0u1v2w3x4", name: "cooking" },
         ],
-        organizationName: "",
         organizationLogo: "",
         organizationDesc: "",
         addressId: {
@@ -871,7 +873,8 @@ export const events = [
         organizationUrl: "",
       },
       isActive: true,
-      isSetup: true,
+      isEmailVerified: true,
+      isProfileSetup: true,
       documentIds: [],
       createdAt: "2023-09-25T14:34:56.789Z",
       updatedAt: "2023-09-25T14:34:56.789Z",
@@ -901,20 +904,20 @@ export const events = [
       {
         _id: "320ce9f1d2ae3b5el4fcdb1",
         userId: "650ce97f1c4ae3b5e8bfcdb0",
+        eventId: "650cea9f1c4ae3b5e8bfcdb0",
         title: "Cooking-Class-Photo-1",
-        fileUrl:
-          "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/13/f5/bc/6a/getlstd-property-photo.jpg?w=1200&h=-1&s=1",
+        file: "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/13/f5/bc/6a/getlstd-property-photo.jpg?w=1200&h=-1&s=1",
       },
       {
         _id: "3290ar7f1d2ae3r1el4fcdb1",
         userId: "650ce97f1c4ae3b5e8bfcdb0",
+        eventId: "650cea9f1c4ae3b5e8bfcdb0",
         title: "Cooking-Class-Photo-2",
-        fileUrl:
-          "https://experitour.com/wp-content/uploads/2019/07/Gourmet-Cooking-Class-Market-tour-5-768x576.jpg",
+        file: "https://experitour.com/wp-content/uploads/2019/07/Gourmet-Cooking-Class-Market-tour-5-768x576.jpg",
       },
     ],
     isOnline: false,
-    isRegular: false,
+    isRepeat: false,
     isActive: true,
     maxParticipant: 12,
     eventParticipantIds: [],

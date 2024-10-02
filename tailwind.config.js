@@ -8,7 +8,7 @@ export default {
         white: "#FFFFFF",
         "light-gray": "#F8F9FC",
         "light-gray-2": "#F1F3F9",
-        "light-gray-3": "#E1R6EF",
+        "light-gray-3": "#E1E6EF",
         "gray-1": "#C1C2C4",
         "gray-2": "#9D9EA1",
         "dark-gray-1": "#6C707A",
@@ -24,6 +24,7 @@ export default {
       fontFamily: {
         poppins: ["Poppins", "sans-serif"],
         "bad-script": ["Bad Script", "cursive"],
+        quattrocento: ["Quattrocento", "serif"],
       },
     },
   },
