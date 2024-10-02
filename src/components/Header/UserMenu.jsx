@@ -3,21 +3,19 @@ import { FiSun, FiMoon } from "react-icons/fi"
 import { useState, useEffect, useRef } from "react"
 import LanguageSwitcher from "./LanguageSwitcher"
 import { useNavigate } from "react-router-dom/dist"
+import { useSelector } from "react-redux"
+import useTheme from "../../hooks/useTheme"
 
 const UserMenu = ({ user, profileImage }) => {
+  const mode = useSelector((state) => state.theme.mode)
+  const { toggleTheme } = useTheme()
   const [isOpen, setIsOpen] = useState(false)
-  const [isDarkMode, setIsDarkMode] = useState(false)
   const menuRef = useRef(null)
   const navigate = useNavigate()
 
   // Toggle menu visibility
   const toggleMenu = () => {
     setIsOpen(!isOpen)
-  }
-
-  // Toggle light-dark mode
-  const toggleTheme = () => {
-    setIsDarkMode(!isDarkMode)
   }
 
   // Closing the menu when clicking outside
@@ -107,7 +105,7 @@ const UserMenu = ({ user, profileImage }) => {
                 onClick={toggleTheme}
               >
                 {/* Switch icon based on the choosen theme */}
-                {isDarkMode ? (
+                {mode === "dark" ? (
                   <>
                     <FiMoon className="mr-2" /> Dark
                   </>

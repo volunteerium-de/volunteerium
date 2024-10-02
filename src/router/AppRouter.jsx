@@ -10,6 +10,8 @@ import VerificationSuccess from "../pages/VerificationSuccess";
 import SetupOrganization from "../pages/SetupOrganization";
 import SetupIndividual from "../pages/SetupIndividual";
 import Profile from "../pages/Profile"
+import FAQuestion from "../pages/FAQuestion"
+
 
 const AppRouter = () => {
   return (
@@ -24,6 +26,8 @@ const AppRouter = () => {
             <Route path="register/email-verify/success" element={<VerificationSuccess/>} />
             <Route path="/register/email-verify/success/org-setup" element={<SetupOrganization/>} />
             <Route path="/register/email-verify/success/indv-setup" element={<SetupIndividual/>} />
+              <Route path="faq" element={<FAQuestion />} />
+
         <Route path="" element={<PrivateRouter />}>
           {/* <Route path="profile/:userId" element={<Profile />} /> */}
           {/* <Route path="" element={< />} /> */}

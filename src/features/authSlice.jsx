@@ -35,19 +35,20 @@ import { createSlice } from "@reduxjs/toolkit"
 //     organizationUrl: "https://greenearth.org",
 //   },
 //   isActive: true,
-//   isSetup: true,
+//   isEmailVerified: true,
+//   isProfileSetup: true,
 //   documentIds: [
 //     {
 //       _id: "310c912e8q2ae3b5el4fcdb1",
 //       userId: "650c5a4f1c4ae3b5e8bfcdb0",
 //       title: "Organization-Photo-1",
-//       fileUrl: "https://www.robinage.com/wp-content/uploads/2022/06/green-earth.jpg",
+//       file: "https://www.robinage.com/wp-content/uploads/2022/06/green-earth.jpg",
 //     },
 //     {
 //       _id: "190p4t7f1d2ae3r1el4fcdb1",
 //       userId: "650c5a4f1c4ae3b5e8bfcdb0",
 //       title: "Organization-Photo-2",
-//       fileUrl:
+//       file:
 //         "https://t3.ftcdn.net/jpg/06/29/21/26/360_F_629212697_BrgbrBH0AF2mnGIKL3GR5arPTTuk9pj5.jpg",
 //     },
 //   ],
@@ -98,13 +99,20 @@ const authSlice = createSlice({
         organizationUrl: "",
       },
       isActive: true,
-      isSetup: true,
+      isEmailVerified: true,
+      isProfileSetup: true,
       documentIds: [
         {
           _id: "012ry27f1d2ae3r1el4fcdb1",
           userId: "650c697f1c4ae3b5e8bfcdb1",
           title: "CV",
-          fileUrl: "https://www.sbs.ox.ac.uk/sites/default/files/2019-01/cv-template.pdf",
+          file: "https://www.sbs.ox.ac.uk/sites/default/files/2019-01/cv-template.pdf",
+        },
+        {
+          _id: "012ry27f1d2ae3r912i4e6a1",
+          userId: "650c697f1c4ae3b5e8bfcdb1",
+          title: "Certificate of Attendance",
+          file: "https://i.pinimg.com/originals/e5/73/7c/e5737c44dd061635766ba1e3a4b4efb9.png",
         },
       ],
       createdAt: "2023-09-18T14:34:56.789Z",
