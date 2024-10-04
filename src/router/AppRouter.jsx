@@ -6,6 +6,7 @@ import PrivateRouter from "./PrivateRouter"
 import NotFound from "../pages/NotFound"
 import AboutUs from "../pages/AboutUs"
 import EmailVerification from "../pages/EmailVerification";
+import Feedback from "../pages/Feedback"
 import VerificationSuccess from "../pages/VerificationSuccess";
 import SetupOrganization from "../pages/SetupOrganization";
 import SetupIndividual from "../pages/SetupIndividual";
@@ -27,6 +28,7 @@ const AppRouter = () => {
             <Route path="/register/email-verify/success/org-setup" element={<SetupOrganization/>} />
             <Route path="/register/email-verify/success/indv-setup" element={<SetupIndividual/>} />
               <Route path="faq" element={<FAQuestion />} />
+        <Route path="feedback" element={<Feedback />} />
 
         <Route path="" element={<PrivateRouter />}>
           {/* <Route path="profile/:userId" element={<Profile />} /> */}
