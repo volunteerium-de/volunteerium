@@ -2,10 +2,11 @@ import { IoIosArrowBack } from 'react-icons/io';
 import signUpImg from '../assets/login-img.png';
 import logo from '../assets/logo.png';
 import LoginForm from '../components/forms/LoginForm';
+import Header from '../components/Header/Header';
 
 const Login = () => {
 
-
+  //!  The async-await function should be written here to perform the user registration process.  
   // const register = async (userInfo) => {
   //   try {
   //     const { data } = await axios.post(
@@ -21,7 +22,7 @@ const Login = () => {
     <div className="flex flex-col max-w-full h-screen w-[1440px] mx-auto font-poppins dark:bg-black">
 
       {/* Header component */}
-      <div className='h-[90px] w-full bg-red-500'></div>
+      <Header/>
       
       {/* Main Div */}
       <div className="flex flex-col md:flex-row max-w-[1440px] justify-center">
