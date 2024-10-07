@@ -5,7 +5,7 @@ import { BsGenderAmbiguous } from "react-icons/bs"
 import { MdLanguage } from "react-icons/md"
 import ProfileCard from "../components/ui/Cards/ProfileCard"
 import { useNavigate } from "react-router-dom"
-import Footer from "../components/Home/Footer"
+import Footer from "../components/Footer/Footer"
 import Header from "../components/Header/Header"
 import { formatDate } from "../helpers/formatDate"
 

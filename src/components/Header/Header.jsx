@@ -3,6 +3,7 @@ import UserMenu from "./UserMenu"
 import NotificationMenu from "./NotificationMenu"
 import MessageMenu from "./MessageMenu"
 import { useState, useEffect } from "react"
+import { Link } from "react-router-dom"
 
 const Header = () => {
   // States
@@ -52,7 +53,7 @@ const Header = () => {
   return (
     <header className="relative bg-light-gray dark:bg-dark-gray-3 shadow-sm">
       <div className="container mx-auto flex justify-between items-center py-4 px-6">
-        <div className="flex items-center space-x-4">
+        <Link to="/" className="flex items-center space-x-4">
           {/* Logo */}
           <img src={logo} alt="Volunterium Logo" className="h-[30px] w-auto sm:h-[40px]" />
 
@@ -65,11 +66,15 @@ const Header = () => {
               SMALL ACT, BIG IMPACT
             </p>
           </div>
-        </div>
+        </Link>
         {/* User - Notification - Message Menu  */}
         <div className="flex items-center space-x-4">
-          <NotificationMenu notificationCount={notificationCount} />
-          <MessageMenu messageCount={messageCount} />
+          {user ? (
+            <>
+              <NotificationMenu notificationCount={notificationCount} />
+              <MessageMenu messageCount={messageCount} />
+            </>
+          ) : null}
           <UserMenu user={user} profileImage={profileImage} />
         </div>
       </div>

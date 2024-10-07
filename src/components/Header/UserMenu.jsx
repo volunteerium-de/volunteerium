@@ -42,7 +42,7 @@ const UserMenu = ({ user, profileImage }) => {
         <FaBars className="text-primary-green dark:text-gray-2  h-5 w- mr-2" />
 
         {/* Profile Icon or User Image */}
-        {false ? (
+        {user ? (
           <img
             src={profileImage}
             alt={user ? user.name : "User"}
@@ -64,13 +64,19 @@ const UserMenu = ({ user, profileImage }) => {
                     className="block w-full text-left p-1 hover:text-primary-green"
                     onClick={() => navigate("")}
                   >
-                    Settings
+                    Profile
                   </button>
                   <button
                     className="block w-full text-left p-1 hover:text-primary-green"
                     onClick={() => navigate("")}
                   >
                     Event Management
+                  </button>
+                  <button
+                    className="block w-full text-left p-1 hover:text-primary-green"
+                    onClick={() => navigate("")}
+                  >
+                    Settings
                   </button>
                   <button
                     className="block w-full text-left p-1 hover:text-primary-green"
