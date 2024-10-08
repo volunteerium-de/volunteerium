@@ -1,22 +1,10 @@
 import { IoIosArrowBack } from "react-icons/io"
 import signUpImg from "../assets/login-img.png"
 import logo from "../assets/logo.png"
-import LoginForm from "../components/forms/LoginForm"
+import LoginForm from "../components/Login/LoginForm"
 import Header from "../components/Header/Header"
 
 const Login = () => {
-  //!  The async-await function should be written here to perform the user registration process.
-  // const register = async (userInfo) => {
-  //   try {
-  //     const { data } = await axios.post(
-  //       `www.volunteerium.de/register`,
-  //       userInfo
-  //     );
-  //   } catch (error) {
-  //     console.error("Register failed", error);
-  //   }
-  // };
-
   return (
     <div>
       {/* Header component */}
