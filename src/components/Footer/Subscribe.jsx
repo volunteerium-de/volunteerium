@@ -2,9 +2,9 @@ import { HiArrowSmRight } from "react-icons/hi"
 
 const Subscribe = () => {
   return (
-    <div className="flex flex-col items-center justify-center px-6 py-8 bg-light-green rounded-md shadow-md w-[80%] mx-auto">
-      <h3 className="text-xl font-bold mb-2 text-dark-gray-3">Subscribe</h3>
-      <p className="text-dark-gray-1 mb-4 text-center">
+    <div className="flex flex-col items-center justify-center px-6 py-8 bg-light-green dark:bg-dark-gray-3 rounded-md shadow-md w-[80%] mx-auto">
+      <h3 className="text-xl font-bold mb-2 text-dark-gray-3 dark:text-white">Subscribe</h3>
+      <p className="text-dark-gray-1 mb-4 text-center dark:text-gray-1">
         Join our community of volunteers by subscribing to our newsletter. Stay informed about
         upcoming volunteer events, special projects.
       </p>

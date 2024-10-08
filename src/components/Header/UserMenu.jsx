@@ -62,13 +62,13 @@ const UserMenu = ({ user, profileImage }) => {
                 <>
                   <button
                     className="block w-full text-left p-1 hover:text-primary-green"
-                    onClick={() => navigate("")}
+                    onClick={() => navigate("/profile")}
                   >
                     Profile
                   </button>
                   <button
                     className="block w-full text-left p-1 hover:text-primary-green"
-                    onClick={() => navigate("")}
+                    onClick={() => navigate("/settings")}
                   >
                     Event Management
                   </button>
@@ -110,14 +110,14 @@ const UserMenu = ({ user, profileImage }) => {
                 className="flex items-center w-full text-left p-1 hover:text-primary-green"
                 onClick={toggleTheme}
               >
-                {/* Switch icon based on the choosen theme */}
+                {/* Switch icon based on the chosen theme */}
                 {mode === "dark" ? (
                   <>
-                    <FiMoon className="mr-2" /> Dark
+                    <FiSun className="mr-2" /> Light
                   </>
                 ) : (
                   <>
-                    <FiSun className="mr-2" /> Light
+                    <FiMoon className="mr-2" /> Dark
                   </>
                 )}
               </button>

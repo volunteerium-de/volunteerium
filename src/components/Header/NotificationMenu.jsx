@@ -88,7 +88,7 @@ const NotificationMenu = ({ notificationCount }) => {
           <div className="bg-primary-green text-white p-2 rounded-t-lg">Notifications</div>
 
           {/* Notification List */}
-          <div className="max-h-70 overflow-y-auto">
+          <div className="max-h-80 overflow-y-auto">
             {sampleNotifications.map(({ id, notificationTitle, isRead, timestamp }) => (
               <div
                 key={id}

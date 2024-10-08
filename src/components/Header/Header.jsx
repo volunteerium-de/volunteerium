@@ -51,7 +51,7 @@ const Header = () => {
   }, [])
 
   return (
-    <header className="relative bg-light-gray dark:bg-dark-gray-3 shadow-sm">
+    <header className="relative bg-light-gray dark:bg-dark-gray-3 shadow-sm py-1">
       <div className="container mx-auto flex justify-between items-center py-4 px-6">
         <Link to="/" className="flex items-center space-x-4">
           {/* Logo */}
