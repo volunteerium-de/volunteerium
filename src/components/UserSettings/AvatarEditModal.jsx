@@ -63,7 +63,7 @@ const AvatarEditModal = ({ isOpen, onClose, currentUser, onUpdateAvatar }) => {
 
   return (
     <div className="fixed inset-0 flex justify-center items-center z-50 bg-white bg-opacity-50 backdrop-blur-sm">
-      <div className="max-w-full sm:w-[643px] w-[200px] sm:h-[375px] font-['Poppins'] p-[10px] bg-white text-white rounded-[8px] shadow-2xl">
+      <div className="max-w-full sm:w-[643px] w-[200px] sm:h-[375px] font-Poppins p-[10px] bg-white text-white rounded-[8px] shadow-2xl">
         {/* Loading */}
         {loading && <p className="text-primary-green">Loading...</p>}
         {/* Error */}

@@ -33,7 +33,7 @@ const PasswordModal = ({ isOpen, onClose }) => {
 
   return (
     <div className="fixed inset-1 flex justify-center items-center z-50  bg-white bg-opacity-50 backdrop-blur-sm">
-      <div className=" max-w-full sm:w-[600px] w-[350px] sm:h-[400px] h-[400px] font-['Poppins'] p-[50px] text-black rounded-[8px] bg-white shadow-2xl  ">
+      <div className=" max-w-full sm:w-[600px] w-[350px] sm:h-[400px] h-[400px] font-Poppins p-[50px] text-black rounded-[8px] bg-white shadow-2xl  ">
         <h1 className="text-center mb-[20px] font-bold">Change your password</h1>
         <hr className="border-gray-1" />
         <form onSubmit={formik.handleSubmit}>

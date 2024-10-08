@@ -168,7 +168,7 @@ const IndividualSettingsForm = ({ currentUser }) => {
   }
   return (
     <div>
-      <div className="font-['Poppins'] max-w-[698px] mx-auto p-2 px-12 w-full h-auto bg-white rounded-md">
+      <div className="font-Poppins max-w-[698px] mx-auto p-2 px-12 w-full h-auto bg-white rounded-md">
         <form onSubmit={handleSubmit}>
           <div className="mb-[10px]">
             <h1 className="text-center font-medium text-[1.5rem] my-[20px]">Profile Settings</h1>

@@ -26,7 +26,7 @@ const SecuritySettings = ({ currentUser }) => {
     }
   }
   return (
-    <div className="font-['Poppins'] max-w-[698px] mx-auto py-2 px-12 w-full h-auto bg-white rounded-md">
+    <div className="font-Poppins max-w-[698px] mx-auto py-2 px-12 w-full h-auto bg-white rounded-md">
       <h1 className="text-center font-medium text-[1.5rem] my-[50px]">Security Settings</h1>
 
       {/* Name field only for individual users */}

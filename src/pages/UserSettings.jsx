@@ -146,7 +146,7 @@ const UserSettings = () => {
       <Header />
       <div className="flex bg-light-green dark:bg-dark-green py-5 ">
         {/* Sidebar */}
-        <div className="sm:w-[350px] w-[80px] sm:min-w-[300px] h-auto min-h-screen py-[30px] bg-light-gray font-['Poppins'] transition-all duration-300 ease-in-out  shadow-lg rounded-r-lg ">
+        <div className="sm:w-[350px] w-[80px] sm:min-w-[300px] h-auto min-h-screen py-[30px] bg-light-gray font-Poppins transition-all duration-300 ease-in-out  shadow-lg rounded-r-lg ">
           {/* Avatar */}
           <div>
             <img
