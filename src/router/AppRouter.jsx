@@ -12,6 +12,7 @@ import SetupOrganization from "../pages/SetupOrganization"
 import SetupIndividual from "../pages/SetupIndividual"
 import Profile from "../pages/Profile"
 import FAQuestion from "../pages/FAQuestion"
+import UserSettings from "../pages/UserSettings"
 
 const AppRouter = () => {
   return (
@@ -29,9 +30,9 @@ const AppRouter = () => {
         <Route path="faq" element={<FAQuestion />} />
         <Route path="feedback" element={<Feedback />} />
 
-        <Route path="" element={<PrivateRouter />}>
+        <Route element={<PrivateRouter />}>
           {/* <Route path="profile/:userId" element={<Profile />} /> */}
-          {/* <Route path="" element={< />} /> */}
+          <Route path="/settings" element={<UserSettings />} />
           {/* <Route path="" element={< />} /> */}
           {/* <Route path="" element={< />} /> */}
         </Route>
