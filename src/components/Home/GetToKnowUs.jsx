@@ -2,7 +2,7 @@ import React from "react"
 import sectionPhoto from "../../assets/get-to-know-us.png"
 const GetToKnowUs = () => {
   return (
-    <section className="w-full mx-auto p-6 mt-6 mb-12 bg-dark-green font-poppins">
+    <section className="w-full mx-auto p-6 my-10 bg-dark-green font-poppins">
       {/* Section Title */}
       <h2 className="text-center text-[2rem] sm:text-[3.5rem] font-semibold text-white mb-6">
         Get to Know Us
