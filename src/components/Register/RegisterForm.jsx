@@ -12,8 +12,8 @@ const validationSchema = Yup.object({
     .max(30, "Can be maximum 30 characters")
     .required("Name is a required field"),
   email: Yup.string()
-  .matches(/^[^\s@]+@[^\s@]+\.[^\s@]+$/, "Invalid email address")
-  .required("Email is a required field"),
+    .matches(/^[^\s@]+@[^\s@]+\.[^\s@]+$/, "Invalid email address")
+    .required("Email is a required field"),
   password: Yup.string()
     .min(6, "Must be at least 6 characters!")
     .max(30, "Can be maximum 30 characters!")
@@ -25,20 +25,18 @@ const validationSchema = Yup.object({
 })
 
 const RegisterForm = () => {
-
-  const [userType, setUserType] = useState('individual');
+  const [userType, setUserType] = useState("individual")
   const [showPassword, setShowPassword] = useState(false)
-  
-  
+
   // Handle radio button changes
   const handleRadioChange = (e, setFieldValue) => {
-    const value = e.target.value;
-    setUserType(value);
-    setFieldValue('userType', value);
-  };
+    const value = e.target.value
+    setUserType(value)
+    setFieldValue("userType", value)
+  }
 
   const togglePasswordVisibility = () => {
-    setShowPassword((prev) => !prev);
+    setShowPassword((prev) => !prev)
   }
 
   return (
@@ -183,35 +181,38 @@ const RegisterForm = () => {
               </Link>
             </div>
 
-
             {values.userType === "individual" && (
               <div className="flex flex-col items-center">
-            <div className="flex items-center my-4">
-              <div className="flex-1 border-t w-[300px] border-gray-2 dark:border-white"></div>
-              <p className="text-gray-2 dark:text-white text-[0.875rem] text-center mx-5">or</p>
-              <div className="flex-1 border-t border-gray-2 dark:border-white"></div>
-            </div>
+                <div className="flex items-center my-4">
+                  <div className="flex-1 border-t w-[300px] border-gray-2 dark:border-white"></div>
+                  <p className="text-gray-2 dark:text-white text-[0.875rem] text-center mx-5">or</p>
+                  <div className="flex-1 border-t border-gray-2 dark:border-white"></div>
+                </div>
 
-            <button className="flex items-center justify-center w-[60%] md:w-auto text-gray-2 text-sm md:text-base py-3 px-4 rounded-lg border border-gray-1 dark:border-white hover:bg-gray-100 transition-all duration-300 ease-in-out">
-              <FcGoogle className="text-xl dark:text-white md:text-2xl mr-2" />
-              Continue with Google
-            </button>
-            </div>
+                <button className="flex items-center justify-center w-[60%] md:w-auto text-gray-2 text-sm md:text-base py-3 px-4 rounded-lg border border-gray-1 dark:border-white hover:bg-gray-100 transition-all duration-300 ease-in-out">
+                  <FcGoogle className="text-xl dark:text-white md:text-2xl mr-2" />
+                  Continue with Google
+                </button>
+              </div>
             )}
-
 
             {/* Terms and Conditions */}
             <p className="text-[0.75rem] mt-5 text-gray-2 dark:text-white text-center">
-            By continuing, you agree to the {" "}
-              <Link to="/terms" className="text-primary-green dark:text-white underline font-semibold">
+              By continuing, you agree to the{" "}
+              <Link
+                to="/terms"
+                className="text-primary-green dark:text-white underline font-semibold"
+              >
                 Terms of Service
-              </Link>{" "} 
+              </Link>{" "}
               <br />
               and acknowledge you’ve read our{" "}
-              <Link to="/privacy" className="text-primary-green dark:text-white underline font-semibold">
+              <Link
+                to="/privacy"
+                className="text-primary-green dark:text-white underline font-semibold"
+              >
                 Privacy Policy
               </Link>
-              .
             </p>
           </div>
         </Form>
