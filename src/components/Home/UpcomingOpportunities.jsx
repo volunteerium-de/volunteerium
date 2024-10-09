@@ -133,10 +133,10 @@ const UpcomingOpportunities = () => {
   return (
     <div>
       {/* Latest Card Container */}
-      <div className="max-w-[1720px] mx-auto w-[95%] px-[20px] pb-[15px] font-poppins dark:text-white dark:bg-dark-gray-3">
+      <div className="max-w-[1840px] mx-auto w-[95%] pb-8 font-poppins dark:text-white dark:black rounded-lg">
         {/* Header */}
         <div className="flex justify-between flex-wrap mb-[5px]">
-          <h2 className="text-[1.5rem] font-semibold text-dark-gray-1 leading-[2.4166]">
+          <h2 className="text-[1.5rem] font-semibold text-dark-gray-1 dark:text-white py-3">
             Upcoming Events
           </h2>
           <a
@@ -147,22 +147,22 @@ const UpcomingOpportunities = () => {
           </a>
         </div>
 
-        <div className="relative">
+        <div className="relative rounded-lg">
           {/* Arrow Left */}
           <button
-            className={`absolute top-[calc(60%-25px)] left-[-25px] ${isLeftDisabled ? "hidden" : "block"}`}
+            className={`absolute top-[calc(60%-25px)] left-[-30px] ${isLeftDisabled ? "hidden" : "block"}`}
             onClick={handleScrollLeft}
             disabled={isLeftDisabled}
           >
-            <IoIosArrowDropleftCircle className="w-[2.2rem] h-[2.2rem] p-1 text-primary-green hover:text-dark-green dark:hover:text-white transition-colors duration-300 " />
+            <IoIosArrowDropleftCircle className="w-[2.2rem] h-[2.2rem] p-1 text-primary-green hover:text-dark-green dark:hover:text-dark-gray-1 transition-colors duration-300 " />
           </button>
           {/* Arrow Right */}
           <button
-            className={`absolute top-[calc(60%-25px)] right-[-25px] ${isRightDisabled ? "hidden" : "block"}`}
+            className={`absolute top-[calc(60%-25px)] right-[-30px] ${isRightDisabled ? "hidden" : "block"}`}
             onClick={handleScrollRight}
             disabled={isRightDisabled}
           >
-            <IoIosArrowDroprightCircle className="w-[2.2rem] h-[2.2rem] p-1 text-primary-green hover:text-dark-green dark:hover:text-white transition-colors duration-300 " />
+            <IoIosArrowDroprightCircle className="w-[2.2rem] h-[2.2rem] p-1 text-primary-green hover:text-dark-green dark:hover:text-dark-gray-1 transition-colors duration-300 " />
           </button>
           {/* Event Component */}
           <div
@@ -171,7 +171,7 @@ const UpcomingOpportunities = () => {
             className="flex gap-x-[40px] overflow-x-hidden items-start scroll-smooth"
           >
             {/* Map through event data */}
-            <div className="flex flex-row flex-grow gap-6 p-2 min-h-[200px]">
+            <div className="flex flex-row flex-grow gap-6 p-2 min-h-[200px] rounded-md">
               {eventData.map((event, id) => (
                 <EventCardVertical key={id} event={event} />
               ))}

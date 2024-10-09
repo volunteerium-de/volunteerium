@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from "react"
 import { FaEnvelope } from "react-icons/fa"
 import { formatDistanceToNow } from "date-fns"
+import { Link } from "react-router-dom"
 
 // Sample messages
 const sampleMessages = [
@@ -34,6 +35,20 @@ const sampleMessages = [
   },
   {
     id: 5,
+    event: "Blood Donation",
+    message: "Don’t forget to bring your ID and health card.",
+    unread: false,
+    timestamp: Date.now() - 1 * 60 * 1000, // 1 minute ago
+  },
+  {
+    id: 6,
+    event: "Blood Donation",
+    message: "Don’t forget to bring your ID and health card.",
+    unread: false,
+    timestamp: Date.now() - 1 * 60 * 1000, // 1 minute ago
+  },
+  {
+    id: 7,
     event: "Blood Donation",
     message: "Don’t forget to bring your ID and health card.",
     unread: false,
@@ -88,10 +103,13 @@ const MessageMenu = ({ messageCount }) => {
       {isOpen && (
         <div className="absolute right-2 mt-3 w-96 bg-white rounded-lg shadow-lg z-10">
           {/* Menu Header */}
-          <div className="bg-primary-green text-white p-2 rounded-t-lg">Messages</div>
+          <div className="bg-primary-green text-white p-2 rounded-t-lg flex justify-between items-center">
+            <h3>Messages</h3>
+            <Link className="text-light-green text-[.7rem] cursor-pointer">View All</Link>
+          </div>
 
           {/* Message List */}
-          <div className="max-h-70 overflow-y-auto">
+          <div className="max-h-80 overflow-y-auto">
             {sampleMessages.map(({ id, event, message, isRead, timestamp }) => (
               <div
                 key={id}

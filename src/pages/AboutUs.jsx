@@ -32,11 +32,13 @@ const AboutUs = () => {
                 </div>
               </div>
 
+
               {/* Who We Are Area */}
               <div className="h-auto w-full mx-auto rounded-lg my-[40px] flex flex-col sm:flex-row items-center justify-center gap-5">
                 {/* Left Side Text Section */}
                 <div className="max-w-[363px] sm:max-w-[463px] w-full h-auto bg-dark-green text-center text-white rounded-lg p-5 md:transform md:translate-x-[50px] sm:transform sm:translate-x-0">
                   <h2 className="text-[1.25rem] leading-[1.35] font-bold mb-10">
+
                     We are here to get as many people volunteering as possible.
                   </h2>
                   <p className="text-[1rem] font-medium mb-10">
@@ -47,8 +49,10 @@ const AboutUs = () => {
                   </p>
                 </div>
                 {/* Right Side Image Section */}
+
                 <div className="max-w-[262px] sm:max-w-[562px] h-auto w-full">
                   <img src={eventsImage} alt="events" className="w-full h-auto" />
+
                 </div>
               </div>
             </div>
@@ -56,12 +60,14 @@ const AboutUs = () => {
 
           {/* How It Works Area */}
           <section>
+
             <div className="w-full min-h-[482px] mx-auto flex flex-col justify-center gap-10 bg-dark-green py-5">
               <h2 className="text-[2.25rem] leading-[0.75] text-center text-white">How It Works</h2>
               <div className="flex flex-col sm:flex-row justify-center items-center gap-5">
                 {/* First Card */}
                 <div className="sm:max-w-[408px] max-w-[308px] w-full h-[241px] bg-white rounded-lg p-[30px] text-center">
                   <h1 className="text-[1.5rem] leading-[1.125] font-medium">
+
                     <span className="text-primary-green">Explore </span>Opportunities
                   </h1>
                   <p className="text-[1rem] leading-[1.6875] text-gray-2 mt-4">
@@ -71,8 +77,10 @@ const AboutUs = () => {
                 </div>
 
                 {/* Second Card */}
+
                 <div className="sm:max-w-[408px] max-w-[308px] w-full h-[241px] bg-white rounded-lg p-[30px] text-center">
                   <h1 className="text-[1.5rem] leading-[1.125] font-medium">
+
                     <span className="text-primary-green">Join</span> to Volunteer
                   </h1>
                   <p className="text-[1rem] leading-[1.6875] text-gray-2 mt-4">
@@ -82,8 +90,10 @@ const AboutUs = () => {
                 </div>
 
                 {/* Third Card */}
+
                 <div className="sm:max-w-[408px] max-w-[308px] w-full h-[241px] bg-white rounded-lg p-[30px] text-center">
                   <h1 className="text-[1.5rem] leading-[1.125] font-medium">
+
                     <span className="text-primary-green">Make</span> a Difference
                   </h1>
                   <p className="text-[1rem] leading-[1.6875] text-gray-2 mt-4">
@@ -97,6 +107,7 @@ const AboutUs = () => {
 
           {/* Community Area */}
           <section>
+
             <div className="flex flex-col sm:flex-row justify-center items-center w-full min-h-[450px] mx-auto gap-10 my-5">
               <div>
                 <img
@@ -114,6 +125,7 @@ const AboutUs = () => {
                   Be a part of a community dedicated to
                   <span className="font-bold">making a positive difference.</span> Together, we can
                   create a better world;
+
                   <span className="font-bold">one volunteer at a time</span>
                 </p>
               </div>
@@ -122,7 +134,9 @@ const AboutUs = () => {
 
           {/* Number of Volunteers Area */}
           <section>
+
             <div className="w-full h-auto mx-auto flex flex-col gap-[10px] sm:flex-row justify-around items-center bg-dark-green p-5 py-10">
+
               {/* Volunteers Card */}
               <div className="max-w-[283px] h-[142px] w-full bg-white rounded-3xl text-center p-5">
                 <p className="font-medium text-[2.125rem] leading-[0.7941] mt-2">100+</p>
@@ -146,6 +160,7 @@ const AboutUs = () => {
       </div>
       <Footer />
     </div>
+
   )
 }
 
