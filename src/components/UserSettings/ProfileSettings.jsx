@@ -1,6 +1,6 @@
 import React from "react"
-import IndividualSettingsForm from "../ui/Forms/IndividualSettingsForm"
-import OrganisationSettingsForm from "../ui/Forms/OrganisationSettingsForm"
+import IndividualSettingsForm from "./IndividualSettingsForm"
+import OrganisationSettingsForm from "./OrganisationSettingsForm"
 import { useState } from "react"
 // import SecuritySettings from "./SecuritySettings"
 

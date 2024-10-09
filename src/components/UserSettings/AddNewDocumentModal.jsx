@@ -92,7 +92,7 @@ const AddNewDocumentModal = ({ isOpen, onClose }) => {
           </div>
 
           <div className="flex justify-center gap-3 mt-[25px]">
-            {error && <div className="text-red-600 text-sm text-center mb-2">{error}</div>}
+            {error && <div className="text-danger text-sm text-center mb-2">{error}</div>}
             <button
               className="bg-gray-1 text-white px-4 py-2 rounded-md font-medium leading-[1.5625] w-[150px]"
               onClick={onClose}
