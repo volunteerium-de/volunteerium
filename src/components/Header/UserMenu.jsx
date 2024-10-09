@@ -5,9 +5,11 @@ import LanguageSwitcher from "./LanguageSwitcher"
 import { useNavigate } from "react-router-dom/dist"
 import { useSelector } from "react-redux"
 import useTheme from "../../hooks/useTheme"
+import useAuthCall from "../../hooks/useAuthCall"
 
-const UserMenu = ({ user, profileImage }) => {
+const UserMenu = ({ user }) => {
   const mode = useSelector((state) => state.theme.mode)
+  const { logout } = useAuthCall()
   const { toggleTheme } = useTheme()
   const [isOpen, setIsOpen] = useState(false)
   const menuRef = useRef(null)
@@ -16,6 +18,12 @@ const UserMenu = ({ user, profileImage }) => {
   // Toggle menu visibility
   const toggleMenu = () => {
     setIsOpen(!isOpen)
+  }
+
+  // Handle Logout
+  const handleLogout = () => {
+    logout()
+    toggleMenu()
   }
 
   // Closing the menu when clicking outside
@@ -42,9 +50,9 @@ const UserMenu = ({ user, profileImage }) => {
         <FaBars className="text-primary-green dark:text-gray-2  h-5 w- mr-2" />
 
         {/* Profile Icon or User Image */}
-        {user ? (
+        {user && user?.avatar ? (
           <img
-            src={profileImage}
+            src={user.avatar}
             alt={user ? user.name : "User"}
             className="h-6 w-6 rounded-full object-cover"
           />
@@ -80,7 +88,7 @@ const UserMenu = ({ user, profileImage }) => {
                   </button>
                   <button
                     className="block w-full text-left p-1 hover:text-primary-green"
-                    onClick={() => navigate("")}
+                    onClick={handleLogout}
                   >
                     Logout
                   </button>

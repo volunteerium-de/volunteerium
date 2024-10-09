@@ -4,6 +4,7 @@ import { MdVisibility, MdVisibilityOff } from "react-icons/md"
 import { useState, useEffect, useRef } from "react"
 import { FcGoogle } from "react-icons/fc"
 import { Link } from "react-router-dom"
+import useAuthCall from "../../hooks/useAuthCall"
 
 const validationSchema = Yup.object({
   email: Yup.string().email("Invalid email address").required("Email is a required field"),
@@ -20,6 +21,7 @@ const validationSchema = Yup.object({
 const LoginForm = () => {
   const [showPassword, setShowPassword] = useState(false)
   const passwordTimeoutRef = useRef(null)
+  const { login } = useAuthCall()
 
   useEffect(() => {
     return () => {
@@ -42,6 +44,7 @@ const LoginForm = () => {
       validationSchema={validationSchema}
       onSubmit={(values, { setSubmitting, resetForm }) => {
         console.log(values)
+        login(values)
         setSubmitting(false)
         resetForm()
       }}
@@ -89,10 +92,10 @@ const LoginForm = () => {
               {touched.password && errors.password && (
                 <p className="text-danger text-[0.875rem]">{errors.password}</p>
               )}
-              <Link to='/forgot-password'>
-              <p className="text-sm justify-end text-dark-green dark:text-white underline cursor-pointer">
-                Forgot your password?
-              </p>
+              <Link to="/forgot-password">
+                <p className="text-sm justify-end text-dark-green dark:text-white underline cursor-pointer">
+                  Forgot your password?
+                </p>
               </Link>
             </div>
           </div>
@@ -124,7 +127,6 @@ const LoginForm = () => {
               <FcGoogle className="text-xl md:text-2xl mr-2" />
               Continue with Google
             </button>
-
           </div>
         </Form>
       )}
