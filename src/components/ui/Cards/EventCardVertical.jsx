@@ -1,65 +1,71 @@
-import React from "react"
-import { LuCalendarDays } from "react-icons/lu"
-import { CiLocationOn } from "react-icons/ci"
-import { IoPeopleOutline, IoHomeOutline } from "react-icons/io5"
+import { IoCalendar, IoHome, IoLocation, IoPeople } from "react-icons/io5"
 import eventImage from "../../../assets/example-event-img.png"
 
 const EventCardVertical = ({ event }) => {
   return (
-    <div className="rounded-[8px] max-w-[325px] max-[390px]:max-w-[180px] shadow-[0_1px_1px_rgba(0,0,0,.25)] overflow-x-hidden shrink-0 mb-[10px]">
+    <div className="relative rounded max-w-[200px] sm:max-w-[330px] shadow-[0_1px_1px_rgba(0,0,0,.25)] overflow-x-hidden shrink-0 mb-2 dark:bg-dark-gray-3">
       {/* Event Image */}
       <div>
         <img
           src={event.image || eventImage}
           alt="event"
-          className="rounded-t-md object-cover w-full "
+          className="rounded-t-sm object-cover w-full"
         />
       </div>
       {/* Event Content */}
-      <div className="p-[10px] mb-[16px]">
-        <h2 className="text-dark-gray-1 font-bold text-[0.9375rem] leading-[1.4666] ">
+      <div className="p-2 mb-2">
+        <h2 className="text-dark-gray-1 dark:text-white font-bold text-[0.9375rem] ">
           {event.title}
         </h2>
-        <p className="text-dark-gray-1 text-[0.75rem] leading-[1.8333] mb-[10px]">
+        <p className="text-dark-gray-1 dark:text-light-gray-2 text-[0.75rem] mb-[10px]">
           {event.description}
         </p>
         {/* Details */}
         <div>
           {/* User */}
-          <div className="flex gap-x-[7px] items-center  mb-[7px]">
-            <IoHomeOutline style={{ color: "#6C707A" }} />
-            <p className="text-gray-2 text-sm leading-[1.7142]">{event.organizer}</p>
+          <div className="flex gap-x-3 items-center mb-[7px] py-1">
+            <IoHome className="text-primary-green" />
+            <p className="text-gray-2 dark:text-light-gray-2 font-semibold text-sm">
+              {event.organizer}
+            </p>
           </div>
           {/* Event Details */}
           <div>
             <div className="flex gap-x-[8px] items-center mb-[1px]">
-              <LuCalendarDays style={{ color: "#6C707A" }} />
-              <p className="text-gray-2 text-sm leading-[1.7142]">{event.date}</p>
+              <IoCalendar className="text-primary-green" />
+              <p className="text-gray-2 dark:text-light-gray-2 text-sm p-1">{event.date}</p>
             </div>
             <div className="flex gap-x-[8px] items-center mb-[1px]">
-              <CiLocationOn style={{ color: "#6C707A" }} />
-              <p className="text-gray-2 text-sm leading-[1.7142]">{event.location}</p>
+              <IoLocation className="text-primary-green" />
+              <p className="text-gray-2 dark:text-light-gray-2 text-sm p-0.5">{event.location}</p>
             </div>
             <div className="flex gap-x-[8px] items-center  mb-[10px]">
-              <IoPeopleOutline style={{ color: "#6C707A" }} />
-              <p className="text-gray-2 text-sm leading-[1.7142]">Max. {event.maxPeople} People</p>
-            </div>
-            <div className="max-w-[100px] rounded-[20px] outline-[#69957B] outline-1 outline">
-              <p className="mulish font-extrabold text-[0.625rem] leading-[1.3] text-primary-green text-center py-[6px] dark:text-primary-green">
-                {event.category.toUpperCase()}
+              <IoPeople className="text-primary-green" />
+              <p className="text-gray-2 dark:text-light-gray-2 text-sm p-1">
+                Max. {event.maxPeople} People
               </p>
+            </div>
+            {/* Category Area */}
+            <div className="flex flex-row flex-wrap gap-2  ">
+              {event.category?.map((category, index) => (
+                <div
+                  key={index}
+                  className="border border-primary-green dark:border-gray-1 px-2 py-1 rounded-full w-fit h-6"
+                >
+                  <p className="font-semibold tracking-wide text-[0.6rem] sm:text-[0.6rem] text-primary-green text-center dark:text-gray-1">
+                    {category.toUpperCase()}
+                  </p>
+                </div>
+              ))}
             </div>
           </div>
         </div>
       </div>
       {/* Event Button */}
-      <div className="pr-[18px] pb-[7px]">
-        <a
-          href={event.link}
-          className="font-medium text-white text-[1rem] leading-[1.5625] text-center block py-[2.5px] bg-primary-green rounded-lg max-w-[60px] ml-auto"
-        >
+      <div className="flex flex-row p-2 justify-end">
+        <button className="font-medium text-white text-[0.9rem] text-center bg-primary-green px-3 py-1 rounded">
           Join
-        </a>
+        </button>
       </div>
     </div>
   )

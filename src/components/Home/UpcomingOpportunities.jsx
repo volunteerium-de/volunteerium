@@ -1,55 +1,90 @@
-import { FaArrowLeft, FaArrowRight } from "react-icons/fa"
-import React, { useRef, useState } from "react"
+import React, { useRef, useState, useEffect } from "react"
 import EventCardVertical from "../ui/Cards/EventCardVertical"
+import { IoIosArrowDropleftCircle, IoIosArrowDroprightCircle } from "react-icons/io"
 
 const UpcomingOpportunities = () => {
   const sliderRef = useRef(null)
   const [scrollPosition, setScrollPosition] = useState(0)
+  const [isLeftDisabled, setIsLeftDisabled] = useState(true)
+  const [isRightDisabled, setIsRightDisabled] = useState(false)
 
   // Example event data (this would normally come from an API or data source)
   const eventData = [
     {
-      title: "Community Park Tree Planting Day",
+      title: "Community Park Tree Planting Day 1",
       description:
         "Help us make Riverside greener! Join us for a day of tree planting in the community park.",
       organizer: "Matilda R.",
       date: "June 5, 2024 - 17:00",
       location: "Berlin, Germany",
       maxPeople: 15,
-      category: "Environment",
+      category: ["Environment", "Sustainability"],
       link: "#",
     },
     {
-      title: "Community Park Tree Planting Day",
+      title: "Community Park Tree Planting Day 2",
       description:
         "Help us make Riverside greener! Join us for a day of tree planting in the community park.",
       organizer: "Matilda R.",
       date: "June 5, 2024 - 17:00",
       location: "Berlin, Germany",
       maxPeople: 15,
-      category: "Environment",
+      category: ["Environment", "Sustainability"],
       link: "#",
     },
     {
-      title: "Community Park Tree Planting Day",
+      title: "Community Park Tree Planting Day 3",
       description:
         "Help us make Riverside greener! Join us for a day of tree planting in the community park.",
       organizer: "Matilda R.",
       date: "June 5, 2024 - 17:00",
       location: "Berlin, Germany",
       maxPeople: 15,
-      category: "Environment",
+      category: ["Environment"],
       link: "#",
     },
     {
-      title: "Community Park Tree Planting Day",
+      title: "Community Park Tree Planting Day 4",
       description:
         "Help us make Riverside greener! Join us for a day of tree planting in the community park.",
       organizer: "Matilda R.",
       date: "June 5, 2024 - 17:00",
       location: "Berlin, Germany",
       maxPeople: 15,
-      category: "Environment",
+      category: ["Environment"],
+      link: "#",
+    },
+    {
+      title: "Community Park Tree Planting Day 5 ",
+      description:
+        "Help us make Riverside greener! Join us for a day of tree planting in the community park.",
+      organizer: "Matilda R.",
+      date: "June 5, 2024 - 17:00",
+      location: "Berlin, Germany",
+      maxPeople: 15,
+      category: ["Environment", "Sustainability"],
+      link: "#",
+    },
+    {
+      title: "Community Park Tree Planting Day 6",
+      description:
+        "Help us make Riverside greener! Join us for a day of tree planting in the community park.",
+      organizer: "Matilda R.",
+      date: "June 5, 2024 - 17:00",
+      location: "Berlin, Germany",
+      maxPeople: 15,
+      category: ["Environment"],
+      link: "#",
+    },
+    {
+      title: "Community Park Tree Planting Day 7",
+      description:
+        "Help us make Riverside greener! Join us for a day of tree planting in the community park.",
+      organizer: "Matilda R.",
+      date: "June 5, 2024 - 17:00",
+      location: "Berlin, Germany",
+      maxPeople: 15,
+      category: ["Environment", "Sustainability"],
       link: "#",
     },
   ]
@@ -65,6 +100,7 @@ const UpcomingOpportunities = () => {
       setScrollPosition(newPosition)
     }
   }
+
   // Function to handle scroll right
   const handleScrollRight = () => {
     if (sliderRef.current) {
@@ -80,13 +116,27 @@ const UpcomingOpportunities = () => {
     }
   }
 
+  useEffect(() => {
+    const checkButtonStates = () => {
+      if (sliderRef.current) {
+        const sliderWidth = sliderRef.current.scrollWidth
+        const containerWidth = sliderRef.current.clientWidth
+        const maxScrollPosition = sliderWidth - containerWidth
+        setIsLeftDisabled(scrollPosition <= 0)
+        setIsRightDisabled(scrollPosition >= maxScrollPosition)
+      }
+    }
+
+    checkButtonStates()
+  }, [scrollPosition, eventData.length])
+
   return (
     <div>
       {/* Latest Card Container */}
-      <div className="max-w-[1440px] mx-auto w-[95%] px-[20px] pb-[15px] font-['Poppins'] dark:text-white dark:bg-dark-gray-3">
+      <div className="max-w-[1840px] mx-auto w-[95%] pb-8 font-poppins dark:text-white dark:black rounded-lg">
         {/* Header */}
         <div className="flex justify-between flex-wrap mb-[5px]">
-          <h2 className="text-[1.5rem] font-semibold text-dark-gray-1 leading-[2.4166]">
+          <h2 className="text-[1.5rem] font-semibold text-dark-gray-1 dark:text-white py-3">
             Upcoming Events
           </h2>
           <a
@@ -97,20 +147,22 @@ const UpcomingOpportunities = () => {
           </a>
         </div>
 
-        <div className="relative">
+        <div className="relative rounded-lg">
           {/* Arrow Left */}
           <button
-            className="absolute top-[calc(60%-25px)] left-[-25px] rounded-full"
+            className={`absolute top-[calc(60%-25px)] left-[-30px] ${isLeftDisabled ? "hidden" : "block"}`}
             onClick={handleScrollLeft}
+            disabled={isLeftDisabled}
           >
-            <FaArrowLeft className="rounded-full w-[1.875rem] h-[1.875rem] p-1 text-white bg-[#4B6D59] transition-colors duration-300 hover:text-dark-gray-3 dark:hover:text-white" />
+            <IoIosArrowDropleftCircle className="w-[2.2rem] h-[2.2rem] p-1 text-primary-green hover:text-dark-green dark:hover:text-dark-gray-1 transition-colors duration-300 " />
           </button>
           {/* Arrow Right */}
           <button
-            className="absolute top-[calc(60%-25px)] right-[-25px] transition-colors duration-300 hover:bg-[#6B8E69] rounded-full"
+            className={`absolute top-[calc(60%-25px)] right-[-30px] ${isRightDisabled ? "hidden" : "block"}`}
             onClick={handleScrollRight}
+            disabled={isRightDisabled}
           >
-            <FaArrowRight className="rounded-full w-[1.875rem] h-[1.875rem] p-1 text-white bg-[#4B6D59] transition-colors duration-300 hover:text-dark-gray-3 dark:hover:text-white" />
+            <IoIosArrowDroprightCircle className="w-[2.2rem] h-[2.2rem] p-1 text-primary-green hover:text-dark-green dark:hover:text-dark-gray-1 transition-colors duration-300 " />
           </button>
           {/* Event Component */}
           <div
@@ -119,9 +171,11 @@ const UpcomingOpportunities = () => {
             className="flex gap-x-[40px] overflow-x-hidden items-start scroll-smooth"
           >
             {/* Map through event data */}
-            {eventData.map((event, idx) => (
-              <EventCardVertical key={idx} event={event} />
-            ))}
+            <div className="flex flex-row flex-grow gap-6 p-2 min-h-[200px] rounded-md">
+              {eventData.map((event, id) => (
+                <EventCardVertical key={id} event={event} />
+              ))}
+            </div>
           </div>
         </div>
       </div>
