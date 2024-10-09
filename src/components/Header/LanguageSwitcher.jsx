@@ -31,7 +31,7 @@ const LanguageMenu = () => {
 
       {/* Dropdown menu for language selection */}
       {isMenuOpen && (
-        <div className="absolute right-0 mt-2 w-28 bg-white rounded-lg shadow-lg z-10">
+        <div className="absolute right-0 mt-2 w-28 bg-white dark:bg-dark-gray-3 rounded-lg shadow-lg z-10">
           <button
             className="block w-full text-left p-1 hover:text-primary-green"
             onClick={() => selectLanguage("English")}
