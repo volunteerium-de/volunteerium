@@ -55,7 +55,7 @@ const SearchBar = () => {
   }, [])
 
   return (
-    <div className="relative h-[8vh] w-full max-w-[55%] min-w-[28rem] mx-auto py-3 px-3 sm:py-2 sm:px-4 bottom-28 sm:bottom-48 rounded-lg border border-light-gray-1 dark:border-dark-gray-2 bg-white flex items-center justify-between dark:bg-dark-gray-3 dark:text-white">
+    <div className="relative h-[10vh] w-full max-w-[55%] min-w-[28rem] mx-auto py-3 px-3 sm:py-2 sm:px-4 bottom-28 sm:bottom-48 rounded-lg border border-light-gray-1 dark:border-dark-gray-2 bg-white flex items-center justify-between dark:bg-dark-gray-3 dark:text-white">
       {/* Event & Location Areas */}
       {searchBarItems.map(({ id, label, placeholder, type }) => (
         <div

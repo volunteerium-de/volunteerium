@@ -50,7 +50,7 @@ const UserMenu = ({ user }) => {
         <FaBars className="text-primary-green dark:text-gray-2  h-5 w- mr-2" />
 
         {/* Profile Icon or User Image */}
-        {user && user?.avatar ? (
+        {user && (user?.avatar || user?.organizationLogo) ? (
           <img
             src={user.avatar}
             alt={user ? user.name : "User"}
