@@ -13,7 +13,7 @@ const validationSchema = Yup.object({
     .matches(/\d+/, "Must contain digit!")
     .matches(/[a-z]/, "Must contain lowercase letter!")
     .matches(/[A-Z]/, "Must contain uppercase letter!")
-    .matches(/[@$?!%&*]+/, "Required a symbol! (@$!%*?&)")
+    .matches(/[@$?!%&*]+/, "A symbol is required! (@$!%*?&)")
     .required("Password is a required field"),
 })
 
