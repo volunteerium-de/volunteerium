@@ -52,7 +52,7 @@ const UserMenu = ({ user }) => {
         {/* Profile Icon or User Image */}
         {user && (user?.userDetailsId?.avatar || user?.userDetailsId?.organizationLogo) ? (
           <img
-            src={user.userDetailsId.avatar}
+            src={user.userDetailsId.avatar || user.userDetailsId.organizationLogo}
             alt={user ? user.fullName || user.organizationName : "User"}
             className="h-6 w-6 rounded-full object-cover"
           />
