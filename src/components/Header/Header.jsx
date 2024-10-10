@@ -4,29 +4,14 @@ import NotificationMenu from "./NotificationMenu"
 import MessageMenu from "./MessageMenu"
 import { useState, useEffect } from "react"
 import { Link } from "react-router-dom"
+import { useSelector } from "react-redux"
 
 const Header = () => {
+  const { currentUser: user } = useSelector((state) => state.auth)
+  console.log(user)
   // States
-  const [user, setUser] = useState(null)
-  const [profileImage, setProfileImage] = useState(null)
   const [notificationCount, setNotificationCount] = useState(0)
   const [messageCount, setMessageCount] = useState(0)
-
-  // Effect to fetch user data only once when the component mounts
-  useEffect(() => {
-    // Simulating user data fetch
-    const fetchUser = async () => {
-      const fetchedUser = {
-        name: "Julia Bretzel",
-        profileImage: "https://tinyurl.com/c496979c",
-      }
-      setUser(fetchedUser)
-      setProfileImage(fetchedUser.profileImage)
-    }
-
-    // Fetch user info once
-    fetchUser()
-  }, [])
 
   // Effect to handle notifications and messages
   useEffect(() => {
@@ -75,7 +60,7 @@ const Header = () => {
               <MessageMenu messageCount={messageCount} />
             </>
           ) : null}
-          <UserMenu user={user} profileImage={profileImage} />
+          <UserMenu user={user} />
         </div>
       </div>
     </header>

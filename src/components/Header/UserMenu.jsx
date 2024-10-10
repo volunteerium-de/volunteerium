@@ -5,9 +5,11 @@ import LanguageSwitcher from "./LanguageSwitcher"
 import { useNavigate } from "react-router-dom/dist"
 import { useSelector } from "react-redux"
 import useTheme from "../../hooks/useTheme"
+import useAuthCall from "../../hooks/useAuthCall"
 
-const UserMenu = ({ user, profileImage }) => {
+const UserMenu = ({ user }) => {
   const mode = useSelector((state) => state.theme.mode)
+  const { logout } = useAuthCall()
   const { toggleTheme } = useTheme()
   const [isOpen, setIsOpen] = useState(false)
   const menuRef = useRef(null)
@@ -16,6 +18,12 @@ const UserMenu = ({ user, profileImage }) => {
   // Toggle menu visibility
   const toggleMenu = () => {
     setIsOpen(!isOpen)
+  }
+
+  // Handle Logout
+  const handleLogout = () => {
+    logout()
+    toggleMenu()
   }
 
   // Closing the menu when clicking outside
@@ -35,17 +43,17 @@ const UserMenu = ({ user, profileImage }) => {
   return (
     <div className="relative" ref={menuRef}>
       <div
-        className="flex items-center justify-center border-2 dark:border-gray-2 border-primary-green dark:border-primary-white rounded-full p-2 cursor-pointer"
+        className="flex items-center justify-center border-2 dark:border-gray-2 border-primary-green dark:border-primary-white rounded-full py-1 px-2 cursor-pointer"
         onClick={toggleMenu}
       >
         {/* Menu Icon */}
         <FaBars className="text-primary-green dark:text-gray-2  h-5 w- mr-2" />
 
         {/* Profile Icon or User Image */}
-        {user ? (
+        {user && (user?.userDetailsId?.avatar || user?.userDetailsId?.organizationLogo) ? (
           <img
-            src={profileImage}
-            alt={user ? user.name : "User"}
+            src={user.userDetailsId.avatar || user.userDetailsId.organizationLogo}
+            alt={user ? user.fullName || user.organizationName : "User"}
             className="h-6 w-6 rounded-full object-cover"
           />
         ) : (
@@ -80,7 +88,7 @@ const UserMenu = ({ user, profileImage }) => {
                   </button>
                   <button
                     className="block w-full text-left p-1 hover:text-primary-green"
-                    onClick={() => navigate("")}
+                    onClick={handleLogout}
                   >
                     Logout
                   </button>
