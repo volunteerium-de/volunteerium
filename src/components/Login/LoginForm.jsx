@@ -10,10 +10,10 @@ const validationSchema = Yup.object({
   password: Yup.string()
     .min(6, "Must be at least 6 characters!")
     .max(30, "Can be maximum 30 characters!")
-    .matches(/\d+/, "Must contain at least one digit!")
-    .matches(/[a-z]/, "Must contain at least one lowercase letter!")
-    .matches(/[A-Z]/, "Must contain at least one uppercase letter!")
-    .matches(/[@$?!%&*]+/, "Must contain at least one special character (@$!%*?&)!")
+    .matches(/\d+/, "Must contain digit!")
+    .matches(/[a-z]/, "Must contain lowercase letter!")
+    .matches(/[A-Z]/, "Must contain uppercase letter!")
+    .matches(/[@$?!%&*]+/, "Required a symbol! (@$!%*?&)")
     .required("Password is a required field"),
 })
 
@@ -55,7 +55,7 @@ const LoginForm = () => {
               type="email"
               name="email"
               placeholder="Enter your email address"
-              className={`w-full border rounded-lg text-[1rem] placeholder-gray-2 dark:placeholder-white dark:bg-black p-3 h-[42px] md:h-[48px] focus:outline-none focus:border-primary-green 
+              className={`w-full border rounded-lg text-[1rem] placeholder-gray-2 dark:placeholder-white dark:text-white dark:bg-black p-3 h-[42px] md:h-[48px] focus:outline-none focus:border-primary-green 
                 ${touched.email && errors.email ? "border-red" : "border-gray-1"}`}
             />
             <div className="h-[20px]">
@@ -73,7 +73,7 @@ const LoginForm = () => {
                 type={showPassword ? "text" : "password"}
                 name="password"
                 placeholder="Enter your password"
-                className={`w-full border rounded-lg text-[1rem] placeholder-gray-2 dark:placeholder-white dark:bg-black p-3 h-[42px] md:h-[48px] focus:outline-none focus:border-primary-green 
+                className={`w-full border rounded-lg text-[1rem] placeholder-gray-2 dark:placeholder-white dark:text-white dark:bg-black p-3 h-[42px] md:h-[48px] focus:outline-none focus:border-primary-green 
       ${touched.password && errors.password ? "border-red" : "border-gray-1"}`}
               />
               <div className="absolute inset-y-0 text-primary-green right-3 pr-3 flex items-center text-2xl cursor-pointer">
@@ -89,10 +89,10 @@ const LoginForm = () => {
               {touched.password && errors.password && (
                 <p className="text-danger text-[0.875rem]">{errors.password}</p>
               )}
-              <Link to='/forgot-password'>
-              <p className="text-sm justify-end text-dark-green dark:text-white underline cursor-pointer">
-                Forgot your password?
-              </p>
+              <Link to="/forgot-password">
+                <p className="text-sm justify-end text-dark-green dark:text-white underline cursor-pointer">
+                  Forgot your password?
+                </p>
               </Link>
             </div>
           </div>
@@ -115,16 +115,15 @@ const LoginForm = () => {
 
             {/* or and dividers */}
             <div className="flex items-center my-5">
-              <div className="flex-1 border-t w-[300px] border-gray-2 dark:border-white"></div>
+              <div className="flex-1 border-t w-[70px] md:w-[150px] border-gray-2 dark:border-white"></div>
               <p className="text-gray-2 dark:text-white text-[0.875rem] text-center mx-5">or</p>
-              <div className="flex-1 border-t border-gray-2 dark:border-white"></div>
+              <div className="flex-1 border-t w-[70px] md:w-[150px] border-gray-2 dark:border-white"></div>
             </div>
 
             <button className="flex items-center justify-center w-[60%] md:w-auto text-gray-2 dark:text-white text-sm md:text-base py-3 px-4 rounded-lg border border-gray-1 dark:border-white hover:bg-gray-100 transition-all duration-300 ease-in-out">
               <FcGoogle className="text-xl md:text-2xl mr-2" />
               Continue with Google
             </button>
-
           </div>
         </Form>
       )}
