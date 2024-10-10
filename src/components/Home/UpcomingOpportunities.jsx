@@ -133,7 +133,7 @@ const UpcomingOpportunities = () => {
   return (
     <div>
       {/* Latest Card Container */}
-      <div className="max-w-[1840px] mx-auto w-[95%] pb-8 font-poppins dark:text-white dark:black rounded-lg">
+      <div className="max-w-[1840px] mx-auto w-[80%] sm:w-[90%] pb-8 font-poppins dark:text-white dark:black rounded-lg">
         {/* Header */}
         <div className="flex justify-between flex-wrap mb-[5px]">
           <h2 className="text-[1.5rem] font-semibold text-dark-gray-1 dark:text-white py-3">
