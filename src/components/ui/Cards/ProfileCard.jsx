@@ -115,7 +115,7 @@ const ProfileCard = ({ events, loading, eventType, setEventType, setCurrentPage 
               </div>
 
               <div
-                onClick={() => navigate("/events/eventId")}
+                onClick={() => navigate(`/events/${event._id}`)}
                 className="flex items-center border-l-2 border-primary-green opacity-0 md:mr-3 xl:mr-8 group-hover:opacity-80 transition-opacity duration-300 cursor-pointer dark:border-light-gray-3"
               >
                 <MdKeyboardArrowRight className="text-[3rem] lg:ml-4 text-primary-green dark:text-light-gray-2" />
