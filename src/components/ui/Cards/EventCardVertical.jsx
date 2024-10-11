@@ -1,7 +1,9 @@
 import { IoCalendar, IoHome, IoLocation, IoPeople } from "react-icons/io5"
 import eventImage from "../../../assets/example-event-img.png"
+import { useSelector } from "react-redux"
 
 const EventCardVertical = ({ event }) => {
+  const { currentUser: user } = useSelector((state) => state.auth)
   return (
     <div className="relative rounded max-w-[200px] sm:max-w-[330px] shadow-[0_1px_1px_rgba(0,0,0,.25)] overflow-x-hidden shrink-0 mb-2 dark:bg-dark-gray-3">
       {/* Event Image */}
@@ -63,9 +65,11 @@ const EventCardVertical = ({ event }) => {
       </div>
       {/* Event Button */}
       <div className="flex flex-row p-2 justify-end">
-        <button className="font-medium text-white text-[0.9rem] text-center bg-primary-green px-3 py-1 rounded">
-          Join
-        </button>
+        {user ? (
+          <button className="font-medium text-white text-[0.9rem] text-center bg-primary-green px-3 py-1 rounded">
+            Join
+          </button>
+        ) : null}
       </div>
     </div>
   )
