@@ -70,7 +70,7 @@ const UserMenu = ({ user }) => {
                 <>
                   <button
                     className="block w-full text-left p-1 hover:text-primary-green"
-                    onClick={() => navigate("/profile")}
+                    onClick={() => navigate(`/profile/${user._id}`)}
                   >
                     Profile
                   </button>
