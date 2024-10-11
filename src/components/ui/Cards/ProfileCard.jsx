@@ -48,7 +48,7 @@ const ProfileCard = ({ events, loading, eventType, setEventType, setCurrentPage 
             <FaCalendarTimes className="text-6xl text-primary-green mb-4" />
             <p className="text-xl font-bold text-dark-gray-1 dark:text-white">No events found</p>
             <p className="text-sm text-gray-500 dark:text-gray-400">
-              It seems there are no events at the moment. Please check back later!
+              It seems there are no events at the moment.
             </p>
           </div>
         )}
