@@ -15,6 +15,7 @@ import Profile from "../pages/Profile"
 import FAQuestion from "../pages/FAQuestion"
 import UserSettings from "../pages/UserSettings"
 import EmailVerify from "../components/UserEmailVerification/EmailVerify"
+import { Navigate } from "react-router-dom"
 
 const AppRouter = () => {
   const { currentUser: user } = useSelector((state) => state.auth)
@@ -29,29 +30,29 @@ const AppRouter = () => {
         <Route path="profile/:userId" element={<Profile />} />
         <Route path="*" element={<NotFound />} />
 
-        {!user && (
+        {!user ? (
           <>
             <Route path="login" element={<Login />} />
             <Route path="register" element={<Register />} />
             <Route path="register/success" element={<RegisterSuccess />} />
             <Route path="/verify-email" element={<EmailVerify />} />
+            <Route path="*" element={<Home />} />
+          </>
+        ) : (
+          <>
+            <Route path="login" element={<Navigate to="/" />} />
+            <Route path="register" element={<Navigate to="/" />} />
+            <Route path="register/success" element={<Navigate to="/" />} />
+            <Route path="/verify-email" element={<Navigate to="/" />} />
           </>
         )}
 
-        {user && (
-          <Route element={<PrivateRouter />}>
-            <Route path="register/email-verify" element={<EmailVerify />} />
-            <Route path="register/email-verify/success" element={<VerificationSuccess />} />
-            <Route
-              path="/register/email-verify/success/org-setup"
-              element={<SetupOrganization />}
-            />
-            <Route path="/register/email-verify/success/indv-setup" element={<SetupIndividual />} />
-            <Route path="/settings" element={<UserSettings />} />
-            <Route path="/user-org-setup" element={<SetupOrganization />} />
-            <Route path="/user-ind-setup" element={<SetupIndividual />} />
-          </Route>
-        )}
+        <Route element={<PrivateRouter />}>
+          <Route path="/settings" element={<UserSettings />} />
+          <Route path="/user-org-setup" element={<SetupOrganization />} />
+          <Route path="/user-ind-setup" element={<SetupIndividual />} />
+          <Route path="/verify-email/success" element={<VerificationSuccess />} />
+        </Route>
       </Routes>
     </Router>
   )
