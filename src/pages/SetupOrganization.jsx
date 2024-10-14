@@ -22,6 +22,7 @@ const OrganizationSchema = Yup.object({
 
 const SetupOrganization = () => {
   const [step, setStep] = useState(1)
+  const [fileName, setFileName] = useState("")
   const [logoPreview, setLogoPreview] = useState(null) // For logo preview
   const navigate = useNavigate()
 
@@ -158,6 +159,7 @@ const SetupOrganization = () => {
                           setFieldValue("organizationLogo", file)
 
                           if (file) {
+                            setFileName(file.name)
                             const reader = new FileReader()
                             reader.onloadend = () => {
                               setLogoPreview(reader.result)
@@ -165,10 +167,13 @@ const SetupOrganization = () => {
                             reader.readAsDataURL(file)
                           } else {
                             setLogoPreview(null)
+                            setFileName("")
                           }
                         }}
                       />
-                      <span className="text-gray-2 dark:text-white">Upload organization logo</span>
+                      <span className="text-gray-2 dark:text-white">
+                        {fileName || "Upload organization logo"}
+                      </span>
                       <button className="ml-auto">
                         <BiUpload className="text-2xl text-dark-gray-2 dark:text-white" />
                       </button>
@@ -181,7 +186,7 @@ const SetupOrganization = () => {
                       />
                     </div>
 
-                    {logoPreview && (
+                    {/* {logoPreview && (
                       <div className="mb-4 flex  w-2/3 ">
                         <span className="mr-4 my-auto text-gray-2 font-medium">Preview:</span>
                         <img
@@ -190,7 +195,7 @@ const SetupOrganization = () => {
                           className="max-w-full w-1/4 h-auto"
                         />
                       </div>
-                    )}
+                    )} */}
                   </div>
 
                   <div className="text-center">
