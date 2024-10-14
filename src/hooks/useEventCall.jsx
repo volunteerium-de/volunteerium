@@ -8,7 +8,7 @@ const useEventCall = () => {
 
   const getEvents = async (url) => {
     try {
-      const { data } = await axiosWithPublic(`/api/${version}/${url}`)
+      const { data } = await axiosWithPublic(`${url}`)
       return data
     } catch (error) {
       console.log(error)
@@ -17,7 +17,7 @@ const useEventCall = () => {
 
   const getSingleEvent = async (eventId) => {
     try {
-      const { data } = await axiosWithPublic(`/api/${version}/events/${eventId}`)
+      const { data } = await axiosWithPublic(`events/${eventId}`)
       // console.log(data)
       return data
     } catch (error) {
@@ -27,7 +27,7 @@ const useEventCall = () => {
 
   const postEvent = async (eventInfo) => {
     try {
-      const { data } = await axiosWithToken.post(`/api/${version}/events`, eventInfo)
+      const { data } = await axiosWithToken.post(`events`, eventInfo)
       console.log(data)
       toastNotify("success", "Event created successfully")
       getEvents("events")
@@ -42,7 +42,7 @@ const useEventCall = () => {
 
   const editEvent = async (eventId, eventInfo) => {
     try {
-      const { data } = await axiosWithToken.put(`/api/${version}/events/${eventId}`, eventInfo)
+      const { data } = await axiosWithToken.put(`events/${eventId}`, eventInfo)
       console.log(data)
       toastNotify("success", "Event edited successfully!")
     } catch (error) {
@@ -58,7 +58,7 @@ const useEventCall = () => {
 
   const deleteEvent = async (eventId) => {
     try {
-      const data = await axiosWithToken.delete(`/api/${version}/events/${eventId}`)
+      const data = await axiosWithToken.delete(`events/${eventId}`)
       console.log("Delete response:", data)
 
       toastNotify("success", "Event deleted successfully!")
