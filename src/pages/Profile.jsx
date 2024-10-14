@@ -15,8 +15,6 @@ import { useParams } from "react-router-dom"
 import Pagination from "../components/ui/Pagination/Pagination"
 import { axiosWithPublic } from "../hooks/useAxios"
 
-const version = import.meta.env.VITE_VERSION
-
 const Profile = () => {
   const { currentUser } = useSelector((state) => state.auth)
   const { userId } = useParams()
@@ -42,7 +40,7 @@ const Profile = () => {
             ? `events/?filter[eventParticipantIds]=${userId}&page=${currentPage}`
             : `events/?filter[createdBy]=${userId}&page=${currentPage}`
         const eventData = await getEvents(query)
-        const { data } = await axiosWithPublic(`/api/${version}/users/${userId}`)
+        const { data } = await axiosWithPublic(`users/${userId}`)
         setUser(data.data)
         setEvents(eventData.data)
         setTotalPages(eventData.details.pages.total || 1)
