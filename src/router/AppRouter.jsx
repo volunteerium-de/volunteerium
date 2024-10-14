@@ -26,6 +26,8 @@ const AppRouter = () => {
         <Route path="about" element={<AboutUs />} />
         <Route path="faq" element={<FAQuestion />} />
         <Route path="feedback" element={<Feedback />} />
+        <Route path="profile/:userId" element={<Profile />} />
+        <Route path="*" element={<NotFound />} />
         {!user && (
           <>
             <Route path="login" element={<Login />} />
@@ -35,14 +37,19 @@ const AppRouter = () => {
           </>
         )}
 
-        <Route element={<PrivateRouter />}>
-          <Route path="profile/:userId" element={<Profile />} />
+        <Route element={<PrivateRouter />}
+        <Route path="register/email-verify" element={<EmailVerification />} />
+        <Route path="register/email-verify/success" element={<VerificationSuccess />} />
+        <Route path="/register/email-verify/success/org-setup" element={<SetupOrganization />} />
+        <Route path="/register/email-verify/success/indv-setup" element={<SetupIndividual />} />
+        <Route path="faq" element={<FAQuestion />} />
+        <Route path="feedback" element={<Feedback />} />
           <Route path="/settings" element={<UserSettings />} />
           <Route path="/user-org-setup" element={<SetupOrganization />} />
           <Route path="/user-ind-setup" element={<SetupIndividual />} />
           <Route path="/verify-email/success" element={<VerificationSuccess />} />
         </Route>
-        <Route path="*" element={<NotFound />} />
+
       </Routes>
     </Router>
   )
