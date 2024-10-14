@@ -8,7 +8,6 @@ import { useSelector } from "react-redux"
 
 const Header = () => {
   const { currentUser: user } = useSelector((state) => state.auth)
-  console.log(user)
   // States
   const [notificationCount, setNotificationCount] = useState(0)
   const [messageCount, setMessageCount] = useState(0)

@@ -4,6 +4,7 @@ import { MdVisibility, MdVisibilityOff } from "react-icons/md"
 import { useState } from "react"
 import { FcGoogle } from "react-icons/fc"
 import { Link } from "react-router-dom"
+import useAuthCall from "../../hooks/useAuthCall"
 
 const validationSchema = Yup.object({
   userType: Yup.string().required("User type is required"),
@@ -12,8 +13,8 @@ const validationSchema = Yup.object({
     .max(30, "Can be maximum 30 characters")
     .required("Name is a required field"),
   email: Yup.string()
-  .matches(/^[^\s@]+@[^\s@]+\.[^\s@]+$/, "Invalid email address")
-  .required("Email is a required field"),
+    .matches(/^[^\s@]+@[^\s@]+\.[^\s@]+$/, "Invalid email address")
+    .required("Email is a required field"),
   password: Yup.string()
     .min(6, "Must be at least 6 characters!")
     .max(30, "Can be maximum 30 characters!")
@@ -25,20 +26,19 @@ const validationSchema = Yup.object({
 })
 
 const RegisterForm = () => {
-
-  const [userType, setUserType] = useState('individual');
+  const [userType, setUserType] = useState("individual")
   const [showPassword, setShowPassword] = useState(false)
-  
-  
+  const { register } = useAuthCall()
+
   // Handle radio button changes
   const handleRadioChange = (e, setFieldValue) => {
-    const value = e.target.value;
-    setUserType(value);
-    setFieldValue('userType', value);
-  };
+    const value = e.target.value
+    setUserType(value)
+    setFieldValue("userType", value)
+  }
 
   const togglePasswordVisibility = () => {
-    setShowPassword((prev) => !prev);
+    setShowPassword((prev) => !prev)
   }
 
   return (
@@ -50,10 +50,15 @@ const RegisterForm = () => {
         password: "",
       }}
       validationSchema={validationSchema}
-      onSubmit={(values, { setSubmitting, resetForm }) => {
-        console.log(values)
-        setSubmitting(false)
-        resetForm()
+      onSubmit={async (values, { setSubmitting, resetForm }) => {
+        setSubmitting(true)
+        try {
+          await register(values)
+        } catch (error) {
+          console.error("Register failed: ", error)
+        } finally {
+          setSubmitting(false)
+        }
       }}
     >
       {({ setFieldValue, values, errors, touched }) => (
@@ -82,29 +87,29 @@ const RegisterForm = () => {
 
             <div
               className={`flex items-center border rounded-lg p-3 w-[55%] xl:w-[40%] h-[42px] md:h-[48px] 
-              ${values.userType === "organisation" ? "bg-light-green text-primary-green font-medium border-primary-green" : "border-gray-1 dark:border-white text-gray-2 dark:text-white"}`}
+              ${values.userType === "organization" ? "bg-light-green text-primary-green font-medium border-primary-green" : "border-gray-1 dark:border-white text-gray-2 dark:text-white"}`}
             >
               <Field
                 type="radio"
-                id="organisation"
+                id="organization"
                 name="userType"
-                value="organisation"
+                value="organization"
                 onChange={(e) => handleRadioChange(e, setFieldValue)}
                 className="accent-primary-green"
               />
               <label
-                htmlFor="organisation"
+                htmlFor="organization"
                 className="text-[0.9rem] md:text-[0.75rem] lg:text-[1rem] cursor-pointer w-full p-2"
               >
-                As an Organisation
+                As an Organization
               </label>
             </div>
           </div>
 
-          {/* Full Name/Organisation */}
+          {/* Full Name/Organization */}
           <div>
             <p className="text-gray-2 text-[0.875rem] md:text-[1rem]">
-              {values.userType === "individual" ? "Full Name" : "Organisation Name"}
+              {values.userType === "individual" ? "Full Name" : "Organization Name"}
             </p>
             <Field
               type="text"
@@ -112,7 +117,7 @@ const RegisterForm = () => {
               placeholder={
                 values.userType === "individual"
                   ? "Enter your full name"
-                  : "Enter organisation name"
+                  : "Enter organization name"
               }
               className={`w-full border dark:border-white rounded-lg text-[1rem] placeholder-gray-2 dark:placeholder-white p-3 h-[42px] md:h-[48px] focus:outline-none focus:border-primary-green 
                 ${touched.fullName && errors.fullName ? "border-red" : "border-gray-1"}`}
@@ -183,32 +188,36 @@ const RegisterForm = () => {
               </Link>
             </div>
 
-
             {values.userType === "individual" && (
               <div className="flex flex-col items-center">
-            <div className="flex items-center my-4">
-              <div className="flex-1 border-t w-[300px] border-gray-2 dark:border-white"></div>
-              <p className="text-gray-2 dark:text-white text-[0.875rem] text-center mx-5">or</p>
-              <div className="flex-1 border-t border-gray-2 dark:border-white"></div>
-            </div>
+                <div className="flex items-center my-4">
+                  <div className="flex-1 border-t w-[300px] border-gray-2 dark:border-white"></div>
+                  <p className="text-gray-2 dark:text-white text-[0.875rem] text-center mx-5">or</p>
+                  <div className="flex-1 border-t border-gray-2 dark:border-white"></div>
+                </div>
 
-            <button className="flex items-center justify-center w-[60%] md:w-auto text-gray-2 text-sm md:text-base py-3 px-4 rounded-lg border border-gray-1 dark:border-white hover:bg-gray-100 transition-all duration-300 ease-in-out">
-              <FcGoogle className="text-xl dark:text-white md:text-2xl mr-2" />
-              Continue with Google
-            </button>
-            </div>
+                <button className="flex items-center justify-center w-[60%] md:w-auto text-gray-2 text-sm md:text-base py-3 px-4 rounded-lg border border-gray-1 dark:border-white hover:bg-gray-100 transition-all duration-300 ease-in-out">
+                  <FcGoogle className="text-xl dark:text-white md:text-2xl mr-2" />
+                  Continue with Google
+                </button>
+              </div>
             )}
-
 
             {/* Terms and Conditions */}
             <p className="text-[0.75rem] mt-5 text-gray-2 dark:text-white text-center">
-            By continuing, you agree to the {" "}
-              <Link to="/terms" className="text-primary-green dark:text-white underline font-semibold">
+              By continuing, you agree to the{" "}
+              <Link
+                to="/terms"
+                className="text-primary-green dark:text-white underline font-semibold"
+              >
                 Terms of Service
-              </Link>{" "} 
+              </Link>{" "}
               <br />
               and acknowledge you’ve read our{" "}
-              <Link to="/privacy" className="text-primary-green dark:text-white underline font-semibold">
+              <Link
+                to="/privacy"
+                className="text-primary-green dark:text-white underline font-semibold"
+              >
                 Privacy Policy
               </Link>
               .

@@ -3,19 +3,22 @@ import { HiDotsHorizontal } from "react-icons/hi"
 import { FaCheck } from "react-icons/fa"
 import { useState } from "react"
 import { ErrorMessage, Form, Field, Formik } from "formik"
-import { UserDetailSchema } from "../validators/UserDetailValidator";
-import * as Yup from 'yup';
-
+import { UserDetailSchema } from "../validators/UserDetailValidator"
+import * as Yup from "yup"
+import useAccountCall from "../hooks/useAccountCall"
+import { useSelector } from "react-redux"
 
 // Validation schema
 const IndividualSchema = Yup.object({
   gender: UserDetailSchema.fields.gender,
   ageRange: UserDetailSchema.fields.ageRange,
   interests: UserDetailSchema.fields.interests,
-});
-
+})
 
 const SetupIndividual = () => {
+  const { currentUser: user } = useSelector((state) => state.auth)
+  console.log(user)
+  const { updateUser } = useAccountCall()
   const [step, setStep] = useState(1)
   const navigate = useNavigate()
 
@@ -37,16 +40,10 @@ const SetupIndividual = () => {
           validationSchema={IndividualSchema}
           onSubmit={(values) => {
             console.log(values)
+            updateUser(values, user.userDetailsId._id)
           }}
         >
-          {({
-            isValid,
-            values,
-            setFieldValue,
-            handleSubmit,
-            touched,
-            errors
-          }) => (
+          {({ isValid, values, setFieldValue, handleSubmit, touched, errors }) => (
             <Form>
               {/* Progress indicator */}
               <div className="flex justify-center mb-8">
@@ -75,9 +72,9 @@ const SetupIndividual = () => {
                     onClick={(e) => {
                       // If ageRange or gender is not filled in, block the click
                       if (!(isValid && values.ageRange && values.gender)) {
-                        e.preventDefault();
+                        e.preventDefault()
                       } else {
-                        handleNext(isValid);
+                        handleNext(isValid)
                       }
                     }}
                   >
@@ -103,21 +100,21 @@ const SetupIndividual = () => {
                   </p>
 
                   <div className="w-3/5 md:w-2/5 mx-auto">
-                  <label className=" block text-gray-2 text-sm font-medium mb-1 text-start">
+                    <label className=" block text-gray-2 text-sm font-medium mb-1 text-start">
                       Age Range*
                     </label>
-                   
+
                     <Field
                       as="select"
                       name="ageRange"
                       className={`w-full bg-white dark:bg-black border ${
-      touched.ageRange && errors.ageRange
-        ? "border-danger"
-        : values.ageRange
-        ? "border-primary-green"
-        : "border-gray-1"
-    } font-medium ps-2 dark:text-white p-1 rounded-md cursor-pointer`}
-  >
+                        touched.ageRange && errors.ageRange
+                          ? "border-danger"
+                          : values.ageRange
+                            ? "border-primary-green"
+                            : "border-gray-1"
+                      } font-medium ps-2 dark:text-white p-1 rounded-md cursor-pointer`}
+                    >
                       <option value="">Choose Age Range</option>
                       <option value="16-25">16-25</option>
                       <option value="26-35">26-35</option>
@@ -133,22 +130,24 @@ const SetupIndividual = () => {
                   </div>
 
                   <div className="w-3/5 md:w-2/5 mx-auto mb-4">
-                    <label className="block text-gray-2 text-sm font-medium mb-1 text-start">Gender*</label>
+                    <label className="block text-gray-2 text-sm font-medium mb-1 text-start">
+                      Gender*
+                    </label>
                     <Field
                       as="select"
                       name="gender"
                       className={`w-full bg-white dark:bg-black border ${
-      touched.gender && errors.gender
-        ? "border-danger"
-        : values.gender
-        ? "border-primary-green"
-        : "border-gray-1"
-    } font-medium ps-2 dark:text-white p-1  rounded-md cursor-pointer`}
-  >
+                        touched.gender && errors.gender
+                          ? "border-danger"
+                          : values.gender
+                            ? "border-primary-green"
+                            : "border-gray-1"
+                      } font-medium ps-2 dark:text-white p-1  rounded-md cursor-pointer`}
+                    >
                       <option value="">Choose Gender</option>
-                      <option value="Male">Male</option>
-                      <option value="Female">Female</option>
-                      <option value="Prefer not to say">Prefer not to say</option>
+                      <option value="male">Male</option>
+                      <option value="female">Female</option>
+                      <option value="n/a">Prefer not to say</option>
                     </Field>
                     <div className="min-h-[1.5rem]">
                       <ErrorMessage
@@ -215,15 +214,17 @@ const SetupIndividual = () => {
                             : "100 text-gray-2"
                         }`}
                         onClick={() => {
-                          const newValue = interest;
+                          const newValue = interest
                           setFieldValue(
                             "interests",
                             values.interests.includes(newValue)
                               ? values.interests.filter((id) => id !== newValue)
                               : [...values.interests, newValue]
-                          );
+                          )
                         }}
-            disabled={!values.interests.includes(interest) && values.interests.length >= 3}
+                        disabled={
+                          !values.interests.includes(interest) && values.interests.length >= 3
+                        }
                       >
                         {interest}
                       </button>
@@ -234,8 +235,8 @@ const SetupIndividual = () => {
                     <button
                       type="button"
                       onClick={() => {
-                        handleSubmit(isValid) 
-                        navigate("/") 
+                        handleSubmit(isValid)
+                        navigate("/")
                       }}
                       disabled={!isValid}
                       className="mt-4 block w-1/4 py-2 text-dark-gray-1 border border-gray-1 text-center  rounded-md transition-colors"
@@ -246,8 +247,8 @@ const SetupIndividual = () => {
                     <button
                       type="button"
                       onClick={() => {
-                        handleSubmit(isValid) 
-                        navigate("/") 
+                        handleSubmit(isValid)
+                        navigate("/")
                       }}
                       disabled={!isValid}
                       className="mt-4 block w-1/5 py-2 text-center bg-primary-green text-white rounded-md transition-colors"
