@@ -1,14 +1,15 @@
+import { useDispatch } from "react-redux"
 import toastNotify from "../utils/toastNotify"
 import useAxios, { axiosWithPublic } from "./useAxios"
-
-const version = import.meta.env.VITE_VERSION
+import { getCategoriesSuccess } from "../features/searchSlice"
 
 const useEventCall = () => {
   const { axiosWithToken } = useAxios()
+  const dispatch = useDispatch()
 
   const getEvents = async (url) => {
     try {
-      const { data } = await axiosWithPublic(`${url}`)
+      const { data } = await axiosWithPublic(url)
       return data
     } catch (error) {
       console.log(error)
@@ -25,12 +26,21 @@ const useEventCall = () => {
     }
   }
 
+  const getEventCategories = async () => {
+    try {
+      const { data } = await axiosWithPublic("interests")
+      dispatch(getCategoriesSuccess(data.data))
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
   const postEvent = async (eventInfo) => {
     try {
       const { data } = await axiosWithToken.post(`events`, eventInfo)
       console.log(data)
       toastNotify("success", "Event created successfully")
-      getEvents("events")
+      // getEvents("events")
     } catch (error) {
       console.log(error)
       toastNotify(
@@ -71,7 +81,14 @@ const useEventCall = () => {
     }
   }
 
-  return { getEvents, getSingleEvent, postEvent, editEvent, deleteEvent }
+  return {
+    getEvents,
+    getSingleEvent,
+    getEventCategories,
+    postEvent,
+    editEvent,
+    deleteEvent,
+  }
 }
 
 export default useEventCall
