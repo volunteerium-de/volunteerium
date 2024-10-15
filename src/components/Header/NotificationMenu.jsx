@@ -1,44 +1,12 @@
+/* eslint-disable react/prop-types */
 import { useState, useEffect, useRef } from "react"
 import { FaBell } from "react-icons/fa"
 import { formatDistanceToNow } from "date-fns"
 
-// Mockup notifications
-const sampleNotifications = [
-  {
-    id: 1,
-    notificationTitle: "A new volunteer request is available.",
-    isRead: true,
-    timestamp: Date.now() - 15 * 60 * 1000, // 15 minutes ago
-  },
-  {
-    id: 2,
-    notificationTitle: "The time for your event has been updated. ",
-    isRead: true,
-    timestamp: Date.now() - 50 * 60 * 1000, // 50 minutes ago
-  },
-  {
-    id: 3,
-    notificationTitle: "Your request to join the event has been approved!",
-    isRead: false,
-    timestamp: Date.now() - 2 * 60 * 60 * 1000, // 2 hours ago
-  },
-  {
-    id: 4,
-    notificationTitle: "A new event is happening near you!",
-    isRead: false,
-    timestamp: Date.now() - 1 * 24 * 60 * 60 * 1000, // 1 day ago
-  },
-  {
-    id: 5,
-    notificationTitle: "Don't forget about the event tomorrow.",
-    isRead: false,
-    timestamp: Date.now() - 30 * 60 * 1000, // 30 minutes ago
-  },
-]
-
-const NotificationMenu = ({ notificationCount }) => {
+const NotificationMenu = ({ notifications, fetchNotifications }) => {
   const [isOpen, setIsOpen] = useState(false)
   const menuRef = useRef(null)
+  const wasOpen = useRef(false)
 
   // Toggle the notification dropdown
   const toggleNotificationMenu = () => {
@@ -64,6 +32,16 @@ const NotificationMenu = ({ notificationCount }) => {
     }
   }, [menuRef])
 
+  // Read notifications when the menu is closed
+  useEffect(() => {
+    if (wasOpen.current && !isOpen) {
+      if (notifications.some((notification) => notification.isRead === false)) {
+        fetchNotifications("/notifications/read-all")
+      }
+    }
+    wasOpen.current = isOpen
+  }, [isOpen, fetchNotifications])
+
   return (
     <div className="" ref={menuRef}>
       <div
@@ -74,9 +52,15 @@ const NotificationMenu = ({ notificationCount }) => {
         <FaBell className="text-primary-green dark:text-gray-2 h-7 w-7" />
 
         {/* Notification Count Badge */}
-        {notificationCount > 0 && (
-          <span className="select-none absolute top-0 right-0 h-5 w-5 bg-warning text-white rounded-full text-xs flex items-center justify-center">
-            {notificationCount}
+        {notifications.length > 0 && (
+          <span
+            className={`select-none absolute top-0 right-0 h-5 w-5 ${
+              notifications.find((notification) => notification?.isRead === false) && "bg-warning"
+            } text-white rounded-full text-xs flex items-center justify-center`}
+          >
+            {notifications.filter((notification) => notification.isRead === false).length
+              ? notifications.filter((notification) => notification.isRead === false).length
+              : ""}
           </span>
         )}
       </div>
@@ -89,11 +73,11 @@ const NotificationMenu = ({ notificationCount }) => {
 
           {/* Notification List */}
           <div className="max-h-80 overflow-y-auto">
-            {sampleNotifications.map(({ id, notificationTitle, isRead, timestamp }) => (
+            {notifications.map(({ _id, content, isRead, createdAt }) => (
               <div
-                key={id}
+                key={_id}
                 className={`p-3 border-b border-light-gray-2 dark:border-gray-2  ${
-                  isRead ? "bg-light-gray-2 dark:bg-dark-gray-2" : "bg-white dark:bg-dark-gray-3"
+                  isRead ? "bg-white dark:bg-dark-gray-3" : "bg-light-gray-2 dark:bg-dark-gray-2"
                 } shadow-md`}
               >
                 {/* Notification */}
@@ -104,11 +88,11 @@ const NotificationMenu = ({ notificationCount }) => {
                   <div>
                     {/* Notification Text */}
                     <h4 className="text-base font-normal text-primary-green dark:text-white ">
-                      {notificationTitle}
+                      {content}
                     </h4>
                     {/* Time Ago */}
                     <p className="text-xs font-light text-gray-2 dark:text-gray-1">
-                      {timeAgo(timestamp)}
+                      {timeAgo(createdAt)}
                     </p>
                   </div>
                 </div>
