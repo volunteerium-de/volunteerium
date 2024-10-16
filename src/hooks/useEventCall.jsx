@@ -1,7 +1,7 @@
 import { useDispatch } from "react-redux"
 import toastNotify from "../utils/toastNotify"
 import useAxios, { axiosWithPublic } from "./useAxios"
-import { getCategoriesSuccess } from "../features/searchSlice"
+import { fetchFail, fetchStart, getCategoriesSuccess } from "../features/searchSlice"
 
 const useEventCall = () => {
   const { axiosWithToken } = useAxios()
@@ -27,11 +27,13 @@ const useEventCall = () => {
   }
 
   const getEventCategories = async () => {
+    dispatch(fetchStart())
     try {
       const { data } = await axiosWithPublic("interests")
       dispatch(getCategoriesSuccess(data.data))
     } catch (error) {
       console.log(error)
+      dispatch(fetchFail())
     }
   }
 

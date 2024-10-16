@@ -52,6 +52,7 @@ export const {
   setCategoryFilters,
   setHomeSelectedCategory,
   clearFilters,
+  fetchFail,
 } = searchSlice.actions
 
 export default searchSlice.reducer
