@@ -7,7 +7,7 @@ import toastNotify from "../utils/toastNotify"
 const useAccountCall = () => {
   const navigate = useNavigate()
   const dispatch = useDispatch()
-  const axiosWithToken = useAxios()
+  const { axiosWithToken } = useAxios()
 
   const updateUser = async (userData, userDetailsId) => {
     dispatch(fetchStart())
