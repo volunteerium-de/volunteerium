@@ -17,8 +17,10 @@ const Header = () => {
 
   useEffect(() => {
     // Initial fetch
-    fetchNotifications("/notifications")
-  }, [])
+    if (user) {
+      fetchNotifications("/notifications")
+    }
+  }, [user])
 
   // socket-io listening for notifications
   useEffect(() => {
