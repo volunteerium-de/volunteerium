@@ -8,6 +8,7 @@ import {
   setHomeSelectedCategory,
   setManualLocation,
   clearFilters,
+  setCategoryFilters,
 } from "../../features/searchSlice"
 import { useNavigate } from "react-router-dom"
 
@@ -44,12 +45,14 @@ const SearchBar = () => {
 
   const handleCategorySelect = (category) => {
     dispatch(setHomeSelectedCategory(category.name))
+    dispatch(setCategoryFilters([category.name]))
     setIsDropdownOpen(false)
   }
 
   // Close dropdown when clicked outside
   useEffect(() => {
     getEventCategories()
+    dispatch(clearFilters())
     const handleClickOutside = (event) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
         setIsDropdownOpen(false)
@@ -78,7 +81,6 @@ const SearchBar = () => {
     if (filters.length > 0) {
       const query = filters.join("&")
       navigate(`events?${query}`)
-      dispatch(clearFilters())
     } else {
       navigate("events")
     }

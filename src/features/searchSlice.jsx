@@ -30,7 +30,9 @@ const searchSlice = createSlice({
     },
     setHomeSelectedCategory: (state, { payload }) => {
       state.homeSelectedCategory = payload
-      state.categoryFilters = [payload]
+    },
+    setCategoryFilters: (state, { payload }) => {
+      state.categoryFilters = [...new Set([state.homeSelectedCategory, ...payload])]
     },
     clearFilters: (state) => {
       Object.assign(state, initialState)
@@ -47,6 +49,7 @@ export const {
   getCategoriesSuccess,
   setSearchTerm,
   setManualLocation,
+  setCategoryFilters,
   setHomeSelectedCategory,
   clearFilters,
 } = searchSlice.actions
