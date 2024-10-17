@@ -2,63 +2,17 @@ import { useState, useEffect, useRef } from "react"
 import { FaEnvelope } from "react-icons/fa"
 import { formatDistanceToNow } from "date-fns"
 import { Link } from "react-router-dom"
+import { useSocket } from "../../context/SocketContext"
+import { useSelector } from "react-redux"
+import { useNavigate } from "react-router-dom"
+import { formatName } from "../../helpers/formatName"
 
-// Sample messages
-const sampleMessages = [
-  {
-    id: 1,
-    event: "Charity Run",
-    message: "Your registration is confirmed for the event.",
-    unread: true,
-    timestamp: Date.now() - 10 * 60 * 1000, // 10 minutes ago
-  },
-  {
-    id: 2,
-    event: "Food Drive",
-    message: "Thank you for volunteering! Please check the details.",
-    unread: false,
-    timestamp: Date.now() - 30 * 60 * 1000, // 30 minutes ago
-  },
-  {
-    id: 3,
-    event: "Tree Planting",
-    message: "Remember to bring your tools and gloves.",
-    unread: true,
-    timestamp: Date.now() - 20 * 60 * 1000, // 20 minutes ago
-  },
-  {
-    id: 4,
-    event: "Beach Cleanup",
-    message: "Meeting point is the north end of the beach.",
-    unread: false,
-    timestamp: Date.now() - 5 * 60 * 1000, // 5 minutes ago
-  },
-  {
-    id: 5,
-    event: "Blood Donation",
-    message: "Don’t forget to bring your ID and health card.",
-    unread: false,
-    timestamp: Date.now() - 1 * 60 * 1000, // 1 minute ago
-  },
-  {
-    id: 6,
-    event: "Blood Donation",
-    message: "Don’t forget to bring your ID and health card.",
-    unread: false,
-    timestamp: Date.now() - 1 * 60 * 1000, // 1 minute ago
-  },
-  {
-    id: 7,
-    event: "Blood Donation",
-    message: "Don’t forget to bring your ID and health card.",
-    unread: false,
-    timestamp: Date.now() - 1 * 60 * 1000, // 1 minute ago
-  },
-]
-
-const MessageMenu = ({ messageCount }) => {
+const MessageMenu = () => {
   const [isOpen, setIsOpen] = useState(false)
   const menuRef = useRef(null)
+  const navigate = useNavigate()
+  const { newMessages } = useSocket()
+  const { currentUser } = useSelector((state) => state.auth)
 
   // Toggle the message dropdown
   const toggleMessageMenu = () => {
@@ -82,6 +36,13 @@ const MessageMenu = ({ messageCount }) => {
     }
   }, [menuRef])
 
+  const isUserInReaderIds = (readerIds) => {
+    const isRead = readerIds.includes(String(currentUser._id))
+    return isRead
+  }
+
+  console.log(newMessages)
+
   return (
     <div className="" ref={menuRef}>
       <div
@@ -92,9 +53,9 @@ const MessageMenu = ({ messageCount }) => {
         <FaEnvelope className="text-primary-green dark:text-gray-2 h-7 w-7" />
 
         {/* Message Count Badge */}
-        {messageCount > 0 && (
+        {newMessages && newMessages.length > 0 && (
           <span className="select-none absolute top-0 right-0 h-5 w-5 bg-warning text-white rounded-full text-xs flex items-center justify-center">
-            {messageCount}
+            {newMessages.length}
           </span>
         )}
       </div>
@@ -110,33 +71,78 @@ const MessageMenu = ({ messageCount }) => {
 
           {/* Message List */}
           <div className="max-h-80 overflow-y-auto">
-            {sampleMessages.map(({ id, event, message, isRead, timestamp }) => (
-              <div
-                key={id}
-                className={`p-3 border-b border-light-gray-2 dark:border-gray-2 ${
-                  isRead ? "bg-light-gray-2 dark:bg-dark-gray-2" : "bg-white dark:bg-dark-gray-3"
-                } shadow-md`}
-              >
-                {/* Message */}
-                <div className="flex items-center">
-                  {/* Event Title */}
-                  <h4 className="font-medium text-base text-primary-green dark:text-white">
-                    {event}
-                  </h4>
-                  {isRead && (
-                    <span className="inline-block h-2 w-2 bg-primary-green dark:bg-white rounded-full ml-2"></span>
-                  )}
-                </div>
-                {/* Message Text */}
-                <p className="text-sm font-light text-gray-2 dark:text-gray-1 truncate">
-                  {message}
-                </p>
-                {/* Time Ago */}
-                <p className="text-xs font-thin text-gray-2 dark:text-gray-1">
-                  {timeAgo(timestamp)}
+            {newMessages && newMessages.length ? (
+              newMessages.map(
+                ({
+                  _id,
+                  conversationId,
+                  conversationOwner,
+                  eventId,
+                  content,
+                  readerIds,
+                  createdAt,
+                  senderId,
+                }) => {
+                  const isRead = isUserInReaderIds(readerIds)
+                  const { title, eventPhoto, createdBy } = eventId
+                  const { fullName, organizationName, userType, userDetailsId } = senderId
+                  const { isFullNameDisplay } = userDetailsId
+                  const name =
+                    userType === "individual" || userType === "admin" ? fullName : organizationName
+                  return (
+                    <div
+                      key={_id}
+                      // onClick={() => navigate(`/event-management?tab=messages&conversation=${conversationId}`)}
+                      className={`p-3 border-b border-light-gray-2 dark:border-gray-2 dark:bg-dark-gray-2 hover:bg-light-gray-2 dark:hover:bg-dark-gray-1 shadow-md cursor-pointer`}
+                    >
+                      <div className="flex gap-2 items-start">
+                        <div className="w-12">
+                          {/* Event Photo */}
+                          <img
+                            src={eventPhoto}
+                            alt={title}
+                            className="object-fit h-10 w-full rounded-full border-2 border-primary-green dark:border-gray-2"
+                          />
+                        </div>
+                        {/* Message */}
+                        <div className="flex flex-col w-full">
+                          <div className="flex items-center">
+                            {/* Event Title */}
+                            <h4 className="font-medium text-base text-primary-green dark:text-white">
+                              {title}
+                            </h4>
+
+                            {isRead && (
+                              <span className="inline-block h-2 w-2 bg-primary-green dark:bg-white rounded-full ml-2"></span>
+                            )}
+                          </div>
+                          {/* Sender Name */}
+                          <p className="font-medium text-[0.9rem] text-gray-2 dark:text-white">
+                            {conversationOwner === createdBy
+                              ? "Announcement"
+                              : formatName(name, isFullNameDisplay)}
+                          </p>
+                          {/* Message Text */}
+                          <p className="text-sm font-light text-gray-2 dark:text-gray-1 truncate">
+                            {content}
+                          </p>
+                          {/* Time Ago */}
+                          <p className="text-xs font-light text-right text-gray-2 dark:text-gray-1">
+                            {timeAgo(createdAt)}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  )
+                }
+              )
+            ) : (
+              <div>
+                <p className="text-center text-gray-2 py-3 dark:text-light-gray-2">
+                  No new messages
                 </p>
               </div>
-            ))}
+            )}
           </div>
         </div>
       )}

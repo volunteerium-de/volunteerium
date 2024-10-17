@@ -2,8 +2,10 @@
 import { useState, useEffect, useRef } from "react"
 import { FaBell } from "react-icons/fa"
 import { formatDistanceToNow } from "date-fns"
+import { useSocket } from "../../context/SocketContext"
 
-const NotificationMenu = ({ notifications, fetchNotifications }) => {
+const NotificationMenu = () => {
+  const { notifications, fetchNotifications } = useSocket()
   const [isOpen, setIsOpen] = useState(false)
   const menuRef = useRef(null)
   const wasOpen = useRef(false)
@@ -73,31 +75,39 @@ const NotificationMenu = ({ notifications, fetchNotifications }) => {
 
           {/* Notification List */}
           <div className="max-h-80 overflow-y-auto">
-            {notifications.map(({ _id, content, isRead, createdAt }) => (
-              <div
-                key={_id}
-                className={`p-3 border-b border-light-gray-2 dark:border-gray-2  ${
-                  isRead ? "bg-white dark:bg-dark-gray-3" : "bg-light-gray-2 dark:bg-dark-gray-2"
-                } shadow-md`}
-              >
-                {/* Notification */}
-                <div className="flex items-center">
-                  {isRead && (
-                    <span className="inline-block h-2 w-2 bg-primary-green dark:bg-white rounded-full mr-2"></span>
-                  )}
-                  <div>
-                    {/* Notification Text */}
-                    <h4 className="text-base font-normal text-primary-green dark:text-white ">
-                      {content}
-                    </h4>
-                    {/* Time Ago */}
-                    <p className="text-xs font-light text-gray-2 dark:text-gray-1">
-                      {timeAgo(createdAt)}
-                    </p>
+            {notifications.length > 0 ? (
+              notifications.map(({ _id, content, isRead, createdAt }) => (
+                <div
+                  key={_id}
+                  className={`p-3 border-b border-light-gray-2 dark:border-gray-2  ${
+                    isRead ? "bg-white dark:bg-dark-gray-3" : "bg-light-gray-2 dark:bg-dark-gray-2"
+                  } shadow-md`}
+                >
+                  {/* Notification */}
+                  <div className="flex items-center">
+                    {isRead && (
+                      <span className="inline-block h-2 w-2 bg-primary-green dark:bg-white rounded-full mr-2"></span>
+                    )}
+                    <div>
+                      {/* Notification Text */}
+                      <h4 className="text-base font-normal text-primary-green dark:text-white ">
+                        {content}
+                      </h4>
+                      {/* Time Ago */}
+                      <p className="text-xs font-light text-gray-2 dark:text-gray-1">
+                        {timeAgo(createdAt)}
+                      </p>
+                    </div>
                   </div>
                 </div>
+              ))
+            ) : (
+              <div>
+                <p className="text-center text-gray-2 py-3 dark:text-light-gray-2">
+                  No notifications
+                </p>
               </div>
-            ))}
+            )}
           </div>
         </div>
       )}
