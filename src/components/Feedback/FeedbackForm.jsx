@@ -1,8 +1,8 @@
 // src/components/Feedback/FeedbackForm.jsx
 
-import React from 'react';
-import { Formik, Field, Form } from 'formik';
-import * as Yup from 'yup';
+import React from "react"
+import { Formik, Field, Form } from "formik"
+import * as Yup from "yup"
 
 const validationSchema = Yup.object({
   name: Yup.string()
@@ -15,34 +15,36 @@ const validationSchema = Yup.object({
   subject: Yup.string()
     .min(3, "Must be at least 3 characters")
     .max(50, "Can be maximum 50 characters")
-    .required("Feedback subject is required"),
+    .required("Message subject is required"),
   feedback: Yup.string()
     .min(10, "Must be at least 10 characters")
     .max(1000, "Can be maximum 1000 characters")
-    .required("Feedback is a required field"),
-});
+    .required("Message is a required field"),
+})
 
 const FeedbackForm = () => {
   return (
     <Formik
       initialValues={{
-        name: '',
-        email: '',
-        subject: '',
-        feedback: '',
+        name: "",
+        email: "",
+        subject: "",
+        feedback: "",
       }}
       validationSchema={validationSchema}
       onSubmit={(values, { setSubmitting, resetForm }) => {
-        console.log(values);
-        setSubmitting(false);
-        resetForm();
+        console.log(values)
+        setSubmitting(false)
+        resetForm()
       }}
     >
       {({ errors, touched }) => (
         <Form className="space-y-4 dark:bg-gray-900">
           {/* Name Field */}
           <div>
-            <p className="text-gray-2 dark:text-white text-[0.875rem] md:text-[1rem] lg:text-[1.125rem]">Name</p>
+            <p className="text-gray-2 dark:text-white text-[0.875rem] md:text-[1rem] lg:text-[1.125rem]">
+              Name
+            </p>
             <Field
               type="text"
               name="name"
@@ -60,7 +62,9 @@ const FeedbackForm = () => {
 
           {/* Email Field */}
           <div>
-            <p className="text-gray-2 dark:text-white text-[0.875rem] md:text-[1rem] lg:text-[1.125rem]">Email Address</p>
+            <p className="text-gray-2 dark:text-white text-[0.875rem] md:text-[1rem] lg:text-[1.125rem]">
+              Email Address
+            </p>
             <Field
               type="email"
               name="email"
@@ -78,7 +82,9 @@ const FeedbackForm = () => {
 
           {/* Feedback Subject Field */}
           <div>
-            <p className="text-gray-2 dark:text-white text-[0.875rem] md:text-[1rem] lg:text-[1.125rem]">Message Subject</p>
+            <p className="text-gray-2 dark:text-white text-[0.875rem] md:text-[1rem] lg:text-[1.125rem]">
+              Message Subject
+            </p>
             <Field
               type="text"
               name="subject"
@@ -96,7 +102,9 @@ const FeedbackForm = () => {
 
           {/* Feedback Field */}
           <div>
-            <p className="text-gray-2 dark:text-white text-[0.875rem] md:text-[1rem] lg:text-[1.125rem]">Message</p>
+            <p className="text-gray-2 dark:text-white text-[0.875rem] md:text-[1rem] lg:text-[1.125rem]">
+              Message
+            </p>
             <Field
               as="textarea"
               name="feedback"
@@ -128,7 +136,7 @@ const FeedbackForm = () => {
         </Form>
       )}
     </Formik>
-  );
-};
+  )
+}
 
-export default FeedbackForm;
+export default FeedbackForm

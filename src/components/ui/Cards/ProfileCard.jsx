@@ -13,7 +13,7 @@ const ProfileCard = ({ events, loading, eventType, setEventType, setCurrentPage 
   return (
     <>
       <div className="py-4 ">
-        <div className="flex gap-10 font-semibold text-xl my-4">
+        <div className="flex gap-10 font-semibold text-xl my-4 text-dark-gray-1">
           <div
             className={`text-[0.9375rem] cursor-pointer border-b-2 ${
               eventType === "Attended Events"
@@ -63,13 +63,13 @@ const ProfileCard = ({ events, loading, eventType, setEventType, setCurrentPage 
                 <img
                   src={event?.eventPhoto || defaultImage}
                   alt={event.title}
-                  className="w-full h-full sm:h-full xl:h-[210px] object-cover rounded-l-lg overflow-hidden"
+                  className="w-full h-full lg:h-[190px] object-cover rounded-l-lg overflow-hidden"
                 />
               </div>
 
               {/* Info */}
               <div className="flex w-1/2 my-2">
-                <div className="flex flex-col gap-2 justify-between w-[45vw] sm:w-[26vw] lg:w-full py-2 ml-4 sm:ml-0 text-[0.9375rem]">
+                <div className="flex flex-col gap-2 justify-between w-[45vw] lg:w-full py-2 ml-4 sm:ml-0 text-[0.9375rem]">
                   <h2 className="text-base md:text-xl font-semibold text-dark-gray-1 dark:text-white">
                     {event.title}
                   </h2>
@@ -91,13 +91,14 @@ const ProfileCard = ({ events, loading, eventType, setEventType, setCurrentPage 
                     </div>
                     <div className="flex gap-2 text-sm sm:text-[0.9375rem] text-gray-2 dark:text-white">
                       <FaRegCalendarAlt className="mt-0.5 ml-0.5 text-[1.1rem] text-primary-green dark:text-light-gray" />
-                      {formatDate(event?.startDate)} - {formatDate(event?.endDate)}
+                      {formatDate(event?.startDate)}
+                      <span className="hidden xl:block">- {formatDate(event?.endDate)}</span>
                     </div>
 
                     <div className="flex gap-2 ml-0.5 text-sm sm:text-[0.9375rem] text-gray-2 dark:text-white">
                       <HiOutlineUserGroup className="text-[1.1rem] text-primary-green dark:text-light-gray" />
                       {event.eventParticipantIds.length}/{event.maxParticipant}
-                      <p>people joined</p>
+                      <p>joined</p>
                     </div>
                   </div>
                   {/* // Interest */}
@@ -114,11 +115,11 @@ const ProfileCard = ({ events, loading, eventType, setEventType, setCurrentPage 
                 </div>
               </div>
 
-              <div
-                onClick={() => navigate(`/events/${event._id}`)}
-                className="flex items-center border-l-2 border-primary-green opacity-0 md:mr-3 xl:mr-8 group-hover:opacity-80 transition-opacity duration-300 cursor-pointer dark:border-light-gray-3"
-              >
-                <MdKeyboardArrowRight className="text-[3rem] lg:ml-4 text-primary-green dark:text-light-gray-2" />
+              <div className="flex items-center xl:border-l border-primary-green opacity-0 md:mr-3 group-hover:opacity-80 transition-opacity duration-300 dark:border-light-gray-3">
+                <MdKeyboardArrowRight
+                  onClick={() => navigate(`/events/${event._id}`)}
+                  className=" text-[2rem] xl:ml-4 text-primary-green dark:text-light-gray-2  cursor-pointer"
+                />
               </div>
             </div>
           ))}
