@@ -17,10 +17,7 @@ export const SocketProvider = ({ children }) => {
   const { currentUser, bearer } = useSelector((state) => state.auth)
   const [conversations, setConversations] = useState([])
   const [notifications, setNotifications] = useState([])
-  const [newMessages, setNewMessages] = useState([])
   const { axiosWithToken } = useAxios()
-
-  console.log("Conversations: ", conversations)
 
   useEffect(() => {
     if (currentUser) {
@@ -60,25 +57,6 @@ export const SocketProvider = ({ children }) => {
     }
   }, [socket])
 
-  useEffect(() => {
-    if (conversations.length) {
-      let unreadMessages = []
-      conversations.forEach((conversation) => {
-        conversation.messageIds.forEach((message) => {
-          if (!message.readerIds.includes(currentUser._id)) {
-            unreadMessages.unshift({
-              ...message,
-              eventId: conversation.eventId,
-              conversationOwner: conversation.createdBy._id,
-            })
-          }
-        })
-      })
-
-      setNewMessages(unreadMessages)
-    }
-  }, [conversations])
-
   const fetchNotifications = async (url) => {
     try {
       const { data } = await axiosWithToken.get(url)
@@ -92,7 +70,7 @@ export const SocketProvider = ({ children }) => {
 
   const fetchConversations = async () => {
     const { data } = await axiosWithToken.get(`/conversations`)
-    console.log(data)
+    // console.log(data)
     setConversations(data.data)
   }
 
@@ -130,7 +108,6 @@ export const SocketProvider = ({ children }) => {
     notifications,
     fetchNotifications,
     conversations,
-    newMessages,
     createConversation,
     deleteConversation,
   }
