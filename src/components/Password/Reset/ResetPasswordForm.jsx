@@ -7,14 +7,14 @@ import { IoIosArrowBack } from "react-icons/io"
 import { MdVisibility, MdVisibilityOff } from "react-icons/md"
 import { useNavigate } from "react-router-dom"
 import logo from "../../../assets/logo.png"
-import useAxios from "../../../hooks/useAxios"
+import { axiosWithPublic } from "../../../hooks/useAxios"
 import toastNotify from "../../../utils/toastNotify"
 
 const ResetPasswordForm = ({ identifier, email }) => {
   const navigate = useNavigate()
   const [showPassword, setShowPassword] = useState(false)
   const [showConfirmPassword, setShowConfirmPassword] = useState(false)
-  const axiosWithPublic = useAxios()
+  
 
   const resetNewPassword = async (newPassword) => {
     if (email && identifier) {

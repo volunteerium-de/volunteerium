@@ -7,11 +7,11 @@ import { IoIosArrowBack } from "react-icons/io"
 import { useNavigate } from "react-router-dom"
 import logo from "../../../assets/logo.png"
 import toastNotify from "../../../utils/toastNotify"
-import useAxios from "../../../hooks/useAxios"
+import { axiosWithPublic } from "../../../hooks/useAxios"
 
 const ForgotPasswordForm = ({ setIssue, setIdentifier, setEmail }) => {
   const navigate = useNavigate()
-  const axiosWithPublic = useAxios()
+ 
 
   const forgotPassword = async (email) => {
     try {
