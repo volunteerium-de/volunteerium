@@ -108,7 +108,7 @@ const ResetPasswordForm = ({ identifier, email }) => {
             value={formik.values.newPassword}
             placeholder="Enter your new password"
             className={`w-full border dark:border-white rounded-lg text-[1rem] placeholder-dark-gray-1 dark:placeholder-white p-3 h-[2.625rem] md:h-[3rem] focus:outline-none focus:border-primary-green 
-              ${formik.touched.newPassword && formik.errors.newPassword ? "border-red" : "border-gray-1"}`}
+              ${formik.touched.newPassword && formik.errors.newPassword ? "border-danger" : "border-gray-1"}`}
           />
           <div className="absolute inset-y-0 text-primary-green dark:text-light-green right-3 pr-3 flex items-center text-2xl cursor-pointer">
             {showPassword ? (
@@ -120,7 +120,7 @@ const ResetPasswordForm = ({ identifier, email }) => {
         </div>
         <div className="h-[1.25rem]">
           {formik.touched.newPassword && formik.errors.newPassword && (
-            <p className="text-red-500 text-[0.875rem]">{formik.errors.newPassword}</p>
+            <p className="text-danger text-[0.875rem]">{formik.errors.newPassword}</p>
           )}
         </div>
       </div>
@@ -140,7 +140,7 @@ const ResetPasswordForm = ({ identifier, email }) => {
             value={formik.values.confirmPassword}
             placeholder="Confirm your new password"
             className={`w-full border dark:border-white rounded-lg text-[1rem] placeholder-dark-gray-1 dark:placeholder-white p-3 h-[2.625rem] md:h-[3rem] focus:outline-none focus:border-primary-green 
-              ${formik.touched.confirmPassword && formik.errors.confirmPassword ? "border-red" : "border-gray-1"}`}
+              ${formik.touched.confirmPassword && formik.errors.confirmPassword ? "border-danger" : "border-gray-1"}`}
           />
           <div className="absolute inset-y-0 text-primary-green dark:text-light-green right-3 pr-3 flex items-center text-2xl cursor-pointer">
             {showConfirmPassword ? (
@@ -152,7 +152,7 @@ const ResetPasswordForm = ({ identifier, email }) => {
         </div>
         <div className="h-[1.25rem]">
           {formik.touched.confirmPassword && formik.errors.confirmPassword && (
-            <p className="text-red-500 text-[0.875rem]">{formik.errors.confirmPassword}</p>
+            <p className="text-danger text-[0.875rem]">{formik.errors.confirmPassword}</p>
           )}
         </div>
       </div>
