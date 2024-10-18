@@ -4,7 +4,7 @@ import React, { useState, useEffect, useRef } from "react"
 import { IoIosArrowBack } from "react-icons/io"
 import logo from "../../../assets/logo.png"
 import { useNavigate } from "react-router-dom"
-import useAxios from "../../../hooks/useAxios"
+import { axiosWithPublic } from "../../../hooks/useAxios"
 import toastNotify from "../../../utils/toastNotify"
 
 const VerificationForm = ({ setIssue, identifier, setIdentifier, email }) => {
@@ -13,7 +13,7 @@ const VerificationForm = ({ setIssue, identifier, setIdentifier, email }) => {
   const [timerMessage, setTimerMessage] = useState("If you didn’t receive a code!") // Message changes when time runs out
   const inputRefs = useRef([]) // References for code input boxes
   const navigate = useNavigate()
-  const axiosWithPublic = useAxios()
+ 
 
   const resendForgotPassword = async () => {
     if (email) {
