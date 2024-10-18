@@ -92,7 +92,7 @@ const LoginForm = () => {
               {touched.password && errors.password && (
                 <p className="text-danger text-[0.875rem]">{errors.password}</p>
               )}
-              <Link to="/forgot-password">
+              <Link to="/password">
                 <p className="text-sm justify-end text-dark-green dark:text-white underline cursor-pointer">
                   Forgot your password?
                 </p>

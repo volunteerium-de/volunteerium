@@ -13,6 +13,7 @@ import SetupOrganization from "../pages/SetupOrganization"
 import SetupIndividual from "../pages/SetupIndividual"
 import Profile from "../pages/Profile"
 import FAQuestion from "../pages/FAQuestion"
+import Password from "../pages/Password"
 import UserSettings from "../pages/UserSettings"
 import EmailVerify from "../components/UserEmailVerification/EmailVerify"
 import { Navigate } from "react-router-dom"
@@ -28,6 +29,14 @@ const AppRouter = () => {
         <Route path="faq" element={<FAQuestion />} />
         <Route path="feedback" element={<Feedback />} />
         <Route path="profile/:userId" element={<Profile />} />
+        <Route path="password" element={<Password />} />
+
+        <Route element={<PrivateRouter />}>
+          {/* <Route path="profile/:userId" element={<Profile />} /> */}
+          <Route path="/settings" element={<UserSettings />} />
+          {/* <Route path="" element={< />} /> */}
+          {/* <Route path="" element={< />} /> */}
+        </Route>
         <Route path="*" element={<NotFound />} />
 
         {!user ? (
