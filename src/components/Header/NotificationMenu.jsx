@@ -2,10 +2,12 @@
 import { useState, useEffect, useRef } from "react"
 import { FaBell } from "react-icons/fa"
 import { formatDistanceToNow } from "date-fns"
-import { useSocket } from "../../context/SocketContext"
+import { useSelector } from "react-redux"
+import useChatCall from "../../hooks/useChatCall"
 
 const NotificationMenu = () => {
-  const { notifications, fetchNotifications } = useSocket()
+  const { fetchNotifications } = useChatCall()
+  const { notifications } = useSelector((state) => state.chat)
   const [isOpen, setIsOpen] = useState(false)
   const menuRef = useRef(null)
   const wasOpen = useRef(false)

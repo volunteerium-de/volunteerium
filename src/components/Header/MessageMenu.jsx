@@ -2,7 +2,6 @@ import { useState, useEffect, useRef } from "react"
 import { FaEnvelope } from "react-icons/fa"
 import { formatDistanceToNow } from "date-fns"
 import { Link } from "react-router-dom"
-import { useSocket } from "../../context/SocketContext"
 import { useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom"
 import { formatName } from "../../helpers/formatName"
@@ -11,8 +10,8 @@ const MessageMenu = () => {
   const [isOpen, setIsOpen] = useState(false)
   const menuRef = useRef(null)
   const navigate = useNavigate()
-  const { conversations } = useSocket()
   const { currentUser } = useSelector((state) => state.auth)
+  const { conversations } = useSelector((state) => state.chat)
   const [totalUnreadCount, setTotalUnreadCount] = useState(0)
 
   // Toggle the message dropdown
@@ -109,8 +108,8 @@ const MessageMenu = () => {
                   return (
                     <div
                       key={_id}
-                      // onClick={() => navigate(`/event-management?tab=messages&conversation=${conversationId}`)}
-                      className={`p-3 border-b border-light-gray-2 dark:border-gray-2 dark:bg-dark-gray-2 hover:bg-light-gray-2 dark:hover:bg-dark-gray-1 shadow-md cursor-pointer`}
+                      // onClick={() => navigate(`/event-management?tab=messages&conversation=${_id}`)}
+                      className={`${unreadCount > 0 && "bg-light-gray-3"} p-3 border-b border-light-gray-2 dark:border-gray-2 dark:bg-dark-gray-2 hover:bg-light-gray-2 dark:hover:bg-dark-gray-1 shadow-md cursor-pointer`}
                     >
                       <div className="flex gap-2 items-start w-full">
                         <div className="w-[14%]">
@@ -130,19 +129,21 @@ const MessageMenu = () => {
                             </h4>
 
                             {unreadCount > 0 && (
-                              <span className="inline-flex items-center justify-center p-1 h-5 w-4 text-xs bg-warning dark:bg-white text-white dark:text-warning ml-2">
+                              <span className="inline-flex items-center justify-center p-1 h-5 w-4 text-xs bg-warning text-white  ml-2">
                                 {unreadCount}
                               </span>
                             )}
                           </div>
                           {/* Sender Name */}
-                          <p className="font-medium text-[0.9rem] text-gray-2 dark:text-white">
-                            {createdBy._id === eventId.createdBy
-                              ? "Announcement"
-                              : formatName(name, isFullNameDisplay)}
+                          <p className="font-medium text-[0.9rem] text-gray-2 dark:text-gray-1">
+                            {currentUser._id === latestMessage.senderId._id
+                              ? "You"
+                              : createdBy._id === eventId.createdBy
+                                ? "Announcement"
+                                : formatName(name, isFullNameDisplay)}
                           </p>
                           {/* Message Text */}
-                          <p className="text-sm font-light text-gray-2 dark:text-gray-1 truncate">
+                          <p className="text-sm font-light text-dark-gray-2 dark:text-gray-1 truncate">
                             {latestMessage.content}
                           </p>
                           {/* Time Ago */}

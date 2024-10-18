@@ -1,22 +1,21 @@
-/* eslint-disable react-refresh/only-export-components */
-/* eslint-disable react/prop-types */
-import React, { createContext, useContext, useEffect, useState } from "react"
-import { useSelector } from "react-redux"
-import io from "socket.io-client"
-import useAxios from "../hooks/useAxios"
+import { useDispatch } from "react-redux"
+import {
+  fetchFail,
+  fetchStart,
+  notificationSuccess,
+  conversationSuccess,
+} from "../features/chatSlice"
 import toastNotify from "../utils/toastNotify"
+import { useEffect } from "react"
+import io from "socket.io-client"
+import useAxios from "./useAxios"
+import { useState } from "react"
+import { useSelector } from "react-redux"
 
-const SocketContext = createContext(null)
-
-export const useSocket = () => {
-  return useContext(SocketContext)
-}
-
-export const SocketProvider = ({ children }) => {
+const useChatCall = () => {
   const [socket, setSocket] = useState(null)
+  const dispatch = useDispatch()
   const { currentUser, bearer } = useSelector((state) => state.auth)
-  const [conversations, setConversations] = useState([])
-  const [notifications, setNotifications] = useState([])
   const { axiosWithToken } = useAxios()
 
   useEffect(() => {
@@ -43,7 +42,7 @@ export const SocketProvider = ({ children }) => {
   useEffect(() => {
     if (socket) {
       socket.on("receive_notifications", (data) => {
-        if (data.find((n) => n.userId === currentUser._id)) setNotifications(data)
+        if (data.find((n) => n.userId === currentUser._id)) dispatch(notificationSuccess(data))
       })
 
       socket.on("receive_conversations", () => {
@@ -58,32 +57,55 @@ export const SocketProvider = ({ children }) => {
   }, [socket])
 
   const fetchNotifications = async (url) => {
+    dispatch(fetchStart())
     try {
       const { data } = await axiosWithToken.get(url)
       // console.log(data)
-      setNotifications(data.data)
+      dispatch(notificationSuccess(data.data))
     } catch (error) {
+      dispatch(fetchFail())
       console.log(error)
-      toastNotify("error", error.message)
     }
   }
 
   const fetchConversations = async () => {
-    const { data } = await axiosWithToken.get(`/conversations`)
-    // console.log(data)
-    setConversations(data.data)
+    dispatch(fetchStart())
+    try {
+      const { data } = await axiosWithToken.get(`/conversations`)
+      // console.log(data)
+      dispatch(conversationSuccess(data.data))
+    } catch (error) {
+      dispatch(fetchFail())
+      console.log(error)
+    }
+  }
+
+  const sendMessage = async (content, conversationId) => {
+    if (content) {
+      try {
+        await axiosWithToken.post(`/messages`, { content, conversationId })
+      } catch (error) {
+        console.log(error)
+        toastNotify("error", error.message)
+      }
+    } else {
+      toastNotify("error", "Please enter a message.")
+    }
   }
 
   const createConversation = async (eventId, participantId) => {
+    dispatch(fetchStart())
     if ((eventId, participantId)) {
       try {
-        await axiosWithToken.post(`/conversations`, {
+        const { data } = await axiosWithToken.post(`/conversations`, {
           eventId,
           participantIds: [participantId],
         })
+        // In Single Event Page , user will click send messages button, after that one conversation will be created. We just navigate with this conversationId to chat section
+        return data.data._id
       } catch (error) {
-        // console.log(error);
-        toastNotify("error", error.message)
+        console.log(error)
+        dispatch(fetchFail())
       }
     } else {
       toastNotify("error", "Event ID or Participant ID are missing.")
@@ -99,18 +121,11 @@ export const SocketProvider = ({ children }) => {
         toastNotify("error", error.message)
       }
     } else {
-      toastNotify("error", "Conversation ID is missing.")
+      toastNotify("error", "Please select a conversation!")
     }
   }
 
-  const values = {
-    socket,
-    notifications,
-    fetchNotifications,
-    conversations,
-    createConversation,
-    deleteConversation,
-  }
-
-  return <SocketContext.Provider value={values}>{children}</SocketContext.Provider>
+  return { fetchConversations, sendMessage, createConversation, deleteConversation }
 }
+
+export default useChatCall

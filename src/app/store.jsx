@@ -13,6 +13,7 @@ import storage from "redux-persist/lib/storage"
 import authReducer from "../features/authSlice"
 import themeReducer from "../features/themeSlice"
 import searchReducer from "../features/searchSlice"
+import chatReducer from "../features/chatSlice"
 
 const persistConfig = {
   key: "root",
@@ -26,6 +27,7 @@ const store = configureStore({
     auth: persistedReducer,
     theme: themeReducer,
     search: searchReducer,
+    chat: chatReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
