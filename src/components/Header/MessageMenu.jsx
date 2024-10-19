@@ -94,7 +94,8 @@ const MessageMenu = () => {
 
           {/* Message List */}
           <div className="max-h-80 overflow-y-auto">
-            {conversations && conversations.length ? (
+            {conversations &&
+            conversations.filter(({ messageIds }) => messageIds && messageIds.length > 0).length ? (
               conversations
                 .filter(({ messageIds }) => messageIds && messageIds.length > 0)
                 .map(({ _id, eventId, createdBy, messageIds }) => {
@@ -157,9 +158,7 @@ const MessageMenu = () => {
                 })
             ) : (
               <div>
-                <p className="text-center text-gray-2 py-3 dark:text-light-gray-2">
-                  No new messages
-                </p>
+                <p className="text-center text-gray-2 py-3 dark:text-light-gray-2">No messages</p>
               </div>
             )}
           </div>
