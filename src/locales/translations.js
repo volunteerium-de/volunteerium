@@ -44,7 +44,7 @@ export const translations = {
         aboutUs: "footer.aboutUs",
         careers: "footer.careers",
         investors: "footer.investors",
-        h2: "footer.followUs",
+        h2: "footer.h2",
         faq: "footer.faq",
         contact: "footer.contact",
         privacyPolicy: "footer.privacyPolicy",
