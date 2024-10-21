@@ -21,7 +21,7 @@ const validationSchema = Yup.object({
 const LoginForm = () => {
   const [showPassword, setShowPassword] = useState(false)
   const passwordTimeoutRef = useRef(null)
-  const { login } = useAuthCall()
+  const { login, authWithGoogle } = useAuthCall()
 
   useEffect(() => {
     return () => {
@@ -123,7 +123,10 @@ const LoginForm = () => {
               <div className="flex-1 border-t border-gray-2 dark:border-white"></div>
             </div>
 
-            <button className="flex items-center justify-center w-[60%] md:w-auto text-gray-2 dark:text-white text-sm md:text-base py-3 px-4 rounded-lg border border-gray-1 dark:border-white hover:bg-gray-100 transition-all duration-300 ease-in-out">
+            <button
+              onClick={authWithGoogle}
+              className="flex items-center justify-center w-[60%] md:w-auto text-gray-2 dark:text-white text-sm md:text-base py-3 px-4 rounded-lg border border-gray-1 dark:border-white hover:bg-gray-100 transition-all duration-300 ease-in-out"
+            >
               <FcGoogle className="text-xl md:text-2xl mr-2" />
               Continue with Google
             </button>

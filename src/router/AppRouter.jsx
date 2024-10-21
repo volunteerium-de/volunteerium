@@ -17,6 +17,8 @@ import Password from "../pages/Password"
 import UserSettings from "../pages/UserSettings"
 import EmailVerify from "../components/UserEmailVerification/EmailVerify"
 import { Navigate } from "react-router-dom"
+import GoogleAuthSuccess from "../pages/GoogleAuthSuccess"
+import GoogleAuthFail from "../pages/GoogleAuthFail"
 
 const AppRouter = () => {
   const { currentUser: user } = useSelector((state) => state.auth)
@@ -43,6 +45,8 @@ const AppRouter = () => {
           <>
             <Route path="login" element={<Login />} />
             <Route path="register" element={<Register />} />
+            <Route path="auth/success" element={<GoogleAuthSuccess />} />
+            <Route path="auth/failure" element={<GoogleAuthFail />} />
             <Route path="register/success" element={<RegisterSuccess />} />
             <Route path="/verify-email" element={<EmailVerify />} />
             <Route path="*" element={<Home />} />
@@ -51,6 +55,8 @@ const AppRouter = () => {
           <>
             <Route path="login" element={<Navigate to="/" />} />
             <Route path="register" element={<Navigate to="/" />} />
+            <Route path="auth/success" element={<Navigate to="/" />} />
+            <Route path="auth/failure" element={<Navigate to="/" />} />
             <Route path="register/success" element={<Navigate to="/" />} />
             <Route path="/verify-email" element={<Navigate to="/" />} />
           </>
