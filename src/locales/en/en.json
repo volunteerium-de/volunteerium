@@ -1,0 +1,55 @@
+
+
+{
+  "hero": {
+    "h2": "Become a part of something",
+    "span": "bigger"
+  },
+
+  "searchbar": {
+    "event": {
+      "label": "Event",
+      "placeholder": "Search Opportunities"
+    },
+    "location": {
+      "label": "Location",
+      "placeholder": "Choose Location"
+    },
+    "category": {
+      "label": "Category",
+      "placeholder": "Choose Category"
+    }
+  },
+
+  "upcomingOpportunities": {
+    "title": "Upcoming Events",
+    "discoverMore": "Discover More"
+  },
+
+  "getToKnowUs": {
+    "h2": "Get to Know Us",
+    "description1": "At Volunterium, our goal is to connect those who want to volunteer with those in need of support.",
+    "description2": "We are a platform dedicated to making it easy for individuals to find meaningful volunteer opportunities and for organizations to connect with passionate, eager volunteers.",
+    "description3": "Whether it's helping local communities, supporting social causes, or making a global impact, we believe that everyone can make a difference.",
+    "imageAlt": "Get to know us"
+  },
+
+  "subscribe" : {
+    "h3": "Subscribe",
+    "p" : " Join our community of volunteers by subscribing to our newsletter. Stay informed about upcoming volunteer events, special projects."
+  },
+
+    "footer": {
+    "information": "Information",
+    "company": "Company",
+    "aboutUs": "About Us",
+    "careers": "Careers",
+    "investors": "Investors",
+    "h2": "Follow Us",
+    "faq": "FAQ",
+    "contact": "Contact",
+    "privacyPolicy": "Privacy Policy",
+    "termsOfService": "Terms of Service",
+    "p": "Volunteerium. All rights reserved."
+  }
+}

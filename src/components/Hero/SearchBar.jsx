@@ -11,8 +11,12 @@ import {
   setCategoryFilters,
 } from "../../features/searchSlice"
 import { useNavigate } from "react-router-dom"
+import { useTranslation } from "react-i18next"
+import { translations } from "../../locales/translations";
+
 
 const SearchBar = () => {
+  const { t } = useTranslation() // i18next hook
   const [isDropdownOpen, setIsDropdownOpen] = useState(false)
   const dropdownRef = useRef(null)
   const { getEventCategories } = useEventCall()
@@ -25,21 +29,21 @@ const SearchBar = () => {
   const searchBarItems = [
     {
       id: "event",
-      label: "Event",
-      placeholder: "Search opportunities",
-      type: "input",
+      label: t(translations.searchbar.event.label), 
+      placeholder: t(translations.searchbar.event.placeholder),
+      type: "input"
     },
     {
       id: "location",
-      label: "Location",
-      placeholder: "Choose Location",
-      type: "input",
+      label: t(translations.searchbar.location.label),
+      placeholder: t(translations.searchbar.location.placeholder),
+      type: "input"
     },
     {
       id: "category",
-      label: "Category",
-      placeholder: "Choose Category",
-      type: "category",
+      label: t(translations.searchbar.category.label),
+      placeholder: t(translations.searchbar.category.placeholder),      
+      type: "category"
     },
   ]
 
@@ -114,7 +118,7 @@ const SearchBar = () => {
                 className="cursor-pointer text-[0.6rem] sm:text-[0.8rem] text-gray-2 p-1 rounded-md"
                 onClick={() => setIsDropdownOpen(!isDropdownOpen)}
               >
-                {homeSelectedCategory || "Choose Category"}
+                {homeSelectedCategory ||  t("searchbar.category.placeholder")}
               </div>
               {isDropdownOpen && (
                 <ul

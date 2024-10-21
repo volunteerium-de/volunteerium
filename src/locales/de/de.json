@@ -1,0 +1,57 @@
+{
+  "hero": {
+    "h2": "Werden Sie Teil von etwas",
+    "span": "Größerem"
+  },
+
+  "searchbar": {
+    "event": {
+      "label": "Veranstaltung",
+      "placeholder": "Möglichkeiten suchen"
+    },
+    "location": {
+      "label": "Standort",
+      "placeholder": "Standort wählen"
+    },
+    "category": {
+      "label": "Kategorie",
+      "placeholder": "Kategorie wählen"
+    }
+  },
+
+  "upcomingOpportunities": {
+    "title": "Bevorstehende Veranstaltungen",
+    "discoverMore": "Mehr entdecken"
+  },
+
+  "getToKnowUs": {
+    "h2": "Lernen Sie uns kennen",
+    "description1": "Bei Volunterium ist es unser Ziel, die Freiwilligen mit denjenigen zu verbinden, die Unterstützung benötigen.",
+    "description2": "Wir sind eine Plattform, die es Einzelpersonen erleichtern soll, sinnvolle Möglichkeiten für Freiwillige zu finden, und Organisationen, mit leidenschaftlichen, eifrigen Freiwilligen in Kontakt zu treten.",
+    "description3": "Ob es darum geht, lokale Gemeinschaften zu unterstützen, soziale Anliegen zu unterstützen oder globale Auswirkungen zu erzielen, wir glauben, dass jeder etwas bewirken kann.",
+    "imageAlt": "Lernen Sie uns kennen"
+  },
+
+  "subscribe" : {
+    "h3": "Abonnieren",
+    "p" : " Werden Sie Teil unserer Freiwilligengemeinschaft, indem Sie unseren Newsletter abonnieren. Bleiben Sie über bevorstehende Freiwilligenveranstaltungen und besondere Projekte auf dem Laufenden"
+  },
+
+  "footer": {
+    "information": "Informationen",
+    "company": "Unternehmen",
+    "aboutUs": "Über uns",
+    "careers": "Laufbahn",
+    "investors": "Investoren",
+    "h2": "Folgen Sie uns",
+    "faq": "Häufig gestellte Fragen(FAQ)",
+    "contact": "Kontakt",
+    "privacyPolicy": "Datenschutzpolitik",
+    "termsOfService": "Zustellungsbedingungen",
+    "p": "Volunteerium. Alle Rechte vorbehalten."
+  }
+
+
+
+
+}
