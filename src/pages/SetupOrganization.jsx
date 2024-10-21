@@ -8,6 +8,12 @@ import { ErrorMessage, Field, Form, Formik } from "formik"
 import * as Yup from "yup"
 import { useNavigate } from "react-router-dom"
 import { UserDetailSchema } from "../validators/UserDetailValidator"
+import { useEffect } from "react"
+import toastNotify from "../utils/toastNotify"
+import { useSelector } from "react-redux"
+import useAccountCall from "../hooks/useAccountCall"
+import { useLocation } from "react-router-dom"
+import useAuthCall from "../hooks/useAuthCall"
 
 const OrganizationSchema = Yup.object({
   organizationLogo: UserDetailSchema.fields.organizationLogo,
@@ -21,15 +27,38 @@ const OrganizationSchema = Yup.object({
 })
 
 const SetupOrganization = () => {
+  const { currentUser: user } = useSelector((state) => state.auth)
   const [step, setStep] = useState(1)
+  const { updateUser } = useAccountCall()
+  const { logout } = useAuthCall()
   const [fileName, setFileName] = useState("")
   const [logoPreview, setLogoPreview] = useState(null) // For logo preview
   const navigate = useNavigate()
+  const location = useLocation()
 
   // Toggle between steps
   const handleNext = () => {
     setStep(step === 1 ? 2 : 1)
   }
+
+  useEffect(() => {
+    const queryParams = new URLSearchParams(location.search)
+    const clientIdParam = queryParams.get("clientId")
+
+    // console.log(clientIdParam)
+
+    if (!clientIdParam || clientIdParam !== user._id) {
+      logout(false)
+    }
+
+    if (
+      user.userType === "organization" &&
+      !user.userDetailsId.isProfileSetup &&
+      clientIdParam == user._id
+    ) {
+      toastNotify("info", "Please set up your organization details to proceed")
+    }
+  }, [])
 
   return (
     <div className="min-h-screen flex items-center justify-center font-poppins dark:bg-black">
@@ -110,6 +139,7 @@ const SetupOrganization = () => {
               validationSchema={OrganizationSchema}
               onSubmit={(values) => {
                 console.log(values)
+                updateUser({ ...values, isProfileSetup: true }, user.userDetailsId._id)
               }}
             >
               {({ setFieldValue, values }) => (

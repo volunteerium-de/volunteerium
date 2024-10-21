@@ -15,9 +15,10 @@ const authSlice = createSlice({
       state.loading = true
       state.error = false
     },
-    fetchSuccess: (state) => {
+    fetchSuccess: (state, { payload }) => {
       state.loading = false
       state.error = false
+      state.currentUser = payload?.new
     },
     registerSuccess: (state) => {
       state.loading = false

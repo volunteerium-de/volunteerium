@@ -1,7 +1,6 @@
 import React from "react"
 import googleAuthFailDesktop from "../assets/google-fail-desktop.png"
 import googleAuthFailMobile from "../assets/google-fail-mobile.png"
-import { ImSpinner9 } from "react-icons/im"
 import { useNavigate } from "react-router-dom"
 import { useState } from "react"
 import { useEffect } from "react"
@@ -13,7 +12,7 @@ const GoogleAuthFail = () => {
   // Redirect to homepage after 5 seconds
   useEffect(() => {
     if (countdown === 0) {
-      // navigate("/")
+      navigate("/")
     }
 
     const timer =

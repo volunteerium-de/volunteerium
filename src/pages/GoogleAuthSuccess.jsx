@@ -9,21 +9,28 @@ import googleAuthSuccessDesktop from "../assets/google-success-desktop.png"
 import googleAuthSuccessMobile from "../assets/google-success-mobile.png"
 import { ImSpinner9 } from "react-icons/im"
 import { useState } from "react"
+import { useSelector } from "react-redux"
 
 const GoogleAuthSuccess = () => {
   const dispatch = useDispatch()
   const navigate = useNavigate()
   const location = useLocation()
+  const { currentUser: user } = useSelector((state) => state.auth)
   const [userData, setUserData] = useState()
 
   useEffect(() => {
     const getUserData = async () => {
+      if (user) {
+        navigate("/")
+        return
+      }
+
       const queryParams = new URLSearchParams(location.search)
       const userParam = queryParams.get("user")
 
       const parsedData = JSON.parse(decodeURIComponent(userParam))
       if (!parsedData?.bearer?.access) {
-        navigate("/auth/failure")
+        navigate("/auth/failure?provider=google")
         return
       }
 
@@ -43,10 +50,24 @@ const GoogleAuthSuccess = () => {
     if (userData) {
       try {
         dispatch(loginSuccess(userData))
-        toastNotify("success", userData.message)
+
+        let redirectLink = "/"
+        if (!userData.user.userDetailsId.isProfileSetup) {
+          if (userData.user.userType === "individual") {
+            redirectLink = `/account-setup/individual?clientId=${userData.user._id}`
+          } else if (userData.user.userType === "organization") {
+            redirectLink = `/account-setup/organization?clientId=${userData.user._id}`
+          }
+        }
+
+        if (redirectLink === "/") {
+          toastNotify("success", "You have successfully logged in with Google")
+        }
+
+        navigate(redirectLink)
       } catch (error) {
         console.error("Failed to parse user data:", error)
-        navigate("/auth/failure")
+        navigate("/auth/failure?provider=google")
       }
     }
   }

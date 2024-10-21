@@ -42,13 +42,13 @@ const useAuthCall = () => {
     }
   }
 
-  const logout = async () => {
+  const logout = async (showNotify) => {
     dispatch(fetchStart())
     try {
       await axiosWithToken.get("auth/logout")
       dispatch(logoutSuccess())
       navigate("/")
-      toastNotify("success", "Logout successful!")
+      showNotify && toastNotify("success", "Logout successful!")
     } catch (error) {
       dispatch(fetchFail())
       toastNotify("error", error.response.data.message)

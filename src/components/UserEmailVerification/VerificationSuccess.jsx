@@ -6,12 +6,16 @@ const VerificationSuccess = () => {
   const { currentUser: user } = useSelector((state) => state.auth)
 
   const getUserTypeLink = () => {
-    if (user.userType === "individual") {
-      return "/user-ind-setup"
-    } else if (user.userType === "organization") {
-      return "/user-org-setup"
+    if (!user.userDetailsId.isProfileSetup) {
+      if (user.userType === "individual") {
+        return `/account-setup/individual?clientId=${user._id}`
+      } else if (user.userType === "organization") {
+        return `/account-setup/organization?clientId=${user._id}`
+      } else {
+        return "/" // If userType is not specified or there is an error, we can redirect to the home page.
+      }
     } else {
-      return "/" // If userType is not specified or there is an error, we can redirect to the home page.
+      return "/" // if user already set up his profile details, then redirect to home page
     }
   }
 
@@ -19,7 +23,7 @@ const VerificationSuccess = () => {
     <div className="h-screen flex items-center justify-center font-poppins dark:bg-black">
       <div className="text-center max-w-xl mx-auto px-8 py-8 rounded-lg">
         <h1 className="text-[1.75rem] font-bold  dark:text-white mb-6">
-          Hey {user.fullName || user.organizationName}, you&apos;re verified! 🎉
+          Hey {user.fullName.split(" ")[0] || user.organizationName}, you&apos;re verified! 🎉
         </h1>
         <p className="text-primary-green font-semibold mb-4">
           We&apos;re thrilled to have you with us!
