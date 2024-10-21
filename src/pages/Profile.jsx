@@ -1,4 +1,4 @@
-import { LiaMedalSolid } from "react-icons/lia"
+import { LiaMedalSolid, LiaTrophySolid } from "react-icons/lia"
 import { FaRegCalendarAlt, FaExternalLinkAlt } from "react-icons/fa"
 import { IoLocationOutline, IoInformationCircleOutline } from "react-icons/io5"
 import { BsGenderAmbiguous } from "react-icons/bs"
@@ -17,32 +17,33 @@ import { axiosWithPublic } from "../hooks/useAxios"
 import avatar from "../assets/example-avatar.jpg"
 import logo from "../assets/get-to-know-us.png"
 import { formatName } from "../helpers/formatName"
+import formatLanguages from "../helpers/ISO-639-1-languages.json"
 
 const defaultIndividualImage = avatar
 const defaultOrganozationImage = logo
 
 const getMedalInfo = (totalPoints) => {
-  if (totalPoints >= 90) {
+  if (totalPoints >= 70) {
     return {
       medal: "Golden Heart",
-      icon: <LiaMedalSolid className="text-[1.6rem]" />,
+      icon: <LiaTrophySolid className="text-[1.4rem]" />,
       textClass: "text-[#FCB434]",
     }
-  } else if (totalPoints >= 60) {
+  } else if (totalPoints >= 40) {
     return {
       medal: "Silver Medal",
-      icon: <LiaMedalSolid className="text-[1.6rem]" />,
+      icon: <LiaMedalSolid className="text-[1.4rem]" />,
       textClass: "text-[#b0aeae]",
     }
-  } else if (totalPoints >= 30) {
+  } else if (totalPoints >= 10) {
     return {
       medal: "Bronze Medal",
-      icon: <LiaMedalSolid className="text-[1.6rem]" />,
+      icon: <LiaMedalSolid className="text-[1.4rem]" />,
       textClass: "text-[#CD7F32]",
     }
   } else {
     return {
-      medal: null,
+      medal: "New Volunteer",
       icon: null,
       textClass: "",
     }
@@ -115,31 +116,31 @@ const Profile = () => {
 
   const medalInfoText = [
     {
-      label: "🏅 Bronze Medal: Achieve 30 points to unlock this medal!",
+      label: "🏅 Bronze Medal: Achieve 10 points to unlock this medal!",
       className: "text-[#CD7F32]",
     },
     {
-      label: "🥈 Silver Medal: Earn 60 points to shine with silver!",
+      label: "🥈 Silver Medal: Earn 40 points to shine with silver!",
       className: "text-[#b0aeae]",
     },
     {
-      label: "🏆 Golden Heart: Reach 90 points to wear the golden heart!",
+      label: "🏆 Golden Heart: Reach 70 points to wear the golden heart!",
       className: "text-[#FCB434]",
     },
   ]
 
   const medalInfo = getMedalInfo(totalPoint)
 
-  const languagesFormatted = languages
-    .map((lang) => lang.charAt(0).toUpperCase() + lang.slice(1))
-    .join(", ")
-
-  const datesFormatted = formatDate(createdAt)
+  const getLanguageName = (code) => {
+    const language = formatLanguages.find((lang) => lang.code === code)
+    return language ? language.name : code
+  }
+  const languagesFormatted = languages.map((langCode) => getLanguageName(langCode)).join(", ")
 
   const infoItems = [
     {
       icon: <FaRegCalendarAlt />,
-      description: `Member since ${datesFormatted}`,
+      description: `Member since ${formatDate(createdAt)}`,
     },
     {
       icon: <IoLocationOutline />,
@@ -198,15 +199,13 @@ const Profile = () => {
                 </h1>
                 <div className="flex">
                   {medalInfo?.medal && (
-                    <h5
-                      className={`italic font-semibold text-[1rem] sm:text-[1.2rem] flex gap-1 mt-1 ${medalInfo.textClass}`}
-                    >
+                    <h5 className={`italic font-semibold flex gap-1 mt-1 ${medalInfo.textClass}`}>
                       {medalInfo.medal} {medalInfo.icon}
                     </h5>
                   )}
                   <div className="relative inline-block group">
-                    <IoInformationCircleOutline className="absolute left-0 opacity-50 cursor-pointer group-hover:opacity-100" />
-                    <div className="absolute mb-2 top-7 -left-6 w-[281px] h-[140px] rounded-md bg-light-gray-2 text-white text-sm px-3 py-2 opacity-0 translate-y-4 transition-all duration-500 ease-in-out group-hover:opacity-100 group-hover:translate-y-0 font-semibold pointer-events-none group-hover:pointer-events-auto dark:bg-dark-gray-2 dark:text-dark-gray-2">
+                    <IoInformationCircleOutline className="absolute left-2 opacity-50 cursor-pointer group-hover:opacity-100" />
+                    <div className="absolute mb-2 top-7 -left-14 sm:-left-10 w-[281px] h-[140px] rounded-md bg-light-gray-2 text-white text-sm px-3 py-2 opacity-0 translate-y-4 transition-all duration-500 ease-in-out group-hover:opacity-100 group-hover:translate-y-0 font-semibold pointer-events-none group-hover:pointer-events-auto dark:bg-dark-gray-2 dark:text-dark-gray-2">
                       {medalInfoText.map((item, i) => (
                         <p key={i} className={item.className}>
                           {item.label}
