@@ -126,7 +126,7 @@ const RegisterForm = () => {
                   ? t(translations.registerForm.fullnamePH)
                   : t(translations.registerForm.orgnamePH)
               }
-              className={`w-full border dark:border-white rounded-lg text-[1rem] placeholder-gray-2 dark:placeholder-white p-3 h-[42px] md:h-[48px] focus:outline-none focus:border-primary-green 
+              className={`w-full border dark:border-white rounded-lg text-[1rem] placeholder-gray-2 dark:placeholder-white dark:bg-black dark:text-white p-3 h-[42px] md:h-[48px] focus:outline-none focus:border-primary-green 
                 ${touched.fullName && errors.fullName ? "border-red" : "border-gray-1"}`}
             />
             <div className="h-[20px]">
@@ -143,7 +143,7 @@ const RegisterForm = () => {
               type="email"
               name="email"
               placeholder= {t(translations.registerForm.emailPH)}
-              className={`w-full border dark:border-white rounded-lg text-[1rem] placeholder-gray-2 dark:placeholder-white  p-3 h-[42px] md:h-[48px] focus:outline-none focus:border-primary-green 
+              className={`w-full border dark:border-white rounded-lg text-[1rem] placeholder-gray-2 dark:bg-black dark:text-white dark:placeholder-white  p-3 h-[42px] md:h-[48px] focus:outline-none focus:border-primary-green 
                 ${touched.email && errors.email ? "border-red" : "border-gray-1"}`}
             />
             <div className="h-[20px]">
@@ -161,10 +161,10 @@ const RegisterForm = () => {
                 type={showPassword ? "text" : "password"}
                 name="password"
                 placeholder= {t(translations.registerForm.passwordPH)}
-                className={`w-full border dark:border-white rounded-lg text-[1rem] placeholder-gray-2 dark:placeholder-white  p-3 h-[42px] md:h-[48px] focus:outline-none focus:border-primary-green 
+                className={`w-full border dark:border-white rounded-lg text-[1rem] placeholder-gray-2 dark:bg-black dark:text-white  dark:placeholder-white  p-3 h-[42px] md:h-[48px] focus:outline-none focus:border-primary-green 
                   ${touched.password && errors.password ? "border-red" : "border-gray-1"}`}
               />
-              <div className="absolute inset-y-0 text-primary-green dark:text-light-green right-3 pr-3 flex items-center text-2xl cursor-pointer">
+              <div className="absolute inset-y-0 text-primary-green right-3 pr-3 flex items-center text-2xl cursor-pointer">
                 {showPassword ? (
                   <MdVisibilityOff onClick={togglePasswordVisibility} />
                 ) : (

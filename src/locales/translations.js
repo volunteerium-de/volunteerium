@@ -76,7 +76,7 @@ export const translations = {
         email: "registerForm.email",
         emailPH: "registerForm.emailPH",
         password: "registerForm.password",
-        passwordPH: "registerForm.passowrdPH",
+        passwordPH: "registerForm.passwordPH",
         submit: "registerForm.submit",
         haveAccount: "registerForm.haveAccount",
         login: "registerForm.login",

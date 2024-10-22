@@ -54,7 +54,7 @@
   "register": {
     "h1": "Erstellen Sie Ihr Konto",
     "accountQuestion": "Sie erstellen ein Konto als?",
-    "p1": "Treten Sie unserem bei",
+    "p1": "Treten Sie bei unserer",
     "p2": "Gemeinschaft",
     "p3": "Werde Teil von etwas",
     "p4": "größer",
@@ -88,7 +88,7 @@
   },
 
   "login": {
-    "p1" : "Rückkehr zur",
+    "p1" : "Verbindung an die",
     "p2" : "Gemeinschaft",
     "p3" : "Willkommen zurück zu etwas",
     "p4" : "größer",
