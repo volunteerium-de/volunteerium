@@ -12,6 +12,7 @@ import { useDispatch } from "react-redux"
 import { useLocation } from "react-router-dom"
 import { useNavigate } from "react-router-dom"
 import { getLangName } from "../components/EventListing/FilterSidebar"
+import { LiaSpinnerSolid } from "react-icons/lia"
 
 const EventsListingPage = () => {
   const { getEvents } = useEventCall()
@@ -20,9 +21,15 @@ const EventsListingPage = () => {
   const [error, setError] = useState(null)
   const [isFilterSidebarOpen, setIsFilterSidebarOpen] = useState(false)
 
-  const { categoryFilters, languageFilters, startDate, endDate, sortOrder } = useSelector(
-    (state) => state.search
-  )
+  const {
+    searchTermEvent,
+    searchTermLocation,
+    categoryFilters,
+    languageFilters,
+    startDate,
+    endDate,
+    sortOrder,
+  } = useSelector((state) => state.search)
   const dispatch = useDispatch()
   const navigate = useNavigate()
   const location = useLocation()
@@ -41,6 +48,8 @@ const EventsListingPage = () => {
 
       try {
         const queryParams = {
+          ...(searchTermEvent && { "search[title]": searchTermEvent }),
+          ...(searchTermLocation && { "search[location]": searchTermLocation }),
           ...(startDate && { "filter[startDate]": startDate }),
           ...(endDate && { "filter[endDate]": endDate }),
           ...(categoryFilters.length > 0 && {
@@ -74,46 +83,48 @@ const EventsListingPage = () => {
     }
 
     fetchEvents()
-  }, [categoryFilters, languageFilters, startDate, endDate, sortOrder, currentPage])
+  }, [
+    searchTermEvent,
+    searchTermLocation,
+    categoryFilters,
+    languageFilters,
+    startDate,
+    endDate,
+    sortOrder,
+    currentPage,
+  ])
+
+  const renderFilterMessagePart = (label, content) => (
+    <span key={label}>
+      <span> | </span>
+      <span className="text-dark-green">{label}: </span>
+      <span>{content}</span>
+    </span>
+  )
 
   const renderFilterMessage = () => {
-    let locationPart = ""
-    let categoryPart = ""
-    let languagePart = ""
-
-    if (categoryFilters.length > 0) {
-      categoryPart = `Category: ${categoryFilters.join(", ")}`
-    }
-
-    if (languageFilters.length > 0) {
-      languagePart = `Language: ${languageFilters.map((lang) => getLangName(lang)).join(", ")}`
-    }
-
     let resultMessage = "Results for your search:"
     let resultParts = []
 
-    if (locationPart) {
-      if (resultParts.length) {
-        resultParts.push(`, in ${locationPart}`)
-      } else {
-        resultParts.push(`| in ${locationPart}`)
-      }
+    if (searchTermEvent) {
+      resultParts.push(renderFilterMessagePart("Search Term", searchTermEvent))
     }
 
-    if (categoryPart) {
-      if (resultParts.length) {
-        resultParts.push(`, ${categoryPart}`)
-      } else {
-        resultParts.push(`| ${categoryPart}`)
-      }
+    if (searchTermLocation) {
+      resultParts.push(renderFilterMessagePart("Location", searchTermLocation))
     }
 
-    if (languagePart) {
-      if (resultParts.length) {
-        resultParts.push(`, ${languagePart}`)
-      } else {
-        resultParts.push(`| ${languagePart}`)
-      }
+    if (categoryFilters.length > 0) {
+      resultParts.push(renderFilterMessagePart("Category", categoryFilters.join(", ")))
+    }
+
+    if (languageFilters.length > 0) {
+      resultParts.push(
+        renderFilterMessagePart(
+          "Language",
+          languageFilters.map((lang) => getLangName(lang)).join(", ")
+        )
+      )
     }
 
     if (!totalEventRecord) {
@@ -122,7 +133,6 @@ const EventsListingPage = () => {
       resultMessage += ` ${totalEventRecord} Event${totalEventRecord > 1 ? "s" : ""} Found`
     }
 
-    // return `${resultMessage} ${resultParts.join("")}`
     return { resultMessage, resultParts }
   }
 
@@ -145,13 +155,15 @@ const EventsListingPage = () => {
         <div className="flex justify-between items-center mb-4 mx-2">
           {/*Filter Message*/}
           <div>
-            <h1 className="font-semibold text-xs md:text-sm lg:text-md flex gap-1 ">
-              <span>{resultMessage}</span>
-              <span className="text-gray-2 hidden lg:block">{resultParts.join("")}</span>
+            <h1 className="text-xs md:text-sm lg:text-md flex gap-1 ">
+              <span className="font-semibold">{resultMessage}</span>
+              <span className="text-gray-2 hidden lg:block">
+                {" "}
+                {resultParts.map((part, index) => (
+                  <React.Fragment key={index}>{part}</React.Fragment>
+                ))}
+              </span>
             </h1>
-            {/* <h1 className="font-semibold">
-              {totalEventRecord} Event{totalEventRecord > 1 ? "s" : ""}
-            </h1> */}
           </div>
           {/*Sort and Filters*/}
           <div className="flex justify-end gap-3 items-center">
@@ -188,11 +200,16 @@ const EventsListingPage = () => {
               </button>
             )}
           </div>
-          <div className="flex flex-col justify-between">
+          <div className="flex flex-col justify-between w-full">
             {error ? (
               <div>{error}</div>
             ) : loading ? (
-              <div>Loading events...</div>
+              <div className="flex text-md justify-center items-center text-center w-[200px] mx-auto mt-14">
+                Loading events...{" "}
+                <span className="animate-spin text-primary-green text-3xl">
+                  <LiaSpinnerSolid />
+                </span>
+              </div>
             ) : (
               <EventCardList events={events} />
             )}

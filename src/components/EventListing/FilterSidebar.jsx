@@ -65,9 +65,6 @@ const FilterSidebar = () => {
     }
   }
 
-  console.log(categories)
-  console.log(selectedCategories)
-
   const handleCategory = (category) => {
     const isSelected = selectedCategories.includes(category.name)
 

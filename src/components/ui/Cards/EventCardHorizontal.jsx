@@ -18,7 +18,7 @@ const EventCardHorizontal = ({ event }) => {
         <img
           src={event.eventPhoto || eventImage}
           alt="event"
-          className="rounded-t-md object-fit max-w-[155px] h-[150px] "
+          className="rounded-t-md object-cover max-w-[155px] h-[150px] "
         />
       </div>
       {/* Event Content */}
