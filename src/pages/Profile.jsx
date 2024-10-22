@@ -114,6 +114,8 @@ const Profile = () => {
     } = {},
   } = user
 
+  console.log(user)
+
   const medalInfoText = [
     {
       label: "🏅 Bronze Medal: Achieve 10 points to unlock this medal!",
@@ -273,7 +275,7 @@ const Profile = () => {
                       <div className="flex items-center justify-between mt-2 text-dark-gray-1 dark:text-white ">
                         <p>{item.title}</p>
                         <div
-                          onClick={() => navigate(item.fileUrl)}
+                          onClick={() => window.open(item.fileUrl, "_blank")}
                           className="text-dark-gray-1 dark:text-white cursor-pointer"
                         >
                           <FaExternalLinkAlt className="opacity-65 dark:opacity-80 text-primary-green dark:text-light-gray" />
