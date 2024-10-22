@@ -42,13 +42,13 @@ const useAuthCall = () => {
     }
   }
 
-  const logout = async () => {
+  const logout = async (showNotify) => {
     dispatch(fetchStart())
     try {
       await axiosWithToken.get("auth/logout")
       dispatch(logoutSuccess())
       navigate("/")
-      toastNotify("success", "Logout successful!")
+      showNotify && toastNotify("success", "Logout successful!")
     } catch (error) {
       dispatch(fetchFail())
       toastNotify("error", error.response.data.message)
@@ -70,29 +70,11 @@ const useAuthCall = () => {
     }
   }
 
-  const SignUpWithGoogle = async () => {
-    dispatch(fetchStart())
-
-    try {
-      toastNotify("success", "Registration successful!")
-    } catch (error) {
-      dispatch(fetchFail())
-      toastNotify("error", error.response.data.message)
-    }
+  const authWithGoogle = async () => {
+    window.open(`${import.meta.env.VITE_BACKEND_URL}/auth/google`, "_self")
   }
 
-  const SignInWithGoogle = async () => {
-    dispatch(fetchStart())
-
-    try {
-      toastNotify("success", "Login successful!")
-    } catch (error) {
-      dispatch(fetchFail())
-      toastNotify("error", error.response.data.message)
-    }
-  }
-
-  return { register, login, logout, verifyEmail }
+  return { register, login, logout, verifyEmail, authWithGoogle }
 }
 
 export default useAuthCall

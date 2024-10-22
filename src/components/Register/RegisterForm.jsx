@@ -33,7 +33,7 @@ const RegisterForm = () => {
 
   const [userType, setUserType] = useState("individual")
   const [showPassword, setShowPassword] = useState(false)
-  const { register } = useAuthCall()
+  const { register, authWithGoogle } = useAuthCall()
 
   // Handle radio button changes
   const handleRadioChange = (e, setFieldValue) => {
@@ -203,7 +203,10 @@ const RegisterForm = () => {
                   <div className="flex-1 border-t border-gray-2 dark:border-white"></div>
                 </div>
 
-                <button className="flex items-center justify-center w-[60%] md:w-auto text-gray-2 text-sm md:text-base py-3 px-4 rounded-lg border border-gray-1 dark:border-white hover:bg-gray-100 transition-all duration-300 ease-in-out">
+                <button
+                  onClick={authWithGoogle}
+                  className="flex items-center justify-center w-[60%] md:w-auto text-gray-2 text-sm md:text-base py-3 px-4 rounded-lg border border-gray-1 dark:border-white hover:bg-gray-100 transition-all duration-300 ease-in-out"
+                >
                   <FcGoogle className="text-xl dark:text-white md:text-2xl mr-2" />
                   {t(translations.registerForm.contGoogle)}
                 </button>

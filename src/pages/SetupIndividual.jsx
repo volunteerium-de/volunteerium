@@ -7,6 +7,10 @@ import { UserDetailSchema } from "../validators/UserDetailValidator"
 import * as Yup from "yup"
 import useAccountCall from "../hooks/useAccountCall"
 import { useSelector } from "react-redux"
+import toastNotify from "../utils/toastNotify"
+import { useEffect } from "react"
+import { useLocation } from "react-router-dom"
+import useAuthCall from "../hooks/useAuthCall"
 
 // Validation schema
 const IndividualSchema = Yup.object({
@@ -17,16 +21,37 @@ const IndividualSchema = Yup.object({
 
 const SetupIndividual = () => {
   const { currentUser: user } = useSelector((state) => state.auth)
-  console.log(user)
+  // console.log(user)
   const { updateUser } = useAccountCall()
+  const { logout } = useAuthCall()
   const [step, setStep] = useState(1)
   const navigate = useNavigate()
+  const location = useLocation()
 
   const handleNext = (isValid) => {
     if (isValid) {
       setStep(2)
     }
   }
+
+  useEffect(() => {
+    const queryParams = new URLSearchParams(location.search)
+    const clientIdParam = queryParams.get("clientId")
+
+    // console.log(clientIdParam)
+
+    if (!clientIdParam || clientIdParam !== user._id) {
+      logout(false)
+    }
+
+    if (
+      user.userType === "individual" &&
+      !user.userDetailsId.isProfileSetup &&
+      clientIdParam === user._id
+    ) {
+      toastNotify("success", "Please set up your profile details to proceed")
+    }
+  }, [])
 
   return (
     <div className="min-h-screen flex items-center justify-center font-poppins dark:bg-black">
@@ -40,7 +65,7 @@ const SetupIndividual = () => {
           validationSchema={IndividualSchema}
           onSubmit={(values) => {
             console.log(values)
-            updateUser(values, user.userDetailsId._id)
+            updateUser({ ...values, isProfileSetup: true }, user.userDetailsId._id)
           }}
         >
           {({ isValid, values, setFieldValue, handleSubmit, touched, errors }) => (

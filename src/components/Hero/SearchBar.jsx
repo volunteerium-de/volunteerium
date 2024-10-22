@@ -105,7 +105,7 @@ const SearchBar = () => {
               id={id}
               type="text"
               placeholder={placeholder}
-              className="text-[0.6rem] sm:text-[0.8rem] text-gray-2 focus:outline-none w-full p-1 dark:bg-dark-gray-3"
+              className="text-[0.6rem] sm:text-[0.8rem] -ml-1 text-gray-2 focus:outline-none w-full p-1 dark:bg-dark-gray-3"
               onChange={(e) => {
                 id === "event"
                   ? dispatch(setSearchTerm(e.target.value))
@@ -115,7 +115,7 @@ const SearchBar = () => {
           ) : (
             <div className="relative sm:min-w-[110px]">
               <div
-                className="cursor-pointer text-[0.6rem] sm:text-[0.8rem] text-gray-2 p-1 rounded-md"
+                className="cursor-pointer text-[0.6rem] sm:text-[0.8rem] -ml-1 text-gray-2 p-1 rounded-md"
                 onClick={() => setIsDropdownOpen(!isDropdownOpen)}
               >
                 {homeSelectedCategory ||  t("searchbar.category.placeholder")}
