@@ -9,6 +9,7 @@ import {
   setManualLocation,
   clearFilters,
   setCategoryFilters,
+  setEventListingCategoryFilters,
 } from "../../features/searchSlice"
 import { useNavigate } from "react-router-dom"
 
@@ -69,13 +70,13 @@ const SearchBar = () => {
 
     // Eğer başlık arama terimi varsa ekle
     if (searchTermEvent) {
-      filters.push(`search[title]=${encodeURIComponent(searchTermEvent.toLowerCase())}`)
+      filters.push(`search[title]=${searchTermEvent}`)
     }
     if (searchTermLocation) {
-      filters.push(`search[location]=${encodeURIComponent(searchTermLocation.toLowerCase())}`)
+      filters.push(`search[location]=${searchTermLocation}`)
     }
     if (homeSelectedCategory && homeSelectedCategory !== "Choose Category") {
-      filters.push(`filter[category]=${encodeURIComponent(homeSelectedCategory.toLowerCase())}`)
+      filters.push(`filter[category]=${homeSelectedCategory}`)
     }
 
     if (filters.length > 0) {

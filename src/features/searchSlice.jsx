@@ -6,8 +6,12 @@ const initialState = {
   homeSelectedCategory: null,
   categories: [],
   categoryFilters: [],
+  languageFilters: [],
+  startDate: null,
+  endDate: null, // End date for event filtering
   loading: false,
   error: false,
+  sortOrder: "Newest",
 }
 
 const searchSlice = createSlice({
@@ -22,6 +26,16 @@ const searchSlice = createSlice({
       state.loading = false
       state.categories = payload
     },
+    getLanguagesSuccess: (state, { payload }) => {
+      state.loading = false
+      state.languages = payload
+    },
+    setStartDate: (state, { payload }) => {
+      state.startDate = payload
+    },
+    setEndDate: (state, { payload }) => {
+      state.endDate = payload // End date reducer
+    },
     setSearchTerm: (state, { payload }) => {
       state.searchTermEvent = payload
     },
@@ -33,6 +47,16 @@ const searchSlice = createSlice({
     },
     setCategoryFilters: (state, { payload }) => {
       state.categoryFilters = [...new Set([state.homeSelectedCategory, ...payload])]
+    },
+    // Category management on the Event Listing page
+    setEventListingCategoryFilters: (state, { payload }) => {
+      state.categoryFilters = payload
+    },
+    setLanguageFilters: (state, { payload }) => {
+      state.languageFilters = payload
+    },
+    setSortOrder: (state, { payload }) => {
+      state.sortOrder = payload
     },
     clearFilters: (state) => {
       Object.assign(state, initialState)
@@ -47,10 +71,16 @@ const searchSlice = createSlice({
 export const {
   fetchStart,
   getCategoriesSuccess,
+  getLanguagesSuccess,
+  setStartDate,
+  setEndDate, // Exporting the end date action
   setSearchTerm,
   setManualLocation,
   setCategoryFilters,
+  setEventListingCategoryFilters,
+  setLanguageFilters,
   setHomeSelectedCategory,
+  setSortOrder,
   clearFilters,
   fetchFail,
 } = searchSlice.actions

@@ -4,10 +4,12 @@ import eventImage from "../../../assets/example-event-img.png"
 import { RxDividerVertical } from "react-icons/rx"
 
 const EventCardHorizontal = ({ event }) => {
-  console.log("Event details:", event)
-
   const startDate = new Date(event.startDate).toLocaleDateString()
   const endDate = new Date(event.endDate).toLocaleDateString()
+
+  // useEffect(() => {
+  //   console.log("Event updated:", event) // Her güncellemede konsola yaz
+  // }, [event])
 
   return (
     <div className="rounded-3 shadow-[0_1px_1px_rgba(0,0,0,.25)] mb-2 flex justify-center items-center gap-5 ">
@@ -22,7 +24,10 @@ const EventCardHorizontal = ({ event }) => {
       {/* Event Content */}
       <div className="p-2 flex flex-col justify-between w-full gap-1">
         <h2 className="text-black font-semibold text-[1rem]">{event.title}</h2>
-        <p className="text-dark-gray-1 text-[0.8125rem] mb-[10px]">{event.description}</p>
+        <p className="text-dark-gray-1 text-[0.8125rem] mb-[10px]">
+          {event.description.split(" ").slice(0, 20).join(" ")}
+          {event.description.split(" ").length > 20 ? "..." : ""}
+        </p>
         {/* Event Details */}
         <div>
           {/* Organizer Information */}
@@ -33,7 +38,7 @@ const EventCardHorizontal = ({ event }) => {
                 alt="organizer-avatar"
                 className="w-6 h-6 rounded-full"
               />
-              <p className="text-gray-2 text-[0.7rem]">Organized by: {event.createdBy.fullName}</p>
+              <p className="text-gray-2 text-[0.7rem]">{event.createdBy.fullName}</p>
             </div>
           )}
 

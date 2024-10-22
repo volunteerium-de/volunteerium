@@ -29,7 +29,7 @@ const AppRouter = () => {
         <Route path="faq" element={<FAQuestion />} />
         <Route path="feedback" element={<Feedback />} />
         <Route path="profile/:userId" element={<Profile />} />
-        <Route path="event-listing" element={<EventListing />} />
+        <Route path="events" element={<EventListing />} />
         <Route path="*" element={<NotFound />} />
 
         {!user ? (
