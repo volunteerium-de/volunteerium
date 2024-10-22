@@ -46,10 +46,45 @@
     "h2": "Folgen Sie uns",
     "faq": "FAQ",
     "contact": "Kontakt",
-    "privacyPolicy": "Datenschutzpolitik",
-    "termsOfService": "Zustellungsbedingungen",
+    "privacy": "Datenschutzpolitik",
+    "terms": "Zustellungsbedingungen",
     "p": " Volunteerium | Alle Rechte vorbehalten"
-  }
+  },
+
+  "register": {
+    "h1": "Erstellen Sie Ihr Konto",
+    "accountQuestion": "Sie erstellen ein Konto als?",
+    "p1": "Treten Sie unserem bei",
+    "p2": "Gemeinschaft",
+    "p3": "Werde Teil von etwas",
+    "p4": "größer." ,
+    "p5": "Ein Konto erstellen und starten",
+    "p6": "einen Unterschied machen.",
+    "p7": "Wir können es kaum erwarten, dich bei uns zu haben!",
+    "createAccount": "Erstellen Sie Ihr Konto"
+  },
+
+  "registerForm": {
+    "radioIndv": "als Einzelperson",
+    "radioOrg": "als Organisation",
+    "fullname": "Vollname",
+    "orgname": "Name der Organisation",
+    "fullnamePH": "Geben Sie Ihren vollständigen Namen ein",
+    "orgnamePH": "Organisationsname eingeben",
+    "email": "E-Mail",
+    "emailPH": "Geben Sie Ihre E-Mail-Adresse ein",
+    "password": "Passwort",
+    "passwordPH": "Geben Sie Ihr Passwort ein",
+    "submit": "Konto erstellen",
+    "haveAccount": "Sie haben bereits ein Konto?",
+    "login": "Anmeldung",
+    "or": "oder",
+    "contGoogle": "Weiter mit Google",
+    "pTerms" : "Indem Sie fortfahren, erklären Sie sich damit einverstanden",
+    "terms": "Zustellungsbedingungen",
+    "pPrivacy": "und bestätigen Sie, dass Sie unsere gelesen haben",
+    "privacy": "Datenschutzerklärung"
+}
 
 
 

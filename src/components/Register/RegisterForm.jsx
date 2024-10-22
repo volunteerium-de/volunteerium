@@ -5,6 +5,8 @@ import { useState } from "react"
 import { FcGoogle } from "react-icons/fc"
 import { Link } from "react-router-dom"
 import useAuthCall from "../../hooks/useAuthCall"
+import { translations } from "../../locales/translations"
+import { useTranslation } from "react-i18next"
 
 const validationSchema = Yup.object({
   userType: Yup.string().required("User type is required"),
@@ -26,6 +28,9 @@ const validationSchema = Yup.object({
 })
 
 const RegisterForm = () => {
+
+  const { t } = useTranslation()
+
   const [userType, setUserType] = useState("individual")
   const [showPassword, setShowPassword] = useState(false)
   const { register } = useAuthCall()
@@ -81,7 +86,7 @@ const RegisterForm = () => {
                 htmlFor="individual"
                 className="text-[0.9rem] md:text-[0.75rem] lg:text-[1rem] cursor-pointer w-full p-2"
               >
-                As an Individual
+                {t(translations.registerForm.radioIndv)}
               </label>
             </div>
 
@@ -101,23 +106,25 @@ const RegisterForm = () => {
                 htmlFor="organization"
                 className="text-[0.9rem] md:text-[0.75rem] lg:text-[1rem] cursor-pointer w-full p-2"
               >
-                As an Organization
-              </label>
+                {t(translations.registerForm.radioOrg)}
+                </label>
             </div>
           </div>
 
           {/* Full Name/Organization */}
           <div>
             <p className="text-gray-2 text-[0.875rem] md:text-[1rem]">
-              {values.userType === "individual" ? "Full Name" : "Organization Name"}
+              {values.userType === "individual" ? t(translations.registerForm.fullname)
+              : t(translations.registerForm.orgname)
+            }
             </p>
             <Field
               type="text"
               name="fullName"
               placeholder={
                 values.userType === "individual"
-                  ? "Enter your full name"
-                  : "Enter organization name"
+                  ? t(translations.registerForm.fullnamePH)
+                  : t(translations.registerForm.orgnamePH)
               }
               className={`w-full border dark:border-white rounded-lg text-[1rem] placeholder-gray-2 dark:placeholder-white p-3 h-[42px] md:h-[48px] focus:outline-none focus:border-primary-green 
                 ${touched.fullName && errors.fullName ? "border-red" : "border-gray-1"}`}
@@ -131,11 +138,11 @@ const RegisterForm = () => {
 
           {/* Email */}
           <div>
-            <p className="text-gray-2 text-[0.875rem] md:text-[1rem]">Email</p>
+            <p className="text-gray-2 text-[0.875rem] md:text-[1rem]">{t(translations.registerForm.email)}</p>
             <Field
               type="email"
               name="email"
-              placeholder="Enter your email address"
+              placeholder= {t(translations.registerForm.emailPH)}
               className={`w-full border dark:border-white rounded-lg text-[1rem] placeholder-gray-2 dark:placeholder-white  p-3 h-[42px] md:h-[48px] focus:outline-none focus:border-primary-green 
                 ${touched.email && errors.email ? "border-red" : "border-gray-1"}`}
             />
@@ -148,12 +155,12 @@ const RegisterForm = () => {
 
           {/* Password */}
           <div>
-            <p className="text-gray-2 text-[0.875rem] md:text-[1rem]">Password</p>
+            <p className="text-gray-2 text-[0.875rem] md:text-[1rem]">{t(translations.registerForm.password)}</p>
             <div className="relative">
               <Field
                 type={showPassword ? "text" : "password"}
                 name="password"
-                placeholder="Enter your password"
+                placeholder= {t(translations.registerForm.passwordPH)}
                 className={`w-full border dark:border-white rounded-lg text-[1rem] placeholder-gray-2 dark:placeholder-white  p-3 h-[42px] md:h-[48px] focus:outline-none focus:border-primary-green 
                   ${touched.password && errors.password ? "border-red" : "border-gray-1"}`}
               />
@@ -178,13 +185,13 @@ const RegisterForm = () => {
               type="submit"
               className="w-full bg-primary-green text-white text-[1rem] py-3 mt-3 rounded-lg  focus:outline-none"
             >
-              Create Account
+              {t(translations.registerForm.submit)}
             </button>
 
             <div className="text-center mt-4">
-              <span className="text-gray-2 dark:text-white">Already have an account?</span>
+              <span className="text-gray-2 dark:text-white">{t(translations.registerForm.haveAccount)}</span>
               <Link to="/login" className="ml-1 text-primary-green font-semibold underline">
-                Login
+                {t(translations.registerForm.login)}
               </Link>
             </div>
 
@@ -192,33 +199,33 @@ const RegisterForm = () => {
               <div className="flex flex-col items-center">
                 <div className="flex items-center my-4">
                   <div className="flex-1 border-t w-[300px] border-gray-2 dark:border-white"></div>
-                  <p className="text-gray-2 dark:text-white text-[0.875rem] text-center mx-5">or</p>
+                  <p className="text-gray-2 dark:text-white text-[0.875rem] text-center mx-5">{t(translations.registerForm.or)}</p>
                   <div className="flex-1 border-t border-gray-2 dark:border-white"></div>
                 </div>
 
                 <button className="flex items-center justify-center w-[60%] md:w-auto text-gray-2 text-sm md:text-base py-3 px-4 rounded-lg border border-gray-1 dark:border-white hover:bg-gray-100 transition-all duration-300 ease-in-out">
                   <FcGoogle className="text-xl dark:text-white md:text-2xl mr-2" />
-                  Continue with Google
+                  {t(translations.registerForm.contGoogle)}
                 </button>
               </div>
             )}
 
             {/* Terms and Conditions */}
             <p className="text-[0.75rem] mt-5 text-gray-2 dark:text-white text-center">
-              By continuing, you agree to the{" "}
+            {t(translations.registerForm.pTerms)}{" "}
               <Link
                 to="/terms"
                 className="text-primary-green dark:text-white underline font-semibold"
               >
-                Terms of Service
+                {t(translations.registerForm.terms)}
               </Link>{" "}
               <br />
-              and acknowledge you’ve read our{" "}
+              {t(translations.registerForm.pPrivacy)}{" "}
               <Link
                 to="/privacy"
                 className="text-primary-green dark:text-white underline font-semibold"
               >
-                Privacy Policy
+                {t(translations.registerForm.privacy)}
               </Link>
               .
             </p>
