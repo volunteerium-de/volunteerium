@@ -14,6 +14,7 @@ import SetupIndividual from "../pages/SetupIndividual"
 import Profile from "../pages/Profile"
 import FAQuestion from "../pages/FAQuestion"
 import UserSettings from "../pages/UserSettings"
+import EventListing from "../pages/EventListing"
 import EmailVerify from "../components/UserEmailVerification/EmailVerify"
 import { Navigate } from "react-router-dom"
 
@@ -28,6 +29,7 @@ const AppRouter = () => {
         <Route path="faq" element={<FAQuestion />} />
         <Route path="feedback" element={<Feedback />} />
         <Route path="profile/:userId" element={<Profile />} />
+        <Route path="event-listing" element={<EventListing />} />
         <Route path="*" element={<NotFound />} />
 
         {!user ? (
