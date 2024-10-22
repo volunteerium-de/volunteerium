@@ -39,9 +39,9 @@ const Register = () => {
                     </span>
                   </p>
                   <p className="text-white mt-4 text-[1rem] lg:text-[1.125rem] font-normal">
-                  {t(translations.register.p3)} <b>  {t(translations.register.p4)} </b><br />
+                  {t(translations.register.p3)} <b>  {t(translations.register.p4)}</b>.<br />
                     <span className="text-[0.8rem] lg:text-[1rem]">
-                    {t(translations.register.p5)}  <b>  {t(translations.register.p6)} </b><br />
+                    {t(translations.register.p5)}  <b>  {t(translations.register.p6)}</b>.<br />
                       <br />
                     </span>
                     <b>  {t(translations.register.p7)} </b>
@@ -61,10 +61,10 @@ const Register = () => {
 
             <div className="flex-grow">
               <h1 className="text-black dark:text-white text-[1.75rem] text-center md:text-left md:text-[2rem] font-semibold mb-6">
-                Create Your Account
+              {t(translations.register.createAccount)}
               </h1>
               <p className="text-gray-2 dark:text-white text-[1rem] mb-2">
-                You’re creating an account as?
+              {t(translations.register.creatingAs)}
               </p>
 
               {/* RegisterForm Component */}

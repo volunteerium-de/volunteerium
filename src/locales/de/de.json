@@ -32,9 +32,9 @@
     "imageAlt": "Lernen Sie uns kennen"
   },
 
-  "subscribe" : {
+  "subscribe": {
     "h3": "Abonnieren",
-    "p" : " Werden Sie Teil unserer Freiwilligengemeinschaft, indem Sie unseren Newsletter abonnieren. Bleiben Sie über bevorstehende Freiwilligenveranstaltungen und besondere Projekte auf dem Laufenden"
+    "p": " Werden Sie Teil unserer Freiwilligengemeinschaft, indem Sie unseren Newsletter abonnieren. Bleiben Sie über bevorstehende Freiwilligenveranstaltungen und besondere Projekte auf dem Laufenden"
   },
 
   "footer": {
@@ -57,11 +57,12 @@
     "p1": "Treten Sie unserem bei",
     "p2": "Gemeinschaft",
     "p3": "Werde Teil von etwas",
-    "p4": "größer." ,
+    "p4": "größer",
     "p5": "Ein Konto erstellen und starten",
-    "p6": "einen Unterschied machen.",
+    "p6": "einen Unterschied machen",
     "p7": "Wir können es kaum erwarten, dich bei uns zu haben!",
-    "createAccount": "Erstellen Sie Ihr Konto"
+    "createAccount": "Erstellen Sie Ihr Konto",
+    "creatingAs" : "Sie erstellen ein Konto als?"
   },
 
   "registerForm": {
@@ -80,13 +81,33 @@
     "login": "Anmeldung",
     "or": "oder",
     "contGoogle": "Weiter mit Google",
-    "pTerms" : "Indem Sie fortfahren, erklären Sie sich damit einverstanden",
+    "pTerms": "Indem Sie fortfahren, erklären Sie sich damit einverstanden",
     "terms": "Zustellungsbedingungen",
     "pPrivacy": "und bestätigen Sie, dass Sie unsere gelesen haben",
     "privacy": "Datenschutzerklärung"
+  },
+
+  "login": {
+    "p1" : "Rückkehr zur",
+    "p2" : "Gemeinschaft",
+    "p3" : "Willkommen zurück zu etwas",
+    "p4" : "größer",
+    "p5" : "Melden Sie sich an, um weiterhin",
+    "p6" : "etwas zu bewirken",
+    "p7" : "Wir freuen uns, Sie bei uns zu haben!",
+    "signIn" : "Anmelden"
+},
+
+"loginForm": {
+"email" : "E-Mail",
+"emailPH": "Geben Sie Ihre E-Mail-Adresse ein",
+"password": "Passwort",
+"passwordPH": "Geben Sie Ihr Passwort ein",
+"forgot": "Passwort vergessen?",
+"login": "Anmelden",
+"haveAccount": "Haben Sie noch kein Konto?",
+"signUp": "Konto Erstellen",
+"or": "oder",
+"contGoogle": "Weiter mit Google"
 }
-
-
-
-
 }

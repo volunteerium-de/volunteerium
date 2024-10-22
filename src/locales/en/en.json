@@ -1,5 +1,3 @@
-
-
 {
   "hero": {
     "h2": "Become a part of something",
@@ -34,12 +32,12 @@
     "imageAlt": "Get to know us"
   },
 
-  "subscribe" : {
+  "subscribe": {
     "h3": "Subscribe",
-    "p" : " Join our community of volunteers by subscribing to our newsletter. Stay informed about upcoming volunteer events, special projects."
+    "p": " Join our community of volunteers by subscribing to our newsletter. Stay informed about upcoming volunteer events, special projects."
   },
 
-    "footer": {
+  "footer": {
     "information": "Information",
     "company": "Company",
     "aboutUs": "About Us",
@@ -51,7 +49,7 @@
     "privacy": "Privacy Policy",
     "terms": "Terms of Service",
     "p": " Volunteerium | All rights reserved"
-  }, 
+  },
 
   "register": {
     "h1": "Create Your Account",
@@ -59,11 +57,12 @@
     "p1": "Join Our",
     "p2": "Community",
     "p3": "Become a part of something",
-    "p4": "bigger." ,
+    "p4": "bigger",
     "p5": "Create an account and start",
-    "p6": "making a difference.",
+    "p6": "making a difference",
     "p7": "We cannot wait to have you with us!",
-    "createAccount": "Create Your Account"
+    "createAccount": "Create Your Account",
+    "creatingAs" : "You’re creating an account as?"
   },
 
   "registerForm": {
@@ -82,9 +81,34 @@
     "login": "Login",
     "or": "or",
     "contGoogle": "Continue with Google",
-    "pTerms" : "By continuing, you agree to the",
+    "pTerms": "By continuing, you agree to the",
     "terms": "Terms of Service",
     "pPrivacy": "and acknowledge you’ve read our",
     "privacy": "Privacy Policy"
+  },
+
+  "login": {
+    "p1" : "Reconnect with",
+    "p2" : "Community",
+    "p3" : "Welcome back to something",
+    "p4" : "bigger",
+    "p5" : "Login to continue making",
+    "p6" : "a difference",
+    "p7" : "We're glad to have you with us!",
+    "signIn" : "Sign In"
+  },
+
+  "loginForm": {
+    "email" : "Email",
+    "emailPH": "Enter your email address",
+    "password": "Password",
+    "passwordPH": "Enter your password",
+    "forgot": "Forgot your password?",
+    "login": "Login",
+    "haveAccount": "Do not have an account yet?",
+    "signUp": "Sign Up",
+    "or": "or",
+    "contGoogle": "Continue with Google"
   }
+
 }

@@ -63,9 +63,10 @@ export const translations = {
         p6: "register.p6",
         p7: "register.p7",
         createAccount: "register.createAccount",
+        creatingAs: "register.creatingAs"
       },
 
-      registerForm: {
+    registerForm: {
         radioIndv: "registerForm.radioIndv",
         radioOrg: "registerForm.radioOrg",
         fullname: "registerForm.fullname",
@@ -85,7 +86,39 @@ export const translations = {
         terms: "registerForm.terms",
         pPrivacy: "registerForm.pPrivacy",
         privacy: "registerForm.privacy"
+    },
+
+    login: {
+        p1 : "login.p1",
+        p2 : "login.p2",
+        p3 : "login.p3",
+        p4 : "login.p4",
+        p5 : "login.p5",
+        p6 : "login.p6",
+        p7 : "login.p7",
+        signIn : "login.signIn"
       },
+    
+    loginForm: {
+        email : "loginForm.email",
+        emailPH: "loginForm.emailPH",
+        password : "loginForm.password",
+        passwordPH : "loginForm.passwordPH",
+        forgot: "loginForm.forgot",
+        login: "loginForm.login",
+        haveAccount: "loginForm.haveAccount",
+        signUp: "loginForm.signUp",
+        or: "loginForm.or",
+        contGoogle: "loginForm.contGoogle"
+
+
+
+
+
+
+
+
+    }
       
 
 
