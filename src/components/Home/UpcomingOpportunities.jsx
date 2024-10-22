@@ -1,13 +1,15 @@
 import React, { useRef, useState, useEffect } from "react"
 import EventCardVertical from "../ui/Cards/EventCardVertical"
 import { IoIosArrowDropleftCircle, IoIosArrowDroprightCircle } from "react-icons/io"
-
+import { useTranslation } from  "react-i18next"
+import { translations } from "../../locales/translations"
 const UpcomingOpportunities = () => {
+  const { t } = useTranslation()
   const sliderRef = useRef(null)
   const [scrollPosition, setScrollPosition] = useState(0)
   const [isLeftDisabled, setIsLeftDisabled] = useState(true)
   const [isRightDisabled, setIsRightDisabled] = useState(false)
-
+  
   // Example event data (this would normally come from an API or data source)
   const eventData = [
     {
@@ -24,7 +26,7 @@ const UpcomingOpportunities = () => {
     {
       title: "Community Park Tree Planting Day 2",
       description:
-        "Help us make Riverside greener! Join us for a day of tree planting in the community park.",
+      "Help us make Riverside greener! Join us for a day of tree planting in the community park.",
       organizer: "Matilda R.",
       date: "June 5, 2024 - 17:00",
       location: "Berlin, Germany",
@@ -35,7 +37,7 @@ const UpcomingOpportunities = () => {
     {
       title: "Community Park Tree Planting Day 3",
       description:
-        "Help us make Riverside greener! Join us for a day of tree planting in the community park.",
+      "Help us make Riverside greener! Join us for a day of tree planting in the community park.",
       organizer: "Matilda R.",
       date: "June 5, 2024 - 17:00",
       location: "Berlin, Germany",
@@ -46,7 +48,7 @@ const UpcomingOpportunities = () => {
     {
       title: "Community Park Tree Planting Day 4",
       description:
-        "Help us make Riverside greener! Join us for a day of tree planting in the community park.",
+      "Help us make Riverside greener! Join us for a day of tree planting in the community park.",
       organizer: "Matilda R.",
       date: "June 5, 2024 - 17:00",
       location: "Berlin, Germany",
@@ -57,7 +59,7 @@ const UpcomingOpportunities = () => {
     {
       title: "Community Park Tree Planting Day 5 ",
       description:
-        "Help us make Riverside greener! Join us for a day of tree planting in the community park.",
+      "Help us make Riverside greener! Join us for a day of tree planting in the community park.",
       organizer: "Matilda R.",
       date: "June 5, 2024 - 17:00",
       location: "Berlin, Germany",
@@ -68,7 +70,7 @@ const UpcomingOpportunities = () => {
     {
       title: "Community Park Tree Planting Day 6",
       description:
-        "Help us make Riverside greener! Join us for a day of tree planting in the community park.",
+      "Help us make Riverside greener! Join us for a day of tree planting in the community park.",
       organizer: "Matilda R.",
       date: "June 5, 2024 - 17:00",
       location: "Berlin, Germany",
@@ -79,7 +81,7 @@ const UpcomingOpportunities = () => {
     {
       title: "Community Park Tree Planting Day 7",
       description:
-        "Help us make Riverside greener! Join us for a day of tree planting in the community park.",
+      "Help us make Riverside greener! Join us for a day of tree planting in the community park.",
       organizer: "Matilda R.",
       date: "June 5, 2024 - 17:00",
       location: "Berlin, Germany",
@@ -88,7 +90,7 @@ const UpcomingOpportunities = () => {
       link: "#",
     },
   ]
-
+  
   // Function to handle scroll left
   const handleScrollLeft = () => {
     if (sliderRef.current) {
@@ -100,7 +102,7 @@ const UpcomingOpportunities = () => {
       setScrollPosition(newPosition)
     }
   }
-
+  
   // Function to handle scroll right
   const handleScrollRight = () => {
     if (sliderRef.current) {
@@ -137,13 +139,13 @@ const UpcomingOpportunities = () => {
         {/* Header */}
         <div className="flex justify-between flex-wrap mb-[5px]">
           <h2 className="text-[1.5rem] font-semibold text-dark-gray-1 dark:text-white py-3">
-            Upcoming Events
+          {t(translations.upcomingOpp.title)}
           </h2>
           <a
             href="#"
             className="text-primary-green font-medium pt-[10px] text-[0.9375rem] self-center leading-[1.66] ml-auto"
           >
-            Discover More
+            {t(translations.upcomingOpp.discover)}
           </a>
         </div>
 

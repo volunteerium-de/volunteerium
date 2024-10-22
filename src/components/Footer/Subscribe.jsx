@@ -1,12 +1,18 @@
 import { HiArrowSmRight } from "react-icons/hi"
+import { translations } from "../../locales/translations"
+import { useTranslation } from "react-i18next"
 
 const Subscribe = () => {
+
+  const { t } = useTranslation() // i18next hook
+
   return (
     <div className="flex flex-col items-center justify-center px-6 py-8 bg-light-green dark:bg-dark-gray-3 rounded-md shadow-md w-[80%] mx-auto">
-      <h3 className="text-xl font-bold mb-2 text-dark-gray-3 dark:text-white">Subscribe</h3>
+      <h3 className="text-xl font-bold mb-2 text-dark-gray-3 dark:text-white">
+      {t(translations.subscribe.h3)}
+      </h3>
       <p className="text-dark-gray-1 mb-4 text-center dark:text-gray-1">
-        Join our community of volunteers by subscribing to our newsletter. Stay informed about
-        upcoming volunteer events, special projects.
+      {t(translations.subscribe.p)}
       </p>
       <div className="relative w-full">
         <input

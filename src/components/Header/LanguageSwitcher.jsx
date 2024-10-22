@@ -1,10 +1,11 @@
 import { TbWorld } from "react-icons/tb"
 import { FiChevronRight } from "react-icons/fi"
 import { useState } from "react"
+import { useTranslation } from "react-i18next";
 
 const LanguageMenu = () => {
+  const { i18n } = useTranslation(); 
   const [isMenuOpen, setIsMenuOpen] = useState(false)
-  const [language, setLanguage] = useState("English")
 
   // Toggle the language menu
   const toggleLanguageMenu = () => {
@@ -13,9 +14,9 @@ const LanguageMenu = () => {
 
   // Select language function
   const selectLanguage = (lang) => {
-    setLanguage(lang)
-    setIsMenuOpen(false) // Closing the menu after selection
-  }
+    i18n.changeLanguage(lang); // Change language directly
+    setIsMenuOpen(false); // Close the menu after selection
+  };
 
   return (
     <div className="relative">
@@ -25,7 +26,7 @@ const LanguageMenu = () => {
         onClick={toggleLanguageMenu}
       >
         <TbWorld className="mr-2" />
-        {language}
+        {i18n.language === "en" ? "English" : "Deutsch"}
         {isMenuOpen && <FiChevronRight className="ml-2" />}
       </button>
 
@@ -34,13 +35,13 @@ const LanguageMenu = () => {
         <div className="absolute right-0 mt-2 w-28 bg-white dark:bg-dark-gray-3 rounded-lg shadow-lg z-10">
           <button
             className="block w-full text-left p-1 hover:text-primary-green"
-            onClick={() => selectLanguage("English")}
+            onClick={() => selectLanguage("en")}
           >
             English
           </button>
           <button
             className="block w-full text-left p-1 hover:text-primary-green"
-            onClick={() => selectLanguage("Deutsch")}
+            onClick={() => selectLanguage("de")}
           >
             Deutsch
           </button>
