@@ -7,7 +7,7 @@ import PrivateRouter from "./PrivateRouter"
 import NotFound from "../pages/NotFound"
 import AboutUs from "../pages/AboutUs"
 import RegisterSuccess from "../components/Register/RegisterSuccess"
-import Feedback from "../pages/Feedback"
+import ContactUs from "../pages/ContactUs"
 import VerificationSuccess from "../components/UserEmailVerification/VerificationSuccess"
 import SetupOrganization from "../pages/SetupOrganization"
 import SetupIndividual from "../pages/SetupIndividual"
@@ -27,7 +27,7 @@ const AppRouter = () => {
         <Route path="/" element={<Home />} />
         <Route path="about" element={<AboutUs />} />
         <Route path="faq" element={<FAQuestion />} />
-        <Route path="feedback" element={<Feedback />} />
+        <Route path="contact" element={<ContactUs />} />
         <Route path="profile/:userId" element={<Profile />} />
         <Route path="password" element={<Password />} />
 
