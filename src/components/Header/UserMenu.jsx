@@ -22,7 +22,7 @@ const UserMenu = ({ user }) => {
 
   // Handle Logout
   const handleLogout = () => {
-    logout()
+    logout(true)
     toggleMenu()
   }
 

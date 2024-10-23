@@ -1,6 +1,6 @@
-import { GiTrophyCup } from "react-icons/gi"
+import { LiaMedalSolid, LiaTrophySolid } from "react-icons/lia"
 import { FaRegCalendarAlt, FaExternalLinkAlt } from "react-icons/fa"
-import { IoLocationOutline } from "react-icons/io5"
+import { IoLocationOutline, IoInformationCircleOutline } from "react-icons/io5"
 import { BsGenderAmbiguous } from "react-icons/bs"
 import { MdLanguage } from "react-icons/md"
 import ProfileCard from "../components/ui/Cards/ProfileCard"
@@ -16,9 +16,39 @@ import Pagination from "../components/ui/Pagination/Pagination"
 import { axiosWithPublic } from "../hooks/useAxios"
 import avatar from "../assets/example-avatar.jpg"
 import logo from "../assets/get-to-know-us.png"
+import { formatName } from "../helpers/formatName"
+import formatLanguages from "../helpers/ISO-639-1-languages.json"
 
 const defaultIndividualImage = avatar
 const defaultOrganozationImage = logo
+
+const getMedalInfo = (totalPoints) => {
+  if (totalPoints >= 70) {
+    return {
+      medal: "Golden Heart",
+      icon: <LiaTrophySolid className="text-[1.4rem]" />,
+      textClass: "text-[#FCB434]",
+    }
+  } else if (totalPoints >= 40) {
+    return {
+      medal: "Silver Medal",
+      icon: <LiaMedalSolid className="text-[1.4rem]" />,
+      textClass: "text-[#b0aeae]",
+    }
+  } else if (totalPoints >= 10) {
+    return {
+      medal: "Bronze Medal",
+      icon: <LiaMedalSolid className="text-[1.4rem]" />,
+      textClass: "text-[#CD7F32]",
+    }
+  } else {
+    return {
+      medal: "New Volunteer",
+      icon: null,
+      textClass: "",
+    }
+  }
+}
 
 const Profile = () => {
   const { currentUser } = useSelector((state) => state.auth)
@@ -30,7 +60,6 @@ const Profile = () => {
   const [user, setUser] = useState({})
   const navigate = useNavigate()
   const location = useLocation()
-
   const queryParams = new URLSearchParams(location.search)
   const pageFromUrl = queryParams.get("page") || 1
   const [currentPage, setCurrentPage] = useState(pageFromUrl > 0 ? pageFromUrl : 1)
@@ -65,27 +94,64 @@ const Profile = () => {
     fetchEvents()
   }, [currentPage, eventType])
 
-  const languagesFormatted = user?.userDetailsId?.languages
-    .map((lang) => lang.charAt(0).toUpperCase() + lang.slice(1))
-    .join(", ")
+  const {
+    _id,
+    fullName,
+    userType,
+    organizationName,
+    documentIds,
+    createdAt,
+    userDetailsId: {
+      isFullNameDisplay,
+      languages = [],
+      addressId = {},
+      gender,
+      avatar,
+      organizationLogo,
+      interestIds = [],
+      bio,
+      totalPoint,
+    } = {},
+  } = user
 
-  const datesFormatted = formatDate(user?.createdAt)
+  console.log(user)
+
+  const medalInfoText = [
+    {
+      label: "🏅 Bronze Medal: Achieve 10 points to unlock this medal!",
+      className: "text-[#CD7F32]",
+    },
+    {
+      label: "🥈 Silver Medal: Earn 40 points to shine with silver!",
+      className: "text-[#b0aeae]",
+    },
+    {
+      label: "🏆 Golden Heart: Reach 70 points to wear the golden heart!",
+      className: "text-[#FCB434]",
+    },
+  ]
+
+  const medalInfo = getMedalInfo(totalPoint)
+
+  const getLanguageName = (code) => {
+    const language = formatLanguages.find((lang) => lang.code === code)
+    return language ? language.name : code
+  }
+  const languagesFormatted = languages.map((langCode) => getLanguageName(langCode)).join(", ")
 
   const infoItems = [
     {
       icon: <FaRegCalendarAlt />,
-      description: `Member since ${datesFormatted}`,
+      description: `Member since ${formatDate(createdAt)}`,
     },
     {
       icon: <IoLocationOutline />,
       description:
-        user?.userDetailsId?.addressId?.city && user?.userDetailsId?.addressId?.country
-          ? `${user?.userDetailsId?.addressId?.city}, ${user?.userDetailsId?.addressId?.country}`
-          : null,
+        addressId?.city && addressId?.country ? `${addressId?.city}, ${addressId?.country}` : null,
     },
     {
       icon: <BsGenderAmbiguous />,
-      description: user?.userDetailsId?.gender,
+      description: gender,
     },
     {
       icon: <MdLanguage />,
@@ -110,14 +176,14 @@ const Profile = () => {
               <div className="flex justify-between px-2 ">
                 <img
                   src={
-                    user?.userType === "individual"
-                      ? user?.userDetailsId?.avatar || defaultIndividualImage
-                      : user?.userDetailsId?.organizationLogo || defaultOrganozationImage
+                    userType === "individual"
+                      ? avatar || defaultIndividualImage
+                      : organizationLogo || defaultOrganozationImage
                   }
-                  alt={user?.userType === "individual" ? "Avatar" : "Logo"}
+                  alt={userType === "individual" ? "Avatar" : "Logo"}
                   className="w-[70px] h-[70px] sm:w-[120px] sm:h-[120px] rounded-full mt-4 sm:mt-8"
                 />
-                {user._id === currentUser._id && (
+                {_id === currentUser?._id && (
                   <button
                     onClick={() => navigate("/settings")}
                     className="w-[4rem] h-[1.6rem] sm:w-[60px] sm:h-[30px] text-[0.9375rem] rounded-md bg-primary-green text-white mt-4 sm:mt-8"
@@ -127,13 +193,29 @@ const Profile = () => {
                 )}
               </div>
               {/*Name & Trophy */}
-              <div className="mt-4 sm:mt-2 ">
+              <div className="mt-4 sm:mt-2">
                 <h1 className="text-[1.5rem] sm:text-[1.7rem] font-medium tracking-wide">
-                  {user?.userType === "individual" ? user?.fullName : user?.organizationName}
+                  {userType === "individual"
+                    ? formatName(fullName, isFullNameDisplay)
+                    : organizationName}
                 </h1>
-                <h5 className="italic text-warning font-semibold  text-[1rem] sm:text-[1.2rem] flex gap-2">
-                  Golden Heart <GiTrophyCup className="text-[1.2rem] -ml-1 mt-1" />
-                </h5>
+                <div className="flex">
+                  {medalInfo?.medal && (
+                    <h5 className={`italic font-semibold flex gap-1 mt-1 ${medalInfo.textClass}`}>
+                      {medalInfo.medal} {medalInfo.icon}
+                    </h5>
+                  )}
+                  <div className="relative inline-block group">
+                    <IoInformationCircleOutline className="absolute left-2 opacity-50 cursor-pointer group-hover:opacity-100" />
+                    <div className="absolute mb-2 top-7 -left-14 sm:-left-10 w-[281px] h-[140px] rounded-md bg-light-gray-2 text-white text-sm px-3 py-2 opacity-0 translate-y-4 transition-all duration-500 ease-in-out group-hover:opacity-100 group-hover:translate-y-0 font-semibold pointer-events-none group-hover:pointer-events-auto dark:bg-dark-gray-2 dark:text-dark-gray-2">
+                      {medalInfoText.map((item, i) => (
+                        <p key={i} className={item.className}>
+                          {item.label}
+                        </p>
+                      ))}
+                    </div>
+                  </div>
+                </div>
                 {/* Info */}
                 <div className="pt-2 sm:mt-4">
                   <div>
@@ -155,13 +237,13 @@ const Profile = () => {
                   </div>
                 </div>
                 {/* Interest */}
-                {user.userDetailsId?.interestIds?.length > 0 && (
+                {interestIds?.length > 0 && (
                   <div>
                     <h2 className="mt-6 font-semibold text-dark-gray-1 dark:text-white dark:font-bold ">
                       Interests
                     </h2>
                     <div className=" flex flex-wrap gap-2 my-2 text-dark-gray-1">
-                      {user?.userDetailsId?.interestIds.map((interest) => (
+                      {interestIds.map((interest) => (
                         <div key={interest._id}>
                           <p className="text-[0.6875rem] text-center text-primary-green border border-primary-green px-2 py-1 rounded-2xl font-bold">
                             {interest.name.toUpperCase()}
@@ -177,7 +259,7 @@ const Profile = () => {
                   <h2 className="mt-6 font-semibold text-dark-gray-1 dark:text-white dark:font-bold">
                     About Me
                   </h2>
-                  <p className="text-dark-gray-1 my-2 dark:text-white">{user.userDetailsId?.bio}</p>
+                  <p className="text-dark-gray-1 my-2 dark:text-white">{bio}</p>
                 </div>
 
                 {/* Certification & Document  */}
@@ -185,7 +267,7 @@ const Profile = () => {
                   <h2 className="my-6 font-semibold text-dark-gray-1 dark:text-white dark:font-bold">
                     Certification & Document
                   </h2>
-                  {user.documentIds?.map((item, index) => (
+                  {documentIds?.map((item, index) => (
                     <div
                       key={index}
                       className="border-b border-gray-300 dark:border-gray-400 pb-2 mb-4"
@@ -193,7 +275,7 @@ const Profile = () => {
                       <div className="flex items-center justify-between mt-2 text-dark-gray-1 dark:text-white ">
                         <p>{item.title}</p>
                         <div
-                          onClick={() => navigate(item.fileUrl)}
+                          onClick={() => window.open(item.fileUrl, "_blank")}
                           className="text-dark-gray-1 dark:text-white cursor-pointer"
                         >
                           <FaExternalLinkAlt className="opacity-65 dark:opacity-80 text-primary-green dark:text-light-gray" />
@@ -209,7 +291,7 @@ const Profile = () => {
                 <ProfileCard
                   events={events}
                   loading={loading}
-                  currentUserId={currentUser._id}
+                  currentUserId={currentUser?._id}
                   eventType={eventType}
                   setEventType={setEventType}
                   setCurrentPage={setCurrentPage}

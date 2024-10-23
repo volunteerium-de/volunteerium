@@ -1,14 +1,14 @@
-// src/pages/Feedback.jsx
+// src/pages/ContactUs.jsx
 
 import React from 'react';
 import { IoIosArrowBack } from 'react-icons/io';
 import { useNavigate } from 'react-router-dom';
 import feedbackImg from '../assets/login-img.png';
-import FeedbackForm from '../components/Feedback/FeedbackForm';
+import ContactUsForm from '../components/ContactUs/ContactUsForm';
 import logo from '../assets/logo.png';
 import Header from '../components/Header/Header';
 
-const Feedback = () => {
+const ContactUs = () => {
   const navigate = useNavigate();
 
   return (
@@ -26,7 +26,7 @@ const Feedback = () => {
         <div className="flex flex-col md:flex-row w-full justify-center items-stretch md:space-y-0 space-y-6 md:space-x-6 h-full md:min-h-[calc(100vh-180px)] lg:min-h-[calc(100vh-200px)]">
           
           {/* Left Side Image Container */}
-          <div className="hidden md:block w-full md:max-w-[45%] lg:max-w-[50%] overflow-hidden rounded-t-lg rounded-b-lg h-[calc(100vh-120px)]">
+          <div className="hidden md:block w-full md:max-w-[45%] lg:max-w-[50%] overflow-hidden rounded-t-lg rounded-b-lg">
             <div
               className="flex-grow h-full w-full bg-cover bg-center backdrop-blur-xl relative"
               style={{
@@ -55,7 +55,7 @@ const Feedback = () => {
           </div>
 
           {/* Right Side Form Container */}
-          <div className="flex-grow flex flex-col justify-start px-4 md:px-6 w-full lg:max-w-[45%] xl:max-w-[40%] bg-white dark:bg-gray-900 rounded-lg h-full">
+          <div className="flex-grow flex flex-col justify-start px-4 md:px-6 w-full lg:max-w-[45%] xl:max-w-[40%] bg-white dark:bg-black rounded-lg h-full">
             
             {/* ArrowBack Icon and Logo for Mobile Design */}
             <div className="md:hidden flex flex-col items-center mb-6 lg:min-h-[calc(100vh-200px)]">
@@ -69,13 +69,13 @@ const Feedback = () => {
             {/* Form Title */}
             <div className="flex justify-center md:justify-start">
               <h1 className="text-black dark:text-white text-[1.5rem] md:text-[1.75rem] lg:text-[2rem] text-center md:text-left font-semibold mb-4">
-                Feedback
+                Contact Us
               </h1>
             </div>
 
-            {/* Feedback Form Component */}
+            {/* ContactUs Form Component */}
             <div className="flex-grow">
-              <FeedbackForm />
+              <ContactUsForm />
             </div>
           </div>
         </div>
@@ -85,4 +85,4 @@ const Feedback = () => {
   );
 };
 
-export default Feedback;
+export default ContactUs;

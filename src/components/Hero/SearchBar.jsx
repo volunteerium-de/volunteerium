@@ -11,8 +11,11 @@ import {
 } from "../../features/searchSlice"
 import { useNavigate } from "react-router-dom"
 import { useLocation } from "react-router-dom"
+import { useTranslation } from "react-i18next"
+import { translations } from "../../locales/translations"
 
 const SearchBar = () => {
+  const { t } = useTranslation() // i18next hook
   const [isDropdownOpen, setIsDropdownOpen] = useState(false)
   const [term, setTerm] = useState("")
   const [eventLocation, setEventLocation] = useState("")
@@ -28,20 +31,20 @@ const SearchBar = () => {
   const searchBarItems = [
     {
       id: "event",
-      label: "Event",
-      placeholder: "Search opportunities",
+      label: t(translations.searchbar.event.label),
+      placeholder: t(translations.searchbar.event.placeholder),
       type: "input",
     },
     {
       id: "location",
-      label: "Location",
-      placeholder: "Choose Location",
+      label: t(translations.searchbar.location.label),
+      placeholder: t(translations.searchbar.location.placeholder),
       type: "input",
     },
     {
       id: "category",
-      label: "Category",
-      placeholder: "Choose Category",
+      label: t(translations.searchbar.category.label),
+      placeholder: t(translations.searchbar.category.placeholder),
       type: "category",
     },
   ]
@@ -106,7 +109,7 @@ const SearchBar = () => {
               id={id}
               type="text"
               placeholder={placeholder}
-              className="text-[0.6rem] sm:text-[0.8rem] text-gray-2 focus:outline-none w-full p-1 dark:bg-dark-gray-3 placeholder:bg-white"
+              className="text-[0.6rem] sm:text-[0.8rem] -ml-1 text-gray-2 focus:outline-none w-full p-1 dark:bg-dark-gray-3"
               onChange={(e) => {
                 id === "event" ? setTerm(e.target.value) : setEventLocation(e.target.value)
               }}
@@ -114,10 +117,10 @@ const SearchBar = () => {
           ) : (
             <div className="relative sm:min-w-[110px]">
               <div
-                className="cursor-pointer text-[0.6rem] sm:text-[0.8rem] text-gray-2 p-1 rounded-md"
+                className="cursor-pointer text-[0.6rem] sm:text-[0.8rem] -ml-1 text-gray-2 p-1 rounded-md"
                 onClick={() => setIsDropdownOpen(!isDropdownOpen)}
               >
-                {homeSelectedCategory || "Choose Category"}
+                {homeSelectedCategory || t("searchbar.category.placeholder")}
               </div>
               {isDropdownOpen && (
                 <ul

@@ -2,8 +2,10 @@ import React, { useRef, useState, useEffect } from "react"
 import EventCardVertical from "../ui/Cards/EventCardVertical"
 import { IoIosArrowDropleftCircle, IoIosArrowDroprightCircle } from "react-icons/io"
 import { Link } from "react-router-dom"
-
+import { useTranslation } from "react-i18next"
+import { translations } from "../../locales/translations"
 const UpcomingOpportunities = () => {
+  const { t } = useTranslation()
   const sliderRef = useRef(null)
   const [scrollPosition, setScrollPosition] = useState(0)
   const [isLeftDisabled, setIsLeftDisabled] = useState(true)
@@ -138,13 +140,13 @@ const UpcomingOpportunities = () => {
         {/* Header */}
         <div className="flex justify-between flex-wrap mb-[5px]">
           <h2 className="text-[1.5rem] font-semibold text-dark-gray-1 dark:text-white py-3">
-            Upcoming Events
+            {t(translations.upcomingOpp.title)}
           </h2>
           <Link
             to="/events"
             className="text-primary-green font-medium pt-[10px] text-[0.9375rem] self-center leading-[1.66] ml-auto"
           >
-            Discover More
+            {t(translations.upcomingOpp.discover)}
           </Link>
         </div>
 

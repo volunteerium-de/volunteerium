@@ -2,63 +2,17 @@ import { useState, useEffect, useRef } from "react"
 import { FaEnvelope } from "react-icons/fa"
 import { formatDistanceToNow } from "date-fns"
 import { Link } from "react-router-dom"
+import { useSelector } from "react-redux"
+import { useNavigate } from "react-router-dom"
+import { formatName } from "../../helpers/formatName"
 
-// Sample messages
-const sampleMessages = [
-  {
-    id: 1,
-    event: "Charity Run",
-    message: "Your registration is confirmed for the event.",
-    unread: true,
-    timestamp: Date.now() - 10 * 60 * 1000, // 10 minutes ago
-  },
-  {
-    id: 2,
-    event: "Food Drive",
-    message: "Thank you for volunteering! Please check the details.",
-    unread: false,
-    timestamp: Date.now() - 30 * 60 * 1000, // 30 minutes ago
-  },
-  {
-    id: 3,
-    event: "Tree Planting",
-    message: "Remember to bring your tools and gloves.",
-    unread: true,
-    timestamp: Date.now() - 20 * 60 * 1000, // 20 minutes ago
-  },
-  {
-    id: 4,
-    event: "Beach Cleanup",
-    message: "Meeting point is the north end of the beach.",
-    unread: false,
-    timestamp: Date.now() - 5 * 60 * 1000, // 5 minutes ago
-  },
-  {
-    id: 5,
-    event: "Blood Donation",
-    message: "Don’t forget to bring your ID and health card.",
-    unread: false,
-    timestamp: Date.now() - 1 * 60 * 1000, // 1 minute ago
-  },
-  {
-    id: 6,
-    event: "Blood Donation",
-    message: "Don’t forget to bring your ID and health card.",
-    unread: false,
-    timestamp: Date.now() - 1 * 60 * 1000, // 1 minute ago
-  },
-  {
-    id: 7,
-    event: "Blood Donation",
-    message: "Don’t forget to bring your ID and health card.",
-    unread: false,
-    timestamp: Date.now() - 1 * 60 * 1000, // 1 minute ago
-  },
-]
-
-const MessageMenu = ({ messageCount }) => {
+const MessageMenu = () => {
   const [isOpen, setIsOpen] = useState(false)
   const menuRef = useRef(null)
+  const navigate = useNavigate()
+  const { currentUser } = useSelector((state) => state.auth)
+  const { conversations } = useSelector((state) => state.chat)
+  const [totalUnreadCount, setTotalUnreadCount] = useState(0)
 
   // Toggle the message dropdown
   const toggleMessageMenu = () => {
@@ -82,6 +36,36 @@ const MessageMenu = ({ messageCount }) => {
     }
   }, [menuRef])
 
+  const isUserInReaderIds = (readerIds) => {
+    const isRead = readerIds.includes(String(currentUser._id))
+    return isRead
+  }
+
+  useEffect(() => {
+    let totalUnread = 0
+    conversations.forEach(({ messageIds }) => {
+      const { unreadCount } = getUnreadCountAndLatestMessage(messageIds)
+      totalUnread += unreadCount
+    })
+    setTotalUnreadCount(totalUnread)
+  }, [conversations])
+
+  const getUnreadCountAndLatestMessage = (messageIds) => {
+    let unreadCount = 0
+    let latestMessage = null
+
+    messageIds.forEach((message) => {
+      if (!isUserInReaderIds(message.readerIds)) {
+        unreadCount++
+      }
+      if (!latestMessage || new Date(message.createdAt) > new Date(latestMessage.createdAt)) {
+        latestMessage = message
+      }
+    })
+
+    return { unreadCount, latestMessage }
+  }
+
   return (
     <div className="" ref={menuRef}>
       <div
@@ -92,9 +76,9 @@ const MessageMenu = ({ messageCount }) => {
         <FaEnvelope className="text-primary-green dark:text-gray-2 h-7 w-7" />
 
         {/* Message Count Badge */}
-        {messageCount > 0 && (
+        {totalUnreadCount > 0 && (
           <span className="select-none absolute top-0 right-0 h-5 w-5 bg-warning text-white rounded-full text-xs flex items-center justify-center">
-            {messageCount}
+            {totalUnreadCount}
           </span>
         )}
       </div>
@@ -110,33 +94,73 @@ const MessageMenu = ({ messageCount }) => {
 
           {/* Message List */}
           <div className="max-h-80 overflow-y-auto">
-            {sampleMessages.map(({ id, event, message, isRead, timestamp }) => (
-              <div
-                key={id}
-                className={`p-3 border-b border-light-gray-2 dark:border-gray-2 ${
-                  isRead ? "bg-light-gray-2 dark:bg-dark-gray-2" : "bg-white dark:bg-dark-gray-3"
-                } shadow-md`}
-              >
-                {/* Message */}
-                <div className="flex items-center">
-                  {/* Event Title */}
-                  <h4 className="font-medium text-base text-primary-green dark:text-white">
-                    {event}
-                  </h4>
-                  {isRead && (
-                    <span className="inline-block h-2 w-2 bg-primary-green dark:bg-white rounded-full ml-2"></span>
-                  )}
-                </div>
-                {/* Message Text */}
-                <p className="text-sm font-light text-gray-2 dark:text-gray-1 truncate">
-                  {message}
-                </p>
-                {/* Time Ago */}
-                <p className="text-xs font-thin text-gray-2 dark:text-gray-1">
-                  {timeAgo(timestamp)}
-                </p>
+            {conversations &&
+            conversations.filter(({ messageIds }) => messageIds && messageIds.length > 0).length ? (
+              conversations
+                .filter(({ messageIds }) => messageIds && messageIds.length > 0)
+                .map(({ _id, eventId, createdBy, messageIds }) => {
+                  const { unreadCount, latestMessage } = getUnreadCountAndLatestMessage(messageIds)
+                  const { title, eventPhoto } = eventId
+                  const { fullName, organizationName, userType, userDetailsId } =
+                    latestMessage.senderId
+                  const { isFullNameDisplay } = userDetailsId
+                  const name =
+                    userType === "individual" || userType === "admin" ? fullName : organizationName
+                  return (
+                    <div
+                      key={_id}
+                      // onClick={() => navigate(`/event-management?tab=messages&conversation=${_id}`)}
+                      className={`${unreadCount > 0 && "bg-light-gray-3"} p-3 border-b border-light-gray-2 dark:border-gray-2 dark:bg-dark-gray-2 hover:bg-light-gray-2 dark:hover:bg-dark-gray-1 shadow-md cursor-pointer`}
+                    >
+                      <div className="flex gap-2 items-start w-full">
+                        <div className="w-[14%]">
+                          {/* Event Photo */}
+                          <img
+                            src={eventPhoto}
+                            alt={title}
+                            className="object-fit h-10 w-10 rounded-full border-2 border-primary-green dark:border-gray-2 mx-auto"
+                          />
+                        </div>
+                        {/* Message */}
+                        <div className="flex flex-col w-[86%]">
+                          <div className="flex items-center">
+                            {/* Event Title */}
+                            <h4 className="font-medium text-base text-primary-green dark:text-white">
+                              {title}
+                            </h4>
+
+                            {unreadCount > 0 && (
+                              <span className="inline-flex items-center justify-center p-1 h-5 w-4 text-xs bg-warning text-white  ml-2">
+                                {unreadCount}
+                              </span>
+                            )}
+                          </div>
+                          {/* Sender Name */}
+                          <p className="font-medium text-[0.9rem] text-gray-2 dark:text-gray-1">
+                            {currentUser._id === latestMessage.senderId._id
+                              ? "You"
+                              : createdBy._id === eventId.createdBy
+                                ? "Announcement"
+                                : formatName(name, isFullNameDisplay)}
+                          </p>
+                          {/* Message Text */}
+                          <p className="text-sm font-light text-dark-gray-2 dark:text-gray-1 truncate">
+                            {latestMessage.content}
+                          </p>
+                          {/* Time Ago */}
+                          <p className="text-xs pt-1 font-light text-right text-gray-2 dark:text-gray-1">
+                            {timeAgo(latestMessage.createdAt)}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  )
+                })
+            ) : (
+              <div>
+                <p className="text-center text-gray-2 py-3 dark:text-light-gray-2">No messages</p>
               </div>
-            ))}
+            )}
           </div>
         </div>
       )}
