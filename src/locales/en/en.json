@@ -62,7 +62,7 @@
     "p6": "making a difference",
     "p7": "We cannot wait to have you with us!",
     "createAccount": "Create Your Account",
-    "creatingAs" : "You’re creating an account as?"
+    "creatingAs": "You’re creating an account as?"
   },
 
   "registerForm": {
@@ -88,18 +88,18 @@
   },
 
   "login": {
-    "p1" : "Reconnect with",
-    "p2" : "Community",
-    "p3" : "Welcome back to something",
-    "p4" : "bigger",
-    "p5" : "Login to continue making",
-    "p6" : "a difference",
-    "p7" : "We're glad to have you with us!",
-    "signIn" : "Sign In"
+    "p1": "Reconnect with",
+    "p2": "Community",
+    "p3": "Welcome back to something",
+    "p4": "bigger",
+    "p5": "Login to continue making",
+    "p6": "a difference",
+    "p7": "We're glad to have you with us!",
+    "signIn": "Sign In"
   },
 
   "loginForm": {
-    "email" : "Email",
+    "email": "Email",
     "emailPH": "Enter your email address",
     "password": "Password",
     "passwordPH": "Enter your password",
@@ -109,6 +109,32 @@
     "signUp": "Sign Up",
     "or": "or",
     "contGoogle": "Continue with Google"
+  },
+
+  "profile": {
+    "memberSince": "Member since",
+    "edit": "Edit",
+    "attendedEvents": "Attended Events",
+    "createdEvents": "Created Events",
+    "loading": "Loading...",
+    "avatar": "Avatar",
+    "logo" : "Logo",
+    "interests" : "Interests",
+    "aboutMe" : "About Me",
+    "documents": "Certification & Document",
+    "medals": {
+      "goldenHeart": "Golden Heart",
+      "silverMedal": "Silver Medal",
+      "bronzeMedal": "Bronze Medal",
+      "newVolunteer": "New Volunteer",
+      "goldenInfo": "🏆 Golden Heart: Awarded to those who reach 70 points.",
+      "silverInfo": "🥈 Silver Medal: Awarded to those who reach 40 points.",
+      "bronzeInfo": "🏅 Bronze Medal: Awarded to those who reach 10 points."
+    },
+    "avatarAlt": "User avatar",
+    "logoAlt": "Organization logo",
+    "eventImageAlt": "Event image"
   }
+
 
 }

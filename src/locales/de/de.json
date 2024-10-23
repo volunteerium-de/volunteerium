@@ -62,7 +62,7 @@
     "p6": "einen Unterschied machen",
     "p7": "Wir können es kaum erwarten, dich bei uns zu haben!",
     "createAccount": "Erstellen Sie Ihr Konto",
-    "creatingAs" : "Sie erstellen ein Konto als?"
+    "creatingAs": "Sie erstellen ein Konto als?"
   },
 
   "registerForm": {
@@ -88,26 +88,51 @@
   },
 
   "login": {
-    "p1" : "Verbindung an die",
-    "p2" : "Gemeinschaft",
-    "p3" : "Willkommen zurück zu etwas",
-    "p4" : "größer",
-    "p5" : "Melden Sie sich an, um weiterhin",
-    "p6" : "etwas zu bewirken",
-    "p7" : "Wir freuen uns, Sie bei uns zu haben!",
-    "signIn" : "Anmelden"
-},
+    "p1": "Verbindung an die",
+    "p2": "Gemeinschaft",
+    "p3": "Willkommen zurück zu etwas",
+    "p4": "größer",
+    "p5": "Melden Sie sich an, um weiterhin",
+    "p6": "etwas zu bewirken",
+    "p7": "Wir freuen uns, Sie bei uns zu haben!",
+    "signIn": "Anmelden"
+  },
 
-"loginForm": {
-"email" : "E-Mail",
-"emailPH": "Geben Sie Ihre E-Mail-Adresse ein",
-"password": "Passwort",
-"passwordPH": "Geben Sie Ihr Passwort ein",
-"forgot": "Passwort vergessen?",
-"login": "Anmelden",
-"haveAccount": "Haben Sie noch kein Konto?",
-"signUp": "Konto Erstellen",
-"or": "oder",
-"contGoogle": "Weiter mit Google"
-}
+  "loginForm": {
+    "email": "E-Mail",
+    "emailPH": "Geben Sie Ihre E-Mail-Adresse ein",
+    "password": "Passwort",
+    "passwordPH": "Geben Sie Ihr Passwort ein",
+    "forgot": "Passwort vergessen?",
+    "login": "Anmelden",
+    "haveAccount": "Haben Sie noch kein Konto?",
+    "signUp": "Konto Erstellen",
+    "or": "oder",
+    "contGoogle": "Weiter mit Google"
+  },
+
+  "profile": {
+    "memberSince": "Mitglied seit",
+    "edit": "Bearbeiten",
+    "attendedEvents": "Besuchte Veranstaltungen",
+    "createdEvents": "Erstellte Veranstaltungen",
+    "loading": "Laden...",
+    "avatar": "Profilbild",
+    "logo" : "Firmenzeichen",
+    "interests" : "Interesse",
+    "aboutMe" : "Über mich",
+    "documents": "Bescheinigung & Dokument",
+    "medals": {
+      "goldenHeart": "Goldenes Herz",
+      "silverMedal": "Silbermedaille",
+      "bronzeMedal": "Bronze-Medaille",
+      "newVolunteer": "neuer Freiwilliger",
+      "goldenInfo": "🏆 Goldenes Herz: Ausgezeichnet an diejenigen, die 70 Punkte erreichen.",
+      "silverInfo": "🥈 Silbermedaille: Verliehen an Personen, die 40 Punkte erreichen.",
+      "bronzeInfo": "🏅 Bronze-Medaille: Verliehen an diejenigen, die 10 Punkte erreichen."
+    },
+    "avatarAlt": "Avatar des Benutzers",
+    "logoAlt": "Logo der Organisation",
+    "eventImageAlt": "Veranstaltungsbild"
+  }
 }

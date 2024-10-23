@@ -110,14 +110,31 @@ export const translations = {
         signUp: "loginForm.signUp",
         or: "loginForm.or",
         contGoogle: "loginForm.contGoogle"
+    },
 
-
-
-
-
-
-
-
+    profile: {
+        memberSince: "profile.memberSince",
+        edit: "profile.edit",
+        attendedEvents: "profile.attendedEvents",
+        createdEvents: "profile.createdEvents",
+        loading: "profile.loading",
+        avatar: "profile.avatar",
+        logo : "profile.logo",
+        interests : "profile.interests",
+        aboutMe : "profile.aboutMe",
+        documents: "profile.documents",
+        medals: {
+          goldenHeart: "profile.medals.goldenHeart",
+          silverMedal: "profile.medals.silverMedal",
+          bronzeMedal: "profile.medals.bronzeMedal",
+          newVolunteer: "profile.medals.newVolunteer",
+          goldenInfo: "profile.medals.goldenInfo",
+          silverInfo: "profile.medals.silverInfo",
+          bronzeInfo: "profile.medals.bronzeInfo"
+        },
+        avatarAlt: "profile.avatarAlt",
+        logoAlt: "profile.logoAlt",
+        eventImageAlt: "profile.eventImgAlt"
     }
       
 
