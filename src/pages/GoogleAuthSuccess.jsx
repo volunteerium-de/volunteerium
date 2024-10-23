@@ -11,6 +11,19 @@ import { ImSpinner9 } from "react-icons/im"
 import { useState } from "react"
 import { useSelector } from "react-redux"
 
+export const getLoginRedirectLink = (user) => {
+  let redirectLink = "/"
+  if (!user.userDetailsId.isProfileSetup) {
+    if (user.userType === "individual") {
+      redirectLink = `/account-setup/individual?clientId=${user._id}`
+    } else if (user.userType === "organization") {
+      redirectLink = `/account-setup/organization?clientId=${user._id}`
+    }
+  }
+  
+  return redirectLink
+} 
+
 const GoogleAuthSuccess = () => {
   const dispatch = useDispatch()
   const navigate = useNavigate()
@@ -51,14 +64,7 @@ const GoogleAuthSuccess = () => {
       try {
         dispatch(loginSuccess(userData))
 
-        let redirectLink = "/"
-        if (!userData.user.userDetailsId.isProfileSetup) {
-          if (userData.user.userType === "individual") {
-            redirectLink = `/account-setup/individual?clientId=${userData.user._id}`
-          } else if (userData.user.userType === "organization") {
-            redirectLink = `/account-setup/organization?clientId=${userData.user._id}`
-          }
-        }
+        const redirectLink = getLoginRedirectLink(userData.user)
 
         if (redirectLink === "/") {
           toastNotify("success", "You have successfully logged in with Google")
@@ -94,4 +100,4 @@ const GoogleAuthSuccess = () => {
   )
 }
 
-export default GoogleAuthSuccess
+export default GoogleAuthSuccess 
