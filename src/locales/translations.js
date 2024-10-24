@@ -299,7 +299,35 @@ updateDoc: {
     selectFile: "updateDoc.selectFile",
     cancel: "updateDoc.cancel",
     update: "updateDoc.update"
+},
+
+msgMenu: {
+    h3: "msgMenu.h3",
+    link: "msgMenu.link",
+    you: "msgMenu.you",
+    announce: "msgMenu.announce",
+    noMsg: "msgMenu.noMsg"
+},
+
+notifMenu: {
+    notif: "notifMenu.notif",
+    noNotif: "notifMenu.noNotif"
+},
+
+userMenu: {
+    user: "userMenu.user",
+    profile: "userMenu.profile",
+    eventMng: "userMenu.eventMng",
+    settings: "userMenu.settings",
+    logout: "userMenu.logout",
+    login: "userMenu.login",
+    register: "userMenu.register",
+    light: "userMenu.light",
+    dark: "userMenu.dark"
 }
+
+
+
 
 
 

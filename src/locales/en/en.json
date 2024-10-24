@@ -297,5 +297,34 @@
     "selectFile": "Select File",
     "cancel": "Cancel",
     "update": "Update"
+  },
+
+  "msgMenu": {
+    "h3": "Messages",
+    "link": "View All",
+    "you":  "You",
+    "announce": "Announcement",
+    "noMsg": "No Messages"
+  },
+
+  "notifMenu": {
+    "notif": "Notifications",
+    "noNotif": "No Notifications"
+  },
+
+  "userMenu": {
+    "user": "User",
+    "profile": "Profile",
+    "eventMng": "Event Management",
+    "settings": "Setting",
+    "logout": "Logout",
+    "login": "Login",
+    "register": "Register",
+    "light": "Light",
+    "dark": "Dark"
   }
+
+
+
+
 }

@@ -297,7 +297,33 @@
     "selectFile": "Datei auswählen",
     "cancel": "Abbrechen",
     "update": "Aktualisieren"
+},
+
+"msgMenu": {
+    "h3": "Nachrichten",
+    "link": "Alle anzeigen",
+    "you": "Sie",
+    "announce": "Ankündigung",
+    "noMsg": "Keine Nachrichten"
+},
+
+"notifMenu": {
+    "notif": "Benachrichtigungen",
+    "noNotif": "Keine Benachrichtigungen"
+},
+
+"userMenu": {
+    "user": "Benutzer",
+    "profile": "Profil",
+    "eventMng": "Veranstaltungsverwaltung",
+    "settings": "Einstellungen",
+    "logout": "Abmelden",
+    "login": "Anmelden",
+    "register": "Registrieren",
+    "light": "Hell",
+    "dark": "Dunkel"
 }
+
 
 
 }
