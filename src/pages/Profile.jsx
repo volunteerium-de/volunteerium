@@ -185,8 +185,8 @@ const Profile = () => {
                   }
                   alt={
                     userType === "individual"
-                      ? t(translations.profile.avatar)
-                      : t(translations.profile.logo)
+                      ? t(translations.profile.avatarAlt)
+                      : t(translations.profile.logoAlt)
                   }
                   className="w-[70px] h-[70px] sm:w-[120px] sm:h-[120px] rounded-full mt-4 sm:mt-8"
                 />

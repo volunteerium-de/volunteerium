@@ -34,7 +34,8 @@
 
   "subscribe": {
     "h3": "Subscribe",
-    "p": " Join our community of volunteers by subscribing to our newsletter. Stay informed about upcoming volunteer events, special projects."
+    "p": " Join our community of volunteers by subscribing to our newsletter. Stay informed about upcoming volunteer events, special projects.",
+    "emailPH": "Enter your email"
   },
 
   "footer": {
@@ -117,8 +118,6 @@
     "attendedEvents": "Attended Events",
     "createdEvents": "Created Events",
     "loading": "Loading...",
-    "avatar": "Avatar",
-    "logo" : "Logo",
     "interests" : "Interests",
     "aboutMe" : "About Me",
     "documents": "Certification & Document",
@@ -134,7 +133,43 @@
     "avatarAlt": "User avatar",
     "logoAlt": "Organization logo",
     "eventImageAlt": "Event image"
-  }
+  },
 
+  "userSettings": {
+    "avatarAlt" : "User avatar",
+    "edit" : "Edit",
+    "welcome": "Welcome",
+    "profile": "Profile",
+    "security": "Security",
+    "visibility": "Visibility"
+  },
+
+  "addNewDoc": {
+    "newDocument": "New Document",
+    "documentTitle": "Document Title",
+    "buttonReset": "Reset",
+    "buttonAddNew": "Add New +",
+    "cancel": "Cancel",
+    "save": "Save"
+  },
+
+  "avatarEdit": {
+    "networkError": "Network response was not ok",
+    "photoAlert": "Photo uploaded successfully!",
+    "photoError": "There was an error loading the photo. Please try again.",
+    "loading": "Loading...",
+    "logo": "Logo",
+    "profilePhoto": "Profile Photo",
+    "avatarAlt": "User avatar",
+    "addPhoto": "Add Photo",
+    "delete": "Delete"
+  },
+
+  "delAccount": {
+    "h2": "Delete Account",
+    "p": "Are you sure you want to delete your account? This action cannot be undone.",
+    "cancelButton": "Cancel",
+    "delButton": "Delete Account"
+  }
 
 }

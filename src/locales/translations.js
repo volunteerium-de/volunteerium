@@ -35,7 +35,8 @@ export const translations = {
 
     subscribe: {
         h3: "subscribe.h3",
-        p: "subscribe.p"
+        p: "subscribe.p",
+        emailPH: "subscribe.emailPH"
     },
 
     footer: { // Yeni ekleme
@@ -118,8 +119,6 @@ export const translations = {
         attendedEvents: "profile.attendedEvents",
         createdEvents: "profile.createdEvents",
         loading: "profile.loading",
-        avatar: "profile.avatar",
-        logo : "profile.logo",
         interests : "profile.interests",
         aboutMe : "profile.aboutMe",
         documents: "profile.documents",
@@ -135,7 +134,44 @@ export const translations = {
         avatarAlt: "profile.avatarAlt",
         logoAlt: "profile.logoAlt",
         eventImageAlt: "profile.eventImgAlt"
-    }
+    },
+
+    userSettings: {
+        avatarAlt : "userSettings.avatarAlt",
+        edit : "userSettings.edit",
+        welcome: "userSettings.welcome",
+        profile: "userSettings.profile",
+        security: "userSettings.security",
+        visibility: "userSettings.visibility"
+    },
+
+    addNewDoc: {
+        newDoc: "addNewDoc.newDocument",
+        docTitle: "addNewDoc.documentTitle",
+        reset: "addNewDoc.buttonReset",
+        addNew: "addNewDoc.buttonAddNew",
+        cancel: "addNewDoc.cancel",
+        save: "addNewDoc.save"
+    },
+
+    avatarEdit: {
+        networkError: "avatarEdit.networkError",
+        photoAlert: "avatarEdit.photoAlert",
+        photoError: "avatarEdit.photoError",
+        loading: "avatarEdit.loading",
+        logo: "avatarEdit.logo",
+        profilePhoto: "avatarEdit.profilePhoto",
+        avatarAlt: "avatarEdit.avatarAlt",
+        addPhoto: "avatarEdit.addPhoto",
+        delete: "avatarEdit.delete"
+      },
+
+      delAccount: {
+        h2: "delAccount.h2",
+        p: "delAccount.p",
+        cancelButton: "delAccount.cancelButton",
+        delButton: "delAccount.delButton"
+      }
       
 
 

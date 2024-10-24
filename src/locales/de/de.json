@@ -34,7 +34,8 @@
 
   "subscribe": {
     "h3": "Abonnieren",
-    "p": " Werden Sie Teil unserer Freiwilligengemeinschaft, indem Sie unseren Newsletter abonnieren. Bleiben Sie über bevorstehende Freiwilligenveranstaltungen und besondere Projekte auf dem Laufenden"
+    "p": " Werden Sie Teil unserer Freiwilligengemeinschaft, indem Sie unseren Newsletter abonnieren. Bleiben Sie über bevorstehende Freiwilligenveranstaltungen und besondere Projekte auf dem Laufenden",
+    "emailPH": "Geben Sie Ihre E-Mail-Adresse ein"
   },
 
   "footer": {
@@ -117,22 +118,57 @@
     "attendedEvents": "Besuchte Veranstaltungen",
     "createdEvents": "Erstellte Veranstaltungen",
     "loading": "Laden...",
-    "avatar": "Profilbild",
-    "logo" : "Firmenzeichen",
-    "interests" : "Interesse",
-    "aboutMe" : "Über mich",
+    "interests": "Interesse",
+    "aboutMe": "Über mich",
     "documents": "Bescheinigung & Dokument",
     "medals": {
       "goldenHeart": "Goldenes Herz",
       "silverMedal": "Silbermedaille",
       "bronzeMedal": "Bronze-Medaille",
       "newVolunteer": "neuer Freiwilliger",
-      "goldenInfo": "🏆 Goldenes Herz: Ausgezeichnet an diejenigen, die 70 Punkte erreichen.",
-      "silverInfo": "🥈 Silbermedaille: Verliehen an Personen, die 40 Punkte erreichen.",
+      "goldenInfo": "🏆 Goldenes Herz: Verliehen an diejenigen, die 70 Punkte erreichen.",
+      "silverInfo": "🥈 Silbermedaille: Verliehen an diejenigen, die 40 Punkte erreichen.",
       "bronzeInfo": "🏅 Bronze-Medaille: Verliehen an diejenigen, die 10 Punkte erreichen."
     },
     "avatarAlt": "Avatar des Benutzers",
     "logoAlt": "Logo der Organisation",
     "eventImageAlt": "Veranstaltungsbild"
+  },
+
+  "userSettings": {
+    "avatarAlt": "Avatar des Benutzers",
+    "edit": "Bearbeiten",
+    "welcome": "Willkommen",
+    "profile": "Profil",
+    "security": "Sicherheit",
+    "visibility": "Sichtweite"
+  },
+
+  "addNewDoc": {
+    "newDocument": "Neues Dokument",
+    "documentTitle": "Dokumenttitel",
+    "buttonReset": "Zurücksetzen",
+    "buttonAddNew": "Neue hinzufügen +",
+    "cancel": "Stornieren",
+    "save": "Speichern"
+  },
+
+  "avatarEdit": {
+    "networkError": "Network response war nicht ok",
+    "photoAlert": "Foto erfolgreich hochgeladen!",
+    "photoError": "Beim Laden des Fotos ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut.",
+    "loading": "Laden...",
+    "logo": "Logo",
+    "profilePhoto": "Profilfoto",
+    "avatarAlt": "Avatar des Benutzers ",
+    "addPhoto": "Foto hinzufügen",
+    "delete": "Streichen"
+  },
+
+  "delAccount": {
+    "h2": "Konto löschen",
+    "p": "Sind Sie sicher, dass Sie Ihr Konto löschen möchten? Diese Aktion kann nicht rückgängig gemacht werden.",
+    "cancelButton": "Stornieren",
+    "delButton": "Konto löschen"
   }
 }
