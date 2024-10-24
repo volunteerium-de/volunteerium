@@ -67,6 +67,19 @@
   },
 
   "registerForm": {
+    "yup1": "User type is required",
+    "yup2": "Must be at least 3 characters",
+    "yup3": "Can be maximum 30 characters",
+    "yup4": "Name is a required field",
+    "yup5": "Invalid email address",
+    "yup6": "Email is a required field",
+    "yup7": "Must be at least 6 characters",
+    "yup8": "Can be maximum 30 characters",
+    "yup9": "Must contain at least one digit",
+    "yup10": "Must contain at least one lowercase letter",
+    "yup11": "Must contain at least one uppercase letter",
+    "yup12": "Must contain at least one special character (@$!%*?&)",
+    "yup13": "Password is a required field",
     "radioIndv": "As an Individual",
     "radioOrg": "As an Organization",
     "fullname": "Full Name",
@@ -100,6 +113,15 @@
   },
 
   "loginForm": {
+    "yup1": "Invalid email address",
+    "yup2": "Email is a required field",
+    "yup3": "Must be at least 6 characters!",
+    "yup4": "Can be maximum 30 characters!",
+    "yup5": "Must contain at least one digit!",
+    "yup6": "Must contain at least one lowercase letter!",
+    "yup7": "Must contain at least one uppercase letter!",
+    "yup8": "Must contain at least one special character (@$!%*?&)!",
+    "yup9": "Password is a required field",
     "email": "Email",
     "emailPH": "Enter your email address",
     "password": "Password",
@@ -118,8 +140,8 @@
     "attendedEvents": "Attended Events",
     "createdEvents": "Created Events",
     "loading": "Loading...",
-    "interests" : "Interests",
-    "aboutMe" : "About Me",
+    "interests": "Interests",
+    "aboutMe": "About Me",
     "documents": "Certification & Document",
     "medals": {
       "goldenHeart": "Golden Heart",
@@ -136,8 +158,8 @@
   },
 
   "userSettings": {
-    "avatarAlt" : "User avatar",
-    "edit" : "Edit",
+    "avatarAlt": "User avatar",
+    "edit": "Edit",
     "welcome": "Welcome",
     "profile": "Profile",
     "security": "Security",
@@ -170,6 +192,110 @@
     "p": "Are you sure you want to delete your account? This action cannot be undone.",
     "cancelButton": "Cancel",
     "delButton": "Delete Account"
-  }
+  },
 
+  "indvSettings": {
+    "success": "Data saved successfully!",
+    "catchError": "Error saving data: ",
+    "elseError": "Please fill in all fields and select at least one language.",
+    "h1": "Profile Settings",
+    "p1": "Name Appearance",
+    "p2": "Your name will appear across your profile.",
+    "label1": "City",
+    "label1PH": "City",
+    "label2": "Country",
+    "label2PH": "Country",
+    "label3": "Gender",
+    "label4": "Age Group",
+    "label5": "Languages",
+    "label6": "Bio",
+    "label6PH": "Write your bio here...",
+    "label7": "Files",
+    "edit": "Edit",
+    "save": "Save"
+  },
+
+  "myDocs": {
+    "alertSuccess": "Changes saved successfully!",
+    "alertError": "Error saving documents: ",
+    "h2": "My Documents",
+    "p": "You can upload documents such as certifications, resumes, or portfolios to showcase your skills and qualifications.",
+    "addNew": "Add new +",
+    "delete": "Delete",
+    "update": "Update",
+    "cancel": "Cancel",
+    "saveChanges": "Save Cahnges"
+  },
+
+  "orgSettings": {
+    "handleErrorMsg": "Please fill in all fields.",
+    "successMsg": "Data saved successfully!",
+    "errorMsg": "Error saving data: ",
+    "h1": "Profile Settings",
+    "label1": "Organization Name",
+    "label1PH": "Volunteerium",
+    "label2": "Organization URL",
+    "label2PH": "www.volunteerium.com",
+    "label3": "Street Name",
+    "label3PH": "Dammstraße",
+    "label4": "Street Number",
+    "label4PH": "10",
+    "label5": "Zip Code",
+    "label5PH": "10117",
+    "label6": "City",
+    "label6PH": "Berlin",
+    "label7": "Country",
+    "label7PH": "Germany",
+    "label8": "Description",
+    "label8PH": "Write your description here...",
+    "files": "Files",
+    "edit": "Edit",
+    "save": "Save"
+  },
+
+  "pswModal": {
+    "yup1": "Current password is required",
+    "yup2": "New password is required",
+    "yup3": "Password must be at least 8 characters",
+    "yup4": "Passwords must match",
+    "yup5": "Confirm password is required",
+    "changePsw": "Change your password",
+    "currPsw": "Current Password",
+    "newPsw": "New Password",
+    "confirmPsw": "Confirm Password",
+    "cancel": "Cancel",
+    "saveChng": "Save Changes"
+  },
+
+  "profileSettings": {
+    "p": "Invalid user type"
+  },
+
+  "securitySettings": {
+    "feedbackMsg1": "Your account has been deleted successfully.",
+    "feedbackMsg2": "There was an error deleting your account.",
+    "h1": "Security Settings",
+    "name": "Name",
+    "namePH": "Name",
+    "orgName": "Organization Name",
+    "orgNamePH": "Organization Name",
+    "email": "Email",
+    "emailPH": "example@gmail.com",
+    "changePsw": "Change Password",
+    "delAccount": "Delete Account",
+    "delAlert1": "Would you like to delete your account? Deleting your account will remove all the content associated with it.",
+    "delAlert2":"Would you like to delete your organization? Deleting your organization will remove all the content associated with it.",
+    "userRes1":  "I want to delete my account",
+    "userRes2": "I want to delete my organization"
+  },
+
+  "updateDoc": {
+    "error": "Error updating file.",
+    "h2": "Update Document",
+    "h1": "Document Title",
+    "reset": "Reset",
+    "selectFile": "Select File",
+    "cancel": "Cancel",
+    "update": "Update"
+  }
 }

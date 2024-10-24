@@ -67,6 +67,19 @@
   },
 
   "registerForm": {
+    "yup1": "Benutzertyp ist erforderlich",
+    "yup2": "Muss mindestens 3 Zeichen lang sein",
+    "yup3": "Kann maximal 30 Zeichen lang sein",
+    "yup4": "Name ist ein Pflichtfeld",
+    "yup5": "Ungültige E-Mail-Adresse",
+    "yup6": "E-Mail ist ein Pflichtfeld",
+    "yup7": "Muss mindestens 6 Zeichen lang sein",
+    "yup8": "Kann maximal 30 Zeichen lang sein",
+    "yup9": "Muss mindestens eine Ziffer enthalten",
+    "yup10": "Muss mindestens einen Kleinbuchstaben enthalten",
+    "yup11": "Muss mindestens einen Großbuchstaben enthalten",
+    "yup12": "Muss mindestens ein Sonderzeichen enthalten (@$!%*?&)",
+    "yup13": "Passwort ist ein Pflichtfeld",
     "radioIndv": "als Einzelperson",
     "radioOrg": "als Organisation",
     "fullname": "Vollname",
@@ -100,6 +113,15 @@
   },
 
   "loginForm": {
+    "yup1": "Ungültige E-Mail-Adresse",
+    "yup2": "E-Mail ist ein Pflichtfeld",
+    "yup3": "Muss mindestens 6 Zeichen lang sein!",
+    "yup4": "Kann maximal 30 Zeichen lang sein!",
+    "yup5": "Muss mindestens eine Ziffer enthalten!",
+    "yup6": "Muss mindestens einen Kleinbuchstaben enthalten!",
+    "yup7": "Muss mindestens einen Großbuchstaben enthalten!",
+    "yup8": "Muss mindestens ein Sonderzeichen enthalten (@$!%*?&)!",
+    "yup9": "Passwort ist ein Pflichtfeld",
     "email": "E-Mail",
     "emailPH": "Geben Sie Ihre E-Mail-Adresse ein",
     "password": "Passwort",
@@ -170,5 +192,112 @@
     "p": "Sind Sie sicher, dass Sie Ihr Konto löschen möchten? Diese Aktion kann nicht rückgängig gemacht werden.",
     "cancelButton": "Stornieren",
     "delButton": "Konto löschen"
-  }
+  },
+
+  "indvSettings": {
+    "success": "Daten erfolgreich gespeichert!",
+    "catchError": "Fehler beim Speichern der Daten: ",
+    "elseError": "Bitte füllen Sie alle Felder aus und wählen Sie mindestens eine Sprache aus.",
+    "h1": "Profileinstellungen",
+    "p1": "Namensanzeige",
+    "p2": "Ihr Name wird auf Ihrem Profil angezeigt.",
+    "label1": "Stadt",
+    "label1PH": "Stadt",
+    "label2": "Land",
+    "label2PH": "Land",
+    "label3": "Geschlecht",
+    "label4": "Altersgruppe",
+    "label5": "Sprachen",
+    "label6": "Biografie",
+    "label6PH": "Schreiben Sie hier Ihre Biografie...",
+    "label7": "Dateien",
+    "edit": "Bearbeiten",
+    "save": "Speichern"
+  },
+
+  "myDocs": {
+    "alertSuccess": "Änderungen erfolgreich gespeichert!",
+    "alertError": "Fehler beim Speichern der Dokumente: ",
+    "h2": "Meine Dokumente",
+    "p": "Sie können Dokumente wie Zertifikate, Lebensläufe oder Portfolios hochladen, um Ihre Fähigkeiten und Qualifikationen zu präsentieren.",
+    "addNew": "Neu hinzufügen +",
+    "delete": "Löschen",
+    "update": "Aktualisieren",
+    "cancel": "Abbrechen",
+    "saveChanges": "Änderungen speichern"
+  },
+
+  "orgSettings": {
+    "handleErrorMsg": "Bitte füllen Sie alle Felder aus.",
+    "successMsg": "Daten erfolgreich gespeichert!",
+    "errorMsg": "Fehler beim Speichern der Daten: ",
+    "h1": "Profileinstellungen",
+    "label1": "Organisationsname",
+    "label1PH": "Volunteerium",
+    "label2": "Organisations-URL",
+    "label2PH": "www.volunteerium.com",
+    "label3": "Straßenname",
+    "label3PH": "Dammstraße",
+    "label4": "Hausnummer",
+    "label4PH": "10",
+    "label5": "Postleitzahl",
+    "label5PH": "10117",
+    "label6": "Stadt",
+    "label6PH": "Berlin",
+    "label7": "Land",
+    "label7PH": "Deutschland",
+    "label8": "Beschreibung",
+    "label8PH": "Schreiben Sie hier Ihre Beschreibung...",
+    "files": "Dateien",
+    "edit": "Bearbeiten",
+    "save": "Speichern"
+  },
+
+  "pswModal": {
+    "yup1": "Das aktuelle Passwort ist erforderlich",
+    "yup2": "Ein neues Passwort ist erforderlich",
+    "yup3": "Das Passwort muss mindestens 8 Zeichen lang sein",
+    "yup4": "Die Passwörter müssen übereinstimmen",
+    "yup5": "Die Bestätigung des Passworts ist erforderlich",
+    "changePsw": "Ändern Sie Ihr Passwort",
+    "currPsw": "Aktuelles Passwort",
+    "newPsw": "Neues Passwort",
+    "confirmPsw": "Passwort bestätigen",
+    "cancel": "Abbrechen",
+    "saveChng": "Änderungen speichern"
+  },
+
+  "profileSettings": {
+    "p": "Ungültiger Benutzertyp"
+},
+
+"secSett": {
+    "feedbackMsg1": "Ihr Konto wurde erfolgreich gelöscht.",
+    "feedbackMsg2": "Beim Löschen Ihres Kontos ist ein Fehler aufgetreten.",
+    "h1": "Sicherheitseinstellungen",
+    "name": "Name",
+    "namePH": "Name",
+    "orgName": "Organisationsname",
+    "orgNamePH": "Organisationsname",
+    "email": "E-Mail",
+    "emailPH": "beispiel@gmail.com",
+    "changePsw": "Passwort ändern",
+    "delAccount": "Konto löschen",
+    "delAlert1": "Möchten Sie Ihr Konto löschen? Das Löschen Ihres Kontos entfernt alle damit verbundenen Inhalte.",
+    "delAlert2": "Möchten Sie Ihre Organisation löschen? Das Löschen Ihrer Organisation entfernt alle damit verbundenen Inhalte.",
+    "userRes1": "Ich möchte mein Konto löschen",
+    "userRes2": "Ich möchte meine Organisation löschen"
+},
+
+"updateDoc": {
+    "error": "Fehler beim Aktualisieren der Datei.",
+    "h2": "Dokument aktualisieren",
+    "h1": "Dokumenttitel",
+    "reset": "Zurücksetzen",
+    "selectFile": "Datei auswählen",
+    "cancel": "Abbrechen",
+    "update": "Aktualisieren"
+}
+
+
 }
