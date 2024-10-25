@@ -100,11 +100,11 @@ const FilterSidebar = () => {
 
   return (
     <div className="p-4 rounded-lg shadow-lg h-full overflow-auto dark:bg-dark-gray-3 ">
-      <div className="max-w-[300px] lg:max-w-[700px] mx-auto">
-        <h2 className="text-[1rem] font-bold my-4 text-black dark:text-white p-5 text-center lg:text-left">
+      <div className="lg:max-w-[700px] mb-4 shadow-lg bg-white p-5 max-w-[400px] mx-auto ">
+        <h2 className="text-center lg:text-left font-semibold mb-2 p-2 text-black dark:text-white text-[0.9375rem] ">
           Availability
         </h2>
-        <hr className="border border-light-gray-3 mb-5" />
+        <hr className="border border-light-gray-3 " />
 
         <div className="mb-4 p-5 flex flex-col gap-5 ">
           <div className="mx-auto">
@@ -145,7 +145,7 @@ const FilterSidebar = () => {
           </div>
           <div className="mx-auto">
             <button
-              className="text-[0.9375rem] font-medium text-white text-center bg-primary-green px-4 py-2 rounded w-[200px] my-10 "
+              className="text-[0.9375rem] font-medium text-white text-center bg-primary-green px-4 py-2 rounded w-[200px] "
               onClick={() => {
                 dispatch(setStartDate(localStartDate))
                 dispatch(setEndDate(localEndDate))
@@ -158,8 +158,8 @@ const FilterSidebar = () => {
       </div>
 
       {/* Categories */}
-      <div className="mb-4 shadow-lg bg-light-gray p-5 max-w-[270px] mx-auto ">
-        <h3 className="font-semibold mb-2 p-2 text-black dark:text-white text-[0.9375rem]  lg:text-left">
+      <div className="mb-4 shadow-lg bg-light-white p-5 max-w-[400px] mx-auto ">
+        <h3 className="font-semibold mb-2 p-2 text-black dark:text-white text-[0.9375rem] lg:text-left">
           Categories
         </h3>
         <hr className="border border-light-gray-3 mb-3" />
@@ -179,7 +179,7 @@ const FilterSidebar = () => {
       </div>
 
       {/* Languages */}
-      <div className="mt-10 m-auto shadow-lg bg-light-gray p-5 max-w-[270px] mx-auto ">
+      <div className="mt-10 m-auto shadow-lg bg-light-white p-5 max-w-[400px] mx-auto ">
         <h3 className="font-semibold mb-2 p-2 text-black dark:text-white text-[0.9375rem] text-center lg:text-left">
           Languages
         </h3>

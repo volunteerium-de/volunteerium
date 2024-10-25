@@ -98,13 +98,13 @@ const EventCardHorizontal = ({ event }) => {
                 </p>
               </div>
             </div>
-            <div className="flex items-center justify-between">
+            <div className="flex items-start justify-between mt-2">
               {/* Category Area */}
-              <div className="flex flex-row flex-wrap gap-2 mt-2  ">
+              <div className="flex flex-row flex-wrap gap-2">
                 {event.interestIds?.map((interest) => (
                   <div
                     key={interest._id}
-                    className="border border-primary-green p-1 rounded-full w-fit"
+                    className="border border-primary-green dark:border-gray-1 px-2 py-1 rounded-full w-fit h-6"
                   >
                     <p className="font-semibold tracking-wide text-[0.6rem] sm:text-[0.6rem] text-primary-green text-center dark:text-gray-1">
                       {interest.name.toUpperCase()}
@@ -112,10 +112,9 @@ const EventCardHorizontal = ({ event }) => {
                   </div>
                 ))}
               </div>
-
               {/* Event Button */}
               <div className="text-end">
-                <button className="font-medium text-white text-[0.7rem] text-center bg-primary-green px-4 py-1 mb-1 ml-2 rounded">
+                <button className="font-medium text-white text-[0.7rem] text-center bg-primary-green px-4 py-1 rounded">
                   Join
                 </button>
               </div>
