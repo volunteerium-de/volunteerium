@@ -17,7 +17,7 @@ import { axiosWithPublic } from "../hooks/useAxios"
 import avatar from "../assets/example-avatar.jpg"
 import logo from "../assets/get-to-know-us.png"
 import { formatName } from "../helpers/formatName"
-import formatLanguages from "../helpers/ISO-639-1-languages.json"
+import formatLanguages from "../helpers/languages_english.json"
 
 const defaultIndividualImage = avatar
 const defaultOrganozationImage = logo

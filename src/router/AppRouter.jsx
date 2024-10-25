@@ -19,6 +19,7 @@ import EmailVerify from "../components/UserEmailVerification/EmailVerify"
 import { Navigate } from "react-router-dom"
 import GoogleAuthSuccess from "../pages/GoogleAuthSuccess"
 import GoogleAuthFail from "../pages/GoogleAuthFail"
+import EventManagement from "../pages/EventManagement"
 
 const AppRouter = () => {
   const { currentUser: user } = useSelector((state) => state.auth)
@@ -88,6 +89,14 @@ const AppRouter = () => {
             <Route path="/verify-email" element={<Navigate to="/" />} />
           </>
         )}
+
+        <Route element={<PrivateRouter />}>
+          <Route path="/settings" element={<UserSettings />} />
+          <Route path="/event-management" element={<EventManagement />} />
+          <Route path="/user-org-setup" element={<SetupOrganization />} />
+          <Route path="/user-ind-setup" element={<SetupIndividual />} />
+          <Route path="/verify-email/success" element={<VerificationSuccess />} />
+        </Route>
       </Routes>
     </Router>
   )
