@@ -8,7 +8,7 @@ const initialState = {
   categoryFilters: [],
   languageFilters: [],
   startDate: null,
-  endDate: null, // End date for event filtering
+  endDate: null,
   loading: false,
   error: false,
   sortOrder: "Newest",
@@ -34,7 +34,7 @@ const searchSlice = createSlice({
       state.startDate = payload
     },
     setEndDate: (state, { payload }) => {
-      state.endDate = payload // End date reducer
+      state.endDate = payload
     },
     setSearchTerm: (state, { payload }) => {
       state.searchTermEvent = payload
@@ -73,7 +73,7 @@ export const {
   getCategoriesSuccess,
   getLanguagesSuccess,
   setStartDate,
-  setEndDate, // Exporting the end date action
+  setEndDate,
   setSearchTerm,
   setManualLocation,
   setCategoryFilters,

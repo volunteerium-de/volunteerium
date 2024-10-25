@@ -6,7 +6,6 @@
 @tailwind components;
 @tailwind utilities;
 
-
 * {
   margin: 0;
   padding: 0;
@@ -15,7 +14,7 @@
 
 @layer base {
   html {
-    font-family: 'Poppins', sans-serif;
+    font-family: "Poppins", sans-serif;
   }
 }
 
@@ -28,7 +27,6 @@ body {
 }
 
 @media (max-width: 1200px) {
-
   /* XL: Extra large screens-15px */
   :root {
     font-size: 0.9375rem;
@@ -37,7 +35,6 @@ body {
 }
 
 @media (max-width: 768px) {
-
   /* MD: Medium screens-14px  */
   :root {
     font-size: 0.875rem;
@@ -46,10 +43,31 @@ body {
 }
 
 @media (max-width: 390px) {
-
   /* SM:Small screens -11px */
   :root {
     font-size: 0.6875rem;
     /* For screens 390px and smaller */
+  }
+}
+
+/*Custom-scrollbar*/
+
+@layer utilities {
+  .scrollbar::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  .scrollbar::-webkit-scrollbar-track {
+    background: #f1f3f9;
+  }
+
+  .scrollbar::-webkit-scrollbar-thumb {
+    background-color: #9d9ea1;
+    border-radius: 10px;
+    border: 2px solid #f1f3f9;
+  }
+
+  .scrollbar::-webkit-scrollbar-thumb:hover {
+    background-color: #69957b;
   }
 }

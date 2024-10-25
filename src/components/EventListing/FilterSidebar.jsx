@@ -100,62 +100,70 @@ const FilterSidebar = () => {
 
   return (
     <div className="p-4 rounded-lg shadow-lg h-full overflow-auto dark:bg-dark-gray-3 ">
-      <div className="max-w-[500px] mx-auto">
-        <h2 className="text-[1rem] font-bold my-4 text-black dark:text-white p-5">Availability</h2>
+      <div className="max-w-[300px] lg:max-w-[700px] mx-auto">
+        <h2 className="text-[1rem] font-bold my-4 text-black dark:text-white p-5 text-center lg:text-left">
+          Availability
+        </h2>
         <hr className="border border-light-gray-3 mb-5" />
 
-        <div className="mb-4 p-5 flex flex-col max-w-[250px]">
-          <h3 className="font-semibold mb-2 text-black dark:text-white text-[0.9375rem]">From</h3>
-          <div className="flex flex-col items-center justify-center gap-5">
-            {/* Start Date Picker */}
-            <DatePicker
-              selected={localStartDate}
-              onChange={(dateStr) => {
-                setLocalStartDate(formatLocalDate(dateStr))
-                setLocalEndDate(formatEndDate(dateStr))
-              }}
-              timeInputLabel="Time:"
-              dateFormat="dd/MM/yyyy HH:mm"
-              customInput={<CustomInput />}
-              showTimeInput
-              minDate={new Date()}
-            />
-          </div>
-          <h3 className="font-semibold mb-2 text-black dark:text-white text-[0.9375rem]">To</h3>
-          <div className="flex flex-col items-center justify-center gap-5">
-            {/* End Date Picker */}
-            <DatePicker
-              selected={localEndDate}
-              onChange={(dateStr) => {
-                setLocalEndDate(formatLocalDate(dateStr))
-              }}
-              timeInputLabel="Time:"
-              dateFormat="dd/MM/yyyy HH:mm"
-              customInput={<CustomInput />}
-              showTimeInput
-              minDate={new Date(localStartDate)}
-            />
-          </div>
+        <div className="mb-4 p-5 flex flex-col gap-5 ">
+          <div className="mx-auto">
+            <h3 className="font-semibold mb-2 text-black dark:text-white text-[0.9375rem]">From</h3>
 
-          <button
-            className="text-[0.9375rem] font-medium text-white text-center bg-primary-green px-4 py-2 rounded my-10"
-            onClick={() => {
-              dispatch(setStartDate(localStartDate))
-              dispatch(setEndDate(localEndDate))
-            }}
-          >
-            Check Events
-          </button>
+            <div className="flex flex-col items-center justify-center lg:items-start gap-5">
+              {/* Start Date Picker */}
+              <DatePicker
+                selected={localStartDate}
+                onChange={(dateStr) => {
+                  setLocalStartDate(formatLocalDate(dateStr))
+                  setLocalEndDate(formatEndDate(dateStr))
+                }}
+                timeInputLabel="Time:"
+                dateFormat="dd/MM/yyyy HH:mm"
+                customInput={<CustomInput />}
+                showTimeInput
+                minDate={new Date()}
+              />
+            </div>
+          </div>
+          <div className="mx-auto">
+            <h3 className="font-semibold mb-2 text-black dark:text-white text-[0.9375rem]">To</h3>
+            <div className="flex flex-col items-center justify-center gap-5 lg:items-start">
+              {/* End Date Picker */}
+              <DatePicker
+                selected={localEndDate}
+                onChange={(dateStr) => {
+                  setLocalEndDate(formatLocalDate(dateStr))
+                }}
+                timeInputLabel="Time:"
+                dateFormat="dd/MM/yyyy HH:mm"
+                customInput={<CustomInput />}
+                showTimeInput
+                minDate={new Date(localStartDate)}
+              />
+            </div>
+          </div>
+          <div className="mx-auto">
+            <button
+              className="text-[0.9375rem] font-medium text-white text-center bg-primary-green px-4 py-2 rounded w-[200px] my-10 "
+              onClick={() => {
+                dispatch(setStartDate(localStartDate))
+                dispatch(setEndDate(localEndDate))
+              }}
+            >
+              Check Events
+            </button>
+          </div>
         </div>
       </div>
 
       {/* Categories */}
-      <div className="mb-4 m-auto shadow-lg bg-light-gray p-5">
-        <h3 className="font-semibold mb-2 p-2 text-black dark:text-white text-[0.9375rem]">
+      <div className="mb-4 shadow-lg bg-light-gray p-5 max-w-[270px] mx-auto ">
+        <h3 className="font-semibold mb-2 p-2 text-black dark:text-white text-[0.9375rem]  lg:text-left">
           Categories
         </h3>
         <hr className="border border-light-gray-3 mb-3" />
-        <div className="max-h-[200px] overflow-y-auto">
+        <div className="max-h-[200px] overflow-y-scroll scrollbar">
           {categories.map((category) => (
             <label key={category.name} className="flex items-center gap-2 mt-3">
               <input
@@ -164,15 +172,15 @@ const FilterSidebar = () => {
                 onChange={() => handleCategory(category)}
                 checked={selectedCategories.includes(category.name)}
               />
-              <span className="text-[0.875rem] text-black font-medium">{category.name}</span>
+              <span className="text-[0.75rem] text-black font-medium">{category.name}</span>
             </label>
           ))}
         </div>
       </div>
 
       {/* Languages */}
-      <div className="mt-10 m-auto shadow-lg bg-light-gray p-5">
-        <h3 className="font-semibold mb-2 p-2 text-black dark:text-white text-[0.9375rem]">
+      <div className="mt-10 m-auto shadow-lg bg-light-gray p-5 max-w-[270px] mx-auto ">
+        <h3 className="font-semibold mb-2 p-2 text-black dark:text-white text-[0.9375rem] text-center lg:text-left">
           Languages
         </h3>
         <hr className="border border-light-gray-3 mb-3" />
@@ -185,7 +193,7 @@ const FilterSidebar = () => {
                 onChange={() => handleLanguage(language.langCode)}
                 checked={selectedLanguages.includes(language.langCode)}
               />
-              <span className="text-[0.875rem] text-black font-medium">
+              <span className="text-[0.75rem] text-black font-medium">
                 {getLangName(language.langCode)} ({language.eventCount})
               </span>
             </label>

@@ -13,6 +13,7 @@ import { useLocation } from "react-router-dom"
 import { useNavigate } from "react-router-dom"
 import { getLangName } from "../components/EventListing/FilterSidebar"
 import { LiaSpinnerSolid } from "react-icons/lia"
+import { IoIosArrowBack } from "react-icons/io"
 
 const EventsListingPage = () => {
   const { getEvents } = useEventCall()
@@ -60,8 +61,10 @@ const EventsListingPage = () => {
           }),
           "sort[startDate]": sortOrder === "Newest" ? "desc" : "asc",
         }
-
-        const query = `?${new URLSearchParams(queryParams).toString()}&page=${currentPage}`
+        //&filter[isDone]=false
+        const query = `?${new URLSearchParams(
+          queryParams
+        ).toString()}&filter[isActive]=true&page=${currentPage}`
         const eventData = await getEvents(`events/${query}`)
         console.log(eventData)
         setEvents(eventData.data || [])
@@ -196,7 +199,7 @@ const EventsListingPage = () => {
                 className="absolute top-4 right-8 text-primary-green lg:hidden"
                 onClick={() => setIsFilterSidebarOpen(false)}
               >
-                Close
+                <IoIosArrowBack className="h-[30px] w-[30px]" />
               </button>
             )}
           </div>
