@@ -170,11 +170,11 @@ const EventsListingPage = () => {
           </div>
           {/*Sort and Filters*/}
           <div className="flex justify-end gap-3 items-center">
-            <p className="text-sm font-bold">Sort by:</p>
+            <p className="text-sm font-bold text-black">Sort by:</p>
             <select
               value={sortOrder}
               onChange={handleSortChange}
-              className="border rounded font-medium text-[0.875rem]"
+              className="appearance-none border border-primary-green rounded-md font-medium text-[0.875rem] px-2 bg-light-green text-primary-green focus:outline-none focus:ring-2 focus:primary-green"
             >
               <option value="Newest">Newest</option>
               <option value="Oldest">Oldest</option>

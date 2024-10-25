@@ -101,7 +101,7 @@ const FilterSidebar = () => {
   return (
     <div className="p-4 rounded-lg shadow-lg h-full overflow-auto dark:bg-dark-gray-3 ">
       <div className="lg:max-w-[700px] mb-4 shadow-lg bg-white p-5 max-w-[400px] mx-auto ">
-        <h2 className="text-center lg:text-left font-semibold mb-2 p-2 text-black dark:text-white text-[0.9375rem] ">
+        <h2 className="text-left font-semibold mb-2 p-2 text-black dark:text-white text-[0.9375rem] ">
           Availability
         </h2>
         <hr className="border border-light-gray-3 " />
