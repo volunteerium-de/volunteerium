@@ -20,6 +20,8 @@ import { formatName } from "../helpers/formatName"
 import formatLanguages from "../helpers/ISO-639-1-languages.json"
 import { useTranslation } from "react-i18next"
 import { translations } from "../locales/translations"
+import formatLanguages from "../helpers/languages_english.json"
+
 
 const defaultIndividualImage = avatar
 const defaultOrganozationImage = logo

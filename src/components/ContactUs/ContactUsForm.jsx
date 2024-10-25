@@ -63,7 +63,7 @@ const ContactUsForm = () => {
               name="name"
               placeholder="Enter your name"
               className={`w-full border dark:border-gray-2 dark:bg-gray-3 rounded-lg text-[0.875rem] lg:text-[1rem] p-2 lg:p-3 h-[40px] md:h-[42px] focus:outline-none focus:border-primary-green dark:text-white 
-                ${touched.name && errors.name ? "border-red dark:border-danger" : "border-gray-1"}`}
+                ${touched.name && errors.name ? "border-danger dark:border-danger" : "border-gray-1"}`}
             />
             {/* Error Message */}
             <div className="h-[20px]">
@@ -82,8 +82,8 @@ const ContactUsForm = () => {
               type="email"
               name="email"
               placeholder="Enter your email address"
-              className={`w-full border dark:border-gray-700 dark:bg-white rounded-lg text-[0.875rem] lg:text-[1rem] p-2 lg:p-3 h-[40px] md:h-[42px] focus:outline-none focus:border-primary-green dark:text-white 
-                ${touched.email && errors.email ? "border-red dark:border-danger" : "border-gray-1"}`}
+              className={`w-full border dark:border-gray-2 dark:bg-white rounded-lg text-[0.875rem] lg:text-[1rem] p-2 lg:p-3 h-[40px] md:h-[42px] focus:outline-none focus:border-primary-green dark:text-white 
+                ${touched.email && errors.email ? "border-danger dark:border-danger" : "border-gray-1"}`}
             />
             {/* Error Message */}
             <div className="h-[20px]">
@@ -103,7 +103,7 @@ const ContactUsForm = () => {
               name="subject"
               placeholder="Message Subject Here"
               className={`w-full border dark:border-gray-2 dark:bg-gray-3 rounded-lg text-[0.875rem] lg:text-[1rem] p-2 lg:p-3 h-[40px] md:h-[42px] focus:outline-none focus:border-primary-green dark:text-white 
-                ${touched.subject && errors.subject ? "border-red dark:border-danger" : "border-gray-1"}`}
+                ${touched.subject && errors.subject ? "border-danger dark:border-danger" : "border-gray-1"}`}
             />
             {/* Error Message */}
             <div className="h-[20px]">

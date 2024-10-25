@@ -8,7 +8,7 @@ import useTheme from "../../hooks/useTheme"
 import useAuthCall from "../../hooks/useAuthCall"
 import { useTranslation } from "react-i18next"
 import { translations } from "../../locales/translations"
-translations
+import { UserAvatar } from "../ui/Avatar/userAvatar"
 
 const UserMenu = ({ user }) => {
   const {t} = useTranslation()
@@ -43,6 +43,7 @@ const UserMenu = ({ user }) => {
       document.removeEventListener("mousedown", handleClickOutside)
     }
   }, [menuRef])
+  const { currentUser } = useSelector((state) => state.auth)
 
   return (
     <div className="relative" ref={menuRef}>
@@ -52,17 +53,8 @@ const UserMenu = ({ user }) => {
       >
         {/* Menu Icon */}
         <FaBars className="text-primary-green dark:text-gray-2  h-5 w- mr-2" />
+        <UserAvatar user={currentUser} size="h-6 w-6" />
 
-        {/* Profile Icon or User Image */}
-        {user && (user?.userDetailsId?.avatar || user?.userDetailsId?.organizationLogo) ? (
-          <img
-            src={user.userDetailsId.avatar || user.userDetailsId.organizationLogo}
-            alt={user ? user.fullName || user.organizationName : t(translations.userMenu.user)}
-            className="h-6 w-6 rounded-full object-cover"
-          />
-        ) : (
-          <FaUser className="text-primary-green dark:text-gray-2 h-5 w-5" />
-        )}
       </div>
 
       {/* Dropdown menu */}
@@ -80,13 +72,13 @@ const UserMenu = ({ user }) => {
                   </button>
                   <button
                     className="block w-full text-left p-1 hover:text-primary-green"
-                    onClick={() => navigate("/settings")}
+                    onClick={() => navigate("/event-management")}
                   >
                     {t(translations.userMenu.eventMng)}
                   </button>
                   <button
                     className="block w-full text-left p-1 hover:text-primary-green"
-                    onClick={() => navigate("")}
+                    onClick={() => navigate("/settings")}
                   >
                     {t(translations.userMenu.settings)}
                   </button>

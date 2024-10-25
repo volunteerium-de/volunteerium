@@ -9,6 +9,7 @@ import {
 import { useNavigate } from "react-router-dom"
 import useAxios, { axiosWithPublic } from "./useAxios"
 import toastNotify from "../utils/toastNotify"
+import { getLoginRedirectLink } from "../pages/GoogleAuthSuccess"
 
 const useAuthCall = () => {
   const dispatch = useDispatch()
@@ -33,8 +34,16 @@ const useAuthCall = () => {
     try {
       const { data } = await axiosWithPublic.post("auth/login", userInfo)
       dispatch(loginSuccess(data))
-      navigate("/")
-      toastNotify("success", "Login successful!")
+      
+      const link = getLoginRedirectLink(data.user)
+      console.log(link)
+      
+      setTimeout(() => {
+        navigate(link)
+        if(link === "/")
+        toastNotify("success", "Login successful!")
+      }, 0);
+
       console.log(data)
     } catch (error) {
       dispatch(fetchFail())
@@ -62,8 +71,11 @@ const useAuthCall = () => {
         verifyEmailToken,
       })
       dispatch(loginSuccess(data))
-      navigate("/verify-email/success")
-      toastNotify("success", "Email verified successful!")
+
+      setTimeout(() => {
+        navigate("/verify-email/success")
+        // toastNotify("success", "Email verified successful!")
+      }, 0);
     } catch (error) {
       dispatch(fetchFail())
       toastNotify("error", error.response.data.message)

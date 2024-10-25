@@ -1,4 +1,3 @@
-// import React from 'react'
 import { useSelector } from "react-redux"
 import { Link } from "react-router-dom"
 
@@ -12,11 +11,10 @@ const VerificationSuccess = () => {
       } else if (user.userType === "organization") {
         return `/account-setup/organization?clientId=${user._id}`
       } else {
-        return "/" // If userType is not specified or there is an error, we can redirect to the home page.
+        return "/"
       }
-    } else {
-      return "/" // if user already set up his profile details, then redirect to home page
     }
+    return "/"
   }
 
   return (
@@ -45,4 +43,5 @@ const VerificationSuccess = () => {
     </div>
   )
 }
+
 export default VerificationSuccess
