@@ -3,8 +3,13 @@ import signUpImg from "../assets/login-img.png"
 import logo from "../assets/logo.png"
 import LoginForm from "../components/Login/LoginForm"
 import Header from "../components/Header/Header"
+import { useTranslation } from "react-i18next"
+import { translations } from "../locales/translations"
 
 const Login = () => {
+
+  const { t } = useTranslation()
+
   return (
     <div>
       {/* Header component */}
@@ -26,19 +31,19 @@ const Login = () => {
                 <div className="absolute top-0 left-0 w-full h-full bg-primary-green opacity-[0.4]" />
                 <div className="relative text-left ps-6 lg:px-8">
                   <p className="text-white text-[2rem] lg:text-[3rem] leading-8 font-semibold">
-                    Reconnect with <br />
+                    {t(translations.login.p1)} <br />
                     <span className="text-[3rem] lg:text-[4.125rem] md:leading-none">
-                      Community
+                    {t(translations.login.p2)}
                     </span>
                   </p>
 
                   <p className="text-white mt-4 text-[1rem] lg:text-[1.125rem] font-normal">
-                    Welcome back to something <b>bigger</b>.<br />
+                  {t(translations.login.p3)} <b>{t(translations.login.p4)}</b>.<br />
                     <span className="text-[0.8rem] lg:text-[1rem]">
-                      Login to continue making <b> a difference</b>.<br />
+                    {t(translations.login.p5)} <b> {t(translations.login.p6)}</b>.<br />
                       <br />
                     </span>
-                    <b> We’re glad to have you with us!</b>
+                    <b> {t(translations.login.p7)}</b>
                   </p>
                 </div>
               </div>
@@ -55,7 +60,7 @@ const Login = () => {
 
             <div className="flex-grow">
               <h1 className="text-black dark:text-white text-[1.75rem] text-center md:text-center md:text-[2rem] font-semibold mb-6">
-                Sign In
+              {t(translations.login.signIn)}
               </h1>
 
               {/* RegisterForm Component */}

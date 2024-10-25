@@ -3,8 +3,15 @@ import signUpImg from "../assets/login-img.png"
 import RegisterForm from "../components/Register/RegisterForm"
 import logo from "../assets/logo.png"
 import Header from "../components/Header/Header"
+import { useTranslation } from "react-i18next"
+import { translations } from "../locales/translations"
 
 const Register = () => {
+
+  const {t} = useTranslation()
+  {t(translations.register.h2)}
+
+
   return (
     <div>
       <Header />
@@ -26,18 +33,18 @@ const Register = () => {
                 <div className="absolute top-0 left-0 w-full h-full bg-primary-green opacity-[0.4]" />
                 <div className="relative text-left ps-6 lg:px-8">
                   <p className="text-white text-[2rem] lg:text-[3rem] leading-8 font-semibold">
-                    Join Our <br />
+                  {t(translations.register.p1)}  <br />
                     <span className="text-[3rem] lg:text-[4.125rem] md:leading-none">
-                      Community
+                    {t(translations.register.p2)} 
                     </span>
                   </p>
                   <p className="text-white mt-4 text-[1rem] lg:text-[1.125rem] font-normal">
-                    Become a part of something <b>bigger</b>.<br />
+                  {t(translations.register.p3)} <b>  {t(translations.register.p4)}</b>.<br />
                     <span className="text-[0.8rem] lg:text-[1rem]">
-                      Create an account and start <b>making a difference</b>.<br />
+                    {t(translations.register.p5)}  <b>  {t(translations.register.p6)}</b>.<br />
                       <br />
                     </span>
-                    <b>We cannot wait to have you with us!</b>
+                    <b>  {t(translations.register.p7)} </b>
                   </p>
                 </div>
               </div>
@@ -54,10 +61,10 @@ const Register = () => {
 
             <div className="flex-grow">
               <h1 className="text-black dark:text-white text-[1.75rem] text-center md:text-left md:text-[2rem] font-semibold mb-6">
-                Create Your Account
+              {t(translations.register.createAccount)}
               </h1>
               <p className="text-gray-2 dark:text-white text-[1rem] mb-2">
-                You’re creating an account as?
+              {t(translations.register.creatingAs)}
               </p>
 
               {/* RegisterForm Component */}

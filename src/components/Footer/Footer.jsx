@@ -16,8 +16,8 @@ const Footer = () => {
       links: [
         { name: t(translations.footer.faq), path: "/faq" },
         { name: t(translations.footer.contact), path: "/contact" },
-        { name: t(translations.footer.privacyPolicy), path: "/privacy-policy" },
-        { name: t(translations.footer.termsOfService), path: "/terms-of-service" },
+        { name: t(translations.footer.privacy), path: "/privacy-policy" },
+        { name: t(translations.footer.terms), path: "/terms-of-service" },
       ],
     },
     {
