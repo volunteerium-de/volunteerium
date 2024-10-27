@@ -125,7 +125,13 @@ const useChatCall = () => {
     }
   }
 
-  return { fetchConversations, sendMessage, createConversation, deleteConversation }
+  return {
+    fetchConversations,
+    fetchNotifications,
+    sendMessage,
+    createConversation,
+    deleteConversation,
+  }
 }
 
 export default useChatCall
