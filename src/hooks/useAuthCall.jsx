@@ -16,6 +16,31 @@ const useAuthCall = () => {
   const navigate = useNavigate()
   const { axiosWithToken } = useAxios()
 
+  const onRecaptchaVerify = async (token, values, type) => {
+    if (!token) {
+      // console.error("reCAPTCHA verification failed: No token received")
+      toastNotify("error", "Missing security verification. Please try again.")
+      return
+    }
+
+    try {
+      const { data } = await axiosWithPublic.post("auth/verify-recaptcha", {
+        token,
+      })
+      if (!data.error) {
+        // if succeed
+        if (type === "login") {
+          login(values)
+        } else if (type === "register") {
+          register(values)
+        }
+      }
+    } catch (error) {
+      // console.error("Error verifying reCAPTCHA:", error)
+      toastNotify("error", error.response.data.message)
+    }
+  }
+
   const register = async (userInfo) => {
     dispatch(fetchStart())
     try {
@@ -34,15 +59,14 @@ const useAuthCall = () => {
     try {
       const { data } = await axiosWithPublic.post("auth/login", userInfo)
       dispatch(loginSuccess(data))
-      
+
       const link = getLoginRedirectLink(data.user)
       console.log(link)
-      
+
       setTimeout(() => {
         navigate(link)
-        if(link === "/")
-        toastNotify("success", "Login successful!")
-      }, 0);
+        if (link === "/") toastNotify("success", "Login successful!")
+      }, 0)
 
       console.log(data)
     } catch (error) {
@@ -75,7 +99,7 @@ const useAuthCall = () => {
       setTimeout(() => {
         navigate("/verify-email/success")
         // toastNotify("success", "Email verified successful!")
-      }, 0);
+      }, 0)
     } catch (error) {
       dispatch(fetchFail())
       toastNotify("error", error.response.data.message)
@@ -86,7 +110,7 @@ const useAuthCall = () => {
     window.open(`${import.meta.env.VITE_BACKEND_URL}/auth/google`, "_self")
   }
 
-  return { register, login, logout, verifyEmail, authWithGoogle }
+  return { register, login, logout, verifyEmail, authWithGoogle, onRecaptchaVerify }
 }
 
 export default useAuthCall
