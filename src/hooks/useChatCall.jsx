@@ -86,7 +86,7 @@ const useChatCall = () => {
         await axiosWithToken.post(`/messages`, { content, conversationId })
       } catch (error) {
         console.log(error)
-        toastNotify("error", error.message)
+        toastNotify("error", error.response.data.message)
       }
     } else {
       toastNotify("error", "Please enter a message.")

@@ -19,10 +19,10 @@ const useAuthCall = () => {
   const register = async (userInfo) => {
     dispatch(fetchStart())
     try {
-      await axiosWithPublic.post("auth/register", userInfo)
+      const { data } = await axiosWithPublic.post("auth/register", userInfo)
       dispatch(registerSuccess())
       navigate("/register/success")
-      toastNotify("success", "Registration successful!")
+      toastNotify("success", data.message)
     } catch (error) {
       dispatch(fetchFail())
       toastNotify("error", error.response.data.message)
@@ -34,17 +34,11 @@ const useAuthCall = () => {
     try {
       const { data } = await axiosWithPublic.post("auth/login", userInfo)
       dispatch(loginSuccess(data))
-      
       const link = getLoginRedirectLink(data.user)
-      console.log(link)
-      
       setTimeout(() => {
         navigate(link)
-        if(link === "/")
-        toastNotify("success", "Login successful!")
-      }, 0);
-
-      console.log(data)
+        if (link === "/") toastNotify("success", data.message)
+      }, 0)
     } catch (error) {
       dispatch(fetchFail())
       toastNotify("error", error.response.data.message)
@@ -54,10 +48,10 @@ const useAuthCall = () => {
   const logout = async (showNotify) => {
     dispatch(fetchStart())
     try {
-      await axiosWithToken.get("auth/logout")
+      const { data } = await axiosWithToken.get("auth/logout")
       dispatch(logoutSuccess())
       navigate("/")
-      showNotify && toastNotify("success", "Logout successful!")
+      showNotify && toastNotify("success", data.message)
     } catch (error) {
       dispatch(fetchFail())
       toastNotify("error", error.response.data.message)
@@ -75,7 +69,7 @@ const useAuthCall = () => {
       setTimeout(() => {
         navigate("/verify-email/success")
         // toastNotify("success", "Email verified successful!")
-      }, 0);
+      }, 0)
     } catch (error) {
       dispatch(fetchFail())
       toastNotify("error", error.response.data.message)
