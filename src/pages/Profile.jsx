@@ -17,11 +17,9 @@ import { axiosWithPublic } from "../hooks/useAxios"
 import avatar from "../assets/example-avatar.jpg"
 import logo from "../assets/get-to-know-us.png"
 import { formatName } from "../helpers/formatName"
-import formatLanguages from "../helpers/ISO-639-1-languages.json"
+import formatLanguages from "../helpers/languages_english.json"
 import { useTranslation } from "react-i18next"
 import { translations } from "../locales/translations"
-import formatLanguages from "../helpers/languages_english.json"
-
 
 const defaultIndividualImage = avatar
 const defaultOrganozationImage = logo
@@ -197,7 +195,7 @@ const Profile = () => {
                     onClick={() => navigate("/settings")}
                     className="w-[4rem] h-[1.6rem] sm:w-[60px] sm:h-[30px] text-[0.9375rem] rounded-md bg-primary-green text-white mt-4 sm:mt-8"
                   >
-                    Edit
+                     {t(translations.profile.edit)}
                   </button>
                 )}
               </div>

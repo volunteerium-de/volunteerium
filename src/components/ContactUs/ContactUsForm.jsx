@@ -5,6 +5,8 @@ import { Formik, Field, Form } from "formik"
 import * as Yup from "yup"
 import { axiosWithPublic } from "../../hooks/useAxios"
 import toastNotify from "../../utils/toastNotify"
+import { useTranslation } from "react-i18next"
+import { translations } from "../../locales/translations"
 
 const validationSchema = Yup.object({
   name: Yup.string()
@@ -25,7 +27,7 @@ const validationSchema = Yup.object({
 })
 
 const ContactUsForm = () => {
-
+  const {t} = useTranslation()
   const handleSubmit = async(values) => {
     try {
       const {data}=await axiosWithPublic.post("/contacts",values)
@@ -56,12 +58,12 @@ const ContactUsForm = () => {
           {/* Name Field */}
           <div>
             <p className="text-gray-2 dark:text-white text-[0.875rem] md:text-[1rem] lg:text-[1.125rem]">
-              Name
+              {t(translations.contactUsForm.name)}
             </p>
             <Field
               type="text"
               name="name"
-              placeholder="Enter your name"
+              placeholder=  {t(translations.contactUsForm.namePH)}
               className={`w-full border dark:border-gray-2 dark:bg-gray-3 rounded-lg text-[0.875rem] lg:text-[1rem] p-2 lg:p-3 h-[40px] md:h-[42px] focus:outline-none focus:border-primary-green dark:text-white 
                 ${touched.name && errors.name ? "border-danger dark:border-danger" : "border-gray-1"}`}
             />
@@ -76,12 +78,12 @@ const ContactUsForm = () => {
           {/* Email Field */}
           <div>
             <p className="text-gray-2 dark:text-white text-[0.875rem] md:text-[1rem] lg:text-[1.125rem]">
-              Email Address
+            {t(translations.contactUsForm.email)}
             </p>
             <Field
               type="email"
               name="email"
-              placeholder="Enter your email address"
+              placeholder= {t(translations.contactUsForm.emailPH)}
               className={`w-full border dark:border-gray-2 dark:bg-white rounded-lg text-[0.875rem] lg:text-[1rem] p-2 lg:p-3 h-[40px] md:h-[42px] focus:outline-none focus:border-primary-green dark:text-white 
                 ${touched.email && errors.email ? "border-danger dark:border-danger" : "border-gray-1"}`}
             />
@@ -96,12 +98,12 @@ const ContactUsForm = () => {
           {/* Message Subject Field */}
           <div>
             <p className="text-gray-2 dark:text-white text-[0.875rem] md:text-[1rem] lg:text-[1.125rem]">
-              Message Subject
+            {t(translations.contactUsForm.subject)}
             </p>
             <Field
               type="text"
               name="subject"
-              placeholder="Message Subject Here"
+              placeholder= {t(translations.contactUsForm.subjectPH)}
               className={`w-full border dark:border-gray-2 dark:bg-gray-3 rounded-lg text-[0.875rem] lg:text-[1rem] p-2 lg:p-3 h-[40px] md:h-[42px] focus:outline-none focus:border-primary-green dark:text-white 
                 ${touched.subject && errors.subject ? "border-danger dark:border-danger" : "border-gray-1"}`}
             />
@@ -116,12 +118,12 @@ const ContactUsForm = () => {
           {/* Message Field */}
           <div>
             <p className="text-gray-2 dark:text-white text-[0.875rem] md:text-[1rem] lg:text-[1.125rem]">
-              Message
+            {t(translations.contactUsForm.message)}
             </p>
             <Field
               as="textarea"
               name="message"
-              placeholder="Enter your message..."
+              placeholder={t(translations.contactUsForm.messagePH)}
               className={`w-full border dark:border-gray-2 dark:bg-gray-3 rounded-lg text-[0.875rem] lg:text-[1rem] p-2 lg:p-3 h-[90px] md:h-[200px] xl:h-[110px]  focus:outline-none focus:border-primary-green dark:text-black 
                 ${touched.message && errors.message ? "border-danger dark:border-danger" : "border-gray-1"}`}
               maxLength="1000"
@@ -133,7 +135,7 @@ const ContactUsForm = () => {
               )}
             </div>
             <p className="text-[0.75rem] text-gray-2 dark:text-light-gray-1 text-right">
-              Max 1000 characters
+            {t(translations.contactUsForm.messageMaxLength)}
             </p>
           </div>
 
@@ -143,7 +145,7 @@ const ContactUsForm = () => {
               type="submit"
               className="w-full bg-primary-green text-white text-[0.9rem] lg:text-[1rem] py-2 lg:py-3 rounded-lg focus:outline-none dark:bg-dark-green"
             >
-              Submit
+              {t(translations.contactUsForm.submit)}
             </button>
           </div>
         </Form>

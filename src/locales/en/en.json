@@ -318,11 +318,178 @@
     "eventMng": "Event Management",
     "settings": "Setting",
     "logout": "Logout",
-    "login": "Login",
+    "login": "Login", 
     "register": "Register",
     "light": "Light",
     "dark": "Dark"
+  },
+
+  "aboutUs": {
+    "aboutUs": "About Us",
+    "p1": "     We bring people together to volunteer, support, and build strong communities, so they can create a positive impact and lead fulfilling lives.",
+    "h2": " We are here to get as many people volunteering as possible.",
+    "p2": " Whether you are an individual looking to make a difference, a nonprofit organization in need of support, or a community group planning an event,Volunteerium is here to help. We are a team of passionate professionals committed to fostering a culture of giving and community support.",
+    "howItWorks": "We are here to get as many people volunteering as possible.",
+    "eventAlt": "events",
+    "explore": "Explore",
+    "opportunities": "Opportunities",
+    "p3": "Browse through a wide range of volunteer opportunities tailored to your interests and location.",
+    "join": "Join",
+    "toVolunteer": "to Volunteer",
+    "p4": "Once you find an event that interests you, join to volunteer. The event organizer will review your application and confirm your participation.",
+    "make": "Make",
+    "aDifference": "a Difference",
+    "p5": " Participate in events, contribute to your community, and experience the joy of helping others.",
+    "handsAlt": "hands",
+    "volunteerium": "Volunteerium",
+    "today": "today!",
+    "p6": "Be a part of a community dedicated to",
+    "p7": "making a positive difference.",
+    "p8": "Together, we can create a better world;",
+    "p9": "one volunteer at a time",
+    "volCardP1": "100+",
+    "volCardP2": "Volunteers",
+    "orgCardP1": "30+",
+    "orgCardP2": "Organizations",
+    "eventCardP1": "500+",
+    "eventCardP2": "Events"
+  },
+
+  "contactUs": {
+    "p1": "Your Feedback",
+    "p2": "Matters to Us!",
+    "p3": " Continue contributing to our community by sharing your",
+    "p4": "feedback",
+    "p5": "Help us make a difference with your ",
+    "p6": "ideas",
+    "p7": "and",
+    "p8": "suggestions",
+    "p9": "Thank you for being with us!",
+    "h1": "Contact Us"
+  },
+
+  "contactUsForm": {
+    "name": "Name",
+    "namePH": "Enter your name",
+    "email": "Email Address",
+    "emailPH": "Enter your email address",
+    "subject": "Message Subject",
+    "subjectPH": "Message Subject Here",
+    "message": "Message",
+    "messagePH": "Enter your message...",
+    "messageMaxLength": "Max 1000 characters",
+    "submit": "Submit"
+    
+  },
+
+  "faqPage": {
+    "q1": "How can I volunteer?",
+    "a1": "Volunteering is easy! Just sign up on our website, explore the available opportunities, and pick the one that suits you best.",
+    "q2": "Can I register as both a volunteer and a requester?",
+    "a2": "Absolutely! Once you've created your account, you can sign up for volunteer roles and also create events to request help from volunteers.",
+    "q3": "Do I need any special skills or qualifications?",
+    "a3": "Not at all! Many volunteer opportunities just require your time and enthusiasm. However, if a specific skill is needed, it will be listed in the event details.",
+    "q4": "In what areas can I volunteer?",
+    "a4": "There are plenty of ways to get involved! From event planning to community outreach, there's something for everyone.",
+    "q5": "What are the benefits of volunteering?",
+    "a5": "Volunteering gives you a chance to make a difference, gain valuable experience, meet new people, and contribute to your community. Plus, it looks great on your resume!",
+    "q6": "Can I cancel my attendance for an event later?",
+    "a6": "Of course! If your plans change, you can easily cancel your registration through your account dashboard.",
+    "h1": "Frequently Asked Questions",
+    "p1": "Find answers to commonly asked questions about Volunteerium"
+  },
+
+  "googleAuthFall": {
+    "h1": "Authentication failed.",
+    "h2": " Please try again or contact support if the problem persists.",
+    "p1": "Redirecting in",
+    "p2": "seconds"
+  },
+
+  "googleAuthSuccess": {
+    "successMsg": "You have successfully logged in with Google",
+    "h1": " Successfully authenticated with Google",
+    "p": "Redirecting..."
+  },
+
+  "notFound": {
+    "imgAlt": "Not Found",
+    "p": "Page Not Found",
+    "link": "Back to Homepage"
+  },
+
+  "setupIndv": {
+    "successMsg": "Please set up your profile details to proceed",
+    "share": "Share Your Age and Gender",
+    "p1": "Providing this information is optional but may be useful for certain events",
+    "ageRange": "Age Range*",
+    "option1": "Choose Age Range",
+    "option2": "16-25",
+    "option3": "26-35",
+    "option4": "35+",
+    "gender": "Gender*",
+    "option5": "Choose Gender",
+    "option6": "Male",
+    "option7": "Female",
+    "option8": "Prefer not to say",
+    "next": "Next",
+    "choose": "Choose Your Interests",
+    "p2": "Explore volunteer opportunities and make a meaningful impact",
+    "p3": "Explore volunteer opportunities by selecting the areas that interest you.",
+    "p4": "Make a meaningful impact in the fields you care about most!",
+    "skip": "Skip for now",
+    "finish": "Finish"
+  },
+
+  "setupOrg": {
+    "details": "Share Your Organization Details",
+    "p": "This information is necessary for us to understand your organization and provide you with better services",
+    "orgDesc": "Organization Description*",
+    "orgDescPH": "Enter organization description",
+    "orgLogo": "Organization Logo*",
+    "nextButton": "Next",
+    "completeh2": "Complete Your Organization Profile",
+    "completeP": "These additional details are required to create a comprehensive profile of your organization and offer customized services",
+    "websiteURL": "Website URL",
+    "streetName": "Street Name*",
+    "streetNamePH": "Enter street name",
+    "streetNr": "Street Nr.*",
+    "zipCode": "Zip Code*",
+    "zipCodePH": "Enter zip code",
+    "city": "City*",
+    "cityPH": "Enter City",
+    "country": "Country*",
+    "countryPH": "Enter Country",
+    "finish": "Finish"
+  },
+
+  "profileCard": {
+    "attendEvents": "Attended Events",
+    "organizedEvents": "Organized Events",
+    "p1": "No events found",
+    "p2": "It seems there are no events at the moment.",
+    "infoAlt": "Organizator Avatar",
+    "joined": "joined"
+  },
+
+  "sidebar": {
+    "welcome": "Welcome"
+  },
+  
+  "emailVerify": {
+    "h1": "Verifying your email..."
+  },
+
+  "verifySuccess": {
+    "h1": "you're verified! 🎉",
+    "p1": "We're thrilled to have you with us!",
+    "p2": " By joining our community, you're already",
+    "p3": "making a difference",
+    "p4": " Before we start, we'd like to know a bit more about you.",
+    "link": "Let's Start!"
   }
+
+
 
 
 

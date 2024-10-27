@@ -4,8 +4,12 @@ import googleAuthFailMobile from "../assets/google-fail-mobile.png"
 import { useNavigate } from "react-router-dom"
 import { useState } from "react"
 import { useEffect } from "react"
+import { translations } from "../locales/translations"
+import { useTranslation } from "react-i18next"
+translations
 
 const GoogleAuthFail = () => {
+  const { t } = useTranslation()
   const navigate = useNavigate()
   const [countdown, setCountdown] = useState(5)
 
@@ -34,12 +38,16 @@ const GoogleAuthFail = () => {
         </picture>
       </div>
       <div className="text-center mt-[4rem] space-y-2">
-        <h1 className="text-danger font-semibold text-lg lg:text-xl">Authentication failed.</h1>
+        <h1 className="text-danger font-semibold text-lg lg:text-xl">
+          {t(translations.googleAuthFall.h1)}
+        </h1>
         <h2 className="text-dark-gray-1 dark:text-gray-1 text-md lg:text-lg font-semibold">
-          Please try again or contact support if the problem persists.
+          {t(translations.googleAuthFall.h2)}
         </h2>
         <p className="text-dark-gray-1 dark:text-gray-1 text-md lg:text-lg">
-          <span>Redirecting in {countdown} seconds</span>
+          <span>
+            {t(translations.googleAuthFall.p1)} {countdown} {t(translations.googleAuthFall.p2)}
+          </span>
         </p>
       </div>
     </div>

@@ -324,7 +324,177 @@ userMenu: {
     register: "userMenu.register",
     light: "userMenu.light",
     dark: "userMenu.dark"
+},
+
+aboutUs: {
+    aboutUs: "aboutUs.aboutUs",
+    p1: "aboutUs.p1",
+    h2: "aboutUs.h2",
+    p2: "aboutUs.p2",
+    howItWorks: "aboutUs.howItWorks",
+    eventAlt: "aboutUs.imgAlt",
+    explore: "aboutUs.explore",
+    opportunities: "aboutUs.opportunities",
+    p3: "aboutUs.p3",
+    join: "aboutUs.join",
+    toVolunteer: "aboutUs.toVolunteer",
+    p4: "aboutUs.p3",
+    make: "aboutUs.make",
+    aDifference: "aboutUs.aDifference",
+    p5: "aboutUs.p4",
+    handsAlt: "aboutUs.handsAlt",
+    volunteerium: "aboutUs.volunteerium",
+    today: "aboutUs.today",
+    p6: "aboutUs.p5",
+    p7: "aboutUs.p6",
+    p8: "aboutUs.p7",
+    p9: "aboutUs.p8",
+    volCardP1: "aboutUs.volCardP1",
+    volCardP2: "aboutUs.volCardP2",
+    orgCardP1: "aboutUs.orgCardP1",
+    orgCardP2: "aboutUs.orgCardP2",
+    eventCardP1: "aboutUs.eventCardP1",
+    eventCardP2: "aboutUs.eventCardP2"
+},
+
+contactUs: {
+    p1: "contactUs.p1",
+    p2: "contactUs.p2",
+    p3: "contactUs.p3",
+    p4: "contactUs.p4",
+    p5: "contactUs.p5",
+    p6: "contactUs.p6",
+    p7: "contactUs.p7",
+    p8: "contactUs.p8",
+    p9: "contactUs.p9",
+    h1: "contactUs.h1"
+},
+
+contactUsForm: {
+  name: "contactUs.name",
+  namePH: "contactUs.namePlaceholder",
+  email: "contactUs.email",
+  emailPH: "contactUs.emailPlaceholder",
+  subject: "contactUs.subject",
+  subjectPH: "contactUs.subjectPlaceholder",
+  message: "contactUs.message",
+  messagePH: "contactUs.messagePlaceholder",
+  messageMaxLength: "contactUs.messageMaxLength",
+  submit: "contactUs.submit"
+},
+
+faqPage: {
+    q1: "faqPage.q1",
+    a1: "faqPage.a1",
+    q2: "faqPage.q2",
+    a2: "faqPage.a2",
+    q3: "faqPage.q3",
+    a3: "faqPage.a3",
+    q4: "faqPage.q4",
+    a4: "faqPage.a4",
+    q5: "faqPage.q5",
+    a5: "faqPage.a5",
+    q6: "faqPage.q6",
+    a6: "faqPage.a6",
+    h1: "faqPage.h1",
+    p1: "faqPage.p1"
+},
+
+googleAuthFall: {
+    h1: "googleAuthFall.h1",
+    h2: "googleAuthFall.h2",
+    p1: "googleAuthFall.p1",
+    p2: "googleAuthFall.p2"
+},
+
+googleAS: {
+    successMsg: "googleAS.successMsg",
+    h1: "googleAS.h1",
+    p: "googleAS.p"
+},
+
+notFound: {
+    imgAlt: "notFound.imgAlt",
+    p: "notFound.p",
+    link: "notFound.link"
+},
+
+setupIndv: {
+    successMsg: "setupIndv.successMsg",
+    share: "setupIndv.share",
+    p1: "setupIndv.p1",
+    ageRange: "setupIndv.ageRange",
+    option1: "setupIndv.option1",
+    option2: "setupIndv.option2",
+    option3: "setupIndv.option3",
+    option4: "setupIndv.option4",
+    gender: "setupIndv.gender",
+    option5: "setupIndv.option5",
+    option6: "setupIndv.option6",
+    option7: "setupIndv.option7",
+    option8: "setupIndv.option8",
+    next: "setupIndv.next",
+    choose: "setupIndv.choose",
+    p2: "setupIndv.p2",
+    p3: "setupIndv.p3",
+    p4: "setupIndv.p4",
+    skip: "setupIndv.skip",
+    finish: "setupIndv.finish"
+},
+
+setupOrg: {
+    details: "setupOrg.details",
+    p: "setupOrg.p",
+    orgDesc: "setupOrg.orgDesc",
+    orgDescPH: "setupOrg.orgDescPH",
+    orgLogo: "setupOrg.orgLogo",
+    nextButton: "setupOrg.nextButton",
+    completeh2: "setupOrg.completeh2",
+    completeP: "setupOrg.completeP",
+    websiteURL: "setupOrg.websiteURL",
+    streetName: "setupOrg.streetName",
+    streetNamePH: "setupOrg.streetNamePH",
+    streetNr: "setupOrg.streetNr",
+    zipCode: "setupOrg.zipCode",
+    zipCodePH: "setupOrg.zipCodePH",
+    city: "setupOrg.city",
+    cityPH: "setupOrg.cityPH",
+    country: "setupOrg.country",
+    countryPH: "setupOrg.countryPH",
+    finish: "setupOrg.finish"
+},
+
+profileCard: {
+    attendEvents: "profileCard.attendEvents",
+    organizedEvents: "profileCard.organizedEvents",
+    p1: "profileCard.p1",
+    p2: "profileCard.p2",
+    infoAlt: "profileCard.infoAlt",
+    joined: "profileCard.joined"
+},
+
+sidebar: {
+  welcome: "sidebar.welcome"
+},
+
+emailVerify: {
+    h1: "emailVerify.h1"
+},
+
+verifySuccess: {
+    h1: "verifySuccess.h1",
+    p1: "verifySuccess.p1",
+    p2: "verifySuccess.p2",
+    p3: "verifySuccess.p3",
+    p4: "verifySuccess.p4",
+    link: "verifySuccess.link"
 }
+
+
+
+
+
+
 
 
 

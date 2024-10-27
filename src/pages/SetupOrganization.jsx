@@ -14,6 +14,8 @@ import { useSelector } from "react-redux"
 import useAccountCall from "../hooks/useAccountCall"
 import { useLocation } from "react-router-dom"
 import useAuthCall from "../hooks/useAuthCall"
+import { useTranslation } from "react-i18next"
+import { translations } from "../locales/translations"
 
 const OrganizationSchema = Yup.object({
   organizationLogo: UserDetailSchema.fields.organizationLogo,
@@ -27,6 +29,7 @@ const OrganizationSchema = Yup.object({
 })
 
 const SetupOrganization = () => {
+  const {t} = useTranslation()
   const { currentUser: user } = useSelector((state) => state.auth)
   const [step, setStep] = useState(1)
   const { updateUser } = useAccountCall()
@@ -118,11 +121,10 @@ const SetupOrganization = () => {
           <>
             {/* Step 1 Form */}
             <h2 className="text-[1.75rem] dark:text-white font-bold text-center mb-4">
-              Share Your Organization Details
+            {t(translations.setupOrg.details)}
             </h2>
             <p className="text-dark-gray-1 dark:text-white text-center mb-8">
-              This information is necessary for us to understand your organization and provide you
-              with better services
+            {t(translations.setupOrg.p)}
             </p>
 
             <Formik
@@ -149,13 +151,13 @@ const SetupOrganization = () => {
                       htmlFor="organizationDesc"
                       className="block text-gray-2 font-medium mb-1"
                     >
-                      Organization Description*
+                      {t(translations.setupOrg.orgDesc)}
                     </label>
                     <Field
                       type="text"
                       id="organizationDesc"
                       name="organizationDesc"
-                      placeholder="Enter organization description"
+                      placeholder= {t(translations.setupOrg.orgDescPH)}
                       className="w-full px-4 py-2 dark:text-white dark:bg-black border border-gray-2 rounded-md focus:outline-none focus:ring-1 focus:ring-primary-green"
                     />
                     <div className="min-h-[1.5rem] text-sm">
@@ -172,7 +174,7 @@ const SetupOrganization = () => {
                       htmlFor="organizationLogo"
                       className="block text-gray-2 font-medium mb-1"
                     >
-                      Organization Logo*
+                      {t(translations.setupOrg.orgLogo)}
                     </label>
                     <div
                       className="flex w-full mx-auto items-center cursor-pointer border border-gray-2 rounded-md px-4 py-2"
@@ -238,7 +240,7 @@ const SetupOrganization = () => {
                       }}
                       className="w-auto px-14 py-2 bg-primary-green hover:bg-dark-green text-white rounded-md transition-colors"
                     >
-                      Next
+                      {t(translations.setupOrg.nextButton)}
                     </button>
                   </div>
                 </Form>
@@ -249,11 +251,10 @@ const SetupOrganization = () => {
           <>
             {/* Step 2 Form */}
             <h2 className="text-[1.75rem] dark:text-white font-bold text-center mb-2">
-              Complete Your Organization Profile
+            {t(translations.setupOrg.completeh2)}
             </h2>
             <p className="text-dark-gray-1 dark:text-white text-center mb-2">
-              These additional details are required to create a comprehensive profile of your
-              organization and offer customized services
+             {t(translations.setupOrg.completeP)}
             </p>
 
             <Formik
@@ -273,7 +274,7 @@ const SetupOrganization = () => {
                         htmlFor="organizationUrl"
                         className="block text-gray-2 font-medium mb-1"
                       >
-                        Website URL
+                        {t(translations.setupOrg.websiteURL)}
                       </label>
                       <Field
                         type="url"
@@ -294,13 +295,13 @@ const SetupOrganization = () => {
                     <div className="flex items-center space-x-2">
                       <div className="w-2/4">
                         <label htmlFor="streetName" className="block text-gray-2 font-medium mb-1">
-                          Street Name*
+                        {t(translations.setupOrg.streetName)}
                         </label>
                         <Field
                           type="text"
                           id="streetName"
                           name="streetName"
-                          placeholder="Enter street name"
+                          placeholder= {t(translations.setupOrg.streetNamePH)}
                           className="w-full px-4 py-2 border border-gray-2 rounded-md dark:bg-black dark:text-white focus:outline-none focus:ring-1 focus:ring-primary-green"
                         />
                         <div className="min-h-[1.5rem] text-sm">
@@ -313,7 +314,7 @@ const SetupOrganization = () => {
                           htmlFor="streetNumber"
                           className="block text-gray-2 font-medium mb-1"
                         >
-                          Street Nr.*
+                          {t(translations.setupOrg.streetNr)}
                         </label>
                         <Field
                           type="text"
@@ -333,13 +334,13 @@ const SetupOrganization = () => {
 
                       <div className="w-1/4">
                         <label htmlFor="zipCode" className="block text-gray-2 font-medium mb-1">
-                          Zip Code*
+                        {t(translations.setupOrg.zipCode)}
                         </label>
                         <Field
                           type="text"
                           id="zipCode"
                           name="zipCode"
-                          placeholder="Enter zip code"
+                          placeholder= {t(translations.setupOrg.zipCodePH)}
                           className="w-full px-4 py-2 border border-gray-2 rounded-md dark:bg-black dark:text-white focus:outline-none focus:ring-1 focus:ring-primary-green"
                         />
                         <div className="min-h-[1.5rem] text-sm">
@@ -351,13 +352,13 @@ const SetupOrganization = () => {
                     <div className="flex items-center space-x-2">
                       <div className="w-1/2">
                         <label htmlFor="city" className="block text-gray-2 font-medium mb-1">
-                          City*
+                        {t(translations.setupOrg.city)}
                         </label>
                         <Field
                           type="text"
                           id="city"
                           name="city"
-                          placeholder="Enter city"
+                          placeholder= {t(translations.setupOrg.cityPH)}
                           className="w-full px-4 py-2 border border-gray-2 rounded-md dark:bg-black dark:text-white focus:outline-none focus:ring-1 focus:ring-primary-green"
                         />
                         <div className="min-h-[1.5rem] text-sm">
@@ -366,13 +367,13 @@ const SetupOrganization = () => {
                       </div>
                       <div className="w-1/2">
                         <label htmlFor="country" className="block text-gray-2 font-medium mb-1">
-                          Country*
+                        {t(translations.setupOrg.country)}
                         </label>
                         <Field
                           type="text"
                           id="country"
                           name="country"
-                          placeholder="Enter country"
+                          placeholder= {t(translations.setupOrg.countryPH)}
                           className="w-full px-4 py-2 border border-gray-2 rounded-md dark:bg-black dark:text-white focus:outline-none focus:ring-1 focus:ring-primary-green"
                         />
                         <div className="min-h-[1.5rem] text-sm">
@@ -392,7 +393,7 @@ const SetupOrganization = () => {
                           : "bg-primary-green hover:bg-dark-green"
                       } text-white rounded-md transition-colors`}
                     >
-                      Finish
+                      {t(translations.setupOrg.finish)}
                     </button>
                   </div>
                 </Form>
