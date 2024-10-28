@@ -6,11 +6,12 @@ import { formatDate } from "../../../helpers/formatDate"
 import eventPhoto from "../../../assets/about-events.png"
 import { useTranslation } from "react-i18next"
 import { translations } from "../../../locales/translations"
+import { UserAvatar } from "../Avatar/userAvatar"
 
 const defaultImage = eventPhoto
 
 const ProfileCard = ({ events, loading, eventType, setEventType, setCurrentPage }) => {
-  const {t} = useTranslation()
+  const { t } = useTranslation()
   const navigate = useNavigate()
 
   return (
@@ -49,9 +50,11 @@ const ProfileCard = ({ events, loading, eventType, setEventType, setCurrentPage 
         {!loading && (!events || events.length === 0) && (
           <div className="flex flex-col items-center justify-center h-[50vh]">
             <FaCalendarTimes className="text-6xl text-primary-green mb-4" />
-            <p className="text-xl font-bold text-dark-gray-1 dark:text-white">{t(translations.profileCard.p1)}</p>
+            <p className="text-xl font-bold text-dark-gray-1 dark:text-white">
+              {t(translations.profileCard.p1)}
+            </p>
             <p className="text-sm text-gray-500 dark:text-gray-400">
-            {t(translations.profileCard.p2)}
+              {t(translations.profileCard.p2)}
             </p>
           </div>
         )}
@@ -78,14 +81,9 @@ const ProfileCard = ({ events, loading, eventType, setEventType, setCurrentPage 
                   </h2>
                   <div className="flex flex-col gap-2">
                     <div className="flex gap-2 ml-0.5 text-sm sm:text-[1rem] text-gray-2 dark:text-white">
-                      <img
-                        src={
-                          event.createdBy.userType === "individual"
-                            ? event.createdBy?.userDetailsId?.avatar
-                            : event.createdBy?.userDetailsId?.organizationLogo
-                        }
-                        alt= {t(translations.profileCard.infoAlt)}
-                        className="w-[1.1rem] h-[1.1rem] rounded-full"
+                      <UserAvatar
+                        user={event.createdBy}
+                        size="w-[1.1rem] h-[1.1rem] rounded-full"
                       />
 
                       {event.createdBy?.fullName

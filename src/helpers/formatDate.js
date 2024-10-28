@@ -5,3 +5,11 @@ export const formatDate = (dateString) => {
     year: "numeric",
   })
 }
+
+export const formatTime = (dateString) => {
+  return new Date(dateString).toLocaleTimeString("en-US", {
+    hour: "numeric",
+    minute: "numeric",
+    hour12: false,
+  })
+}

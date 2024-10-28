@@ -71,7 +71,7 @@ const useChatCall = () => {
   const fetchConversations = async () => {
     dispatch(fetchStart())
     try {
-      const { data } = await axiosWithToken.get(`/conversations`)
+      const { data } = await axiosWithToken.get("/conversations")
       // console.log(data)
       dispatch(conversationSuccess(data.data))
     } catch (error) {
@@ -83,7 +83,7 @@ const useChatCall = () => {
   const sendMessage = async (content, conversationId) => {
     if (content) {
       try {
-        await axiosWithToken.post(`/messages`, { content, conversationId })
+        await axiosWithToken.post("/messages", { content, conversationId })
       } catch (error) {
         console.log(error)
         toastNotify("error", error.response.data.message)
@@ -97,7 +97,7 @@ const useChatCall = () => {
     dispatch(fetchStart())
     if ((eventId, participantId)) {
       try {
-        const { data } = await axiosWithToken.post(`/conversations`, {
+        const { data } = await axiosWithToken.post("/conversations", {
           eventId,
           participantIds: [participantId],
         })
@@ -109,6 +109,19 @@ const useChatCall = () => {
       }
     } else {
       toastNotify("error", "Event ID or Participant ID are missing.")
+    }
+  }
+
+  const markAsRead = async (conversationId) => {
+    dispatch(fetchStart())
+    try {
+      const { data } = await axiosWithToken(`/conversations/${conversationId}`)
+      console.log(data.data)
+    } catch (error) {
+      console.log("error", error.response?.data)
+      dispatch(fetchFail())
+    } finally {
+      fetchConversations()
     }
   }
 
@@ -130,6 +143,7 @@ const useChatCall = () => {
     fetchNotifications,
     sendMessage,
     createConversation,
+    markAsRead,
     deleteConversation,
   }
 }

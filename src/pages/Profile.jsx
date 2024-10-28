@@ -20,9 +20,7 @@ import { formatName } from "../helpers/formatName"
 import formatLanguages from "../helpers/languages_english.json"
 import { useTranslation } from "react-i18next"
 import { translations } from "../locales/translations"
-
-const defaultIndividualImage = avatar
-const defaultOrganozationImage = logo
+import { UserAvatar } from "../components/ui/Avatar/userAvatar"
 
 const getMedalInfo = (totalPoints, t) => {
   if (totalPoints >= 70) {
@@ -117,8 +115,6 @@ const Profile = () => {
     } = {},
   } = user
 
-  console.log(user)
-
   const medalInfoText = [
     {
       label: t(translations.profile.medals.bronzeInfo),
@@ -177,25 +173,17 @@ const Profile = () => {
           <div className="min-h-[100vh] font-poppins block sm:flex justify-center gap-5 mx-5 dark:bg-black pb-3 pt-3">
             <div className=" w-full sm:w-[600px] bg-light-gray rounded-md px-4 sm:px-6 dark:bg-dark-gray-3 dark:text-white">
               <div className="flex justify-between px-2 ">
-                <img
-                  src={
-                    userType === "individual"
-                      ? avatar || defaultIndividualImage
-                      : organizationLogo || defaultOrganozationImage
-                  }
-                  alt={
-                    userType === "individual"
-                      ? t(translations.profile.avatarAlt)
-                      : t(translations.profile.logoAlt)
-                  }
-                  className="w-[70px] h-[70px] sm:w-[120px] sm:h-[120px] rounded-full mt-4 sm:mt-8"
+                <UserAvatar
+                  user={user}
+                  size="w-[70px] h-[70px] sm:w-[120px] sm:h-[120px] rounded-full mt-4 sm:mt-8"
                 />
+
                 {_id === currentUser?._id && (
                   <button
                     onClick={() => navigate("/settings")}
                     className="w-[4rem] h-[1.6rem] sm:w-[60px] sm:h-[30px] text-[0.9375rem] rounded-md bg-primary-green text-white mt-4 sm:mt-8"
                   >
-                     {t(translations.profile.edit)}
+                    {t(translations.profile.edit)}
                   </button>
                 )}
               </div>
@@ -272,7 +260,7 @@ const Profile = () => {
                 {/* Certification & Document  */}
                 <div className="hidden sm:block">
                   <h2 className="my-6 font-semibold text-dark-gray-1 dark:text-white dark:font-bold">
-                      {t(translations.profile.documents)}
+                    {t(translations.profile.documents)}
                   </h2>
                   {documentIds?.map((item, index) => (
                     <div
