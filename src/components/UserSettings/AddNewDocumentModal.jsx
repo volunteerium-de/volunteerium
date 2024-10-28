@@ -1,6 +1,10 @@
 import React, { useState, useRef } from "react"
+import { useTranslation } from "react-i18next"
+import { translations } from "../../locales/translations"
+translations
 
 const AddNewDocumentModal = ({ isOpen, onClose }) => {
+  const {t} = useTranslation()
   const [file, setFile] = useState(null)
   const [fileName, setFileName] = useState("")
   const [error, setError] = useState(null)
@@ -58,11 +62,11 @@ const AddNewDocumentModal = ({ isOpen, onClose }) => {
       <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
         <div className="bg-white p-6 rounded-lg max-w-[654px] w-full">
           <h2 className="text-[1.75rem] leading-[1.464] text-center font-semibold mb-4">
-            New Document
+            {t(translations.addNewDoc.newDoc)}
           </h2>
 
           <div className="max-w-[696px] mx-auto">
-            <h1 className="text-gray-2 leading-[1.5625]">Document Title</h1>
+            <h1 className="text-gray-2 leading-[1.5625]">{t(translations.addNewDoc.docTitle)}</h1>
             <label htmlFor="certification"></label>
             <input
               id="certification"
@@ -78,7 +82,7 @@ const AddNewDocumentModal = ({ isOpen, onClose }) => {
                   className="block font-medium px-[10px] py-[5px] mt-[20px] border border-primary-green rounded-md text-primary-green hover:bg-primary-green-dark transition duration-300"
                   onClick={file ? handleResetClick : handleAddNewClick}
                 >
-                  {file ? "Reset" : "Add new +"}
+                  {file ? t(translations.addNewDoc.reset) : t(translations.addNewDoc.addNew)}
                 </button>
               </div>
               {/* File upload input */}
@@ -97,14 +101,14 @@ const AddNewDocumentModal = ({ isOpen, onClose }) => {
               className="bg-gray-1 text-white px-4 py-2 rounded-md font-medium leading-[1.5625] w-[150px]"
               onClick={onClose}
             >
-              Cancel
+              {t(translations.addNewDoc.cancel)}
             </button>
             <button
               className="bg-primary-green px-4 py-2 rounded-md text-white font-medium leading-[1.5625] w-[150px]"
               onClick={handleSaveClick}
               disabled={!file}
             >
-              Save
+              {t(translations.addNewDoc.save)}
             </button>
           </div>
         </div>

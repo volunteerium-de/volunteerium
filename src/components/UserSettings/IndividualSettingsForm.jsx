@@ -1,6 +1,9 @@
 import React, { useState, useRef, useEffect } from "react"
 import { FaAngleDown, FaAngleUp } from "react-icons/fa"
 import MyDocumentsModal from "./MyDocumentsModal"
+import { useTranslation } from "react-i18next"
+import { translations } from "../../locales/translations"
+translations
 
 // Custom Dropdown Component
 const CustomDropdown = ({ options, label, selectedOptions, isMultiSelect, onChange }) => {
@@ -66,6 +69,7 @@ const CustomDropdown = ({ options, label, selectedOptions, isMultiSelect, onChan
 }
 
 const IndividualSettingsForm = ({ currentUser }) => {
+  const {t} = useTranslation
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [certificates, setCertificates] = useState([
     {
@@ -154,16 +158,16 @@ const IndividualSettingsForm = ({ currentUser }) => {
         }
 
         const result = await response.json()
-        setSuccessMessage("Data saved successfully!")
+        setSuccessMessage(t(translations.indvSettings.success))
         setErrorMessage("") // Reset previous error message
 
         console.log("Saved data:", result)
       } catch (error) {
-        setErrorMessage("Error saving data: " + error.message)
+        setErrorMessage(t(translations.indvSettings.catchError) + error.message)
         setSuccessMessage("") // Reset previous success message
       }
     } else {
-      setErrorMessage("Please fill in all fields and select at least one language.")
+      setErrorMessage(t(translations.indvSettings.elseError))
     }
   }
   return (
@@ -171,11 +175,11 @@ const IndividualSettingsForm = ({ currentUser }) => {
       <div className="font-Poppins max-w-[698px] mx-auto p-2 px-12 w-full h-auto bg-white rounded-md">
         <form onSubmit={handleSubmit}>
           <div className="mb-[10px]">
-            <h1 className="text-center font-medium text-[1.5rem] my-[20px]">Profile Settings</h1>
+            <h1 className="text-center font-medium text-[1.5rem] my-[20px]">{t(translations.indvSettings.h1)}</h1>
 
             {/* Name Appearance Section */}
             <div className="flex flex-col flex-wrap">
-              <p className="block text-[1rem]  text-gray-2 ">Name Appearance</p>
+              <p className="block text-[1rem]  text-gray-2 ">{t(translations.indvSettings.p1)}</p>
               <div className="flex flex-col flex-wrap sm:flex-row gap-5">
                 <div className="flex flex-1 items-center gap-2 h-[36px] mt-1 border border-gray-300 rounded-lg p-2">
                   <input
@@ -201,7 +205,7 @@ const IndividualSettingsForm = ({ currentUser }) => {
                 </div>
               </div>
               <p className="text-[0.875rem] text-dark-gray-2 leading-[1.785]">
-                Your name will appear across your profile.
+                {t(translations.indvSettings.p2)}
               </p>
             </div>
           </div>
@@ -210,27 +214,27 @@ const IndividualSettingsForm = ({ currentUser }) => {
           <div className="flex flex-col flex-wrap sm:flex-row gap-5 mb-[25px]">
             <div className="flex-1 flex flex-col">
               <label className="block text-[1rem] leading-[1.5625] text-gray-2" htmlFor="city">
-                City
+                {t(translations.indvSettings.label1)}
               </label>
               <input
                 id="city"
                 type="text"
                 value={city}
                 onChange={(e) => setCity(e.target.value)}
-                placeholder="City"
+                placeholder= {t(translations.indvSettings.label1PH)}
                 className="h-[36px] mt-1 border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-primary-green text-dark-gray-1"
               />
             </div>
             <div className="flex-1 flex flex-col">
               <label className="block text-[1rem] leading-[1.5625] text-gray-2" htmlFor="country">
-                Country
+              {t(translations.indvSettings.label2)}
               </label>
               <input
                 id="country"
                 value={country}
                 onChange={(e) => setCountry(e.target.value)}
                 type="text"
-                placeholder="Country"
+                placeholder= {t(translations.indvSettings.label2PH)}
                 className="h-[36px] mt-1 border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-primary-green text-dark-gray-1"
               />
             </div>
@@ -240,7 +244,7 @@ const IndividualSettingsForm = ({ currentUser }) => {
           <div className="flex flex-row flex-wrap max-[780px]:flex-col gap-5 mb-[5px]">
             <div className="flex-1 ">
               <CustomDropdown
-                label="Gender"
+                label= {t(translations.indvSettings.label3)}
                 options={["Male", "Female", "Non-binary", "Other"]}
                 selectedOptions={[gender]}
                 onChange={(selectedOptions) => setGender(selectedOptions[0])}
@@ -250,7 +254,7 @@ const IndividualSettingsForm = ({ currentUser }) => {
             </div>
             <div className="flex-1">
               <CustomDropdown
-                label="Age Group"
+                label= {t(translations.indvSettings.label4)}
                 options={["18-25", "26-35", "36-45", "46-60", "60+"]}
                 selectedOptions={[ageGroup]}
                 onChange={(selectedOptions) => setAgeGroup(selectedOptions[0])}
@@ -259,7 +263,7 @@ const IndividualSettingsForm = ({ currentUser }) => {
             </div>
             <div className="flex-1">
               <CustomDropdown
-                label="Languages"
+                label= {t(translations.indvSettings.label5)}
                 options={["English", "German", "Turkish"]}
                 selectedOptions={languages}
                 onChange={setLanguages}
@@ -270,7 +274,7 @@ const IndividualSettingsForm = ({ currentUser }) => {
           {/* Bio Section */}
           <div className="my-[5px] w-full">
             <label className="block text-[1rem] leading-[1.5625] text-gray-2" htmlFor="bio">
-              Bio
+            {t(translations.indvSettings.label6)}
             </label>
             <textarea
               id="bio"
@@ -284,12 +288,12 @@ const IndividualSettingsForm = ({ currentUser }) => {
           {/* Files Section */}
           <div className="mx-auto px-4">
             <div className="flex justify-between ">
-              <p className="text-[1rem] leading-[1.5625] text-gray-2">Files</p>
+              <p className="text-[1rem] leading-[1.5625] text-gray-2">{t(translations.indvSettings.label7)}</p>
               <p
                 className="text-[1rem] leading-[1.5625] text-primary-green cursor-pointer"
                 onClick={openModal}
               >
-                Edit
+                {t(translations.indvSettings.edit)}
               </p>
             </div>
 
@@ -313,7 +317,7 @@ const IndividualSettingsForm = ({ currentUser }) => {
           {/* Save Button */}
           <div>
             <button type="submit" className="bg-primary-green w-full py-[7px] rounded-md mt-2">
-              <p className="text-[1rem] text-white">Save</p>
+              <p className="text-[1rem] text-white">{t(translations.indvSettings.save)}</p>
             </button>
           </div>
         </form>

@@ -4,10 +4,13 @@ import { MdKeyboardArrowRight } from "react-icons/md"
 import { useNavigate } from "react-router-dom"
 import { formatDate } from "../../../helpers/formatDate"
 import eventPhoto from "../../../assets/about-events.png"
+import { useTranslation } from "react-i18next"
+import { translations } from "../../../locales/translations"
 
 const defaultImage = eventPhoto
 
 const ProfileCard = ({ events, loading, eventType, setEventType, setCurrentPage }) => {
+  const {t} = useTranslation()
   const navigate = useNavigate()
 
   return (
@@ -26,7 +29,7 @@ const ProfileCard = ({ events, loading, eventType, setEventType, setCurrentPage 
               setCurrentPage(1)
             }}
           >
-            Attended Events
+            {t(translations.profileCard.attendEvents)}
           </div>
           <div
             className={`text-[0.9375rem] cursor-pointer border-b-2 ${
@@ -40,15 +43,15 @@ const ProfileCard = ({ events, loading, eventType, setEventType, setCurrentPage 
               setCurrentPage(1)
             }}
           >
-            Organized Events
+            {t(translations.profileCard.organizedEvents)}
           </div>
         </div>
         {!loading && (!events || events.length === 0) && (
           <div className="flex flex-col items-center justify-center h-[50vh]">
             <FaCalendarTimes className="text-6xl text-primary-green mb-4" />
-            <p className="text-xl font-bold text-dark-gray-1 dark:text-white">No events found</p>
+            <p className="text-xl font-bold text-dark-gray-1 dark:text-white">{t(translations.profileCard.p1)}</p>
             <p className="text-sm text-gray-500 dark:text-gray-400">
-              It seems there are no events at the moment.
+            {t(translations.profileCard.p2)}
             </p>
           </div>
         )}
@@ -81,7 +84,7 @@ const ProfileCard = ({ events, loading, eventType, setEventType, setCurrentPage 
                             ? event.createdBy?.userDetailsId?.avatar
                             : event.createdBy?.userDetailsId?.organizationLogo
                         }
-                        alt="Organizator Avatar"
+                        alt= {t(translations.profileCard.infoAlt)}
                         className="w-[1.1rem] h-[1.1rem] rounded-full"
                       />
 
@@ -98,7 +101,7 @@ const ProfileCard = ({ events, loading, eventType, setEventType, setCurrentPage 
                     <div className="flex gap-2 ml-0.5 text-sm sm:text-[0.9375rem] text-gray-2 dark:text-white">
                       <HiOutlineUserGroup className="text-[1.1rem] text-primary-green dark:text-light-gray" />
                       {event.eventParticipantIds.length}/{event.maxParticipant}
-                      <p>joined</p>
+                      <p>{t(translations.profileCard.joined)}</p>
                     </div>
                   </div>
                   {/* // Interest */}

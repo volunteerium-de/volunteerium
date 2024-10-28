@@ -7,17 +7,18 @@ import {
   setSearchTerm,
   setHomeSelectedCategory,
   setManualLocation,
-  clearFilters,
   setCategoryFilters,
 } from "../../features/searchSlice"
 import { useNavigate } from "react-router-dom"
+import { useLocation } from "react-router-dom"
 import { useTranslation } from "react-i18next"
-import { translations } from "../../locales/translations";
-
+import { translations } from "../../locales/translations"
 
 const SearchBar = () => {
   const { t } = useTranslation() // i18next hook
   const [isDropdownOpen, setIsDropdownOpen] = useState(false)
+  const [term, setTerm] = useState("")
+  const [eventLocation, setEventLocation] = useState("")
   const dropdownRef = useRef(null)
   const { getEventCategories } = useEventCall()
   const { categories, searchTermEvent, searchTermLocation, homeSelectedCategory } = useSelector(
@@ -25,25 +26,26 @@ const SearchBar = () => {
   )
   const dispatch = useDispatch()
   const navigate = useNavigate()
+  const location = useLocation()
 
   const searchBarItems = [
     {
       id: "event",
-      label: t(translations.searchbar.event.label), 
+      label: t(translations.searchbar.event.label),
       placeholder: t(translations.searchbar.event.placeholder),
-      type: "input"
+      type: "input",
     },
     {
       id: "location",
       label: t(translations.searchbar.location.label),
       placeholder: t(translations.searchbar.location.placeholder),
-      type: "input"
+      type: "input",
     },
     {
       id: "category",
       label: t(translations.searchbar.category.label),
-      placeholder: t(translations.searchbar.category.placeholder),      
-      type: "category"
+      placeholder: t(translations.searchbar.category.placeholder),
+      type: "category",
     },
   ]
 
@@ -56,7 +58,6 @@ const SearchBar = () => {
   // Close dropdown when clicked outside
   useEffect(() => {
     getEventCategories()
-    dispatch(clearFilters())
     const handleClickOutside = (event) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
         setIsDropdownOpen(false)
@@ -69,24 +70,27 @@ const SearchBar = () => {
   }, [])
 
   const handleSearch = () => {
-    const filters = []
+    dispatch(setSearchTerm(term))
+    dispatch(setManualLocation(eventLocation))
+    if (!location.pathname.includes("/events")) {
+      const filters = []
 
-    // Eğer başlık arama terimi varsa ekle
-    if (searchTermEvent) {
-      filters.push(`search[title]=${encodeURIComponent(searchTermEvent.toLowerCase())}`)
-    }
-    if (searchTermLocation) {
-      filters.push(`search[location]=${encodeURIComponent(searchTermLocation.toLowerCase())}`)
-    }
-    if (homeSelectedCategory && homeSelectedCategory !== "Choose Category") {
-      filters.push(`filter[category]=${encodeURIComponent(homeSelectedCategory.toLowerCase())}`)
-    }
+      if (searchTermEvent) {
+        filters.push(`search[title]=${searchTermEvent}`)
+      }
+      if (searchTermLocation) {
+        filters.push(`search[location]=${searchTermLocation}`)
+      }
+      if (homeSelectedCategory && homeSelectedCategory !== "Choose Category") {
+        filters.push(`filter[category]=${homeSelectedCategory}`)
+      }
 
-    if (filters.length > 0) {
-      const query = filters.join("&")
-      navigate(`events?${query}`)
-    } else {
-      navigate("events")
+      if (filters.length > 0) {
+        const query = filters.join("&")
+        navigate(`events?${encodeURIComponent(query)}`)
+      } else {
+        navigate("events")
+      }
     }
   }
 
@@ -107,9 +111,7 @@ const SearchBar = () => {
               placeholder={placeholder}
               className="text-[0.6rem] sm:text-[0.8rem] -ml-1 text-gray-2 focus:outline-none w-full p-1 dark:bg-dark-gray-3"
               onChange={(e) => {
-                id === "event"
-                  ? dispatch(setSearchTerm(e.target.value))
-                  : dispatch(setManualLocation(e.target.value))
+                id === "event" ? setTerm(e.target.value) : setEventLocation(e.target.value)
               }}
             />
           ) : (
@@ -118,7 +120,7 @@ const SearchBar = () => {
                 className="cursor-pointer text-[0.6rem] sm:text-[0.8rem] -ml-1 text-gray-2 p-1 rounded-md"
                 onClick={() => setIsDropdownOpen(!isDropdownOpen)}
               >
-                {homeSelectedCategory ||  t("searchbar.category.placeholder")}
+                {homeSelectedCategory || t("searchbar.category.placeholder")}
               </div>
               {isDropdownOpen && (
                 <ul

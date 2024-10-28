@@ -9,20 +9,21 @@ import { translations } from "../../locales/translations"
 import { useTranslation } from "react-i18next"
 import ReCAPTCHA from "react-google-recaptcha"
 
-const validationSchema = Yup.object({
-  email: Yup.string().email("Invalid email address").required("Email is a required field"),
-  password: Yup.string()
-    .min(6, "Must be at least 6 characters!")
-    .max(30, "Can be maximum 30 characters!")
-    .matches(/\d+/, "Must contain at least one digit!")
-    .matches(/[a-z]/, "Must contain at least one lowercase letter!")
-    .matches(/[A-Z]/, "Must contain at least one uppercase letter!")
-    .matches(/[@$?!%&*]+/, "Must contain at least one special character (@$!%*?&)!")
-    .required("Password is a required field"),
-})
-
 const LoginForm = () => {
   const { t } = useTranslation()
+
+const validationSchema = Yup.object({
+  email: Yup.string().email(t(translations.loginForm.yup1)).required(t(translations.loginForm.yup2)),
+  password: Yup.string()
+    .min(6, t(translations.loginForm.yup3))
+    .max(30, t(translations.loginForm.yup4))
+    .matches(/\d+/, t(translations.loginForm.yup5))
+    .matches(/[a-z]/, t(translations.loginForm.yup6))
+    .matches(/[A-Z]/, t(translations.loginForm.yup7))
+    .matches(/[@$?!%&*]+/, t(translations.loginForm.yup8))
+    .required(t(translations.loginForm.yup9)),
+})
+
 
   const [showPassword, setShowPassword] = useState(false)
   const passwordTimeoutRef = useRef(null)

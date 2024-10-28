@@ -1,10 +1,12 @@
 import { FaEdit } from "react-icons/fa"
 import { useSelector } from "react-redux"
 import { UserAvatar } from "../Avatar/userAvatar"
+import { useTranslation } from "react-i18next"
+import { translations } from "../../../locales/translations"
 
 const Sidebar = ({ items, activeTab, onTabChange, onEditAvatar }) => {
   const { currentUser: user } = useSelector((state) => state.auth)
-
+  const {t} = useTranslation()
   const getMenuClassName = (item) => {
     return `max-w-[374px] h-[50px]  bg-white flex items-center gap-5 p-4 hover:bg-gray-100 mt-[20px] relative ${
       activeTab === item.key ? "bg-gray-white" : ""
@@ -20,7 +22,7 @@ const Sidebar = ({ items, activeTab, onTabChange, onEditAvatar }) => {
           </div>
 
           <p className="font-bold text-gray-2 dark:text-white text-[1rem] text-center tracking-wider mt-[10px] mb-[30px] hidden sm:block">
-            Welcome{" "}
+            {t(translations.sidebar.welcome)}{" "}
             <span className="text-primary-green">{user.fullName || user.organizationName}!</span>
           </p>
         </div>

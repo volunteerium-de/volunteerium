@@ -34,7 +34,8 @@
 
   "subscribe": {
     "h3": "Subscribe",
-    "p": " Join our community of volunteers by subscribing to our newsletter. Stay informed about upcoming volunteer events, special projects."
+    "p": " Join our community of volunteers by subscribing to our newsletter. Stay informed about upcoming volunteer events, special projects.",
+    "emailPH": "Enter your email"
   },
 
   "footer": {
@@ -62,10 +63,23 @@
     "p6": "making a difference",
     "p7": "We cannot wait to have you with us!",
     "createAccount": "Create Your Account",
-    "creatingAs" : "You’re creating an account as?"
+    "creatingAs": "You’re creating an account as?"
   },
 
   "registerForm": {
+    "yup1": "User type is required",
+    "yup2": "Must be at least 3 characters",
+    "yup3": "Can be maximum 30 characters",
+    "yup4": "Name is a required field",
+    "yup5": "Invalid email address",
+    "yup6": "Email is a required field",
+    "yup7": "Must be at least 6 characters",
+    "yup8": "Can be maximum 30 characters",
+    "yup9": "Must contain at least one digit",
+    "yup10": "Must contain at least one lowercase letter",
+    "yup11": "Must contain at least one uppercase letter",
+    "yup12": "Must contain at least one special character (@$!%*?&)",
+    "yup13": "Password is a required field",
     "radioIndv": "As an Individual",
     "radioOrg": "As an Organization",
     "fullname": "Full Name",
@@ -88,18 +102,27 @@
   },
 
   "login": {
-    "p1" : "Reconnect with",
-    "p2" : "Community",
-    "p3" : "Welcome back to something",
-    "p4" : "bigger",
-    "p5" : "Login to continue making",
-    "p6" : "a difference",
-    "p7" : "We're glad to have you with us!",
-    "signIn" : "Sign In"
+    "p1": "Reconnect with",
+    "p2": "Community",
+    "p3": "Welcome back to something",
+    "p4": "bigger",
+    "p5": "Login to continue making",
+    "p6": "a difference",
+    "p7": "We're glad to have you with us!",
+    "signIn": "Sign In"
   },
 
   "loginForm": {
-    "email" : "Email",
+    "yup1": "Invalid email address",
+    "yup2": "Email is a required field",
+    "yup3": "Must be at least 6 characters!",
+    "yup4": "Can be maximum 30 characters!",
+    "yup5": "Must contain at least one digit!",
+    "yup6": "Must contain at least one lowercase letter!",
+    "yup7": "Must contain at least one uppercase letter!",
+    "yup8": "Must contain at least one special character (@$!%*?&)!",
+    "yup9": "Password is a required field",
+    "email": "Email",
     "emailPH": "Enter your email address",
     "password": "Password",
     "passwordPH": "Enter your password",
@@ -109,6 +132,366 @@
     "signUp": "Sign Up",
     "or": "or",
     "contGoogle": "Continue with Google"
+  },
+
+  "profile": {
+    "memberSince": "Member since",
+    "edit": "Edit",
+    "attendedEvents": "Attended Events",
+    "createdEvents": "Created Events",
+    "loading": "Loading...",
+    "interests": "Interests",
+    "aboutMe": "About Me",
+    "documents": "Certification & Document",
+    "medals": {
+      "goldenHeart": "Golden Heart",
+      "silverMedal": "Silver Medal",
+      "bronzeMedal": "Bronze Medal",
+      "newVolunteer": "New Volunteer",
+      "goldenInfo": "🏆 Golden Heart: Awarded to those who reach 70 points.",
+      "silverInfo": "🥈 Silver Medal: Awarded to those who reach 40 points.",
+      "bronzeInfo": "🏅 Bronze Medal: Awarded to those who reach 10 points."
+    },
+    "avatarAlt": "User avatar",
+    "logoAlt": "Organization logo",
+    "eventImageAlt": "Event image"
+  },
+
+  "userSettings": {
+    "avatarAlt": "User avatar",
+    "edit": "Edit",
+    "welcome": "Welcome",
+    "profile": "Profile",
+    "security": "Security",
+    "visibility": "Visibility"
+  },
+
+  "addNewDoc": {
+    "newDocument": "New Document",
+    "documentTitle": "Document Title",
+    "buttonReset": "Reset",
+    "buttonAddNew": "Add New +",
+    "cancel": "Cancel",
+    "save": "Save"
+  },
+
+  "avatarEdit": {
+    "networkError": "Network response was not ok",
+    "photoAlert": "Photo uploaded successfully!",
+    "photoError": "There was an error loading the photo. Please try again.",
+    "loading": "Loading...",
+    "logo": "Logo",
+    "profilePhoto": "Profile Photo",
+    "avatarAlt": "User avatar",
+    "addPhoto": "Add Photo",
+    "delete": "Delete"
+  },
+
+  "delAccount": {
+    "h2": "Delete Account",
+    "p": "Are you sure you want to delete your account? This action cannot be undone.",
+    "cancelButton": "Cancel",
+    "delButton": "Delete Account"
+  },
+
+  "indvSettings": {
+    "success": "Data saved successfully!",
+    "catchError": "Error saving data: ",
+    "elseError": "Please fill in all fields and select at least one language.",
+    "h1": "Profile Settings",
+    "p1": "Name Appearance",
+    "p2": "Your name will appear across your profile.",
+    "label1": "City",
+    "label1PH": "City",
+    "label2": "Country",
+    "label2PH": "Country",
+    "label3": "Gender",
+    "label4": "Age Group",
+    "label5": "Languages",
+    "label6": "Bio",
+    "label6PH": "Write your bio here...",
+    "label7": "Files",
+    "edit": "Edit",
+    "save": "Save"
+  },
+
+  "myDocs": {
+    "alertSuccess": "Changes saved successfully!",
+    "alertError": "Error saving documents: ",
+    "h2": "My Documents",
+    "p": "You can upload documents such as certifications, resumes, or portfolios to showcase your skills and qualifications.",
+    "addNew": "Add new +",
+    "delete": "Delete",
+    "update": "Update",
+    "cancel": "Cancel",
+    "saveChanges": "Save Cahnges"
+  },
+
+  "orgSettings": {
+    "handleErrorMsg": "Please fill in all fields.",
+    "successMsg": "Data saved successfully!",
+    "errorMsg": "Error saving data: ",
+    "h1": "Profile Settings",
+    "label1": "Organization Name",
+    "label1PH": "Volunteerium",
+    "label2": "Organization URL",
+    "label2PH": "www.volunteerium.com",
+    "label3": "Street Name",
+    "label3PH": "Dammstraße",
+    "label4": "Street Number",
+    "label4PH": "10",
+    "label5": "Zip Code",
+    "label5PH": "10117",
+    "label6": "City",
+    "label6PH": "Berlin",
+    "label7": "Country",
+    "label7PH": "Germany",
+    "label8": "Description",
+    "label8PH": "Write your description here...",
+    "files": "Files",
+    "edit": "Edit",
+    "save": "Save"
+  },
+
+  "pswModal": {
+    "yup1": "Current password is required",
+    "yup2": "New password is required",
+    "yup3": "Password must be at least 8 characters",
+    "yup4": "Passwords must match",
+    "yup5": "Confirm password is required",
+    "changePsw": "Change your password",
+    "currPsw": "Current Password",
+    "newPsw": "New Password",
+    "confirmPsw": "Confirm Password",
+    "cancel": "Cancel",
+    "saveChng": "Save Changes"
+  },
+
+  "profileSettings": {
+    "p": "Invalid user type"
+  },
+
+  "securitySettings": {
+    "feedbackMsg1": "Your account has been deleted successfully.",
+    "feedbackMsg2": "There was an error deleting your account.",
+    "h1": "Security Settings",
+    "name": "Name",
+    "namePH": "Name",
+    "orgName": "Organization Name",
+    "orgNamePH": "Organization Name",
+    "email": "Email",
+    "emailPH": "example@gmail.com",
+    "changePsw": "Change Password",
+    "delAccount": "Delete Account",
+    "delAlert1": "Would you like to delete your account? Deleting your account will remove all the content associated with it.",
+    "delAlert2":"Would you like to delete your organization? Deleting your organization will remove all the content associated with it.",
+    "userRes1":  "I want to delete my account",
+    "userRes2": "I want to delete my organization"
+  },
+
+  "updateDoc": {
+    "error": "Error updating file.",
+    "h2": "Update Document",
+    "h1": "Document Title",
+    "reset": "Reset",
+    "selectFile": "Select File",
+    "cancel": "Cancel",
+    "update": "Update"
+  },
+
+  "msgMenu": {
+    "h3": "Messages",
+    "link": "View All",
+    "you":  "You",
+    "announce": "Announcement",
+    "noMsg": "No Messages"
+  },
+
+  "notifMenu": {
+    "notif": "Notifications",
+    "noNotif": "No Notifications"
+  },
+
+  "userMenu": {
+    "user": "User",
+    "profile": "Profile",
+    "eventMng": "Event Management",
+    "settings": "Setting",
+    "logout": "Logout",
+    "login": "Login", 
+    "register": "Register",
+    "light": "Light",
+    "dark": "Dark"
+  },
+
+  "aboutUs": {
+    "aboutUs": "About Us",
+    "p1": "     We bring people together to volunteer, support, and build strong communities, so they can create a positive impact and lead fulfilling lives.",
+    "h2": " We are here to get as many people volunteering as possible.",
+    "p2": " Whether you are an individual looking to make a difference, a nonprofit organization in need of support, or a community group planning an event,Volunteerium is here to help. We are a team of passionate professionals committed to fostering a culture of giving and community support.",
+    "howItWorks": "We are here to get as many people volunteering as possible.",
+    "eventAlt": "events",
+    "explore": "Explore",
+    "opportunities": "Opportunities",
+    "p3": "Browse through a wide range of volunteer opportunities tailored to your interests and location.",
+    "join": "Join",
+    "toVolunteer": "to Volunteer",
+    "p4": "Once you find an event that interests you, join to volunteer. The event organizer will review your application and confirm your participation.",
+    "make": "Make",
+    "aDifference": "a Difference",
+    "p5": " Participate in events, contribute to your community, and experience the joy of helping others.",
+    "handsAlt": "hands",
+    "volunteerium": "Volunteerium",
+    "today": "today!",
+    "p6": "Be a part of a community dedicated to",
+    "p7": "making a positive difference.",
+    "p8": "Together, we can create a better world;",
+    "p9": "one volunteer at a time",
+    "volCardP1": "100+",
+    "volCardP2": "Volunteers",
+    "orgCardP1": "30+",
+    "orgCardP2": "Organizations",
+    "eventCardP1": "500+",
+    "eventCardP2": "Events"
+  },
+
+  "contactUs": {
+    "p1": "Your Feedback",
+    "p2": "Matters to Us!",
+    "p3": " Continue contributing to our community by sharing your",
+    "p4": "feedback",
+    "p5": "Help us make a difference with your ",
+    "p6": "ideas",
+    "p7": "and",
+    "p8": "suggestions",
+    "p9": "Thank you for being with us!",
+    "h1": "Contact Us"
+  },
+
+  "contactUsForm": {
+    "name": "Name",
+    "namePH": "Enter your name",
+    "email": "Email Address",
+    "emailPH": "Enter your email address",
+    "subject": "Message Subject",
+    "subjectPH": "Message Subject Here",
+    "message": "Message",
+    "messagePH": "Enter your message...",
+    "messageMaxLength": "Max 1000 characters",
+    "submit": "Submit"
+    
+  },
+
+  "faqPage": {
+    "q1": "How can I volunteer?",
+    "a1": "Volunteering is easy! Just sign up on our website, explore the available opportunities, and pick the one that suits you best.",
+    "q2": "Can I register as both a volunteer and a requester?",
+    "a2": "Absolutely! Once you've created your account, you can sign up for volunteer roles and also create events to request help from volunteers.",
+    "q3": "Do I need any special skills or qualifications?",
+    "a3": "Not at all! Many volunteer opportunities just require your time and enthusiasm. However, if a specific skill is needed, it will be listed in the event details.",
+    "q4": "In what areas can I volunteer?",
+    "a4": "There are plenty of ways to get involved! From event planning to community outreach, there's something for everyone.",
+    "q5": "What are the benefits of volunteering?",
+    "a5": "Volunteering gives you a chance to make a difference, gain valuable experience, meet new people, and contribute to your community. Plus, it looks great on your resume!",
+    "q6": "Can I cancel my attendance for an event later?",
+    "a6": "Of course! If your plans change, you can easily cancel your registration through your account dashboard.",
+    "h1": "Frequently Asked Questions",
+    "p1": "Find answers to commonly asked questions about Volunteerium"
+  },
+
+  "googleAuthFall": {
+    "h1": "Authentication failed.",
+    "h2": " Please try again or contact support if the problem persists.",
+    "p1": "Redirecting in",
+    "p2": "seconds"
+  },
+
+  "googleAuthSuccess": {
+    "successMsg": "You have successfully logged in with Google",
+    "h1": " Successfully authenticated with Google",
+    "p": "Redirecting..."
+  },
+
+  "notFound": {
+    "imgAlt": "Not Found",
+    "p": "Page Not Found",
+    "link": "Back to Homepage"
+  },
+
+  "setupIndv": {
+    "successMsg": "Please set up your profile details to proceed",
+    "share": "Share Your Age and Gender",
+    "p1": "Providing this information is optional but may be useful for certain events",
+    "ageRange": "Age Range*",
+    "option1": "Choose Age Range",
+    "option2": "16-25",
+    "option3": "26-35",
+    "option4": "35+",
+    "gender": "Gender*",
+    "option5": "Choose Gender",
+    "option6": "Male",
+    "option7": "Female",
+    "option8": "Prefer not to say",
+    "next": "Next",
+    "choose": "Choose Your Interests",
+    "p2": "Explore volunteer opportunities and make a meaningful impact",
+    "p3": "Explore volunteer opportunities by selecting the areas that interest you.",
+    "p4": "Make a meaningful impact in the fields you care about most!",
+    "skip": "Skip for now",
+    "finish": "Finish"
+  },
+
+  "setupOrg": {
+    "details": "Share Your Organization Details",
+    "p": "This information is necessary for us to understand your organization and provide you with better services",
+    "orgDesc": "Organization Description*",
+    "orgDescPH": "Enter organization description",
+    "orgLogo": "Organization Logo*",
+    "nextButton": "Next",
+    "completeh2": "Complete Your Organization Profile",
+    "completeP": "These additional details are required to create a comprehensive profile of your organization and offer customized services",
+    "websiteURL": "Website URL",
+    "streetName": "Street Name*",
+    "streetNamePH": "Enter street name",
+    "streetNr": "Street Nr.*",
+    "zipCode": "Zip Code*",
+    "zipCodePH": "Enter zip code",
+    "city": "City*",
+    "cityPH": "Enter City",
+    "country": "Country*",
+    "countryPH": "Enter Country",
+    "finish": "Finish"
+  },
+
+  "profileCard": {
+    "attendEvents": "Attended Events",
+    "organizedEvents": "Organized Events",
+    "p1": "No events found",
+    "p2": "It seems there are no events at the moment.",
+    "infoAlt": "Organizator Avatar",
+    "joined": "joined"
+  },
+
+  "sidebar": {
+    "welcome": "Welcome"
+  },
+  
+  "emailVerify": {
+    "h1": "Verifying your email..."
+  },
+
+  "verifySuccess": {
+    "h1": "you're verified! 🎉",
+    "p1": "We're thrilled to have you with us!",
+    "p2": " By joining our community, you're already",
+    "p3": "making a difference",
+    "p4": " Before we start, we'd like to know a bit more about you.",
+    "link": "Let's Start!"
   }
+
+
+
+
+
 
 }

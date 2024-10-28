@@ -10,6 +10,9 @@ import googleAuthSuccessMobile from "../assets/google-success-mobile.png"
 import { ImSpinner9 } from "react-icons/im"
 import { useState } from "react"
 import { useSelector } from "react-redux"
+import { useTranslation } from "react-i18next"
+import { translations } from "../locales/translations"
+translations
 
 export const getLoginRedirectLink = (user) => {
   let redirectLink = "/"
@@ -25,6 +28,7 @@ export const getLoginRedirectLink = (user) => {
 } 
 
 const GoogleAuthSuccess = () => {
+  const {t} = useTranslation()
   const dispatch = useDispatch()
   const navigate = useNavigate()
   const location = useLocation()
@@ -67,7 +71,7 @@ const GoogleAuthSuccess = () => {
         const redirectLink = getLoginRedirectLink(userData.user)
 
         if (redirectLink === "/") {
-          toastNotify("success", "You have successfully logged in with Google")
+          toastNotify("success", t(translations.googleAS.successMsg))
         }
 
         navigate(redirectLink)
@@ -89,10 +93,10 @@ const GoogleAuthSuccess = () => {
       </div>
       <div className="text-center mt-[4rem] space-y-2">
         <h1 className="text-primary-green font-semibold text-lg lg:text-xl">
-          Successfully authenticated with Google
+          {t(translations.googleAS.h1)}
         </h1>
         <p className="text-dark-gray-1 dark:text-gray-1 text-md lg:text-lg flex items-center gap-1 justify-center">
-          <span>Redirecting...</span>
+          <span>{t(translations.googleAS.p)}</span>
           <ImSpinner9 className="animate-spin" />
         </p>
       </div>

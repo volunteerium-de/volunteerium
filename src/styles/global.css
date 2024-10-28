@@ -1,1 +1,34 @@
 /* Only Custom */
+
+/* datepicker custom styles */
+
+.react-datepicker {
+  font-family: "Arial", sans-serif;
+  background-color: #f1f3f9;
+  border-radius: 8px;
+}
+
+.react-datepicker__header {
+  background-color: #69957b;
+  color: white;
+}
+
+.react-datepicker__day--selected {
+  background-color: #ac242f;
+  color: white;
+}
+
+.react-datepicker__day--keyboard-selected {
+  background-color: #69957b;
+  color: white;
+}
+
+.react-datepicker__day--today {
+  background-color: #69957b;
+  border-radius: 5px;
+  color: black;
+}
+
+input[type="checkbox"] {
+  accent-color: #69957b;
+}

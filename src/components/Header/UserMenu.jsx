@@ -6,9 +6,12 @@ import { useNavigate } from "react-router-dom/dist"
 import { useSelector } from "react-redux"
 import useTheme from "../../hooks/useTheme"
 import useAuthCall from "../../hooks/useAuthCall"
+import { useTranslation } from "react-i18next"
+import { translations } from "../../locales/translations"
 import { UserAvatar } from "../ui/Avatar/userAvatar"
 
 const UserMenu = ({ user }) => {
+  const {t} = useTranslation()
   const mode = useSelector((state) => state.theme.mode)
   const { logout } = useAuthCall()
   const { toggleTheme } = useTheme()
@@ -51,6 +54,7 @@ const UserMenu = ({ user }) => {
         {/* Menu Icon */}
         <FaBars className="text-primary-green dark:text-gray-2  h-5 w- mr-2" />
         <UserAvatar user={currentUser} size="h-6 w-6" />
+
       </div>
 
       {/* Dropdown menu */}
@@ -64,25 +68,25 @@ const UserMenu = ({ user }) => {
                     className="block w-full text-left p-1 hover:text-primary-green"
                     onClick={() => navigate(`/profile/${user._id}`)}
                   >
-                    Profile
+                    {t(translations.userMenu.profile)}
                   </button>
                   <button
                     className="block w-full text-left p-1 hover:text-primary-green"
                     onClick={() => navigate("/event-management")}
                   >
-                    Event Management
+                    {t(translations.userMenu.eventMng)}
                   </button>
                   <button
                     className="block w-full text-left p-1 hover:text-primary-green"
                     onClick={() => navigate("/settings")}
                   >
-                    Settings
+                    {t(translations.userMenu.settings)}
                   </button>
                   <button
                     className="block w-full text-left p-1 hover:text-primary-green"
                     onClick={handleLogout}
                   >
-                    Logout
+                    {t(translations.userMenu.logout)}
                   </button>
                 </>
               ) : (
@@ -91,13 +95,13 @@ const UserMenu = ({ user }) => {
                     className="block w-full text-left p-1 hover:text-primary-green"
                     onClick={() => navigate("/login")}
                   >
-                    Login
+                    {t(translations.userMenu.login)}
                   </button>
                   <button
                     className="block w-full text-left p-1 hover:text-primary-green"
                     onClick={() => navigate("/register")}
                   >
-                    Register
+                    {t(translations.userMenu.register)}
                   </button>
                 </>
               )}
@@ -113,11 +117,11 @@ const UserMenu = ({ user }) => {
                 {/* Switch icon based on the chosen theme */}
                 {mode === "dark" ? (
                   <>
-                    <FiSun className="mr-2" /> Light
+                    <FiSun className="mr-2" /> {t(translations.userMenu.light)}
                   </>
                 ) : (
                   <>
-                    <FiMoon className="mr-2" /> Dark
+                    <FiMoon className="mr-2" /> {t(translations.userMenu.dark)}
                   </>
                 )}
               </button>
