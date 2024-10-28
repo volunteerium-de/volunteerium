@@ -1,6 +1,8 @@
 import React, { useState } from "react"
 import AddNewDocumentModal from "./AddNewDocumentModal"
 import UpdateDocumentModal from "./UpdateDocumentModal"
+import { useTranslation } from "react-i18next"
+import { translations } from "../../locales/translations"
 
 // Modal component
 const MyDocumentsModal = ({
@@ -10,6 +12,7 @@ const MyDocumentsModal = ({
   onDeleteCertificate,
   onUpdateCertificates,
 }) => {
+  const {t} = useTranslation()
   const [isAddNewModalOpen, setIsAddNewModalOpen] = useState(false)
   const [isUpdateModalOpen, setIsUpdateModalOpen] = useState(false)
   const [currentDocument, setCurrentDocument] = useState(null)
@@ -55,10 +58,10 @@ const MyDocumentsModal = ({
 
       const result = await response.json()
       console.log("Saved documents:", result)
-      alert("Changes saved successfully!")
+      alert(t(translations.myDocs.alertSuccess))
     } catch (error) {
       console.error("Error saving documents:", error)
-      alert("Error saving documents: " + error.message)
+      alert( t(translations.myDocs.alertSuccess) + error.message)
     }
   }
 
@@ -68,11 +71,10 @@ const MyDocumentsModal = ({
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 backdrop-blur-sm">
       <div className="bg-white p-6 rounded-lg max-w-[954px] w-full px-[20px] py-[40px]">
         <h2 className="text-[1.75rem] leading-[1.4642] font-semibold mb-4 text-center">
-          My Documents
+        {t(translations.myDocs.h2)}
         </h2>
         <p className="text-center text-dark-gray-1 leading-[1.5625]">
-          You can upload documents such as certifications, resumes, or portfolios to showcase your
-          skills and qualifications.
+        {t(translations.myDocs.p)}
         </p>
 
         <div className="max-w-[669px] mx-auto ">
@@ -81,7 +83,7 @@ const MyDocumentsModal = ({
               className="text-[1rem] leading-[1.5625] text-primary-green cursor-pointer"
               onClick={openAddNewModal}
             >
-              Add new +
+              {t(translations.myDocs.addNew)}
             </button>
           </div>
           <AddNewDocumentModal isOpen={isAddNewModalOpen} onClose={closeAddNewModal} />
@@ -100,13 +102,13 @@ const MyDocumentsModal = ({
                     className="leading-[1.5625] font-bold text-dark-gray-1 mr-[20px]"
                     onClick={() => handleDelete(certificate.id)}
                   >
-                    Delete
+                    {t(translations.myDocs.delete)}
                   </button>
                   <button
                     className="leading-[1.5625] font-bold text-primary-green mr-[5px]"
                     onClick={() => handleOpenUpdateModal(certificate)}
                   >
-                    Update
+                    {t(translations.myDocs.update)}
                   </button>
                 </div>
               </div>
@@ -119,13 +121,13 @@ const MyDocumentsModal = ({
             className="bg-gray-1 text-white px-4 py-2 rounded-md font-medium leading-[1.5625] w-[150px]"
             onClick={onClose}
           >
-            Cancel
+            {t(translations.myDocs.cancel)}
           </button>
           <button
             className="bg-primary-green px-4 py-2 rounded-md text-white font-medium leading-[1.5625] w-[150px]"
             onClick={handleSaveChanges}
           >
-            Save Changes
+            {t(translations.myDocs.saveChanges)}
           </button>
         </div>
       </div>

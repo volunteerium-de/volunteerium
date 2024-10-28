@@ -8,28 +8,29 @@ import useAuthCall from "../../hooks/useAuthCall"
 import { translations } from "../../locales/translations"
 import { useTranslation } from "react-i18next"
 
-const validationSchema = Yup.object({
-  userType: Yup.string().required("User type is required"),
-  fullName: Yup.string()
-    .min(3, "Must be at least 3 characters")
-    .max(30, "Can be maximum 30 characters")
-    .required("Name is a required field"),
-  email: Yup.string()
-    .matches(/^[^\s@]+@[^\s@]+\.[^\s@]+$/, "Invalid email address")
-    .required("Email is a required field"),
-  password: Yup.string()
-    .min(6, "Must be at least 6 characters!")
-    .max(30, "Can be maximum 30 characters!")
-    .matches(/\d+/, "Must contain at least one digit!")
-    .matches(/[a-z]/, "Must contain at least one lowercase letter!")
-    .matches(/[A-Z]/, "Must contain at least one uppercase letter!")
-    .matches(/[@$?!%&*]+/, "Must contain at least one special character (@$!%*?&)!")
-    .required("Password is a required field"),
-})
-
 const RegisterForm = () => {
 
   const { t } = useTranslation()
+
+const validationSchema = Yup.object({
+  userType: Yup.string().required(t(translations.registerForm.yup1)),
+  fullName: Yup.string()
+    .min(3, t(translations.registerForm.yup2))
+    .max(30, t(translations.registerForm.yup3))
+    .required(t(translations.registerForm.yup4)),
+  email: Yup.string()
+    .matches(/^[^\s@]+@[^\s@]+\.[^\s@]+$/, t(translations.registerForm.yup5))
+    .required(t(translations.registerForm.yup6)),
+  password: Yup.string()
+    .min(6, t(translations.registerForm.yup7))
+    .max(30, t(translations.registerForm.yup8))
+    .matches(/\d+/, t(translations.registerForm.yup9))
+    .matches(/[a-z]/, t(translations.registerForm.yup10))
+    .matches(/[A-Z]/, t(translations.registerForm.yup11))
+    .matches(/[@$?!%&*]+/, t(translations.registerForm.yup12))
+    .required(t(translations.registerForm.yup13)),
+})
+
 
   const [userType, setUserType] = useState("individual")
   const [showPassword, setShowPassword] = useState(false)

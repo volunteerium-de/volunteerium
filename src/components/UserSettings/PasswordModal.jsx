@@ -2,18 +2,22 @@ import React from "react"
 import { useState } from "react"
 import { useFormik } from "formik"
 import * as Yup from "yup"
+import { useTranslation } from "react-i18next"
+import { translations } from "../../locales/translations"
+translations
 
 const PasswordModal = ({ isOpen, onClose }) => {
+  const {t} = useTranslation()
   if (!isOpen) return null
 
   const validationSchema = Yup.object().shape({
-    currentPassword: Yup.string().required("Current password is required"),
+    currentPassword: Yup.string().required(t(translations.pswModal.yup1)),
     newPassword: Yup.string()
-      .required("New password is required")
-      .min(8, "Password must be at least 8 characters"),
+      .required(t(translations.pswModal.yup2))
+      .min(8, t(translations.pswModal.yup3)),
     confirmPassword: Yup.string()
-      .oneOf([Yup.ref("newPassword"), null], "Passwords must match")
-      .required("Confirm password is required"),
+      .oneOf([Yup.ref("newPassword"), null], t(translations.pswModal.yup4))
+      .required(t(translations.pswModal.yup5)),
   })
 
   const formik = useFormik({
@@ -34,13 +38,13 @@ const PasswordModal = ({ isOpen, onClose }) => {
   return (
     <div className="fixed inset-1 flex justify-center items-center z-50  bg-white bg-opacity-50 backdrop-blur-sm">
       <div className=" max-w-full sm:w-[600px] w-[350px] sm:h-[400px] h-[400px] font-Poppins p-[50px] text-black rounded-[8px] bg-white shadow-2xl  ">
-        <h1 className="text-center mb-[20px] font-bold">Change your password</h1>
+        <h1 className="text-center mb-[20px] font-bold">{t(translations.pswModal.changePsw)}</h1>
         <hr className="border-gray-1" />
         <form onSubmit={formik.handleSubmit}>
           <div className="mt-[20px]">
             <div className="flex flex-col">
               <div className="flex justify-between items-center gap-[3px] mt-[10px]">
-                <p className="text-[0.80rem]">Current Password</p>
+                <p className="text-[0.80rem]">{t(translations.pswModal.currPsw)}</p>
                 <input
                   type="password"
                   name="currentPassword"
@@ -60,7 +64,7 @@ const PasswordModal = ({ isOpen, onClose }) => {
               ) : null}
 
               <div className="flex justify-between items-center gap-[3px] mt-[10px]">
-                <p className="text-[0.80rem]">New Password</p>
+                <p className="text-[0.80rem]">{t(translations.pswModal.newPsw)}</p>
                 <input
                   type="password"
                   name="newPassword"
@@ -80,7 +84,7 @@ const PasswordModal = ({ isOpen, onClose }) => {
               ) : null}
 
               <div className="flex justify-between items-center gap-[3px] mt-[10px]">
-                <p className="text-[0.80rem]">Confirm Password</p>
+                <p className="text-[0.80rem]">{t(translations.pswModal.confirmPsw)}</p>
                 <input
                   type="password"
                   name="confirmPassword"
@@ -105,13 +109,13 @@ const PasswordModal = ({ isOpen, onClose }) => {
                   className="bg-gray-1 text-black px-4 py-2 rounded-md leading-[1.5625] max-w-[150px]"
                   onClick={onClose}
                 >
-                  Cancel
+                  {t(translations.pswModal.cancel)}
                 </button>
                 <button
                   type="submit"
                   className="bg-primary-green px-4 py-2 rounded-md text-white leading-[1.5625] max-w-[150px]"
                 >
-                  Save Changes
+                  {t(translations.pswModal.saveChng)}
                 </button>
               </div>
             </div>

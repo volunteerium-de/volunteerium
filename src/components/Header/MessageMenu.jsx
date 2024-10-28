@@ -5,8 +5,12 @@ import { Link } from "react-router-dom"
 import { useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom"
 import { formatName } from "../../helpers/formatName"
+import { useTranslation } from "react-i18next"
+import { translations } from "../../locales/translations"
+translations
 
 const MessageMenu = () => {
+  const {t} = useTranslation()
   const [isOpen, setIsOpen] = useState(false)
   const menuRef = useRef(null)
   const navigate = useNavigate()
@@ -88,8 +92,8 @@ const MessageMenu = () => {
         <div className="absolute right-2 mt-3 w-96 bg-white rounded-lg shadow-lg z-10">
           {/* Menu Header */}
           <div className="bg-primary-green text-white p-2 rounded-t-lg flex justify-between items-center">
-            <h3>Messages</h3>
-            <Link className="text-light-green text-[.7rem] cursor-pointer">View All</Link>
+            <h3>{t(translations.msgMenu.h3)}</h3>
+            <Link className="text-light-green text-[.7rem] cursor-pointer">{t(translations.msgMenu.link)}</Link>
           </div>
 
           {/* Message List */}
@@ -138,9 +142,9 @@ const MessageMenu = () => {
                           {/* Sender Name */}
                           <p className="font-medium text-[0.9rem] text-gray-2 dark:text-gray-1">
                             {currentUser._id === latestMessage.senderId._id
-                              ? "You"
+                              ? t(translations.msgMenu.you)
                               : createdBy._id === eventId.createdBy
-                                ? "Announcement"
+                                ? t(translations.msgMenu.announce)
                                 : formatName(name, isFullNameDisplay)}
                           </p>
                           {/* Message Text */}
@@ -158,7 +162,7 @@ const MessageMenu = () => {
                 })
             ) : (
               <div>
-                <p className="text-center text-gray-2 py-3 dark:text-light-gray-2">No messages</p>
+                <p className="text-center text-gray-2 py-3 dark:text-light-gray-2">{t(translations.msgMenu.noMsg)}</p>
               </div>
             )}
           </div>

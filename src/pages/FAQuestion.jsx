@@ -1,41 +1,41 @@
 import React, { useState } from "react"
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io"
 import Header from "../components/Header/Header"
+import { useTranslation } from "react-i18next"
+import { translations } from "../locales/translations"
+translations
 // FAQ Data
-const faqData = [
-  {
-    question: "How can I volunteer?",
-    answer:
-      "Volunteering is easy! Just sign up on our website, explore the available opportunities, and pick the one that suits you best.",
-  },
-  {
-    question: "Can I register as both a volunteer and a requester?",
-    answer:
-      "Absolutely! Once you've created your account, you can sign up for volunteer roles and also create events to request help from volunteers.",
-  },
-  {
-    question: "Do I need any special skills or qualifications?",
-    answer:
-      "Not at all! Many volunteer opportunities just require your time and enthusiasm. However, if a specific skill is needed, it will be listed in the event details.",
-  },
-  {
-    question: "In what areas can I volunteer?",
-    answer:
-      "There are plenty of ways to get involved! From event planning to community outreach, there's something for everyone.",
-  },
-  {
-    question: "What are the benefits of volunteering?",
-    answer:
-      "Volunteering gives you a chance to make a difference, gain valuable experience, meet new people, and contribute to your community. Plus, it looks great on your resume!",
-  },
-  {
-    question: "Can I cancel my attendance for an event later?",
-    answer:
-      "Of course! If your plans change, you can easily cancel your registration through your account dashboard.",
-  },
-]
 
 const FAQuestion = () => {
+  const { t } = useTranslation()
+
+  const faqData = [
+    {
+      question: t(translations.faqPage.q1),
+      answer: t(translations.faqPage.a1),
+    },
+    {
+      question: t(translations.faqPage.q2),
+      answer: t(translations.faqPage.a2),
+    },
+    {
+      question: t(translations.faqPage.q3),
+      answer: t(translations.faqPage.a3),
+    },
+    {
+      question: t(translations.faqPage.q4),
+      answer: t(translations.faqPage.a4),
+    },
+    {
+      question: t(translations.faqPage.q5),
+      answer: t(translations.faqPage.a5),
+    },
+    {
+      question: t(translations.faqPage.q6),
+      answer: t(translations.faqPage.a6),
+    },
+  ]
+
   // State to track which question is opened
   const [openQuestion, setOpenQuestion] = useState(null)
 
@@ -51,10 +51,10 @@ const FAQuestion = () => {
         {/* Header Section */}
         <div className="text-center mb-10">
           <h1 className="text-3xl font-bold font-poppins text-dark-green dark:text-white mb-1">
-            Frequently Asked Questions
+            {t(translations.faqPage.h1)}
           </h1>
           <p className="text-lg font-medium font-poppins text-dark-gray-1 dark:text-gray-2">
-            Find answers to commonly asked questions about Volunteerium
+            {t(translations.faqPage.p1)}
           </p>
         </div>
 
@@ -77,7 +77,6 @@ const FAQuestion = () => {
                   {item.question}
                 </h2>
                 <div className="w-10 h-10 text-gray-2">
-                  {/* Oklar için boyut arttırıldı */}
                   {openQuestion === index ? (
                     <IoIosArrowUp size={28} />
                   ) : (
@@ -93,7 +92,7 @@ const FAQuestion = () => {
                 }`}
                 style={{ overflow: "hidden" }}
               >
-                {/* İçerik Konteyneri */}
+                {/* Content Container */}
                 <div className="w-full">
                   {/* Divider Line */}
                   <div className="flex flex-col items-start w-full h-px bg-dark-gray-2 opacity-20" />
