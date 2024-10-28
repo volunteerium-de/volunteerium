@@ -34,7 +34,8 @@
 
   "subscribe": {
     "h3": "Abonnieren",
-    "p": " Werden Sie Teil unserer Freiwilligengemeinschaft, indem Sie unseren Newsletter abonnieren. Bleiben Sie über bevorstehende Freiwilligenveranstaltungen und besondere Projekte auf dem Laufenden"
+    "p": " Werden Sie Teil unserer Freiwilligengemeinschaft, indem Sie unseren Newsletter abonnieren. Bleiben Sie über bevorstehende Freiwilligenveranstaltungen und besondere Projekte auf dem Laufenden",
+    "emailPH": "Geben Sie Ihre E-Mail-Adresse ein"
   },
 
   "footer": {
@@ -62,10 +63,23 @@
     "p6": "einen Unterschied machen",
     "p7": "Wir können es kaum erwarten, dich bei uns zu haben!",
     "createAccount": "Erstellen Sie Ihr Konto",
-    "creatingAs" : "Sie erstellen ein Konto als?"
+    "creatingAs": "Sie erstellen ein Konto als?"
   },
 
   "registerForm": {
+    "yup1": "Benutzertyp ist erforderlich",
+    "yup2": "Muss mindestens 3 Zeichen lang sein",
+    "yup3": "Kann maximal 30 Zeichen lang sein",
+    "yup4": "Name ist ein Pflichtfeld",
+    "yup5": "Ungültige E-Mail-Adresse",
+    "yup6": "E-Mail ist ein Pflichtfeld",
+    "yup7": "Muss mindestens 6 Zeichen lang sein",
+    "yup8": "Kann maximal 30 Zeichen lang sein",
+    "yup9": "Muss mindestens eine Ziffer enthalten",
+    "yup10": "Muss mindestens einen Kleinbuchstaben enthalten",
+    "yup11": "Muss mindestens einen Großbuchstaben enthalten",
+    "yup12": "Muss mindestens ein Sonderzeichen enthalten (@$!%*?&)",
+    "yup13": "Passwort ist ein Pflichtfeld",
     "radioIndv": "als Einzelperson",
     "radioOrg": "als Organisation",
     "fullname": "Vollname",
@@ -88,26 +102,401 @@
   },
 
   "login": {
-    "p1" : "Verbindung an die",
-    "p2" : "Gemeinschaft",
-    "p3" : "Willkommen zurück zu etwas",
-    "p4" : "größer",
-    "p5" : "Melden Sie sich an, um weiterhin",
-    "p6" : "etwas zu bewirken",
-    "p7" : "Wir freuen uns, Sie bei uns zu haben!",
-    "signIn" : "Anmelden"
+    "p1": "Verbindung an die",
+    "p2": "Gemeinschaft",
+    "p3": "Willkommen zurück zu etwas",
+    "p4": "größer",
+    "p5": "Melden Sie sich an, um weiterhin",
+    "p6": "etwas zu bewirken",
+    "p7": "Wir freuen uns, Sie bei uns zu haben!",
+    "signIn": "Anmelden"
+  },
+
+  "loginForm": {
+    "yup1": "Ungültige E-Mail-Adresse",
+    "yup2": "E-Mail ist ein Pflichtfeld",
+    "yup3": "Muss mindestens 6 Zeichen lang sein!",
+    "yup4": "Kann maximal 30 Zeichen lang sein!",
+    "yup5": "Muss mindestens eine Ziffer enthalten!",
+    "yup6": "Muss mindestens einen Kleinbuchstaben enthalten!",
+    "yup7": "Muss mindestens einen Großbuchstaben enthalten!",
+    "yup8": "Muss mindestens ein Sonderzeichen enthalten (@$!%*?&)!",
+    "yup9": "Passwort ist ein Pflichtfeld",
+    "email": "E-Mail",
+    "emailPH": "Geben Sie Ihre E-Mail-Adresse ein",
+    "password": "Passwort",
+    "passwordPH": "Geben Sie Ihr Passwort ein",
+    "forgot": "Passwort vergessen?",
+    "login": "Anmelden",
+    "haveAccount": "Haben Sie noch kein Konto?",
+    "signUp": "Konto Erstellen",
+    "or": "oder",
+    "contGoogle": "Weiter mit Google"
+  },
+
+  "profile": {
+    "memberSince": "Mitglied seit",
+    "edit": "Bearbeiten",
+    "attendedEvents": "Besuchte Veranstaltungen",
+    "createdEvents": "Erstellte Veranstaltungen",
+    "loading": "Laden...",
+    "interests": "Interesse",
+    "aboutMe": "Über mich",
+    "documents": "Bescheinigung & Dokument",
+    "medals": {
+      "goldenHeart": "Goldenes Herz",
+      "silverMedal": "Silbermedaille",
+      "bronzeMedal": "Bronze-Medaille",
+      "newVolunteer": "neuer Freiwilliger",
+      "goldenInfo": "🏆 Goldenes Herz: Verliehen an diejenigen, die 70 Punkte erreichen.",
+      "silverInfo": "🥈 Silbermedaille: Verliehen an diejenigen, die 40 Punkte erreichen.",
+      "bronzeInfo": "🏅 Bronze-Medaille: Verliehen an diejenigen, die 10 Punkte erreichen."
+    },
+    "avatarAlt": "Avatar des Benutzers",
+    "logoAlt": "Logo der Organisation",
+    "eventImageAlt": "Veranstaltungsbild"
+  },
+
+  "userSettings": {
+    "avatarAlt": "Avatar des Benutzers",
+    "edit": "Bearbeiten",
+    "welcome": "Willkommen",
+    "profile": "Profil",
+    "security": "Sicherheit",
+    "visibility": "Sichtweite"
+  },
+
+  "addNewDoc": {
+    "newDocument": "Neues Dokument",
+    "documentTitle": "Dokumenttitel",
+    "buttonReset": "Zurücksetzen",
+    "buttonAddNew": "Neue hinzufügen +",
+    "cancel": "Stornieren",
+    "save": "Speichern"
+  },
+
+  "avatarEdit": {
+    "networkError": "Network response war nicht ok",
+    "photoAlert": "Foto erfolgreich hochgeladen!",
+    "photoError": "Beim Laden des Fotos ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut.",
+    "loading": "Laden...",
+    "logo": "Logo",
+    "profilePhoto": "Profilfoto",
+    "avatarAlt": "Avatar des Benutzers ",
+    "addPhoto": "Foto hinzufügen",
+    "delete": "Streichen"
+  },
+
+  "delAccount": {
+    "h2": "Konto löschen",
+    "p": "Sind Sie sicher, dass Sie Ihr Konto löschen möchten? Diese Aktion kann nicht rückgängig gemacht werden.",
+    "cancelButton": "Stornieren",
+    "delButton": "Konto löschen"
+  },
+
+  "indvSettings": {
+    "success": "Daten erfolgreich gespeichert!",
+    "catchError": "Fehler beim Speichern der Daten: ",
+    "elseError": "Bitte füllen Sie alle Felder aus und wählen Sie mindestens eine Sprache aus.",
+    "h1": "Profileinstellungen",
+    "p1": "Namensanzeige",
+    "p2": "Ihr Name wird auf Ihrem Profil angezeigt.",
+    "label1": "Stadt",
+    "label1PH": "Stadt",
+    "label2": "Land",
+    "label2PH": "Land",
+    "label3": "Geschlecht",
+    "label4": "Altersgruppe",
+    "label5": "Sprachen",
+    "label6": "Biografie",
+    "label6PH": "Schreiben Sie hier Ihre Biografie...",
+    "label7": "Dateien",
+    "edit": "Bearbeiten",
+    "save": "Speichern"
+  },
+
+  "myDocs": {
+    "alertSuccess": "Änderungen erfolgreich gespeichert!",
+    "alertError": "Fehler beim Speichern der Dokumente: ",
+    "h2": "Meine Dokumente",
+    "p": "Sie können Dokumente wie Zertifikate, Lebensläufe oder Portfolios hochladen, um Ihre Fähigkeiten und Qualifikationen zu präsentieren.",
+    "addNew": "Neu hinzufügen +",
+    "delete": "Löschen",
+    "update": "Aktualisieren",
+    "cancel": "Abbrechen",
+    "saveChanges": "Änderungen speichern"
+  },
+
+  "orgSettings": {
+    "handleErrorMsg": "Bitte füllen Sie alle Felder aus.",
+    "successMsg": "Daten erfolgreich gespeichert!",
+    "errorMsg": "Fehler beim Speichern der Daten: ",
+    "h1": "Profileinstellungen",
+    "label1": "Organisationsname",
+    "label1PH": "Volunteerium",
+    "label2": "Organisations-URL",
+    "label2PH": "www.volunteerium.com",
+    "label3": "Straßenname",
+    "label3PH": "Dammstraße",
+    "label4": "Hausnummer",
+    "label4PH": "10",
+    "label5": "Postleitzahl",
+    "label5PH": "10117",
+    "label6": "Stadt",
+    "label6PH": "Berlin",
+    "label7": "Land",
+    "label7PH": "Deutschland",
+    "label8": "Beschreibung",
+    "label8PH": "Schreiben Sie hier Ihre Beschreibung...",
+    "files": "Dateien",
+    "edit": "Bearbeiten",
+    "save": "Speichern"
+  },
+
+  "pswModal": {
+    "yup1": "Das aktuelle Passwort ist erforderlich",
+    "yup2": "Ein neues Passwort ist erforderlich",
+    "yup3": "Das Passwort muss mindestens 8 Zeichen lang sein",
+    "yup4": "Die Passwörter müssen übereinstimmen",
+    "yup5": "Die Bestätigung des Passworts ist erforderlich",
+    "changePsw": "Ändern Sie Ihr Passwort",
+    "currPsw": "Aktuelles Passwort",
+    "newPsw": "Neues Passwort",
+    "confirmPsw": "Passwort bestätigen",
+    "cancel": "Abbrechen",
+    "saveChng": "Änderungen speichern"
+  },
+
+  "profileSettings": {
+    "p": "Ungültiger Benutzertyp"
 },
 
-"loginForm": {
-"email" : "E-Mail",
-"emailPH": "Geben Sie Ihre E-Mail-Adresse ein",
-"password": "Passwort",
-"passwordPH": "Geben Sie Ihr Passwort ein",
-"forgot": "Passwort vergessen?",
-"login": "Anmelden",
-"haveAccount": "Haben Sie noch kein Konto?",
-"signUp": "Konto Erstellen",
-"or": "oder",
-"contGoogle": "Weiter mit Google"
+"secSett": {
+    "feedbackMsg1": "Ihr Konto wurde erfolgreich gelöscht.",
+    "feedbackMsg2": "Beim Löschen Ihres Kontos ist ein Fehler aufgetreten.",
+    "h1": "Sicherheitseinstellungen",
+    "name": "Name",
+    "namePH": "Name",
+    "orgName": "Organisationsname",
+    "orgNamePH": "Organisationsname",
+    "email": "E-Mail",
+    "emailPH": "beispiel@gmail.com",
+    "changePsw": "Passwort ändern",
+    "delAccount": "Konto löschen",
+    "delAlert1": "Möchten Sie Ihr Konto löschen? Das Löschen Ihres Kontos entfernt alle damit verbundenen Inhalte.",
+    "delAlert2": "Möchten Sie Ihre Organisation löschen? Das Löschen Ihrer Organisation entfernt alle damit verbundenen Inhalte.",
+    "userRes1": "Ich möchte mein Konto löschen",
+    "userRes2": "Ich möchte meine Organisation löschen"
+},
+
+"updateDoc": {
+    "error": "Fehler beim Aktualisieren der Datei.",
+    "h2": "Dokument aktualisieren",
+    "h1": "Dokumenttitel",
+    "reset": "Zurücksetzen",
+    "selectFile": "Datei auswählen",
+    "cancel": "Abbrechen",
+    "update": "Aktualisieren"
+},
+
+"msgMenu": {
+    "h3": "Nachrichten",
+    "link": "Alle anzeigen",
+    "you": "Sie",
+    "announce": "Ankündigung",
+    "noMsg": "Keine Nachrichten"
+},
+
+"notifMenu": {
+    "notif": "Benachrichtigungen",
+    "noNotif": "Keine Benachrichtigungen"
+},
+
+"userMenu": {
+    "user": "Benutzer",
+    "profile": "Profil",
+    "eventMng": "Eventverwaltung",
+    "settings": "Einstellungen",
+    "logout": "Abmelden",
+    "login": "Anmelden",
+    "register": "Registrieren",
+    "light": "Hell",
+    "dark": "Dunkel"
+},
+
+"aboutUs": {
+    "aboutUs": "Über uns",
+    "p1": "     Wir bringen Menschen zusammen, um zu helfen, zu unterstützen und starke Gemeinschaften aufzubauen, damit sie einen positiven Einfluss schaffen und ein erfülltes Leben führen können.",
+    "h2": "Wir sind hier, um so viele Menschen wie möglich für das Ehrenamt zu gewinnen.",
+    "p2": " Ob Sie eine Einzelperson sind, die etwas bewegen möchte, eine gemeinnützige Organisation, die Unterstützung benötigt, oder eine Gemeinschaftsgruppe, die eine Veranstaltung plant – Volunteerium ist hier, um zu helfen. Wir sind ein Team leidenschaftlicher Fachleute, die sich der Förderung einer Kultur des Gebens und der Unterstützung der Gemeinschaft verschrieben haben.",
+    "howItWorks": "Wir sind hier, um so viele Menschen wie möglich für das Ehrenamt zu gewinnen.",
+    "eventAlt": "Veranstaltungen",
+    "explore": "Entdecken",
+"opportunities": "Möglichkeiten",
+"p3": "Durchsuchen Sie eine Vielzahl von Freiwilligenmöglichkeiten, die auf Ihre Interessen und Ihren Standort zugeschnitten sind.",
+    "join": "Beitreten",
+    "toVolunteer": "zum Freiwilliger",
+    "p4": "Sobald Sie eine Veranstaltung gefunden haben, die Sie interessiert, treten Sie bei, um zu helfen. Der Veranstalter wird Ihre Bewerbung prüfen und Ihre Teilnahme bestätigen.",
+    "make": "Machen",
+    "aDifference": "einen Unterschied",
+    "p5": " Nehmen Sie an Veranstaltungen teil, tragen Sie zu Ihrer Gemeinschaft bei und erleben Sie die Freude, anderen zu helfen.",
+    "handsAlt": "Hände",
+    "volunteerium": "Volunteerium",
+    "today": "heute!",
+    "p6": "Seien Sie Teil einer Gemeinschaft, die sich dafür einsetzt,",
+    "p7": "einen positiven Unterschied zu machen.",
+    "p8": "Zusammen können wir eine bessere Welt schaffen,",
+    "p9": "ein Helfer nach dem anderen",
+    "volCardP1": "100+",
+    "volCardP2": "Freiwillige",
+    "orgCardP1": "30+",
+    "orgCardP2": "Organisationen",
+    "eventCardP1": "500+",
+    "eventCardP2": "Veranstaltungen"
+},
+
+"contactUs": {
+    "p1": "Ihre Rückmeldung",
+    "p2": "ist uns wichtig!",
+    "p3": " Tragen Sie weiterhin zu unserer Gemeinschaft bei, indem Sie Ihr",
+    "p4": "Rückmeldung",
+    "p5": "Helfen Sie uns, einen Unterschied zu machen mit Ihren",
+    "p6": "Ideen",
+    "p7": "und",
+    "p8": "Vorschlägen",
+    "p9": "Vielen Dank, dass Sie bei uns sind!",
+    "h1": "Kontaktieren Sie uns"
+},
+
+  "contactUsForm": {
+    "name": "Name",
+    "namePH": "Geben Sie Ihren Namen ein",
+    "email": "E-Mail-Adresse",
+    "emailPH": "Geben Sie Ihre E-Mail-Adresse ein",
+    "subject": "Betreff der Nachricht",
+    "subjectPH": "Betreff der Nachricht hier",
+    "message": "Nachricht",
+    "messagePH": "Geben Sie Ihre Nachricht ein...",
+    "messageMaxLength": "Maximal 1000 Zeichen",
+    "submit": "Absenden"
+  },
+
+
+"faqPage": {
+    "q1": "Wie kann ich freiwillig helfen?",
+    "a1": "Freiwilligenarbeit ist einfach! Melden Sie sich einfach auf unserer Website an, durchsuchen Sie die verfügbaren Möglichkeiten und wählen Sie die aus, die am besten zu Ihnen passt.",
+    "q2": "Kann ich mich sowohl als Freiwilliger als auch als Anfragender registrieren?",
+    "a2": "Absolut! Sobald Sie ein Konto erstellt haben, können Sie sich für Freiwilligenrollen anmelden und auch Veranstaltungen erstellen, um Hilfe von Freiwilligen anzufordern.",
+    "q3": "Brauche ich besondere Fähigkeiten oder Qualifikationen?",
+    "a3": "Überhaupt nicht! Viele Freiwilligenmöglichkeiten erfordern nur Ihre Zeit und Begeisterung. Wenn jedoch eine spezielle Fähigkeit benötigt wird, wird dies in den Veranstaltungsdetails angegeben.",
+    "q4": "In welchen Bereichen kann ich freiwillig arbeiten?",
+    "a4": "Es gibt viele Möglichkeiten, sich zu engagieren! Von der Veranstaltungsplanung bis zur Gemeindearbeit gibt es für jeden etwas.",
+    "q5": "Welche Vorteile hat Freiwilligenarbeit?",
+    "a5": "Freiwilligenarbeit gibt Ihnen die Chance, einen Unterschied zu machen, wertvolle Erfahrungen zu sammeln, neue Leute kennenzulernen und Ihrer Gemeinschaft etwas zurückzugeben. Außerdem sieht es gut im Lebenslauf aus!",
+    "q6": "Kann ich meine Teilnahme an einer Veranstaltung später absagen?",
+    "a6": "Natürlich! Wenn sich Ihre Pläne ändern, können Sie Ihre Anmeldung einfach über Ihr Konto-Dashboard stornieren.",
+    "h1": "Häufig gestellte Fragen",
+"p1": "Finden Sie Antworten auf häufig gestellte Fragen zu Volunteerium"
+},
+
+"googleAuthFall": {
+    "h1": "Authentifizierung fehlgeschlagen.",
+    "h2": "Bitte versuchen Sie es erneut oder kontaktieren Sie den Support, wenn das Problem weiterhin besteht.",
+    "p1": "Weiterleitung in",
+    "p2": "Sekunden"
+},
+
+"googleAuthSuccess": {
+    "successMsg": "Erfolg, Sie haben sich erfolgreich mit Google angemeldet",
+    "h1": "Erfolgreich mit Google authentifiziert",
+    "p": "Weiterleitung..."
+},
+
+"notFound": {
+    "imgAlt": "Nicht gefunden",
+    "p": "Seite nicht gefunden",
+    "link": "Zurück zur Startseite"
+},
+
+"setupIndv": {
+    "successMsg": "Bitte geben Sie Ihre Profildaten ein, um fortzufahren",
+    "share": "Teilen Sie Ihr Alter und Geschlecht",
+    "p1": "Diese Angaben sind optional, können aber für bestimmte Veranstaltungen nützlich sein",
+    "ageRange": "Altersbereich*",
+    "option1": "Altersbereich wählen",
+    "option2": "16-25",
+    "option3": "26-35",
+    "option4": "35+",
+    "gender": "Geschlecht*",
+    "option5": "Geschlecht wählen",
+    "option6": "Männlich",
+    "option7": "Weiblich",
+    "option8": "Keine Angabe",
+    "next": "Weiter",
+    "choose": "Wählen Sie Ihre Interessen",
+    "p2": "Entdecken Sie Freiwilligenmöglichkeiten und leisten Sie einen sinnvollen Beitrag",
+    "p3": "Entdecken Sie Freiwilligenmöglichkeiten, indem Sie die Bereiche auswählen, die Sie interessieren.",
+    "p4": "Leisten Sie einen sinnvollen Beitrag in den Bereichen, die Ihnen am Herzen liegen!",
+    "skip": "Überspringen",
+    "finish": "Beenden"
+},
+
+"setupOrg": {
+  "details": "Teilen Sie Ihre Organisationsdaten",
+  "p": "Diese Informationen sind notwendig, damit wir Ihre Organisation verstehen und Ihnen bessere Dienstleistungen anbieten können",
+  "orgDesc": "Organisationsbeschreibung*",
+  "orgDescPH": "Organisationsbeschreibung eingeben",
+  "orgLogo": "Organisationslogo*",
+  "nextButton": "Weiter",
+  "completeh2": "Vervollständigen Sie Ihr Organisationsprofil",
+  "completeP": "Diese zusätzlichen Angaben sind erforderlich, um ein umfassendes Profil Ihrer Organisation zu erstellen und maßgeschneiderte Dienste anzubieten",
+  "websiteURL": "Website-URL",
+  "streetName": "Straßenname*",
+  "streetNamePH": "Straßennamen eingeben",
+  "streetNr": "Straßennr.*",
+  "zipCode": "Postleitzahl*",
+  "zipCodePH": "Postleitzahl eingeben",
+  "city": "Stadt*",
+  "cityPH": "Stadt eingeben",
+  "country": "Land*",
+  "countryPH": "Land eingeben",
+  "finish": "Fertigstellen"
+},
+
+"profileCard": {
+  "attendEvents": "Teilgenommene Veranstaltungen",
+  "organizedEvents": "Organisierte Veranstaltungen",
+  "p1": "Keine Veranstaltungen gefunden",
+  "p2": "Es scheint, dass momentan keine Veranstaltungen verfügbar sind.",
+  "infoAlt": "Organisator-Avatar",
+  "joined": "beigetreten"
+},
+
+"sidebar": {
+  "welcome": "Wilkommen"
+},
+
+"emailVerify": {
+  "h1": "Ihre E-Mail wird überprüft..."
+},
+
+"verifySuccess": {
+  "h1": "Sie sind verifiziert! 🎉",
+  "p1": "Wir freuen uns, Sie bei uns zu haben!",
+  "p2": "Indem Sie unserer Community beitreten, tragen Sie bereits",
+  "p3": "zu einem Unterschied bei",
+  "p4": "Bevor wir beginnen, möchten wir ein bisschen mehr über Sie erfahren.",
+  "link": "Lass uns anfangen!"
 }
+
+
+
+
+
+
+
+
+
+
+
 }

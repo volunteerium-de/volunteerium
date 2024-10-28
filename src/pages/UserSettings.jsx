@@ -11,8 +11,12 @@ import VisibilitySettings from "../components/UserSettings/VisibilitySettings"
 import { useSearchParams } from "react-router-dom"
 import { useEffect } from "react"
 import Header from "../components/Header/Header"
+import { useTranslation } from "react-i18next"
+import { translations } from "../locales/translations"
+translations
 
 const UserSettings = () => {
+  const {t} = useTranslation()
   const [currentUser, setCurrentUser] = useState(
     // {
     //   _id: "650c697f1c4ae3b5e8bfcdb1",
@@ -155,7 +159,7 @@ const UserSettings = () => {
                   ? currentUser.userDetailsId.organizationLogo
                   : currentUser.userDetailsId.avatar
               }
-              alt="Avatar"
+              alt= {t(translations.userSettings.avatarAlt)}
               className="sm:max-w-[200px] sm:max-h-[200px] rounded-full mx-auto min-w-[80px] min-h-[80px] "
             />
 
@@ -165,7 +169,7 @@ const UserSettings = () => {
             >
               <CiEdit className="text-primary-green mt-[2px]" />
               <p className="text-[0.875rem] text-primary-green font-medium leading-[1.5625] sm:flex hidden">
-                Edit
+              {t(translations.userSettings.edit)}
               </p>
             </button>
             <AvatarEditModal
@@ -176,7 +180,7 @@ const UserSettings = () => {
             />
             {/* Welcome */}
             <p className="font-bold text-gray-2 text-[1rem] text-center tracking-wider mt-[10px] mb-[30px] hidden sm:block">
-              Welcome{" "}
+            {t(translations.userSettings.welcome)}{" "}
               {`${currentUser.userType === "individual" ? currentUser.fullName.split(" ")[0] : ""}`}
               !
             </p>
@@ -193,7 +197,7 @@ const UserSettings = () => {
               >
                 <IoSettingsOutline className="w-[20px] h-[20px] mx-auto" />
                 <a href="" className="flex-1 sm:block hidden">
-                  Profile
+                {t(translations.userSettings.profile)}
                 </a>
                 {tab === "profile" && (
                   <span className="sm:w-[16px] w-[8px] sm:h-[50px] h-[50px] bg-dark-green absolute right-[-0px] top-0"></span>
@@ -207,7 +211,7 @@ const UserSettings = () => {
               >
                 <MdOutlineSecurity className="w-[20px] h-[20px] mx-auto" />
                 <a href="" className="flex-1 sm:block hidden">
-                  Security
+                {t(translations.userSettings.security)}
                 </a>
                 {tab === "security" && (
                   <span className="w-[16px] h-[50px] bg-dark-green absolute right-[-0px] top-0"></span>
@@ -221,7 +225,7 @@ const UserSettings = () => {
               >
                 <MdOutlineVisibility className="w-[20px] h-[20px] mx-auto" />
                 <a href="" className="flex-1 sm:block hidden">
-                  Visibility
+                {t(translations.userSettings.visibility)}
                 </a>
                 {tab === "visibility" && (
                   <span className="w-[16px] h-[50px] bg-dark-green absolute right-[-0px] top-0"></span>

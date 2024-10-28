@@ -17,7 +17,7 @@ const Subscribe = () => {
       <div className="relative w-full">
         <input
           type="email"
-          placeholder="Enter your email"
+          placeholder=  {t(translations.subscribe.emailPH)}
           className="p-3 pr-12 border border-gray-1 rounded-lg w-full focus:outline-none"
         />
         <button className="absolute top-1/2 right-2 transform -translate-y-1/2 p-2 bg-primary-green text-white rounded-full">

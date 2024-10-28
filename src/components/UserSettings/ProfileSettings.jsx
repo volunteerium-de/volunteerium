@@ -2,9 +2,13 @@ import React from "react"
 import IndividualSettingsForm from "./IndividualSettingsForm"
 import OrganisationSettingsForm from "./OrganisationSettingsForm"
 import { useState } from "react"
+import { useTranslation } from "react-i18next"
+import { translations } from "../../locales/translations"
+translations
 // import SecuritySettings from "./SecuritySettings"
 
 const ProfileSettings = () => {
+  const {t} = useTranslation()
   const [currentUser] = useState(
     // {
     //   _id: "650c697f1c4ae3b5e8bfcdb1",
@@ -94,7 +98,7 @@ const ProfileSettings = () => {
       ) : currentUser.userType === "organization" ? (
         <OrganisationSettingsForm currentUser={currentUser} />
       ) : (
-        <p>Invalid user type</p>
+        <p>{t(translations.profileSettings.p)}</p>
       )}
     </div>
   )

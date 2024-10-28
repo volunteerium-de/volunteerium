@@ -17,33 +17,35 @@ import { axiosWithPublic } from "../hooks/useAxios"
 import avatar from "../assets/example-avatar.jpg"
 import logo from "../assets/get-to-know-us.png"
 import { formatName } from "../helpers/formatName"
-import formatLanguages from "../helpers/ISO-639-1-languages.json"
+import formatLanguages from "../helpers/languages_english.json"
+import { useTranslation } from "react-i18next"
+import { translations } from "../locales/translations"
 
 const defaultIndividualImage = avatar
 const defaultOrganozationImage = logo
 
-const getMedalInfo = (totalPoints) => {
+const getMedalInfo = (totalPoints, t) => {
   if (totalPoints >= 70) {
     return {
-      medal: "Golden Heart",
+      medal: t(translations.profile.medals.goldenHeart),
       icon: <LiaTrophySolid className="text-[1.4rem]" />,
       textClass: "text-[#FCB434]",
     }
   } else if (totalPoints >= 40) {
     return {
-      medal: "Silver Medal",
+      medal: t(translations.profile.medals.silverMedal),
       icon: <LiaMedalSolid className="text-[1.4rem]" />,
       textClass: "text-[#b0aeae]",
     }
   } else if (totalPoints >= 10) {
     return {
-      medal: "Bronze Medal",
+      medal: t(translations.profile.medals.bronzeMedal),
       icon: <LiaMedalSolid className="text-[1.4rem]" />,
       textClass: "text-[#CD7F32]",
     }
   } else {
     return {
-      medal: "New Volunteer",
+      medal: t(translations.profile.medals.newVolunteer),
       icon: null,
       textClass: "",
     }
@@ -51,6 +53,7 @@ const getMedalInfo = (totalPoints) => {
 }
 
 const Profile = () => {
+  const { t } = useTranslation()
   const { currentUser } = useSelector((state) => state.auth)
   const { userId } = useParams()
   const { getEvents } = useEventCall()
@@ -92,7 +95,7 @@ const Profile = () => {
       }
     }
     fetchEvents()
-  }, [currentPage, eventType])
+  }, [currentPage, eventType, t])
 
   const {
     _id,
@@ -118,20 +121,20 @@ const Profile = () => {
 
   const medalInfoText = [
     {
-      label: "🏅 Bronze Medal: Achieve 10 points to unlock this medal!",
+      label: t(translations.profile.medals.bronzeInfo),
       className: "text-[#CD7F32]",
     },
     {
-      label: "🥈 Silver Medal: Earn 40 points to shine with silver!",
+      label: t(translations.profile.medals.silverInfo),
       className: "text-[#b0aeae]",
     },
     {
-      label: "🏆 Golden Heart: Reach 70 points to wear the golden heart!",
+      label: t(translations.profile.medals.goldenInfo),
       className: "text-[#FCB434]",
     },
   ]
 
-  const medalInfo = getMedalInfo(totalPoint)
+  const medalInfo = getMedalInfo(totalPoint, t)
 
   const getLanguageName = (code) => {
     const language = formatLanguages.find((lang) => lang.code === code)
@@ -142,7 +145,7 @@ const Profile = () => {
   const infoItems = [
     {
       icon: <FaRegCalendarAlt />,
-      description: `Member since ${formatDate(createdAt)}`,
+      description: `${t(translations.profile.memberSince)} ${formatDate(createdAt)}`,
     },
     {
       icon: <IoLocationOutline />,
@@ -166,7 +169,7 @@ const Profile = () => {
         <div className="h-screen flex flex-col justify-center items-center">
           <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-primary-green border-opacity-50 dark:border-light-green"></div>
           <p className="text-2xl font-semibold text-primary-green dark:text-light-gray">
-            Loading...
+            {t(translations.profile.loading)}
           </p>
         </div>
       ) : (
@@ -180,7 +183,11 @@ const Profile = () => {
                       ? avatar || defaultIndividualImage
                       : organizationLogo || defaultOrganozationImage
                   }
-                  alt={userType === "individual" ? "Avatar" : "Logo"}
+                  alt={
+                    userType === "individual"
+                      ? t(translations.profile.avatarAlt)
+                      : t(translations.profile.logoAlt)
+                  }
                   className="w-[70px] h-[70px] sm:w-[120px] sm:h-[120px] rounded-full mt-4 sm:mt-8"
                 />
                 {_id === currentUser?._id && (
@@ -188,7 +195,7 @@ const Profile = () => {
                     onClick={() => navigate("/settings")}
                     className="w-[4rem] h-[1.6rem] sm:w-[60px] sm:h-[30px] text-[0.9375rem] rounded-md bg-primary-green text-white mt-4 sm:mt-8"
                   >
-                    Edit
+                     {t(translations.profile.edit)}
                   </button>
                 )}
               </div>
@@ -240,7 +247,7 @@ const Profile = () => {
                 {interestIds?.length > 0 && (
                   <div>
                     <h2 className="mt-6 font-semibold text-dark-gray-1 dark:text-white dark:font-bold ">
-                      Interests
+                      {t(translations.profile.interests)}
                     </h2>
                     <div className=" flex flex-wrap gap-2 my-2 text-dark-gray-1">
                       {interestIds.map((interest) => (
@@ -257,7 +264,7 @@ const Profile = () => {
                 {/* About */}
                 <div>
                   <h2 className="mt-6 font-semibold text-dark-gray-1 dark:text-white dark:font-bold">
-                    About Me
+                    {t(translations.profile.aboutMe)}
                   </h2>
                   <p className="text-dark-gray-1 my-2 dark:text-white">{bio}</p>
                 </div>
@@ -265,7 +272,7 @@ const Profile = () => {
                 {/* Certification & Document  */}
                 <div className="hidden sm:block">
                   <h2 className="my-6 font-semibold text-dark-gray-1 dark:text-white dark:font-bold">
-                    Certification & Document
+                      {t(translations.profile.documents)}
                   </h2>
                   {documentIds?.map((item, index) => (
                     <div

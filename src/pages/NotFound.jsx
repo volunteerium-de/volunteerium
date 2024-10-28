@@ -2,8 +2,12 @@ import React from "react"
 import { Link } from "react-router-dom"
 import notFoundImage from "/src/assets/not-found.png" // Not Found image
 import Header from "../components/Header/Header"
+import { useTranslation } from "react-i18next"
+import { translations } from "../locales/translations"
+translations
 
 const NotFound = () => {
+  const { t } = useTranslation()
   return (
     <div>
       <Header />
@@ -20,7 +24,7 @@ const NotFound = () => {
         >
           <img
             src={notFoundImage}
-            alt="Not Found"
+            alt={t(translations.notFound.imgAlt)}
             className="
             w-[100vw] 
             max-w-[1000px] 
@@ -37,7 +41,7 @@ const NotFound = () => {
             className="absolute text-[#69957B] dark:text-white font-medium text-[1.25rem] poppins"
             style={{ top: "85%", transform: "translateY(-50%)", textAlign: "center" }}
           >
-            Page Not Found
+            {t(translations.notFound.p)}
           </p>
         </div>
 
@@ -50,7 +54,7 @@ const NotFound = () => {
             to="/"
             className="bg-primary-green py-2 text-white w-72 rounded-lg  hover:bg-dark-green transition duration-300 flex items-center justify-center "
           >
-            Back to Homepage
+            {t(translations.notFound.link)}
           </Link>
         </div>
       </div>

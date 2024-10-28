@@ -3,8 +3,12 @@ import Avatar from "../../assets/example-avatar.jpg"
 import { MdClose } from "react-icons/md"
 import { MdOutlinePhotoCamera } from "react-icons/md"
 import { RiDeleteBin6Line } from "react-icons/ri"
+import { translations } from "../../locales/translations"
+import { useTranslation } from "react-i18next"
+translations
 
 const AvatarEditModal = ({ isOpen, onClose, currentUser, onUpdateAvatar }) => {
+  const {t} = useTranslation() 
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState(null)
   const fileInputRef = useRef(null)
@@ -35,7 +39,7 @@ const AvatarEditModal = ({ isOpen, onClose, currentUser, onUpdateAvatar }) => {
       })
         .then((response) => {
           if (!response.ok) {
-            throw new Error("Network response was not ok")
+            throw new Error(t(translations.avatarEdit.networkError))
           }
           return response.json()
         })
@@ -45,11 +49,11 @@ const AvatarEditModal = ({ isOpen, onClose, currentUser, onUpdateAvatar }) => {
           } else {
             onUpdateAvatar({ avatar: data.fileUrl })
           }
-          alert("Photo uploaded successfully!")
+          alert(t(translations.avatarEdit.photoAlert))
         })
         .catch((error) => {
           console.error("Error uploading file:", error)
-          setError("There was an error loading the photo. Please try again.")
+          setError(t(translations.avatarEdit.photoError))
         })
         .finally(() => {
           setLoading(false)
@@ -65,12 +69,12 @@ const AvatarEditModal = ({ isOpen, onClose, currentUser, onUpdateAvatar }) => {
     <div className="fixed inset-0 flex justify-center items-center z-50 bg-white bg-opacity-50 backdrop-blur-sm">
       <div className="max-w-full sm:w-[643px] w-[200px] sm:h-[375px] font-Poppins p-[10px] bg-white text-white rounded-[8px] shadow-2xl">
         {/* Loading */}
-        {loading && <p className="text-primary-green">Loading...</p>}
+        {loading && <p className="text-primary-green">{t(translations.avatarEdit.loading)}</p>}
         {/* Error */}
         {error && <p className="text-danger text-center">{error}</p>}
         <div className="flex justify-between items-start ">
           <h1 className="sm:text-[1.25rem] leading-[1.5] text-gray-1">
-            {currentUser.userType === "organization" ? "Logo" : "Profile Photo"}
+            {currentUser.userType === "organization" ? t(translations.avatarEdit.logo) : t(translations.avatarEdit.profilePhoto)}
           </h1>
           <button onClick={onClose} className="hover:bg-gray-200 p-1 rounded-full">
             <MdClose className="sm:w-[20px] sm:h-[20px] text-gray-1" />
@@ -82,7 +86,7 @@ const AvatarEditModal = ({ isOpen, onClose, currentUser, onUpdateAvatar }) => {
               ? currentUser.userDetailsId.organizationLogo || Avatar
               : currentUser.userDetailsId.avatar || Avatar
           }
-          alt="User Avatar"
+          alt= {t(translations.avatarEdit.avatarAlt)}
           className="w-[100px] h-[100px] mx-auto sm:w-[150px] sm:h-[150px] mt-[30px]"
         />
         <hr className="mt-[50px] border-gray-1" />
@@ -91,7 +95,7 @@ const AvatarEditModal = ({ isOpen, onClose, currentUser, onUpdateAvatar }) => {
             <button onClick={handleAddPhoto}>
               <MdOutlinePhotoCamera className="sm:w-[25px] sm:h-[25px] text-primary-green" />
             </button>
-            <p className="text-primary-green">Add photo</p>
+            <p className="text-primary-green">{t(translations.avatarEdit.addPhoto)}</p>
             <input
               type="file"
               ref={fileInputRef}
@@ -104,7 +108,7 @@ const AvatarEditModal = ({ isOpen, onClose, currentUser, onUpdateAvatar }) => {
             <button onClick={handleDelete}>
               <RiDeleteBin6Line className="sm:w-[25px] sm:h-[25px] text-primary-green" />
             </button>
-            <p className="text-primary-green">Delete</p>
+            <p className="text-primary-green">{t(translations.avatarEdit.delete)}</p>
           </div>
         </div>
       </div>

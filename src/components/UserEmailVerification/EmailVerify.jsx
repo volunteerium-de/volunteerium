@@ -1,8 +1,11 @@
 import { useEffect } from "react"
 import useAuthCall from "../../hooks/useAuthCall"
+import { useTranslation } from "react-i18next"
+import { translations } from "../../locales/translations"
 
 const EmailVerify = () => {
   const { verifyEmail } = useAuthCall()
+  const {t} = useTranslation()
 
   useEffect(() => {
     const queryParams = new URLSearchParams(window.location.search)
@@ -17,7 +20,7 @@ const EmailVerify = () => {
 
   return (
     <div>
-      <h1>Verifying your email...</h1>
+      <h1>{t(translations.emailVerify.h1)}</h1>
     </div>
   )
 }
