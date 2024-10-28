@@ -3,7 +3,7 @@ import { IoCalendar, IoHome, IoLocation, IoPeople } from "react-icons/io5"
 import eventImage from "../../../assets/example-event-img.png"
 import { RxDividerVertical } from "react-icons/rx"
 import { MdLanguage } from "react-icons/md"
-import LangJson from "../../../helpers/ISO-639-1-languages.json"
+import LangJson from "../../../helpers/languages_english.json"
 
 export const getLangName = (langCode) => {
   const selectedLang = LangJson.filter((langData) => langData.code === langCode)
