@@ -7,6 +7,7 @@ import { Link } from "react-router-dom"
 import useAuthCall from "../../hooks/useAuthCall"
 import { translations } from "../../locales/translations"
 import { useTranslation } from "react-i18next"
+import { ImSpinner9 } from "react-icons/im"
 
 const LoginForm = () => {
 
@@ -26,6 +27,7 @@ const validationSchema = Yup.object({
 
 
   const [showPassword, setShowPassword] = useState(false)
+  const [isLoading, setIsLoading] = useState(false)
   const passwordTimeoutRef = useRef(null)
   const { login, authWithGoogle } = useAuthCall()
 
@@ -41,6 +43,21 @@ const validationSchema = Yup.object({
     passwordTimeoutRef.current = setTimeout(() => setShowPassword(false), 5000)
   }
 
+  const handleSubmit = async (values, { setSubmitting, resetForm }) => {
+    setIsLoading(true)
+    try {
+      await login(values)
+      resetForm()
+    } catch (error) {
+      console.error("Login failed: ", error)
+    } finally {
+      setIsLoading(false)
+      setSubmitting(false)
+    }
+  }
+
+  
+
   return (
     <Formik
       initialValues={{
@@ -48,14 +65,9 @@ const validationSchema = Yup.object({
         password: "",
       }}
       validationSchema={validationSchema}
-      onSubmit={(values, { setSubmitting, resetForm }) => {
-        console.log(values)
-        login(values)
-        setSubmitting(false)
-        resetForm()
-      }}
+      onSubmit={(values, actions) => handleSubmit(values, actions)}
     >
-      {({ errors, touched }) => (
+      {({ errors, touched, handleSubmit }) => (
         <Form className="md:space-y-3">
           {/* Email */}
           <div>
@@ -111,10 +123,18 @@ const validationSchema = Yup.object({
           <div className="flex flex-col items-center">
             <button
               type="submit"
-              className="w-full bg-primary-green text-white text-[1rem] py-3 mt-3 rounded-lg  focus:outline-none"
+              className={`w-full bg-primary-green text-white text-[1rem] py-3 mt-3 rounded-lg focus:outline-none ${
+                isLoading ? "opacity-50 cursor-not-allowed" : ""}`}
+              disabled={isLoading}
             >
               {t(translations.loginForm.login)}
             </button>
+
+            {isLoading && (
+              <div className="flex items-center mt-4">
+              <ImSpinner9 className="animate-spin text-primary-green mr-2" />
+              <span className="text-primary-green text-sm">Loading...</span>
+              </div>)}
 
             <div className="text-center mt-6">
               <span className="text-gray-2">{t(translations.loginForm.haveAccount)}</span>

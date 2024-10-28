@@ -271,7 +271,7 @@
     "p": "Invalid user type"
   },
 
-  "securitySettings": {
+  "secSett": {
     "feedbackMsg1": "Your account has been deleted successfully.",
     "feedbackMsg2": "There was an error deleting your account.",
     "h1": "Security Settings",
@@ -406,7 +406,7 @@
     "p2": "seconds"
   },
 
-  "googleAuthSuccess": {
+  "googleAS": {
     "successMsg": "You have successfully logged in with Google",
     "h1": " Successfully authenticated with Google",
     "p": "Redirecting..."

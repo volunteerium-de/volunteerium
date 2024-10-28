@@ -406,7 +406,7 @@
     "p2": "Sekunden"
 },
 
-"googleAuthSuccess": {
+"googleAS": {
     "successMsg": "Erfolg, Sie haben sich erfolgreich mit Google angemeldet",
     "h1": "Erfolgreich mit Google authentifiziert",
     "p": "Weiterleitung..."
