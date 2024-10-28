@@ -61,11 +61,10 @@ const useAuthCall = () => {
       dispatch(loginSuccess(data))
 
       const link = getLoginRedirectLink(data.user)
-      console.log(link)
 
       setTimeout(() => {
         navigate(link)
-        if (link === "/") toastNotify("success", "Login successful!")
+        if (link === "/") toastNotify("success", data.message)
       }, 0)
 
       console.log(data)
@@ -98,8 +97,6 @@ const useAuthCall = () => {
 
       setTimeout(() => {
         navigate("/verify-email/success")
-        // toastNotify("success", "Email verified successful!")
-      }, 0)
       }, 0)
     } catch (error) {
       dispatch(fetchFail())
