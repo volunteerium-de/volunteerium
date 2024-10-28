@@ -15,6 +15,7 @@ import Profile from "../pages/Profile"
 import FAQuestion from "../pages/FAQuestion"
 import Password from "../pages/Password"
 import UserSettings from "../pages/UserSettings"
+import EventListing from "../pages/EventListing"
 import EmailVerify from "../components/UserEmailVerification/EmailVerify"
 import { Navigate } from "react-router-dom"
 import GoogleAuthSuccess from "../pages/GoogleAuthSuccess"
@@ -33,6 +34,7 @@ const AppRouter = () => {
         <Route path="faq" element={<FAQuestion />} />
         <Route path="contact" element={<ContactUs />} />
         <Route path="profile/:userId" element={<Profile />} />
+        <Route path="events" element={<EventListing />} />
         <Route path="password" element={<Password />} />
         <Route path="auth/success" element={<GoogleAuthSuccess />} />
         {/* Private Routers */}
