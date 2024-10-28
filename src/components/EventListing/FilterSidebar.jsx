@@ -13,7 +13,7 @@ import {
 } from "../../features/searchSlice"
 import { axiosWithPublic } from "../../hooks/useAxios"
 import { formatISO } from "date-fns"
-import LangJson from "../../helpers/ISO-639-1-languages.json"
+import LangJson from "../../helpers/languages_english.json"
 
 export const formatEndDate = (startDate) => {
   const newEndDate = new Date(startDate)
