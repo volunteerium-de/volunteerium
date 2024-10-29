@@ -1,7 +1,19 @@
-const AvatarsDropDown = ({ participants, totalParticipants, maxParticipant, avatarCount, gap }) => {
+import React from "react"
+
+const AttendantsAvatars = ({
+  participants,
+  totalParticipants,
+  maxParticipant,
+  avatarCount,
+  gap,
+}) => {
   // Limit the displayed participants to 6
-  const visibleParticipants = participants.slice(0, avatarCount)
-  const remainingCount = participants.length - visibleParticipants.length
+  const visibleParticipants = participants
+    ? participants.length > 0
+      ? participants.slice(0, avatarCount)
+      : 0
+    : 0
+  const remainingCount = participants ? participants.length - visibleParticipants.length : 0
 
   return (
     <div>
@@ -10,14 +22,18 @@ const AvatarsDropDown = ({ participants, totalParticipants, maxParticipant, avat
       </h3>
       <div className={`avatars flex flex-wrap gap-${gap} py-2`}>
         {/* Display the first 6 avatars */}
-        {visibleParticipants.map(({ userId }, index) => (
-          <img
-            key={index}
-            src={userId?.userDetailsId?.avatar}
-            alt="user avatar"
-            className="participant-avatar w-10 h-10 rounded-full object-cover"
-          />
-        ))}
+        {visibleParticipants ? (
+          visibleParticipants.map(({ userId }, index) => (
+            <img
+              key={index}
+              src={userId?.userDetailsId?.avatar}
+              alt="user avatar"
+              className="participant-avatar w-10 h-10 rounded-full object-cover"
+            />
+          ))
+        ) : (
+          <p>No attendants yet</p>
+        )}
 
         {/* Show the +N circle if there are hidden participants */}
         {remainingCount > 0 && (
@@ -30,4 +46,4 @@ const AvatarsDropDown = ({ participants, totalParticipants, maxParticipant, avat
   )
 }
 
-export default AvatarsDropDown
+export default AttendantsAvatars
