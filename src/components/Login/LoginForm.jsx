@@ -8,9 +8,9 @@ import useAuthCall from "../../hooks/useAuthCall"
 import { translations } from "../../locales/translations"
 import { useTranslation } from "react-i18next"
 import { ImSpinner9 } from "react-icons/im"
+import ReCAPTCHA from "react-google-recaptcha"
 
 const LoginForm = () => {
-
   const { t } = useTranslation()
 
 const validationSchema = Yup.object({
@@ -29,7 +29,9 @@ const validationSchema = Yup.object({
   const [showPassword, setShowPassword] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
   const passwordTimeoutRef = useRef(null)
-  const { login, authWithGoogle } = useAuthCall()
+  const { authWithGoogle, onRecaptchaVerify } = useAuthCall()
+  const recaptchaRef = useRef(null)
+  const formValuesRef = useRef({})
 
   useEffect(() => {
     return () => {
@@ -43,20 +45,13 @@ const validationSchema = Yup.object({
     passwordTimeoutRef.current = setTimeout(() => setShowPassword(false), 5000)
   }
 
-  const handleSubmit = async (values, { setSubmitting, resetForm }) => {
-    setIsLoading(true)
-    try {
-      await login(values)
-      resetForm()
-    } catch (error) {
-      console.error("Login failed: ", error)
-    } finally {
-      setIsLoading(false)
-      setSubmitting(false)
-    }
+  const handleSubmit = (values, { setSubmitting, resetForm }) => {
+    // console.log(values)
+    formValuesRef.current = values // Save form values
+    recaptchaRef.current.execute() // trigger reCAPTCHA
+    setSubmitting(false)
+    resetForm()
   }
-
-  
 
   return (
     <Formik
@@ -65,18 +60,19 @@ const validationSchema = Yup.object({
         password: "",
       }}
       validationSchema={validationSchema}
-      onSubmit={(values, actions) => handleSubmit(values, actions)}
+      onSubmit={handleSubmit}
     >
       {({ errors, touched, handleSubmit }) => (
         <Form className="md:space-y-3">
           {/* Email */}
           <div>
             <p className="text-gray-2 text-[0.875rem] md:text-[1rem]">
-            {t(translations.loginForm.email)}</p>
+              {t(translations.loginForm.email)}
+            </p>
             <Field
               type="email"
               name="email"
-              placeholder= {t(translations.loginForm.emailPH)}
+              placeholder={t(translations.loginForm.emailPH)}
               className={`w-full border rounded-lg text-[1rem] placeholder-gray-2 dark:placeholder-white dark:bg-black dark:text-white p-3 h-[42px] md:h-[48px] focus:outline-none focus:border-primary-green 
                 ${touched.email && errors.email ? "border-red" : "border-gray-1"}`}
             />
@@ -89,12 +85,14 @@ const validationSchema = Yup.object({
 
           {/* Password */}
           <div>
-            <p className="text-gray-2 text-[0.875rem] md:text-[1rem]">{t(translations.loginForm.password)}</p>
+            <p className="text-gray-2 text-[0.875rem] md:text-[1rem]">
+              {t(translations.loginForm.password)}
+            </p>
             <div className="relative">
               <Field
                 type={showPassword ? "text" : "password"}
                 name="password"
-                placeholder= {t(translations.loginForm.passwordPH)}
+                placeholder={t(translations.loginForm.passwordPH)}
                 className={`w-full border rounded-lg text-[1rem] placeholder-gray-2 dark:placeholder-white dark:bg-black dark:text-white p-3 h-[42px] md:h-[48px] focus:outline-none focus:border-primary-green 
       ${touched.password && errors.password ? "border-red" : "border-gray-1"}`}
               />
@@ -113,7 +111,7 @@ const validationSchema = Yup.object({
               )}
               <Link to="/password">
                 <p className="text-sm justify-end text-dark-green dark:text-white underline cursor-pointer">
-                {t(translations.loginForm.forgot)}
+                  {t(translations.loginForm.forgot)}
                 </p>
               </Link>
             </div>
@@ -139,14 +137,16 @@ const validationSchema = Yup.object({
             <div className="text-center mt-6">
               <span className="text-gray-2">{t(translations.loginForm.haveAccount)}</span>
               <Link to="/register" className="ml-1 text-primary-green font-semibold underline">
-              {t(translations.loginForm.signUp)}
+                {t(translations.loginForm.signUp)}
               </Link>
             </div>
 
             {/* or and dividers */}
             <div className="flex items-center my-5">
               <div className="flex-1 border-t w-[300px] border-gray-2 dark:border-white"></div>
-              <p className="text-gray-2 dark:text-white text-[0.875rem] text-center mx-5">{t(translations.loginForm.or)}</p>
+              <p className="text-gray-2 dark:text-white text-[0.875rem] text-center mx-5">
+                {t(translations.loginForm.or)}
+              </p>
               <div className="flex-1 border-t border-gray-2 dark:border-white"></div>
             </div>
 
@@ -158,6 +158,13 @@ const validationSchema = Yup.object({
               {t(translations.loginForm.contGoogle)}
             </button>
           </div>
+          {/* Invisible reCAPTCHA Comp. */}
+          <ReCAPTCHA
+            ref={recaptchaRef}
+            sitekey={import.meta.env.VITE_GOOGLE_RECAPTCHA_SITE_KEY}
+            size="invisible"
+            onChange={(token) => onRecaptchaVerify(token, formValuesRef.current, "login")} // Called after successful verification
+          />
         </Form>
       )}
     </Formik>

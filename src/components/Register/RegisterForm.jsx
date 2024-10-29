@@ -7,10 +7,11 @@ import { Link } from "react-router-dom"
 import useAuthCall from "../../hooks/useAuthCall"
 import { translations } from "../../locales/translations"
 import { useTranslation } from "react-i18next"
+import { useRef } from "react"
+import ReCAPTCHA from "react-google-recaptcha"
 import { ImSpinner9 } from "react-icons/im"
 
 const RegisterForm = () => {
-
   const { t } = useTranslation()
 
 const validationSchema = Yup.object({
@@ -35,9 +36,9 @@ const validationSchema = Yup.object({
 
   const [userType, setUserType] = useState("individual")
   const [showPassword, setShowPassword] = useState(false)
-  const { register, authWithGoogle } = useAuthCall()
-  const [isLoading, setIsLoading] = useState(false);
-
+  const { onRecaptchaVerify, authWithGoogle } = useAuthCall()
+  const recaptchaRef = useRef(null)
+  const formValuesRef = useRef({})
 
   // Handle radio button changes
   const handleRadioChange = (e, setFieldValue) => {
@@ -50,6 +51,14 @@ const validationSchema = Yup.object({
     setShowPassword((prev) => !prev)
   }
 
+  const handleSubmit = (values, { setSubmitting, resetForm }) => {
+    // console.log(values)
+    formValuesRef.current = values // Save form values
+    recaptchaRef.current.execute() // trigger reCAPTCHA
+    setSubmitting(false)
+    resetForm()
+  }
+
   return (
     <Formik
       initialValues={{
@@ -59,18 +68,7 @@ const validationSchema = Yup.object({
         password: "",
       }}
       validationSchema={validationSchema}
-      onSubmit={async (values, { setSubmitting, resetForm }) => {
-        setIsLoading(true)
-        try {
-          await register(values);
-          resetForm()
-        } catch (error) {
-          console.error("Register failed: ", error)
-        } finally {
-          setIsLoading(false)
-          setSubmitting(false)
-        }
-      }}
+      onSubmit={handleSubmit}
     >
       {({ setFieldValue, values, errors, touched }) => (
         <Form className="md:space-y-3">
@@ -113,16 +111,16 @@ const validationSchema = Yup.object({
                 className="text-[0.9rem] md:text-[0.75rem] lg:text-[1rem] cursor-pointer w-full p-2"
               >
                 {t(translations.registerForm.radioOrg)}
-                </label>
+              </label>
             </div>
           </div>
 
           {/* Full Name/Organization */}
           <div>
             <p className="text-gray-2 text-[0.875rem] md:text-[1rem]">
-              {values.userType === "individual" ? t(translations.registerForm.fullname)
-              : t(translations.registerForm.orgname)
-            }
+              {values.userType === "individual"
+                ? t(translations.registerForm.fullname)
+                : t(translations.registerForm.orgname)}
             </p>
             <Field
               type="text"
@@ -144,11 +142,13 @@ const validationSchema = Yup.object({
 
           {/* Email */}
           <div>
-            <p className="text-gray-2 text-[0.875rem] md:text-[1rem]">{t(translations.registerForm.email)}</p>
+            <p className="text-gray-2 text-[0.875rem] md:text-[1rem]">
+              {t(translations.registerForm.email)}
+            </p>
             <Field
               type="email"
               name="email"
-              placeholder= {t(translations.registerForm.emailPH)}
+              placeholder={t(translations.registerForm.emailPH)}
               className={`w-full border dark:border-white rounded-lg text-[1rem] placeholder-gray-2 dark:bg-black dark:text-white dark:placeholder-white  p-3 h-[42px] md:h-[48px] focus:outline-none focus:border-primary-green 
                 ${touched.email && errors.email ? "border-red" : "border-gray-1"}`}
             />
@@ -161,12 +161,14 @@ const validationSchema = Yup.object({
 
           {/* Password */}
           <div>
-            <p className="text-gray-2 text-[0.875rem] md:text-[1rem]">{t(translations.registerForm.password)}</p>
+            <p className="text-gray-2 text-[0.875rem] md:text-[1rem]">
+              {t(translations.registerForm.password)}
+            </p>
             <div className="relative">
               <Field
                 type={showPassword ? "text" : "password"}
                 name="password"
-                placeholder= {t(translations.registerForm.passwordPH)}
+                placeholder={t(translations.registerForm.passwordPH)}
                 className={`w-full border dark:border-white rounded-lg text-[1rem] placeholder-gray-2 dark:bg-black dark:text-white  dark:placeholder-white  p-3 h-[42px] md:h-[48px] focus:outline-none focus:border-primary-green 
                   ${touched.password && errors.password ? "border-red" : "border-gray-1"}`}
               />
@@ -195,15 +197,18 @@ const validationSchema = Yup.object({
             >
               {t(translations.registerForm.submit)}
             </button>
-
-            {isLoading && (
-              <div className="flex items-center mt-4">
-              <ImSpinner9 className="animate-spin text-primary-green mr-2" />
-              <span className="text-primary-green text-sm">Loading...</span>
-              </div>)}
+            {/* Invisible reCAPTCHA Comp. */}
+            <ReCAPTCHA
+              ref={recaptchaRef}
+              sitekey={import.meta.env.VITE_GOOGLE_RECAPTCHA_SITE_KEY}
+              size="invisible"
+              onChange={(token) => onRecaptchaVerify(token, formValuesRef.current, "register")} // Called after successful verification
+            />
 
             <div className="text-center mt-4">
-              <span className="text-gray-2 dark:text-white">{t(translations.registerForm.haveAccount)}</span>
+              <span className="text-gray-2 dark:text-white">
+                {t(translations.registerForm.haveAccount)}
+              </span>
               <Link to="/login" className="ml-1 text-primary-green font-semibold underline">
                 {t(translations.registerForm.login)}
               </Link>
@@ -213,7 +218,9 @@ const validationSchema = Yup.object({
               <div className="flex flex-col items-center">
                 <div className="flex items-center my-4">
                   <div className="flex-1 border-t w-[300px] border-gray-2 dark:border-white"></div>
-                  <p className="text-gray-2 dark:text-white text-[0.875rem] text-center mx-5">{t(translations.registerForm.or)}</p>
+                  <p className="text-gray-2 dark:text-white text-[0.875rem] text-center mx-5">
+                    {t(translations.registerForm.or)}
+                  </p>
                   <div className="flex-1 border-t border-gray-2 dark:border-white"></div>
                 </div>
 
@@ -229,7 +236,7 @@ const validationSchema = Yup.object({
 
             {/* Terms and Conditions */}
             <p className="text-[0.75rem] mt-5 text-gray-2 dark:text-white text-center">
-            {t(translations.registerForm.pTerms)}{" "}
+              {t(translations.registerForm.pTerms)}{" "}
               <Link
                 to="/terms"
                 className="text-primary-green dark:text-white underline font-semibold"
