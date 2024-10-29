@@ -90,6 +90,7 @@
     "emailPH": "Geben Sie Ihre E-Mail-Adresse ein",
     "password": "Passwort",
     "passwordPH": "Geben Sie Ihr Passwort ein",
+    "loading": "Laden...",
     "submit": "Konto erstellen",
     "haveAccount": "Sie haben bereits ein Konto?",
     "login": "Anmeldung",
@@ -100,6 +101,14 @@
     "pPrivacy": "und bestätigen Sie, dass Sie unsere gelesen haben",
     "privacy": "Datenschutzerklärung"
   },
+
+  "registerSuccess": {
+    "emailVerifyAlt": "E-Mail-Bestätigung",
+    "h1": "Bestätigen Sie Ihre E-Mail-Adresse",
+    "p1": "Wir haben eine Bestätigungs-E-Mail an Ihre E-Mail-Adresse gesendet.",
+    "p2": "Bitte überprüfen Sie Ihren Posteingang und klicken Sie auf den Link, um Ihre E-Mail-Adresse zu bestätigen.",
+    "p3": "Haben Sie die E-Mail nicht erhalten? Überprüfen Sie unbedingt Ihren Spam-Ordner oder senden Sie die E-Mail erneut."
+},
 
   "login": {
     "p1": "Verbindung an die",
@@ -127,6 +136,7 @@
     "password": "Passwort",
     "passwordPH": "Geben Sie Ihr Passwort ein",
     "forgot": "Passwort vergessen?",
+    "loading": "Laden...",
     "login": "Anmelden",
     "haveAccount": "Haben Sie noch kein Konto?",
     "signUp": "Konto Erstellen",
@@ -487,6 +497,11 @@
   "p3": "zu einem Unterschied bei",
   "p4": "Bevor wir beginnen, möchten wir ein bisschen mehr über Sie erfahren.",
   "link": "Lass uns anfangen!"
+},
+
+"langSelect": {
+    "lang": "Sprache",
+    "PH": "Veranstaltungssprachen hinzufügen"
 }
 
 

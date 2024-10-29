@@ -93,6 +93,7 @@ export const translations = {
     emailPH: "registerForm.emailPH",
     password: "registerForm.password",
     passwordPH: "registerForm.passwordPH",
+    loading: "registerForm.loading",
     submit: "registerForm.submit",
     haveAccount: "registerForm.haveAccount",
     login: "registerForm.login",
@@ -103,6 +104,14 @@ export const translations = {
     pPrivacy: "registerForm.pPrivacy",
     privacy: "registerForm.privacy",
   },
+
+  registerSuccess: {
+    emailVerifyAlt: "registerSuccess.emailVerifyAlt",
+    h1: "registerSuccess.h1",
+    p1: "registerSuccess.p1",
+    p2: "registerSuccess.p2",
+    p3: "registerSuccess.p3",
+},
 
   login: {
     p1: "login.p1",
@@ -130,6 +139,7 @@ export const translations = {
     password: "loginForm.password",
     passwordPH: "loginForm.passwordPH",
     forgot: "loginForm.forgot",
+    loading: "loginForm.loading",
     login: "loginForm.login",
     haveAccount: "loginForm.haveAccount",
     signUp: "loginForm.signUp",
@@ -488,7 +498,13 @@ verifySuccess: {
     p3: "verifySuccess.p3",
     p4: "verifySuccess.p4",
     link: "verifySuccess.link"
-}
+},
+
+langSelect: {
+    lang: "langSelect.lang",
+    PH: "langSelect.PH",
+},
+
 
 
 
