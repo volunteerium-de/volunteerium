@@ -7,9 +7,7 @@ import { useEffect } from "react"
 import { formatName } from "../helpers/formatName"
 import EventOverview from "../components/EventDetailsPage/EventOverview"
 import { Link } from "react-router-dom"
-import EventFeedback from "../components/EventDetailsPage/EventFeedback"
 import { useNavigate } from "react-router-dom"
-import { useSelector } from "react-redux"
 import { translations } from "../locales/translations"
 import { useTranslation } from "react-i18next"
 
@@ -27,10 +25,10 @@ const EventDetails = () => {
       setLoading(true)
       try {
         const eventData = await getSingleEvent(eventId)
-        console.log(eventData.data)
+        // console.log(eventData.data)
         setSingleEvent(eventData.data)
       } catch (error) {
-        console.log(error)
+        // console.log(error)
         navigate("/not-found")
       } finally {
         setLoading(false)
@@ -59,7 +57,7 @@ const EventDetails = () => {
     languages,
     eventParticipantIds,
   } = singleEvent
-  console.log(singleEvent)
+  // console.log(singleEvent)
   return (
     <>
       <Header />
@@ -114,7 +112,7 @@ const EventDetails = () => {
                 ))}
               </div>
               <p className="text-[1rem] md:text-dark-gray-3 mb-12 pr-3">{description}</p>
-              {/* RightSide-Join islemlerinin oldugu kisim: */}
+              {/* RightSide-Join Operations: */}
               <div className="block md:hidden">
                 <EventOverview
                   _id={_id}
@@ -171,7 +169,6 @@ const EventDetails = () => {
       )}
     </>
   )
-  // return <EventFeedback />
 }
 
 export default EventDetails
