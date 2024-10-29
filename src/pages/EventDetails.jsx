@@ -10,6 +10,7 @@ import { Link } from "react-router-dom"
 import { useNavigate } from "react-router-dom"
 import { translations } from "../locales/translations"
 import { useTranslation } from "react-i18next"
+import defaultEventPhoto from "../assets/default-event-photo-.jpg"
 
 const EventDetails = () => {
   const [singleEvent, setSingleEvent] = useState({})
@@ -73,7 +74,7 @@ const EventDetails = () => {
           {/* Event Photo */}
           <div className="w-full mb-6 md:mb-10">
             <img
-              src={eventPhoto}
+              src={eventPhoto ? eventPhoto : defaultEventPhoto}
               alt="event photo"
               className="w-full max-h-[30vh] md:max-h-[40vh] object-cover object-center rounded-md shadow-md"
             />
