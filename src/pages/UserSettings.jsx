@@ -13,7 +13,6 @@ import { useEffect } from "react"
 import Header from "../components/Header/Header"
 import { useTranslation } from "react-i18next"
 import { translations } from "../locales/translations"
-translations
 
 const UserSettings = () => {
   const {t} = useTranslation()
