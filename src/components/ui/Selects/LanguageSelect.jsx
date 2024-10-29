@@ -1,30 +1,11 @@
-import { useEffect, useState } from "react"
 import Select from "react-select"
 import { useFormikContext } from "formik"
-import eng_languages from "../../../helpers/languages_english.json"
-import de_languages from "../../../helpers/languages_deutsch.json"
+import useLanguageOptions from "../../../hooks/useLanguages"
 
-const LanguageSelect = ({}) => {
+const LanguageSelect = () => {
   const { setFieldValue, values } = useFormikContext()
+  const languageOptions = useLanguageOptions()
 
-  const [siteLanguage, setSiteLanguage] = useState("en")
-  const [languageOptions, setLanguageOptions] = useState([])
-
-  useEffect(() => {
-    let options = []
-    if (siteLanguage === "en") {
-      options = eng_languages.map((lang) => ({
-        value: lang.code,
-        label: lang.name,
-      }))
-    } else if (siteLanguage === "de") {
-      options = de_languages.map((lang) => ({
-        value: lang.code,
-        label: lang.name,
-      }))
-    }
-    setLanguageOptions(options)
-  }, [siteLanguage])
   return (
     <div className="mb-4">
       <label className="block text-dark-gray-2 mb-2 dark:text-white">Language</label>
@@ -40,7 +21,7 @@ const LanguageSelect = ({}) => {
             selectedOptions ? selectedOptions.map((option) => option.value) : []
           )
         }}
-        value={languageOptions?.filter((option) => values.languages?.includes(option.value))}
+        value={languageOptions.filter((option) => values.languages?.includes(option.value))}
         placeholder="Add event languages"
         styles={{
           control: (provided, state) => ({
@@ -58,7 +39,6 @@ const LanguageSelect = ({}) => {
             color: state.isSelected ? "#FFFFFF" : "#000000",
             "&:hover": {
               backgroundColor: "#DCE6E0",
-              //color: "#FFFFFF",
             },
           }),
           multiValue: (provided) => ({
