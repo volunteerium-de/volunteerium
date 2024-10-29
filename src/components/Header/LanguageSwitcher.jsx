@@ -1,10 +1,10 @@
 import { TbWorld } from "react-icons/tb"
 import { FiChevronRight } from "react-icons/fi"
 import { useState } from "react"
-import { useTranslation } from "react-i18next";
+import { useTranslation } from "react-i18next"
 
 const LanguageMenu = () => {
-  const { i18n } = useTranslation(); 
+  const { i18n } = useTranslation()
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   // Toggle the language menu
@@ -14,9 +14,9 @@ const LanguageMenu = () => {
 
   // Select language function
   const selectLanguage = (lang) => {
-    i18n.changeLanguage(lang); // Change language directly
-    setIsMenuOpen(false); // Close the menu after selection
-  };
+    i18n.changeLanguage(lang) // Change language directly
+    setIsMenuOpen(false) // Close the menu after selection
+  }
 
   return (
     <div className="relative">
@@ -26,7 +26,7 @@ const LanguageMenu = () => {
         onClick={toggleLanguageMenu}
       >
         <TbWorld className="mr-2" />
-        {i18n.language === "en" ? "English" : "Deutsch"}
+        {i18n.language === "de" ? "Deutsch" : "English"}
         {isMenuOpen && <FiChevronRight className="ml-2" />}
       </button>
 

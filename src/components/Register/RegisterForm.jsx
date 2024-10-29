@@ -7,33 +7,37 @@ import { Link } from "react-router-dom"
 import useAuthCall from "../../hooks/useAuthCall"
 import { translations } from "../../locales/translations"
 import { useTranslation } from "react-i18next"
-
-const validationSchema = Yup.object({
-  userType: Yup.string().required("User type is required"),
-  fullName: Yup.string()
-    .min(3, "Must be at least 3 characters")
-    .max(30, "Can be maximum 30 characters")
-    .required("Name is a required field"),
-  email: Yup.string()
-    .matches(/^[^\s@]+@[^\s@]+\.[^\s@]+$/, "Invalid email address")
-    .required("Email is a required field"),
-  password: Yup.string()
-    .min(6, "Must be at least 6 characters!")
-    .max(30, "Can be maximum 30 characters!")
-    .matches(/\d+/, "Must contain at least one digit!")
-    .matches(/[a-z]/, "Must contain at least one lowercase letter!")
-    .matches(/[A-Z]/, "Must contain at least one uppercase letter!")
-    .matches(/[@$?!%&*]+/, "Must contain at least one special character (@$!%*?&)!")
-    .required("Password is a required field"),
-})
+import { useRef } from "react"
+import ReCAPTCHA from "react-google-recaptcha"
 
 const RegisterForm = () => {
-
   const { t } = useTranslation()
+
+const validationSchema = Yup.object({
+  userType: Yup.string().required(t(translations.registerForm.yup1)),
+  fullName: Yup.string()
+    .min(3, t(translations.registerForm.yup2))
+    .max(30, t(translations.registerForm.yup3))
+    .required(t(translations.registerForm.yup4)),
+  email: Yup.string()
+    .matches(/^[^\s@]+@[^\s@]+\.[^\s@]+$/, t(translations.registerForm.yup5))
+    .required(t(translations.registerForm.yup6)),
+  password: Yup.string()
+    .min(6, t(translations.registerForm.yup7))
+    .max(30, t(translations.registerForm.yup8))
+    .matches(/\d+/, t(translations.registerForm.yup9))
+    .matches(/[a-z]/, t(translations.registerForm.yup10))
+    .matches(/[A-Z]/, t(translations.registerForm.yup11))
+    .matches(/[@$?!%&*]+/, t(translations.registerForm.yup12))
+    .required(t(translations.registerForm.yup13)),
+})
+
 
   const [userType, setUserType] = useState("individual")
   const [showPassword, setShowPassword] = useState(false)
-  const { register, authWithGoogle } = useAuthCall()
+  const { onRecaptchaVerify, authWithGoogle } = useAuthCall()
+  const recaptchaRef = useRef(null)
+  const formValuesRef = useRef({})
 
   // Handle radio button changes
   const handleRadioChange = (e, setFieldValue) => {
@@ -46,6 +50,14 @@ const RegisterForm = () => {
     setShowPassword((prev) => !prev)
   }
 
+  const handleSubmit = (values, { setSubmitting, resetForm }) => {
+    // console.log(values)
+    formValuesRef.current = values // Save form values
+    recaptchaRef.current.execute() // trigger reCAPTCHA
+    setSubmitting(false)
+    resetForm()
+  }
+
   return (
     <Formik
       initialValues={{
@@ -55,16 +67,7 @@ const RegisterForm = () => {
         password: "",
       }}
       validationSchema={validationSchema}
-      onSubmit={async (values, { setSubmitting, resetForm }) => {
-        setSubmitting(true)
-        try {
-          await register(values)
-        } catch (error) {
-          console.error("Register failed: ", error)
-        } finally {
-          setSubmitting(false)
-        }
-      }}
+      onSubmit={handleSubmit}
     >
       {({ setFieldValue, values, errors, touched }) => (
         <Form className="md:space-y-3">
@@ -107,16 +110,16 @@ const RegisterForm = () => {
                 className="text-[0.9rem] md:text-[0.75rem] lg:text-[1rem] cursor-pointer w-full p-2"
               >
                 {t(translations.registerForm.radioOrg)}
-                </label>
+              </label>
             </div>
           </div>
 
           {/* Full Name/Organization */}
           <div>
             <p className="text-gray-2 text-[0.875rem] md:text-[1rem]">
-              {values.userType === "individual" ? t(translations.registerForm.fullname)
-              : t(translations.registerForm.orgname)
-            }
+              {values.userType === "individual"
+                ? t(translations.registerForm.fullname)
+                : t(translations.registerForm.orgname)}
             </p>
             <Field
               type="text"
@@ -138,11 +141,13 @@ const RegisterForm = () => {
 
           {/* Email */}
           <div>
-            <p className="text-gray-2 text-[0.875rem] md:text-[1rem]">{t(translations.registerForm.email)}</p>
+            <p className="text-gray-2 text-[0.875rem] md:text-[1rem]">
+              {t(translations.registerForm.email)}
+            </p>
             <Field
               type="email"
               name="email"
-              placeholder= {t(translations.registerForm.emailPH)}
+              placeholder={t(translations.registerForm.emailPH)}
               className={`w-full border dark:border-white rounded-lg text-[1rem] placeholder-gray-2 dark:bg-black dark:text-white dark:placeholder-white  p-3 h-[42px] md:h-[48px] focus:outline-none focus:border-primary-green 
                 ${touched.email && errors.email ? "border-red" : "border-gray-1"}`}
             />
@@ -155,12 +160,14 @@ const RegisterForm = () => {
 
           {/* Password */}
           <div>
-            <p className="text-gray-2 text-[0.875rem] md:text-[1rem]">{t(translations.registerForm.password)}</p>
+            <p className="text-gray-2 text-[0.875rem] md:text-[1rem]">
+              {t(translations.registerForm.password)}
+            </p>
             <div className="relative">
               <Field
                 type={showPassword ? "text" : "password"}
                 name="password"
-                placeholder= {t(translations.registerForm.passwordPH)}
+                placeholder={t(translations.registerForm.passwordPH)}
                 className={`w-full border dark:border-white rounded-lg text-[1rem] placeholder-gray-2 dark:bg-black dark:text-white  dark:placeholder-white  p-3 h-[42px] md:h-[48px] focus:outline-none focus:border-primary-green 
                   ${touched.password && errors.password ? "border-red" : "border-gray-1"}`}
               />
@@ -187,9 +194,18 @@ const RegisterForm = () => {
             >
               {t(translations.registerForm.submit)}
             </button>
+            {/* Invisible reCAPTCHA Comp. */}
+            <ReCAPTCHA
+              ref={recaptchaRef}
+              sitekey={import.meta.env.VITE_GOOGLE_RECAPTCHA_SITE_KEY}
+              size="invisible"
+              onChange={(token) => onRecaptchaVerify(token, formValuesRef.current, "register")} // Called after successful verification
+            />
 
             <div className="text-center mt-4">
-              <span className="text-gray-2 dark:text-white">{t(translations.registerForm.haveAccount)}</span>
+              <span className="text-gray-2 dark:text-white">
+                {t(translations.registerForm.haveAccount)}
+              </span>
               <Link to="/login" className="ml-1 text-primary-green font-semibold underline">
                 {t(translations.registerForm.login)}
               </Link>
@@ -199,7 +215,9 @@ const RegisterForm = () => {
               <div className="flex flex-col items-center">
                 <div className="flex items-center my-4">
                   <div className="flex-1 border-t w-[300px] border-gray-2 dark:border-white"></div>
-                  <p className="text-gray-2 dark:text-white text-[0.875rem] text-center mx-5">{t(translations.registerForm.or)}</p>
+                  <p className="text-gray-2 dark:text-white text-[0.875rem] text-center mx-5">
+                    {t(translations.registerForm.or)}
+                  </p>
                   <div className="flex-1 border-t border-gray-2 dark:border-white"></div>
                 </div>
 
@@ -215,7 +233,7 @@ const RegisterForm = () => {
 
             {/* Terms and Conditions */}
             <p className="text-[0.75rem] mt-5 text-gray-2 dark:text-white text-center">
-            {t(translations.registerForm.pTerms)}{" "}
+              {t(translations.registerForm.pTerms)}{" "}
               <Link
                 to="/terms"
                 className="text-primary-green dark:text-white underline font-semibold"

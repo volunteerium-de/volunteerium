@@ -1,7 +1,11 @@
 import React, { useState, useRef } from "react"
 import { useEffect } from "react"
+import { useTranslation } from "react-i18next"
+import { translations } from "../../locales/translations"
+translations
 
 const UpdateDocumentModal = ({ isOpen, onClose, documentTitle, document, onUpdate }) => {
+  const {t} = useTranslation()
   const [file, setFile] = useState(null)
   const [fileName, setFileName] = useState("")
   const fileInputRef = useRef(null)
@@ -55,7 +59,7 @@ const UpdateDocumentModal = ({ isOpen, onClose, documentTitle, document, onUpdat
             onClose()
             handleResetClick()
           } else {
-            throw new Error("Error updating file.")
+            throw new Error( t(translations.updateDoc.error))
           }
         })
         .catch((error) => {
@@ -73,11 +77,11 @@ const UpdateDocumentModal = ({ isOpen, onClose, documentTitle, document, onUpdat
       <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
         <div className="bg-white p-6 rounded-lg max-w-[654px] w-full">
           <h2 className="text-[1.75rem] leading-[1.464] text-center font-semibold mb-4">
-            Update Document
+          {t(translations.updateDoc.h2)}
           </h2>
 
           <div className="max-w-[696px] mx-auto">
-            <h1 className="text-gray-2 leading-[1.5625]">Document Title</h1>
+            <h1 className="text-gray-2 leading-[1.5625]"> {t(translations.updateDoc.h1)}</h1>
             <label htmlFor="certification" name="certification"></label>
             <input
               id="certification"
@@ -95,7 +99,7 @@ const UpdateDocumentModal = ({ isOpen, onClose, documentTitle, document, onUpdat
                   className="block font-medium px-[10px] py-[5px] mt-[20px] border border-primary-green rounded-md text-primary-green hover:bg-primary-green-dark transition duration-300"
                   onClick={file ? handleResetClick : handleAddNewClick}
                 >
-                  {file ? "Reset" : "Select file"}
+                  {file ? t(translations.updateDoc.reset) :  t(translations.updateDoc.selectFile)}
                 </button>
               </div>
               {/* File upload input */}
@@ -113,14 +117,14 @@ const UpdateDocumentModal = ({ isOpen, onClose, documentTitle, document, onUpdat
               className="bg-gray-1 text-white px-4 py-2 rounded-md font-medium leading-[1.5625] w-[150px]"
               onClick={onClose}
             >
-              Cancel
+               {t(translations.updateDoc.cancel)}
             </button>
             <button
               className="bg-primary-green px-4 py-2 rounded-md text-white font-medium leading-[1.5625] w-[150px]"
               onClick={handleUpdateClick}
               disabled={!title.trim()} // If the title is empty, the button is disabled.
             >
-              Update
+              {t(translations.updateDoc.update)}
             </button>
           </div>
         </div>

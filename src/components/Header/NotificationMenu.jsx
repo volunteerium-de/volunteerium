@@ -1,11 +1,17 @@
 /* eslint-disable react/prop-types */
 import { useState, useEffect, useRef } from "react"
 import { FaBell } from "react-icons/fa"
+import { enUS, de } from "date-fns/locale"
 import { formatDistanceToNow } from "date-fns"
 import { useSelector } from "react-redux"
 import useChatCall from "../../hooks/useChatCall"
+import { useTranslation } from "react-i18next"
+import { translations } from "../../locales/translations"
+import i18n from "../../i18n"
+translations
 
 const NotificationMenu = () => {
+  const { t } = useTranslation()
   const { fetchNotifications } = useChatCall()
   const { notifications } = useSelector((state) => state.chat)
   const [isOpen, setIsOpen] = useState(false)
@@ -19,7 +25,9 @@ const NotificationMenu = () => {
 
   // Time ago calculation
   const timeAgo = (timestamp) => {
-    return formatDistanceToNow(new Date(timestamp), { addSuffix: true })
+    const locales = { en: enUS, de: de }
+    const locale = locales[i18n.language] || enUS
+    return formatDistanceToNow(new Date(timestamp), { addSuffix: true, locale })
   }
 
   // Close the menu when clicking outside
@@ -73,12 +81,14 @@ const NotificationMenu = () => {
       {isOpen && (
         <div className="absolute right-2 mt-3 w-96 bg-white rounded-lg shadow-lg z-10">
           {/* Menu Header */}
-          <div className="bg-primary-green text-white p-2 rounded-t-lg">Notifications</div>
+          <div className="bg-primary-green text-white p-2 rounded-t-lg">
+            {t(translations.notifMenu.notif)}
+          </div>
 
           {/* Notification List */}
           <div className="max-h-80 overflow-y-auto">
             {notifications.length > 0 ? (
-              notifications.map(({ _id, content, isRead, createdAt }) => (
+              notifications.map(({ _id, contentEN, contentDE, isRead, createdAt }) => (
                 <div
                   key={_id}
                   className={`p-3 border-b border-light-gray-2 dark:border-gray-2  ${
@@ -93,7 +103,7 @@ const NotificationMenu = () => {
                     <div>
                       {/* Notification Text */}
                       <h4 className="text-base font-normal text-primary-green dark:text-white ">
-                        {content}
+                        {i18n.language === "de" ? contentDE : contentEN}
                       </h4>
                       {/* Time Ago */}
                       <p className="text-xs font-light text-gray-2 dark:text-gray-1">
@@ -106,7 +116,7 @@ const NotificationMenu = () => {
             ) : (
               <div>
                 <p className="text-center text-gray-2 py-3 dark:text-light-gray-2">
-                  No notifications
+                  {t(translations.notifMenu.noNotif)}
                 </p>
               </div>
             )}

@@ -12,7 +12,7 @@ const useEventCall = () => {
       const { data } = await axiosWithPublic(url)
       return data
     } catch (error) {
-      console.log(error)
+      console.log(error.response.data.message)
     }
   }
 
@@ -22,7 +22,7 @@ const useEventCall = () => {
       // console.log(data)
       return data
     } catch (error) {
-      console.log(error)
+      console.log(error.response.data.message)
     }
   }
 
@@ -32,7 +32,7 @@ const useEventCall = () => {
       const { data } = await axiosWithPublic("interests")
       dispatch(getCategoriesSuccess(data.data))
     } catch (error) {
-      console.log(error)
+      console.log(error.response.data.message)
       dispatch(fetchFail())
     }
   }
@@ -45,6 +45,7 @@ const useEventCall = () => {
         },
       })
       toastNotify("success", "Event created successfully")
+
       // getEvents("events")
     } catch (error) {
       toastNotify(

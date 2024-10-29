@@ -11,6 +11,9 @@ import toastNotify from "../utils/toastNotify"
 import { useEffect } from "react"
 import { useLocation } from "react-router-dom"
 import useAuthCall from "../hooks/useAuthCall"
+import { useTranslation } from "react-i18next"
+import { translations } from "../locales/translations"
+translations
 
 // Validation schema
 const IndividualSchema = Yup.object({
@@ -20,6 +23,7 @@ const IndividualSchema = Yup.object({
 })
 
 const SetupIndividual = () => {
+  const {t} = useTranslation()
   const { currentUser: user } = useSelector((state) => state.auth)
   // console.log(user)
   const { updateUser } = useAccountCall()
