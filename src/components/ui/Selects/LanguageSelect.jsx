@@ -30,17 +30,17 @@ const LanguageSelect = ({}) => {
       <label className="block text-dark-gray-2 mb-2 dark:text-white">Language</label>
       <Select
         isMulti
-        name="language"
+        name="languages"
         options={languageOptions}
         className="basic-multi-select"
         classNamePrefix="select"
-        onChange={(selectedOptions) =>
+        onChange={(selectedOptions) => {
           setFieldValue(
-            "language",
+            "languages",
             selectedOptions ? selectedOptions.map((option) => option.value) : []
           )
-        }
-        value={languageOptions.filter((option) => values.language.includes(option.value))}
+        }}
+        value={languageOptions?.filter((option) => values.languages?.includes(option.value))}
         placeholder="Add event languages"
         styles={{
           control: (provided, state) => ({
