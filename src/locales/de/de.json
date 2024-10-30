@@ -487,7 +487,52 @@
   "p3": "zu einem Unterschied bei",
   "p4": "Bevor wir beginnen, möchten wir ein bisschen mehr über Sie erfahren.",
   "link": "Lass uns anfangen!"
-}
+},
+
+"privacyPolicy": {
+    "h1": "Datenschutzrichtlinie",
+    "p1": "Gültigkeitsdatum:",
+    "p2": "30.10.2024",
+    "p3": "Vielen Dank, dass Sie Volunteerium nutzen, eine Plattform, die Veranstalter mit Freiwilligen verbindet. Ihre Privatsphäre ist uns wichtig, und wir verpflichten uns, Ihre persönlichen Daten zu schützen. Diese Datenschutzrichtlinie erklärt, wie wir Ihre persönlichen Daten sammeln, verwenden und teilen, wenn Sie unsere Plattform nutzen. Indem Sie Volunteerium verwenden, stimmen Sie den in dieser Richtlinie beschriebenen Praktiken zu.",
+    "h2info": "1. Informationen, die wir sammeln",
+    "p4": "Wir sammeln die folgenden Arten von Informationen, wenn Sie Volunteerium nutzen:",
+    "p5": "Persönliche Informationen:",
+    "p6": "Dazu gehören Ihr Name, Ihre E-Mail-Adresse, Telefonnummer, Profilfoto und alle weiteren Details, die Sie bei der Erstellung eines Kontos angeben.",
+    "p7": "Veranstaltungsinformationen:",
+    "p8": "Wenn Sie ein Veranstalter sind, sammeln wir Details zu den von Ihnen erstellten Veranstaltungen, einschließlich Veranstaltungsbeschreibungen, Daten und Standorte.",
+    "p9": "Aktivitätsdaten:",
+    "p10": "Wir sammeln Daten zu Ihren Aktivitäten auf der Plattform, wie die Veranstaltungen, für die Sie sich anmelden oder erstellen, gesendete Nachrichten und abgegebene Feedbacks.",
+    "h2use": "2. Wie wir Ihre Informationen verwenden",
+    "li1": "Verbindungen zwischen Veranstaltern und Freiwilligen erleichtern.",
+    "li2": "Unsere Dienstleistungen bereitstellen und verbessern.",
+    "li3": "Benachrichtigungen über Veranstaltungen, Aktualisierungen und Möglichkeiten senden.",
+    "li4": "Sicherheit und Integrität unserer Plattform gewährleisten.",
+    "li5": "Nutzungsanalyse zur Verbesserung der Benutzererfahrung.",
+    "h2share": "3. Wie wir Ihre Informationen teilen",
+    "li6": "Mit Veranstaltern:",
+    "li7": "Wenn Sie Freiwilliger sind, werden Ihre Basisinformationen (z. B. Name, E-Mail) den Veranstaltern der Veranstaltungen, für die Sie sich anmelden, zur Verfügung gestellt.",
+    "li8": "Rechtliche Verpflichtungen:",
+    "li9": "Wir können Ihre Informationen offenlegen, um gesetzlichen Anforderungen nachzukommen oder unsere Rechte zu schützen.",
+    "li10": "Dienstleister:",
+    "li11": "Wir können Ihre Informationen mit Drittanbietern teilen, die uns beim Betrieb der Plattform unterstützen (z. B. Hosting-Dienste).",
+    "h2retention": "4. Datenaufbewahrung",
+    "p11": "Wir bewahren Ihre Informationen so lange auf, wie es notwendig ist, um unsere Dienstleistungen bereitzustellen und die in dieser Datenschutzrichtlinie beschriebenen Zwecke zu erfüllen. Wenn Sie Ihr Konto löschen, entfernen wir Ihre persönlichen Daten aus unseren aktiven Systemen, jedoch können einige Daten aus rechtlichen oder betrieblichen Gründen aufbewahrt werden.",
+    "h2security": "5. Sicherheit Ihrer Informationen",
+    "p12": "Wir ergreifen angemessene Maßnahmen, um Ihre persönlichen Daten vor unbefugtem Zugriff, Änderung oder Zerstörung zu schützen. Kein System ist jedoch völlig sicher, und wir können keine absolute Sicherheit garantieren.",
+    "h2rights": "6. Ihre Rechte",
+    "li12": "Zugriff:",
+    "li13": "Sie können eine Kopie der persönlichen Daten anfordern, die wir über Sie speichern.",
+    "li14": "Korrektur:",
+    "li15": "Sie können Ihre Informationen jederzeit über Ihre Kontoeinstellungen aktualisieren oder korrigieren.",
+    "li16": "Löschung:",
+    "li17": "Sie können die Löschung Ihrer persönlichen Daten verlangen, vorbehaltlich etwaiger gesetzlicher Verpflichtungen, die uns zur Aufbewahrung verpflichten.",
+    "h2changes": "7. Änderungen dieser Richtlinie",
+    "p13": "Wir können diese Datenschutzrichtlinie von Zeit zu Zeit aktualisieren, um Änderungen in unseren Praktiken oder gesetzlichen Anforderungen widerzuspiegeln. Wir werden Sie über wesentliche Änderungen informieren, indem wir die aktualisierte Richtlinie auf unserer Website veröffentlichen.",
+    "h2contact": "8. Kontaktieren Sie uns",
+    "p14": "Wenn Sie Fragen oder Bedenken bezüglich dieser Datenschutzrichtlinie oder der Verarbeitung Ihrer persönlichen Daten haben, kontaktieren Sie uns bitte unter:",
+    "p15": "Volunteerium-Team",
+    "p16": "E-Mail: info.volunteerium@gmail.com"
+  }
 
 
 
