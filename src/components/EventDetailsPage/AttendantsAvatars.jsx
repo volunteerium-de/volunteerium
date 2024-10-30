@@ -1,4 +1,6 @@
 import React from "react"
+import { UserAvatar } from "../ui/Avatar/userAvatar"
+import { useNavigate } from "react-router-dom"
 
 const AttendantsAvatars = ({
   participants,
@@ -14,6 +16,12 @@ const AttendantsAvatars = ({
       : 0
     : 0
   const remainingCount = participants ? participants.length - visibleParticipants.length : 0
+  console.log(visibleParticipants)
+
+  const navigate = useNavigate()
+  const handleAvatarClick = (userId) => {
+    navigate(`/profile/${userId}`)
+  }
 
   return (
     <div>
@@ -22,14 +30,13 @@ const AttendantsAvatars = ({
       </h3>
       <div className={`avatars flex flex-wrap gap-${gap} py-2`}>
         {/* Display the first 6 avatars */}
+
         {visibleParticipants ? (
           visibleParticipants.map(({ userId }, index) => (
-            <img
-              key={index}
-              src={userId?.userDetailsId?.avatar}
-              alt="user avatar"
-              className="participant-avatar w-10 h-10 rounded-full object-cover"
-            />
+            <div key={index} onClick={() => handleAvatarClick(userId._id)}>
+              {console.log("adsad", userId)}
+              <UserAvatar user={userId} size="h-6 w-6" backgroundActive={true} />
+            </div>
           ))
         ) : (
           <p>No attendants yet</p>

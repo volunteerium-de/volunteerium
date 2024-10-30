@@ -11,6 +11,8 @@ import { useNavigate } from "react-router-dom"
 import { translations } from "../locales/translations"
 import { useTranslation } from "react-i18next"
 import defaultEventPhoto from "../assets/default-event-photo-.jpg"
+import ReportEvent from "../components/EventDetailsPage/ReportEvent"
+import { UserAvatar } from "../components/ui/Avatar/userAvatar"
 
 const EventDetails = () => {
   const [singleEvent, setSingleEvent] = useState({})
@@ -20,6 +22,11 @@ const EventDetails = () => {
   const navigate = useNavigate()
   const { t } = useTranslation()
   const totalParticipants = singleEvent?.eventParticipantIds?.length
+
+  const [isReportModalOpen, setIsReportModalOpen] = useState(false)
+
+  // const handleOpenReportModal = () => setIsReportModalOpen(true)
+  // const handleCloseReportModal = () => setIsReportModalOpen(false)
 
   useEffect(() => {
     const fetchSingleEvent = async () => {
@@ -91,11 +98,7 @@ const EventDetails = () => {
                 to={`/profile/${singleEvent?.createdBy?._id}`}
                 className="flex items-center gap-2 mb-4"
               >
-                <img
-                  src={userType === "individual" ? avatar : organizationLogo}
-                  alt="event creator avatar"
-                  className="w-8 h-8 rounded-full object-cover"
-                />
+                <UserAvatar user={singleEvent?.createdBy} size="h-8 w-8" backgroundActive={true} />
                 <p className="text-primary-green">
                   {userType === "individual"
                     ? formatName(fullName, isFullNameDisplay)
@@ -142,7 +145,9 @@ const EventDetails = () => {
               {/* Report Button */}
               <div className="flex md:hidden items-center justify-center text-gray-2 text-[0.75rem] md:text-[0.875rem] mt-3">
                 <GoReport />
-                <span className="ml-1">Report this event</span>
+                <span className="ml-1 cursor-pointer" onClick={() => setIsReportModalOpen(true)}>
+                  Report this event
+                </span>
               </div>
             </div>
 
@@ -162,10 +167,19 @@ const EventDetails = () => {
               {/* Report Button */}
               <div className="sm:flex items-center justify-center text-gray-2 text-[0.75rem] md:text-[0.875rem] mt-3">
                 <GoReport />
-                <span className="ml-1">Report this event</span>
+                <span className="ml-1" onClick={() => setIsReportModalOpen(true)}>
+                  Report this event
+                </span>
               </div>
             </div>
           </div>
+          {isReportModalOpen && (
+            <ReportEvent
+              eventTitle={title}
+              isOpen={isReportModalOpen}
+              onClose={() => setIsReportModalOpen(false)}
+            />
+          )}
         </div>
       )}
     </>
