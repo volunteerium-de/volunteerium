@@ -14,7 +14,6 @@ const SelectInput = ({ name, options, label, placeholder, isMultiple }) => {
         classNamePrefix="select"
         isMulti={isMultiple}
         onChange={(selectedOption) => {
-          console.log(selectedOption)
           setFieldValue(
             name,
             isMultiple
