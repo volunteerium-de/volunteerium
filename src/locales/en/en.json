@@ -187,11 +187,13 @@
     "delete": "Delete"
   },
 
-  "delAccount": {
-    "h2": "Delete Account",
-    "p": "Are you sure you want to delete your account? This action cannot be undone.",
+  "delModal": {
+    "account-title": "Delete Account",
+    "account-desc": "Are you sure you want to delete your account? This action cannot be undone.",
+    "document-title": "Delete Document",
+    "document-desc": "Are you sure you want to delete your document? This action cannot be undone.",
     "cancelButton": "Cancel",
-    "delButton": "Delete Account"
+    "delButton": "Delete"
   },
 
   "indvSettings": {
@@ -315,7 +317,7 @@
     "user": "User",
     "profile": "Profile",
     "eventMng": "Event Management",
-    "settings": "Setting",
+    "settings": "Settings",
     "logout": "Logout",
     "login": "Login",
     "register": "Register",

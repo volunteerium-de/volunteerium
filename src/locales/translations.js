@@ -190,11 +190,13 @@ export const translations = {
     delete: "avatarEdit.delete",
   },
 
-  delAccount: {
-    h2: "delAccount.h2",
-    p: "delAccount.p",
-    cancelButton: "delAccount.cancelButton",
-    delButton: "delAccount.delButton",
+  delModal: {
+    accountTitle: "delModal.account-title",
+    accountDesc: "delModal.account-desc",
+    documentTitle: "delModal.document-title",
+    documentDesc: "delModal.document-desc",
+    cancelButton: "delModal.cancelButton",
+    delButton: "delModal.delButton",
   },
 
   indvSettings: {

@@ -1,9 +1,10 @@
 import React, { useState } from "react"
 import PasswordModal from "./PasswordModal"
-import DeleteAccountModal from "./DeleteAccountModal"
+import DeleteModal from "../ui/Modals/DeleteModal"
 import { useTranslation } from "react-i18next"
 import { translations } from "../../locales/translations"
 import { useSelector } from "react-redux"
+import useAccountCall from "../../hooks/useAccountCall"
 
 const SecuritySettings = () => {
   const { t } = useTranslation()
@@ -11,16 +12,21 @@ const SecuritySettings = () => {
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false)
   const [feedbackMessage, setFeedbackMessage] = useState("")
   const { currentUser } = useSelector((state) => state.auth)
+  const { deleteUser } = useAccountCall()
 
   const openModal = () => setIsModalOpen(true)
   const closeModal = () => setIsModalOpen(false)
   const openDeleteModal = () => setIsDeleteModalOpen(true)
   const closeDeleteModal = () => setIsDeleteModalOpen(false)
 
-  const handleDeleteAccount = async () => {}
+  const handleDeleteAccount = async () => {
+    await deleteUser()
+    closeDeleteModal()
+  }
+
   return (
-    <div className="font-Poppins max-w-[698px] mx-auto py-2 px-12 w-full h-auto bg-light-gray rounded-md">
-      <h1 className="text-center font-medium text-[1.5rem] my-[50px]">
+    <div className="max-w-4xl mx-auto p-8 bg-light-gray  dark:bg-dark-gray-3 rounded-lg shadow-md">
+      <h1 className="text-center font-medium text-[1.25rem] my-[50px]">
         {t(translations.secSett.h1)}
       </h1>
 
@@ -111,12 +117,15 @@ const SecuritySettings = () => {
         </div>
       </div>
 
-      {/* Delete Account Modal */}
-      <DeleteAccountModal
-        isOpen={isDeleteModalOpen}
-        onClose={closeDeleteModal}
-        onDelete={handleDeleteAccount}
-      />
+      {/* Delete Modal */}
+      {isDeleteModalOpen && (
+        <DeleteModal
+          onClose={closeDeleteModal}
+          onDelete={handleDeleteAccount}
+          title={t(translations.delModal.accountTitle)}
+          description={t(translations.delModal.accountDesc)}
+        />
+      )}
 
       {feedbackMessage && <div className="mt-4 text-center text-green-500">{feedbackMessage}</div>}
     </div>

@@ -187,11 +187,13 @@
     "delete": "Streichen"
   },
 
-  "delAccount": {
-    "h2": "Konto löschen",
-    "p": "Sind Sie sicher, dass Sie Ihr Konto löschen möchten? Diese Aktion kann nicht rückgängig gemacht werden.",
+  "delModal": {
+    "account-title": "Konto löschen",
+    "account-desc": "Sind Sie sicher, dass Sie Ihr Konto löschen möchten? Diese Aktion kann nicht rückgängig gemacht werden.",
+    "document-title": "Dokument löschen",
+    "document-desc": "Sind Sie sicher, dass Sie Ihr Dokument löschen möchten? Diese Aktion kann nicht rückgängig gemacht werden.",
     "cancelButton": "Stornieren",
-    "delButton": "Konto löschen"
+    "delButton": "Löschen"
   },
 
   "indvSettings": {

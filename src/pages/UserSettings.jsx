@@ -52,7 +52,7 @@ const UserSettings = () => {
           currentUser={{}}
           onEditAvatar={true}
         />
-        <div className="flex-1 p-5">{renderContent()}</div>
+        <div className="flex-1 p-3">{renderContent()}</div>
       </div>
     </div>
   )

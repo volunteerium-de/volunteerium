@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux"
-import { fetchFail, fetchStart, fetchSuccess } from "../features/authSlice"
+import { fetchFail, fetchStart, fetchSuccess, logoutSuccess } from "../features/authSlice"
 import { useNavigate } from "react-router-dom"
 import useAxios from "./useAxios"
 import toastNotify from "../utils/toastNotify"
@@ -11,7 +11,7 @@ const useAccountCall = () => {
   const { currentUser } = useSelector((state) => state.auth)
   const { axiosWithToken } = useAxios()
 
-  const updateUser = async (userData) => {
+  const updateUserDetails = async (userData) => {
     dispatch(fetchStart())
     try {
       const { data } = await axiosWithToken.put(
@@ -33,6 +33,23 @@ const useAccountCall = () => {
       const { data } = await axiosWithToken(`users/${userId}`)
       console.log(data)
       return data
+    } catch (error) {
+      dispatch(fetchFail())
+      toastNotify("error", error.response.data.message)
+    }
+  }
+
+  const deleteUser = async () => {
+    dispatch(fetchStart())
+    try {
+      const { data } = await axiosWithToken.delete(`users/${currentUser?._id}`)
+      console.log(data)
+      dispatch(logoutSuccess())
+      toastNotify("success", data.message)
+
+      setTimeout(() => {
+        navigate("/")
+      }, 0)
     } catch (error) {
       dispatch(fetchFail())
       toastNotify("error", error.response.data.message)
@@ -66,7 +83,7 @@ const useAccountCall = () => {
   const deleteAccountFile = async (documentId) => {
     dispatch(fetchStart())
     try {
-      const data = await axiosWithToken.delete(`documents/${documentId}`)
+      const { data } = await axiosWithToken.delete(`documents/${documentId}`)
       dispatch(fetchSuccess(data))
       return data
     } catch (error) {
@@ -75,7 +92,14 @@ const useAccountCall = () => {
     }
   }
 
-  return { updateUser, createAccountFile, updateAccountFile, deleteAccountFile, getSingleUser }
+  return {
+    updateUserDetails,
+    deleteUser,
+    createAccountFile,
+    updateAccountFile,
+    deleteAccountFile,
+    getSingleUser,
+  }
 }
 
 export default useAccountCall

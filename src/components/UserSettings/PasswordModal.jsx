@@ -54,7 +54,7 @@ const PasswordModal = ({ isOpen, onClose }) => {
                     formik.touched.currentPassword && formik.errors.currentPassword
                       ? "border-danger"
                       : "border-gray-1"
-                  } rounded-lg p-4 focus:outline-none focus:ring-2 focus:ring-primary-green text-dark-gray-1`}
+                  } focus:ring-2 focus:ring-primary-green text-dark-gray-1 p-2 border border-gray-1 rounded h-[100px] focus:outline-none `}
                 />
               </div>
               {formik.touched.currentPassword && formik.errors.currentPassword ? (

@@ -32,7 +32,7 @@ const SetupOrganization = () => {
   const { t } = useTranslation()
   const { currentUser: user } = useSelector((state) => state.auth)
   const [step, setStep] = useState(1)
-  const { updateUser } = useAccountCall()
+  const { updateUserDetails } = useAccountCall()
   const { logout } = useAuthCall()
   const [fileName, setFileName] = useState("")
   const [logoPreview, setLogoPreview] = useState(null) // For logo preview
@@ -141,7 +141,7 @@ const SetupOrganization = () => {
               validationSchema={OrganizationSchema}
               onSubmit={(values) => {
                 console.log(values)
-                updateUser({ ...values, isProfileSetup: true })
+                updateUserDetails({ ...values, isProfileSetup: true })
                 navigate("/")
               }}
             >

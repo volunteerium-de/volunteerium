@@ -1,29 +1,53 @@
 import React, { useState } from "react"
 import AddNewDocumentModal from "./AddNewDocumentModal"
-import UpdateDocumentModal from "./UpdateDocumentModal"
+// import UpdateDocumentModal from "./UpdateDocumentModal"
 import { useTranslation } from "react-i18next"
 import { translations } from "../../locales/translations"
 import { FaExternalLinkAlt } from "react-icons/fa"
+import DeleteModal from "../ui/Modals/DeleteModal"
+import useAccountCall from "../../hooks/useAccountCall"
+import toastNotify from "../../utils/toastNotify"
 
 // Modal component
 const MyDocumentsModal = ({ isOpen, onClose, certificates }) => {
   const { t } = useTranslation()
+  const { deleteAccountFile } = useAccountCall()
   const [isAddNewModalOpen, setIsAddNewModalOpen] = useState(false)
-  const [isUpdateModalOpen, setIsUpdateModalOpen] = useState(false)
+  // const [isUpdateModalOpen, setIsUpdateModalOpen] = useState(false)
+  const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false)
   const [currentDocument, setCurrentDocument] = useState(null)
 
   const openAddNewModal = () => setIsAddNewModalOpen(true)
   const closeAddNewModal = () => setIsAddNewModalOpen(false)
 
-  const closeUpdateModal = () => setIsUpdateModalOpen(false)
+  // const closeUpdateModal = () => setIsUpdateModalOpen(false)
+  const closeDeleteModal = () => setIsDeleteModalOpen((prevState) => !prevState)
 
-  const handleDelete = (id) => {}
+  const handleDelete = async () => {
+    if (currentDocument && currentDocument._id) {
+      try {
+        const data = await deleteAccountFile(currentDocument._id)
+        toastNotify("success", data.message)
+      } catch (error) {
+        toastNotify("error", error.response.data.message)
+      } finally {
+        closeDeleteModal()
+      }
+    } else {
+      toastNotify("error", "Please select a file to delete")
+    }
+  }
 
-  const handleUpdate = (updatedDocument) => {}
+  // const handleUpdate = (updatedDocument) => {}
 
-  const handleOpenUpdateModal = (certificate) => {
-    setCurrentDocument(certificate)
-    setIsUpdateModalOpen(true)
+  // const handleOpenUpdateModal = (certificate) => {
+  //   setCurrentDocument(certificate)
+  //   setIsUpdateModalOpen(true)
+  // }
+
+  const handleOpenDeleteModal = (deletedDocument) => {
+    setCurrentDocument(deletedDocument)
+    setIsDeleteModalOpen(true)
   }
 
   if (!isOpen) return null
@@ -49,11 +73,11 @@ const MyDocumentsModal = ({ isOpen, onClose, certificates }) => {
           <div className="max-h-[300px] overflow-y-auto">
             {certificates.map((certificate) => (
               <div
-                key={certificate.id}
-                className="flex justify-between items-center bg-light-gray mb-[15px] w-full"
+                key={certificate._id}
+                className="flex justify-between items-center bg-light-gray mb-[15px] w-full h-[40px]"
               >
                 <div onClick={() => window.open(certificate.fileUrl, "_blank")}>
-                  <p className="text-dark-gray-1 hover:text-dark-gray-2 cursor-pointer font-medium flex gap-2 items-center">
+                  <p className="text-dark-gray-1 hover:text-dark-gray-2 ml-3 cursor-pointer font-medium flex gap-2 items-center">
                     {certificate.title}{" "}
                     <span>
                       <FaExternalLinkAlt size={12} />
@@ -62,17 +86,17 @@ const MyDocumentsModal = ({ isOpen, onClose, certificates }) => {
                 </div>
                 <div>
                   <button
-                    className="leading-[1.5625] font-bold text-dark-gray-1 mr-[20px]"
-                    onClick={() => handleDelete(certificate.id)}
+                    className="leading-[1.5625] font-semibold text-danger hover:text-danger/30 duration-100 mr-[20px]"
+                    onClick={() => handleOpenDeleteModal(certificate)}
                   >
                     {t(translations.myDocs.delete)}
                   </button>
-                  <button
+                  {/* <button
                     className="leading-[1.5625] font-bold text-primary-green mr-[5px]"
                     onClick={() => handleOpenUpdateModal(certificate)}
                   >
                     {t(translations.myDocs.update)}
-                  </button>
+                  </button> */}
                 </div>
               </div>
             ))}
@@ -91,14 +115,21 @@ const MyDocumentsModal = ({ isOpen, onClose, certificates }) => {
           </button> */}
         </div>
       </div>
-      <UpdateDocumentModal
+      {/* <UpdateDocumentModal
         key={currentDocument ? currentDocument.id : "new"}
         isOpen={isUpdateModalOpen}
         onClose={closeUpdateModal}
         document={currentDocument}
         onUpdate={handleUpdate}
-        documentTitle={currentDocument ? currentDocument.name : ""}
-      />
+      /> */}
+      {isDeleteModalOpen && (
+        <DeleteModal
+          onClose={closeDeleteModal}
+          onDelete={handleDelete}
+          title={t(translations.delModal.documentTitle)}
+          description={t(translations.delModal.documentDesc)}
+        />
+      )}
     </div>
   )
 }
