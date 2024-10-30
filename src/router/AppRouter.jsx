@@ -21,6 +21,7 @@ import { Navigate } from "react-router-dom"
 import GoogleAuthSuccess from "../pages/GoogleAuthSuccess"
 import GoogleAuthFail from "../pages/GoogleAuthFail"
 import EventManagement from "../pages/EventManagement"
+import PrivacyPolicy from "../pages/PrivacyPolicy";
 
 const AppRouter = () => {
   const { currentUser: user } = useSelector((state) => state.auth)
@@ -70,6 +71,7 @@ const AppRouter = () => {
             }
           />
         </Route>
+        <Route path="/privacy-policy" element={<PrivacyPolicy />} />
         <Route path="*" element={<NotFound />} />
 
         {/* Conditinally Rendered Routers */}
