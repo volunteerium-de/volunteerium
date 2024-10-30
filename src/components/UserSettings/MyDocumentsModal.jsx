@@ -3,16 +3,11 @@ import AddNewDocumentModal from "./AddNewDocumentModal"
 import UpdateDocumentModal from "./UpdateDocumentModal"
 import { useTranslation } from "react-i18next"
 import { translations } from "../../locales/translations"
+import { FaExternalLinkAlt } from "react-icons/fa"
 
 // Modal component
-const MyDocumentsModal = ({
-  isOpen,
-  onClose,
-  certificates,
-  onDeleteCertificate,
-  onUpdateCertificates,
-}) => {
-  const {t} = useTranslation()
+const MyDocumentsModal = ({ isOpen, onClose, certificates }) => {
+  const { t } = useTranslation()
   const [isAddNewModalOpen, setIsAddNewModalOpen] = useState(false)
   const [isUpdateModalOpen, setIsUpdateModalOpen] = useState(false)
   const [currentDocument, setCurrentDocument] = useState(null)
@@ -22,47 +17,13 @@ const MyDocumentsModal = ({
 
   const closeUpdateModal = () => setIsUpdateModalOpen(false)
 
-  const handleDelete = (id) => {
-    const updatedCertificates = certificates.filter((cert) => cert.id !== id)
-    onUpdateCertificates(updatedCertificates)
-    console.log("Deleted certificate with id:", id)
-  }
+  const handleDelete = (id) => {}
 
-  const handleUpdate = (updatedDocument) => {
-    const updatedCertificates = certificates.map((cert) =>
-      cert.id === updatedDocument.id ? updatedDocument : cert
-    )
-    onUpdateCertificates(updatedCertificates)
-    console.log("Updated document:", updatedDocument)
-    setIsUpdateModalOpen(false)
-  }
+  const handleUpdate = (updatedDocument) => {}
 
   const handleOpenUpdateModal = (certificate) => {
     setCurrentDocument(certificate)
     setIsUpdateModalOpen(true)
-  }
-
-  const handleSaveChanges = async () => {
-    try {
-      const response = await fetch("https://api.example.com/documents", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(certificates),
-      })
-
-      if (!response.ok) {
-        throw new Error("Network response was not ok")
-      }
-
-      const result = await response.json()
-      console.log("Saved documents:", result)
-      alert(t(translations.myDocs.alertSuccess))
-    } catch (error) {
-      console.error("Error saving documents:", error)
-      alert( t(translations.myDocs.alertSuccess) + error.message)
-    }
   }
 
   if (!isOpen) return null
@@ -71,11 +32,9 @@ const MyDocumentsModal = ({
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 backdrop-blur-sm">
       <div className="bg-white p-6 rounded-lg max-w-[954px] w-full px-[20px] py-[40px]">
         <h2 className="text-[1.75rem] leading-[1.4642] font-semibold mb-4 text-center">
-        {t(translations.myDocs.h2)}
+          {t(translations.myDocs.h2)}
         </h2>
-        <p className="text-center text-dark-gray-1 leading-[1.5625]">
-        {t(translations.myDocs.p)}
-        </p>
+        <p className="text-center text-dark-gray-1 leading-[1.5625]">{t(translations.myDocs.p)}</p>
 
         <div className="max-w-[669px] mx-auto ">
           <div className="flex justify-end items-center mb-[15px] mt-[25px]">
@@ -93,9 +52,13 @@ const MyDocumentsModal = ({
                 key={certificate.id}
                 className="flex justify-between items-center bg-light-gray mb-[15px] w-full"
               >
-                <div>
-                  <p className="text-dark-gray-1 font-bold">{certificate.name}</p>
-                  <p className="text-[0.875rem] text-dark-gray-1 italic">{certificate.fileName}</p>
+                <div onClick={() => window.open(certificate.fileUrl, "_blank")}>
+                  <p className="text-dark-gray-1 hover:text-dark-gray-2 cursor-pointer font-medium flex gap-2 items-center">
+                    {certificate.title}{" "}
+                    <span>
+                      <FaExternalLinkAlt size={12} />
+                    </span>
+                  </p>
                 </div>
                 <div>
                   <button
@@ -117,18 +80,15 @@ const MyDocumentsModal = ({
         </div>
 
         <div className="flex justify-center gap-3 mt-[25px]">
-          <button
-            className="bg-gray-1 text-white px-4 py-2 rounded-md font-medium leading-[1.5625] w-[150px]"
-            onClick={onClose}
-          >
+          <button className="py-2 px-4 text-primary-green" onClick={onClose}>
             {t(translations.myDocs.cancel)}
           </button>
-          <button
-            className="bg-primary-green px-4 py-2 rounded-md text-white font-medium leading-[1.5625] w-[150px]"
+          {/* <button
+            className="bg-primary-green px-4 py-2 rounded text-white  hover:bg-light-green"
             onClick={handleSaveChanges}
           >
             {t(translations.myDocs.saveChanges)}
-          </button>
+          </button> */}
         </div>
       </div>
       <UpdateDocumentModal

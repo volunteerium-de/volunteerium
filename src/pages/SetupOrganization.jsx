@@ -29,7 +29,7 @@ const OrganizationSchema = Yup.object({
 })
 
 const SetupOrganization = () => {
-  const {t} = useTranslation()
+  const { t } = useTranslation()
   const { currentUser: user } = useSelector((state) => state.auth)
   const [step, setStep] = useState(1)
   const { updateUser } = useAccountCall()
@@ -121,10 +121,10 @@ const SetupOrganization = () => {
           <>
             {/* Step 1 Form */}
             <h2 className="text-[1.75rem] dark:text-white font-bold text-center mb-4">
-            {t(translations.setupOrg.details)}
+              {t(translations.setupOrg.details)}
             </h2>
             <p className="text-dark-gray-1 dark:text-white text-center mb-8">
-            {t(translations.setupOrg.p)}
+              {t(translations.setupOrg.p)}
             </p>
 
             <Formik
@@ -141,7 +141,8 @@ const SetupOrganization = () => {
               validationSchema={OrganizationSchema}
               onSubmit={(values) => {
                 console.log(values)
-                updateUser({ ...values, isProfileSetup: true }, user.userDetailsId._id)
+                updateUser({ ...values, isProfileSetup: true })
+                navigate("/")
               }}
             >
               {({ setFieldValue, values }) => (
@@ -157,7 +158,7 @@ const SetupOrganization = () => {
                       type="text"
                       id="organizationDesc"
                       name="organizationDesc"
-                      placeholder= {t(translations.setupOrg.orgDescPH)}
+                      placeholder={t(translations.setupOrg.orgDescPH)}
                       className="w-full px-4 py-2 dark:text-white dark:bg-black border border-gray-2 rounded-md focus:outline-none focus:ring-1 focus:ring-primary-green"
                     />
                     <div className="min-h-[1.5rem] text-sm">
@@ -251,10 +252,10 @@ const SetupOrganization = () => {
           <>
             {/* Step 2 Form */}
             <h2 className="text-[1.75rem] dark:text-white font-bold text-center mb-2">
-            {t(translations.setupOrg.completeh2)}
+              {t(translations.setupOrg.completeh2)}
             </h2>
             <p className="text-dark-gray-1 dark:text-white text-center mb-2">
-             {t(translations.setupOrg.completeP)}
+              {t(translations.setupOrg.completeP)}
             </p>
 
             <Formik
@@ -295,13 +296,13 @@ const SetupOrganization = () => {
                     <div className="flex items-center space-x-2">
                       <div className="w-2/4">
                         <label htmlFor="streetName" className="block text-gray-2 font-medium mb-1">
-                        {t(translations.setupOrg.streetName)}
+                          {t(translations.setupOrg.streetName)}
                         </label>
                         <Field
                           type="text"
                           id="streetName"
                           name="streetName"
-                          placeholder= {t(translations.setupOrg.streetNamePH)}
+                          placeholder={t(translations.setupOrg.streetNamePH)}
                           className="w-full px-4 py-2 border border-gray-2 rounded-md dark:bg-black dark:text-white focus:outline-none focus:ring-1 focus:ring-primary-green"
                         />
                         <div className="min-h-[1.5rem] text-sm">
@@ -334,13 +335,13 @@ const SetupOrganization = () => {
 
                       <div className="w-1/4">
                         <label htmlFor="zipCode" className="block text-gray-2 font-medium mb-1">
-                        {t(translations.setupOrg.zipCode)}
+                          {t(translations.setupOrg.zipCode)}
                         </label>
                         <Field
                           type="text"
                           id="zipCode"
                           name="zipCode"
-                          placeholder= {t(translations.setupOrg.zipCodePH)}
+                          placeholder={t(translations.setupOrg.zipCodePH)}
                           className="w-full px-4 py-2 border border-gray-2 rounded-md dark:bg-black dark:text-white focus:outline-none focus:ring-1 focus:ring-primary-green"
                         />
                         <div className="min-h-[1.5rem] text-sm">
@@ -352,13 +353,13 @@ const SetupOrganization = () => {
                     <div className="flex items-center space-x-2">
                       <div className="w-1/2">
                         <label htmlFor="city" className="block text-gray-2 font-medium mb-1">
-                        {t(translations.setupOrg.city)}
+                          {t(translations.setupOrg.city)}
                         </label>
                         <Field
                           type="text"
                           id="city"
                           name="city"
-                          placeholder= {t(translations.setupOrg.cityPH)}
+                          placeholder={t(translations.setupOrg.cityPH)}
                           className="w-full px-4 py-2 border border-gray-2 rounded-md dark:bg-black dark:text-white focus:outline-none focus:ring-1 focus:ring-primary-green"
                         />
                         <div className="min-h-[1.5rem] text-sm">
@@ -367,13 +368,13 @@ const SetupOrganization = () => {
                       </div>
                       <div className="w-1/2">
                         <label htmlFor="country" className="block text-gray-2 font-medium mb-1">
-                        {t(translations.setupOrg.country)}
+                          {t(translations.setupOrg.country)}
                         </label>
                         <Field
                           type="text"
                           id="country"
                           name="country"
-                          placeholder= {t(translations.setupOrg.countryPH)}
+                          placeholder={t(translations.setupOrg.countryPH)}
                           className="w-full px-4 py-2 border border-gray-2 rounded-md dark:bg-black dark:text-white focus:outline-none focus:ring-1 focus:ring-primary-green"
                         />
                         <div className="min-h-[1.5rem] text-sm">

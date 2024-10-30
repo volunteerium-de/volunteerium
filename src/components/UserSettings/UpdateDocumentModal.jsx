@@ -5,7 +5,7 @@ import { translations } from "../../locales/translations"
 translations
 
 const UpdateDocumentModal = ({ isOpen, onClose, documentTitle, document, onUpdate }) => {
-  const {t} = useTranslation()
+  const { t } = useTranslation()
   const [file, setFile] = useState(null)
   const [fileName, setFileName] = useState("")
   const fileInputRef = useRef(null)
@@ -59,7 +59,7 @@ const UpdateDocumentModal = ({ isOpen, onClose, documentTitle, document, onUpdat
             onClose()
             handleResetClick()
           } else {
-            throw new Error( t(translations.updateDoc.error))
+            throw new Error(t(translations.updateDoc.error))
           }
         })
         .catch((error) => {
@@ -77,7 +77,7 @@ const UpdateDocumentModal = ({ isOpen, onClose, documentTitle, document, onUpdat
       <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
         <div className="bg-white p-6 rounded-lg max-w-[654px] w-full">
           <h2 className="text-[1.75rem] leading-[1.464] text-center font-semibold mb-4">
-          {t(translations.updateDoc.h2)}
+            {t(translations.updateDoc.h2)}
           </h2>
 
           <div className="max-w-[696px] mx-auto">
@@ -88,7 +88,7 @@ const UpdateDocumentModal = ({ isOpen, onClose, documentTitle, document, onUpdat
               type="text"
               value={title}
               onChange={(e) => setTitle(e.target.value)}
-              className="h-[36px] w-full mt-2 border border-gray-300 rounded-lg p-4 focus:outline-none focus:ring-2 focus:ring-primary-green text-dark-gray-1"
+              className="h-[36px] w-full p-2 border border-gray-1 rounded focus:outline-none focus:border-primary-green"
             />
             <div className="flex justify-start items-center gap-5">
               <div>
@@ -99,7 +99,7 @@ const UpdateDocumentModal = ({ isOpen, onClose, documentTitle, document, onUpdat
                   className="block font-medium px-[10px] py-[5px] mt-[20px] border border-primary-green rounded-md text-primary-green hover:bg-primary-green-dark transition duration-300"
                   onClick={file ? handleResetClick : handleAddNewClick}
                 >
-                  {file ? t(translations.updateDoc.reset) :  t(translations.updateDoc.selectFile)}
+                  {file ? t(translations.updateDoc.reset) : t(translations.updateDoc.selectFile)}
                 </button>
               </div>
               {/* File upload input */}
@@ -113,14 +113,11 @@ const UpdateDocumentModal = ({ isOpen, onClose, documentTitle, document, onUpdat
           </div>
 
           <div className="flex justify-center gap-3 mt-[25px]">
-            <button
-              className="bg-gray-1 text-white px-4 py-2 rounded-md font-medium leading-[1.5625] w-[150px]"
-              onClick={onClose}
-            >
-               {t(translations.updateDoc.cancel)}
+            <button className="py-2 px-4 text-primary-green" onClick={onClose}>
+              {t(translations.updateDoc.cancel)}
             </button>
             <button
-              className="bg-primary-green px-4 py-2 rounded-md text-white font-medium leading-[1.5625] w-[150px]"
+              className="bg-primary-green px-4 py-2 rounded text-white  hover:bg-light-green"
               onClick={handleUpdateClick}
               disabled={!title.trim()} // If the title is empty, the button is disabled.
             >

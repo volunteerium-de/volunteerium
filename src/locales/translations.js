@@ -216,67 +216,66 @@ export const translations = {
     label7: "indvSettings.label7",
     edit: "indvSettings.edit",
     save: "indvSettings.save",
+    reset: "indvSettings.reset",
   },
 
   myDocs: {
-  alertSuccess: "myDocs.alertSuccess",
-  alertError: "myDocs.alertError",
-  h2: "myDocs.h2",
-  p: "myDocs.p",
-  addNew: "myDocs.addNew",
-  delete: "myDocs.delete",
-  update: "myDocs.update",
-  cancel: "myDocs.cancel",
-  saveChanges: "myDocs.saveChanges"
-},
+    alertSuccess: "myDocs.alertSuccess",
+    alertError: "myDocs.alertError",
+    h2: "myDocs.h2",
+    p: "myDocs.p",
+    addNew: "myDocs.addNew",
+    delete: "myDocs.delete",
+    update: "myDocs.update",
+    cancel: "myDocs.cancel",
+    saveChanges: "myDocs.saveChanges",
+  },
 
-orgSettings: {
-  handleErrorMsg: "orgSettings.handleErrorMsg",
-  successMsg: "orgSettings.successMsg",
-  errorMsg: "orgSettings.errorMsg",
-  h1: "orgSettings.h1",
-  label1: "orgSettings.label1",
-  label1PH: "orgSettings.label1PH",
-  label2: "orgSettings.label2",
-  label2PH: "orgSettings.label2PH",
-  label3: "orgSettings.label3",
-  label3PH: "orgSettings.label3PH",
-  label4: "orgSettings.label4",
-  label4PH: "orgSettings.label4PH",
-  label5: "orgSettings.label5",
-  label5PH: "orgSettings.label5PH",
-  label6: "orgSettings.label6",
-  label6PH: "orgSettings.label6PH",
-  label7: "orgSettings.label7",
-  label7PH: "orgSettings.label7PH",
-  label8: "orgSettings.label8",
-  label8PH: "orgSettings.label8PH",
-  files: "orgSettings.files",
-  edit: "orgSettings.edit",
-  save: "orgSettings.save"
-},
+  orgSettings: {
+    handleErrorMsg: "orgSettings.handleErrorMsg",
+    successMsg: "orgSettings.successMsg",
+    errorMsg: "orgSettings.errorMsg",
+    h1: "orgSettings.h1",
+    label1: "orgSettings.label1",
+    label1PH: "orgSettings.label1PH",
+    label2: "orgSettings.label2",
+    label2PH: "orgSettings.label2PH",
+    label3: "orgSettings.label3",
+    label3PH: "orgSettings.label3PH",
+    label4: "orgSettings.label4",
+    label4PH: "orgSettings.label4PH",
+    label5: "orgSettings.label5",
+    label5PH: "orgSettings.label5PH",
+    label6: "orgSettings.label6",
+    label6PH: "orgSettings.label6PH",
+    label7: "orgSettings.label7",
+    label7PH: "orgSettings.label7PH",
+    label8: "orgSettings.label8",
+    label8PH: "orgSettings.label8PH",
+    files: "orgSettings.files",
+    edit: "orgSettings.edit",
+    save: "orgSettings.save",
+  },
 
-pswModal: {
-  yup1: "pswModal.yup1",
-  yup2: "pswModal.yup2",
-  yup3: "pswModal.yup3",
-  yup4: "pswModal.yup4",
-  yup5: "pswModal.yup5",
-  changePsw: "pswModal.changePsw",
-  currPsw: "pswModal.currPsw",
-  newPsw: "pswModal.newPsw",
-  confirmPsw: "pswModal.confirmPsw",
-  cancel: "pswModal.cancel",
-  saveChng: "pswModal.saveChng"
-},
+  pswModal: {
+    yup1: "pswModal.yup1",
+    yup2: "pswModal.yup2",
+    yup3: "pswModal.yup3",
+    yup4: "pswModal.yup4",
+    yup5: "pswModal.yup5",
+    changePsw: "pswModal.changePsw",
+    currPsw: "pswModal.currPsw",
+    newPsw: "pswModal.newPsw",
+    confirmPsw: "pswModal.confirmPsw",
+    cancel: "pswModal.cancel",
+    saveChng: "pswModal.saveChng",
+  },
 
-profileSettings: {
-    p: "profileSettings.p"
-},
+  profileSettings: {
+    p: "profileSettings.p",
+  },
 
-secSett: {
-    feedbackMsg1: "secSett.feedbackMsg1",
-    feedbackMsg2: "secSett.feedbackMsg2",
+  secSett: {
     h1: "secSett.h1",
     name: "secSett.name",
     namePH: "secSett.namePH",
@@ -289,32 +288,32 @@ secSett: {
     delAlert1: "secSett.delAlert1",
     delAlert2: "secSett.delAlert2",
     userRes1: "secSett.userRes1",
-    userRes2: "secSett.userRes2"
-},
-updateDoc: {
+    userRes2: "secSett.userRes2",
+  },
+  updateDoc: {
     error: "updateDoc.error",
     h2: "updateDoc.h2",
     h1: "updateDoc.h1",
     reset: "updateDoc.reset",
     selectFile: "updateDoc.selectFile",
     cancel: "updateDoc.cancel",
-    update: "updateDoc.update"
-},
+    update: "updateDoc.update",
+  },
 
-msgMenu: {
+  msgMenu: {
     h3: "msgMenu.h3",
     link: "msgMenu.link",
     you: "msgMenu.you",
     announce: "msgMenu.announce",
-    noMsg: "msgMenu.noMsg"
-},
+    noMsg: "msgMenu.noMsg",
+  },
 
-notifMenu: {
+  notifMenu: {
     notif: "notifMenu.notif",
-    noNotif: "notifMenu.noNotif"
-},
+    noNotif: "notifMenu.noNotif",
+  },
 
-userMenu: {
+  userMenu: {
     user: "userMenu.user",
     profile: "userMenu.profile",
     eventMng: "userMenu.eventMng",
@@ -323,10 +322,10 @@ userMenu: {
     login: "userMenu.login",
     register: "userMenu.register",
     light: "userMenu.light",
-    dark: "userMenu.dark"
-},
+    dark: "userMenu.dark",
+  },
 
-aboutUs: {
+  aboutUs: {
     aboutUs: "aboutUs.aboutUs",
     p1: "aboutUs.p1",
     h2: "aboutUs.h2",
@@ -354,10 +353,10 @@ aboutUs: {
     orgCardP1: "aboutUs.orgCardP1",
     orgCardP2: "aboutUs.orgCardP2",
     eventCardP1: "aboutUs.eventCardP1",
-    eventCardP2: "aboutUs.eventCardP2"
-},
+    eventCardP2: "aboutUs.eventCardP2",
+  },
 
-contactUs: {
+  contactUs: {
     p1: "contactUs.p1",
     p2: "contactUs.p2",
     p3: "contactUs.p3",
@@ -367,23 +366,23 @@ contactUs: {
     p7: "contactUs.p7",
     p8: "contactUs.p8",
     p9: "contactUs.p9",
-    h1: "contactUs.h1"
-},
+    h1: "contactUs.h1",
+  },
 
-contactUsForm: {
-  name: "contactUs.name",
-  namePH: "contactUs.namePlaceholder",
-  email: "contactUs.email",
-  emailPH: "contactUs.emailPlaceholder",
-  subject: "contactUs.subject",
-  subjectPH: "contactUs.subjectPlaceholder",
-  message: "contactUs.message",
-  messagePH: "contactUs.messagePlaceholder",
-  messageMaxLength: "contactUs.messageMaxLength",
-  submit: "contactUs.submit"
-},
+  contactUsForm: {
+    name: "contactUs.name",
+    namePH: "contactUs.namePlaceholder",
+    email: "contactUs.email",
+    emailPH: "contactUs.emailPlaceholder",
+    subject: "contactUs.subject",
+    subjectPH: "contactUs.subjectPlaceholder",
+    message: "contactUs.message",
+    messagePH: "contactUs.messagePlaceholder",
+    messageMaxLength: "contactUs.messageMaxLength",
+    submit: "contactUs.submit",
+  },
 
-faqPage: {
+  faqPage: {
     q1: "faqPage.q1",
     a1: "faqPage.a1",
     q2: "faqPage.q2",
@@ -397,29 +396,29 @@ faqPage: {
     q6: "faqPage.q6",
     a6: "faqPage.a6",
     h1: "faqPage.h1",
-    p1: "faqPage.p1"
-},
+    p1: "faqPage.p1",
+  },
 
-googleAuthFall: {
+  googleAuthFall: {
     h1: "googleAuthFall.h1",
     h2: "googleAuthFall.h2",
     p1: "googleAuthFall.p1",
-    p2: "googleAuthFall.p2"
-},
+    p2: "googleAuthFall.p2",
+  },
 
-googleAS: {
+  googleAS: {
     successMsg: "googleAS.successMsg",
     h1: "googleAS.h1",
-    p: "googleAS.p"
-},
+    p: "googleAS.p",
+  },
 
-notFound: {
+  notFound: {
     imgAlt: "notFound.imgAlt",
     p: "notFound.p",
-    link: "notFound.link"
-},
+    link: "notFound.link",
+  },
 
-setupIndv: {
+  setupIndv: {
     successMsg: "setupIndv.successMsg",
     share: "setupIndv.share",
     p1: "setupIndv.p1",
@@ -439,10 +438,10 @@ setupIndv: {
     p3: "setupIndv.p3",
     p4: "setupIndv.p4",
     skip: "setupIndv.skip",
-    finish: "setupIndv.finish"
-},
+    finish: "setupIndv.finish",
+  },
 
-setupOrg: {
+  setupOrg: {
     details: "setupOrg.details",
     p: "setupOrg.p",
     orgDesc: "setupOrg.orgDesc",
@@ -461,45 +460,32 @@ setupOrg: {
     cityPH: "setupOrg.cityPH",
     country: "setupOrg.country",
     countryPH: "setupOrg.countryPH",
-    finish: "setupOrg.finish"
-},
+    finish: "setupOrg.finish",
+  },
 
-profileCard: {
+  profileCard: {
     attendEvents: "profileCard.attendEvents",
     organizedEvents: "profileCard.organizedEvents",
     p1: "profileCard.p1",
     p2: "profileCard.p2",
     infoAlt: "profileCard.infoAlt",
-    joined: "profileCard.joined"
-},
+    joined: "profileCard.joined",
+  },
 
-sidebar: {
-  welcome: "sidebar.welcome"
-},
+  sidebar: {
+    welcome: "sidebar.welcome",
+  },
 
-emailVerify: {
-    h1: "emailVerify.h1"
-},
+  emailVerify: {
+    h1: "emailVerify.h1",
+  },
 
-verifySuccess: {
+  verifySuccess: {
     h1: "verifySuccess.h1",
     p1: "verifySuccess.p1",
     p2: "verifySuccess.p2",
     p3: "verifySuccess.p3",
     p4: "verifySuccess.p4",
-    link: "verifySuccess.link"
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
+    link: "verifySuccess.link",
+  },
 }

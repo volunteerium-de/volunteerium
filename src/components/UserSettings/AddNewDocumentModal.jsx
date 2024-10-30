@@ -1,14 +1,20 @@
 import React, { useState, useRef } from "react"
 import { useTranslation } from "react-i18next"
 import { translations } from "../../locales/translations"
-translations
+import useAccountCall from "../../hooks/useAccountCall"
+import toastNotify from "../../utils/toastNotify"
+import { useSelector } from "react-redux"
 
 const AddNewDocumentModal = ({ isOpen, onClose }) => {
-  const {t} = useTranslation()
+  const { t } = useTranslation()
+  const { currentUser } = useSelector((state) => state.auth)
+
   const [file, setFile] = useState(null)
   const [fileName, setFileName] = useState("")
+  const [documentTitle, setDocumentTitle] = useState("")
   const [error, setError] = useState(null)
   const fileInputRef = useRef(null)
+  const { createAccountFile } = useAccountCall()
 
   if (!isOpen) return null
 
@@ -20,7 +26,6 @@ const AddNewDocumentModal = ({ isOpen, onClose }) => {
     }
   }
 
-  //
   const handleAddNewClick = () => {
     fileInputRef.current.click()
   }
@@ -28,32 +33,29 @@ const AddNewDocumentModal = ({ isOpen, onClose }) => {
   const handleResetClick = () => {
     setFile(null)
     setFileName("")
+    setDocumentTitle("")
   }
 
-  const handleSaveClick = () => {
+  console.log(file)
+  console.log(fileName)
+
+  const handleSaveClick = async () => {
     if (file) {
       const formData = new FormData()
-      formData.append("file", file)
+      formData.append("fileUrl", file)
+      formData.append("title", documentTitle)
+      formData.append("userId", currentUser._id)
 
-      fetch("/api/upload", {
-        method: "POST",
-        body: formData,
-      })
-        .then((response) => {
-          if (response.ok) {
-            console.log("File saved successfully.")
+      try {
+        const data = await createAccountFile(formData)
 
-            onClose()
-            handleResetClick()
-            setError(null) // Clear any previous error
-          } else {
-            throw new Error("Error saving file.")
-          }
-        })
-        .catch((error) => {
-          console.error("Error:", error)
-          setError("Failed to upload file. Please try again.") // Set error message
-        })
+        toastNotify("success", data.message)
+      } catch (error) {
+        toastNotify("error", error.response.data.message)
+      } finally {
+        onClose()
+        handleResetClick()
+      }
     }
   }
 
@@ -71,7 +73,9 @@ const AddNewDocumentModal = ({ isOpen, onClose }) => {
             <input
               id="certification"
               type="text"
-              className="h-[36px] w-full mt-2 border border-gray-300 rounded-lg p-4 focus:outline-none focus:ring-2 focus:ring-primary-green text-dark-gray-1"
+              value={documentTitle}
+              onChange={(e) => setDocumentTitle(e.target.value)}
+              className="h-[36px] w-full p-2 border border-gray-1 rounded focus:outline-none focus:border-primary-green"
             />
             <div className="flex justify-start items-center gap-5">
               <div>
@@ -97,14 +101,11 @@ const AddNewDocumentModal = ({ isOpen, onClose }) => {
 
           <div className="flex justify-center gap-3 mt-[25px]">
             {error && <div className="text-danger text-sm text-center mb-2">{error}</div>}
-            <button
-              className="bg-gray-1 text-white px-4 py-2 rounded-md font-medium leading-[1.5625] w-[150px]"
-              onClick={onClose}
-            >
+            <button className="py-2 px-4 text-primary-green" onClick={onClose}>
               {t(translations.addNewDoc.cancel)}
             </button>
             <button
-              className="bg-primary-green px-4 py-2 rounded-md text-white font-medium leading-[1.5625] w-[150px]"
+              className="bg-primary-green px-4 py-2 rounded text-white  hover:bg-light-green"
               onClick={handleSaveClick}
               disabled={!file}
             >

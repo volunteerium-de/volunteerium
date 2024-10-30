@@ -212,7 +212,8 @@
     "label6PH": "Write your bio here...",
     "label7": "Files",
     "edit": "Edit",
-    "save": "Save"
+    "save": "Save",
+    "reset": "Reset"
   },
 
   "myDocs": {
@@ -224,7 +225,7 @@
     "delete": "Delete",
     "update": "Update",
     "cancel": "Cancel",
-    "saveChanges": "Save Cahnges"
+    "saveChanges": "Save Changes"
   },
 
   "orgSettings": {
@@ -272,8 +273,6 @@
   },
 
   "securitySettings": {
-    "feedbackMsg1": "Your account has been deleted successfully.",
-    "feedbackMsg2": "There was an error deleting your account.",
     "h1": "Security Settings",
     "name": "Name",
     "namePH": "Name",
@@ -284,8 +283,8 @@
     "changePsw": "Change Password",
     "delAccount": "Delete Account",
     "delAlert1": "Would you like to delete your account? Deleting your account will remove all the content associated with it.",
-    "delAlert2":"Would you like to delete your organization? Deleting your organization will remove all the content associated with it.",
-    "userRes1":  "I want to delete my account",
+    "delAlert2": "Would you like to delete your organization? Deleting your organization will remove all the content associated with it.",
+    "userRes1": "I want to delete my account",
     "userRes2": "I want to delete my organization"
   },
 
@@ -302,7 +301,7 @@
   "msgMenu": {
     "h3": "Messages",
     "link": "View All",
-    "you":  "You",
+    "you": "You",
     "announce": "Announcement",
     "noMsg": "No Messages"
   },
@@ -318,7 +317,7 @@
     "eventMng": "Event Management",
     "settings": "Setting",
     "logout": "Logout",
-    "login": "Login", 
+    "login": "Login",
     "register": "Register",
     "light": "Light",
     "dark": "Dark"
@@ -379,7 +378,6 @@
     "messagePH": "Enter your message...",
     "messageMaxLength": "Max 1000 characters",
     "submit": "Submit"
-    
   },
 
   "faqPage": {
@@ -475,7 +473,7 @@
   "sidebar": {
     "welcome": "Welcome"
   },
-  
+
   "emailVerify": {
     "h1": "Verifying your email..."
   },
@@ -488,10 +486,4 @@
     "p4": " Before we start, we'd like to know a bit more about you.",
     "link": "Let's Start!"
   }
-
-
-
-
-
-
 }
