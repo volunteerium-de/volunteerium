@@ -18,6 +18,7 @@ import UserSettings from "../pages/UserSettings"
 import EventListing from "../pages/EventListing"
 import EmailVerify from "../components/UserEmailVerification/EmailVerify"
 import { Navigate } from "react-router-dom"
+import EventDetails from "../pages/EventDetails"
 import GoogleAuthSuccess from "../pages/GoogleAuthSuccess"
 import GoogleAuthFail from "../pages/GoogleAuthFail"
 import EventManagement from "../pages/EventManagement"
@@ -36,6 +37,7 @@ const AppRouter = () => {
         <Route path="contact" element={<ContactUs />} />
         <Route path="profile/:userId" element={<Profile />} />
         <Route path="events" element={<EventListing />} />
+        <Route path="events/:eventId" element={<EventDetails />} />
         <Route path="password" element={<Password />} />
         <Route path="auth/success" element={<GoogleAuthSuccess />} />
         {/* Private Routers */}
