@@ -27,8 +27,8 @@ const AddEvent = ({ onClose }) => {
     city: "",
     country: "",
     maxParticipant: 1,
-    category: [],
-    language: [],
+    interestIds: [],
+    languages: [],
     description: "",
     isContactPersonAdded: false,
     contactName: "",
@@ -37,7 +37,6 @@ const AddEvent = ({ onClose }) => {
   }
   const handleSubmit = async (values) => {
     console.log("Event Data Submitted:", values)
-    console.log("AA", values)
     const {
       date,
       fromTime,
@@ -71,15 +70,19 @@ const AddEvent = ({ onClose }) => {
         city,
         country,
       }),
-      ...(payload?.language.lenght > 0 && {
-        language: payload.language,
+      ...(payload?.s?.length > 0 && {
+        languages: payload.languages,
       }),
       ...(isContantPersonAdded && { contactName, contactEmail, contactPhone }),
       ...(eventPhoto && { eventPhoto }),
     }
     console.log(body)
-    //await postEvent(body)
-    // onClose()
+    try {
+      await postEvent(body)
+      onClose()
+    } catch (error) {
+      toast.error("An error occurred while posting the event. Please try again.")
+    }
   }
 
   return (
@@ -88,11 +91,6 @@ const AddEvent = ({ onClose }) => {
         initialValues={initialValues}
         validationSchema={AddEventSchema}
         onSubmit={handleSubmit}
-        //onSubmit={(values, { setSubmitting }) => {
-        // console.log(values)
-        // setSubmitting(false)
-        // onClose()
-        //</div>}}
       >
         {({ setFieldValue, values, isValid }) => (
           <Form>
