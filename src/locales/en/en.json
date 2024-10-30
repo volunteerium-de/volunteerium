@@ -1,4 +1,9 @@
 {
+  "langSwitch":{
+    "en": "English",
+    "de": "German"
+  },
+  
   "hero": {
     "h2": "Become a part of something",
     "span": "bigger"
