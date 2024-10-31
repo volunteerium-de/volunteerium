@@ -7,14 +7,15 @@ const useEventCall = () => {
   const { axiosWithToken } = useAxios()
   const dispatch = useDispatch()
 
+  
   const getEvents = async (url) => {
     try {
-      const { data } = await axiosWithPublic(url)
-      return data
+      const { data } = await axiosWithPublic(url);
+      return data;
     } catch (error) {
-      console.log(error.response.data.message)
+      console.error("Error fetching events:", error.response ? error.response.data.message : error.message);
     }
-  }
+  };
 
   const getSingleEvent = async (eventId) => {
     try {
