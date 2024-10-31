@@ -1,4 +1,4 @@
-import { string, date, boolean, object } from "yup"
+import { string, date, boolean, object, array } from "yup"
 
 export const AddEventSchema = object().shape({
   title: string()
@@ -53,9 +53,14 @@ export const AddEventSchema = object().shape({
         .min(3, "Country must contain at least 3 characters"),
   }),
 
-  category: string().required("Category is required"),
+  interestIds: array()
+    .required("Category is required")
+    .min(1, "At least one category must be selected.")
+    .max(3, "You can select up to 3 categories."),
 
   maxParticipant: string().required("Max Participants is required"),
+
+  languages: array(),
 
   description: string().required("Description is required"),
 

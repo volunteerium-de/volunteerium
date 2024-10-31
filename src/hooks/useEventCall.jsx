@@ -17,12 +17,14 @@ const useEventCall = () => {
   }
 
   const getSingleEvent = async (eventId) => {
+    dispatch(fetchStart())
     try {
       const { data } = await axiosWithPublic(`events/${eventId}`)
-      // console.log(data)
+      console.log(data)
       return data
     } catch (error) {
       console.log(error.response.data.message)
+      dispatch(fetchFail())
     }
   }
 
@@ -39,12 +41,15 @@ const useEventCall = () => {
 
   const postEvent = async (eventInfo) => {
     try {
-      const { data } = await axiosWithToken.post(`events`, eventInfo)
-      console.log(data)
-      toastNotify("success", data.message)
+      const { data } = await axiosWithToken.post(`events`, eventInfo, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      })
+      toastNotify("success", "Event created successfully")
+
       // getEvents("events")
     } catch (error) {
-      console.log(error)
       toastNotify(
         "error",
         error?.response?.data?.message || "Failed to post event. Please try again."
@@ -54,7 +59,11 @@ const useEventCall = () => {
 
   const editEvent = async (eventId, eventInfo) => {
     try {
-      const { data } = await axiosWithToken.put(`events/${eventId}`, eventInfo)
+      const { data } = await axiosWithToken.put(`events/${eventId}`, eventInfo, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      })
       console.log(data)
       toastNotify("success", "Event edited successfully!")
     } catch (error) {
