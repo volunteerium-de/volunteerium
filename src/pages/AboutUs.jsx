@@ -6,7 +6,6 @@ import Header from "../components/Header/Header"
 import Footer from "../components/Footer/Footer"
 import { useTranslation } from "react-i18next"
 import { translations } from "../locales/translations"
-translations
 
 const AboutUs = () => {
   const { t } = useTranslation()

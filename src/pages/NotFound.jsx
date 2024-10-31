@@ -4,7 +4,6 @@ import notFoundImage from "/src/assets/not-found.png" // Not Found image
 import Header from "../components/Header/Header"
 import { useTranslation } from "react-i18next"
 import { translations } from "../locales/translations"
-translations
 
 const NotFound = () => {
   const { t } = useTranslation()

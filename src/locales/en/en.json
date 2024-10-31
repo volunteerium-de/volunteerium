@@ -1,4 +1,9 @@
 {
+  "langSwitch":{
+    "en": "English",
+    "de": "German"
+  },
+  
   "hero": {
     "h2": "Become a part of something",
     "span": "bigger"
@@ -90,6 +95,7 @@
     "emailPH": "Enter your email address",
     "password": "Password",
     "passwordPH": "Enter your password",
+    "loading": "Loading...",
     "submit": "Create Account",
     "haveAccount": "Already have an account?",
     "login": "Login",
@@ -99,6 +105,14 @@
     "terms": "Terms of Service",
     "pPrivacy": "and acknowledge you’ve read our",
     "privacy": "Privacy Policy"
+  },
+
+  "registerSuccess": {
+    "emailVerifyAlt": "Email Verification",
+    "h1": "Verify Your Email Address",
+    "p1": "We’ve sent a confirmation email to your email.",
+    "p2": "Please check your inbox and click the link to verify your email address.",
+    "p3": "Didn’t receive the email? Be sure to check your spam folder or resend the email."
   },
 
   "login": {
@@ -127,6 +141,7 @@
     "password": "Password",
     "passwordPH": "Enter your password",
     "forgot": "Forgot your password?",
+    "loading": "Loading...",
     "login": "Login",
     "haveAccount": "Do not have an account yet?",
     "signUp": "Sign Up",
@@ -271,7 +286,7 @@
     "p": "Invalid user type"
   },
 
-  "securitySettings": {
+  "secSett": {
     "feedbackMsg1": "Your account has been deleted successfully.",
     "feedbackMsg2": "There was an error deleting your account.",
     "h1": "Security Settings",
@@ -406,7 +421,7 @@
     "p2": "seconds"
   },
 
-  "googleAuthSuccess": {
+  "googleAS": {
     "successMsg": "You have successfully logged in with Google",
     "h1": " Successfully authenticated with Google",
     "p": "Redirecting..."
@@ -489,6 +504,10 @@
     "link": "Let's Start!"
   },
 
+  "langSelect": {
+    "lang": "Language",
+    "PH": "Add event languages"
+  },
   
    "privacyPolicy": {
     "h1": "Privacy Policy",
@@ -533,7 +552,6 @@
     "p14": "If you have any questions or concerns about this Privacy Policy or how we handle your personal data, please contact us at:",
     "p15": "Volunteerium Team",
     "p16": "Email: info.volunteerium@gmail.com"
-  }
   }
   
 
