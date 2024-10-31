@@ -6,7 +6,7 @@ import { useTranslation } from "react-i18next"
 import { translations } from "../../../locales/translations"
 import useLanguageOptions from "../../../hooks/useLanguages"
 
-const LanguageSelect = ({}) => {
+const LanguageSelect = () => {
   const {t} = useTranslation()
   const { setFieldValue, values } = useFormikContext()
   const languageOptions = useLanguageOptions()
@@ -26,9 +26,9 @@ const LanguageSelect = ({}) => {
             selectedOptions ? selectedOptions.map((option) => option.value) : []
           )
         }
+        }
         value={languageOptions.filter((option) => values.languages?.includes(option.value))}
         placeholder= {t(translations.langSelect.PH)}
-        }}
         styles={{
           control: (provided, state) => ({
             ...provided,

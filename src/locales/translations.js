@@ -548,7 +548,7 @@ privacyPolicy: {
   p14: "privacyPolicy.p14",
   p15: "privacyPolicy.p15",
   p16: "privacyPolicy.p16"
-}
+},
 
   langSelect: {
     lang: "langSelect.lang",
