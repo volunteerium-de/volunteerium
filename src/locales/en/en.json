@@ -284,8 +284,8 @@
     "changePsw": "Change Password",
     "delAccount": "Delete Account",
     "delAlert1": "Would you like to delete your account? Deleting your account will remove all the content associated with it.",
-    "delAlert2":"Would you like to delete your organization? Deleting your organization will remove all the content associated with it.",
-    "userRes1":  "I want to delete my account",
+    "delAlert2": "Would you like to delete your organization? Deleting your organization will remove all the content associated with it.",
+    "userRes1": "I want to delete my account",
     "userRes2": "I want to delete my organization"
   },
 
@@ -302,7 +302,7 @@
   "msgMenu": {
     "h3": "Messages",
     "link": "View All",
-    "you":  "You",
+    "you": "You",
     "announce": "Announcement",
     "noMsg": "No Messages"
   },
@@ -318,7 +318,7 @@
     "eventMng": "Event Management",
     "settings": "Setting",
     "logout": "Logout",
-    "login": "Login", 
+    "login": "Login",
     "register": "Register",
     "light": "Light",
     "dark": "Dark"
@@ -379,7 +379,6 @@
     "messagePH": "Enter your message...",
     "messageMaxLength": "Max 1000 characters",
     "submit": "Submit"
-    
   },
 
   "faqPage": {
@@ -475,7 +474,7 @@
   "sidebar": {
     "welcome": "Welcome"
   },
-  
+
   "emailVerify": {
     "h1": "Verifying your email..."
   },
@@ -489,8 +488,7 @@
     "link": "Let's Start!"
   },
 
-  
-   "privacyPolicy": {
+  "privacyPolicy": {
     "h1": "Privacy Policy",
     "p1": "Effective Date:",
     "p2": "30.10.2024",
@@ -533,13 +531,50 @@
     "p14": "If you have any questions or concerns about this Privacy Policy or how we handle your personal data, please contact us at:",
     "p15": "Volunteerium Team",
     "p16": "Email: info.volunteerium@gmail.com"
+  },
+
+  "eventDetails": {
+    "backButton": "Back",
+    "locationLabel": "Event Location",
+    "people": "people",
+    "attendants": "Attendants",
+    "noAttendants": "No Attendants yet",
+    "sendMessageButton": "Send Message",
+    "joinButton": "Join",
+    "shareFeedbackButton": "Share Feedback",
+    "reportEventButton": "Report this event",
+    "pendingButton": "Pending",
+    "approvedButton": "Approved",
+    "rejectedButton": "Rejected",
+    "completedButton": "Completed",
+    "maxReacedButton": "Capacity Reached",
+
+    "feedback": {
+      "h2": "Thank you for participating!",
+      "p1": "Please share your experience about",
+      "p2": "to help us improve.",
+      "placeholder": "Write your feedback here...",
+      "submit": "Share your feedback",
+      "close": "Close"
+    },
+
+    "report": {
+      "h2": "Report Event",
+      "p1": "If you have encountered any issues with this event, please let us know. Your report will help us maintain a safe and respectful environment for everyone.",
+      "placeholder": "Write your report here...",
+      "issueLabel": "Describe issue (optional):",
+      "submit": "Submit",
+      "cancel": "Cancel",
+      "option1": "offensive",
+      "option2": "harmful",
+      "option3": "inappropriate",
+      "option4": "misleading",
+      "option5": "spam",
+      "option6": "harassment",
+      "option7": "fraud",
+      "option8": "violence",
+      "option9": "discrimination",
+      "option10": "other"
+    }
   }
-  }
-  
-
-
-
-
-
-
-
+}

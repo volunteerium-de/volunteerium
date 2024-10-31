@@ -269,9 +269,9 @@
 
   "profileSettings": {
     "p": "Ungültiger Benutzertyp"
-},
+  },
 
-"secSett": {
+  "secSett": {
     "feedbackMsg1": "Ihr Konto wurde erfolgreich gelöscht.",
     "feedbackMsg2": "Beim Löschen Ihres Kontos ist ein Fehler aufgetreten.",
     "h1": "Sicherheitseinstellungen",
@@ -287,9 +287,9 @@
     "delAlert2": "Möchten Sie Ihre Organisation löschen? Das Löschen Ihrer Organisation entfernt alle damit verbundenen Inhalte.",
     "userRes1": "Ich möchte mein Konto löschen",
     "userRes2": "Ich möchte meine Organisation löschen"
-},
+  },
 
-"updateDoc": {
+  "updateDoc": {
     "error": "Fehler beim Aktualisieren der Datei.",
     "h2": "Dokument aktualisieren",
     "h1": "Dokumenttitel",
@@ -297,22 +297,22 @@
     "selectFile": "Datei auswählen",
     "cancel": "Abbrechen",
     "update": "Aktualisieren"
-},
+  },
 
-"msgMenu": {
+  "msgMenu": {
     "h3": "Nachrichten",
     "link": "Alle anzeigen",
     "you": "Sie",
     "announce": "Ankündigung",
     "noMsg": "Keine Nachrichten"
-},
+  },
 
-"notifMenu": {
+  "notifMenu": {
     "notif": "Benachrichtigungen",
     "noNotif": "Keine Benachrichtigungen"
-},
+  },
 
-"userMenu": {
+  "userMenu": {
     "user": "Benutzer",
     "profile": "Profil",
     "eventMng": "Eventverwaltung",
@@ -322,9 +322,9 @@
     "register": "Registrieren",
     "light": "Hell",
     "dark": "Dunkel"
-},
+  },
 
-"aboutUs": {
+  "aboutUs": {
     "aboutUs": "Über uns",
     "p1": "     Wir bringen Menschen zusammen, um zu helfen, zu unterstützen und starke Gemeinschaften aufzubauen, damit sie einen positiven Einfluss schaffen und ein erfülltes Leben führen können.",
     "h2": "Wir sind hier, um so viele Menschen wie möglich für das Ehrenamt zu gewinnen.",
@@ -332,8 +332,8 @@
     "howItWorks": "Wir sind hier, um so viele Menschen wie möglich für das Ehrenamt zu gewinnen.",
     "eventAlt": "Veranstaltungen",
     "explore": "Entdecken",
-"opportunities": "Möglichkeiten",
-"p3": "Durchsuchen Sie eine Vielzahl von Freiwilligenmöglichkeiten, die auf Ihre Interessen und Ihren Standort zugeschnitten sind.",
+    "opportunities": "Möglichkeiten",
+    "p3": "Durchsuchen Sie eine Vielzahl von Freiwilligenmöglichkeiten, die auf Ihre Interessen und Ihren Standort zugeschnitten sind.",
     "join": "Beitreten",
     "toVolunteer": "zum Freiwilliger",
     "p4": "Sobald Sie eine Veranstaltung gefunden haben, die Sie interessiert, treten Sie bei, um zu helfen. Der Veranstalter wird Ihre Bewerbung prüfen und Ihre Teilnahme bestätigen.",
@@ -353,9 +353,9 @@
     "orgCardP2": "Organisationen",
     "eventCardP1": "500+",
     "eventCardP2": "Veranstaltungen"
-},
+  },
 
-"contactUs": {
+  "contactUs": {
     "p1": "Ihre Rückmeldung",
     "p2": "ist uns wichtig!",
     "p3": " Tragen Sie weiterhin zu unserer Gemeinschaft bei, indem Sie Ihr",
@@ -366,7 +366,7 @@
     "p8": "Vorschlägen",
     "p9": "Vielen Dank, dass Sie bei uns sind!",
     "h1": "Kontaktieren Sie uns"
-},
+  },
 
   "contactUsForm": {
     "name": "Name",
@@ -381,8 +381,7 @@
     "submit": "Absenden"
   },
 
-
-"faqPage": {
+  "faqPage": {
     "q1": "Wie kann ich freiwillig helfen?",
     "a1": "Freiwilligenarbeit ist einfach! Melden Sie sich einfach auf unserer Website an, durchsuchen Sie die verfügbaren Möglichkeiten und wählen Sie die aus, die am besten zu Ihnen passt.",
     "q2": "Kann ich mich sowohl als Freiwilliger als auch als Anfragender registrieren?",
@@ -396,29 +395,29 @@
     "q6": "Kann ich meine Teilnahme an einer Veranstaltung später absagen?",
     "a6": "Natürlich! Wenn sich Ihre Pläne ändern, können Sie Ihre Anmeldung einfach über Ihr Konto-Dashboard stornieren.",
     "h1": "Häufig gestellte Fragen",
-"p1": "Finden Sie Antworten auf häufig gestellte Fragen zu Volunteerium"
-},
+    "p1": "Finden Sie Antworten auf häufig gestellte Fragen zu Volunteerium"
+  },
 
-"googleAuthFall": {
+  "googleAuthFall": {
     "h1": "Authentifizierung fehlgeschlagen.",
     "h2": "Bitte versuchen Sie es erneut oder kontaktieren Sie den Support, wenn das Problem weiterhin besteht.",
     "p1": "Weiterleitung in",
     "p2": "Sekunden"
-},
+  },
 
-"googleAuthSuccess": {
+  "googleAuthSuccess": {
     "successMsg": "Erfolg, Sie haben sich erfolgreich mit Google angemeldet",
     "h1": "Erfolgreich mit Google authentifiziert",
     "p": "Weiterleitung..."
-},
+  },
 
-"notFound": {
+  "notFound": {
     "imgAlt": "Nicht gefunden",
     "p": "Seite nicht gefunden",
     "link": "Zurück zur Startseite"
-},
+  },
 
-"setupIndv": {
+  "setupIndv": {
     "successMsg": "Bitte geben Sie Ihre Profildaten ein, um fortzufahren",
     "share": "Teilen Sie Ihr Alter und Geschlecht",
     "p1": "Diese Angaben sind optional, können aber für bestimmte Veranstaltungen nützlich sein",
@@ -439,57 +438,57 @@
     "p4": "Leisten Sie einen sinnvollen Beitrag in den Bereichen, die Ihnen am Herzen liegen!",
     "skip": "Überspringen",
     "finish": "Beenden"
-},
+  },
 
-"setupOrg": {
-  "details": "Teilen Sie Ihre Organisationsdaten",
-  "p": "Diese Informationen sind notwendig, damit wir Ihre Organisation verstehen und Ihnen bessere Dienstleistungen anbieten können",
-  "orgDesc": "Organisationsbeschreibung*",
-  "orgDescPH": "Organisationsbeschreibung eingeben",
-  "orgLogo": "Organisationslogo*",
-  "nextButton": "Weiter",
-  "completeh2": "Vervollständigen Sie Ihr Organisationsprofil",
-  "completeP": "Diese zusätzlichen Angaben sind erforderlich, um ein umfassendes Profil Ihrer Organisation zu erstellen und maßgeschneiderte Dienste anzubieten",
-  "websiteURL": "Website-URL",
-  "streetName": "Straßenname*",
-  "streetNamePH": "Straßennamen eingeben",
-  "streetNr": "Straßennr.*",
-  "zipCode": "Postleitzahl*",
-  "zipCodePH": "Postleitzahl eingeben",
-  "city": "Stadt*",
-  "cityPH": "Stadt eingeben",
-  "country": "Land*",
-  "countryPH": "Land eingeben",
-  "finish": "Fertigstellen"
-},
+  "setupOrg": {
+    "details": "Teilen Sie Ihre Organisationsdaten",
+    "p": "Diese Informationen sind notwendig, damit wir Ihre Organisation verstehen und Ihnen bessere Dienstleistungen anbieten können",
+    "orgDesc": "Organisationsbeschreibung*",
+    "orgDescPH": "Organisationsbeschreibung eingeben",
+    "orgLogo": "Organisationslogo*",
+    "nextButton": "Weiter",
+    "completeh2": "Vervollständigen Sie Ihr Organisationsprofil",
+    "completeP": "Diese zusätzlichen Angaben sind erforderlich, um ein umfassendes Profil Ihrer Organisation zu erstellen und maßgeschneiderte Dienste anzubieten",
+    "websiteURL": "Website-URL",
+    "streetName": "Straßenname*",
+    "streetNamePH": "Straßennamen eingeben",
+    "streetNr": "Straßennr.*",
+    "zipCode": "Postleitzahl*",
+    "zipCodePH": "Postleitzahl eingeben",
+    "city": "Stadt*",
+    "cityPH": "Stadt eingeben",
+    "country": "Land*",
+    "countryPH": "Land eingeben",
+    "finish": "Fertigstellen"
+  },
 
-"profileCard": {
-  "attendEvents": "Teilgenommene Veranstaltungen",
-  "organizedEvents": "Organisierte Veranstaltungen",
-  "p1": "Keine Veranstaltungen gefunden",
-  "p2": "Es scheint, dass momentan keine Veranstaltungen verfügbar sind.",
-  "infoAlt": "Organisator-Avatar",
-  "joined": "beigetreten"
-},
+  "profileCard": {
+    "attendEvents": "Teilgenommene Veranstaltungen",
+    "organizedEvents": "Organisierte Veranstaltungen",
+    "p1": "Keine Veranstaltungen gefunden",
+    "p2": "Es scheint, dass momentan keine Veranstaltungen verfügbar sind.",
+    "infoAlt": "Organisator-Avatar",
+    "joined": "beigetreten"
+  },
 
-"sidebar": {
-  "welcome": "Wilkommen"
-},
+  "sidebar": {
+    "welcome": "Wilkommen"
+  },
 
-"emailVerify": {
-  "h1": "Ihre E-Mail wird überprüft..."
-},
+  "emailVerify": {
+    "h1": "Ihre E-Mail wird überprüft..."
+  },
 
-"verifySuccess": {
-  "h1": "Sie sind verifiziert! 🎉",
-  "p1": "Wir freuen uns, Sie bei uns zu haben!",
-  "p2": "Indem Sie unserer Community beitreten, tragen Sie bereits",
-  "p3": "zu einem Unterschied bei",
-  "p4": "Bevor wir beginnen, möchten wir ein bisschen mehr über Sie erfahren.",
-  "link": "Lass uns anfangen!"
-},
+  "verifySuccess": {
+    "h1": "Sie sind verifiziert! 🎉",
+    "p1": "Wir freuen uns, Sie bei uns zu haben!",
+    "p2": "Indem Sie unserer Community beitreten, tragen Sie bereits",
+    "p3": "zu einem Unterschied bei",
+    "p4": "Bevor wir beginnen, möchten wir ein bisschen mehr über Sie erfahren.",
+    "link": "Lass uns anfangen!"
+  },
 
-"privacyPolicy": {
+  "privacyPolicy": {
     "h1": "Datenschutzrichtlinie",
     "p1": "Gültigkeitsdatum:",
     "p2": "30.10.2024",
@@ -532,16 +531,49 @@
     "p14": "Wenn Sie Fragen oder Bedenken bezüglich dieser Datenschutzrichtlinie oder der Verarbeitung Ihrer persönlichen Daten haben, kontaktieren Sie uns bitte unter:",
     "p15": "Volunteerium-Team",
     "p16": "E-Mail: info.volunteerium@gmail.com"
+  },
+
+  "eventDetails": {
+    "backButton": "Zurück",
+    "locationLabel": "Veranstaltungsort",
+    "people": "Personen",
+    "attendants": "Teilnehmer",
+    "noAttendants": "Noch keine Teilnehmer",
+    "sendMessageButton": "Nachricht senden",
+    "joinButton": "Anmelden",
+    "shareFeedbackButton": "Feedback teilen",
+    "reportEventButton": "Diese Veranstaltung melden",
+    "pendingButton": "Ausstehend",
+    "approvedButton": "Genehmigt",
+    "rejectedButton": "Abgelehnt",
+    "completedButton": "Abgeschlossen",
+
+    "feedback": {
+      "h2": "Danke für Ihre Teilnahme!",
+      "p1": "Bitte teilen Sie Ihre Erfahrungen über",
+      "p2": "um uns zu helfen, uns zu verbessern.",
+      "placeholder": "Schreiben Sie Ihr Feedback hier...",
+      "submit": "Teilen Sie Ihr Feedback",
+      "close": "Schließen"
+    },
+
+    "report": {
+      "h2": "Veranstaltung melden",
+      "p1": "Wenn Sie auf Probleme mit dieser Veranstaltung gestoßen sind, lassen Sie es uns bitte wissen. Ihr Bericht hilft uns, eine sichere und respektvolle Umgebung für alle zu erhalten.",
+      "placeholder": "Schreiben Sie Ihren Bericht hier...",
+      "issueLabel": "Beschreiben Sie das Problem (optional):",
+      "submit": "Einreichen",
+      "cancel": "Abbrechen",
+      "option1": "Beleidigend",
+      "option2": "Schädlich",
+      "option3": "Unangemessen",
+      "option4": "Irreführend",
+      "option5": "Spam",
+      "option6": "Belästigung",
+      "option7": "Betrug",
+      "option8": "Gewalt",
+      "option9": "Diskriminierung",
+      "option10": "Sonstiges"
+    }
   }
-
-
-
-
-
-
-
-
-
-
-
 }

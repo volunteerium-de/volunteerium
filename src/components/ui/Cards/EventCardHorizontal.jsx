@@ -4,6 +4,7 @@ import eventImage from "../../../assets/example-event-img.png"
 import { RxDividerVertical } from "react-icons/rx"
 import { MdLanguage } from "react-icons/md"
 import LangJson from "../../../helpers/languages_english.json"
+import { Link } from "react-router-dom"
 
 export const getLangName = (langCode) => {
   const selectedLang = LangJson.filter((langData) => langData.code === langCode)
@@ -31,7 +32,10 @@ const EventCardHorizontal = ({ event }) => {
     return `${formattedDate} ${formattedTime}`
   }
   return (
-    <div className="shadow-[0_1px_1px_rgba(0,0,0,.25)] mb-2 flex justify-center items-center gap-5 ">
+    <Link
+      to={`${event._id}`}
+      className="shadow-[0_1px_1px_rgba(0,0,0,.25)] mb-2 flex justify-center items-center gap-5 "
+    >
       {/* Event Image */}
       <div className="w-full max-w-[155px] h-[150px] flex justify-center items-center">
         <img
@@ -122,7 +126,7 @@ const EventCardHorizontal = ({ event }) => {
           </div>
         </div>
       </div>
-    </div>
+    </Link>
   )
 }
 
