@@ -22,7 +22,7 @@ const LanguageSelect = () => {
           )
         }}
         value={languageOptions.filter((option) => values.languages?.includes(option.value))}
-        placeholder="Add event languages"
+        placeholder="Add languages"
         styles={{
           control: (provided, state) => ({
             ...provided,

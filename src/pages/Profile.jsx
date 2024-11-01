@@ -17,9 +17,9 @@ import { axiosWithPublic } from "../hooks/useAxios"
 import avatar from "../assets/example-avatar.jpg"
 import logo from "../assets/get-to-know-us.png"
 import { formatName } from "../helpers/formatName"
-import formatLanguages from "../helpers/languages_english.json"
 import { useTranslation } from "react-i18next"
 import { translations } from "../locales/translations"
+import useLanguageOptions from "../hooks/useLanguages"
 
 const defaultIndividualImage = avatar
 const defaultOrganozationImage = logo
@@ -135,10 +135,11 @@ const Profile = () => {
   ]
 
   const medalInfo = getMedalInfo(totalPoint, t)
+  const languageOptions = useLanguageOptions()
 
   const getLanguageName = (code) => {
-    const language = formatLanguages.find((lang) => lang.code === code)
-    return language ? language.name : code
+    const language = languageOptions.find((lang) => lang.value === code)
+    return language ? language.label : code
   }
   const languagesFormatted = languages.map((langCode) => getLanguageName(langCode)).join(", ")
 
@@ -195,7 +196,7 @@ const Profile = () => {
                     onClick={() => navigate("/settings")}
                     className="w-[4rem] h-[1.6rem] sm:w-[60px] sm:h-[30px] text-[0.9375rem] rounded-md bg-primary-green text-white mt-4 sm:mt-8"
                   >
-                     {t(translations.profile.edit)}
+                    {t(translations.profile.edit)}
                   </button>
                 )}
               </div>
@@ -272,7 +273,7 @@ const Profile = () => {
                 {/* Certification & Document  */}
                 <div className="hidden sm:block">
                   <h2 className="my-6 font-semibold text-dark-gray-1 dark:text-white dark:font-bold">
-                      {t(translations.profile.documents)}
+                    {t(translations.profile.documents)}
                   </h2>
                   {documentIds?.map((item, index) => (
                     <div
