@@ -28,7 +28,9 @@ const LanguageSelect = () => {
         }
         }
         value={languageOptions.filter((option) => values.languages?.includes(option.value))}
+
         placeholder= {t(translations.langSelect.PH)}
+
         styles={{
           control: (provided, state) => ({
             ...provided,

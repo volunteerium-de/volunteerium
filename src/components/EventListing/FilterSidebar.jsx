@@ -13,9 +13,8 @@ import {
 } from "../../features/searchSlice"
 import { axiosWithPublic } from "../../hooks/useAxios"
 import { formatISO } from "date-fns"
-import LangJson from "../../helpers/languages_english.json"
 
-export const formatEndDate = (startDate) => {
+const formatEndDate = (startDate) => {
   const newEndDate = new Date(startDate)
   newEndDate.setDate(newEndDate.getDate() + 1)
   newEndDate.setHours(23, 59, 59, 999)
@@ -23,12 +22,7 @@ export const formatEndDate = (startDate) => {
   return formattedNewEndDate
 }
 
-export const getLangName = (langCode) => {
-  const selectedLang = LangJson.filter((langData) => langData.code === langCode)
-  return selectedLang[0].name
-}
-
-const FilterSidebar = () => {
+const FilterSidebar = ({ getLangName }) => {
   const dispatch = useDispatch()
   const [localStartDate, setLocalStartDate] = useState()
   const [localEndDate, setLocalEndDate] = useState()

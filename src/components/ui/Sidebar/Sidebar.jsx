@@ -6,7 +6,7 @@ import { translations } from "../../../locales/translations"
 
 const Sidebar = ({ items, activeTab, onTabChange, onEditAvatar }) => {
   const { currentUser: user } = useSelector((state) => state.auth)
-  const {t} = useTranslation()
+  const { t } = useTranslation()
   const getMenuClassName = (item) => {
     return `max-w-[374px] h-[50px]  bg-white flex items-center gap-5 p-4 hover:bg-gray-100 mt-[20px] relative ${
       activeTab === item.key ? "bg-gray-white" : ""
