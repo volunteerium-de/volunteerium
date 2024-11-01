@@ -7,7 +7,9 @@ import { Link } from "react-router-dom"
 import useAuthCall from "../../hooks/useAuthCall"
 import { translations } from "../../locales/translations"
 import { useTranslation } from "react-i18next"
+import { ImSpinner9 } from "react-icons/im"
 import ReCAPTCHA from "react-google-recaptcha"
+import { useSelector } from "react-redux"
 
 const LoginForm = () => {
   const { t } = useTranslation()
@@ -30,6 +32,7 @@ const validationSchema = Yup.object({
   const { authWithGoogle, onRecaptchaVerify } = useAuthCall()
   const recaptchaRef = useRef(null)
   const formValuesRef = useRef({})
+  const loading = useSelector((state) => state.auth.loading) 
 
   useEffect(() => {
     return () => {
@@ -119,9 +122,18 @@ const validationSchema = Yup.object({
           <div className="flex flex-col items-center">
             <button
               type="submit"
-              className="w-full bg-primary-green text-white text-[1rem] py-3 mt-3 rounded-lg  focus:outline-none"
+              className={`w-full bg-primary-green text-white text-[1rem] py-3 mt-3 rounded-lg focus:outline-none  flex justify-center items-center ${
+                loading ? "opacity-50 cursor-not-allowed" : ""}`}
+              disabled={loading}
             >
-              {t(translations.loginForm.login)}
+                {loading ? (
+                <>
+                  <ImSpinner9 className="animate-spin mr-2" />
+                  {t(translations.registerForm.loading)}
+                </>
+              ) : (
+                t(translations.registerForm.login)
+              )}
             </button>
 
             <div className="text-center mt-6">

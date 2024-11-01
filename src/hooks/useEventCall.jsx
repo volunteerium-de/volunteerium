@@ -18,12 +18,14 @@ const useEventCall = () => {
   };
 
   const getSingleEvent = async (eventId) => {
+    dispatch(fetchStart())
     try {
       const { data } = await axiosWithPublic(`events/${eventId}`)
-      // console.log(data)
+      console.log(data)
       return data
     } catch (error) {
       console.log(error.response.data.message)
+      dispatch(fetchFail())
     }
   }
 

@@ -9,7 +9,6 @@ import { formatName } from "../../helpers/formatName"
 import { useTranslation } from "react-i18next"
 import { translations } from "../../locales/translations"
 import i18n from "../../i18n"
-translations
 
 const MessageMenu = () => {
   const { t } = useTranslation()

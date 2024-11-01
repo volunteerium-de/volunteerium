@@ -12,7 +12,6 @@ import { useState } from "react"
 import { useSelector } from "react-redux"
 import { useTranslation } from "react-i18next"
 import { translations } from "../locales/translations"
-translations
 
 export const getLoginRedirectLink = (user) => {
   let redirectLink = "/"

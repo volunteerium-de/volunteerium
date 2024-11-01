@@ -6,7 +6,6 @@ import { useState } from "react"
 import { useEffect } from "react"
 import { translations } from "../locales/translations"
 import { useTranslation } from "react-i18next"
-translations
 
 const GoogleAuthFail = () => {
   const { t } = useTranslation()
