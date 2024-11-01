@@ -3,7 +3,6 @@ import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io"
 import Header from "../components/Header/Header"
 import { useTranslation } from "react-i18next"
 import { translations } from "../locales/translations"
-translations
 // FAQ Data
 
 const FAQuestion = () => {

@@ -3,7 +3,6 @@ import PasswordModal from "./PasswordModal"
 import DeleteAccountModal from "./DeleteAccountModal"
 import { useTranslation } from "react-i18next"
 import { translations } from "../../locales/translations"
-translations
 
 const SecuritySettings = ({ currentUser }) => {
   const {t} = useTranslation()

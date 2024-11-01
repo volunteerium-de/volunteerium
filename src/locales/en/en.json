@@ -1,4 +1,9 @@
 {
+  "langSwitch":{
+    "en": "English",
+    "de": "German"
+  },
+  
   "hero": {
     "h2": "Become a part of something",
     "span": "bigger"
@@ -90,6 +95,7 @@
     "emailPH": "Enter your email address",
     "password": "Password",
     "passwordPH": "Enter your password",
+    "loading": "Loading...",
     "submit": "Create Account",
     "haveAccount": "Already have an account?",
     "login": "Login",
@@ -99,6 +105,14 @@
     "terms": "Terms of Service",
     "pPrivacy": "and acknowledge you’ve read our",
     "privacy": "Privacy Policy"
+  },
+
+  "registerSuccess": {
+    "emailVerifyAlt": "Email Verification",
+    "h1": "Verify Your Email Address",
+    "p1": "We’ve sent a confirmation email to your email.",
+    "p2": "Please check your inbox and click the link to verify your email address.",
+    "p3": "Didn’t receive the email? Be sure to check your spam folder or resend the email."
   },
 
   "login": {
@@ -127,6 +141,7 @@
     "password": "Password",
     "passwordPH": "Enter your password",
     "forgot": "Forgot your password?",
+    "loading": "Loading...",
     "login": "Login",
     "haveAccount": "Do not have an account yet?",
     "signUp": "Sign Up",
@@ -271,7 +286,7 @@
     "p": "Invalid user type"
   },
 
-  "securitySettings": {
+  "secSett": {
     "feedbackMsg1": "Your account has been deleted successfully.",
     "feedbackMsg2": "There was an error deleting your account.",
     "h1": "Security Settings",
@@ -406,7 +421,7 @@
     "p2": "seconds"
   },
 
-  "googleAuthSuccess": {
+  "googleAS": {
     "successMsg": "You have successfully logged in with Google",
     "h1": " Successfully authenticated with Google",
     "p": "Redirecting..."
@@ -487,11 +502,62 @@
     "p3": "making a difference",
     "p4": " Before we start, we'd like to know a bit more about you.",
     "link": "Let's Start!"
+  },
+
+  "langSelect": {
+    "lang": "Language",
+    "PH": "Add event languages"
+  },
+  
+   "privacyPolicy": {
+    "h1": "Privacy Policy",
+    "p1": "Effective Date:",
+    "p2": "30.10.2024",
+    "p3": "Thank you for using Volunteerium, a platform designed to connect event organizers with volunteers. Your privacy is important to us, and we are committed to protecting your personal information. This Privacy Policy explains how we collect, use, and share your personal data when you use our platform. By using Volunteerium, you agree to the practices outlined in this policy.",
+    "h2info": "1. Information We Collect",
+    "p4": "We collect the following types of information when you use Volunteerium:",
+    "p5": "Personal Information:",
+    "p6": "This includes your name, email address, phone number, profile photo, and any other details you provide when creating an account.",
+    "p7": "Event Information:",
+    "p8": "If you are an event organizer, we collect details about the events you create, including event descriptions, dates, and locations.",
+    "p9": "Activity Data:",
+    "p10": "We gather data related to your activities on the platform, such as the events you sign up for or create, messages exchanged, and feedback given.",
+    "h2use": "2. How We Use Your Information",
+    "li1": "Facilitate connections between event organizers and volunteers.",
+    "li2": "Provide and improve our services.",
+    "li3": "Send you notifications about events, updates, and opportunities.",
+    "li4": "Ensure the security and integrity of our platform.",
+    "li5": "Analyze usage to enhance the user experience.",
+    "h2share": "3. How We Share Your Information",
+    "li6": "With Event Organizers:",
+    "li7": "If you are a volunteer, your basic information (e.g., name, email) will be shared with the event organizers of the events you sign up for.",
+    "li8": "Legal Obligations:",
+    "li9": "We may disclose your information to comply with legal requirements or protect our rights.",
+    "li10": "Service Providers:",
+    "li11": "We may share your information with third-party service providers who help us operate the platform (e.g., hosting services).",
+    "h2retention": "4. Data Retention",
+    "p11": "We retain your information as long as necessary to provide our services and fulfill the purposes outlined in this Privacy Policy. If you delete your account, we will remove your personal data from our active systems, but some data may be retained for legal or operational reasons.",
+    "h2security": "5. Security of Your Information",
+    "p12": "We take reasonable measures to protect your personal information from unauthorized access, alteration, or destruction. However, no system is completely secure, and we cannot guarantee absolute security.",
+    "h2rights": "6. Your Rights",
+    "li12": "Access:",
+    "li13": "You can request a copy of the personal data we hold about you.",
+    "li14": "Correction:",
+    "li15": "You can update or correct your information at any time through your account settings.",
+    "li16": "Deletion:",
+    "li17": "You can request the deletion of your personal data, subject to any legal obligations we may have to retain it.",
+    "h2changes": "7. Changes to This Policy",
+    "p13": "We may update this Privacy Policy from time to time to reflect changes in our practices or legal requirements. We will notify you of any significant changes by posting the updated policy on our website.",
+    "h2contact": "8. Contact Us",
+    "p14": "If you have any questions or concerns about this Privacy Policy or how we handle your personal data, please contact us at:",
+    "p15": "Volunteerium Team",
+    "p16": "Email: info.volunteerium@gmail.com"
   }
-
-
-
-
-
-
 }
+
+
+
+
+
+
+

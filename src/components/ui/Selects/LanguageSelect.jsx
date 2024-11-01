@@ -1,14 +1,19 @@
 import Select from "react-select"
 import { useFormikContext } from "formik"
+import eng_languages from "../../../helpers/languages_english.json"
+import de_languages from "../../../helpers/languages_deutsch.json"
+import { useTranslation } from "react-i18next"
+import { translations } from "../../../locales/translations"
 import useLanguageOptions from "../../../hooks/useLanguages"
 
 const LanguageSelect = () => {
+  const {t} = useTranslation()
   const { setFieldValue, values } = useFormikContext()
   const languageOptions = useLanguageOptions()
 
   return (
     <div className="mb-4">
-      <label className="block text-dark-gray-2 mb-2 dark:text-white">Language</label>
+      <label className="block text-dark-gray-2 mb-2 dark:text-white">{t(translations.langSelect.lang)}</label>
       <Select
         isMulti
         name="languages"
@@ -20,9 +25,12 @@ const LanguageSelect = () => {
             "languages",
             selectedOptions ? selectedOptions.map((option) => option.value) : []
           )
-        }}
+        }
+        }
         value={languageOptions.filter((option) => values.languages?.includes(option.value))}
-        placeholder="Add languages"
+
+        placeholder= {t(translations.langSelect.PH)}
+
         styles={{
           control: (provided, state) => ({
             ...provided,

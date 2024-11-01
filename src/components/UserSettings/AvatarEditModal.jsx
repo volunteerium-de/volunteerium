@@ -5,7 +5,6 @@ import { MdOutlinePhotoCamera } from "react-icons/md"
 import { RiDeleteBin6Line } from "react-icons/ri"
 import { translations } from "../../locales/translations"
 import { useTranslation } from "react-i18next"
-translations
 
 const AvatarEditModal = ({ isOpen, onClose, currentUser, onUpdateAvatar }) => {
   const {t} = useTranslation() 

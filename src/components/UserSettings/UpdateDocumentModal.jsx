@@ -2,7 +2,6 @@ import React, { useState, useRef } from "react"
 import { useEffect } from "react"
 import { useTranslation } from "react-i18next"
 import { translations } from "../../locales/translations"
-translations
 
 const UpdateDocumentModal = ({ isOpen, onClose, documentTitle, document, onUpdate }) => {
   const {t} = useTranslation()

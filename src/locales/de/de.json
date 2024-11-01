@@ -1,4 +1,9 @@
 {
+  "langSwitch": {
+    "en": "Englisch",
+    "de": "Deutsch"
+  },
+  
   "hero": {
     "h2": "Werden Sie Teil von etwas",
     "span": "Größerem"
@@ -90,6 +95,7 @@
     "emailPH": "Geben Sie Ihre E-Mail-Adresse ein",
     "password": "Passwort",
     "passwordPH": "Geben Sie Ihr Passwort ein",
+    "loading": "Laden...",
     "submit": "Konto erstellen",
     "haveAccount": "Sie haben bereits ein Konto?",
     "login": "Anmeldung",
@@ -99,6 +105,14 @@
     "terms": "Zustellungsbedingungen",
     "pPrivacy": "und bestätigen Sie, dass Sie unsere gelesen haben",
     "privacy": "Datenschutzerklärung"
+  },
+
+  "registerSuccess": {
+    "emailVerifyAlt": "E-Mail-Bestätigung",
+    "h1": "Bestätigen Sie Ihre E-Mail-Adresse",
+    "p1": "Wir haben eine Bestätigungs-E-Mail an Ihre E-Mail-Adresse gesendet.",
+    "p2": "Bitte überprüfen Sie Ihren Posteingang und klicken Sie auf den Link, um Ihre E-Mail-Adresse zu bestätigen.",
+    "p3": "Haben Sie die E-Mail nicht erhalten? Überprüfen Sie unbedingt Ihren Spam-Ordner oder senden Sie die E-Mail erneut."
   },
 
   "login": {
@@ -127,6 +141,7 @@
     "password": "Passwort",
     "passwordPH": "Geben Sie Ihr Passwort ein",
     "forgot": "Passwort vergessen?",
+    "loading": "Laden...",
     "login": "Anmelden",
     "haveAccount": "Haben Sie noch kein Konto?",
     "signUp": "Konto Erstellen",
@@ -269,9 +284,9 @@
 
   "profileSettings": {
     "p": "Ungültiger Benutzertyp"
-},
+  },
 
-"secSett": {
+  "secSett": {
     "feedbackMsg1": "Ihr Konto wurde erfolgreich gelöscht.",
     "feedbackMsg2": "Beim Löschen Ihres Kontos ist ein Fehler aufgetreten.",
     "h1": "Sicherheitseinstellungen",
@@ -287,9 +302,9 @@
     "delAlert2": "Möchten Sie Ihre Organisation löschen? Das Löschen Ihrer Organisation entfernt alle damit verbundenen Inhalte.",
     "userRes1": "Ich möchte mein Konto löschen",
     "userRes2": "Ich möchte meine Organisation löschen"
-},
+  },
 
-"updateDoc": {
+  "updateDoc": {
     "error": "Fehler beim Aktualisieren der Datei.",
     "h2": "Dokument aktualisieren",
     "h1": "Dokumenttitel",
@@ -297,22 +312,22 @@
     "selectFile": "Datei auswählen",
     "cancel": "Abbrechen",
     "update": "Aktualisieren"
-},
+  },
 
-"msgMenu": {
+  "msgMenu": {
     "h3": "Nachrichten",
     "link": "Alle anzeigen",
     "you": "Sie",
     "announce": "Ankündigung",
     "noMsg": "Keine Nachrichten"
-},
+  },
 
-"notifMenu": {
+  "notifMenu": {
     "notif": "Benachrichtigungen",
     "noNotif": "Keine Benachrichtigungen"
-},
+  },
 
-"userMenu": {
+  "userMenu": {
     "user": "Benutzer",
     "profile": "Profil",
     "eventMng": "Eventverwaltung",
@@ -322,9 +337,9 @@
     "register": "Registrieren",
     "light": "Hell",
     "dark": "Dunkel"
-},
+  },
 
-"aboutUs": {
+  "aboutUs": {
     "aboutUs": "Über uns",
     "p1": "     Wir bringen Menschen zusammen, um zu helfen, zu unterstützen und starke Gemeinschaften aufzubauen, damit sie einen positiven Einfluss schaffen und ein erfülltes Leben führen können.",
     "h2": "Wir sind hier, um so viele Menschen wie möglich für das Ehrenamt zu gewinnen.",
@@ -332,8 +347,8 @@
     "howItWorks": "Wir sind hier, um so viele Menschen wie möglich für das Ehrenamt zu gewinnen.",
     "eventAlt": "Veranstaltungen",
     "explore": "Entdecken",
-"opportunities": "Möglichkeiten",
-"p3": "Durchsuchen Sie eine Vielzahl von Freiwilligenmöglichkeiten, die auf Ihre Interessen und Ihren Standort zugeschnitten sind.",
+    "opportunities": "Möglichkeiten",
+    "p3": "Durchsuchen Sie eine Vielzahl von Freiwilligenmöglichkeiten, die auf Ihre Interessen und Ihren Standort zugeschnitten sind.",
     "join": "Beitreten",
     "toVolunteer": "zum Freiwilliger",
     "p4": "Sobald Sie eine Veranstaltung gefunden haben, die Sie interessiert, treten Sie bei, um zu helfen. Der Veranstalter wird Ihre Bewerbung prüfen und Ihre Teilnahme bestätigen.",
@@ -353,9 +368,9 @@
     "orgCardP2": "Organisationen",
     "eventCardP1": "500+",
     "eventCardP2": "Veranstaltungen"
-},
+  },
 
-"contactUs": {
+  "contactUs": {
     "p1": "Ihre Rückmeldung",
     "p2": "ist uns wichtig!",
     "p3": " Tragen Sie weiterhin zu unserer Gemeinschaft bei, indem Sie Ihr",
@@ -366,7 +381,7 @@
     "p8": "Vorschlägen",
     "p9": "Vielen Dank, dass Sie bei uns sind!",
     "h1": "Kontaktieren Sie uns"
-},
+  },
 
   "contactUsForm": {
     "name": "Name",
@@ -381,8 +396,7 @@
     "submit": "Absenden"
   },
 
-
-"faqPage": {
+  "faqPage": {
     "q1": "Wie kann ich freiwillig helfen?",
     "a1": "Freiwilligenarbeit ist einfach! Melden Sie sich einfach auf unserer Website an, durchsuchen Sie die verfügbaren Möglichkeiten und wählen Sie die aus, die am besten zu Ihnen passt.",
     "q2": "Kann ich mich sowohl als Freiwilliger als auch als Anfragender registrieren?",
@@ -396,29 +410,29 @@
     "q6": "Kann ich meine Teilnahme an einer Veranstaltung später absagen?",
     "a6": "Natürlich! Wenn sich Ihre Pläne ändern, können Sie Ihre Anmeldung einfach über Ihr Konto-Dashboard stornieren.",
     "h1": "Häufig gestellte Fragen",
-"p1": "Finden Sie Antworten auf häufig gestellte Fragen zu Volunteerium"
-},
+    "p1": "Finden Sie Antworten auf häufig gestellte Fragen zu Volunteerium"
+  },
 
-"googleAuthFall": {
+  "googleAuthFall": {
     "h1": "Authentifizierung fehlgeschlagen.",
     "h2": "Bitte versuchen Sie es erneut oder kontaktieren Sie den Support, wenn das Problem weiterhin besteht.",
     "p1": "Weiterleitung in",
     "p2": "Sekunden"
-},
+  },
 
-"googleAuthSuccess": {
+  "googleAS": {
     "successMsg": "Erfolg, Sie haben sich erfolgreich mit Google angemeldet",
     "h1": "Erfolgreich mit Google authentifiziert",
     "p": "Weiterleitung..."
-},
+  },
 
-"notFound": {
+  "notFound": {
     "imgAlt": "Nicht gefunden",
     "p": "Seite nicht gefunden",
     "link": "Zurück zur Startseite"
-},
+  },
 
-"setupIndv": {
+  "setupIndv": {
     "successMsg": "Bitte geben Sie Ihre Profildaten ein, um fortzufahren",
     "share": "Teilen Sie Ihr Alter und Geschlecht",
     "p1": "Diese Angaben sind optional, können aber für bestimmte Veranstaltungen nützlich sein",
@@ -439,7 +453,7 @@
     "p4": "Leisten Sie einen sinnvollen Beitrag in den Bereichen, die Ihnen am Herzen liegen!",
     "skip": "Überspringen",
     "finish": "Beenden"
-},
+  },
 
 "setupOrg": {
   "details": "Teilen Sie Ihre Organisationsdaten",
@@ -487,16 +501,103 @@
   "p3": "zu einem Unterschied bei",
   "p4": "Bevor wir beginnen, möchten wir ein bisschen mehr über Sie erfahren.",
   "link": "Lass uns anfangen!"
-}
+},
 
+"privacyPolicy": {
+    "h1": "Datenschutzrichtlinie",
+    "p1": "Gültigkeitsdatum:",
+    "p2": "30.10.2024",
+    "p3": "Vielen Dank, dass Sie Volunteerium nutzen, eine Plattform, die Veranstalter mit Freiwilligen verbindet. Ihre Privatsphäre ist uns wichtig, und wir verpflichten uns, Ihre persönlichen Daten zu schützen. Diese Datenschutzrichtlinie erklärt, wie wir Ihre persönlichen Daten sammeln, verwenden und teilen, wenn Sie unsere Plattform nutzen. Indem Sie Volunteerium verwenden, stimmen Sie den in dieser Richtlinie beschriebenen Praktiken zu.",
+    "h2info": "1. Informationen, die wir sammeln",
+    "p4": "Wir sammeln die folgenden Arten von Informationen, wenn Sie Volunteerium nutzen:",
+    "p5": "Persönliche Informationen:",
+    "p6": "Dazu gehören Ihr Name, Ihre E-Mail-Adresse, Telefonnummer, Profilfoto und alle weiteren Details, die Sie bei der Erstellung eines Kontos angeben.",
+    "p7": "Veranstaltungsinformationen:",
+    "p8": "Wenn Sie ein Veranstalter sind, sammeln wir Details zu den von Ihnen erstellten Veranstaltungen, einschließlich Veranstaltungsbeschreibungen, Daten und Standorte.",
+    "p9": "Aktivitätsdaten:",
+    "p10": "Wir sammeln Daten zu Ihren Aktivitäten auf der Plattform, wie die Veranstaltungen, für die Sie sich anmelden oder erstellen, gesendete Nachrichten und abgegebene Feedbacks.",
+    "h2use": "2. Wie wir Ihre Informationen verwenden",
+    "li1": "Verbindungen zwischen Veranstaltern und Freiwilligen erleichtern.",
+    "li2": "Unsere Dienstleistungen bereitstellen und verbessern.",
+    "li3": "Benachrichtigungen über Veranstaltungen, Aktualisierungen und Möglichkeiten senden.",
+    "li4": "Sicherheit und Integrität unserer Plattform gewährleisten.",
+    "li5": "Nutzungsanalyse zur Verbesserung der Benutzererfahrung.",
+    "h2share": "3. Wie wir Ihre Informationen teilen",
+    "li6": "Mit Veranstaltern:",
+    "li7": "Wenn Sie Freiwilliger sind, werden Ihre Basisinformationen (z. B. Name, E-Mail) den Veranstaltern der Veranstaltungen, für die Sie sich anmelden, zur Verfügung gestellt.",
+    "li8": "Rechtliche Verpflichtungen:",
+    "li9": "Wir können Ihre Informationen offenlegen, um gesetzlichen Anforderungen nachzukommen oder unsere Rechte zu schützen.",
+    "li10": "Dienstleister:",
+    "li11": "Wir können Ihre Informationen mit Drittanbietern teilen, die uns beim Betrieb der Plattform unterstützen (z. B. Hosting-Dienste).",
+    "h2retention": "4. Datenaufbewahrung",
+    "p11": "Wir bewahren Ihre Informationen so lange auf, wie es notwendig ist, um unsere Dienstleistungen bereitzustellen und die in dieser Datenschutzrichtlinie beschriebenen Zwecke zu erfüllen. Wenn Sie Ihr Konto löschen, entfernen wir Ihre persönlichen Daten aus unseren aktiven Systemen, jedoch können einige Daten aus rechtlichen oder betrieblichen Gründen aufbewahrt werden.",
+    "h2security": "5. Sicherheit Ihrer Informationen",
+    "p12": "Wir ergreifen angemessene Maßnahmen, um Ihre persönlichen Daten vor unbefugtem Zugriff, Änderung oder Zerstörung zu schützen. Kein System ist jedoch völlig sicher, und wir können keine absolute Sicherheit garantieren.",
+    "h2rights": "6. Ihre Rechte",
+    "li12": "Zugriff:",
+    "li13": "Sie können eine Kopie der persönlichen Daten anfordern, die wir über Sie speichern.",
+    "li14": "Korrektur:",
+    "li15": "Sie können Ihre Informationen jederzeit über Ihre Kontoeinstellungen aktualisieren oder korrigieren.",
+    "li16": "Löschung:",
+    "li17": "Sie können die Löschung Ihrer persönlichen Daten verlangen, vorbehaltlich etwaiger gesetzlicher Verpflichtungen, die uns zur Aufbewahrung verpflichten.",
+    "h2changes": "7. Änderungen dieser Richtlinie",
+    "p13": "Wir können diese Datenschutzrichtlinie von Zeit zu Zeit aktualisieren, um Änderungen in unseren Praktiken oder gesetzlichen Anforderungen widerzuspiegeln. Wir werden Sie über wesentliche Änderungen informieren, indem wir die aktualisierte Richtlinie auf unserer Website veröffentlichen.",
+    "h2contact": "8. Kontaktieren Sie uns",
+    "p14": "Wenn Sie Fragen oder Bedenken bezüglich dieser Datenschutzrichtlinie oder der Verarbeitung Ihrer persönlichen Daten haben, kontaktieren Sie uns bitte unter:",
+    "p15": "Volunteerium-Team",
+    "p16": "E-Mail: info.volunteerium@gmail.com"
+  },
 
+  "setupOrg": {
+    "details": "Teilen Sie Ihre Organisationsdaten",
+    "p": "Diese Informationen sind notwendig, damit wir Ihre Organisation verstehen und Ihnen bessere Dienstleistungen anbieten können",
+    "orgDesc": "Organisationsbeschreibung*",
+    "orgDescPH": "Organisationsbeschreibung eingeben",
+    "orgLogo": "Organisationslogo*",
+    "nextButton": "Weiter",
+    "completeh2": "Vervollständigen Sie Ihr Organisationsprofil",
+    "completeP": "Diese zusätzlichen Angaben sind erforderlich, um ein umfassendes Profil Ihrer Organisation zu erstellen und maßgeschneiderte Dienste anzubieten",
+    "websiteURL": "Website-URL",
+    "streetName": "Straßenname*",
+    "streetNamePH": "Straßennamen eingeben",
+    "streetNr": "Straßennr.*",
+    "zipCode": "Postleitzahl*",
+    "zipCodePH": "Postleitzahl eingeben",
+    "city": "Stadt*",
+    "cityPH": "Stadt eingeben",
+    "country": "Land*",
+    "countryPH": "Land eingeben",
+    "finish": "Fertigstellen"
+  },
 
+  "profileCard": {
+    "attendEvents": "Teilgenommene Veranstaltungen",
+    "organizedEvents": "Organisierte Veranstaltungen",
+    "p1": "Keine Veranstaltungen gefunden",
+    "p2": "Es scheint, dass momentan keine Veranstaltungen verfügbar sind.",
+    "infoAlt": "Organisator-Avatar",
+    "joined": "beigetreten"
+  },
 
+  "sidebar": {
+    "welcome": "Wilkommen"
+  },
 
+  "emailVerify": {
+    "h1": "Ihre E-Mail wird überprüft..."
+  },
 
+  "verifySuccess": {
+    "h1": "Sie sind verifiziert! 🎉",
+    "p1": "Wir freuen uns, Sie bei uns zu haben!",
+    "p2": "Indem Sie unserer Community beitreten, tragen Sie bereits",
+    "p3": "zu einem Unterschied bei",
+    "p4": "Bevor wir beginnen, möchten wir ein bisschen mehr über Sie erfahren.",
+    "link": "Lass uns anfangen!"
+  },
 
-
-
-
-
+  "langSelect": {
+    "lang": "Sprache",
+    "PH": "Veranstaltungssprachen hinzufügen"
+  }
 }
