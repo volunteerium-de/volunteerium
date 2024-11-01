@@ -4,8 +4,6 @@ import { GrLanguage } from "react-icons/gr"
 import { FaPeopleLine } from "react-icons/fa6"
 import { formatDateWithTime } from "../../helpers/formatDate"
 import AttendantsAvatars from "./AttendantsAvatars"
-import EventParticipationButton from "../ui/Buttons/EventParticipationButton"
-import { getLangName } from "../EventListing/FilterSidebar"
 import EventFeedback from "./EventFeedback"
 import { useState } from "react"
 import useLanguageOptions from "../../hooks/useLanguages"
@@ -18,6 +16,7 @@ const EventOverview = () => {
   const [isFeedbackOpen, setIsFeedbackOpen] = useState(false)
   const { singleEvent } = useSelector((state) => state.event)
   const { t } = useTranslation()
+  const { getLangName } = useLanguageOptions()
 
   const { startDate, addressId, isOnline, maxParticipant, languages, eventParticipantIds } =
     singleEvent
@@ -25,7 +24,6 @@ const EventOverview = () => {
   const toggleFeedbackModal = () => {
     setIsFeedbackOpen(!isFeedbackOpen)
   }
-  const { getLangName } = useLanguageOptions()
 
   const totalParticipants = eventParticipantIds.filter(
     (participant) => participant.isApproved === true
