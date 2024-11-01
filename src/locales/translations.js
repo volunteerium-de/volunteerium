@@ -386,16 +386,16 @@ export const translations = {
   },
 
   contactUsForm: {
-    name: "contactUs.name",
-    namePH: "contactUs.namePlaceholder",
-    email: "contactUs.email",
-    emailPH: "contactUs.emailPlaceholder",
-    subject: "contactUs.subject",
-    subjectPH: "contactUs.subjectPlaceholder",
-    message: "contactUs.message",
-    messagePH: "contactUs.messagePlaceholder",
-    messageMaxLength: "contactUs.messageMaxLength",
-    submit: "contactUs.submit",
+    name: "contactUsForm.name",
+    namePH: "contactUsForm.namePH",
+    email: "contactUsForm.email",
+    emailPH: "contactUsForm.emailPH",
+    subject: "contactUsForm.subject",
+    subjectPH: "contactUsForm.subjectPH",
+    message: "contactUsForm.message",
+    messagePH: "contactUsForm.messagePH",
+    messageMaxLength: "contactUsForm.messageMaxLength",
+    submit: "contactUsForm.submit",
   },
 
   faqPage: {
