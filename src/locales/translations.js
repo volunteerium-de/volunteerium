@@ -1,6 +1,11 @@
 import Subscribe from "../components/Footer/Subscribe"
 
 export const translations = {
+  langSwitch: {
+    en: "langSwitch.en",
+    de: "langSwitch.de",
+  },
+
   heroSection: {
     h2: "hero.h2",
     span: "hero.span",
@@ -93,6 +98,7 @@ export const translations = {
     emailPH: "registerForm.emailPH",
     password: "registerForm.password",
     passwordPH: "registerForm.passwordPH",
+    loading: "registerForm.loading",
     submit: "registerForm.submit",
     haveAccount: "registerForm.haveAccount",
     login: "registerForm.login",
@@ -102,6 +108,14 @@ export const translations = {
     terms: "registerForm.terms",
     pPrivacy: "registerForm.pPrivacy",
     privacy: "registerForm.privacy",
+  },
+
+  registerSuccess: {
+    emailVerifyAlt: "registerSuccess.emailVerifyAlt",
+    h1: "registerSuccess.h1",
+    p1: "registerSuccess.p1",
+    p2: "registerSuccess.p2",
+    p3: "registerSuccess.p3",
   },
 
   login: {
@@ -130,6 +144,7 @@ export const translations = {
     password: "loginForm.password",
     passwordPH: "loginForm.passwordPH",
     forgot: "loginForm.forgot",
+    loading: "loginForm.loading",
     login: "loginForm.login",
     haveAccount: "loginForm.haveAccount",
     signUp: "loginForm.signUp",
@@ -533,6 +548,11 @@ export const translations = {
     p14: "privacyPolicy.p14",
     p15: "privacyPolicy.p15",
     p16: "privacyPolicy.p16",
+  },
+
+  langSelect: {
+    lang: "langSelect.lang",
+    PH: "langSelect.PH",
   },
 
   eventDetails: {

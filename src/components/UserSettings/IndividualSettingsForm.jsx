@@ -3,7 +3,6 @@ import { FaAngleDown, FaAngleUp } from "react-icons/fa"
 import MyDocumentsModal from "./MyDocumentsModal"
 import { useTranslation } from "react-i18next"
 import { translations } from "../../locales/translations"
-translations
 
 // Custom Dropdown Component
 const CustomDropdown = ({ options, label, selectedOptions, isMultiSelect, onChange }) => {

@@ -4,7 +4,7 @@ import OrganisationSettingsForm from "./OrganisationSettingsForm"
 import { useState } from "react"
 import { useTranslation } from "react-i18next"
 import { translations } from "../../locales/translations"
-translations
+
 // import SecuritySettings from "./SecuritySettings"
 
 const ProfileSettings = () => {

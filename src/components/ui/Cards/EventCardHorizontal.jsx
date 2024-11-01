@@ -3,18 +3,13 @@ import { IoCalendar, IoHome, IoLocation, IoPeople } from "react-icons/io5"
 import eventImage from "../../../assets/example-event-img.png"
 import { RxDividerVertical } from "react-icons/rx"
 import { MdLanguage } from "react-icons/md"
-import LangJson from "../../../helpers/languages_english.json"
+import useLanguageOptions from "../../../hooks/useLanguages"
 import { Link } from "react-router-dom"
-
-export const getLangName = (langCode) => {
-  const selectedLang = LangJson.filter((langData) => langData.code === langCode)
-  return selectedLang[0].name || langCode
-}
 
 const EventCardHorizontal = ({ event }) => {
   const startDate = new Date(event.startDate).toLocaleDateString()
   const endDate = new Date(event.endDate).toLocaleDateString()
-
+  const { getLangName } = useLanguageOptions()
   const areDatesSame = startDate === endDate
 
   const formatDateTime = (dateString) => {

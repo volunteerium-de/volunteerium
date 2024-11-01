@@ -4,9 +4,11 @@ import { GrLanguage } from "react-icons/gr"
 import { FaPeopleLine } from "react-icons/fa6"
 import { formatDateWithTime } from "../../helpers/formatDate"
 import AttendantsAvatars from "./AttendantsAvatars"
+import EventParticipationButton from "../ui/Buttons/EventParticipationButton"
 import { getLangName } from "../EventListing/FilterSidebar"
 import EventFeedback from "./EventFeedback"
 import { useState } from "react"
+import useLanguageOptions from "../../hooks/useLanguages"
 import { translations } from "../../locales/translations"
 import { useTranslation } from "react-i18next"
 import EventParticipationButtons from "../ui/Buttons/EventParticipationButtons"
@@ -23,6 +25,7 @@ const EventOverview = () => {
   const toggleFeedbackModal = () => {
     setIsFeedbackOpen(!isFeedbackOpen)
   }
+  const { getLangName } = useLanguageOptions()
 
   const totalParticipants = eventParticipantIds.filter(
     (participant) => participant.isApproved === true
