@@ -9,7 +9,7 @@ import { useState } from "react"
 import useLanguageOptions from "../../hooks/useLanguages"
 import { translations } from "../../locales/translations"
 import { useTranslation } from "react-i18next"
-import EventParticipationButtons from "../ui/Buttons/EventParticipationButtons"
+import EventParticipationButtons from "./EventParticipationButtons"
 import { useSelector } from "react-redux"
 
 const EventOverview = () => {

@@ -494,15 +494,6 @@
     "h1": "Ihre E-Mail wird überprüft..."
   },
 
-  "verifySuccess": {
-    "h1": "Sie sind verifiziert! 🎉",
-    "p1": "Wir freuen uns, Sie bei uns zu haben!",
-    "p2": "Indem Sie unserer Community beitreten, tragen Sie bereits",
-    "p3": "zu einem Unterschied bei",
-    "p4": "Bevor wir beginnen, möchten wir ein bisschen mehr über Sie erfahren.",
-    "link": "Lass uns anfangen!"
-  },
-
   "privacyPolicy": {
     "h1": "Datenschutzrichtlinie",
     "p1": "Veröffentlichungsdatum:",
@@ -546,45 +537,6 @@
     "p14": "Wenn Sie Fragen oder Bedenken bezüglich dieser Datenschutzrichtlinie oder der Verarbeitung Ihrer persönlichen Daten haben, kontaktieren Sie uns bitte unter:",
     "p15": "Volunteerium-Team",
     "p16": "E-Mail: info.volunteerium@gmail.com"
-  },
-
-  "setupOrg": {
-    "details": "Teilen Sie Ihre Organisationsdaten",
-    "p": "Diese Informationen sind notwendig, damit wir Ihre Organisation verstehen und Ihnen bessere Dienstleistungen anbieten können",
-    "orgDesc": "Organisationsbeschreibung*",
-    "orgDescPH": "Organisationsbeschreibung eingeben",
-    "orgLogo": "Organisationslogo*",
-    "nextButton": "Weiter",
-    "completeh2": "Vervollständigen Sie Ihr Organisationsprofil",
-    "completeP": "Diese zusätzlichen Angaben sind erforderlich, um ein umfassendes Profil Ihrer Organisation zu erstellen und maßgeschneiderte Dienste anzubieten",
-    "websiteURL": "Website-URL",
-    "streetName": "Straßenname*",
-    "streetNamePH": "Straßennamen eingeben",
-    "streetNr": "Straßennr.*",
-    "zipCode": "Postleitzahl*",
-    "zipCodePH": "Postleitzahl eingeben",
-    "city": "Stadt*",
-    "cityPH": "Stadt eingeben",
-    "country": "Land*",
-    "countryPH": "Land eingeben",
-    "finish": "Fertigstellen"
-  },
-
-  "profileCard": {
-    "attendEvents": "Teilgenommene Veranstaltungen",
-    "organizedEvents": "Organisierte Veranstaltungen",
-    "p1": "Keine Veranstaltungen gefunden",
-    "p2": "Es scheint, dass momentan keine Veranstaltungen verfügbar sind.",
-    "infoAlt": "Organisator-Avatar",
-    "joined": "beigetreten"
-  },
-
-  "sidebar": {
-    "welcome": "Wilkommen"
-  },
-
-  "emailVerify": {
-    "h1": "Ihre E-Mail wird überprüft..."
   },
 
   "verifySuccess": {

@@ -3,6 +3,7 @@ import toastNotify from "../utils/toastNotify"
 import useAxios, { axiosWithPublic } from "./useAxios"
 import { fetchFail, fetchStart, getCategoriesSuccess } from "../features/searchSlice"
 import { useSelector } from "react-redux"
+import { fetchSingleEventSuccess } from "../features/eventSlice"
 
 const useEventCall = () => {
   const { axiosWithToken } = useAxios()
@@ -93,6 +94,8 @@ const useEventCall = () => {
       })
       // console.log(data)
       toastNotify("success", data.message)
+      const updatedEvent = getSingleEvent(eventId)
+      dispatch(fetchSingleEventSuccess(updatedEvent.data))
     } catch (error) {
       console.log(error)
       toastNotify("error", error?.response?.data?.message)
@@ -107,6 +110,8 @@ const useEventCall = () => {
       })
       // console.log(data)
       toastNotify("success", data.message)
+      const updatedEvent = getSingleEvent(eventId)
+      dispatch(fetchSingleEventSuccess(updatedEvent.data))
     } catch (error) {
       console.log(error)
       toastNotify("error", error?.response?.data?.message)
@@ -121,6 +126,8 @@ const useEventCall = () => {
       })
       // console.log(data)
       toastNotify("success", data.message)
+      const updatedEvent = getSingleEvent(eventId)
+      dispatch(fetchSingleEventSuccess(updatedEvent.data))
     } catch (error) {
       console.log(error)
       toastNotify("error", error?.response?.data?.message)
@@ -137,7 +144,7 @@ const useEventCall = () => {
       toastNotify("success", data.message)
 
       const updatedEvent = getSingleEvent(eventId)
-      return updatedEvent
+      dispatch(fetchSingleEventSuccess(updatedEvent.data))
     } catch (error) {
       console.log(error)
       toastNotify("error", error?.response?.data?.message)
@@ -154,7 +161,7 @@ const useEventCall = () => {
       toastNotify("success", data.message)
 
       const updatedEvent = getSingleEvent(eventId)
-      return updatedEvent
+      dispatch(fetchSingleEventSuccess(updatedEvent.data))
     } catch (error) {
       console.log(error)
       toastNotify("error", error?.response?.data?.message)
@@ -168,7 +175,7 @@ const useEventCall = () => {
       toastNotify("success", data.message)
 
       const updatedEvent = getSingleEvent(data.eventId)
-      return updatedEvent
+      dispatch(fetchSingleEventSuccess(updatedEvent.data))
     } catch (error) {
       console.log(error)
       toastNotify("error", error?.response?.data?.message)
@@ -182,6 +189,12 @@ const useEventCall = () => {
     postEvent,
     editEvent,
     deleteEvent,
+    joinEvent,
+    approveParticipant,
+    rejectParticipant,
+    confirmAttendance,
+    confirmAbsence,
+    deleteEventParticipation,
   }
 }
 
