@@ -70,12 +70,12 @@ const EventDetails = () => {
           <>
             <div
               onClick={() => navigate(-1)}
-              className="absolute px-4 md:px-10 py-5 flex gap-1 items-center text-[1.2rem] text-primary-green hover:text-dark-green dark:text-light-gray cursor-pointer"
+              className="absolute px-4 sm:hidden py-5 sm:py-0 flex gap-1 items-center text-[1.2rem] text-primary-green hover:text-dark-green dark:text-light-gray cursor-pointer"
             >
               <IoIosArrowBack />
               <span>{t(translations.eventDetails.backButton)}</span>
             </div>
-            <div className="w-full max-w-[1440px] mt-10 mx-auto flex flex-col justify-center px-4 md:px-10 py-8">
+            <div className="w-full max-w-[1800px] mt-10 mx-auto flex flex-col justify-center px-4 md:px-10 py-4 sm:py-0 sm:pb-5">
               {/* Event Photo */}
               <div className="w-full mb-6 md:mb-10">
                 <img
