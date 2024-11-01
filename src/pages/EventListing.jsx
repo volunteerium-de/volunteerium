@@ -38,17 +38,7 @@ const EventsListingPage = () => {
   const [currentPage, setCurrentPage] = useState(pageFromUrl > 0 ? pageFromUrl : 1)
   const [totalPages, setTotalPages] = useState(0)
   const [totalEventRecord, setTotalEventRecord] = useState(0)
-  const languageOptions = useLanguageOptions()
-
-  const getLangName = (langCode) => {
-    console.log(langCode)
-    console.log(languageOptions)
-    const selectedLang = languageOptions?.filter((langData) => langData.value === langCode)
-    if (selectedLang.length > 0) {
-      return selectedLang[0].label
-    }
-    return undefined
-  }
+  const { getLangName } = useLanguageOptions()
 
   useEffect(() => {
     const fetchEvents = async () => {
@@ -197,7 +187,7 @@ const EventsListingPage = () => {
           <div
             className={`h-full rounded-lg z-50 absolute w-full inset-0 bg-white transition-transform duration-300 ${isFilterSidebarOpen ? "translate-x-0" : "-translate-x-full max-w-[350px]"} lg:relative lg:translate-x-0 lg:block`}
           >
-            <FilterSidebar getLangName={getLangName} />
+            <FilterSidebar />
             {isFilterSidebarOpen && (
               <button
                 className="absolute top-4 right-8 text-primary-green lg:hidden"

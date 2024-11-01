@@ -5,9 +5,9 @@ import { FaPeopleLine } from "react-icons/fa6"
 import { formatDateWithTime } from "../../helpers/formatDate"
 import AttendantsAvatars from "./AttendantsAvatars"
 import EventParticipationButton from "../ui/Buttons/EventParticipationButton"
-import { getLangName } from "../EventListing/FilterSidebar"
 import EventFeedback from "./EventFeedback"
 import { useState } from "react"
+import useLanguageOptions from "../../hooks/useLanguages"
 
 const EventOverview = ({
   _id,
@@ -23,6 +23,8 @@ const EventOverview = ({
   const toggleFeedbackModal = () => {
     setIsFeedbackOpen(!isFeedbackOpen)
   }
+  const { getLangName } = useLanguageOptions()
+
   return (
     <div className="flex flex-col text-gray-2 space-y-4 border md:border-r md:border-b md:border-t-0 md:border-l-0 border-light-gray-3 rounded p-4 lg:px-0 lg:py-2 gap-y-7">
       <div className="font-medium text-[0.9rem] space-y-1">

@@ -135,13 +135,9 @@ const Profile = () => {
   ]
 
   const medalInfo = getMedalInfo(totalPoint, t)
-  const languageOptions = useLanguageOptions()
+  const { getLangName } = useLanguageOptions()
 
-  const getLanguageName = (code) => {
-    const language = languageOptions.find((lang) => lang.value === code)
-    return language ? language.label : code
-  }
-  const languagesFormatted = languages.map((langCode) => getLanguageName(langCode)).join(", ")
+  const languagesFormatted = languages.map((langCode) => getLangName(langCode)).join(", ")
 
   const infoItems = [
     {

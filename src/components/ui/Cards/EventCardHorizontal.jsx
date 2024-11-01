@@ -8,18 +8,8 @@ import useLanguageOptions from "../../../hooks/useLanguages"
 const EventCardHorizontal = ({ event }) => {
   const startDate = new Date(event.startDate).toLocaleDateString()
   const endDate = new Date(event.endDate).toLocaleDateString()
-  const languageOptions = useLanguageOptions()
+  const { getLangName } = useLanguageOptions()
   const areDatesSame = startDate === endDate
-
-  const getLangName = (langCode) => {
-    console.log(langCode)
-    console.log(languageOptions)
-    const selectedLang = languageOptions?.filter((langData) => langData.value === langCode)
-    if (selectedLang.length > 0) {
-      return selectedLang[0].label
-    }
-    return undefined
-  }
 
   const formatDateTime = (dateString) => {
     const date = new Date(dateString)
