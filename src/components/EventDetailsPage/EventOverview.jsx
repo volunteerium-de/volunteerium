@@ -10,12 +10,15 @@ import { useState } from "react"
 import { translations } from "../../locales/translations"
 import { useTranslation } from "react-i18next"
 import EventParticipationButtons from "../ui/Buttons/EventParticipationButtons"
+import { useSelector } from "react-redux"
 
-const EventOverview = ({ event }) => {
+const EventOverview = () => {
   const [isFeedbackOpen, setIsFeedbackOpen] = useState(false)
+  const { singleEvent } = useSelector((state) => state.event)
   const { t } = useTranslation()
 
-  const { startDate, addressId, isOnline, maxParticipant, languages, eventParticipantIds } = event
+  const { startDate, addressId, isOnline, maxParticipant, languages, eventParticipantIds } =
+    singleEvent
 
   const toggleFeedbackModal = () => {
     setIsFeedbackOpen(!isFeedbackOpen)
@@ -68,7 +71,10 @@ const EventOverview = ({ event }) => {
           {t(translations.eventDetails.sendMessageButton)}
         </button>
         <div>
-          <EventParticipationButtons event={event} toggleFeedbackModal={toggleFeedbackModal} />
+          <EventParticipationButtons
+            event={singleEvent}
+            toggleFeedbackModal={toggleFeedbackModal}
+          />
 
           {isFeedbackOpen && <EventFeedback onClose={toggleFeedbackModal} />}
         </div>

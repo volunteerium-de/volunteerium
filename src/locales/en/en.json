@@ -547,7 +547,8 @@
     "approvedButton": "Approved",
     "rejectedButton": "Rejected",
     "completedButton": "Completed",
-    "maxReacedButton": "Capacity Reached",
+    "maxReacedButton": "Full Capacity",
+    "manageButton": "Manage",
 
     "feedback": {
       "h2": "Thank you for participating!",

@@ -549,5 +549,7 @@ export const translations = {
     approvedButton: "eventDetails.approvedButton",
     rejectedButton: "eventDetails.rejectedButton",
     completedButton: "eventDetails.completedButton",
+    maxReacedButton: "eventDetails.maxReacedButton",
+    manageButton: "eventDetails.manageButton",
   },
 }

@@ -547,6 +547,8 @@
     "approvedButton": "Genehmigt",
     "rejectedButton": "Abgelehnt",
     "completedButton": "Abgeschlossen",
+    "maxReacedButton": "Volle Kapazität",
+    "manageButton": "Verwalten",
 
     "feedback": {
       "h2": "Danke für Ihre Teilnahme!",
