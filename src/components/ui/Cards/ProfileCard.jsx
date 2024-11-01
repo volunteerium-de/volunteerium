@@ -16,10 +16,10 @@ const ProfileCard = ({ events, loading, eventType, setEventType, setCurrentPage 
 
   return (
     <>
-      <div className="py-4 ">
+      <div className="py-4">
         <div className="flex gap-10 font-semibold text-xl my-4 text-dark-gray-1">
           <div
-            className={`text-[0.9375rem] cursor-pointer border-b-2 ${
+            className={`text-[0.9375rem] cursor-pointer text-center border-b-2 ${
               eventType === "Attended Events"
                 ? "text-primary-green border-primary-green"
                 : "border-transparent dark:text-white"
@@ -65,7 +65,7 @@ const ProfileCard = ({ events, loading, eventType, setEventType, setCurrentPage 
               className="group flex rounded-md shadow-md text-dark-gray-1 sm:gap-4 bg-light-gray-2 dark:bg-dark-gray-2"
             >
               {/* Image */}
-              <div className="w-full sm:w-1/2">
+              <div className="w-full sm:w-1/2 lg:w-2/5">
                 <img
                   src={event?.eventPhoto || defaultImage}
                   alt={event.title}
@@ -74,7 +74,7 @@ const ProfileCard = ({ events, loading, eventType, setEventType, setCurrentPage 
               </div>
 
               {/* Info */}
-              <div className="flex w-1/2 my-2">
+              <div className="flex w-full sm:w-1/2 lg:w-3/5 my-2">
                 <div className="flex flex-col gap-2 justify-between w-[45vw] lg:w-full py-2 ml-4 sm:ml-0 text-[0.9375rem]">
                   <h2 className="text-base md:text-xl font-semibold text-dark-gray-1 dark:text-white">
                     {event.title}

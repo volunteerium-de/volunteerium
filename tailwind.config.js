@@ -4,9 +4,6 @@ export default {
   darkMode: "class",
   theme: {
     extend: {
-      screens: {
-        "3xl": "1920px",
-      },
       colors: {
         white: "#FFFFFF",
         "light-gray": "#F8F9FC",

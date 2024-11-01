@@ -34,7 +34,7 @@ const MessageInput = ({ isAnnouncement, isOwner, sendMessage }) => {
               ? "Type your message here..."
               : "Do you have a question about the event?"
         }
-        className={`border rounded-lg focus:outline-none p-2 mb-2 flex-grow bg-light-gray-2 ${isAnnouncement && !isOwner && "opacity-70 cursor-not-allowed"}`}
+        className={`text-sm md:text-base border rounded-lg focus:outline-none p-2 mb-2 flex-grow bg-light-gray-2 ${isAnnouncement && !isOwner && "opacity-70 cursor-not-allowed"}`}
         disabled={isAnnouncement && !isOwner}
       />
       <button

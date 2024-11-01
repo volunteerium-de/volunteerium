@@ -115,8 +115,7 @@ const useChatCall = () => {
   const markAsRead = async (conversationId) => {
     dispatch(fetchStart())
     try {
-      const { data } = await axiosWithToken(`/conversations/${conversationId}`)
-      console.log(data.data)
+      await axiosWithToken(`/conversations/${conversationId}`)
     } catch (error) {
       console.log("error", error.response?.data)
       dispatch(fetchFail())
@@ -132,6 +131,8 @@ const useChatCall = () => {
       } catch (error) {
         // console.log(error)
         toastNotify("error", error.message)
+      } finally {
+        fetchConversations()
       }
     } else {
       toastNotify("error", "Please select a conversation!")

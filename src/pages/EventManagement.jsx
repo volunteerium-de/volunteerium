@@ -8,10 +8,13 @@ import OrganizedEvents from "../components/EventManagement/OrganizedEvents"
 import AttendedEvents from "../components/EventManagement/AttendedEvents"
 import Messages from "../components/EventManagement/Messages"
 import { useLocation, useNavigate } from "react-router-dom"
+import { useSelector } from "react-redux"
 
 const EventManagement = () => {
   const location = useLocation()
   const navigate = useNavigate()
+  const { conversations } = useSelector((state) => state.chat)
+  const { currentUser, loading } = useSelector((state) => state.auth)
   const [activeTab, setActiveTab] = useState("organizedEvents")
   const [isAddingEvent, setIsAddingEvent] = useState(false)
 
@@ -37,7 +40,11 @@ const EventManagement = () => {
       label: "Attended Events",
       icon: <FaPeopleGroup className="text-2xl mx-auto" />,
     },
-    { key: "messages", label: "Messages", icon: <FaEnvelope className="text-2xl mx-auto" /> },
+    {
+      key: "messages",
+      label: "Messages",
+      icon: <FaEnvelope className="text-2xl mx-auto" />,
+    },
   ]
 
   const renderContent = () => {
@@ -49,20 +56,27 @@ const EventManagement = () => {
       case "attendedEvents":
         return <AttendedEvents />
       case "messages":
-        return <Messages />
+        return (
+          <Messages conversations={conversations} currentUser={currentUser} loading={loading} />
+        )
       default:
         return <OrganizedEvents onAddEvent={() => setIsAddingEvent(true)} />
     }
   }
 
   return (
-    <div>
+    <>
       <Header />
-      <div className="flex">
-        <Sidebar items={menuItems} activeTab={activeTab} onTabChange={handleTabChange} />
-        <div className="flex-1 p-5">{renderContent()}</div>
+      <div className="flex max-w-[1800px] mx-auto">
+        <Sidebar
+          items={menuItems}
+          activeTab={activeTab}
+          onTabChange={handleTabChange}
+          conversations={conversations}
+        />
+        <div className="flex-1">{renderContent()}</div>
       </div>
-    </div>
+    </>
   )
 }
 

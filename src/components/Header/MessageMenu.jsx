@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom"
 import { formatName } from "../../helpers/formatName"
 import { useTranslation } from "react-i18next"
 import { translations } from "../../locales/translations"
-translations
+import useChatCall from "../../hooks/useChatCall"
 
 const MessageMenu = () => {
   const { t } = useTranslation()
@@ -17,6 +17,7 @@ const MessageMenu = () => {
   const { currentUser } = useSelector((state) => state.auth)
   const { conversations } = useSelector((state) => state.chat)
   const [totalUnreadCount, setTotalUnreadCount] = useState(0)
+  const { markAsRead } = useChatCall()
 
   // Toggle the message dropdown
   const toggleMessageMenu = () => {
@@ -72,6 +73,11 @@ const MessageMenu = () => {
     return { unreadCount, latestMessage }
   }
 
+  const handleMessageClick = (conversationId) => {
+    navigate(`/event-management?tab=messages&conversation=${conversationId}`)
+    markAsRead(conversationId)
+  }
+
   return (
     <div className="" ref={menuRef}>
       <div
@@ -120,7 +126,7 @@ const MessageMenu = () => {
                   return (
                     <div
                       key={_id}
-                      onClick={() => navigate(`/event-management?tab=messages&conversation=${_id}`)}
+                      onClick={() => handleMessageClick(_id)}
                       className={`${unreadCount > 0 && "bg-light-gray-3"} p-3 border-b border-light-gray-2 dark:border-gray-2 dark:bg-dark-gray-2 hover:bg-light-gray-2 dark:hover:bg-dark-gray-1 shadow-md cursor-pointer`}
                     >
                       <div className="flex gap-2 items-start w-full">
