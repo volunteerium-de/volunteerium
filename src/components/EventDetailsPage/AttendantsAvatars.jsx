@@ -3,6 +3,7 @@ import { UserAvatar } from "../ui/Avatar/userAvatar"
 import { useNavigate } from "react-router-dom"
 import { useTranslation } from "react-i18next"
 import { translations } from "../../locales/translations"
+import { useMemo } from "react"
 
 const AttendantsAvatars = ({
   participants,
@@ -13,16 +14,16 @@ const AttendantsAvatars = ({
 }) => {
   const { t } = useTranslation()
 
-  // Limit the displayed participants to 6
-  const visibleParticipants = participants
-    ? participants.length > 0
-      ? participants.filter((participant) => participant.isApproved === true).slice(0, avatarCount)
-      : 0
-    : 0
-  const remainingCount = participants
-    ? participants.filter((participant) => participant.isApproved === true).length -
-      visibleParticipants.length
-    : 0
+  const approvedParticipants = useMemo(() => {
+    return participants ? participants.filter((participant) => participant.isApproved === true) : []
+  }, [participants])
+
+  // Limit the displayed participants to avatarCount
+  const visibleParticipants = useMemo(() => {
+    return approvedParticipants.slice(0, avatarCount)
+  }, [approvedParticipants, avatarCount])
+
+  const remainingCount = participants ? approvedParticipants.length - visibleParticipants.length : 0
   // console.log(visibleParticipants)
 
   const navigate = useNavigate()
@@ -38,7 +39,7 @@ const AttendantsAvatars = ({
       <div className={`avatars flex flex-wrap gap-${gap} py-2`}>
         {/* Display the first 6 avatars */}
 
-        {visibleParticipants ? (
+        {visibleParticipants.length > 0 ? (
           visibleParticipants.map(({ userId }, index) => (
             <div key={index} onClick={() => handleAvatarClick(userId._id)}>
               <UserAvatar user={userId} size="h-6 w-6" backgroundActive={true} />

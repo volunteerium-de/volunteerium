@@ -1,9 +1,15 @@
 import { useDispatch } from "react-redux"
 import toastNotify from "../utils/toastNotify"
 import useAxios, { axiosWithPublic } from "./useAxios"
-import { fetchFail, fetchStart, getCategoriesSuccess } from "../features/searchSlice"
+import { fetchStart, fetchFail, getCategoriesSuccess } from "../features/searchSlice"
 import { useSelector } from "react-redux"
-import { fetchSingleEventSuccess } from "../features/eventSlice"
+import {
+  fetchEventFail,
+  fetchEventStart,
+  fetchSingleEventSuccess,
+  participationFail,
+  participationStart,
+} from "../features/eventSlice"
 
 const useEventCall = () => {
   const { axiosWithToken } = useAxios()
@@ -20,14 +26,14 @@ const useEventCall = () => {
   }
 
   const getSingleEvent = async (eventId) => {
-    dispatch(fetchStart())
+    dispatch(fetchEventStart())
     try {
       const { data } = await axiosWithPublic(`events/${eventId}`)
       console.log(data)
-      return data
+      dispatch(fetchSingleEventSuccess(data.data))
     } catch (error) {
       console.log(error.response.data.message)
-      dispatch(fetchFail())
+      dispatch(fetchEventFail())
     }
   }
 
@@ -50,7 +56,6 @@ const useEventCall = () => {
         },
       })
       toastNotify("success", data.message)
-
       // getEvents("events")
     } catch (error) {
       toastNotify("error", error?.response?.data?.message)
@@ -87,6 +92,7 @@ const useEventCall = () => {
   }
 
   const joinEvent = async (eventId) => {
+    dispatch(participationStart())
     try {
       const { data } = await axiosWithToken.post(`event-participants/join`, {
         eventId,
@@ -94,11 +100,11 @@ const useEventCall = () => {
       })
       // console.log(data)
       toastNotify("success", data.message)
-      const updatedEvent = getSingleEvent(eventId)
-      dispatch(fetchSingleEventSuccess(updatedEvent.data))
+      dispatch(fetchSingleEventSuccess(data.data))
     } catch (error) {
       console.log(error)
       toastNotify("error", error?.response?.data?.message)
+      dispatch(participationFail())
     }
   }
 
@@ -110,8 +116,6 @@ const useEventCall = () => {
       })
       // console.log(data)
       toastNotify("success", data.message)
-      const updatedEvent = getSingleEvent(eventId)
-      dispatch(fetchSingleEventSuccess(updatedEvent.data))
     } catch (error) {
       console.log(error)
       toastNotify("error", error?.response?.data?.message)
@@ -126,8 +130,6 @@ const useEventCall = () => {
       })
       // console.log(data)
       toastNotify("success", data.message)
-      const updatedEvent = getSingleEvent(eventId)
-      dispatch(fetchSingleEventSuccess(updatedEvent.data))
     } catch (error) {
       console.log(error)
       toastNotify("error", error?.response?.data?.message)
@@ -142,9 +144,6 @@ const useEventCall = () => {
       })
       // console.log(data)
       toastNotify("success", data.message)
-
-      const updatedEvent = getSingleEvent(eventId)
-      dispatch(fetchSingleEventSuccess(updatedEvent.data))
     } catch (error) {
       console.log(error)
       toastNotify("error", error?.response?.data?.message)
@@ -159,9 +158,6 @@ const useEventCall = () => {
       })
       // console.log(data)
       toastNotify("success", data.message)
-
-      const updatedEvent = getSingleEvent(eventId)
-      dispatch(fetchSingleEventSuccess(updatedEvent.data))
     } catch (error) {
       console.log(error)
       toastNotify("error", error?.response?.data?.message)
@@ -173,9 +169,6 @@ const useEventCall = () => {
       const { data } = await axiosWithToken.delete(`event-participants/${eventParticipantId}`)
       // console.log(data)
       toastNotify("success", data.message)
-
-      const updatedEvent = getSingleEvent(data.eventId)
-      dispatch(fetchSingleEventSuccess(updatedEvent.data))
     } catch (error) {
       console.log(error)
       toastNotify("error", error?.response?.data?.message)

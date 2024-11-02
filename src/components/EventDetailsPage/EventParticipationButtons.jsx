@@ -5,19 +5,23 @@ import { useNavigate } from "react-router-dom"
 import { useMemo } from "react"
 import { translations } from "../../locales/translations"
 import useEventCall from "../../hooks/useEventCall"
+import { useState } from "react"
+import { ImSpinner9 } from "react-icons/im"
 
 const EventParticipationButtons = ({ toggleFeedbackModal }) => {
   const { t } = useTranslation()
-  const { singleEvent } = useSelector((state) => state.event)
+  const { singleEvent, participationLoading } = useSelector((state) => state.event)
   const { currentUser: user } = useSelector((state) => state.auth)
   const navigate = useNavigate()
   const { joinEvent } = useEventCall()
 
-  const participant = singleEvent?.eventParticipantIds.find(
-    (participant) => participant?.userId?._id === user?._id
-  )
+  const participant =
+    singleEvent?.eventParticipantIds.filter(
+      (participant) => participant?.userId?._id === user?._id
+    )[0] || null
 
-  console.log(participant)
+  // console.log(participant)
+  // console.log(singleEvent)
 
   // {
   //   "_id": "671b9bde48dff9789d35f540",
@@ -134,13 +138,13 @@ const EventParticipationButtons = ({ toggleFeedbackModal }) => {
         text: t(translations.eventDetails.manageButton),
         action: () =>
           navigate(
-            `singleEvent-management/?tab=${isAdmin ? "events" : "organized-events"}&identifier=${singleEvent?._id}`
+            `/event-management/?tab=${isAdmin ? "events" : "organized-events"}&identifier=${singleEvent?._id}`
           ),
         className: "bg-purple-400 hover:bg-purple-400/60",
       }
     }
 
-    if (!(participant.length > 0) && !isEventDone && isIndividual && !isEventOwner) {
+    if (!participant && !isEventDone && isIndividual && !isEventOwner) {
       return {
         text: t(translations.eventDetails.joinButton),
         action: () => joinEvent(singleEvent?._id),
@@ -148,7 +152,7 @@ const EventParticipationButtons = ({ toggleFeedbackModal }) => {
       }
     }
 
-    if (!(participant.length > 0) && isIndividual) {
+    if (!participant && isIndividual) {
       if (isEventDone) {
         return { text: t(translations.eventDetails.completedButton), className: "bg-gray-2" }
       }
@@ -161,12 +165,12 @@ const EventParticipationButtons = ({ toggleFeedbackModal }) => {
       }
     }
 
-    if ((participant.length > 0) & isIndividual && !isEventOwner) {
+    if (participant && isIndividual && !isEventOwner) {
       if (isPending) {
         return {
           text: t(translations.eventDetails.pendingButton),
           action: () =>
-            navigate(`singleEvent-management/?tab=attended-events&identifier=${singleEvent?._id}`),
+            navigate(`/event-management/?tab=attended-events&identifier=${singleEvent?._id}`),
           className: "bg-warning hover:bg-warning/60",
         }
       }
@@ -174,7 +178,7 @@ const EventParticipationButtons = ({ toggleFeedbackModal }) => {
         return {
           text: t(translations.eventDetails.approvedButton),
           action: () =>
-            navigate(`singleEvent-management/?tab=attended-events&identifier=${singleEvent?._id}`),
+            navigate(`/event-management/?tab=attended-events&identifier=${singleEvent?._id}`),
           className: "bg-yellow-500 hover:bg-yellow-500/60",
         }
       }
@@ -221,18 +225,22 @@ const EventParticipationButtons = ({ toggleFeedbackModal }) => {
     t,
   ])
 
-  console.log("Button Config:", buttonConfig)
-
   return (
     <>
-      <button
-        className={`${buttonConfig.className || ""} text-white font-semibold px-2 py-1 text-center min-w-[100px] max-w-full h-8 grid place-content-center rounded-lg text-xs md:text-sm`}
-        onClick={buttonConfig.action}
-        // disabled={isMaxParticipantsReached || isEventDone || (participant && isRejected)}
-        aria-label={buttonConfig.text}
-      >
-        {buttonConfig.text}
-      </button>
+      {singleEvent && (
+        <button
+          className={`${buttonConfig.className || ""} text-white font-semibold px-2 py-1 text-center min-w-[100px] max-w-full h-8 grid place-content-center rounded-lg text-xs md:text-sm`}
+          onClick={buttonConfig.action}
+          // disabled={isMaxParticipantsReached || isEventDone || (participant && isRejected)}
+          aria-label={buttonConfig.text}
+        >
+          {participationLoading ? (
+            <ImSpinner9 className="animate-spin" />
+          ) : (
+            <span>{buttonConfig.text}</span>
+          )}
+        </button>
+      )}
     </>
   )
 }

@@ -472,6 +472,8 @@
     "zipCodePH": "Enter zip code",
     "city": "City*",
     "cityPH": "Enter City",
+    "state": "State*",
+    "statePH": "Enter State",
     "country": "Country*",
     "countryPH": "Enter Country",
     "finish": "Finish"

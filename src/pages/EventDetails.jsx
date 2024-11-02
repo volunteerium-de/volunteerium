@@ -19,7 +19,7 @@ import { useDispatch } from "react-redux"
 import { useSelector } from "react-redux"
 
 const EventDetails = () => {
-  const [loading, setLoading] = useState(true)
+  const { loading } = useSelector((state) => state.event)
   const { singleEvent } = useSelector((state) => state.event)
   const { getSingleEvent } = useEventCall()
   const { eventId } = useParams()
@@ -34,16 +34,11 @@ const EventDetails = () => {
 
   useEffect(() => {
     const fetchSingleEvent = async () => {
-      setLoading(true)
       try {
-        const eventData = await getSingleEvent(eventId)
-        // console.log(eventData.data)
-        dispatch(fetchSingleEventSuccess(eventData.data))
+        await getSingleEvent(eventId)
       } catch (error) {
         // console.log(error)
         navigate("/not-found")
-      } finally {
-        setLoading(false)
       }
     }
     fetchSingleEvent()

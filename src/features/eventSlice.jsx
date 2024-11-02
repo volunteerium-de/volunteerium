@@ -5,28 +5,42 @@ const eventSlice = createSlice({
 
   initialState: {
     singleEvent: null,
-    upcomingEvents: [],
-    onlineEvents: [],
-    events: [],
     loading: false,
     error: false,
+    participationLoading: false,
+    participationError: false,
   },
   reducers: {
-    fetchStart: (state) => {
+    fetchEventStart: (state) => {
       state.loading = true
       state.error = false
+    },
+    participationStart: (state) => {
+      state.participationLoading = true
+      state.participationError = false
     },
     fetchSingleEventSuccess: (state, { payload: data }) => {
       state.loading = false
       state.error = false
+      state.participationLoading = false
       state.singleEvent = data
     },
-    fetchFail: (state) => {
+    fetchEventFail: (state) => {
       state.loading = false
       state.error = true
+    },
+    participationFail: (state) => {
+      state.participationLoading = false
+      state.participationError = true
     },
   },
 })
 
-export const { fetchStart, fetchSingleEventSuccess, fetchFail } = eventSlice.actions
+export const {
+  fetchEventStart,
+  participationStart,
+  fetchSingleEventSuccess,
+  fetchEventFail,
+  participationFail,
+} = eventSlice.actions
 export default eventSlice.reducer

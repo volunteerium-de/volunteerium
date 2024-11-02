@@ -12,7 +12,11 @@ const useAccountCall = () => {
   const updateUser = async (userData, userDetailsId) => {
     dispatch(fetchStart())
     try {
-      const { data } = await axiosWithToken.put(`details/users/${userDetailsId}`, userData)
+      const { data } = await axiosWithToken.put(`details/users/${userDetailsId}`, userData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      })
       dispatch(fetchSuccess(data))
       console.log(data)
       navigate("/")
