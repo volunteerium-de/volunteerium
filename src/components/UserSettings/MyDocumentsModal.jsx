@@ -54,11 +54,13 @@ const MyDocumentsModal = ({ isOpen, onClose, certificates }) => {
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 backdrop-blur-sm">
-      <div className="bg-white p-6 rounded-lg max-w-[954px] w-full px-[20px] py-[40px]">
-        <h2 className="text-[1.75rem] leading-[1.4642] font-semibold mb-4 text-center">
+      <div className="bg-white dark:bg-dark-gray-3  p-6 rounded-lg max-w-[954px] w-full px-[20px] py-[40px]">
+        <h2 className="text-[1.75rem] dark:text-white leading-[1.4642] font-semibold mb-4 text-center">
           {t(translations.myDocs.h2)}
         </h2>
-        <p className="text-center text-dark-gray-1 leading-[1.5625]">{t(translations.myDocs.p)}</p>
+        <p className="text-center text-dark-gray-1 dark:text-white leading-[1.5625]">
+          {t(translations.myDocs.p)}
+        </p>
 
         <div className="max-w-[669px] mx-auto ">
           <div className="flex justify-end items-center mb-[15px] mt-[25px]">

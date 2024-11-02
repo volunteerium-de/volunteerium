@@ -24,16 +24,19 @@ const IndividualSchema = Yup.object().shape({
 
 // Reusable Radio Input Component
 const RadioInput = ({ id, label, checked, onChange }) => (
-  <div className="flex flex-1 items-center gap-2 h-[36px] p-2 border border-gray-1 rounded focus:outline-none focus:border-primary-green">
+  <div className="flex flex-1 items-center gap-2 h-[36px] p-2 border border-gray-1 rounded focus:outline-none focus:border-primary-green ">
     <input
       type="radio"
       id={id}
       name="displayName"
       checked={checked}
       onChange={onChange}
-      className="accent-primary-green"
+      className="accent-primary-green "
     />
-    <label className={checked ? "text-primary-green" : "text-dark-gray-1"} htmlFor={id}>
+    <label
+      className={checked ? "text-primary-green" : "text-dark-gray-1 dark:text-white"}
+      htmlFor={id}
+    >
       {label}
     </label>
   </div>
@@ -95,10 +98,10 @@ const IndividualSettingsForm = () => {
           validationSchema={IndividualSchema}
           onSubmit={handleSubmit}
         >
-          {({ values, setFieldValue, resetForm, errors, touched }) => (
+          {({ values, setFieldValue, resetForm, errors }) => (
             <Form>
               <div className="mb-[10px]">
-                <h1 className="text-center font-medium text-[1.25rem]">
+                <h1 className="text-center font-medium text-[1.25rem] dark:text-white">
                   {t(translations.indvSettings.h1)}
                 </h1>
 
@@ -107,7 +110,7 @@ const IndividualSettingsForm = () => {
                     {t(translations.indvSettings.p1)}
                   </p>
 
-                  <div className="flex flex-col flex-wrap sm:flex-row gap-5">
+                  <div className="flex flex-col flex-wrap sm:flex-row gap-5 ">
                     <RadioInput
                       id="fullName"
                       label={currentUser.fullName}
@@ -121,7 +124,7 @@ const IndividualSettingsForm = () => {
                       onChange={() => setFieldValue("isFullNameDisplay", false)}
                     />
                   </div>
-                  <p className="text-[0.875rem] text-dark-gray-2 leading-[1.785]">
+                  <p className="text-[0.875rem] text-dark-gray-2 leading-[1.785] dark:text-white">
                     {t(translations.indvSettings.p2)}
                   </p>
                 </div>
@@ -194,12 +197,14 @@ const IndividualSettingsForm = () => {
                   placeholder={t(translations.indvSettings.label6PH)}
                   className="w-full p-2 border border-gray-1 rounded h-[100px] focus:outline-none focus:border-primary-green"
                 />
-                <p className="text-sm text-gray-500">{values.bio.length}/250 characters</p>
+                <p className="text-sm text-gray-500 dark:text-white">
+                  {values.bio.length}/250 characters
+                </p>
               </div>
 
               <div className="mx-auto ">
                 <div className="flex justify-between">
-                  <p className="text-[1rem] leading-[1.5625] text-gray-2">
+                  <p className="text-[1rem] leading-[1.5625] text-gray-2 dark:text-white">
                     {t(translations.indvSettings.label7)}
                   </p>
                   <p

@@ -64,7 +64,7 @@ const EventsListingPage = () => {
         //&filter[isDone]=false
         const query = `?${new URLSearchParams(
           queryParams
-        ).toString()}&filter[isActive]=true&page=${currentPage}`
+        ).toString()}&filter[isActive]=true&filter[isDone]=false&page=${currentPage}`
         const eventData = await getEvents(`events/${query}`)
         console.log(eventData)
         setEvents(eventData.data || [])
@@ -159,7 +159,7 @@ const EventsListingPage = () => {
           {/*Filter Message*/}
           <div>
             <h1 className="text-xs md:text-sm lg:text-md flex gap-1 ">
-              <span className="font-semibold">{resultMessage}</span>
+              <span className="font-semibold dark:text-white">{resultMessage}</span>
               <span className="text-gray-2 hidden lg:block">
                 {" "}
                 {resultParts.map((part, index) => (

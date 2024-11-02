@@ -5,14 +5,14 @@ import { MdOutlinePhotoCamera } from "react-icons/md"
 import { RiDeleteBin6Line } from "react-icons/ri"
 import { translations } from "../../locales/translations"
 import { useTranslation } from "react-i18next"
-translations
+import { useSelector } from "react-redux"
 
 const AvatarEditModal = ({ isOpen, onClose, currentUser, onUpdateAvatar }) => {
-  const {t} = useTranslation() 
+  const { t } = useTranslation()
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState(null)
   const fileInputRef = useRef(null)
-
+  const { currentUser: user } = useSelector((state) => state.auth)
   if (!isOpen) return null
 
   const handleAddPhoto = () => {
@@ -67,17 +67,22 @@ const AvatarEditModal = ({ isOpen, onClose, currentUser, onUpdateAvatar }) => {
 
   return (
     <div className="fixed inset-0 flex justify-center items-center z-50 bg-white bg-opacity-50 backdrop-blur-sm">
-      <div className="max-w-full sm:w-[643px] w-[200px] sm:h-[375px] font-Poppins p-[10px] bg-white text-white rounded-[8px] shadow-2xl">
+      <div className=" relative max-w-full sm:w-[643px] w-[200px] sm:h-[375px] font-Poppins p-[10px] bg-white text-white rounded-[8px] shadow-2xl dark:bg-dark-gray-3">
         {/* Loading */}
         {loading && <p className="text-primary-green">{t(translations.avatarEdit.loading)}</p>}
         {/* Error */}
-        {error && <p className="text-danger text-center">{error}</p>}
+        {error && <p className=" absolute bottom-50 left-36 text-danger text-center">{error}</p>}
         <div className="flex justify-between items-start ">
-          <h1 className="sm:text-[1.25rem] leading-[1.5] text-gray-1">
-            {currentUser.userType === "organization" ? t(translations.avatarEdit.logo) : t(translations.avatarEdit.profilePhoto)}
+          <h1 className="sm:text-[1.05rem] p-1 text-primary-green dark:text-white">
+            {currentUser.userType === "organization"
+              ? t(translations.avatarEdit.logo)
+              : t(translations.avatarEdit.profilePhoto)}
           </h1>
-          <button onClick={onClose} className="hover:bg-gray-200 p-1 rounded-full">
-            <MdClose className="sm:w-[20px] sm:h-[20px] text-gray-1" />
+          <button
+            onClick={onClose}
+            className="dark:hover:bg-primary-green hover:bg-dark-green p-1 rounded-full"
+          >
+            <MdClose className="size-[20px] dark:text-white text-primary-green " />
           </button>
         </div>
         <img
@@ -86,16 +91,18 @@ const AvatarEditModal = ({ isOpen, onClose, currentUser, onUpdateAvatar }) => {
               ? currentUser.userDetailsId.organizationLogo || Avatar
               : currentUser.userDetailsId.avatar || Avatar
           }
-          alt= {t(translations.avatarEdit.avatarAlt)}
+          alt={t(translations.avatarEdit.avatarAlt)}
           className="w-[100px] h-[100px] mx-auto sm:w-[150px] sm:h-[150px] mt-[30px]"
         />
-        <hr className="mt-[50px] border-gray-1" />
+        <hr className="mt-[75px] border-primary-green" />
         <div className="flex justify-between items-center mt-[20px] text-[1rem]">
           <div className="flex items-center flex-col gap-2">
             <button onClick={handleAddPhoto}>
-              <MdOutlinePhotoCamera className="sm:w-[25px] sm:h-[25px] text-primary-green" />
+              <MdOutlinePhotoCamera className="size-[20px] text-primary-green dark:text-white" />
             </button>
-            <p className="text-primary-green">{t(translations.avatarEdit.addPhoto)}</p>
+            <p className="text-primary-green dark:text-white">
+              {t(translations.avatarEdit.addPhoto)}
+            </p>
             <input
               type="file"
               ref={fileInputRef}
@@ -106,9 +113,11 @@ const AvatarEditModal = ({ isOpen, onClose, currentUser, onUpdateAvatar }) => {
           </div>
           <div className="flex items-center flex-col gap-2">
             <button onClick={handleDelete}>
-              <RiDeleteBin6Line className="sm:w-[25px] sm:h-[25px] text-primary-green" />
+              <RiDeleteBin6Line className="size-[20px]  text-primary-green dark:text-white" />
             </button>
-            <p className="text-primary-green">{t(translations.avatarEdit.delete)}</p>
+            <p className="text-primary-green dark:text-white">
+              {t(translations.avatarEdit.delete)}
+            </p>
           </div>
         </div>
       </div>

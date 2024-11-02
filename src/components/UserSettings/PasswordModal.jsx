@@ -31,11 +31,11 @@ const PasswordModal = ({ isOpen, onClose }) => {
   })
   return (
     <div
-      className={`fixed inset-0 flex justify-center items-center z-50 bg-white bg-opacity-50 backdrop-blur-sm ${
+      className={`fixed inset-0 flex justify-center items-center z-50 bg-white  bg-opacity-50 backdrop-blur-sm ${
         isOpen ? "visible" : "invisible"
       }`}
     >
-      <div className="max-w-full sm:w-[600px] w-[350px] sm:h-[400px] h-[450px] font-Poppins p-[50px] text-black rounded-[8px] bg-white shadow-2xl">
+      <div className="max-w-full sm:w-[600px] w-[350px] sm:h-[400px] h-[450px] font-Poppins p-[50px] text-black rounded-[8px] bg-white dark:bg-dark-gray-3 dark:text-white shadow-2xl">
         <h1 className="text-center mb-[20px] font-bold">{t(translations.pswModal.changePsw)}</h1>
         <hr className="border-gray-1" />
         <form onSubmit={formik.handleSubmit}>
@@ -58,7 +58,9 @@ const PasswordModal = ({ isOpen, onClose }) => {
                 />
               </div>
               {formik.touched.currentPassword && formik.errors.currentPassword ? (
-                <p className="text-danger text-xs text-right">{formik.errors.currentPassword}</p>
+                <p className="text-danger dark:text-primary-green text-xs sm:text-right text-center">
+                  {formik.errors.currentPassword}
+                </p>
               ) : null}
               <div className="flex flex-col sm:flex-row text-center md:text-left  justify-between items-center gap-[3px] mt-[10px]">
                 <p className="text-[0.80rem]">{t(translations.pswModal.newPsw)}</p>
@@ -73,11 +75,13 @@ const PasswordModal = ({ isOpen, onClose }) => {
                     formik.touched.newPassword && formik.errors.newPassword
                       ? "border-danger"
                       : "border-gray-1"
-                  } rounded-lg p-4 focus:outline-none focus:ring-2 focus:ring-primary-green text-dark-gray-1`}
+                  } focus:ring-2 focus:ring-primary-green text-dark-gray-1 p-2 border border-gray-1 rounded h-[100px] focus:outline-none`}
                 />
               </div>
               {formik.touched.newPassword && formik.errors.newPassword ? (
-                <p className="text-danger text-xs text-right">{formik.errors.newPassword}</p>
+                <p className="text-danger dark:text-primary-green text-xs sm:text-right text-center">
+                  {formik.errors.newPassword}
+                </p>
               ) : null}
               <div className="flex flex-col sm:flex-row text-center md:text-left justify-between items-center gap-[3px] mt-[10px]">
                 <p className="text-[0.80rem]">{t(translations.pswModal.confirmPsw)}</p>
@@ -92,23 +96,21 @@ const PasswordModal = ({ isOpen, onClose }) => {
                     formik.touched.confirmPassword && formik.errors.confirmPassword
                       ? "border-danger"
                       : "border-gray-1"
-                  } rounded-lg p-4 focus:outline-none focus:ring-2 focus:ring-primary-green text-dark-gray-1`}
+                  } focus:ring-2 focus:ring-primary-green text-dark-gray-1 p-2 border border-gray-1 rounded h-[100px] focus:outline-none`}
                 />
               </div>
               {formik.touched.confirmPassword && formik.errors.confirmPassword ? (
-                <p className="text-danger text-xs text-right">{formik.errors.confirmPassword}</p>
+                <p className="text-danger dark:text-primary-green text-xs sm:text-right text-center">
+                  {formik.errors.confirmPassword}
+                </p>
               ) : null}
               <div className="flex justify-center gap-3 mt-[50px]">
-                <button
-                  type="button"
-                  className="bg-gray-1 text-black px-4 py-2 rounded-md leading-[1.5625] max-w-[150px]"
-                  onClick={onClose}
-                >
+                <button type="button" className="text-primary-green " onClick={onClose}>
                   {t(translations.pswModal.cancel)}
                 </button>
                 <button
                   type="submit"
-                  className="bg-primary-green px-4 py-2 rounded-md text-white leading-[1.5625] max-w-[150px]"
+                  className="bg-primary-green px-2 py-1 rounded-md text-white max-w-[150px]"
                 >
                   {t(translations.pswModal.saveChng)}
                 </button>

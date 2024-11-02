@@ -25,7 +25,7 @@ const SecuritySettings = () => {
   }
 
   return (
-    <div className="max-w-4xl mx-auto p-8 bg-light-gray  dark:bg-dark-gray-3 rounded-lg shadow-md">
+    <div className="max-w-4xl mx-auto p-8 bg-light-gray  dark:bg-dark-gray-3 rounded-lg shadow-md dark:text-white">
       <h1 className="text-center font-medium text-[1.25rem] my-[50px]">
         {t(translations.secSett.h1)}
       </h1>

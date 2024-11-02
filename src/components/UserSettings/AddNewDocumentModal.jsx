@@ -62,13 +62,15 @@ const AddNewDocumentModal = ({ isOpen, onClose }) => {
   return (
     <div>
       <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
-        <div className="bg-white p-6 rounded-lg max-w-[654px] w-full">
-          <h2 className="text-[1.75rem] leading-[1.464] text-center font-semibold mb-4">
+        <div className="bg-white dark:bg-dark-gray-3  p-6 rounded-lg max-w-[654px] w-full">
+          <h2 className="text-[1.75rem] leading-[1.464] text-center font-semibold mb-4 dark:text-white">
             {t(translations.addNewDoc.newDoc)}
           </h2>
 
           <div className="max-w-[696px] mx-auto">
-            <h1 className="text-gray-2 leading-[1.5625]">{t(translations.addNewDoc.docTitle)}</h1>
+            <h1 className="text-gray-2 leading-[1.5625] dark:text-white">
+              {t(translations.addNewDoc.docTitle)}
+            </h1>
             <label htmlFor="certification"></label>
             <input
               id="certification"

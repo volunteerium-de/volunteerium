@@ -254,6 +254,8 @@ export const translations = {
     label7PH: "orgSettings.label7PH",
     label8: "orgSettings.label8",
     label8PH: "orgSettings.label8PH",
+    label9: "orgSettings.label9",
+    label9PH: "orgSettings.label9PH",
     files: "orgSettings.files",
     edit: "orgSettings.edit",
     save: "orgSettings.save",

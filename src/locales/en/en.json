@@ -251,6 +251,8 @@
     "label7PH": "Germany",
     "label8": "Description",
     "label8PH": "Write your description here...",
+    "label9": "State",
+    "label9PH": "Bayern",
     "files": "Files",
     "edit": "Edit",
     "save": "Save"
