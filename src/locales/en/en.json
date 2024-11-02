@@ -1,9 +1,9 @@
 {
-  "langSwitch":{
+  "langSwitch": {
     "en": "English",
     "de": "German"
   },
-  
+
   "hero": {
     "h2": "Become a part of something",
     "span": "bigger"
@@ -299,8 +299,8 @@
     "changePsw": "Change Password",
     "delAccount": "Delete Account",
     "delAlert1": "Would you like to delete your account? Deleting your account will remove all the content associated with it.",
-    "delAlert2":"Would you like to delete your organization? Deleting your organization will remove all the content associated with it.",
-    "userRes1":  "I want to delete my account",
+    "delAlert2": "Would you like to delete your organization? Deleting your organization will remove all the content associated with it.",
+    "userRes1": "I want to delete my account",
     "userRes2": "I want to delete my organization"
   },
 
@@ -317,7 +317,7 @@
   "msgMenu": {
     "h3": "Messages",
     "link": "View All",
-    "you":  "You",
+    "you": "You",
     "announce": "Announcement",
     "noMsg": "No Messages"
   },
@@ -333,7 +333,7 @@
     "eventMng": "Event Management",
     "settings": "Setting",
     "logout": "Logout",
-    "login": "Login", 
+    "login": "Login",
     "register": "Register",
     "light": "Light",
     "dark": "Dark"
@@ -394,7 +394,6 @@
     "messagePH": "Enter your message...",
     "messageMaxLength": "Max 1000 characters",
     "submit": "Submit"
-    
   },
 
   "faqPage": {
@@ -473,6 +472,8 @@
     "zipCodePH": "Enter zip code",
     "city": "City*",
     "cityPH": "Enter City",
+    "state": "State*",
+    "statePH": "Enter State",
     "country": "Country*",
     "countryPH": "Enter Country",
     "finish": "Finish"
@@ -490,7 +491,7 @@
   "sidebar": {
     "welcome": "Welcome"
   },
-  
+
   "emailVerify": {
     "h1": "Verifying your email..."
   },
@@ -508,8 +509,8 @@
     "lang": "Language",
     "PH": "Add event languages"
   },
-  
-   "privacyPolicy": {
+
+  "privacyPolicy": {
     "h1": "Privacy Policy",
     "p1": "Published Date:",
     "p2": "30.10.2024",
@@ -554,10 +555,3 @@
     "p16": "Email: info.volunteerium@gmail.com"
   }
 }
-
-
-
-
-
-
-
