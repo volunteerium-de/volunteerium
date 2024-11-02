@@ -8,7 +8,6 @@ import ProfileSettings from "../components/UserSettings/ProfileSettings"
 import SecuritySettings from "../components/UserSettings/SecuritySettings"
 import VisibilitySettings from "../components/UserSettings/VisibilitySettings"
 import { useSelector } from "react-redux"
-
 const UserSettings = () => {
   const [activeTab, setActiveTab] = useState("organizedEvents")
   const [isModalOpen, setModalOpen] = useState(false)

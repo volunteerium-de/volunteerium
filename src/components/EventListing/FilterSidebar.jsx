@@ -13,19 +13,14 @@ import {
 } from "../../features/searchSlice"
 import { axiosWithPublic } from "../../hooks/useAxios"
 import { formatISO } from "date-fns"
-import LangJson from "../../helpers/languages_english.json"
+import useLanguageOptions from "../../hooks/useLanguages"
 
-export const formatEndDate = (startDate) => {
+const formatEndDate = (startDate) => {
   const newEndDate = new Date(startDate)
   newEndDate.setDate(newEndDate.getDate() + 1)
   newEndDate.setHours(23, 59, 59, 999)
   const formattedNewEndDate = formatISO(newEndDate)
   return formattedNewEndDate
-}
-
-export const getLangName = (langCode) => {
-  const selectedLang = LangJson.filter((langData) => langData.code === langCode)
-  return selectedLang[0].name
 }
 
 const FilterSidebar = () => {
@@ -36,6 +31,7 @@ const FilterSidebar = () => {
   const selectedCategories = useSelector((state) => state.search.categoryFilters)
   const [eventLanguages, setEventLanguages] = useState([])
   const selectedLanguages = useSelector((state) => state.search.languageFilters)
+  const { getLangName } = useLanguageOptions()
 
   useEffect(() => {
     fetchLanguages()

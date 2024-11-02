@@ -5,15 +5,13 @@ import Footer from "../components/Footer/Footer"
 import EventCardList from "../components/EventListing/EventCardList"
 import FilterSidebar from "../components/EventListing/FilterSidebar"
 import useEventCall from "../hooks/useEventCall"
-import { useSelector } from "react-redux"
+import { useSelector, useDispatch } from "react-redux"
 import Pagination from "../components/ui/Pagination/Pagination"
 import { setSortOrder } from "../features/searchSlice"
-import { useDispatch } from "react-redux"
-import { useLocation } from "react-router-dom"
-import { useNavigate } from "react-router-dom"
-import { getLangName } from "../components/EventListing/FilterSidebar"
+import { useLocation, useNavigate } from "react-router-dom"
 import { LiaSpinnerSolid } from "react-icons/lia"
 import { IoIosArrowBack } from "react-icons/io"
+import useLanguageOptions from "../hooks/useLanguages"
 
 const EventsListingPage = () => {
   const { getEvents } = useEventCall()
@@ -35,12 +33,12 @@ const EventsListingPage = () => {
   const navigate = useNavigate()
   const location = useLocation()
 
-  // Pagination state
   const queryParams = new URLSearchParams(location.search)
   const pageFromUrl = queryParams.get("page") || 1
   const [currentPage, setCurrentPage] = useState(pageFromUrl > 0 ? pageFromUrl : 1)
   const [totalPages, setTotalPages] = useState(0)
   const [totalEventRecord, setTotalEventRecord] = useState(0)
+  const { getLangName } = useLanguageOptions()
 
   useEffect(() => {
     const fetchEvents = async () => {
@@ -61,12 +59,10 @@ const EventsListingPage = () => {
           }),
           "sort[startDate]": sortOrder === "Newest" ? "desc" : "asc",
         }
-        //&filter[isDone]=false
         const query = `?${new URLSearchParams(
           queryParams
         ).toString()}&filter[isActive]=true&filter[isDone]=false&page=${currentPage}`
         const eventData = await getEvents(`events/${query}`)
-        console.log(eventData)
         setEvents(eventData.data || [])
         setTotalPages(eventData.details.pages.total || 1)
         setCurrentPage(eventData.details.pages.current || 1)
@@ -156,7 +152,6 @@ const EventsListingPage = () => {
       <Hero />
       <div className={`pt-10 px-4 max-w-[1400px] mx-auto`}>
         <div className="flex justify-between items-center mb-4 mx-2">
-          {/*Filter Message*/}
           <div>
             <h1 className="text-xs md:text-sm lg:text-md flex gap-1 ">
               <span className="font-semibold dark:text-white">{resultMessage}</span>
@@ -168,7 +163,6 @@ const EventsListingPage = () => {
               </span>
             </h1>
           </div>
-          {/*Sort and Filters*/}
           <div className="flex justify-end gap-3 items-center">
             <p className="text-sm font-bold text-black">Sort by:</p>
             <select

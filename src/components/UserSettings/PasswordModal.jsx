@@ -3,7 +3,7 @@ import { useFormik } from "formik"
 import * as Yup from "yup"
 import { useTranslation } from "react-i18next"
 import { translations } from "../../locales/translations"
-translations
+
 const PasswordModal = ({ isOpen, onClose }) => {
   const { t } = useTranslation()
   const validationSchema = Yup.object().shape({

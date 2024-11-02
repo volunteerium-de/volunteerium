@@ -1,6 +1,11 @@
 import Subscribe from "../components/Footer/Subscribe"
 
 export const translations = {
+  langSwitch: {
+    en: "langSwitch.en",
+    de: "langSwitch.de",
+  },
+
   heroSection: {
     h2: "hero.h2",
     span: "hero.span",
@@ -93,6 +98,7 @@ export const translations = {
     emailPH: "registerForm.emailPH",
     password: "registerForm.password",
     passwordPH: "registerForm.passwordPH",
+    loading: "registerForm.loading",
     submit: "registerForm.submit",
     haveAccount: "registerForm.haveAccount",
     login: "registerForm.login",
@@ -102,6 +108,14 @@ export const translations = {
     terms: "registerForm.terms",
     pPrivacy: "registerForm.pPrivacy",
     privacy: "registerForm.privacy",
+  },
+
+  registerSuccess: {
+    emailVerifyAlt: "registerSuccess.emailVerifyAlt",
+    h1: "registerSuccess.h1",
+    p1: "registerSuccess.p1",
+    p2: "registerSuccess.p2",
+    p3: "registerSuccess.p3",
   },
 
   login: {
@@ -130,6 +144,7 @@ export const translations = {
     password: "loginForm.password",
     passwordPH: "loginForm.passwordPH",
     forgot: "loginForm.forgot",
+    loading: "loginForm.loading",
     login: "loginForm.login",
     haveAccount: "loginForm.haveAccount",
     signUp: "loginForm.signUp",
@@ -280,6 +295,8 @@ export const translations = {
   },
 
   secSett: {
+    feedbackMsg1: "secSett.feedbackMsg1",
+    feedbackMsg2: "secSett.feedbackMsg2",
     h1: "secSett.h1",
     name: "secSett.name",
     namePH: "secSett.namePH",
@@ -536,5 +553,54 @@ export const translations = {
     p14: "privacyPolicy.p14",
     p15: "privacyPolicy.p15",
     p16: "privacyPolicy.p16",
+  },
+  privacyPolicy: {
+    h1: "privacyPolicy.h1",
+    p1: "privacyPolicy.p1",
+    p2: "privacyPolicy.p2",
+    p3: "privacyPolicy.p3",
+    h2info: "privacyPolicy.h2info",
+    p4: "privacyPolicy.p4",
+    p5: "privacyPolicy.p5",
+    p6: "privacyPolicy.p6",
+    p7: "privacyPolicy.p7",
+    p8: "privacyPolicy.p8",
+    p9: "privacyPolicy.p9",
+    p10: "privacyPolicy.p10",
+    h2use: "privacyPolicy.h2use",
+    li1: "privacyPolicy.li1",
+    li2: "privacyPolicy.li2",
+    li3: "privacyPolicy.li3",
+    li4: "privacyPolicy.li4",
+    li5: "privacyPolicy.li5",
+    h2share: "privacyPolicy.h2share",
+    li6: "privacyPolicy.li6",
+    li7: "privacyPolicy.li7",
+    li8: "privacyPolicy.li8",
+    li9: "privacyPolicy.li9",
+    li10: "privacyPolicy.li10",
+    li11: "privacyPolicy.li11",
+    h2retention: "privacyPolicy.h2retention",
+    p11: "privacyPolicy.p11",
+    h2security: "privacyPolicy.h2security",
+    p12: "privacyPolicy.p12",
+    h2rights: "privacyPolicy.h2rights",
+    li12: "privacyPolicy.li12",
+    li13: "privacyPolicy.li13",
+    li14: "privacyPolicy.li14",
+    li15: "privacyPolicy.li15",
+    li16: "privacyPolicy.li16",
+    li17: "privacyPolicy.li17",
+    h2changes: "privacyPolicy.h2changes",
+    p13: "privacyPolicy.p13",
+    h2contact: "privacyPolicy.h2contact",
+    p14: "privacyPolicy.p14",
+    p15: "privacyPolicy.p15",
+    p16: "privacyPolicy.p16",
+  },
+
+  langSelect: {
+    lang: "langSelect.lang",
+    PH: "langSelect.PH",
   },
 }

@@ -2,8 +2,10 @@ import { TbWorld } from "react-icons/tb"
 import { FiChevronRight } from "react-icons/fi"
 import { useState } from "react"
 import { useTranslation } from "react-i18next"
+import { translations } from "../../locales/translations"
 
 const LanguageMenu = () => {
+  const {t} =useTranslation()
   const { i18n } = useTranslation()
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
@@ -37,13 +39,13 @@ const LanguageMenu = () => {
             className="block w-full text-left p-1 hover:text-primary-green"
             onClick={() => selectLanguage("en")}
           >
-            English
+            {t(translations.langSwitch.en)}
           </button>
           <button
             className="block w-full text-left p-1 hover:text-primary-green"
             onClick={() => selectLanguage("de")}
           >
-            Deutsch
+            {t(translations.langSwitch.de)}
           </button>
         </div>
       )}
