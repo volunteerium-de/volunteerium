@@ -24,7 +24,8 @@ const VerificationSuccess = () => {
     <div className="h-screen flex items-center justify-center font-poppins dark:bg-black">
       <div className="text-center max-w-xl mx-auto px-8 py-8 rounded-lg">
         <h1 className="text-[1.75rem] font-bold  dark:text-white mb-6">
-          Hey {user?.fullName.split(" ")[0] || user?.organizationName},{" "}
+          Hey{" "}
+          {user.userType == "individual" ? user?.fullName.split(" ")[0] : user?.organizationName},{" "}
           {t(translations.verifySuccess.h1)}
         </h1>
         <p className="text-primary-green font-semibold mb-4">{t(translations.verifySuccess.p1)}</p>
