@@ -14,18 +14,15 @@ import defaultEventPhoto from "../assets/default-event-photo-.jpg"
 import ReportEvent from "../components/EventDetailsPage/ReportEvent"
 import { UserAvatar } from "../components/ui/Avatar/userAvatar"
 import { IoIosArrowBack } from "react-icons/io"
-import { fetchSingleEventSuccess } from "../features/eventSlice"
-import { useDispatch } from "react-redux"
 import { useSelector } from "react-redux"
 
 const EventDetails = () => {
-  const { loading } = useSelector((state) => state.event)
-  const { singleEvent } = useSelector((state) => state.event)
+  const { singleEvent, loading } = useSelector((state) => state.event)
+  const { currentUser } = useSelector((state) => state.auth)
   const { getSingleEvent } = useEventCall()
   const { eventId } = useParams()
   const navigate = useNavigate()
   const { t } = useTranslation()
-  const dispatch = useDispatch()
 
   const [isReportModalOpen, setIsReportModalOpen] = useState(false)
 
@@ -44,7 +41,8 @@ const EventDetails = () => {
     fetchSingleEvent()
   }, [eventId])
 
-  const { eventPhoto, title, createdBy, interestIds, description, addressId } = singleEvent || {}
+  const { eventPhoto, title, createdBy, interestIds, description, addressId, eventParticipantIds } =
+    singleEvent || {}
 
   const userType = createdBy?.userType
   const isFullNameDisplay = createdBy?.userDetailsId?.isFullNameDisplay
@@ -84,7 +82,7 @@ const EventDetails = () => {
               <div className="flex flex-col md:flex-row gap-8  font-poppins">
                 {/* Left Side - General Info and Map */}
                 <div className="lg:w-8/12 md:border-r md:border-b md:border-light-gray-3 rounded my-1 px-2 ">
-                  <h2 className="text-[1.75rem] md:text-[1.75rem] text-dark-gray-1 font-semibold mb-1">
+                  <h2 className="text-[1.75rem] md:text-[1.75rem] text-dark-gray-2 dark:text-white font-semibold mb-1">
                     {title}
                   </h2>
                   <Link
@@ -121,9 +119,18 @@ const EventDetails = () => {
                   </div>
                   {/* Event Location */}
                   <div className="overflow-hidden w-[100%] md:w-[95%] h-64 order-3 mt-4 md:mt-0">
-                    <h3 className="font-semibold text-dark-gray-1 py-2">
+                    <h3 className="font-semibold text-dark-gray-2 dark:text-white py-2">
                       {t(translations.eventDetails.locationLabel)}
                     </h3>
+                    <p className="text-dark-gray-1 dark:text-light-gray-2 py-2">
+                      {eventParticipantIds.length > 0 &&
+                        eventParticipantIds.filter(
+                          (participant) =>
+                            participant.userId === currentUser._id &&
+                            participant.isApproved === true
+                        ) &&
+                        `${addressId?.streetName} ${addressId?.streetNumber} ${addressId?.zipCode}, ${addressId?.city} ${addressId?.country}`}
+                    </p>
                     <iframe
                       src={addressId?.iframeSrc}
                       width="100%"

@@ -67,19 +67,13 @@ const EventOverview = () => {
         gap={5}
       />
       {/* Buttons */}
-      <div className="flex justify-center xl:justify-end  p-2 space-x-4">
+      <div className="flex justify-center xl:justify-end p-2 space-x-4">
         <button className="border border-gray-1 hover:bg-light-gray px-2 py-1 font-medium text-center w-[10rem] h-8 rounded-lg text-xs md:text-sm">
           {t(translations.eventDetails.sendMessageButton)}
         </button>
-        <div>
-          <EventParticipationButtons
-            event={singleEvent}
-            toggleFeedbackModal={toggleFeedbackModal}
-          />
-
-          {isFeedbackOpen && <EventFeedback onClose={toggleFeedbackModal} />}
-        </div>
+        <EventParticipationButtons event={singleEvent} toggleFeedbackModal={toggleFeedbackModal} />
       </div>
+      {isFeedbackOpen && <EventFeedback onClose={toggleFeedbackModal} />}
     </div>
   )
 }

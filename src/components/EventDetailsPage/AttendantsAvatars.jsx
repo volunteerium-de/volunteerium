@@ -33,7 +33,7 @@ const AttendantsAvatars = ({
 
   return (
     <div>
-      <h3 className="text-dark-gray-1 text-[1rem] font-semibold">
+      <h3 className="text-dark-gray-2 dark:text-white text-[1rem] font-semibold">
         {t(translations.eventDetails.attendants)} ({totalParticipants}/{maxParticipant})
       </h3>
       <div className={`avatars flex flex-wrap gap-${gap} py-2`}>
