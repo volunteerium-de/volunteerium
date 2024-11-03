@@ -22,10 +22,10 @@ const IndividualSchema = Yup.object({
 })
 
 const SetupIndividual = () => {
-  const {t} = useTranslation()
+  const { t } = useTranslation()
   const { currentUser: user } = useSelector((state) => state.auth)
   // console.log(user)
-  const { updateUser } = useAccountCall()
+  const { updateUserDetails } = useAccountCall()
   const { logout } = useAuthCall()
   const [step, setStep] = useState(1)
   const navigate = useNavigate()
@@ -68,7 +68,8 @@ const SetupIndividual = () => {
           validationSchema={IndividualSchema}
           onSubmit={(values) => {
             console.log(values)
-            updateUser({ ...values, isProfileSetup: true }, user.userDetailsId._id)
+            updateUserDetails({ ...values, isProfileSetup: true })
+            navigate("/")
           }}
         >
           {({ isValid, values, setFieldValue, handleSubmit, touched, errors }) => (

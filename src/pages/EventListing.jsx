@@ -57,11 +57,11 @@ const EventsListingPage = () => {
           ...(languageFilters.length > 0 && {
             "filter[languages]": languageFilters.join(","),
           }),
-          "sort[startDate]": sortOrder === "Newest" ? "desc" : "asc",
+          "sort[startDate]": sortOrder === "Newest" ? "asc" : "desc",
         }
         const query = `?${new URLSearchParams(
           queryParams
-        ).toString()}&filter[isActive]=true&page=${currentPage}`
+        ).toString()}&filter[isActive]=true&filter[isDone]=false&page=${currentPage}`
         const eventData = await getEvents(`events/${query}`)
         setEvents(eventData.data || [])
         setTotalPages(eventData.details.pages.total || 1)
@@ -154,7 +154,7 @@ const EventsListingPage = () => {
         <div className="flex justify-between items-center mb-4 mx-2">
           <div>
             <h1 className="text-xs md:text-sm lg:text-md flex gap-1 ">
-              <span className="font-semibold">{resultMessage}</span>
+              <span className="font-semibold dark:text-white">{resultMessage}</span>
               <span className="text-gray-2 hidden lg:block">
                 {" "}
                 {resultParts.map((part, index) => (
