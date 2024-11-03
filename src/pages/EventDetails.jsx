@@ -124,11 +124,13 @@ const EventDetails = () => {
                     </h3>
                     <p className="text-dark-gray-1 dark:text-light-gray-2 py-2">
                       {eventParticipantIds.length > 0 &&
-                        eventParticipantIds.filter(
-                          (participant) =>
-                            participant.userId === currentUser._id &&
-                            participant.isApproved === true
-                        ) &&
+                        eventParticipantIds.some((participant) => {
+                          return (
+                            participant?.userId._id === currentUser?._id &&
+                            participant?.isApproved === true &&
+                            participant?.isPending === false
+                          )
+                        }) &&
                         `${addressId?.streetName} ${addressId?.streetNumber} ${addressId?.zipCode}, ${addressId?.city} ${addressId?.country}`}
                     </p>
                     <iframe
