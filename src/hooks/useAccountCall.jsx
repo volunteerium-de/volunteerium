@@ -14,10 +14,11 @@ const useAccountCall = () => {
   const updateUserDetails = async (userData) => {
     dispatch(fetchStart())
     try {
-      const { data } = await axiosWithToken.put(
-        `details/users/${currentUser?.userDetailsId?._id}`,
-        userData
-      )
+      const { data } = await axiosWithToken.put(`details/users/${userDetailsId}`, userData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      })
       dispatch(fetchSuccess(data))
       console.log(data)
       return data

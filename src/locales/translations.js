@@ -479,6 +479,8 @@ export const translations = {
     zipCodePH: "setupOrg.zipCodePH",
     city: "setupOrg.city",
     cityPH: "setupOrg.cityPH",
+    state: "setupOrg.state",
+    statePH: "setupOrg.statePH",
     country: "setupOrg.country",
     countryPH: "setupOrg.countryPH",
     finish: "setupOrg.finish",

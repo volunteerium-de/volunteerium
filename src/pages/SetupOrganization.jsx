@@ -117,36 +117,36 @@ const SetupOrganization = () => {
           </div>
         </div>
 
-        {step === 1 ? (
-          <>
-            {/* Step 1 Form */}
-            <h2 className="text-[1.75rem] dark:text-white font-bold text-center mb-4">
-              {t(translations.setupOrg.details)}
-            </h2>
-            <p className="text-dark-gray-1 dark:text-white text-center mb-8">
-              {t(translations.setupOrg.p)}
-            </p>
+        <Formik
+          initialValues={{
+            organizationDesc: "",
+            organizationLogo: null,
+            organizationUrl: "",
+            streetName: "",
+            streetNumber: "",
+            zipCode: "",
+            city: "",
+            state: "",
+            country: "",
+          }}
+          validationSchema={OrganizationSchema}
+          onSubmit={(values) => {
+            console.log(values)
+            updateUser({ ...values, isProfileSetup: true }, user.userDetailsId._id)
+          }}
+        >
+          {({ setFieldValue, values, isValid }) => (
+            <Form>
+              {step === 1 ? (
+                <>
+                  {/* Step 1 Form */}
+                  <h2 className="text-[1.75rem] dark:text-white font-bold text-center mb-4">
+                    {t(translations.setupOrg.details)}
+                  </h2>
+                  <p className="text-dark-gray-1 dark:text-white text-center mb-8">
+                    {t(translations.setupOrg.p)}
+                  </p>
 
-            <Formik
-              initialValues={{
-                organizationDesc: "",
-                organizationLogo: null,
-                organizationUrl: "",
-                streetName: "",
-                streetNumber: "",
-                zipCode: "",
-                city: "",
-                country: "",
-              }}
-              validationSchema={OrganizationSchema}
-              onSubmit={(values) => {
-                console.log(values)
-                updateUserDetails({ ...values, isProfileSetup: true })
-                navigate("/")
-              }}
-            >
-              {({ setFieldValue, values }) => (
-                <Form>
                   <div className="mb-2 mx-auto w-2/3">
                     <label
                       htmlFor="organizationDesc"
@@ -244,31 +244,17 @@ const SetupOrganization = () => {
                       {t(translations.setupOrg.nextButton)}
                     </button>
                   </div>
-                </Form>
-              )}
-            </Formik>
-          </>
-        ) : (
-          <>
-            {/* Step 2 Form */}
-            <h2 className="text-[1.75rem] dark:text-white font-bold text-center mb-2">
-              {t(translations.setupOrg.completeh2)}
-            </h2>
-            <p className="text-dark-gray-1 dark:text-white text-center mb-2">
-              {t(translations.setupOrg.completeP)}
-            </p>
+                </>
+              ) : (
+                <>
+                  {/* Step 2 Form */}
+                  <h2 className="text-[1.75rem] dark:text-white font-bold text-center mb-2">
+                    {t(translations.setupOrg.completeh2)}
+                  </h2>
+                  <p className="text-dark-gray-1 dark:text-white text-center mb-2">
+                    {t(translations.setupOrg.completeP)}
+                  </p>
 
-            <Formik
-              validationSchema={OrganizationSchema}
-              onSubmit={(values, { resetForm, setSubmitting }) => {
-                resetForm()
-                setSubmitting(false)
-                navigate("/")
-                console.log("Form values submitted: ", values)
-              }}
-            >
-              {({ isValid }) => (
-                <Form>
                   <div className="flex flex-col">
                     <div className="w-full">
                       <label
@@ -351,7 +337,7 @@ const SetupOrganization = () => {
                     </div>
 
                     <div className="flex items-center space-x-2">
-                      <div className="w-1/2">
+                      <div className="w-2/4">
                         <label htmlFor="city" className="block text-gray-2 font-medium mb-1">
                           {t(translations.setupOrg.city)}
                         </label>
@@ -366,7 +352,22 @@ const SetupOrganization = () => {
                           <ErrorMessage name="city" component="div" className="text-danger" />
                         </div>
                       </div>
-                      <div className="w-1/2">
+                      <div className="w-1/4">
+                        <label htmlFor="state" className="block text-gray-2 font-medium mb-1">
+                          {t(translations.setupOrg.state)}
+                        </label>
+                        <Field
+                          type="text"
+                          id="state"
+                          name="state"
+                          placeholder={t(translations.setupOrg.statePH)}
+                          className="w-full px-4 py-2 border border-gray-2 rounded-md dark:bg-black dark:text-white focus:outline-none focus:ring-1 focus:ring-primary-green"
+                        />
+                        <div className="min-h-[1.5rem] text-sm">
+                          <ErrorMessage name="state" component="div" className="text-danger" />
+                        </div>
+                      </div>
+                      <div className="w-1/4">
                         <label htmlFor="country" className="block text-gray-2 font-medium mb-1">
                           {t(translations.setupOrg.country)}
                         </label>
@@ -397,11 +398,11 @@ const SetupOrganization = () => {
                       {t(translations.setupOrg.finish)}
                     </button>
                   </div>
-                </Form>
+                </>
               )}
-            </Formik>
-          </>
-        )}
+            </Form>
+          )}
+        </Formik>
       </div>
     </div>
   )

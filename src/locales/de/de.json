@@ -478,6 +478,8 @@
       "zipCodePH": "Postleitzahl eingeben",
       "city": "Stadt*",
       "cityPH": "Stadt eingeben",
+      "state": "Bundesland*",
+      "statePH": "Bundesland eingeben",
       "country": "Land*",
       "countryPH": "Land eingeben",
       "finish": "Fertigstellen"
