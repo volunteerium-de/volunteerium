@@ -1,10 +1,11 @@
 import React from "react"
-import { IoCalendar, IoHome, IoLocation, IoPeople } from "react-icons/io5"
-import eventImage from "../../../assets/example-event-img.png"
+import { IoCalendar, IoLocation, IoPeople } from "react-icons/io5"
+import defaultEventPhoto from "../../../assets/default-event-photo-.jpg"
 import { RxDividerVertical } from "react-icons/rx"
 import { MdLanguage } from "react-icons/md"
 import useLanguageOptions from "../../../hooks/useLanguages"
 import { formatDateWithTime } from "../../../helpers/formatDate"
+import { UserAvatar } from "../Avatar/userAvatar"
 const EventCardHorizontal = ({ event }) => {
   const startDate = new Date(event.startDate).toLocaleDateString()
   const endDate = new Date(event.endDate).toLocaleDateString()
@@ -12,18 +13,18 @@ const EventCardHorizontal = ({ event }) => {
   const areDatesSame = startDate === endDate
 
   return (
-    <div className="shadow-[0_1px_1px_rgba(0,0,0,.25)] mb-2  flex justify-center items-center gap-5 dark:bg-dark-gray-3 rounded-lg ">
+    <div className="shadow-[0_1px_1px_rgba(0,0,0,.25)] mb-2  flex justify-center items-center gap-2 dark:bg-dark-gray-3 rounded-lg ">
       {/* Event Image */}
       <div className="w-full max-w-[250px] h-[200px] flex justify-center items-center overflow-hidden rounded-l-lg ">
         <img
-          src={event.eventPhoto || eventImage}
+          src={event.eventPhoto || defaultEventPhoto}
           alt="event"
           className="w-full h-full object-cover"
         />
       </div>
       {/* Event Content */}
       <div className="p-2 flex flex-col justify-between w-full gap-1 ">
-        <h2 className="text-black dark:text-white font-semibold text-[1rem]">{event.title}</h2>
+        <h2 className="text-black dark:text-white font-semibold text-[1rem] mb-3">{event.title}</h2>
         <p className="text-dark-gray-1 dark:text-white text-[0.8125rem] mb-[10px]">
           {event.description.split(" ").slice(0, 10).join(" ")}
           {event.description.split(" ").length > 10 ? "..." : ""}
@@ -33,13 +34,11 @@ const EventCardHorizontal = ({ event }) => {
           {/* Organizer Information */}
           {event.createdBy && event.createdBy.userDetailsId && (
             <div className="flex gap-x-1 items-center mb-[7px] py-1">
-              <img
-                src={event.createdBy.userDetailsId.avatar}
-                alt="organizer-avatar"
-                className="w-6 h-6 rounded-full"
-              />
+              <UserAvatar user={event.createdBy} size="w-6 h-6" backgroundActive={true} />
               <p className="text-gray-2 dark:text-white text-[0.7rem]">
-                {event.createdBy.fullName}
+                {event.createdBy.userType === "organization"
+                  ? event.createdBy.organizationName
+                  : event.createdBy.fullName}
               </p>
             </div>
           )}
