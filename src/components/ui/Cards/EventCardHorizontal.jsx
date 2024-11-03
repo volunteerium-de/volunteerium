@@ -6,6 +6,7 @@ import { MdLanguage } from "react-icons/md"
 import useLanguageOptions from "../../../hooks/useLanguages"
 import { formatDateWithTime } from "../../../helpers/formatDate"
 import { UserAvatar } from "../Avatar/userAvatar"
+import { formatName } from "../../../helpers/formatName"
 const EventCardHorizontal = ({ event }) => {
   const startDate = new Date(event.startDate).toLocaleDateString()
   const endDate = new Date(event.endDate).toLocaleDateString()
@@ -36,9 +37,12 @@ const EventCardHorizontal = ({ event }) => {
             <div className="flex gap-x-1 items-center mb-[7px] py-1">
               <UserAvatar user={event.createdBy} size="w-6 h-6" backgroundActive={true} />
               <p className="text-gray-2 dark:text-white text-[0.7rem]">
-                {event.createdBy.userType === "organization"
-                  ? event.createdBy.organizationName
-                  : event.createdBy.fullName}
+                {event.createdBy.userType === "individual"
+                  ? formatName(
+                      event.createdBy.fullName,
+                      event.createdBy.userDetailsId.isFullNameDisplay
+                    )
+                  : event.createdBy.organizationName}
               </p>
             </div>
           )}
