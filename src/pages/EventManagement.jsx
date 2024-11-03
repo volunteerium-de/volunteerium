@@ -55,8 +55,7 @@ const EventManagement = () => {
           items={menuItems}
           activeTab={activeTab}
           onTabChange={setActiveTab}
-          currentUser={{}}
-          onEditAvatar={() => {}}
+          onEditAvatar={false}
         />
         <div className="flex-1 p-5">{renderContent()}</div>
       </div>

@@ -15,10 +15,24 @@ const Sidebar = ({ items, activeTab, onTabChange, onEditAvatar }) => {
 
   return (
     <div className="h-screen max-h-[90vh]">
-      <div className="sm:w-[350px] w-[80px] sm:min-w-[300px] mt-3 sm:h-[95%] h-[70%] py-[30px] bg-light-gray dark:bg-dark-gray-3 transition-all duration-300 ease-in-out  shadow-sm rounded-r-lg ">
+      <div className="sm:w-[350px] w-[80px] sm:min-w-[300px] mt-3 sm:h-[95%] h-[70%] py-[30px] bg-light-gray dark:bg-dark-gray-3 transition-all duration-300 ease-in-out shadow-sm rounded-r-lg ">
         <div className="flex flex-col items-center gap-4">
           <div>
             <UserAvatar user={user} size="h-24 w-24 sm:h-32 sm:w-32 p-4" />
+            {onEditAvatar && (
+              <button
+                onClick={() => {
+                  console.log("Edit button clicked")
+                  onEditAvatar()
+                }}
+                className="mx-auto bg-white p-[2px] rounded text-center border border-primary-green gap-1 flex sm:translate-y-[-20px] sm:translate-x-[-20px] translate-x-[-10px] translate-y-[-20px]"
+              >
+                <FaEdit className="text-primary-green" />
+                <p className="text-[0.75rem] text-primary-green font-medium hidden sm:block">
+                  {t(translations.userSettings.edit)}
+                </p>
+              </button>
+            )}
           </div>
 
           <p className="font-bold text-gray-2 dark:text-white text-[1rem] text-center tracking-wider mt-[10px] mb-[30px] hidden sm:block">

@@ -4,31 +4,17 @@ import eventImage from "../../../assets/example-event-img.png"
 import { RxDividerVertical } from "react-icons/rx"
 import { MdLanguage } from "react-icons/md"
 import useLanguageOptions from "../../../hooks/useLanguages"
-
+import { formatDateWithTime } from "../../../helpers/formatDate"
 const EventCardHorizontal = ({ event }) => {
   const startDate = new Date(event.startDate).toLocaleDateString()
   const endDate = new Date(event.endDate).toLocaleDateString()
   const { getLangName } = useLanguageOptions()
   const areDatesSame = startDate === endDate
 
-  const formatDateTime = (dateString) => {
-    const date = new Date(dateString)
-    const formattedDate = date.toLocaleDateString("en-GB", {
-      day: "2-digit",
-      month: "2-digit",
-      year: "numeric",
-    })
-    const formattedTime = date.toLocaleTimeString("en-GB", {
-      hour: "2-digit",
-      minute: "2-digit",
-      hour12: false,
-    })
-    return `${formattedDate} ${formattedTime}`
-  }
   return (
-    <div className="shadow-[0_1px_1px_rgba(0,0,0,.25)] mb-2 flex justify-center items-center gap-5 ">
+    <div className="shadow-[0_1px_1px_rgba(0,0,0,.25)] mb-2  flex justify-center items-center gap-5 dark:bg-dark-gray-3 rounded-lg ">
       {/* Event Image */}
-      <div className="w-full max-w-[155px] h-[150px] flex justify-center items-center">
+      <div className="w-full max-w-[250px] h-[200px] flex justify-center items-center overflow-hidden rounded-l-lg ">
         <img
           src={event.eventPhoto || eventImage}
           alt="event"
@@ -36,9 +22,9 @@ const EventCardHorizontal = ({ event }) => {
         />
       </div>
       {/* Event Content */}
-      <div className="p-2 flex flex-col justify-between w-full gap-1">
-        <h2 className="text-black font-semibold text-[1rem]">{event.title}</h2>
-        <p className="text-dark-gray-1 text-[0.8125rem] mb-[10px]">
+      <div className="p-2 flex flex-col justify-between w-full gap-1 ">
+        <h2 className="text-black dark:text-white font-semibold text-[1rem]">{event.title}</h2>
+        <p className="text-dark-gray-1 dark:text-white text-[0.8125rem] mb-[10px]">
           {event.description.split(" ").slice(0, 10).join(" ")}
           {event.description.split(" ").length > 10 ? "..." : ""}
         </p>
@@ -52,7 +38,9 @@ const EventCardHorizontal = ({ event }) => {
                 alt="organizer-avatar"
                 className="w-6 h-6 rounded-full"
               />
-              <p className="text-gray-2 text-[0.7rem]">{event.createdBy.fullName}</p>
+              <p className="text-gray-2 dark:text-white text-[0.7rem]">
+                {event.createdBy.fullName}
+              </p>
             </div>
           )}
 
@@ -61,10 +49,10 @@ const EventCardHorizontal = ({ event }) => {
               {/* Event Dates */}
               <div className="flex items-center">
                 <IoCalendar className="text-primary-green" />
-                <p className="text-gray-2 text-[0.7rem] p-1">
+                <p className="text-gray-2 dark:text-white text-[0.7rem] p-1">
                   {areDatesSame
-                    ? formatDateTime(event.startDate)
-                    : `${formatDateTime(event.startDate)} - ${formatDateTime(event.endDate)}`}
+                    ? formatDateWithTime(event.startDate)
+                    : `${formatDateWithTime(event.startDate)} - ${formatDateWithTime(event.endDate)}`}
                 </p>
               </div>
 
@@ -72,7 +60,7 @@ const EventCardHorizontal = ({ event }) => {
               {event.addressId && (
                 <div className="flex items-center">
                   <IoLocation className="text-primary-green" />
-                  <p className="text-gray-2 text-[0.7rem] p-0.5">
+                  <p className="text-gray-2 dark:text-white text-[0.7rem] p-0.5">
                     {event.addressId.city}, {event.addressId.country}
                   </p>
                   {!areDatesSame && <RxDividerVertical className="text-gray-2" />}
@@ -82,16 +70,20 @@ const EventCardHorizontal = ({ event }) => {
               {/* Max Participants */}
               <div className="flex items-center">
                 <IoPeople className="text-primary-green" />
-                <p className="text-gray-2 text-[0.7rem] p-1">Max. {event.maxParticipant} People</p>
+                <p className="text-gray-2 dark:text-white text-[0.7rem] p-1">
+                  Max. {event.maxParticipant} People
+                </p>
               </div>
 
               {/* Event Languages */}
-              <div className="flex items-center">
-                <MdLanguage className="text-primary-green" />
-                <p className="text-gray-2 text-[0.7rem] p-1">
-                  {event.languages.map((langCode) => getLangName(langCode)).join(", ")}
-                </p>
-              </div>
+              {event.languages && event.languages.length > 0 && (
+                <div className="flex items-center">
+                  <MdLanguage className="text-primary-green" />
+                  <p className="text-gray-2 dark:text-white text-[0.7rem] p-1">
+                    {event.languages.map((langCode) => getLangName(langCode)).join(", ")}
+                  </p>
+                </div>
+              )}
             </div>
             <div className="flex items-start justify-between mt-2">
               {/* Category Area */}
@@ -101,7 +93,7 @@ const EventCardHorizontal = ({ event }) => {
                     key={interest._id}
                     className="border border-primary-green dark:border-gray-1 px-2 py-1 rounded-full w-fit h-6"
                   >
-                    <p className="font-semibold tracking-wide text-[0.6rem] sm:text-[0.6rem] text-primary-green text-center dark:text-gray-1">
+                    <p className="font-semibold tracking-wide text-[0.6rem] sm:text-[0.6rem] text-primary-green  text-center dark:text-gray-1">
                       {interest.name.toUpperCase()}
                     </p>
                   </div>

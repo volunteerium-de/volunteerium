@@ -63,7 +63,6 @@ const FilterSidebar = () => {
 
   const handleCategory = (category) => {
     const isSelected = selectedCategories.includes(category.name)
-
     const updatedCategories = isSelected
       ? selectedCategories.filter((selectedCategory) => selectedCategory !== category.name)
       : [...selectedCategories, category.name]
@@ -95,8 +94,8 @@ const FilterSidebar = () => {
   ))
 
   return (
-    <div className="p-4 rounded-lg shadow-lg h-full overflow-auto dark:bg-dark-gray-3 ">
-      <div className="lg:max-w-[700px] mb-4 shadow-lg bg-white p-5 max-w-[400px] mx-auto ">
+    <div className="p-4 rounded-lg shadow-lg h-full overflow-auto dark:bg-dark-gray-3 dark:text-white ">
+      <div className="lg:max-w-[700px] mb-4 shadow-lg bg-white dark:bg-dark-gray-1 p-5 max-w-[400px] mx-auto  dark:text-white rounded">
         <h2 className="text-left font-semibold mb-2 p-2 text-black dark:text-white text-[0.9375rem] ">
           Availability
         </h2>
@@ -154,7 +153,7 @@ const FilterSidebar = () => {
       </div>
 
       {/* Categories */}
-      <div className="mb-4 shadow-lg bg-light-white p-5 max-w-[400px] mx-auto ">
+      <div className="mb-4 shadow-lg bg-light-white p-5 max-w-[400px] mx-auto dark:bg-dark-gray-1 rounded">
         <h3 className="font-semibold mb-2 p-2 text-black dark:text-white text-[0.9375rem] lg:text-left">
           Categories
         </h3>
@@ -168,19 +167,21 @@ const FilterSidebar = () => {
                 onChange={() => handleCategory(category)}
                 checked={selectedCategories.includes(category.name)}
               />
-              <span className="text-[0.75rem] text-black font-medium">{category.name}</span>
+              <span className="text-[0.75rem] text-black dark:text-white font-medium">
+                {category.name}
+              </span>
             </label>
           ))}
         </div>
       </div>
 
       {/* Languages */}
-      <div className="mt-10 m-auto shadow-lg bg-light-white p-5 max-w-[400px] mx-auto ">
+      <div className="mt-10 m-auto shadow-lg bg-light-white p-5 max-w-[400px] mx-auto dark:bg-dark-gray-1 rounded  ">
         <h3 className="font-semibold mb-2 p-2 text-black dark:text-white text-[0.9375rem] text-center lg:text-left">
           Languages
         </h3>
         <hr className="border border-light-gray-3 mb-3" />
-        <div className="max-h-[200px] overflow-y-auto">
+        <div className="max-h-[200px] overflow-y-scroll scrollbar">
           {eventLanguages.map((language) => (
             <label key={language.langCode} className="flex items-center gap-2 mt-3">
               <input
@@ -189,7 +190,7 @@ const FilterSidebar = () => {
                 onChange={() => handleLanguage(language.langCode)}
                 checked={selectedLanguages.includes(language.langCode)}
               />
-              <span className="text-[0.75rem] text-black font-medium">
+              <span className="text-[0.75rem] text-black dark:text-white font-medium">
                 {getLangName(language.langCode)} ({language.eventCount})
               </span>
             </label>
