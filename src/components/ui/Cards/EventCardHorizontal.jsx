@@ -4,7 +4,8 @@ import eventImage from "../../../assets/example-event-img.png"
 import { RxDividerVertical } from "react-icons/rx"
 import { MdLanguage } from "react-icons/md"
 import useLanguageOptions from "../../../hooks/useLanguages"
-import { formatDateWithTime } from "../../../helpers/formatDate"import { Link } from "react-router-dom"
+import { formatDateWithTime } from "../../../helpers/formatDate"
+import { Link } from "react-router-dom"
 
 const EventCardHorizontal = ({ event }) => {
   const startDate = new Date(event.startDate).toLocaleDateString()
@@ -14,7 +15,9 @@ const EventCardHorizontal = ({ event }) => {
 
   return (
     <Link
-      to={`${event._id}`} className="shadow-[0_1px_1px_rgba(0,0,0,.25)] mb-2  flex justify-center items-center gap-5 dark:bg-dark-gray-3 rounded-lg ">
+      to={`${event._id}`}
+      className="shadow-[0_1px_1px_rgba(0,0,0,.25)] mb-2  flex justify-center items-center gap-5 dark:bg-dark-gray-3 rounded-lg "
+    >
       {/* Event Image */}
       <div className="w-full max-w-[250px] h-[200px] flex justify-center items-center overflow-hidden rounded-l-lg ">
         <img
