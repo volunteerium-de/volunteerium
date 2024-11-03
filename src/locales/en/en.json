@@ -228,6 +228,7 @@
     "label6": "Bio",
     "label6PH": "Write your bio here...",
     "label7": "Files",
+    "label10": "No certificates uploaded",
     "edit": "Edit",
     "save": "Save",
     "reset": "Reset"
@@ -268,6 +269,7 @@
     "label8PH": "Write your description here...",
     "label9": "State",
     "label9PH": "Bayern",
+    "label10": "No certificates uploaded",
     "files": "Files",
     "edit": "Edit",
     "save": "Save"
@@ -297,10 +299,12 @@
     "h1": "Security Settings",
     "name": "Name",
     "namePH": "Name",
+    "p1": " Your full name is permanent for account integrity and cannot be changed!",
     "orgName": "Organization Name",
     "orgNamePH": "Organization Name",
     "email": "Email",
     "emailPH": "example@gmail.com",
+    "p2": " Your registered email address cannot be changed for security reasons!",
     "changePsw": "Change Password",
     "delAccount": "Delete Account",
     "delAlert1": "Would you like to delete your account? Deleting your account will remove all the content associated with it.",

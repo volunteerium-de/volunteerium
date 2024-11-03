@@ -1,6 +1,5 @@
 import React, { useState } from "react"
 import AddNewDocumentModal from "./AddNewDocumentModal"
-// import UpdateDocumentModal from "./UpdateDocumentModal"
 import { useTranslation } from "react-i18next"
 import { translations } from "../../locales/translations"
 import { FaExternalLinkAlt } from "react-icons/fa"
@@ -13,14 +12,13 @@ const MyDocumentsModal = ({ isOpen, onClose, certificates }) => {
   const { t } = useTranslation()
   const { deleteAccountFile } = useAccountCall()
   const [isAddNewModalOpen, setIsAddNewModalOpen] = useState(false)
-  // const [isUpdateModalOpen, setIsUpdateModalOpen] = useState(false)
+
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false)
   const [currentDocument, setCurrentDocument] = useState(null)
 
   const openAddNewModal = () => setIsAddNewModalOpen(true)
   const closeAddNewModal = () => setIsAddNewModalOpen(false)
 
-  // const closeUpdateModal = () => setIsUpdateModalOpen(false)
   const closeDeleteModal = () => setIsDeleteModalOpen((prevState) => !prevState)
 
   const handleDelete = async () => {
@@ -37,13 +35,6 @@ const MyDocumentsModal = ({ isOpen, onClose, certificates }) => {
       toastNotify("error", "Please select a file to delete")
     }
   }
-
-  // const handleUpdate = (updatedDocument) => {}
-
-  // const handleOpenUpdateModal = (certificate) => {
-  //   setCurrentDocument(certificate)
-  //   setIsUpdateModalOpen(true)
-  // }
 
   const handleOpenDeleteModal = (deletedDocument) => {
     setCurrentDocument(deletedDocument)
@@ -93,12 +84,6 @@ const MyDocumentsModal = ({ isOpen, onClose, certificates }) => {
                   >
                     {t(translations.myDocs.delete)}
                   </button>
-                  {/* <button
-                    className="leading-[1.5625] font-bold text-primary-green mr-[5px]"
-                    onClick={() => handleOpenUpdateModal(certificate)}
-                  >
-                    {t(translations.myDocs.update)}
-                  </button> */}
                 </div>
               </div>
             ))}
@@ -109,21 +94,9 @@ const MyDocumentsModal = ({ isOpen, onClose, certificates }) => {
           <button className="py-2 px-4 text-primary-green" onClick={onClose}>
             {t(translations.myDocs.cancel)}
           </button>
-          {/* <button
-            className="bg-primary-green px-4 py-2 rounded text-white  hover:bg-light-green"
-            onClick={handleSaveChanges}
-          >
-            {t(translations.myDocs.saveChanges)}
-          </button> */}
         </div>
       </div>
-      {/* <UpdateDocumentModal
-        key={currentDocument ? currentDocument.id : "new"}
-        isOpen={isUpdateModalOpen}
-        onClose={closeUpdateModal}
-        document={currentDocument}
-        onUpdate={handleUpdate}
-      /> */}
+
       {isDeleteModalOpen && (
         <DeleteModal
           onClose={closeDeleteModal}

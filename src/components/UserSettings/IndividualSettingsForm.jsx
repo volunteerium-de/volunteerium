@@ -217,7 +217,7 @@ const IndividualSettingsForm = () => {
 
                 <div className="max-h-[200px] overflow-y-auto p-2 border border-gray-1 rounded focus:outline-none focus:border-primary-green">
                   {certificates.length === 0 ? (
-                    <p className="dark:text-white">No certificates uploaded.</p>
+                    <p className="dark:text-white">{t(translations.indvSettings.label10)}</p>
                   ) : (
                     certificates.map((certificate, index) => {
                       const marginBottom = index === certificates.length - 1 ? "mb-25" : "mb-15"

@@ -5,7 +5,6 @@ import { useTranslation } from "react-i18next"
 import { translations } from "../../locales/translations"
 import { useSelector } from "react-redux"
 translations
-// import SecuritySettings from "./SecuritySettings"
 
 const ProfileSettings = () => {
   const { t } = useTranslation()

@@ -39,10 +39,10 @@ const AboutUs = () => {
               <div className="w-full mx-auto rounded-lg my-[20px] sm:my-[40px] flex flex-col sm:flex-row items-center justify-center gap-5 px-5">
                 {/* Text Section */}
                 <div className="w-full max-w-[300px] sm:max-w-[453px] bg-dark-green text-center text-white rounded-lg p-3 sm:transform sm:translate-x-0">
-                  <h2 className="text-[1.025rem] sm:text-[1.25rem] font-bold mb-5 sm:mb-10">
+                  <h2 className="text-[1.025rem] sm:text-[1.15rem] font-semibold mb-5 sm:mb-7 mt-5">
                     {t(translations.aboutUs.h2)}
                   </h2>
-                  <p className="text-[0.775rem] sm:text-[1rem] font-medium mb-5 sm:mb-10">
+                  <p className="text-[0.775rem] sm:text-[1rem] font-medium mb-5 sm:mb-7">
                     {t(translations.aboutUs.p2)}
                   </p>
                 </div>
@@ -61,7 +61,7 @@ const AboutUs = () => {
           {/* How It Works Section */}
           <section>
             <div className="w-full mx-auto flex flex-col justify-center gap-5 sm:gap-10 bg-dark-green py-5 px-5">
-              <h2 className="text-[1.75rem] sm:text-[2.25rem] text-center text-white">
+              <h2 className="text-[1.75rem] sm:text-[2rem] text-center text-white">
                 {t(translations.aboutUs.howItWorks)}
               </h2>
               <div className="flex flex-col lg:flex-row justify-center items-center gap-5">

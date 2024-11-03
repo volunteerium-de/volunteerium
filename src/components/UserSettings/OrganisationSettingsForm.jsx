@@ -24,7 +24,6 @@ const OrganisationSchema = Yup.object().shape({
 const OrganisationSettingsForm = () => {
   const { t } = useTranslation()
   const { currentUser } = useSelector((state) => state.auth)
-  console.log(currentUser)
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [certificates, setCertificates] = useState([])
   const { updateUserDetails } = useAccountCall()
@@ -46,6 +45,71 @@ const OrganisationSettingsForm = () => {
     setCertificates(currentUser.documentIds || [])
   }, [currentUser])
 
+  const fields = [
+    {
+      name: "organizationName",
+      label: t(translations.orgSettings.label1),
+      placeholder: t(translations.orgSettings.label1PH),
+      type: "text",
+    },
+    {
+      name: "organizationUrl",
+      label: t(translations.orgSettings.label2),
+      placeholder: t(translations.orgSettings.label2PH),
+      type: "text",
+    },
+    {
+      name: "streetName",
+      label: t(translations.orgSettings.label3),
+      placeholder: t(translations.orgSettings.label3PH),
+      type: "text",
+    },
+    {
+      name: "streetNumber",
+      label: t(translations.orgSettings.label4),
+      placeholder: t(translations.orgSettings.label4PH),
+      type: "text",
+    },
+    {
+      name: "state",
+      label: t(translations.orgSettings.label9),
+      placeholder: t(translations.orgSettings.label9PH),
+      type: "text",
+    },
+    {
+      name: "zipCode",
+      label: t(translations.orgSettings.label5),
+      placeholder: t(translations.orgSettings.label5PH),
+      type: "text",
+    },
+    {
+      name: "city",
+      label: t(translations.orgSettings.label6),
+      placeholder: t(translations.orgSettings.label6PH),
+      type: "text",
+    },
+    {
+      name: "country",
+      label: t(translations.orgSettings.label7),
+      placeholder: t(translations.orgSettings.label7PH),
+      type: "text",
+    },
+  ]
+
+  const renderField = ({ name, label, placeholder }) => (
+    <div className="flex-1 flex flex-col" key={name}>
+      <label className="block text-dark-gray-2 dark:text-white mb-2" htmlFor={name}>
+        {label}
+      </label>
+      <Field
+        id={name}
+        name={name}
+        placeholder={placeholder}
+        className="h-[36px] p-2 border border-gray-1 rounded focus:outline-none focus:border-primary-green"
+      />
+      <ErrorMessage name={name} component="div" className="text-danger text-sm" />
+    </div>
+  )
   const openModal = () => setIsModalOpen(true)
   const closeModal = () => setIsModalOpen(false)
 
@@ -66,7 +130,6 @@ const OrganisationSettingsForm = () => {
           initialValues={defaultUserDetails}
           validationSchema={OrganisationSchema}
           onSubmit={(values) => {
-            console.log("Formik onSubmit triggered with values:", values)
             handleSubmit(values)
           }}
         >
@@ -78,142 +141,16 @@ const OrganisationSettingsForm = () => {
                 </h1>
               </div>
 
-              <div className="flex flex-col gap-4 mb-4">
-                <div className="flex-1 flex flex-col">
-                  <label
-                    className="block text-dark-gray-2 dark:text-white mb-2"
-                    htmlFor="organizationName"
-                  >
-                    {t(translations.orgSettings.label1)}
-                  </label>
-                  <Field
-                    label={t(translations.orgSettings.label1)}
-                    id="organizationName"
-                    name="organizationName"
-                    placeholder={t(translations.orgSettings.label1PH)}
-                    className="h-[36px] p-2 border border-gray-1 rounded focus:outline-none focus:border-primary-green"
-                  />
-                  <ErrorMessage
-                    name="organizationName"
-                    component="div"
-                    className="text-danger text-sm"
-                  />
-                </div>
+              {/*First Line */}
+              <div className="flex flex-col gap-4 mb-4">{fields.slice(0, 2).map(renderField)}</div>
 
-                <div className="flex-1 flex flex-col">
-                  <label
-                    className="block text-dark-gray-2 dark:text-white mb-2"
-                    htmlFor="organizationUrl"
-                  >
-                    {t(translations.orgSettings.label2)}
-                  </label>
-                  <Field
-                    label={t(translations.orgSettings.label2)}
-                    id="organizationUrl"
-                    name="organizationUrl"
-                    placeholder={t(translations.orgSettings.label2PH)}
-                    className="h-[36px] p-2 border border-gray-1 rounded focus:outline-none focus:border-primary-green"
-                  />
-                  <ErrorMessage
-                    name="organizationUrl"
-                    component="div"
-                    className="text-danger text-sm"
-                  />
-                </div>
-              </div>
+              {/* Second Line*/}
+              <div className="flex flex-wrap gap-4 mb-4">{fields.slice(2, 6).map(renderField)}</div>
 
-              <div className="flex flex-wrap gap-4 mb-4">
-                <div className="flex-1 flex flex-col">
-                  <label
-                    className="block text-dark-gray-2 dark:text-white mb-2"
-                    htmlFor="streetName"
-                  >
-                    {t(translations.orgSettings.label3)}
-                  </label>
-                  <Field
-                    id="streetName"
-                    name="streetName"
-                    placeholder={t(translations.orgSettings.label3PH)}
-                    className="h-[36px] p-2 border border-gray-1 rounded focus:outline-none focus:border-primary-green"
-                  />
-                  <ErrorMessage name="streetName" component="div" className="text-danger text-sm" />
-                </div>
+              {/* Third Line */}
+              <div className="flex flex-wrap gap-4 mb-4">{fields.slice(6).map(renderField)}</div>
 
-                <div className="flex-1 flex flex-col">
-                  <label
-                    className="block text-dark-gray-2 dark:text-white mb-2"
-                    htmlFor="streetNumber"
-                  >
-                    {t(translations.orgSettings.label4)}
-                  </label>
-                  <Field
-                    id="streetNumber"
-                    name="streetNumber"
-                    placeholder={t(translations.orgSettings.label4PH)}
-                    className="h-[36px] p-2 border border-gray-1 rounded focus:outline-none focus:border-primary-green"
-                  />
-                  <ErrorMessage
-                    name="streetNumber"
-                    component="div"
-                    className="text-danger text-sm"
-                  />
-                </div>
-
-                <div className="flex-1 flex flex-col">
-                  <label className="block text-dark-gray-2 dark:text-white mb-2" htmlFor="state">
-                    {t(translations.orgSettings.label9)}
-                  </label>
-                  <Field
-                    id="state"
-                    name="state"
-                    placeholder={t(translations.orgSettings.label9PH)}
-                    className="h-[36px] p-2 border border-gray-1 rounded focus:outline-none focus:border-primary-green"
-                  />
-                  <ErrorMessage name="state" component="div" className="text-danger text-sm" />
-                </div>
-
-                <div className="flex-1 flex flex-col">
-                  <label className="block text-dark-gray-2 dark:text-white mb-2" htmlFor="zipCode">
-                    {t(translations.orgSettings.label5)}
-                  </label>
-                  <Field
-                    id="zipCode"
-                    name="zipCode"
-                    placeholder={t(translations.orgSettings.label5PH)}
-                    className="h-[36px] p-2 border border-gray-1 rounded focus:outline-none focus:border-primary-green"
-                  />
-                  <ErrorMessage name="zipCode" component="div" className="text-danger text-sm" />
-                </div>
-              </div>
-
-              <div className="flex flex-wrap gap-4 mb-4">
-                <div className="flex-1 flex flex-col">
-                  <label className="block text-dark-gray-2 dark:text-white mb-2" htmlFor="city">
-                    {t(translations.orgSettings.label6)}
-                  </label>
-                  <Field
-                    id="city"
-                    name="city"
-                    placeholder={t(translations.orgSettings.label6PH)}
-                    className="h-[36px] p-2 border border-gray-1 rounded focus:outline-none focus:border-primary-green"
-                  />
-                  <ErrorMessage name="city" component="div" className="text-danger text-sm" />
-                </div>
-
-                <div className="flex-1 flex flex-col">
-                  <label className="block text-dark-gray-2 dark:text-white mb-2" htmlFor="country">
-                    {t(translations.orgSettings.label7)}
-                  </label>
-                  <Field
-                    id="country"
-                    name="country"
-                    placeholder={t(translations.orgSettings.label7PH)}
-                    className="h-[36px] p-2 border border-gray-1 rounded focus:outline-none focus:border-primary-green"
-                  />
-                  <ErrorMessage name="country" component="div" className="text-danger text-sm" />
-                </div>
-              </div>
-
+              {/* Description*/}
               <div className="mb-[20px]">
                 <label
                   className="block text-dark-gray-2 dark:text-white mb-2"
@@ -238,6 +175,7 @@ const OrganisationSettingsForm = () => {
                 </p>
               </div>
 
+              {/* Files */}
               <div className="mx-auto">
                 <div className="flex justify-between">
                   <p className="text-[1rem] dark:text-white ">
@@ -253,7 +191,7 @@ const OrganisationSettingsForm = () => {
 
                 <div className="max-h-[200px] overflow-y-auto p-2 border border-gray-1 rounded focus:outline-none focus:border-primary-green">
                   {certificates.length === 0 ? (
-                    <p className="dark:text-white">No certificates uploaded.</p>
+                    <p className="dark:text-white">{t(translations.indvSettings.label10)}</p>
                   ) : (
                     certificates.map((certificate, index) => {
                       const marginBottom = index === certificates.length - 1 ? "mb-25" : "mb-15"

@@ -228,6 +228,7 @@
     "label6": "Biografie",
     "label6PH": "Schreiben Sie hier Ihre Biografie...",
     "label7": "Dateien",
+    "label10": "Keine Zertifikate hochgeladen",
     "edit": "Bearbeiten",
     "save": "Speichern",
     "reset": "Zurücksetzen"
@@ -269,6 +270,7 @@
     "label9": "Bundesland",
     "label9PH": "Bayern",
     "files": "Dateien",
+    "label10": "Keine Zertifikate hochgeladen",
     "edit": "Bearbeiten",
     "save": "Speichern"
   },
@@ -297,10 +299,12 @@
     "h1": "Sicherheitseinstellungen",
     "name": "Name",
     "namePH": "Name",
+    "p1": "Ihr vollständiger Name ist für die Kontointegrität dauerhaft und kann nicht geändert werden!",
     "orgName": "Organisationsname",
     "orgNamePH": "Organisationsname",
     "email": "E-Mail",
     "emailPH": "beispiel@gmail.com",
+    "p2": "Aus Sicherheitsgründen kann Ihre registrierte E-Mail-Adresse nicht geändert werden!",
     "changePsw": "Passwort ändern",
     "delAccount": "Konto löschen",
     "delAlert1": "Möchten Sie Ihr Konto löschen? Das Löschen Ihres Kontos entfernt alle damit verbundenen Inhalte.",

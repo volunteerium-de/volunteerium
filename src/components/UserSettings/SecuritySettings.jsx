@@ -45,9 +45,7 @@ const SecuritySettings = () => {
             className="w-full h-[36px] p-2 border border-gray-1 rounded focus:outline-none dark:bg-light-gray-3 focus:border-primary-green"
             disabled={true}
           />
-          <p className="text-sm text-warning dark:text-orange-300">
-            Your full name is permanent for account integrity and cannot be changed!
-          </p>
+          <p className="text-sm text-warning dark:text-orange-300">{t(translations.secSett.p1)}</p>
         </div>
       )}
 
@@ -78,9 +76,7 @@ const SecuritySettings = () => {
           className="w-full h-[36px] p-2 border border-gray-1 rounded focus:outline-none dark:bg-light-gray-3 focus:border-primary-green"
           disabled={true}
         />
-        <p className="text-sm text-warning dark:text-orange-300">
-          Your registered email address cannot be changed for security reasons!
-        </p>
+        <p className="text-sm text-warning dark:text-orange-300">{t(translations.secSett.p2)}</p>
       </div>
 
       {/* Password Change Button */}
