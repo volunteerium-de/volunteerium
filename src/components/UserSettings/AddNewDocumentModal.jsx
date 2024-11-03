@@ -62,7 +62,7 @@ const AddNewDocumentModal = ({ isOpen, onClose }) => {
   return (
     <div>
       <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
-        <div className="bg-white dark:bg-dark-gray-3  p-6 rounded-lg max-w-[654px] w-full">
+        <div className="bg-white dark:bg-dark-gray-3  p-6 rounded-lg max-w-[854px] w-full">
           <h2 className="text-[1.75rem] leading-[1.464] text-center font-semibold mb-4 dark:text-white">
             {t(translations.addNewDoc.newDoc)}
           </h2>

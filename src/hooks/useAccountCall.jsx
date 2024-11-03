@@ -11,14 +11,32 @@ const useAccountCall = () => {
   const { currentUser } = useSelector((state) => state.auth)
   const { axiosWithToken } = useAxios()
 
+  const updateUser = async (userData) => {
+    dispatch(fetchStart())
+    try {
+      const { data } = await axiosWithToken.put(`users/${currentUser?._id}`, userData)
+      dispatch(fetchSuccess(data))
+      console.log(data)
+      toastNotify("success", data.message)
+      return data
+    } catch (error) {
+      dispatch(fetchFail())
+      toastNotify("error", error.response.data.message)
+    }
+  }
+
   const updateUserDetails = async (userData) => {
     dispatch(fetchStart())
     try {
-      const { data } = await axiosWithToken.put(`details/users/${userDetailsId}`, userData, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      })
+      const { data } = await axiosWithToken.put(
+        `details/users/${currentUser?.userDetailsId?._id}`,
+        userData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      )
       dispatch(fetchSuccess(data))
       console.log(data)
       return data
@@ -100,6 +118,7 @@ const useAccountCall = () => {
     updateAccountFile,
     deleteAccountFile,
     getSingleUser,
+    updateUser,
   }
 }
 

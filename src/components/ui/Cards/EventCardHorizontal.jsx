@@ -76,12 +76,14 @@ const EventCardHorizontal = ({ event }) => {
               </div>
 
               {/* Event Languages */}
-              <div className="flex items-center">
-                <MdLanguage className="text-primary-green" />
-                <p className="text-gray-2 dark:text-white text-[0.7rem] p-1">
-                  {event.languages.map((langCode) => getLangName(langCode)).join(", ")}
-                </p>
-              </div>
+              {event.languages && event.languages.length > 0 && (
+                <div className="flex items-center">
+                  <MdLanguage className="text-primary-green" />
+                  <p className="text-gray-2 dark:text-white text-[0.7rem] p-1">
+                    {event.languages.map((langCode) => getLangName(langCode)).join(", ")}
+                  </p>
+                </div>
+              )}
             </div>
             <div className="flex items-start justify-between mt-2">
               {/* Category Area */}

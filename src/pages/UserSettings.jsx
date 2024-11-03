@@ -52,7 +52,7 @@ const UserSettings = () => {
     <div>
       <Header />
       <div className="mx-auto max-w-[1800px]">
-        <div className="flex mx-auto max-w-[1440px] ">
+        <div className="flex">
           <Sidebar
             items={menuItems}
             activeTab={activeTab}

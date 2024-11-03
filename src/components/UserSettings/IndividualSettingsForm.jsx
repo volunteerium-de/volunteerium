@@ -92,7 +92,7 @@ const IndividualSettingsForm = () => {
 
   return (
     <div>
-      <div className="max-w-4xl mx-auto p-8 bg-light-gray dark:bg-dark-gray-3 rounded-lg shadow-md">
+      <div className="mx-auto p-8 bg-light-gray dark:bg-dark-gray-3 rounded-lg shadow-md w-full ">
         <Formik
           initialValues={defaultUserDetails}
           validationSchema={IndividualSchema}
@@ -216,21 +216,25 @@ const IndividualSettingsForm = () => {
                 </div>
 
                 <div className="max-h-[200px] overflow-y-auto p-2 border border-gray-1 rounded focus:outline-none focus:border-primary-green">
-                  {certificates.map((certificate, index) => {
-                    const marginBottom = index === certificates.length - 1 ? "mb-25" : "mb-15"
-                    return (
-                      <div
-                        key={certificate._id}
-                        onClick={() => window.open(certificate.fileUrl, "_blank")}
-                        className={`flex justify-between items-center bg-light-gray-2 ${marginBottom} w-full h-[40px] mb-[10px]`}
-                      >
-                        <p className="text-dark-gray-1 hover:text-dark-gray-2 cursor-pointer font-medium flex gap-2 items-center ml-3">
-                          {certificate.title}
-                          <FaExternalLinkAlt size={12} className="text-dark-gray-2" />
-                        </p>
-                      </div>
-                    )
-                  })}
+                  {certificates.length === 0 ? (
+                    <p className="dark:text-white">No certificates uploaded.</p>
+                  ) : (
+                    certificates.map((certificate, index) => {
+                      const marginBottom = index === certificates.length - 1 ? "mb-25" : "mb-15"
+                      return (
+                        <div
+                          key={certificate._id}
+                          onClick={() => window.open(certificate.fileUrl, "_blank")}
+                          className={`flex justify-between items-center bg-light-gray-2 ${marginBottom} w-full h-[40px] mb-[10px]`}
+                        >
+                          <p className="text-dark-gray-1 hover:text-dark-gray-2 cursor-pointer font-medium flex gap-2 items-center ml-3">
+                            {certificate.title}
+                            <FaExternalLinkAlt size={12} className="text-dark-gray-2" />
+                          </p>
+                        </div>
+                      )
+                    })
+                  )}
                 </div>
               </div>
 

@@ -57,7 +57,7 @@ const EventsListingPage = () => {
           ...(languageFilters.length > 0 && {
             "filter[languages]": languageFilters.join(","),
           }),
-          "sort[startDate]": sortOrder === "Newest" ? "desc" : "asc",
+          "sort[startDate]": sortOrder === "Newest" ? "asc" : "desc",
         }
         const query = `?${new URLSearchParams(
           queryParams

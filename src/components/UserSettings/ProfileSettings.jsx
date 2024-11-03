@@ -12,7 +12,7 @@ const ProfileSettings = () => {
 
   const { currentUser } = useSelector((state) => state.auth)
   return (
-    <div className="mx-auto ">
+    <div className="mx-auto">
       {currentUser.userType === "individual" ? (
         <IndividualSettingsForm />
       ) : currentUser.userType === "organization" ? (

@@ -5,74 +5,69 @@ import { MdOutlinePhotoCamera } from "react-icons/md"
 import { RiDeleteBin6Line } from "react-icons/ri"
 import { translations } from "../../locales/translations"
 import { useTranslation } from "react-i18next"
+import useAccountCall from "../../hooks/useAccountCall"
+import toastNotify from "../../utils/toastNotify"
 import { useSelector } from "react-redux"
+import { UserAvatar } from "../ui/Avatar/userAvatar"
+import { ImSpinner9 } from "react-icons/im"
 
-const AvatarEditModal = ({ isOpen, onClose, currentUser, onUpdateAvatar }) => {
+const AvatarEditModal = ({ isOpen, onClose, currentUser }) => {
   const { t } = useTranslation()
-  const [loading, setLoading] = useState(false)
-  const [error, setError] = useState(null)
+  const { loading } = useSelector((state) => state.auth)
+
   const fileInputRef = useRef(null)
-  const { currentUser: user } = useSelector((state) => state.auth)
+  const { updateUserDetails } = useAccountCall()
+
   if (!isOpen) return null
 
   const handleAddPhoto = () => {
     fileInputRef.current.click()
   }
 
-  const handleFileChange = (event) => {
+  const handleFileChange = async (event) => {
     const file = event.target.files[0]
     if (file) {
       const formData = new FormData()
-      formData.append("file", file)
+      if (currentUser.userType === "organization") {
+        formData.append("organizationLogo", file)
+      } else {
+        formData.append("avatar", file)
+      }
 
-      const uploadEndpoint =
-        currentUser.userType === "organization"
-          ? "/api/upload-organization-logo"
-          : "/api/upload-avatar"
-
-      setLoading(true)
-      setError(null)
-
-      fetch(uploadEndpoint, {
-        method: "POST",
-        body: formData,
-      })
-        .then((response) => {
-          if (!response.ok) {
-            throw new Error(t(translations.avatarEdit.networkError))
-          }
-          return response.json()
-        })
-        .then((data) => {
-          if (currentUser.userType === "organization") {
-            onUpdateAvatar({ organizationLogo: data.fileUrl })
-          } else {
-            onUpdateAvatar({ avatar: data.fileUrl })
-          }
-          alert(t(translations.avatarEdit.photoAlert))
-        })
-        .catch((error) => {
-          console.error("Error uploading file:", error)
-          setError(t(translations.avatarEdit.photoError))
-        })
-        .finally(() => {
-          setLoading(false)
-        })
+      try {
+        const updatedData = await updateUserDetails(formData)
+        if (updatedData) {
+          toastNotify("success", updatedData.message)
+        }
+      } catch (error) {
+        console.error("Error uploading file:", error)
+      }
     }
   }
 
-  const handleDelete = () => {
-    onUpdateAvatar(null)
+  const handleDelete = async () => {
+    try {
+      const formData = new FormData()
+
+      if (currentUser.userType === "organization") {
+        formData.append("organizationLogo", "")
+      } else {
+        formData.append("avatar", "")
+      }
+
+      const updatedData = await updateUserDetails(formData)
+      if (updatedData) {
+        toastNotify("success", updatedData.message)
+      }
+    } catch (error) {
+      console.error("Error deleting avatar:", error)
+    }
   }
 
   return (
     <div className="fixed inset-0 flex justify-center items-center z-50 bg-white bg-opacity-50 backdrop-blur-sm">
-      <div className=" relative max-w-full sm:w-[643px] w-[200px] sm:h-[375px] font-Poppins p-[10px] bg-white text-white rounded-[8px] shadow-2xl dark:bg-dark-gray-3">
-        {/* Loading */}
-        {loading && <p className="text-primary-green">{t(translations.avatarEdit.loading)}</p>}
-        {/* Error */}
-        {error && <p className=" absolute bottom-50 left-36 text-danger text-center">{error}</p>}
-        <div className="flex justify-between items-start ">
+      <div className="relative max-w-full sm:w-[643px] w-[200px] sm:h-[375px] font-Poppins p-[10px] bg-white text-white rounded-[8px] shadow-2xl dark:bg-dark-gray-3">
+        <div className="flex justify-between items-start mb-[30px]">
           <h1 className="sm:text-[1.05rem] p-1 text-primary-green dark:text-white">
             {currentUser.userType === "organization"
               ? t(translations.avatarEdit.logo)
@@ -82,25 +77,28 @@ const AvatarEditModal = ({ isOpen, onClose, currentUser, onUpdateAvatar }) => {
             onClick={onClose}
             className="dark:hover:bg-primary-green hover:bg-dark-green p-1 rounded-full"
           >
-            <MdClose className="size-[20px] dark:text-white text-primary-green " />
+            <MdClose className="size-[20px] dark:text-white text-primary-green" />
           </button>
         </div>
-        <img
-          src={
-            currentUser.userType === "organization"
-              ? currentUser.userDetailsId.organizationLogo || Avatar
-              : currentUser.userDetailsId.avatar || Avatar
-          }
-          alt={t(translations.avatarEdit.avatarAlt)}
-          className="w-[100px] h-[100px] mx-auto sm:w-[150px] sm:h-[150px] mt-[30px]"
-        />
+        {loading ? (
+          <div className="text-primary-green h-[100px] sm:h-[150px] flex flex-col gap-2 justify-center items-center">
+            <span>{t(translations.avatarEdit.loading)}</span>
+            <ImSpinner9 size={32} className="animate-spin" />
+          </div>
+        ) : (
+          <UserAvatar
+            user={currentUser}
+            size="w-[100px] h-[100px] mx-auto sm:w-[150px] sm:h-[150px]"
+          />
+        )}
+
         <hr className="mt-[75px] border-primary-green" />
         <div className="flex justify-between items-center mt-[20px] text-[1rem]">
-          <div className="flex items-center flex-col gap-2">
-            <button onClick={handleAddPhoto}>
+          <div onClick={handleAddPhoto} className="flex items-center flex-col gap-2">
+            <button>
               <MdOutlinePhotoCamera className="size-[20px] text-primary-green dark:text-white" />
             </button>
-            <p className="text-primary-green dark:text-white">
+            <p className="text-primary-green dark:text-white cursor-pointer">
               {t(translations.avatarEdit.addPhoto)}
             </p>
             <input
@@ -111,11 +109,11 @@ const AvatarEditModal = ({ isOpen, onClose, currentUser, onUpdateAvatar }) => {
               onChange={handleFileChange}
             />
           </div>
-          <div className="flex items-center flex-col gap-2">
-            <button onClick={handleDelete}>
-              <RiDeleteBin6Line className="size-[20px]  text-primary-green dark:text-white" />
+          <div onClick={handleDelete} className="flex items-center flex-col gap-2">
+            <button>
+              <RiDeleteBin6Line className="size-[20px] text-primary-green dark:text-white" />
             </button>
-            <p className="text-primary-green dark:text-white">
+            <p className="text-primary-green dark:text-white cursor-pointer">
               {t(translations.avatarEdit.delete)}
             </p>
           </div>

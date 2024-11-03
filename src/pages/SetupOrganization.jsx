@@ -132,7 +132,8 @@ const SetupOrganization = () => {
           validationSchema={OrganizationSchema}
           onSubmit={(values) => {
             console.log(values)
-            updateUser({ ...values, isProfileSetup: true }, user.userDetailsId._id)
+            updateUserDetails({ ...values, isProfileSetup: true }, user.userDetailsId._id)
+            navigate("/")
           }}
         >
           {({ setFieldValue, values, isValid }) => (

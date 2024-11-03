@@ -199,7 +199,7 @@
     "profilePhoto": "Profilfoto",
     "avatarAlt": "Avatar des Benutzers ",
     "addPhoto": "Foto hinzufügen",
-    "delete": "Streichen"
+    "delete": "Löschen"
   },
 
   "delModal": {
@@ -253,7 +253,7 @@
     "label1": "Organisationsname",
     "label1PH": "Volunteerium",
     "label2": "Organisations-URL",
-    "label2PH": "www.volunteerium.com",
+    "label2PH": "https://www.volunteerium.com",
     "label3": "Straßenname",
     "label3PH": "Dammstraße",
     "label4": "Hausnummer",

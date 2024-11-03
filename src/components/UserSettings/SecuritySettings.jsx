@@ -26,16 +26,14 @@ const SecuritySettings = () => {
 
   return (
     <div className="max-w-4xl mx-auto p-8 bg-light-gray  dark:bg-dark-gray-3 rounded-lg shadow-md dark:text-white">
-      <h1 className="text-center font-medium text-[1.25rem] my-[50px]">
-        {t(translations.secSett.h1)}
-      </h1>
+      <h1 className="text-center font-medium text-[1.25rem] ">{t(translations.secSett.h1)}</h1>
 
       {/* Name field only for individual users */}
       {currentUser?.userType === "individual" && (
         <div className="flex flex-col mb-[10px]">
           <label
             htmlFor="name"
-            className="block text-[1rem] leading-[1.5625] text-gray-2 mb-[10px]"
+            className="block text-[1rem] leading-[1.5625] text-gray-2 dark:text-white mb-[10px]"
           >
             {t(translations.secSett.name)}
           </label>
@@ -44,8 +42,12 @@ const SecuritySettings = () => {
             id="name"
             name="name"
             placeholder={currentUser?.fullName || t(translations.secSett.namePH)}
-            className="w-full h-[36px] p-2 border border-gray-1 rounded focus:outline-none focus:border-primary-green"
+            className="w-full h-[36px] p-2 border border-gray-1 rounded focus:outline-none dark:bg-light-gray-3 focus:border-primary-green"
+            disabled={true}
           />
+          <p className="text-sm text-warning dark:text-orange-300">
+            Your full name is permanent for account integrity and cannot be changed!
+          </p>
         </div>
       )}
 
@@ -58,10 +60,8 @@ const SecuritySettings = () => {
           <input
             type="text"
             id="organizationName"
-            placeholder={
-              currentUser?.userDetailsId.organizationName || t(translations.secSett.orgNamePH)
-            }
-            className="w-full h-[36px] p-2 border border-gray-1 rounded focus:outline-none focus:border-primary-green"
+            placeholder={currentUser?.organizationName || t(translations.secSett.orgNamePH)}
+            className="w-full h-[36px] p-2 border dark:text-black border-gray-1 rounded focus:outline-none focus:border-primary-green"
           />
         </div>
       )}
@@ -75,14 +75,18 @@ const SecuritySettings = () => {
           type="email"
           id="email"
           placeholder={currentUser?.email || t(translations.secSett.emailPH)}
-          className="w-full h-[36px] p-2 border border-gray-1 rounded focus:outline-none focus:border-primary-green"
+          className="w-full h-[36px] p-2 border border-gray-1 rounded focus:outline-none dark:bg-light-gray-3 focus:border-primary-green"
+          disabled={true}
         />
+        <p className="text-sm text-warning dark:text-orange-300">
+          Your registered email address cannot be changed for security reasons!
+        </p>
       </div>
 
       {/* Password Change Button */}
       <div className="text-center">
         <button
-          className="bg-primary-green w-[70%] py-2 px-4 rounded my-[50px]  hover:bg-light-green"
+          className="bg-primary-green w-[70%] py-2 px-4 rounded my-[50px]  duration-200 hover:bg-light-green"
           onClick={openModal}
         >
           <p className="text-[1rem] leading-[1.5625] text-white">
@@ -97,17 +101,13 @@ const SecuritySettings = () => {
         <h1 className="text-center font-bold my-[20px] text-dark-gray-3">
           {t(translations.secSett.delAccount)}
         </h1>
-        <p className="text-dark-gray-2 text-center">
+        <p className="text-dark-gray-2 text-center dark:text-white">
           {currentUser?.userType === "individual"
             ? t(translations.secSett.delAlert1)
             : t(translations.secSett.delAlert2)}
         </p>
-        <div className="text-center">
-          {" "}
-          <button
-            className="bg-danger  w-[70%] py-2 px-4 rounded my-[50px]  hover:bg-light-green"
-            onClick={openDeleteModal}
-          >
+        <div onClick={() => openDeleteModal()} className="text-center">
+          <button className="bg-danger w-[70%] py-2 px-4 rounded my-[50px]  duration-200 hover:bg-danger/50">
             <p className="text-[1rem] leading-[1.5625] text-white">
               {currentUser?.userType === "individual"
                 ? t(translations.secSett.userRes1)
