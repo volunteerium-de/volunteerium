@@ -29,10 +29,10 @@ const OrganizationSchema = Yup.object({
 })
 
 const SetupOrganization = () => {
-  const {t} = useTranslation()
+  const { t } = useTranslation()
   const { currentUser: user } = useSelector((state) => state.auth)
   const [step, setStep] = useState(1)
-  const { updateUser } = useAccountCall()
+  const { updateUserDetails } = useAccountCall()
   const { logout } = useAuthCall()
   const [fileName, setFileName] = useState("")
   const [logoPreview, setLogoPreview] = useState(null) // For logo preview
@@ -117,35 +117,37 @@ const SetupOrganization = () => {
           </div>
         </div>
 
-        {step === 1 ? (
-          <>
-            {/* Step 1 Form */}
-            <h2 className="text-[1.75rem] dark:text-white font-bold text-center mb-4">
-            {t(translations.setupOrg.details)}
-            </h2>
-            <p className="text-dark-gray-1 dark:text-white text-center mb-8">
-            {t(translations.setupOrg.p)}
-            </p>
+        <Formik
+          initialValues={{
+            organizationDesc: "",
+            organizationLogo: null,
+            organizationUrl: "",
+            streetName: "",
+            streetNumber: "",
+            zipCode: "",
+            city: "",
+            state: "",
+            country: "",
+          }}
+          validationSchema={OrganizationSchema}
+          onSubmit={(values) => {
+            console.log(values)
+            updateUserDetails({ ...values, isProfileSetup: true }, user.userDetailsId._id)
+            navigate("/")
+          }}
+        >
+          {({ setFieldValue, values, isValid }) => (
+            <Form>
+              {step === 1 ? (
+                <>
+                  {/* Step 1 Form */}
+                  <h2 className="text-[1.75rem] dark:text-white font-bold text-center mb-4">
+                    {t(translations.setupOrg.details)}
+                  </h2>
+                  <p className="text-dark-gray-1 dark:text-white text-center mb-8">
+                    {t(translations.setupOrg.p)}
+                  </p>
 
-            <Formik
-              initialValues={{
-                organizationDesc: "",
-                organizationLogo: null,
-                organizationUrl: "",
-                streetName: "",
-                streetNumber: "",
-                zipCode: "",
-                city: "",
-                country: "",
-              }}
-              validationSchema={OrganizationSchema}
-              onSubmit={(values) => {
-                console.log(values)
-                updateUser({ ...values, isProfileSetup: true }, user.userDetailsId._id)
-              }}
-            >
-              {({ setFieldValue, values }) => (
-                <Form>
                   <div className="mb-2 mx-auto w-2/3">
                     <label
                       htmlFor="organizationDesc"
@@ -157,7 +159,7 @@ const SetupOrganization = () => {
                       type="text"
                       id="organizationDesc"
                       name="organizationDesc"
-                      placeholder= {t(translations.setupOrg.orgDescPH)}
+                      placeholder={t(translations.setupOrg.orgDescPH)}
                       className="w-full px-4 py-2 dark:text-white dark:bg-black border border-gray-2 rounded-md focus:outline-none focus:ring-1 focus:ring-primary-green"
                     />
                     <div className="min-h-[1.5rem] text-sm">
@@ -243,31 +245,17 @@ const SetupOrganization = () => {
                       {t(translations.setupOrg.nextButton)}
                     </button>
                   </div>
-                </Form>
-              )}
-            </Formik>
-          </>
-        ) : (
-          <>
-            {/* Step 2 Form */}
-            <h2 className="text-[1.75rem] dark:text-white font-bold text-center mb-2">
-            {t(translations.setupOrg.completeh2)}
-            </h2>
-            <p className="text-dark-gray-1 dark:text-white text-center mb-2">
-             {t(translations.setupOrg.completeP)}
-            </p>
+                </>
+              ) : (
+                <>
+                  {/* Step 2 Form */}
+                  <h2 className="text-[1.75rem] dark:text-white font-bold text-center mb-2">
+                    {t(translations.setupOrg.completeh2)}
+                  </h2>
+                  <p className="text-dark-gray-1 dark:text-white text-center mb-2">
+                    {t(translations.setupOrg.completeP)}
+                  </p>
 
-            <Formik
-              validationSchema={OrganizationSchema}
-              onSubmit={(values, { resetForm, setSubmitting }) => {
-                resetForm()
-                setSubmitting(false)
-                navigate("/")
-                console.log("Form values submitted: ", values)
-              }}
-            >
-              {({ isValid }) => (
-                <Form>
                   <div className="flex flex-col">
                     <div className="w-full">
                       <label
@@ -295,13 +283,13 @@ const SetupOrganization = () => {
                     <div className="flex items-center space-x-2">
                       <div className="w-2/4">
                         <label htmlFor="streetName" className="block text-gray-2 font-medium mb-1">
-                        {t(translations.setupOrg.streetName)}
+                          {t(translations.setupOrg.streetName)}
                         </label>
                         <Field
                           type="text"
                           id="streetName"
                           name="streetName"
-                          placeholder= {t(translations.setupOrg.streetNamePH)}
+                          placeholder={t(translations.setupOrg.streetNamePH)}
                           className="w-full px-4 py-2 border border-gray-2 rounded-md dark:bg-black dark:text-white focus:outline-none focus:ring-1 focus:ring-primary-green"
                         />
                         <div className="min-h-[1.5rem] text-sm">
@@ -334,13 +322,13 @@ const SetupOrganization = () => {
 
                       <div className="w-1/4">
                         <label htmlFor="zipCode" className="block text-gray-2 font-medium mb-1">
-                        {t(translations.setupOrg.zipCode)}
+                          {t(translations.setupOrg.zipCode)}
                         </label>
                         <Field
                           type="text"
                           id="zipCode"
                           name="zipCode"
-                          placeholder= {t(translations.setupOrg.zipCodePH)}
+                          placeholder={t(translations.setupOrg.zipCodePH)}
                           className="w-full px-4 py-2 border border-gray-2 rounded-md dark:bg-black dark:text-white focus:outline-none focus:ring-1 focus:ring-primary-green"
                         />
                         <div className="min-h-[1.5rem] text-sm">
@@ -350,30 +338,45 @@ const SetupOrganization = () => {
                     </div>
 
                     <div className="flex items-center space-x-2">
-                      <div className="w-1/2">
+                      <div className="w-2/4">
                         <label htmlFor="city" className="block text-gray-2 font-medium mb-1">
-                        {t(translations.setupOrg.city)}
+                          {t(translations.setupOrg.city)}
                         </label>
                         <Field
                           type="text"
                           id="city"
                           name="city"
-                          placeholder= {t(translations.setupOrg.cityPH)}
+                          placeholder={t(translations.setupOrg.cityPH)}
                           className="w-full px-4 py-2 border border-gray-2 rounded-md dark:bg-black dark:text-white focus:outline-none focus:ring-1 focus:ring-primary-green"
                         />
                         <div className="min-h-[1.5rem] text-sm">
                           <ErrorMessage name="city" component="div" className="text-danger" />
                         </div>
                       </div>
-                      <div className="w-1/2">
+                      <div className="w-1/4">
+                        <label htmlFor="state" className="block text-gray-2 font-medium mb-1">
+                          {t(translations.setupOrg.state)}
+                        </label>
+                        <Field
+                          type="text"
+                          id="state"
+                          name="state"
+                          placeholder={t(translations.setupOrg.statePH)}
+                          className="w-full px-4 py-2 border border-gray-2 rounded-md dark:bg-black dark:text-white focus:outline-none focus:ring-1 focus:ring-primary-green"
+                        />
+                        <div className="min-h-[1.5rem] text-sm">
+                          <ErrorMessage name="state" component="div" className="text-danger" />
+                        </div>
+                      </div>
+                      <div className="w-1/4">
                         <label htmlFor="country" className="block text-gray-2 font-medium mb-1">
-                        {t(translations.setupOrg.country)}
+                          {t(translations.setupOrg.country)}
                         </label>
                         <Field
                           type="text"
                           id="country"
                           name="country"
-                          placeholder= {t(translations.setupOrg.countryPH)}
+                          placeholder={t(translations.setupOrg.countryPH)}
                           className="w-full px-4 py-2 border border-gray-2 rounded-md dark:bg-black dark:text-white focus:outline-none focus:ring-1 focus:ring-primary-green"
                         />
                         <div className="min-h-[1.5rem] text-sm">
@@ -396,11 +399,11 @@ const SetupOrganization = () => {
                       {t(translations.setupOrg.finish)}
                     </button>
                   </div>
-                </Form>
+                </>
               )}
-            </Formik>
-          </>
-        )}
+            </Form>
+          )}
+        </Formik>
       </div>
     </div>
   )

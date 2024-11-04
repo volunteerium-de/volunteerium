@@ -1,15 +1,11 @@
 import { Link } from "react-router-dom"
 import { FaLinkedinIn, FaInstagram, FaGithub } from "react-icons/fa"
 import Subscribe from "./Subscribe"
-import { useTranslation } from "react-i18next";
-import { translations } from "../../locales/translations";
-
+import { useTranslation } from "react-i18next"
+import { translations } from "../../locales/translations"
 
 const Footer = () => {
-
-  const { t } = useTranslation(); 
-
-
+  const { t } = useTranslation()
   const sections = [
     {
       title: t(translations.footer.information),
@@ -58,7 +54,7 @@ const Footer = () => {
             {/* Social Media Icons */}
             <div className="flex flex-col items-center">
               <h2 className="text-lg font-bold mb-4 text-primary-green">
-              {t(translations.footer.h2)}
+                {t(translations.footer.h2)}
               </h2>
               <div className="flex space-x-4">
                 {/* GitHub */}
@@ -94,8 +90,9 @@ const Footer = () => {
 
           {/* Footer Bottom */}
           <div className="mt-8 border-t border-light-gray-1 dark:border-dark-gray-3 pt-4 text-center text-gray-2 w-full">
-            <p>&copy; {new Date().getFullYear()} 
-            {t(translations.footer.p)}
+            <p>
+              &copy; {new Date().getFullYear()}
+              {t(translations.footer.p)}
             </p>
           </div>
         </div>

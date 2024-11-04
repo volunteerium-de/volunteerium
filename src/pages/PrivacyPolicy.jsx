@@ -7,7 +7,7 @@ const PrivacyPolicy = () => {
   return (
     <div className="font-poppins bg-white dark:bg-black text-gray-2 dark:text-light-gray min-h-screen">
       <Header />
-      <div className="mt-4 border-8 border-primary-green/40 max-w-[48rem] mx-auto p-8 relative overflow-hidden">
+      <div className="mt-4 border-8 border-primary-green/40 max-w-[80%] mx-auto p-8 relative overflow-hidden">
         <div className="relative p-4 bg-white bg-opacity-10 dark:bg-black">
           <h1 className="text-[1.25rem] md:text-[1.5rem] font-bold mb-4 text-black dark:text-white text-justify">{t(translations.privacyPolicy.h1)}</h1>
           <p className="text-[1rem] md:text-[1.125rem] text-dark-gray-3 dark:text-light-gray mt-2 text-justify">
@@ -64,7 +64,7 @@ const PrivacyPolicy = () => {
             <br />
             <strong>{t(translations.privacyPolicy.p15)}</strong>
             <br />
-            Email: [{t(translations.privacyPolicy.p16)}]
+            [{t(translations.privacyPolicy.p16)}]
           </p>
         </div>
       </div>
