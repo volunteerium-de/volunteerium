@@ -7,9 +7,11 @@ import { formatName } from "../../../helpers/formatName"
 import { formatDate } from "../../../helpers/formatDate"
 import { UserAvatar } from "../Avatar/userAvatar"
 import { Link, useNavigate } from "react-router-dom"
+import { useTranslation } from "react-i18next"
+import { translations } from "../../../locales/translations"
 
 const EventCardVertical = ({ event }) => {
-  console.log("event in EventCard", event)
+  const {t} = useTranslation()
   const { currentUser: user } = useSelector((state) => state.auth)
   const navigate = useNavigate()
   const { getLangName } = useLanguageOptions()
@@ -25,7 +27,7 @@ const EventCardVertical = ({ event }) => {
       <div>
         <img
           src={event?.eventPhoto || defaulEventPhoto}
-          alt="event"
+          alt= {t(translations.eventCardVer.imgAlt)}
           className="rounded-t-sm object-cover w-full h-[200px]"
         />
       </div>
@@ -84,7 +86,7 @@ const EventCardVertical = ({ event }) => {
             <div className="flex gap-x-[8px] items-center  mb-[1px]">
               <IoPeople className="text-primary-green" />
               <p className="text-gray-2 dark:text-light-gray-2 text-sm p-1">
-                Max. {event.maxParticipant} People
+                Max. {event.maxParticipant} {t(translations.eventCardVer.people)}
               </p>
             </div>
 
@@ -122,7 +124,7 @@ const EventCardVertical = ({ event }) => {
               onClick={() => navigate(`events/${event._id}`)}
               className="font-medium text-white text-[0.9rem] text-center bg-primary-green px-3 py-1 rounded"
             >
-              More
+              {t(translations.eventCardVer.more)}
             </button>
           ) : null}
         </div>

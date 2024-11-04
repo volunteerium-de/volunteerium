@@ -29,6 +29,8 @@ export const translations = {
   upcomingOpp: {
     title: "upcomingOpportunities.title",
     discover: "upcomingOpportunities.discoverMore",
+    loadingEvents: "upcomingOpportunities.loadingEvents",
+    noEvents: "upcomingOpportunities.noEvents"
   },
 
   getToKnowUs: {
@@ -565,4 +567,10 @@ export const translations = {
     lang: "langSelect.lang",
     PH: "langSelect.PH",
   },
+
+  eventCardVer: {
+    imgAlt: "eventCardVer.imgAlt",
+    people: "eventCardVer.people",
+    more: "eventCardVer.more"
+  }
 }

@@ -125,12 +125,12 @@ const UpcomingOpportunities = () => {
               {loading ? (
                 <div className="flex items-center gap-2">
                   <ImSpinner9 className="animate-spin text-primary-green" />
-                  <span>Loading Upcomming Events...</span>
+                  <span>{t(translations.upcomingOpp.loadingEvents)}</span>
                 </div>
               ) : eventData.length > 0 ? (
                 eventData.map((event, _id) => <EventCardVertical key={event._id} event={event} />)
               ) : (
-                <p>No Upcomming Events...</p>
+                <p>{t(translations.upcomingOpp.noEvents)}</p>
               )}
             </div>
           </div>
