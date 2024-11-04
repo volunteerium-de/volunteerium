@@ -29,6 +29,17 @@ const EventManagement = () => {
     navigate(`/event-management?tab=${tab}`)
   }
 
+  const getUnreadMessageCount = () => {
+    return (conversations || []).reduce((count, conversation) => {
+      const unreadMessages = conversation.messageIds.filter(
+        (message) => !message.readerIds.includes(currentUser._id)
+      )
+      return count + unreadMessages.length
+    }, 0)
+  }
+
+  const unreadMessageCount = getUnreadMessageCount()
+
   const menuItems = [
     {
       key: "organizedEvents",
@@ -41,9 +52,26 @@ const EventManagement = () => {
       icon: <FaPeopleGroup className="text-2xl mx-auto" />,
     },
     {
+      // key: "messages",
+      // label: (
+      //   <div className="relative">
+      //     Messages
+      //     {2 > 0 && (
+      //       <span className="absolute top-0 right-72 md:right-60 sm:right-40 w-2 h-2 bg-primary-green rounded-full flex items-center justify-center"></span>
+      //     )}
+      //   </div>
+      // ),
+      // icon: <FaEnvelope className="text-2xl mx-auto" />,
       key: "messages",
       label: "Messages",
-      icon: <FaEnvelope className="text-2xl mx-auto" />,
+      icon: (
+        <div className="relative flex items-center">
+          <FaEnvelope className="text-2xl mx-auto" />
+          {2 > 0 && (
+            <span className="absolute top-0 left-40 w-2 h-2 bg-primary-green rounded-full flex items-center justify-center"></span>
+          )}
+        </div>
+      ),
     },
   ]
 
@@ -68,12 +96,7 @@ const EventManagement = () => {
     <>
       <Header />
       <div className="flex max-w-[1800px] mx-auto">
-        <Sidebar
-          items={menuItems}
-          activeTab={activeTab}
-          onTabChange={handleTabChange}
-          conversations={conversations}
-        />
+        <Sidebar items={menuItems} activeTab={activeTab} onTabChange={handleTabChange} />
         <div className="flex-1">{renderContent()}</div>
       </div>
     </>
