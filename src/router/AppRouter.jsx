@@ -22,7 +22,8 @@ import EventDetails from "../pages/EventDetails"
 import GoogleAuthSuccess from "../pages/GoogleAuthSuccess"
 import GoogleAuthFail from "../pages/GoogleAuthFail"
 import EventManagement from "../pages/EventManagement"
-import PrivacyPolicy from "../pages/PrivacyPolicy";
+import PrivacyPolicy from "../pages/PrivacyPolicy"
+import AdminPanel from "../pages/AdminPanel"
 
 const AppRouter = () => {
   const { currentUser: user } = useSelector((state) => state.auth)
@@ -35,7 +36,16 @@ const AppRouter = () => {
         <Route path="about" element={<AboutUs />} />
         <Route path="faq" element={<FAQuestion />} />
         <Route path="contact" element={<ContactUs />} />
-        <Route path="profile/:userId" element={<Profile />} />
+        <Route
+          path="profile/:userId"
+          element={({ params }) => {
+            if (params.userId === import.meta.env.ADMIN_ID) {
+              return <Navigate to="/" />
+            } else {
+              return <Profile />
+            }
+          }}
+        />
         <Route path="events" element={<EventListing />} />
         <Route path="events/:eventId" element={<EventDetails />} />
         <Route path="password" element={<Password />} />
@@ -50,8 +60,10 @@ const AppRouter = () => {
               !user?.userDetailsId?.isProfileSetup ? (
                 user?.userType === "organization" ? (
                   <SetupOrganization />
-                ) : (
+                ) : user?.userType === "individual" ? (
                   <Navigate to={`/account-setup/individual?clientId=${user?._id}`} />
+                ) : (
+                  <Navigate to="/" />
                 )
               ) : (
                 <Navigate to="/" />
@@ -64,12 +76,24 @@ const AppRouter = () => {
               !user?.userDetailsId?.isProfileSetup ? (
                 user?.userType === "individual" ? (
                   <SetupIndividual />
-                ) : (
+                ) : user?.userType === "organization" ? (
                   <Navigate to={`/account-setup/organization?clientId=${user?._id}`} />
+                ) : (
+                  <Navigate to="/" />
                 )
               ) : (
                 <Navigate to="/" />
               )
+            }
+          />
+          <Route
+            path="/admin-panel"
+            element={user?.userType !== "admin" ? <Navigate to="/not-found" /> : <AdminPanel />}
+          />
+          <Route
+            path="/event-management"
+            element={
+              user?.userType === "admin" ? <Navigate to="/not-found" /> : <EventManagement />
             }
           />
         </Route>
@@ -95,14 +119,6 @@ const AppRouter = () => {
             <Route path="/verify-email" element={<Navigate to="/" />} />
           </>
         )}
-
-        <Route element={<PrivateRouter />}>
-          <Route path="/settings" element={<UserSettings />} />
-          <Route path="/event-management" element={<EventManagement />} />
-          <Route path="/user-org-setup" element={<SetupOrganization />} />
-          <Route path="/user-ind-setup" element={<SetupIndividual />} />
-          <Route path="/verify-email/success" element={<VerificationSuccess />} />
-        </Route>
       </Routes>
     </Router>
   )

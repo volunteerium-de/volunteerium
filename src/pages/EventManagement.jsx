@@ -15,7 +15,7 @@ const EventManagement = () => {
   const navigate = useNavigate()
   const { conversations } = useSelector((state) => state.chat)
   const { currentUser, loading } = useSelector((state) => state.auth)
-  const [activeTab, setActiveTab] = useState("organizedEvents")
+  const [activeTab, setActiveTab] = useState("organized-events")
   const [isAddingEvent, setIsAddingEvent] = useState(false)
 
   useEffect(() => {
@@ -31,29 +31,30 @@ const EventManagement = () => {
 
   const menuItems = [
     {
-      key: "organizedEvents",
+      key: "organized-events",
       label: "Organized Events",
       icon: <FaCalendar className="text-2xl mx-auto" />,
     },
     {
-      key: "attendedEvents",
+      key: "attended-events",
       label: "Attended Events",
       icon: <FaPeopleGroup className="text-2xl mx-auto" />,
+      show: currentUser?.userType !== "organization",
     },
     {
       key: "messages",
       label: "Messages",
       icon: <FaEnvelope className="text-2xl mx-auto" />,
     },
-  ]
+  ].filter((item) => item.show !== false)
 
   const renderContent = () => {
     if (isAddingEvent) return <AddEvent onClose={() => setIsAddingEvent(false)} />
 
     switch (activeTab) {
-      case "organizedEvents":
+      case "organized-events":
         return <OrganizedEvents onAddEvent={() => setIsAddingEvent(true)} />
-      case "attendedEvents":
+      case "attended-events":
         return <AttendedEvents />
       case "messages":
         return (
@@ -68,12 +69,7 @@ const EventManagement = () => {
     <>
       <Header />
       <div className="flex max-w-[1800px] mx-auto">
-        <Sidebar
-          items={menuItems}
-          activeTab={activeTab}
-          onTabChange={handleTabChange}
-          conversations={conversations}
-        />
+        <Sidebar items={menuItems} activeTab={activeTab} onTabChange={handleTabChange} />
         <div className="flex-1">{renderContent()}</div>
       </div>
     </>

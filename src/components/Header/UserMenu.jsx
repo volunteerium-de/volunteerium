@@ -11,7 +11,7 @@ import { translations } from "../../locales/translations"
 import { UserAvatar } from "../ui/Avatar/userAvatar"
 
 const UserMenu = ({ user }) => {
-  const {t} = useTranslation()
+  const { t } = useTranslation()
   const mode = useSelector((state) => state.theme.mode)
   const { logout } = useAuthCall()
   const { toggleTheme } = useTheme()
@@ -54,7 +54,6 @@ const UserMenu = ({ user }) => {
         {/* Menu Icon */}
         <FaBars className="text-primary-green dark:text-gray-2  h-5 w- mr-2" />
         <UserAvatar user={currentUser} size="h-6 w-6" />
-
       </div>
 
       {/* Dropdown menu */}
@@ -64,17 +63,21 @@ const UserMenu = ({ user }) => {
             <div className="mt-2">
               {user ? (
                 <>
+                  {user.userType !== "admin" && (
+                    <button
+                      className="block w-full text-left p-1 hover:text-primary-green"
+                      onClick={() => navigate(`/profile/${user._id}`)}
+                    >
+                      {t(translations.userMenu.profile)}
+                    </button>
+                  )}
                   <button
                     className="block w-full text-left p-1 hover:text-primary-green"
-                    onClick={() => navigate(`/profile/${user._id}`)}
+                    onClick={() =>
+                      navigate(`/${user.userType === "admin" ? "admin-panel" : "event-management"}`)
+                    }
                   >
-                    {t(translations.userMenu.profile)}
-                  </button>
-                  <button
-                    className="block w-full text-left p-1 hover:text-primary-green"
-                    onClick={() => navigate("/event-management")}
-                  >
-                    {t(translations.userMenu.eventMng)}
+                    {user.userType === "admin" ? "Admin Panel" : t(translations.userMenu.eventMng)}
                   </button>
                   <button
                     className="block w-full text-left p-1 hover:text-primary-green"
