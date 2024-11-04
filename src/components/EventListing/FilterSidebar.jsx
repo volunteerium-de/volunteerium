@@ -31,7 +31,7 @@ const FilterSidebar = () => {
   const selectedCategories = useSelector((state) => state.search.categoryFilters)
   const [eventLanguages, setEventLanguages] = useState([])
   const selectedLanguages = useSelector((state) => state.search.languageFilters)
-  const { getLangName } = useLanguageOptions()
+  const { getLangName, getTranslatedCategory } = useLanguageOptions()
 
   useEffect(() => {
     fetchLanguages()
@@ -160,7 +160,7 @@ const FilterSidebar = () => {
         <hr className="border border-light-gray-3 mb-3" />
         <div className="max-h-[200px] overflow-y-scroll scrollbar">
           {categories.map((category) => (
-            <label key={category.name} className="flex items-center gap-2 mt-3">
+            <label key={category._id} className="flex items-center gap-2 mt-3">
               <input
                 type="checkbox"
                 value={category.name}
@@ -168,7 +168,7 @@ const FilterSidebar = () => {
                 checked={selectedCategories.includes(category.name)}
               />
               <span className="text-[0.75rem] text-black dark:text-white font-medium">
-                {category.name}
+                {getTranslatedCategory(category)}
               </span>
             </label>
           ))}

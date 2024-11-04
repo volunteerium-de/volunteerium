@@ -5,11 +5,13 @@ import { useTranslation } from "react-i18next"
 import { translations } from "../../locales/translations"
 import { useSelector } from "react-redux"
 import useAccountCall from "../../hooks/useAccountCall"
+import useEventCall from "../../hooks/useEventCall"
 import toastNotify from "../../utils/toastNotify"
-import { Formik, Field, Form } from "formik"
+import { Formik, Field, Form, FieldArray } from "formik"
 import * as Yup from "yup"
 import LanguageSelect from "../../components/ui/Selects/LanguageSelect"
 import SelectInput from "../ui/Selects/SelectInput"
+import useLanguage from "../../hooks/useLanguages"
 
 // Validation Schema
 const IndividualSchema = Yup.object().shape({
@@ -20,6 +22,7 @@ const IndividualSchema = Yup.object().shape({
   ageRange: Yup.string().nullable(),
   isFullNameDisplay: Yup.boolean(),
   languages: Yup.array().nullable(),
+  interestIds: Yup.array().nullable(),
 })
 
 // Reusable Radio Input Component
@@ -45,20 +48,36 @@ const RadioInput = ({ id, label, checked, onChange }) => (
 const IndividualSettingsForm = () => {
   const { t } = useTranslation()
   const { currentUser } = useSelector((state) => state.auth)
+  const { categories } = useSelector((state) => state.search)
+  const { getTranslatedCategory } = useLanguage()
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [certificates, setCertificates] = useState([])
   const { updateUserDetails } = useAccountCall()
-
+  const { getEventCategories } = useEventCall()
   const { userDetailsId } = currentUser
+
   const defaultUserDetails = {
-    isFullNameDisplay: userDetailsId.isFullNameDisplay,
-    city: userDetailsId.addressId?.city || "",
-    country: userDetailsId.addressId?.country || "",
-    bio: userDetailsId.bio || "",
-    gender: userDetailsId.gender || "",
-    ageRange: userDetailsId.ageRange || "",
-    languages: userDetailsId.languages || [],
+    isFullNameDisplay: userDetailsId?.isFullNameDisplay || false,
+    city: userDetailsId?.addressId?.city || "",
+    country: userDetailsId?.addressId?.country || "",
+    bio: userDetailsId?.bio || "",
+    gender: userDetailsId?.gender || "",
+    ageRange: userDetailsId?.ageRange || "",
+    languages: userDetailsId?.languages || [],
+    interestIds:
+      userDetailsId?.interestIds?.map((category) => ({
+        label: getTranslatedCategory(category),
+        value: category?._id,
+      })) || [],
   }
+
+  console.log(currentUser)
+
+  useEffect(() => {
+    if (!categories.length > 0) {
+      getEventCategories()
+    }
+  }, [categories])
 
   useEffect(() => {
     setCertificates(currentUser.documentIds || [])
@@ -68,9 +87,17 @@ const IndividualSettingsForm = () => {
   const closeModal = () => setIsModalOpen(false)
 
   const handleSubmit = async (values) => {
-    // console.log("Form submitted with values:", values)
+    const formattedValues = {
+      ...values,
+      languages: values.languages.length > 0 ? values.languages : [],
+      interestIds: values.interestIds.filter(Boolean),
+    }
+
+    console.log("Formatted values before update:", formattedValues)
+
     try {
-      const data = await updateUserDetails(values)
+      const data = await updateUserDetails(formattedValues)
+      console.log("Güncelleme Sonucu:", data) // Güncellenen veriyi burada kontrol edin
       toastNotify("success", data.message)
     } catch (error) {
       console.error("Update failed:", error)
@@ -85,20 +112,20 @@ const IndividualSettingsForm = () => {
   ]
 
   const genderOptions = [
-    { label: "male", value: "male" },
-    { label: "female", value: "female" },
-    { label: "Prefer not to say", value: "Prefer not to say" },
+    { label: t(translations.indvSettings.male), value: "male" },
+    { label: t(translations.indvSettings.female), value: "female" },
+    { label: t(translations.indvSettings.notSay), value: "Prefer not to say" },
   ]
 
   return (
     <div>
-      <div className="mx-auto p-8 bg-light-gray dark:bg-dark-gray-3 rounded-lg shadow-md w-full ">
+      <div className="mx-auto max-w-4xl p-8 bg-light-gray dark:bg-dark-gray-3 rounded-lg shadow-md  ">
         <Formik
           initialValues={defaultUserDetails}
           validationSchema={IndividualSchema}
           onSubmit={handleSubmit}
         >
-          {({ values, setFieldValue, resetForm, errors }) => (
+          {({ values, setFieldValue, errors, resetForm }) => (
             <Form>
               <div className="mb-[10px]">
                 <h1 className="text-center font-medium text-[1.25rem] dark:text-white">
@@ -110,6 +137,7 @@ const IndividualSettingsForm = () => {
                     {t(translations.indvSettings.p1)}
                   </p>
 
+                  {/* Name */}
                   <div className="flex flex-col flex-wrap sm:flex-row gap-5 ">
                     <RadioInput
                       id="fullName"
@@ -130,9 +158,12 @@ const IndividualSettingsForm = () => {
                 </div>
               </div>
 
+              {/* City and Country */}
               <div className="flex flex-col flex-wrap sm:flex-row gap-5 mb-[25px]">
                 <div className="flex-1 flex flex-col relative">
-                  <label className="block text-dark-gray-2 dark:text-white mb-2">City</label>
+                  <label className="block text-dark-gray-2 dark:text-white mb-2">
+                    {t(translations.indvSettings.label1)}
+                  </label>
                   <Field
                     label={t(translations.indvSettings.label1)}
                     id="city"
@@ -146,7 +177,9 @@ const IndividualSettingsForm = () => {
                   )}
                 </div>
                 <div className="flex-1 flex flex-col relative">
-                  <label className="block text-dark-gray-2 dark:text-white mb-2">Country</label>
+                  <label className="block text-dark-gray-2 dark:text-white mb-2">
+                    {t(translations.indvSettings.label2)}
+                  </label>
                   <Field
                     label={t(translations.indvSettings.label2)}
                     id="country"
@@ -161,30 +194,67 @@ const IndividualSettingsForm = () => {
                 </div>
               </div>
 
+              {/* Gender and Age Group */}
               <div className="flex flex-row flex-wrap max-[780px]:flex-col gap-4 mb-[5px]">
                 <div className="flex-1">
-                  <p className="block text-dark-gray-2 dark:text-white mb-2">Gender</p>
+                  <p className="block text-dark-gray-2 dark:text-white mb-2">
+                    {t(translations.indvSettings.label3)}
+                  </p>
                   <SelectInput
                     name="gender"
-                    placeholder={values.gender || "Add gender"}
+                    placeholder={t("indvSettings.label3PH")}
                     options={genderOptions}
                     onChange={(value) => setFieldValue("gender", value)}
                   />
                 </div>
                 <div className="flex-1">
-                  <p className="block text-dark-gray-2 dark:text-white mb-2">Age</p>
+                  <p className="block text-dark-gray-2 dark:text-white mb-2">
+                    {t(translations.indvSettings.label4)}
+                  </p>
                   <SelectInput
                     name="ageRange"
-                    placeholder={values.ageRange || "Add age range"}
+                    placeholder={t("indvSettings.label4PH")}
                     options={ageRangeOptions}
                     onChange={(value) => setFieldValue("ageRange", value)}
                   />
                 </div>
               </div>
+              {/* Language */}
+
               <div className="flex-1">
                 <LanguageSelect />
               </div>
 
+              {/* Interests */}
+              <div className="flex-1">
+                <p className="block text-dark-gray-2 dark:text-white mb-2">
+                  {t(translations.indvSettings.label5)}
+                </p>
+                <SelectInput
+                  name="interestIds"
+                  isMultiple={true}
+                  placeholder={t(translations.indvSettings.label5PH)}
+                  options={categories.map((category) => ({
+                    label: getTranslatedCategory(category),
+                    value: category._id,
+                  }))}
+                  value={values.interestIds}
+                  onChange={(selectedOptions) => {
+                    console.log("Selected Options:", selectedOptions)
+                    setFieldValue(
+                      "interestIds",
+                      selectedOptions
+                        ? selectedOptions.map((option) => ({
+                            label: option.label,
+                            value: option.value,
+                          }))
+                        : []
+                    )
+                  }}
+                />
+              </div>
+
+              {/* Description */}
               <div className="mb-[20px]">
                 <label className="block text-dark-gray-2 dark:text-white mb-2" htmlFor="bio">
                   {t(translations.indvSettings.label6)}
@@ -214,7 +284,7 @@ const IndividualSettingsForm = () => {
                     {t(translations.indvSettings.edit)}
                   </p>
                 </div>
-
+                {/* Files */}
                 <div className="max-h-[200px] overflow-y-auto p-2 border border-gray-1 rounded focus:outline-none focus:border-primary-green">
                   {certificates.length === 0 ? (
                     <p className="dark:text-white">{t(translations.indvSettings.label10)}</p>

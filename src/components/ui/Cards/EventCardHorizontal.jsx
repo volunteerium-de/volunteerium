@@ -10,7 +10,7 @@ import { formatName } from "../../../helpers/formatName"
 const EventCardHorizontal = ({ event }) => {
   const startDate = new Date(event.startDate).toLocaleDateString()
   const endDate = new Date(event.endDate).toLocaleDateString()
-  const { getLangName } = useLanguageOptions()
+  const { getLangName, getTranslatedCategory } = useLanguageOptions()
   const areDatesSame = startDate === endDate
 
   return (
@@ -97,7 +97,7 @@ const EventCardHorizontal = ({ event }) => {
                     className="border border-primary-green dark:border-gray-1 px-2 py-1 rounded-full w-fit h-6"
                   >
                     <p className="font-semibold tracking-wide text-[0.6rem] sm:text-[0.6rem] text-primary-green  text-center dark:text-gray-1">
-                      {interest.name.toUpperCase()}
+                      {getTranslatedCategory(interest).toUpperCase()}
                     </p>
                   </div>
                 ))}
