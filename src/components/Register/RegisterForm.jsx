@@ -62,6 +62,7 @@ const validationSchema = Yup.object({
   }
 
   return (
+    <>
     <Formik
       initialValues={{
         userType,
@@ -224,7 +225,15 @@ const validationSchema = Yup.object({
               </Link>
             </div>
 
-            {values.userType === "individual" && (
+         
+
+           
+          </div>
+        </Form>
+      )}
+    </Formik>
+    <div>
+    {userType === "individual" && (
               <div className="flex flex-col items-center">
                 <div className="flex items-center my-4">
                   <div className="flex-1 border-t w-[300px] border-gray-2 dark:border-white"></div>
@@ -243,9 +252,8 @@ const validationSchema = Yup.object({
                 </button>
               </div>
             )}
-
-            {/* Terms and Conditions */}
-            <p className="text-[0.75rem] mt-5 text-gray-2 dark:text-white text-center">
+             {/* Terms and Conditions */}
+             <p className="text-[0.75rem] mt-5 text-gray-2 dark:text-white text-center">
               {t(translations.registerForm.pTerms)}{" "}
               <Link
                 to="/terms"
@@ -263,10 +271,8 @@ const validationSchema = Yup.object({
               </Link>
               .
             </p>
-          </div>
-        </Form>
-      )}
-    </Formik>
+    </div>
+    </>
   )
 }
 
