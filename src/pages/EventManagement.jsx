@@ -52,25 +52,15 @@ const EventManagement = () => {
       icon: <FaPeopleGroup className="text-2xl mx-auto" />,
     },
     {
-      // key: "messages",
-      // label: (
-      //   <div className="relative">
-      //     Messages
-      //     {2 > 0 && (
-      //       <span className="absolute top-0 right-72 md:right-60 sm:right-40 w-2 h-2 bg-primary-green rounded-full flex items-center justify-center"></span>
-      //     )}
-      //   </div>
-      // ),
-      // icon: <FaEnvelope className="text-2xl mx-auto" />,
       key: "messages",
       label: "Messages",
       icon: (
-        <div className="relative flex items-center">
-          <FaEnvelope className="text-2xl mx-auto" />
-          {2 > 0 && (
-            <span className="absolute top-0 left-40 w-2 h-2 bg-primary-green rounded-full flex items-center justify-center"></span>
+        <>
+          <FaEnvelope className="text-2xl" />
+          {unreadMessageCount > 0 && (
+            <span className="absolute top-4 left-16 sm:left-72 md:left-64 w-2 h-2 bg-primary-green rounded-full"></span>
           )}
-        </div>
+        </>
       ),
     },
   ]
