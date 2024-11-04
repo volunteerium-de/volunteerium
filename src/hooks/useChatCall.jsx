@@ -131,8 +131,6 @@ const useChatCall = () => {
       } catch (error) {
         // console.log(error)
         toastNotify("error", error.message)
-      } finally {
-        fetchConversations()
       }
     } else {
       toastNotify("error", "Please select a conversation!")

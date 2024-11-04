@@ -1,4 +1,5 @@
 import { TbMessage2X } from "react-icons/tb"
+import eventPhoto from "../../../assets/default-event-photo-.jpg"
 
 const ConversationList = ({
   conversations,
@@ -8,6 +9,7 @@ const ConversationList = ({
   onDeleteClick,
   getUnreadCount,
 }) => {
+  const defaultEventPhoto = eventPhoto
   return (
     <div className="h-[88vh] py-3 mt-3 -ml-2 sm:ml-0 rounded-lg lg:rounded-r-none overflow-y-auto scrollbar dark:bg-dark-gray-3 dark:pt-5">
       <div className="mx-4">
@@ -34,7 +36,7 @@ const ConversationList = ({
             >
               <div className="relative mx-1">
                 <img
-                  src={eventPhoto}
+                  src={eventPhoto ? eventPhoto : defaultEventPhoto}
                   alt="event"
                   className="w-12 h-12 sm:w-14 sm:h-14 mb-4 rounded-full object-cover"
                 />

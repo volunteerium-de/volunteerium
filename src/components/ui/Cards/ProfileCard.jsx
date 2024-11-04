@@ -2,13 +2,13 @@ import { FaRegCalendarAlt, FaCalendarTimes } from "react-icons/fa"
 import { HiOutlineUserGroup } from "react-icons/hi2"
 import { MdKeyboardArrowRight } from "react-icons/md"
 import { useNavigate } from "react-router-dom"
-import { formatDate } from "../../../helpers/formatDate"
-import eventPhoto from "../../../assets/about-events.png"
+import { formatDateWithTime } from "../../../helpers/formatDate"
 import { useTranslation } from "react-i18next"
 import { translations } from "../../../locales/translations"
 import { UserAvatar } from "../Avatar/userAvatar"
+import eventPhoto from "../../../assets/default-event-photo-.jpg"
 
-const defaultImage = eventPhoto
+const defaultEventPhoto = eventPhoto
 
 const ProfileCard = ({ events, loading, eventType, setEventType, setCurrentPage }) => {
   const { t } = useTranslation()
@@ -67,7 +67,7 @@ const ProfileCard = ({ events, loading, eventType, setEventType, setCurrentPage 
               {/* Image */}
               <div className="w-full sm:w-1/2 lg:w-2/5">
                 <img
-                  src={event?.eventPhoto || defaultImage}
+                  src={event?.eventPhoto || defaultEventPhoto}
                   alt={event.title}
                   className="w-full h-full lg:h-[190px] object-cover rounded-l-lg overflow-hidden"
                 />
@@ -92,8 +92,7 @@ const ProfileCard = ({ events, loading, eventType, setEventType, setCurrentPage 
                     </div>
                     <div className="flex gap-2 text-sm sm:text-[0.9375rem] text-gray-2 dark:text-white">
                       <FaRegCalendarAlt className="mt-0.5 ml-0.5 text-[1.1rem] text-primary-green dark:text-light-gray" />
-                      {formatDate(event?.startDate)}
-                      <span className="hidden xl:block">- {formatDate(event?.endDate)}</span>
+                      {formatDateWithTime(event?.startDate)}
                     </div>
 
                     <div className="flex gap-2 ml-0.5 text-sm sm:text-[0.9375rem] text-gray-2 dark:text-white">

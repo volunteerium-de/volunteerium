@@ -9,6 +9,7 @@ import { useTranslation } from "react-i18next"
 import { translations } from "../../locales/translations"
 import useChatCall from "../../hooks/useChatCall"
 import i18n from "../../i18n"
+import { enUS, de } from "date-fns/locale"
 
 const MessageMenu = () => {
   const { t } = useTranslation()
@@ -26,7 +27,9 @@ const MessageMenu = () => {
   }
   //Time ago calculation
   const timeAgo = (timestamp) => {
-    return formatDistanceToNow(new Date(timestamp), { addSuffix: true })
+    const locales = { en: enUS, de: de }
+    const locale = locales[i18n.language] || enUS
+    return formatDistanceToNow(new Date(timestamp), { addSuffix: true, locale })
   }
   //Closing the menu when cliicking outside
   useEffect(() => {

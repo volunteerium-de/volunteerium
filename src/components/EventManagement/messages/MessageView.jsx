@@ -1,5 +1,5 @@
 import MessageInput from "./MessageInput"
-import { formatDate, formatTime } from "../../../helpers/formatDate"
+import { formatDateWithTime } from "../../../helpers/formatDate"
 import { UserAvatar } from "../../ui/Avatar/userAvatar"
 import { IoChevronBackOutline } from "react-icons/io5"
 import { FiMessageCircle } from "react-icons/fi"
@@ -82,7 +82,7 @@ const MessageView = ({
                       message.senderId._id === currentUser._id ? "text-right" : "text-left"
                     }`}
                   >
-                    {formatDate(message.createdAt)} at {formatTime(message.createdAt)}
+                    {formatDateWithTime(message.createdAt)}
                   </div>
                 </div>
               ))}
