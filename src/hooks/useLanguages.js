@@ -17,7 +17,15 @@ const useLanguage = () => {
     setLanguageOptions(options)
   }, [i18n.language])
 
-  return languageOptions
+  const getLangName = (langCode) => {
+    const selectedLang = languageOptions?.filter((langData) => langData.value === langCode)
+    if (selectedLang.length > 0) {
+      return selectedLang[0].label
+    }
+    return undefined
+  }
+
+  return { getLangName, languageOptions }
 }
 
 export default useLanguage

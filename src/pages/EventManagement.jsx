@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import AddEvent from "../components/EventManagement/AddEvent"
 import Header from "../components/Header/Header"
 import Sidebar from "../components/ui/Sidebar/Sidebar"
@@ -7,10 +7,27 @@ import { FaPeopleGroup } from "react-icons/fa6"
 import OrganizedEvents from "../components/EventManagement/OrganizedEvents"
 import AttendedEvents from "../components/EventManagement/AttendedEvents"
 import Messages from "../components/EventManagement/Messages"
+import { useLocation, useNavigate } from "react-router-dom"
+import { useSelector } from "react-redux"
 
 const EventManagement = () => {
+  const location = useLocation()
+  const navigate = useNavigate()
+  const { conversations } = useSelector((state) => state.chat)
+  const { currentUser, loading } = useSelector((state) => state.auth)
   const [activeTab, setActiveTab] = useState("organizedEvents")
   const [isAddingEvent, setIsAddingEvent] = useState(false)
+
+  useEffect(() => {
+    const queryParams = new URLSearchParams(location.search)
+    const tab = queryParams.get("tab")
+    if (tab) setActiveTab(tab)
+  }, [location.search])
+
+  const handleTabChange = (tab) => {
+    setActiveTab(tab)
+    navigate(`/event-management?tab=${tab}`)
+  }
 
   const menuItems = [
     {
@@ -31,9 +48,7 @@ const EventManagement = () => {
   ]
 
   const renderContent = () => {
-    if (isAddingEvent) {
-      return <AddEvent onClose={() => setIsAddingEvent(false)} />
-    }
+    if (isAddingEvent) return <AddEvent onClose={() => setIsAddingEvent(false)} />
 
     switch (activeTab) {
       case "organizedEvents":
@@ -41,26 +56,27 @@ const EventManagement = () => {
       case "attendedEvents":
         return <AttendedEvents />
       case "messages":
-        return <Messages />
+        return (
+          <Messages conversations={conversations} currentUser={currentUser} loading={loading} />
+        )
       default:
         return <OrganizedEvents onAddEvent={() => setIsAddingEvent(true)} />
     }
   }
 
   return (
-    <div>
+    <>
       <Header />
-      <div className="flex">
+      <div className="flex max-w-[1800px] mx-auto">
         <Sidebar
           items={menuItems}
           activeTab={activeTab}
-          onTabChange={setActiveTab}
-          currentUser={{}}
-          onEditAvatar={() => {}}
+          onTabChange={handleTabChange}
+          conversations={conversations}
         />
-        <div className="flex-1 p-5">{renderContent()}</div>
+        <div className="flex-1">{renderContent()}</div>
       </div>
-    </div>
+    </>
   )
 }
 

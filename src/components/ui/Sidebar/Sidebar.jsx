@@ -3,22 +3,49 @@ import { useSelector } from "react-redux"
 import { UserAvatar } from "../Avatar/userAvatar"
 import { useTranslation } from "react-i18next"
 import { translations } from "../../../locales/translations"
+import { Link } from "react-router-dom"
 
-const Sidebar = ({ items, activeTab, onTabChange, onEditAvatar }) => {
+const Sidebar = ({ items, activeTab, onTabChange, onEditAvatar, conversations }) => {
   const { currentUser: user } = useSelector((state) => state.auth)
-  const {t} = useTranslation()
+
+  const { t } = useTranslation()
   const getMenuClassName = (item) => {
     return `max-w-[374px] h-[50px]  bg-white flex items-center gap-5 p-4 hover:bg-gray-100 mt-[20px] relative ${
       activeTab === item.key ? "bg-gray-white" : ""
     }`
   }
 
+  const getUnreadMessageCount = () => {
+    return conversations.reduce((count, conversation) => {
+      const unreadMessages = conversation.messageIds.filter(
+        (message) => !message.readerIds.includes(user._id)
+      )
+      return count + unreadMessages.length
+    }, 0)
+  }
+
+  const unreadMessageCount = getUnreadMessageCount()
+
   return (
-    <div className="h-screen max-h-[90vh]">
-      <div className="sm:w-[350px] w-[80px] sm:min-w-[300px] mt-3 sm:h-[95%] h-[70%] py-[30px] bg-light-gray dark:bg-dark-gray-3 transition-all duration-300 ease-in-out  shadow-sm rounded-r-lg ">
+    <div className="h-screen max-h-[88vh] m-3 mr-3">
+      <div className="w-[85px] sm:w-[240px] lg:w-[300px] 2xl:w-[350px] h-[88vh] py-[30px] bg-light-gray dark:bg-dark-gray-3 rounded-lg">
         <div className="flex flex-col items-center gap-4">
           <div>
             <UserAvatar user={user} size="h-24 w-24 sm:h-32 sm:w-32 p-4" />
+            {onEditAvatar && (
+              <button
+                onClick={() => {
+                  console.log("Edit button clicked")
+                  onEditAvatar()
+                }}
+                className="mx-auto bg-white p-[2px] rounded text-center border border-primary-green gap-1 flex sm:translate-y-[-20px] sm:translate-x-[-20px] translate-x-[-10px] translate-y-[-20px]"
+              >
+                <FaEdit className="text-primary-green" />
+                <p className="text-[0.75rem] text-primary-green font-medium hidden sm:block">
+                  {t(translations.userSettings.edit)}
+                </p>
+              </button>
+            )}
           </div>
 
           <p className="font-bold text-gray-2 dark:text-white text-[1rem] text-center tracking-wider mt-[10px] mb-[30px] hidden sm:block">
@@ -35,11 +62,14 @@ const Sidebar = ({ items, activeTab, onTabChange, onEditAvatar }) => {
                 onClick={() => onTabChange(item.key)}
               >
                 {item.icon}
-                <a href="#" className="flex-1 sm:block hidden">
+                <Link to={item.label} className="flex-1 sm:block hidden">
                   {item.label}
-                </a>
+                </Link>
                 {activeTab === item.key && (
                   <span className="sm:w-[16px] w-[8px] sm:h-[50px] h-[50px] bg-dark-green dark:bg-primary-green absolute right-[-0px] top-0"></span>
+                )}
+                {item.key === "messages" && unreadMessageCount > 0 && (
+                  <span className="absolute right-6 md:left-40 top-2 bg-primary-green text-white rounded-full w-[9px] h-[9px] text-xs font-bold"></span>
                 )}
               </li>
             ))}
