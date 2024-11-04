@@ -18,7 +18,7 @@ import { formatName } from "../helpers/formatName"
 import { useTranslation } from "react-i18next"
 import { translations } from "../locales/translations"
 import { UserAvatar } from "../components/ui/Avatar/userAvatar"
-
+import useLanguageOptions from "../hooks/useLanguages"
 
 const getMedalInfo = (totalPoints, t) => {
   if (totalPoints >= 70) {
