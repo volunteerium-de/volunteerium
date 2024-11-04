@@ -6,10 +6,15 @@ export const formatDate = (dateString) => {
   })
 }
 
-export const formatTime = (dateString) => {
-  return new Date(dateString).toLocaleTimeString("en-US", {
-    hour: "numeric",
-    minute: "numeric",
-    hour12: false,
-  })
+export const formatDateWithTime = (dateString) => {
+  return new Date(dateString)
+    .toLocaleString("en-US", {
+      month: "long",
+      day: "numeric",
+      year: "numeric",
+      hour: "2-digit",
+      minute: "2-digit",
+      hour12: false,
+    })
+    .replace("at", "-")
 }

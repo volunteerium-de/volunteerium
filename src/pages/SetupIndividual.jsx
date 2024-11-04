@@ -13,7 +13,6 @@ import { useLocation } from "react-router-dom"
 import useAuthCall from "../hooks/useAuthCall"
 import { useTranslation } from "react-i18next"
 import { translations } from "../locales/translations"
-translations
 
 // Validation schema
 const IndividualSchema = Yup.object({
@@ -23,10 +22,10 @@ const IndividualSchema = Yup.object({
 })
 
 const SetupIndividual = () => {
-  const {t} = useTranslation()
+  const { t } = useTranslation()
   const { currentUser: user } = useSelector((state) => state.auth)
   // console.log(user)
-  const { updateUser } = useAccountCall()
+  const { updateUserDetails } = useAccountCall()
   const { logout } = useAuthCall()
   const [step, setStep] = useState(1)
   const navigate = useNavigate()
@@ -69,7 +68,8 @@ const SetupIndividual = () => {
           validationSchema={IndividualSchema}
           onSubmit={(values) => {
             console.log(values)
-            updateUser({ ...values, isProfileSetup: true }, user.userDetailsId._id)
+            updateUserDetails({ ...values, isProfileSetup: true })
+            navigate("/")
           }}
         >
           {({ isValid, values, setFieldValue, handleSubmit, touched, errors }) => (
@@ -122,15 +122,15 @@ const SetupIndividual = () => {
               {step === 1 && (
                 <>
                   <h2 className="text-[1.75rem] dark:text-white font-bold text-center mb-4">
-                    Share Your Age and Gender
+                    {t(translations.setupIndv.share)}
                   </h2>
                   <p className="text-dark-gray-1 dark:text-white text-center mb-8">
-                    Providing this information is optional but may be useful for certain events
+                  {t(translations.setupIndv.p1)}
                   </p>
 
                   <div className="w-3/5 md:w-2/5 mx-auto">
                     <label className=" block text-gray-2 text-sm font-medium mb-1 text-start">
-                      Age Range*
+                    {t(translations.setupIndv.ageRange)}
                     </label>
 
                     <Field
@@ -144,10 +144,10 @@ const SetupIndividual = () => {
                             : "border-gray-1"
                       } font-medium ps-2 dark:text-white p-1 rounded-md cursor-pointer`}
                     >
-                      <option value="">Choose Age Range</option>
-                      <option value="16-25">16-25</option>
-                      <option value="26-35">26-35</option>
-                      <option value="35+">35+</option>
+                      <option value="">{t(translations.setupIndv.option1)}</option>
+                      <option value="16-25">{t(translations.setupIndv.option2)}</option>
+                      <option value="26-35">{t(translations.setupIndv.option3)}</option>
+                      <option value="35+">{t(translations.setupIndv.option4)}</option>
                     </Field>
                     <div className="min-h-[1.5rem]">
                       <ErrorMessage
@@ -160,7 +160,7 @@ const SetupIndividual = () => {
 
                   <div className="w-3/5 md:w-2/5 mx-auto mb-4">
                     <label className="block text-gray-2 text-sm font-medium mb-1 text-start">
-                      Gender*
+                    {t(translations.setupIndv.gender)}
                     </label>
                     <Field
                       as="select"
@@ -173,10 +173,10 @@ const SetupIndividual = () => {
                             : "border-gray-1"
                       } font-medium ps-2 dark:text-white p-1  rounded-md cursor-pointer`}
                     >
-                      <option value="">Choose Gender</option>
-                      <option value="male">Male</option>
-                      <option value="female">Female</option>
-                      <option value="n/a">Prefer not to say</option>
+                      <option value="">{t(translations.setupIndv.option5)}</option>
+                      <option value="male">{t(translations.setupIndv.option6)}</option>
+                      <option value="female">{t(translations.setupIndv.option7)}</option>
+                      <option value="n/a">{t(translations.setupIndv.option8)}</option>
                     </Field>
                     <div className="min-h-[1.5rem]">
                       <ErrorMessage
@@ -193,7 +193,7 @@ const SetupIndividual = () => {
                       onClick={() => handleNext(isValid)}
                       className="w-auto px-14 py-2 rounded-md transition-colors bg-primary-green text-white hover:bg-dark-green"
                     >
-                      Next
+                      {t(translations.setupIndv.next)}
                     </button>
                   </div>
                 </>
@@ -204,15 +204,15 @@ const SetupIndividual = () => {
                 <>
                   <div className="flex flex-col items-center text-center mb-10">
                     <h2 className="text-[1.75rem] dark:text-white font-bold mb-2">
-                      Choose Your Interests
+                    {t(translations.setupIndv.choose)}
                     </h2>
                     <p className="text-dark-gray-1 w-4/5 dark:text-white mb-2 sm:block md:hidden">
-                      Explore volunteer opportunities and make a meaningful impact
+                    {t(translations.setupIndv.p2)}
                     </p>
                     <p className="text-dark-gray-1 w-4/5 dark:text-white mb-2 hidden md:block">
-                      Explore volunteer opportunities by selecting the areas that interest you.{" "}
+                    {t(translations.setupIndv.p3)}.{" "}
                       <br />
-                      Make a meaningful impact in the fields you care about most!
+                      {t(translations.setupIndv.p4)}
                     </p>
                   </div>
 
@@ -270,7 +270,7 @@ const SetupIndividual = () => {
                       disabled={!isValid}
                       className="mt-4 block w-1/4 py-2 text-dark-gray-1 border border-gray-1 text-center  rounded-md transition-colors"
                     >
-                      Skip for now
+                      {t(translations.setupIndv.skip)}
                     </button>
 
                     <button
@@ -282,7 +282,7 @@ const SetupIndividual = () => {
                       disabled={!isValid}
                       className="mt-4 block w-1/5 py-2 text-center bg-primary-green text-white rounded-md transition-colors"
                     >
-                      Finish
+                      {t(translations.setupIndv.finish)}
                     </button>
                   </div>
                 </>

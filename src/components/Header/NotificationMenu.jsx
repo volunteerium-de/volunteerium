@@ -8,7 +8,7 @@ import useChatCall from "../../hooks/useChatCall"
 import { useTranslation } from "react-i18next"
 import { translations } from "../../locales/translations"
 import i18n from "../../i18n"
-translations
+
 
 const NotificationMenu = () => {
   const { t } = useTranslation()
@@ -88,7 +88,7 @@ const NotificationMenu = () => {
           {/* Notification List */}
           <div className="max-h-80 overflow-y-auto">
             {notifications.length > 0 ? (
-              notifications.map(({ _id, content, isRead, createdAt }) => (
+              notifications.map(({ _id, contentEN, contentDE, isRead, createdAt }) => (
                 <div
                   key={_id}
                   className={`p-3 border-b border-light-gray-2 dark:border-gray-2  ${
@@ -103,7 +103,7 @@ const NotificationMenu = () => {
                     <div>
                       {/* Notification Text */}
                       <h4 className="text-base font-normal text-primary-green dark:text-white ">
-                        {content}
+                        {i18n.language === "de" ? contentDE : contentEN}
                       </h4>
                       {/* Time Ago */}
                       <p className="text-xs font-light text-gray-2 dark:text-gray-1">

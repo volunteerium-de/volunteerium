@@ -8,6 +8,7 @@ import { formatName } from "../../helpers/formatName"
 import { useTranslation } from "react-i18next"
 import { translations } from "../../locales/translations"
 import useChatCall from "../../hooks/useChatCall"
+import i18n from "../../i18n"
 
 const MessageMenu = () => {
   const { t } = useTranslation()

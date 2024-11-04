@@ -9,6 +9,8 @@ import { translations } from "../../locales/translations"
 import { useTranslation } from "react-i18next"
 import { useRef } from "react"
 import ReCAPTCHA from "react-google-recaptcha"
+import { ImSpinner9 } from "react-icons/im"
+import { useSelector } from "react-redux"
 
 const RegisterForm = () => {
   const { t } = useTranslation()
@@ -38,6 +40,7 @@ const validationSchema = Yup.object({
   const { onRecaptchaVerify, authWithGoogle } = useAuthCall()
   const recaptchaRef = useRef(null)
   const formValuesRef = useRef({})
+  const { loading } = useSelector((state) => state.auth)
 
   // Handle radio button changes
   const handleRadioChange = (e, setFieldValue) => {
@@ -190,9 +193,19 @@ const validationSchema = Yup.object({
           <div className="flex flex-col items-center">
             <button
               type="submit"
-              className="w-full bg-primary-green text-white text-[1rem] py-3 mt-3 rounded-lg  focus:outline-none"
+              className={`w-full bg-primary-green text-white text-[1rem] py-3 mt-3 rounded-lg focus:outline-none flex items-center justify-center ${
+                loading ? "opacity-50 cursor-not-allowed" : ""
+              }`}
+            disabled={loading}
             >
-              {t(translations.registerForm.submit)}
+             {loading ? (
+                <>
+                  <ImSpinner9 className="animate-spin mr-2" />
+                  {t(translations.registerForm.loading)}
+                </>
+              ) : (
+                t(translations.registerForm.submit)
+              )}
             </button>
             {/* Invisible reCAPTCHA Comp. */}
             <ReCAPTCHA

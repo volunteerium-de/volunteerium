@@ -1,15 +1,18 @@
 import React, { useState } from "react"
 import PasswordModal from "./PasswordModal"
-import DeleteAccountModal from "./DeleteAccountModal"
+import DeleteModal from "../ui/Modals/DeleteModal"
 import { useTranslation } from "react-i18next"
 import { translations } from "../../locales/translations"
-translations
+import { useSelector } from "react-redux"
+import useAccountCall from "../../hooks/useAccountCall"
 
-const SecuritySettings = ({ currentUser }) => {
-  const {t} = useTranslation()
+const SecuritySettings = () => {
+  const { t } = useTranslation()
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false)
   const [feedbackMessage, setFeedbackMessage] = useState("")
+  const { currentUser } = useSelector((state) => state.auth)
+  const { deleteUser } = useAccountCall()
 
   const openModal = () => setIsModalOpen(true)
   const closeModal = () => setIsModalOpen(false)
@@ -17,28 +20,20 @@ const SecuritySettings = ({ currentUser }) => {
   const closeDeleteModal = () => setIsDeleteModalOpen(false)
 
   const handleDeleteAccount = async () => {
-    try {
-      // Simulate API call
-      await someApiCallToDeleteAccount()
-      console.log("Account deleted")
-      setFeedbackMessage(t(translations.secSett.feedbackMsg1))
-    } catch (error) {
-      console.error("Error deleting account:", error)
-      setFeedbackMessage(t(translations.secSett.feedbackMsg2))
-    } finally {
-      closeDeleteModal()
-    }
+    await deleteUser()
+    closeDeleteModal()
   }
+
   return (
-    <div className="font-Poppins max-w-[698px] mx-auto py-2 px-12 w-full h-auto bg-white rounded-md">
-      <h1 className="text-center font-medium text-[1.5rem] my-[50px]">{t(translations.secSett.h1)}</h1>
+    <div className="max-w-4xl mx-auto p-8 bg-light-gray  dark:bg-dark-gray-3 rounded-lg shadow-md dark:text-white">
+      <h1 className="text-center font-medium text-[1.25rem] ">{t(translations.secSett.h1)}</h1>
 
       {/* Name field only for individual users */}
-      {currentUser.userType === "individual" && (
+      {currentUser?.userType === "individual" && (
         <div className="flex flex-col mb-[10px]">
           <label
             htmlFor="name"
-            className="block text-[1rem] leading-[1.5625] text-gray-2 mb-[10px]"
+            className="block text-[1rem] leading-[1.5625] text-gray-2 dark:text-white mb-[10px]"
           >
             {t(translations.secSett.name)}
           </label>
@@ -46,78 +41,87 @@ const SecuritySettings = ({ currentUser }) => {
             type="text"
             id="name"
             name="name"
-            placeholder={currentUser.fullName || t(translations.secSett.namePH)}
-            className="w-full h-[36px] px-3 py-2 border border-gray-2 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-green text-dark-gray-1"
+            placeholder={currentUser?.fullName || t(translations.secSett.namePH)}
+            className="w-full h-[36px] p-2 border border-gray-1 rounded focus:outline-none dark:bg-light-gray-3 focus:border-primary-green"
+            disabled={true}
           />
+          <p className="text-sm text-warning dark:text-orange-300">{t(translations.secSett.p1)}</p>
         </div>
       )}
 
       {/* Organization-specific information */}
       {currentUser.userType === "organization" && (
         <div className="mt-[30px]">
-          <label
-            className="block text-[1rem] leading-[1.5625] text-gray-2 mb-[10px]"
-            htmlFor="organizationName"
-          >
+          <label className="block text-dark-gray-2 dark:text-white mb-2" htmlFor="organizationName">
             {t(translations.secSett.orgName)}
           </label>
           <input
             type="text"
             id="organizationName"
-            placeholder={currentUser.userDetailsId.organizationName || t(translations.secSett.orgNamePH)}
-            className="w-full h-[36px] px-3 py-2 border border-gray-2 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-green text-dark-gray-1"
+            placeholder={currentUser?.organizationName || t(translations.secSett.orgNamePH)}
+            className="w-full h-[36px] p-2 border dark:text-black border-gray-1 rounded focus:outline-none focus:border-primary-green"
           />
         </div>
       )}
 
       {/* Shared fields (e.g., Email) */}
       <div className="mt-[30px]">
-        <label className="block text-[1rem] leading-[1.5625] text-gray-2 mb-[10px]" htmlFor="email">
-        {t(translations.secSett.email)}
+        <label className="block text-dark-gray-2 dark:text-white mb-2" htmlFor="email">
+          {t(translations.secSett.email)}
         </label>
         <input
           type="email"
           id="email"
-          placeholder={currentUser.email || t(translations.secSett.emailPH)}
-          className="w-full h-[36px] px-3 py-2 border border-gray-2 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-green text-dark-gray-1"
+          placeholder={currentUser?.email || t(translations.secSett.emailPH)}
+          className="w-full h-[36px] p-2 border border-gray-1 rounded focus:outline-none dark:bg-light-gray-3 focus:border-primary-green"
+          disabled={true}
         />
+        <p className="text-sm text-warning dark:text-orange-300">{t(translations.secSett.p2)}</p>
       </div>
 
       {/* Password Change Button */}
-      <button
-        className="bg-primary-green w-full py-[7px] px-[10px] rounded-[6px] my-[50px]"
-        onClick={openModal}
-      >
-        <p className="text-[1rem] leading-[1.5625] text-white">{t(translations.secSett.changePsw)}</p>
-      </button>
-      <PasswordModal isOpen={isModalOpen} onClose={closeModal} />
+      <div className="text-center">
+        <button
+          className="bg-primary-green w-[70%] py-2 px-4 rounded my-[50px]  duration-200 hover:bg-light-green"
+          onClick={openModal}
+        >
+          <p className="text-[1rem] leading-[1.5625] text-white">
+            {t(translations.secSett.changePsw)}
+          </p>
+        </button>
+        <PasswordModal isOpen={isModalOpen} onClose={closeModal} />
+      </div>
 
       {/* Delete Account Section */}
       <div className="text-[1rem] leading-[1.5625] my-[10px]">
-        <h1 className="text-center font-bold my-[20px] text-dark-gray-3">{t(translations.secSett.delAccount)}</h1>
-        <p className="text-dark-gray-2 text-center">
-          {currentUser.userType === "individual"
+        <h1 className="text-center font-bold my-[20px] text-dark-gray-3">
+          {t(translations.secSett.delAccount)}
+        </h1>
+        <p className="text-dark-gray-2 text-center dark:text-white">
+          {currentUser?.userType === "individual"
             ? t(translations.secSett.delAlert1)
             : t(translations.secSett.delAlert2)}
         </p>
-        <button
-          className="bg-danger w-full py-[7px] px-[10px] rounded-[6px] my-[50px]"
-          onClick={openDeleteModal}
-        >
-          <p className="text-[1rem] leading-[1.5625] text-white">
-            {currentUser.userType === "individual"
-              ? t(translations.secSett.userRes1)
-              : t(translations.secSett.userRes2)}
-          </p>
-        </button>
+        <div onClick={() => openDeleteModal()} className="text-center">
+          <button className="bg-danger w-[70%] py-2 px-4 rounded my-[50px]  duration-200 hover:bg-danger/50">
+            <p className="text-[1rem] leading-[1.5625] text-white">
+              {currentUser?.userType === "individual"
+                ? t(translations.secSett.userRes1)
+                : t(translations.secSett.userRes2)}
+            </p>
+          </button>
+        </div>
       </div>
 
-      {/* Delete Account Modal */}
-      <DeleteAccountModal
-        isOpen={isDeleteModalOpen}
-        onClose={closeDeleteModal}
-        onDelete={handleDeleteAccount}
-      />
+      {/* Delete Modal */}
+      {isDeleteModalOpen && (
+        <DeleteModal
+          onClose={closeDeleteModal}
+          onDelete={handleDeleteAccount}
+          title={t(translations.delModal.accountTitle)}
+          description={t(translations.delModal.accountDesc)}
+        />
+      )}
 
       {feedbackMessage && <div className="mt-4 text-center text-green-500">{feedbackMessage}</div>}
     </div>

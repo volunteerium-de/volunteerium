@@ -89,15 +89,15 @@ const StepTwo = ({ setStep, values, step, isValid, setFieldValue }) => {
         <div className="mb-4">
           <label className="block text-dark-gray-2 dark:text-white mb-2">Category*</label>
           <SelectInput
-            name="category"
+            name="interestIds"
             options={categories?.map((category) => ({
               label: category.name,
               value: category._id,
             }))}
             placeholder="Choose a category"
-            isMultiple={false}
+            isMultiple={true}
           />
-          <ErrorMessage name="category" component="div" className="text-danger" />
+          <ErrorMessage name="interestIds" component="div" className="text-danger" />
         </div>
 
         <div className="mb-4">

@@ -14,7 +14,6 @@ const getTomorrowDate = () => {
 }
 
 const StepOne = ({ setStep, values, setFieldValue, onClose, step }) => {
-  console.log("ananim", values)
   const [isOnlineLocal, setIsOnlineLocal] = useState(values.isOnline ?? true)
   const [isValidForNext, setIsValidForNext] = useState(false)
 
@@ -23,6 +22,15 @@ const StepOne = ({ setStep, values, setFieldValue, onClose, step }) => {
   const handleLocationChange = (value) => {
     setIsOnlineLocal(value)
     setFieldValue("isOnline", value)
+  }
+
+  const handleFileChange = async (e) => {
+    const file = e.target.files[0]
+    if (file) {
+      setFieldValue("eventPhoto", file)
+    } else {
+      setFieldValue("eventPhoto", null)
+    }
   }
 
   useEffect(() => {
@@ -112,10 +120,11 @@ const StepOne = ({ setStep, values, setFieldValue, onClose, step }) => {
         <div className="mb-4">
           <label className="block text-dark-gray-2 dark:text-white mb-2">Event Photo</label>
           <input
+            id="eventPhoto"
+            name="eventPhoto"
             type="file"
-            onChange={(e) => setFieldValue("eventPhoto", e.currentTarget.files[0])}
+            onChange={(e) => handleFileChange(e)}
             className="w-full p-2 border border-gray-1 rounded focus:outline-none  dark:bg-white focus:border-primary-green"
-            required
           />
         </div>
         {/* Date & Time */}

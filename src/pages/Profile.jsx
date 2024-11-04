@@ -15,10 +15,10 @@ import { useParams } from "react-router-dom"
 import Pagination from "../components/ui/Pagination/Pagination"
 import { axiosWithPublic } from "../hooks/useAxios"
 import { formatName } from "../helpers/formatName"
-import formatLanguages from "../helpers/languages_english.json"
 import { useTranslation } from "react-i18next"
 import { translations } from "../locales/translations"
 import { UserAvatar } from "../components/ui/Avatar/userAvatar"
+
 
 const getMedalInfo = (totalPoints, t) => {
   if (totalPoints >= 70) {
@@ -127,12 +127,9 @@ const Profile = () => {
   ]
 
   const medalInfo = getMedalInfo(totalPoint, t)
+  const { getLangName } = useLanguageOptions()
 
-  const getLanguageName = (code) => {
-    const language = formatLanguages.find((lang) => lang.code === code)
-    return language ? language.name : code
-  }
-  const languagesFormatted = languages.map((langCode) => getLanguageName(langCode)).join(", ")
+  const languagesFormatted = languages.map((langCode) => getLangName(langCode)).join(", ")
 
   const infoItems = [
     {
