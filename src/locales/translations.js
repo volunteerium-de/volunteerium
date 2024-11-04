@@ -30,7 +30,7 @@ export const translations = {
     title: "upcomingOpportunities.title",
     discover: "upcomingOpportunities.discoverMore",
     loadingEvents: "upcomingOpportunities.loadingEvents",
-    noEvents: "upcomingOpportunities.noEvents"
+    noEvents: "upcomingOpportunities.noEvents",
   },
 
   getToKnowUs: {
@@ -571,6 +571,24 @@ export const translations = {
   eventCardVer: {
     imgAlt: "eventCardVer.imgAlt",
     people: "eventCardVer.people",
-    more: "eventCardVer.more"
-  }
+    more: "eventCardVer.more",
+  },
+
+  eventDetails: {
+    backButton: "eventDetails.backButton",
+    locationLabel: "eventDetails.locationLabel",
+    people: "eventDetails.people",
+    attendants: "eventDetails.attendants",
+    noAttendants: "eventDetails.noAttendants",
+    sendMessageButton: "eventDetails.sendMessageButton",
+    joinButton: "eventDetails.joinButton",
+    shareFeedbackButton: "eventDetails.shareFeedbackButton",
+    reportEventButton: "eventDetails.reportEventButton",
+    pendingButton: "eventDetails.pendingButton",
+    approvedButton: "eventDetails.approvedButton",
+    rejectedButton: "eventDetails.rejectedButton",
+    completedButton: "eventDetails.completedButton",
+    maxReacedButton: "eventDetails.maxReacedButton",
+    manageButton: "eventDetails.manageButton",
+  },
 }

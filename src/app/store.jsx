@@ -14,6 +14,7 @@ import authReducer from "../features/authSlice"
 import themeReducer from "../features/themeSlice"
 import searchReducer from "../features/searchSlice"
 import chatReducer from "../features/chatSlice"
+import eventReducer from "../features/eventSlice"
 
 const persistConfig = {
   key: "root",
@@ -28,6 +29,7 @@ const store = configureStore({
     theme: themeReducer,
     search: searchReducer,
     chat: chatReducer,
+    event: eventReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

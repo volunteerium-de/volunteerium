@@ -570,7 +570,51 @@
     "imgAlt": "event",
     "people": "People",
     "more": "More"
-  }
+  },
 
-  
+  "eventDetails": {
+    "backButton": "Back",
+    "locationLabel": "Event Location",
+    "people": "people",
+    "attendants": "Attendants",
+    "noAttendants": "No Attendants yet",
+    "sendMessageButton": "Send Message",
+    "joinButton": "Join",
+    "shareFeedbackButton": "Share Feedback",
+    "reportEventButton": "Report this event",
+    "pendingButton": "Pending",
+    "approvedButton": "Approved",
+    "rejectedButton": "Rejected",
+    "completedButton": "Completed",
+    "maxReacedButton": "Full Capacity",
+    "manageButton": "Manage",
+
+    "feedback": {
+      "h2": "Thank you for participating!",
+      "p1": "Please share your experience about",
+      "p2": "to help us improve.",
+      "placeholder": "Write your feedback here...",
+      "submit": "Share your feedback",
+      "close": "Close"
+    },
+
+    "report": {
+      "h2": "Report Event",
+      "p1": "If you have encountered any issues with this event, please let us know. Your report will help us maintain a safe and respectful environment for everyone.",
+      "placeholder": "Write your report here...",
+      "issueLabel": "Describe issue (optional):",
+      "submit": "Submit",
+      "cancel": "Cancel",
+      "option1": "offensive",
+      "option2": "harmful",
+      "option3": "inappropriate",
+      "option4": "misleading",
+      "option5": "spam",
+      "option6": "harassment",
+      "option7": "fraud",
+      "option8": "violence",
+      "option9": "discrimination",
+      "option10": "other"
+    }
+  }
 }
