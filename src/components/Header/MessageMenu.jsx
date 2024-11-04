@@ -1,6 +1,5 @@
 import { useState, useEffect, useRef } from "react"
 import { FaEnvelope } from "react-icons/fa"
-import { enUS, de } from "date-fns/locale"
 import { formatDistanceToNow } from "date-fns"
 import { Link } from "react-router-dom"
 import { useSelector } from "react-redux"
@@ -8,6 +7,7 @@ import { useNavigate } from "react-router-dom"
 import { formatName } from "../../helpers/formatName"
 import { useTranslation } from "react-i18next"
 import { translations } from "../../locales/translations"
+import useChatCall from "../../hooks/useChatCall"
 import i18n from "../../i18n"
 
 const MessageMenu = () => {
@@ -18,6 +18,7 @@ const MessageMenu = () => {
   const { currentUser } = useSelector((state) => state.auth)
   const { conversations } = useSelector((state) => state.chat)
   const [totalUnreadCount, setTotalUnreadCount] = useState(0)
+  const { markAsRead } = useChatCall()
 
   // Toggle the message dropdown
   const toggleMessageMenu = () => {
@@ -25,11 +26,8 @@ const MessageMenu = () => {
   }
   //Time ago calculation
   const timeAgo = (timestamp) => {
-    const locales = { en: enUS, de: de }
-    const locale = locales[i18n.language] || enUS
-    return formatDistanceToNow(new Date(timestamp), { addSuffix: true, locale })
+    return formatDistanceToNow(new Date(timestamp), { addSuffix: true })
   }
-
   //Closing the menu when cliicking outside
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -51,10 +49,12 @@ const MessageMenu = () => {
 
   useEffect(() => {
     let totalUnread = 0
-    conversations.forEach(({ messageIds }) => {
-      const { unreadCount } = getUnreadCountAndLatestMessage(messageIds)
-      totalUnread += unreadCount
-    })
+    if (Array.isArray(conversations)) {
+      conversations.forEach(({ messageIds }) => {
+        const { unreadCount } = getUnreadCountAndLatestMessage(messageIds)
+        totalUnread += unreadCount
+      })
+    }
     setTotalUnreadCount(totalUnread)
   }, [conversations])
 
@@ -72,6 +72,11 @@ const MessageMenu = () => {
     })
 
     return { unreadCount, latestMessage }
+  }
+
+  const handleMessageClick = (conversationId) => {
+    navigate(`/event-management?tab=messages&conversation=${conversationId}`)
+    markAsRead(conversationId)
   }
 
   return (
@@ -97,7 +102,10 @@ const MessageMenu = () => {
           {/* Menu Header */}
           <div className="bg-primary-green text-white p-2 rounded-t-lg flex justify-between items-center">
             <h3>{t(translations.msgMenu.h3)}</h3>
-            <Link className="text-light-green text-[.7rem] cursor-pointer">
+            <Link
+              to="/event-management?tab=messages"
+              className="text-light-green text-[.7rem] cursor-pointer"
+            >
               {t(translations.msgMenu.link)}
             </Link>
           </div>
@@ -119,7 +127,7 @@ const MessageMenu = () => {
                   return (
                     <div
                       key={_id}
-                      // onClick={() => navigate(`/event-management?tab=messages&conversation=${_id}`)}
+                      onClick={() => handleMessageClick(_id)}
                       className={`${unreadCount > 0 && "bg-light-gray-3"} p-3 border-b border-light-gray-2 dark:border-gray-2 dark:bg-dark-gray-2 hover:bg-light-gray-2 dark:hover:bg-dark-gray-1 shadow-md cursor-pointer`}
                     >
                       <div className="flex gap-2 items-start w-full">
