@@ -14,6 +14,8 @@ import {
 import { axiosWithPublic } from "../../hooks/useAxios"
 import { formatISO } from "date-fns"
 import useLanguageOptions from "../../hooks/useLanguages"
+import { useTranslation } from "react-i18next"
+import { translations } from "../../locales/translations"
 
 const formatEndDate = (startDate) => {
   const newEndDate = new Date(startDate)
@@ -24,6 +26,7 @@ const formatEndDate = (startDate) => {
 }
 
 const FilterSidebar = () => {
+  const { t } = useTranslation()
   const dispatch = useDispatch()
   const [localStartDate, setLocalStartDate] = useState()
   const [localEndDate, setLocalEndDate] = useState()
@@ -97,13 +100,14 @@ const FilterSidebar = () => {
     <div className="p-4 rounded-lg shadow-lg h-full overflow-auto dark:bg-dark-gray-3 dark:text-white ">
       <div className="lg:max-w-[700px] mb-4 shadow-lg bg-white dark:bg-dark-gray-1 p-5 max-w-[400px] mx-auto  dark:text-white rounded">
         <h2 className="text-left font-semibold mb-2 p-2 text-black dark:text-white text-[0.9375rem] ">
-          Availability
+          {t(translations.eventsPage.sec1)}
         </h2>
         <hr className="border border-light-gray-3 " />
 
         <div className="mb-4 p-5 flex flex-col gap-5 ">
           <div className="mx-auto">
-            <h3 className="font-semibold mb-2 text-black dark:text-white text-[0.9375rem]">From</h3>
+            {t(translations.eventsPage.from)}
+            <h3 className="font-semibold mb-2 text-black dark:text-white text-[0.9375rem]"></h3>
 
             <div className="flex flex-col items-center justify-center lg:items-start gap-5">
               {/* Start Date Picker */}
@@ -122,7 +126,9 @@ const FilterSidebar = () => {
             </div>
           </div>
           <div className="mx-auto">
-            <h3 className="font-semibold mb-2 text-black dark:text-white text-[0.9375rem]">To</h3>
+            <h3 className="font-semibold mb-2 text-black dark:text-white text-[0.9375rem]">
+              {t(translations.eventsPage.to)}
+            </h3>
             <div className="flex flex-col items-center justify-center gap-5 lg:items-start">
               {/* End Date Picker */}
               <DatePicker
@@ -146,7 +152,7 @@ const FilterSidebar = () => {
                 dispatch(setEndDate(localEndDate))
               }}
             >
-              Check Events
+              {t(translations.eventsPage.check)}
             </button>
           </div>
         </div>
@@ -155,7 +161,7 @@ const FilterSidebar = () => {
       {/* Categories */}
       <div className="mb-4 shadow-lg bg-light-white p-5 max-w-[400px] mx-auto dark:bg-dark-gray-1 rounded">
         <h3 className="font-semibold mb-2 p-2 text-black dark:text-white text-[0.9375rem] lg:text-left">
-          Categories
+          {t(translations.eventsPage.sec2)}
         </h3>
         <hr className="border border-light-gray-3 mb-3" />
         <div className="max-h-[200px] overflow-y-scroll scrollbar">
@@ -178,7 +184,7 @@ const FilterSidebar = () => {
       {/* Languages */}
       <div className="mt-10 m-auto shadow-lg bg-light-white p-5 max-w-[400px] mx-auto dark:bg-dark-gray-1 rounded  ">
         <h3 className="font-semibold mb-2 p-2 text-black dark:text-white text-[0.9375rem] text-center lg:text-left">
-          Languages
+          {t(translations.eventsPage.sec3)}
         </h3>
         <hr className="border border-light-gray-3 mb-3" />
         <div className="max-h-[200px] overflow-y-scroll scrollbar">

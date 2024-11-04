@@ -427,6 +427,31 @@
     "h1": "Frequently Asked Questions",
     "p1": "Find answers to commonly asked questions about Volunteerium"
   },
+  "eventsPage": {
+    "sec1": "Availability",
+    "from": "from",
+    "to": "to",
+    "check": "Check Events",
+    "sec2": "Categories",
+    "sec3": "languages",
+    "new": "Newest",
+    "old": "Oldest",
+    "result": "Results for your search",
+    "notFound": "No Events Found",
+    "more": "More",
+    "event": "Event",
+    "events": "Events",
+    "found": "Found",
+    "filter": "Filters",
+    "loading": "Loading",
+    "people": "People",
+    "match": "No events found that match your filters",
+    "sort": "Sort by",
+    "search": "Search Term",
+    "location": "Location",
+    "category": "Category",
+    "language": "Language"
+  },
 
   "googleAuthFall": {
     "h1": "Authentication failed.",

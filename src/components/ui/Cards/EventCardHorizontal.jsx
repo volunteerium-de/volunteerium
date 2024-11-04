@@ -7,11 +7,25 @@ import useLanguageOptions from "../../../hooks/useLanguages"
 import { formatDateWithTime } from "../../../helpers/formatDate"
 import { UserAvatar } from "../Avatar/userAvatar"
 import { formatName } from "../../../helpers/formatName"
+import { useNavigate } from "react-router-dom"
+import { useTranslation } from "react-i18next"
+import { translations } from "../../../locales/translations"
+
 const EventCardHorizontal = ({ event }) => {
+  const { t } = useTranslation()
+  const navigate = useNavigate()
   const startDate = new Date(event.startDate).toLocaleDateString()
   const endDate = new Date(event.endDate).toLocaleDateString()
   const { getLangName, getTranslatedCategory } = useLanguageOptions()
   const areDatesSame = startDate === endDate
+
+  const handleProfileNavigate = () => {
+    navigate(`/profile/${event.createdBy._id}`)
+  }
+
+  const handleNavigate = () => {
+    navigate(`/events/${event._id}`)
+  }
 
   return (
     <div className="shadow-[0_1px_1px_rgba(0,0,0,.25)] mb-2  flex justify-center items-center gap-2 dark:bg-dark-gray-3 rounded-lg ">
@@ -34,7 +48,10 @@ const EventCardHorizontal = ({ event }) => {
         <div>
           {/* Organizer Information */}
           {event.createdBy && event.createdBy.userDetailsId && (
-            <div className="flex gap-x-1 items-center mb-[7px] py-1">
+            <div
+              className="flex gap-x-1 items-center mb-[7px] py-1 cursor-pointer"
+              onClick={handleProfileNavigate}
+            >
               <UserAvatar user={event.createdBy} size="w-6 h-6" backgroundActive={true} />
               <p className="text-gray-2 dark:text-white text-[0.7rem]">
                 {event.createdBy.userType === "individual"
@@ -74,7 +91,7 @@ const EventCardHorizontal = ({ event }) => {
               <div className="flex items-center">
                 <IoPeople className="text-primary-green" />
                 <p className="text-gray-2 dark:text-white text-[0.7rem] p-1">
-                  Max. {event.maxParticipant} People
+                  Max. {event.maxParticipant} {t(translations.eventsPage.people)}
                 </p>
               </div>
 
@@ -104,8 +121,11 @@ const EventCardHorizontal = ({ event }) => {
               </div>
               {/* Event Button */}
               <div className="text-end">
-                <button className="font-medium text-white text-[0.7rem] text-center bg-primary-green px-4 py-1 rounded">
-                  Join
+                <button
+                  className="font-medium text-white text-[0.7rem] text-center bg-primary-green px-4 py-1 rounded"
+                  onClick={handleNavigate}
+                >
+                  {t(translations.eventsPage.more)}
                 </button>
               </div>
             </div>

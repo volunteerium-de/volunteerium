@@ -7,7 +7,7 @@ import { useSelector } from "react-redux"
 import useAccountCall from "../../hooks/useAccountCall"
 import useEventCall from "../../hooks/useEventCall"
 import toastNotify from "../../utils/toastNotify"
-import { Formik, Field, Form, FieldArray } from "formik"
+import { Formik, Field, Form } from "formik"
 import * as Yup from "yup"
 import LanguageSelect from "../../components/ui/Selects/LanguageSelect"
 import SelectInput from "../ui/Selects/SelectInput"
@@ -64,14 +64,8 @@ const IndividualSettingsForm = () => {
     gender: userDetailsId?.gender || "",
     ageRange: userDetailsId?.ageRange || "",
     languages: userDetailsId?.languages || [],
-    interestIds:
-      userDetailsId?.interestIds?.map((category) => ({
-        label: getTranslatedCategory(category),
-        value: category?._id,
-      })) || [],
+    interestIds: userDetailsId?.interestIds.map((x) => x._id) || [],
   }
-
-  console.log(currentUser)
 
   useEffect(() => {
     if (!categories.length > 0) {
@@ -97,7 +91,6 @@ const IndividualSettingsForm = () => {
 
     try {
       const data = await updateUserDetails(formattedValues)
-      console.log("Güncelleme Sonucu:", data) // Güncellenen veriyi burada kontrol edin
       toastNotify("success", data.message)
     } catch (error) {
       console.error("Update failed:", error)
@@ -238,17 +231,10 @@ const IndividualSettingsForm = () => {
                     label: getTranslatedCategory(category),
                     value: category._id,
                   }))}
-                  value={values.interestIds}
                   onChange={(selectedOptions) => {
-                    console.log("Selected Options:", selectedOptions)
                     setFieldValue(
                       "interestIds",
-                      selectedOptions
-                        ? selectedOptions.map((option) => ({
-                            label: option.label,
-                            value: option.value,
-                          }))
-                        : []
+                      selectedOptions ? selectedOptions.map((option) => option.value) : []
                     )
                   }}
                 />
