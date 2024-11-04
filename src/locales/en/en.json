@@ -26,7 +26,9 @@
 
   "upcomingOpportunities": {
     "title": "Upcoming Events",
-    "discoverMore": "Discover More"
+    "discoverMore": "Discover More",
+    "loadingEvents": "Loading Upcomming Events...",
+    "noEvents": "No Upcoming Events!"
   },
 
   "getToKnowUs": {
@@ -562,6 +564,12 @@
     "p14": "If you have any questions or concerns about this Privacy Policy or how we handle your personal data, please contact us at:",
     "p15": "Volunteerium Team",
     "p16": "Email: info.volunteerium@gmail.com"
+  },
+
+  "eventCardVer": {
+    "imgAlt": "event",
+    "people": "People",
+    "more": "More"
   },
 
   "eventDetails": {
