@@ -75,12 +75,14 @@ const Messages = ({ conversations, currentUser, loading }) => {
 
   if (!conversations || conversations.length === 0) {
     return (
-      <div className="flex justify-center items-center w-full mt-3 h-[88vh] rounded-lg dark:bg-dark-gray-3">
-        <div className="flex flex-col items-center">
-          <BiConversation className="text-6xl opacity-70 text-dark-gray-3 dark:text-white mb-4" />
-          <p className="text-lg font-semibold text-dark-gray-1 dark:text-white text-center">
-            No conversations found
-          </p>
+      <div className="mr-3">
+        <div className="flex justify-center sm:items-center pt-48 sm:pt-0 mt-3 w-full h-[88vh] rounded-lg dark:bg-dark-gray-3">
+          <div className="flex flex-col items-center">
+            <BiConversation className="text-6xl opacity-70 text-dark-gray-3 dark:text-white mb-4" />
+            <p className="text-lg font-semibold text-dark-gray-1 dark:text-white text-center">
+              No conversations found
+            </p>
+          </div>
         </div>
       </div>
     )
@@ -88,7 +90,7 @@ const Messages = ({ conversations, currentUser, loading }) => {
 
   return (
     <>
-      <div className="flex dark:bg-black sm:mr-3">
+      <div className="flex dark:bg-black lg:mr-3">
         <div
           className={`w-full lg:w-1/2 2xl:w-2/5 mr-3 lg:mr-0 ${selectedId ? "hidden lg:block" : "block"}`}
         >
