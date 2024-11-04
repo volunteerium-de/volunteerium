@@ -1,5 +1,4 @@
-import React, { useRef, useState } from "react"
-import Avatar from "../../assets/example-avatar.jpg"
+import React, { useRef } from "react"
 import { MdClose } from "react-icons/md"
 import { MdOutlinePhotoCamera } from "react-icons/md"
 import { RiDeleteBin6Line } from "react-icons/ri"
