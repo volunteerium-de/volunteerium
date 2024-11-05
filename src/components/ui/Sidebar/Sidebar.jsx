@@ -28,8 +28,8 @@ const Sidebar = ({ items, activeTab, onTabChange, onEditAvatar, contacts = [], r
   const unreadMessageCount = getUnreadMessageCount()
 
   return (
-    <div className="h-screen max-h-[88vh] m-3 mr-3">
-      <div className="w-[85px] sm:w-[240px] lg:w-[300px] 2xl:w-[350px] h-[88vh] py-[30px] bg-light-gray dark:bg-dark-gray-3 rounded-lg">
+    <div className="h-auto min-h-[calc(100vh-116px)] m-3 mr-3">
+      <div className="w-[65px] sm:w-[240px] lg:w-[300px] h-full 2xl:w-[350px] py-[30px] bg-light-gray dark:bg-dark-gray-3 rounded-lg">
         <div className="flex flex-col items-center gap-4">
           <div>
             {user.userType !== "admin" ? (
@@ -72,7 +72,7 @@ const Sidebar = ({ items, activeTab, onTabChange, onEditAvatar, contacts = [], r
                 {item.icon}
                 <Link
                   to={item.label}
-                  className={`flex-1 sm:block hidden ${item.key === "contacts" && "ellipsis me-4 lg:me-10"}`}
+                  className={`flex-1 sm:block hidden ${item.key === "feedback-contacts" && "ellipsis me-4 lg:me-10"}`}
                 >
                   {item.label}
                 </Link>
@@ -82,7 +82,7 @@ const Sidebar = ({ items, activeTab, onTabChange, onEditAvatar, contacts = [], r
                 {item.key === "messages" && unreadMessageCount > 0 && (
                   <span className="absolute right-6 md:left-40 top-2 bg-primary-green text-white rounded-full w-[9px] h-[9px] text-xs font-bold"></span>
                 )}
-                {item.key === "contacts" && contacts.length > 0 && (
+                {item.key === "feedback-contacts" && contacts.length > 0 && (
                   <span className="bg-primary-green text-white rounded-full text-sm text-center font-bold absolute right-4 top-2 sm:flex h-5 w-5 sm:h-8 sm:w-8  items-center justify-center sm:me-3">
                     {contacts.length}
                   </span>

@@ -24,6 +24,7 @@ import GoogleAuthFail from "../pages/GoogleAuthFail"
 import EventManagement from "../pages/EventManagement"
 import PrivacyPolicy from "../pages/PrivacyPolicy"
 import AdminPanel from "../pages/AdminPanel"
+import { useParams } from "react-router-dom"
 
 const AppRouter = () => {
   const { currentUser: user } = useSelector((state) => state.auth)
@@ -36,16 +37,7 @@ const AppRouter = () => {
         <Route path="about" element={<AboutUs />} />
         <Route path="faq" element={<FAQuestion />} />
         <Route path="contact" element={<ContactUs />} />
-        <Route
-          path="profile/:userId"
-          element={({ params }) => {
-            if (params.userId === import.meta.env.ADMIN_ID) {
-              return <Navigate to="/" />
-            } else {
-              return <Profile />
-            }
-          }}
-        />
+        <Route path="profile/:userId" element={<ProfileRedirect />} />
         <Route path="events" element={<EventListing />} />
         <Route path="events/:eventId" element={<EventDetails />} />
         <Route path="password" element={<Password />} />
@@ -125,3 +117,12 @@ const AppRouter = () => {
 }
 
 export default AppRouter
+
+export const ProfileRedirect = () => {
+  const { userId } = useParams()
+  if (userId === import.meta.env.ADMIN_ID) {
+    return <Navigate to="/" />
+  } else {
+    return <Profile />
+  }
+}

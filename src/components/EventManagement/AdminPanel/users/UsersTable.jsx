@@ -2,7 +2,7 @@ import React from "react"
 import useAdminCall from "../../../../hooks/useAdminCall"
 import { ImSpinner9 } from "react-icons/im"
 
-const UsersTable = ({ users }) => {
+const UsersTable = ({ data }) => {
   const { loading } = useAdminCall()
 
   return (
@@ -12,7 +12,7 @@ const UsersTable = ({ users }) => {
           <ImSpinner9 className="animate-spin h-8 w-8 text-primary-green" />
         </div>
       ) : (
-        <div></div>
+        <div>Users Table</div>
       )}
     </>
   )
