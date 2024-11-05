@@ -4,93 +4,19 @@ import { IoIosArrowDropleftCircle, IoIosArrowDroprightCircle } from "react-icons
 import { Link } from "react-router-dom"
 import { useTranslation } from "react-i18next"
 import { translations } from "../../locales/translations"
+import useEventCall from "../../hooks/useEventCall"
+import { ImSpinner9 } from "react-icons/im"
+
 const UpcomingOpportunities = () => {
   const { t } = useTranslation()
   const sliderRef = useRef(null)
   const [scrollPosition, setScrollPosition] = useState(0)
   const [isLeftDisabled, setIsLeftDisabled] = useState(true)
   const [isRightDisabled, setIsRightDisabled] = useState(false)
+  const [eventData, setEventData] = useState([])
+  const [loading, setLoading] = useState(true)
 
-  // Example event data (this would normally come from an API or data source)
-  const eventData = [
-    {
-      title: "Community Park Tree Planting Day 1",
-      description:
-        "Help us make Riverside greener! Join us for a day of tree planting in the community park.",
-      organizer: "Matilda R.",
-      date: "June 5, 2024 - 17:00",
-      location: "Berlin, Germany",
-      maxPeople: 15,
-      category: ["Environment", "Sustainability"],
-      link: "#",
-    },
-    {
-      title: "Community Park Tree Planting Day 2",
-      description:
-        "Help us make Riverside greener! Join us for a day of tree planting in the community park.",
-      organizer: "Matilda R.",
-      date: "June 5, 2024 - 17:00",
-      location: "Berlin, Germany",
-      maxPeople: 15,
-      category: ["Environment", "Sustainability"],
-      link: "#",
-    },
-    {
-      title: "Community Park Tree Planting Day 3",
-      description:
-        "Help us make Riverside greener! Join us for a day of tree planting in the community park.",
-      organizer: "Matilda R.",
-      date: "June 5, 2024 - 17:00",
-      location: "Berlin, Germany",
-      maxPeople: 15,
-      category: ["Environment"],
-      link: "#",
-    },
-    {
-      title: "Community Park Tree Planting Day 4",
-      description:
-        "Help us make Riverside greener! Join us for a day of tree planting in the community park.",
-      organizer: "Matilda R.",
-      date: "June 5, 2024 - 17:00",
-      location: "Berlin, Germany",
-      maxPeople: 15,
-      category: ["Environment"],
-      link: "#",
-    },
-    {
-      title: "Community Park Tree Planting Day 5 ",
-      description:
-        "Help us make Riverside greener! Join us for a day of tree planting in the community park.",
-      organizer: "Matilda R.",
-      date: "June 5, 2024 - 17:00",
-      location: "Berlin, Germany",
-      maxPeople: 15,
-      category: ["Environment", "Sustainability"],
-      link: "#",
-    },
-    {
-      title: "Community Park Tree Planting Day 6",
-      description:
-        "Help us make Riverside greener! Join us for a day of tree planting in the community park.",
-      organizer: "Matilda R.",
-      date: "June 5, 2024 - 17:00",
-      location: "Berlin, Germany",
-      maxPeople: 15,
-      category: ["Environment"],
-      link: "#",
-    },
-    {
-      title: "Community Park Tree Planting Day 7",
-      description:
-        "Help us make Riverside greener! Join us for a day of tree planting in the community park.",
-      organizer: "Matilda R.",
-      date: "June 5, 2024 - 17:00",
-      location: "Berlin, Germany",
-      maxPeople: 15,
-      category: ["Environment", "Sustainability"],
-      link: "#",
-    },
-  ]
+  const { getEvents } = useEventCall()
 
   // Function to handle scroll left
   const handleScrollLeft = () => {
@@ -132,6 +58,27 @@ const UpcomingOpportunities = () => {
 
     checkButtonStates()
   }, [scrollPosition, eventData.length])
+
+  const fetchEvents = async () => {
+    setLoading(true)
+    try {
+      const response = await getEvents(
+        "events/?filter[isActive]=true&filter[isDone]=false&sort[startDate]=asc"
+      )
+      console.log("Fetched response:", response)
+      setEventData(response.data)
+    } catch (error) {
+      console.error("Error fetching events:", error)
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  useEffect(() => {
+    fetchEvents()
+  }, [])
+
+  console.log(eventData)
 
   return (
     <div className="pt-5">
@@ -175,9 +122,16 @@ const UpcomingOpportunities = () => {
           >
             {/* Map through event data */}
             <div className="flex flex-row flex-grow gap-6 p-2 min-h-[200px] rounded-md">
-              {eventData.map((event, id) => (
-                <EventCardVertical key={id} event={event} />
-              ))}
+              {loading ? (
+                <div className="flex items-center gap-2">
+                  <ImSpinner9 className="animate-spin text-primary-green" />
+                  <span>{t(translations.upcomingOpp.loadingEvents)}</span>
+                </div>
+              ) : eventData.length > 0 ? (
+                eventData.map((event, _id) => <EventCardVertical key={event._id} event={event} />)
+              ) : (
+                <p>{t(translations.upcomingOpp.noEvents)}</p>
+              )}
             </div>
           </div>
         </div>

@@ -21,7 +21,7 @@ const Register = () => {
         {/* Main Div */}
         <div className="flex flex-col md:flex-row pt-8 max-w-[1440px]justify-center">
           {/* Left side */}
-          <div className="hidden md:block max-w-full md:max-w-[608px] mx-2 md:mx-4 lg:mx-8 mb-8 w-full bg-primary-green overflow-hidden rounded-lg h-[calc(100vh-150px)]">
+          <div className="hidden md:block max-w-full md:max-w-[608px] mx-2 md:mx-4 lg:mx-8 mb-8 w-full bg-primary-green overflow-hidden rounded-lg h-auto">
             <div
               className="flex-grow h-full w-full bg-cover bg-center backdrop-blur-xl relative"
               style={{
@@ -32,9 +32,9 @@ const Register = () => {
               <div className="h-full w-full flex flex-col justify-center px-5 md:px-0 bg-primary-green bg-opacity-60">
                 <div className="absolute top-0 left-0 w-full h-full bg-primary-green opacity-[0.4]" />
                 <div className="relative text-left ps-6 lg:px-8">
-                  <p className="text-white text-[2rem] lg:text-[3rem] leading-8 font-semibold">
+                  <p className="text-white text-[1.5rem] lg:text-[3rem] leading-8 font-semibold">
                   {t(translations.register.p1)}  <br />
-                    <span className="text-[3rem] lg:text-[4.125rem] md:leading-none">
+                    <span className="text-[2.5rem] lg:text-[4.125rem] md:leading-none">
                     {t(translations.register.p2)} 
                     </span>
                   </p>

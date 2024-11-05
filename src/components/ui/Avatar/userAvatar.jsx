@@ -2,7 +2,6 @@ import { FaUser } from "react-icons/fa"
 
 export const UserAvatar = ({ user, size, backgroundActive }) => {
   const avatarSrc = user?.userDetailsId?.avatar || user?.userDetailsId?.organizationLogo
-  console.log("dasdasd", user)
   return (
     <div className="flex flex-col items-center gap-1">
       <div>

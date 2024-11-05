@@ -29,6 +29,8 @@ export const translations = {
   upcomingOpp: {
     title: "upcomingOpportunities.title",
     discover: "upcomingOpportunities.discoverMore",
+    loadingEvents: "upcomingOpportunities.loadingEvents",
+    noEvents: "upcomingOpportunities.noEvents",
   },
 
   getToKnowUs: {
@@ -401,16 +403,16 @@ export const translations = {
   },
 
   contactUsForm: {
-    name: "contactUs.name",
-    namePH: "contactUs.namePlaceholder",
-    email: "contactUs.email",
-    emailPH: "contactUs.emailPlaceholder",
-    subject: "contactUs.subject",
-    subjectPH: "contactUs.subjectPlaceholder",
-    message: "contactUs.message",
-    messagePH: "contactUs.messagePlaceholder",
-    messageMaxLength: "contactUs.messageMaxLength",
-    submit: "contactUs.submit",
+    name: "contactUsForm.name",
+    namePH: "contactUsForm.namePH",
+    email: "contactUsForm.email",
+    emailPH: "contactUsForm.emailPH",
+    subject: "contactUsForm.subject",
+    subjectPH: "contactUsForm.subjectPH",
+    message: "contactUsForm.message",
+    messagePH: "contactUsForm.messagePH",
+    messageMaxLength: "contactUsForm.messageMaxLength",
+    submit: "contactUsForm.submit",
   },
 
   faqPage: {
@@ -594,5 +596,29 @@ export const translations = {
   langSelect: {
     lang: "langSelect.lang",
     PH: "langSelect.PH",
+  },
+
+  eventCardVer: {
+    imgAlt: "eventCardVer.imgAlt",
+    people: "eventCardVer.people",
+    more: "eventCardVer.more",
+  },
+
+  eventDetails: {
+    backButton: "eventDetails.backButton",
+    locationLabel: "eventDetails.locationLabel",
+    people: "eventDetails.people",
+    attendants: "eventDetails.attendants",
+    noAttendants: "eventDetails.noAttendants",
+    sendMessageButton: "eventDetails.sendMessageButton",
+    joinButton: "eventDetails.joinButton",
+    shareFeedbackButton: "eventDetails.shareFeedbackButton",
+    reportEventButton: "eventDetails.reportEventButton",
+    pendingButton: "eventDetails.pendingButton",
+    approvedButton: "eventDetails.approvedButton",
+    rejectedButton: "eventDetails.rejectedButton",
+    completedButton: "eventDetails.completedButton",
+    maxReacedButton: "eventDetails.maxReacedButton",
+    manageButton: "eventDetails.manageButton",
   },
 }

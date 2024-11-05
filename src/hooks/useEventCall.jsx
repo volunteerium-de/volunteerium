@@ -1,30 +1,40 @@
 import { useDispatch } from "react-redux"
 import toastNotify from "../utils/toastNotify"
 import useAxios, { axiosWithPublic } from "./useAxios"
-import { fetchFail, fetchStart, getCategoriesSuccess } from "../features/searchSlice"
+import { fetchStart, fetchFail, getCategoriesSuccess } from "../features/searchSlice"
+import { useSelector } from "react-redux"
+import {
+  fetchEventFail,
+  fetchEventStart,
+  fetchSingleEventSuccess,
+  participationFail,
+  participationStart,
+} from "../features/eventSlice"
 
 const useEventCall = () => {
   const { axiosWithToken } = useAxios()
+  const { currentUser: user } = useSelector((state) => state.auth)
   const dispatch = useDispatch()
 
+  
   const getEvents = async (url) => {
     try {
-      const { data } = await axiosWithPublic(url)
-      return data
+      const { data } = await axiosWithPublic(url);
+      return data;
     } catch (error) {
-      console.log(error.response.data.message)
+      console.error("Error fetching events:", error.response ? error.response.data.message : error.message);
     }
-  }
+  };
 
   const getSingleEvent = async (eventId) => {
-    dispatch(fetchStart())
+    dispatch(fetchEventStart())
     try {
       const { data } = await axiosWithPublic(`events/${eventId}`)
       console.log(data)
-      return data
+      dispatch(fetchSingleEventSuccess(data.data))
     } catch (error) {
       console.log(error.response.data.message)
-      dispatch(fetchFail())
+      dispatch(fetchEventFail())
     }
   }
 
@@ -46,14 +56,10 @@ const useEventCall = () => {
           "Content-Type": "multipart/form-data",
         },
       })
-      toastNotify("success", "Event created successfully")
-
+      toastNotify("success", data.message)
       // getEvents("events")
     } catch (error) {
-      toastNotify(
-        "error",
-        error?.response?.data?.message || "Failed to post event. Please try again."
-      )
+      toastNotify("error", error?.response?.data?.message)
     }
   }
 
@@ -65,13 +71,10 @@ const useEventCall = () => {
         },
       })
       console.log(data)
-      toastNotify("success", "Event edited successfully!")
+      toastNotify("success", data.message)
     } catch (error) {
       console.log(error)
-      toastNotify(
-        "error",
-        error?.response?.data?.message || "Failed to edit Event. Please try again."
-      )
+      toastNotify("error", error?.response?.data?.message)
     } finally {
       getSingleEvent(eventId)
     }
@@ -79,16 +82,97 @@ const useEventCall = () => {
 
   const deleteEvent = async (eventId) => {
     try {
-      const data = await axiosWithToken.delete(`events/${eventId}`)
+      const { data } = await axiosWithToken.delete(`events/${eventId}`)
       console.log("Delete response:", data)
 
-      toastNotify("success", "Event deleted successfully!")
+      toastNotify("success", data.message)
     } catch (error) {
       console.log(error)
-      toastNotify(
-        "error",
-        error?.response?.data?.message || "Failed to delete event. Please try again."
-      )
+      toastNotify("error", error?.response?.data?.message)
+    }
+  }
+
+  const joinEvent = async (eventId) => {
+    dispatch(participationStart())
+    try {
+      const { data } = await axiosWithToken.post(`event-participants/join`, {
+        eventId,
+        userId: user?._id,
+      })
+      // console.log(data)
+      toastNotify("success", data.message)
+      dispatch(fetchSingleEventSuccess(data.data))
+    } catch (error) {
+      console.log(error)
+      toastNotify("error", error?.response?.data?.message)
+      dispatch(participationFail())
+    }
+  }
+
+  const approveParticipant = async (userId, eventId) => {
+    try {
+      const { data } = await axiosWithToken.post(`event-participants/approve`, {
+        userId,
+        eventId,
+      })
+      // console.log(data)
+      toastNotify("success", data.message)
+    } catch (error) {
+      console.log(error)
+      toastNotify("error", error?.response?.data?.message)
+    }
+  }
+
+  const rejectParticipant = async (userId, eventId) => {
+    try {
+      const { data } = await axiosWithToken.post(`event-participants/reject`, {
+        userId,
+        eventId,
+      })
+      // console.log(data)
+      toastNotify("success", data.message)
+    } catch (error) {
+      console.log(error)
+      toastNotify("error", error?.response?.data?.message)
+    }
+  }
+
+  const confirmAttendance = async (userId, eventId) => {
+    try {
+      const { data } = await axiosWithToken.post(`event-participants/confirm-attendance`, {
+        userId,
+        eventId,
+      })
+      // console.log(data)
+      toastNotify("success", data.message)
+    } catch (error) {
+      console.log(error)
+      toastNotify("error", error?.response?.data?.message)
+    }
+  }
+
+  const confirmAbsence = async (userId, eventId) => {
+    try {
+      const { data } = await axiosWithToken.post(`event-participants/confirm-absence`, {
+        userId,
+        eventId,
+      })
+      // console.log(data)
+      toastNotify("success", data.message)
+    } catch (error) {
+      console.log(error)
+      toastNotify("error", error?.response?.data?.message)
+    }
+  }
+
+  const deleteEventParticipation = async (eventParticipantId) => {
+    try {
+      const { data } = await axiosWithToken.delete(`event-participants/${eventParticipantId}`)
+      // console.log(data)
+      toastNotify("success", data.message)
+    } catch (error) {
+      console.log(error)
+      toastNotify("error", error?.response?.data?.message)
     }
   }
 
@@ -99,6 +183,12 @@ const useEventCall = () => {
     postEvent,
     editEvent,
     deleteEvent,
+    joinEvent,
+    approveParticipant,
+    rejectParticipant,
+    confirmAttendance,
+    confirmAbsence,
+    deleteEventParticipation,
   }
 }
 

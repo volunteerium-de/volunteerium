@@ -55,6 +55,7 @@ const validationSchema = Yup.object({
   }
 
   return (
+    <>
     <Formik
       initialValues={{
         email: "",
@@ -152,13 +153,6 @@ const validationSchema = Yup.object({
               <div className="flex-1 border-t border-gray-2 dark:border-white"></div>
             </div>
 
-            <button
-              onClick={authWithGoogle}
-              className="flex items-center justify-center w-[60%] md:w-auto text-gray-2 dark:text-white text-sm md:text-base py-3 px-4 rounded-lg border border-gray-1 dark:border-white hover:bg-gray-100 transition-all duration-300 ease-in-out"
-            >
-              <FcGoogle className="text-xl md:text-2xl mr-2" />
-              {t(translations.loginForm.contGoogle)}
-            </button>
           </div>
           {/* Invisible reCAPTCHA Comp. */}
           <ReCAPTCHA
@@ -170,6 +164,16 @@ const validationSchema = Yup.object({
         </Form>
       )}
     </Formik>
+    <div className="flex flex-col items-center">
+    <button
+    onClick={authWithGoogle}
+    className="flex items-center justify-center w-[60%] md:w-auto text-gray-2 dark:text-white text-sm md:text-base py-3 px-4 rounded-lg border border-gray-1 dark:border-white hover:bg-gray-100 transition-all duration-300 ease-in-out"
+  >
+    <FcGoogle className="text-xl md:text-2xl mr-2" />
+    {t(translations.loginForm.contGoogle)}
+  </button>
+  </div>
+</>
   )
 }
 

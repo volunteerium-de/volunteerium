@@ -86,7 +86,7 @@ const AddEvent = ({ onClose }) => {
   }
 
   return (
-    <div className="max-w-4xl mx-auto p-8 bg-light-gray  dark:bg-dark-gray-3 rounded-lg shadow-md">
+    <div className="max-w-4xl mx-auto p-8 bg-light-gray mt-3 dark:bg-dark-gray-3 rounded-lg shadow-md">
       <Formik
         initialValues={initialValues}
         validationSchema={AddEventSchema}

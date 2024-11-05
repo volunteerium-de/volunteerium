@@ -8,7 +8,7 @@ const Sidebar = ({ items, activeTab, onTabChange, onEditAvatar }) => {
   const { currentUser: user } = useSelector((state) => state.auth)
   const { t } = useTranslation()
   const getMenuClassName = (item) => {
-    return `max-w-[374px] h-[50px]  bg-white flex items-center gap-5 p-4 hover:bg-gray-100 mt-[20px] relative ${
+    return `max-w-[374px] h-[50px]  bg-white flex items-center justify-center	 gap-5 p-4 hover:bg-gray-100 mt-[20px] relative ${
       activeTab === item.key ? "bg-gray-white" : ""
     }`
   }
@@ -40,16 +40,16 @@ const Sidebar = ({ items, activeTab, onTabChange, onEditAvatar }) => {
             <span className="text-primary-green">{user.fullName || user.organizationName}!</span>
           </p>
         </div>
-        <div className="my-[30px]">
-          <ul className="text-gray-2 dark:bg-dark-gray- text-[1.125rem] font-medium ">
+        <div className="relative my-[30px] ">
+          <ul className="text-gray-2 dark:bg-dark-gray- text-[1.125rem] font-medium text-center ">
             {items.map((item) => (
               <li
                 key={item.key}
-                className={`${getMenuClassName(item)} dark:bg-dark-gray-1 dark:text-white`}
+                className={`${getMenuClassName(item)} text-center dark:bg-dark-gray-1 dark:text-white`}
                 onClick={() => onTabChange(item.key)}
               >
                 {item.icon}
-                <a href="#" className="flex-1 sm:block hidden">
+                <a href="#" className=" flex-1 sm:block hidden">
                   {item.label}
                 </a>
                 {activeTab === item.key && (

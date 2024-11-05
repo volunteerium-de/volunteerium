@@ -95,7 +95,7 @@ const SearchBar = () => {
   }
 
   return (
-    <div className="relative w-[80%] md:w-[75%] lg:w-[65%] xl:w-[55%] min-w-[27.2rem] mx-auto p-2 sm:p-2 bottom-28 sm:bottom-48 rounded-lg border border-light-gray-1 dark:border-dark-gray-2 bg-white flex items-center justify-between dark:bg-dark-gray-3 dark:text-white">
+    <div className="relative w-[80%] md:w-[75%] lg:w-[65%] xl:w-[55%] max-w-[1000px] min-w-[27.2rem] mx-auto p-2 sm:p-2 bottom-28 sm:bottom-48 rounded-lg border border-light-gray-1 dark:border-dark-gray-2 bg-white flex items-center justify-between dark:bg-dark-gray-3 dark:text-white">
       {searchBarItems.map(({ id, label, placeholder, type }) => (
         <div
           key={id}
