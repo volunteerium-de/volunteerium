@@ -6,6 +6,8 @@ import { useTranslation } from "react-i18next"
 import { translations } from "../../locales/translations"
 import useEventCall from "../../hooks/useEventCall"
 import { ImSpinner9 } from "react-icons/im"
+import { useDispatch, useSelector } from "react-redux"
+import { fetchStart, fetchSuccess, fetchFail } from "../../features/authSlice";
 
 const UpcomingOpportunities = () => {
   const { t } = useTranslation()
@@ -14,7 +16,8 @@ const UpcomingOpportunities = () => {
   const [isLeftDisabled, setIsLeftDisabled] = useState(true)
   const [isRightDisabled, setIsRightDisabled] = useState(false)
   const [eventData, setEventData] = useState([])
-  const [loading, setLoading] = useState(true)
+  const loading = useSelector((state) => state.auth.loading)
+  const dispatch = useDispatch();
 
   const { getEvents } = useEventCall()
 
@@ -60,17 +63,16 @@ const UpcomingOpportunities = () => {
   }, [scrollPosition, eventData.length])
 
   const fetchEvents = async () => {
-    setLoading(true)
+    dispatch(fetchStart());
     try {
       const response = await getEvents(
         "events/?filter[isActive]=true&filter[isDone]=false&sort[startDate]=asc"
       )
-      console.log("Fetched response:", response)
       setEventData(response.data)
+      dispatch(fetchSuccess());
     } catch (error) {
       console.error("Error fetching events:", error)
-    } finally {
-      setLoading(false)
+      dispatch(fetchFail());
     }
   }
 
@@ -100,7 +102,7 @@ const UpcomingOpportunities = () => {
         <div className="relative rounded-lg">
           {/* Arrow Left */}
           <button
-            className={`absolute top-[calc(60%-25px)] left-[-30px] ${isLeftDisabled ? "hidden" : "block"}`}
+            className={`absolute top-[calc(60%-25px)] left-[-40px] ${isLeftDisabled ? "hidden" : "block"}`}
             onClick={handleScrollLeft}
             disabled={isLeftDisabled}
           >
@@ -108,7 +110,7 @@ const UpcomingOpportunities = () => {
           </button>
           {/* Arrow Right */}
           <button
-            className={`absolute top-[calc(60%-25px)] right-[-30px] ${isRightDisabled ? "hidden" : "block"}`}
+            className={`absolute top-[calc(60%-25px)] right-[-40px] ${isRightDisabled ? "hidden" : "block"}`}
             onClick={handleScrollRight}
             disabled={isRightDisabled}
           >
@@ -118,7 +120,7 @@ const UpcomingOpportunities = () => {
           <div
             id="opportunities"
             ref={sliderRef}
-            className="flex gap-x-[40px] overflow-x-hidden items-start scroll-smooth"
+            className="flex gap-x-4 overflow-x-hidden items-start scroll-smooth px-2"
           >
             {/* Map through event data */}
             <div className="flex flex-row flex-grow gap-6 p-2 min-h-[200px] rounded-md">

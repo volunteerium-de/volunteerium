@@ -14,6 +14,7 @@ import { IoIosArrowBack } from "react-icons/io"
 import useLanguageOptions from "../hooks/useLanguages"
 import { useTranslation } from "react-i18next"
 import { translations } from "../locales/translations"
+import OnlineOpportinuties from "../components/EventListing/OnlineOpportinuties"
 
 const EventsListingPage = () => {
   const { t } = useTranslation()
@@ -233,6 +234,7 @@ const EventsListingPage = () => {
           </div>
         </div>
       </div>
+      <OnlineOpportinuties/>
       <Footer />
     </div>
   )

@@ -30,6 +30,12 @@
     "loadingEvents": "Loading Upcomming Events...",
     "noEvents": "No Upcoming Events!"
   },
+  
+  "onlineOpportunities": {
+    "title": "Online Events",
+    "loadingEvents": "Loading Upcomming Events...",
+    "noEvents": "No Upcoming Events!"
+  },
 
   "getToKnowUs": {
     "h2": "Get to Know Us",

@@ -105,7 +105,7 @@ const EventCardVertical = ({ event }) => {
 
       <div>
         {/* Category Area */}
-        <div className="flex flex-row flex-wrap gap-2  ">
+        <div className="flex flex-row flex-wrap gap-2 px-2 ">
           {event.interestIds?.map((interest, index) => (
             <div
               key={index}
@@ -119,14 +119,18 @@ const EventCardVertical = ({ event }) => {
         </div>
         {/* Event Button */}
         <div className="flex flex-row p-2 justify-end">
-          {user ? (
-            <button
-              onClick={() => navigate(`events/${event._id}`)}
+          <button
+             onClick={() => {
+      const currentPath = window.location.pathname;
+      const newPath = currentPath.includes("/events") && !currentPath.endsWith("/events")
+        ? `/${event._id}`
+        : `/events/${event._id}`;
+      navigate(newPath);
+    }}
               className="font-medium text-white text-[0.9rem] text-center bg-primary-green px-3 py-1 rounded"
             >
               {t(translations.eventCardVer.more)}
             </button>
-          ) : null}
         </div>
       </div>
     </div>
