@@ -139,25 +139,6 @@ const EventsListingPage = () => {
       )
     }
 
-    // if (categoryFilters.length > 0) {
-    //   resultParts.push(
-    //     renderFilterMessagePart(
-    //       `${t(translations.eventsPage.category)}`,
-    //       categoryFilters.map((cat) => getTranslatedCategory(cat)).join(", ")
-    //     )
-    //   )
-    // }
-    // console.log("Category", categoryFilters)
-
-    // if (languageFilters.length > 0) {
-    //   resultParts.push(
-    //     renderFilterMessagePart(
-    //       `${t(translations.eventsPage.language)}`,
-    //       languageFilters.map((lang) => getLangName(lang)).join(", ")
-    //     )
-    //   )
-    // }
-
     if (!totalEventRecord) {
       resultMessage += `${t(translations.eventsPage.notFound)}`
     } else {
