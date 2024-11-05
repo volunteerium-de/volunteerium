@@ -14,8 +14,8 @@ const EventManagement = () => {
   const location = useLocation()
   const navigate = useNavigate()
   const { conversations } = useSelector((state) => state.chat)
-  const { currentUser, loading } = useSelector((state) => state.auth)
-  const [activeTab, setActiveTab] = useState("organizedEvents")
+  const { currentUser } = useSelector((state) => state.auth)
+  const [activeTab, setActiveTab] = useState("organized-events")
   const [isAddingEvent, setIsAddingEvent] = useState(false)
 
   useEffect(() => {
@@ -42,12 +42,12 @@ const EventManagement = () => {
 
   const menuItems = [
     {
-      key: "organizedEvents",
+      key: "organized-events",
       label: "Organized Events",
       icon: <FaCalendar className="text-2xl mx-auto" />,
     },
     {
-      key: "attendedEvents",
+      key: "attended-events",
       label: "Attended Events",
       icon: <FaPeopleGroup className="text-2xl mx-auto" />,
     },
@@ -69,14 +69,12 @@ const EventManagement = () => {
     if (isAddingEvent) return <AddEvent onClose={() => setIsAddingEvent(false)} />
 
     switch (activeTab) {
-      case "organizedEvents":
+      case "organized-events":
         return <OrganizedEvents onAddEvent={() => setIsAddingEvent(true)} />
-      case "attendedEvents":
+      case "attended-events":
         return <AttendedEvents />
       case "messages":
-        return (
-          <Messages conversations={conversations} currentUser={currentUser} loading={loading} />
-        )
+        return <Messages conversations={conversations} currentUser={currentUser} />
       default:
         return <OrganizedEvents onAddEvent={() => setIsAddingEvent(true)} />
     }

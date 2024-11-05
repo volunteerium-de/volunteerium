@@ -43,7 +43,7 @@ const getMedalInfo = (totalPoints, t) => {
     return {
       medal: t(translations.profile.medals.newVolunteer),
       icon: null,
-      textClass: "",
+      textClass: "text-[#9D9EA1]",
     }
   }
 }
@@ -163,7 +163,7 @@ const Profile = () => {
         </div>
       ) : (
         <>
-          <div className="max-w-[1800px] mx-auto min-h-[90vh] font-poppins block sm:flex justify-center gap-5 dark:bg-black py-3 px-3">
+          <div className="max-w-[1800px] mx-auto min-h-[90vh] font-poppins block sm:flex justify-center gap-5 dark:bg-black p-3">
             <div className=" w-full sm:w-[600px] bg-light-gray rounded-t-md sm:rounded-md px-4 sm:px-6 dark:bg-dark-gray-3 dark:text-white">
               <div className="flex justify-between px-2 ">
                 <UserAvatar
@@ -278,7 +278,7 @@ const Profile = () => {
                 )}
               </div>
             </div>
-            <div className="w-full max-w-full bg-light-gray rounded-b-md sm:rounded-md px-8 sm:px-2 lg:px-12 dark:bg-dark-gray-3 -mt-2 sm:mt-0">
+            <div className="w-full max-w-full bg-light-gray rounded-b-md sm:rounded-md px-8 sm:px-2 lg:px-12 dark:bg-dark-gray-3 -mt-3 sm:mt-0">
               <div className="flex flex-col justify-between h-full">
                 <ProfileCard
                   events={events}
