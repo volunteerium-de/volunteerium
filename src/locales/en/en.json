@@ -647,5 +647,36 @@
       "option9": "discrimination",
       "option10": "other"
     }
+  },
+  "eventMng": {
+    "addNew": "Add New Event",
+    "eventName": "Event Name",
+    "eventPhoto": "Event Photo",
+    "eventDate": "Date*",
+    "from": "from*",
+    "to": "to*",
+    "eventLocation": "Location",
+    "virtual": "Virtual",
+    "physical": "Physical",
+    "strName": "Street Name*",
+    "strNumbr": "Street Number*",
+    "city": "City*",
+    "country": "Country*",
+    "code": "Zip Code*",
+    "cancel": "Cancel",
+    "next": "Next",
+    "category": "Category*",
+    "choose": "Choose a category ",
+    "participants": "Max Participants*",
+    "max": "Select maximum participants",
+    "desc": "Description",
+    "addContact": "Would you like to add a Contact Person?",
+    "name": "Contact Name*",
+    "email": "Contact Email*",
+    "phone": "Contact Phone*",
+    "yes": "yes",
+    "no": "no",
+    "back": "back",
+    "submit": "submit"
   }
 }
