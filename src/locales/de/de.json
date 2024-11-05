@@ -616,5 +616,37 @@
       "option9": "Diskriminierung",
       "option10": "Sonstiges"
     }
+  },
+
+  "eventMng": {
+    "addNew": "Neue Veranstaltung hinzufügen",
+    "eventName": "Veranstaltungsname",
+    "eventPhoto": "Veranstaltungsfoto",
+    "eventDate": "Datum*",
+    "from": "von*",
+    "to": "bis*",
+    "eventLocation": "Veranstaltungsort",
+    "virtual": "Virtuell",
+    "physical": "Physisch",
+    "strName": "Straßenname*",
+    "strNumbr": "Hausnummer*",
+    "city": "Stadt*",
+    "country": "Land*",
+    "code": "Postleitzahl*",
+    "cancel": "Abbrechen",
+    "next": "Weiter",
+    "category": "Kategorie*",
+    "choose": "Kategorie auswählen",
+    "participants": "Maximale Teilnehmer*",
+    "max": "Maximale Teilnehmerzahl auswählen",
+    "desc": "Beschreibung",
+    "addContact": "Möchten Sie einen Ansprechpartner hinzufügen?",
+    "name": "Ansprechpartnername*",
+    "email": "E-Mail des Ansprechpartners*",
+    "phone": "Telefon des Ansprechpartners*",
+    "yes": "Ja",
+    "no": "Nein",
+    "back": "Zurück",
+    "submit": "Absenden"
   }
 }
