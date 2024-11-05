@@ -1,7 +1,11 @@
 import React from "react"
 import EventCardHorizontal from "../ui/Cards/EventCardHorizontal"
+import { useTranslation } from "react-i18next"
+import { translations } from "../../locales/translations"
 
 const EventCardList = ({ events }) => {
+  const { t } = useTranslation()
+
   return (
     <div className="">
       {/* Map through event data */}
@@ -9,7 +13,7 @@ const EventCardList = ({ events }) => {
         {events?.length > 0 ? (
           events.map((event) => <EventCardHorizontal key={event._id} event={event} />)
         ) : (
-          <p>No events found that match your filters.</p>
+          <p className="dark:text-white">{t(translations.eventsPage.match)}</p>
         )}
       </div>
     </div>

@@ -12,8 +12,11 @@ import { useLocation, useNavigate } from "react-router-dom"
 import { LiaSpinnerSolid } from "react-icons/lia"
 import { IoIosArrowBack } from "react-icons/io"
 import useLanguageOptions from "../hooks/useLanguages"
+import { useTranslation } from "react-i18next"
+import { translations } from "../locales/translations"
 
 const EventsListingPage = () => {
+  const { t } = useTranslation()
   const { getEvents } = useEventCall()
   const [loading, setLoading] = useState(true)
   const [events, setEvents] = useState([])
@@ -38,7 +41,7 @@ const EventsListingPage = () => {
   const [currentPage, setCurrentPage] = useState(pageFromUrl > 0 ? pageFromUrl : 1)
   const [totalPages, setTotalPages] = useState(0)
   const [totalEventRecord, setTotalEventRecord] = useState(0)
-  const { getLangName } = useLanguageOptions()
+  const { getLangName, getTranslatedCategory } = useLanguageOptions()
 
   useEffect(() => {
     const fetchEvents = async () => {
@@ -96,40 +99,50 @@ const EventsListingPage = () => {
   const renderFilterMessagePart = (label, content) => (
     <span key={label}>
       <span> | </span>
-      <span className="text-dark-green">{label}: </span>
+      <span className="text-dark-green dark:text-white">{label}: </span>
       <span>{content}</span>
     </span>
   )
 
   const renderFilterMessage = () => {
-    let resultMessage = "Results for your search:"
+    let resultMessage = `${t(translations.eventsPage.result)}:`
     let resultParts = []
 
     if (searchTermEvent) {
-      resultParts.push(renderFilterMessagePart("Search Term", searchTermEvent))
+      resultParts.push(
+        renderFilterMessagePart(`${t(translations.eventsPage.search)}`, searchTermEvent)
+      )
     }
 
     if (searchTermLocation) {
-      resultParts.push(renderFilterMessagePart("Location", searchTermLocation))
+      resultParts.push(
+        renderFilterMessagePart(`${t(translations.eventsPage.location)}`, searchTermLocation)
+      )
     }
 
     if (categoryFilters.length > 0) {
-      resultParts.push(renderFilterMessagePart("Category", categoryFilters.join(", ")))
+      resultParts.push(
+        renderFilterMessagePart(
+          `${t(translations.eventsPage.category)}`,
+          categoryFilters.map((cat) => getTranslatedCategory(cat)).join(", ")
+        )
+      )
     }
+    console.log("Category", categoryFilters)
 
     if (languageFilters.length > 0) {
       resultParts.push(
         renderFilterMessagePart(
-          "Language",
+          `${t(translations.eventsPage.language)}`,
           languageFilters.map((lang) => getLangName(lang)).join(", ")
         )
       )
     }
 
     if (!totalEventRecord) {
-      resultMessage += ` No Events Found`
+      resultMessage += `${t(translations.eventsPage.notFound)}`
     } else {
-      resultMessage += ` ${totalEventRecord} Event${totalEventRecord > 1 ? "s" : ""} Found`
+      resultMessage += ` ${totalEventRecord} ${totalEventRecord > 1 ? t(translations.eventsPage.events) : t(translations.eventsPage.event)} ${t(translations.eventsPage.found)}`
     }
 
     return { resultMessage, resultParts }
@@ -164,21 +177,23 @@ const EventsListingPage = () => {
             </h1>
           </div>
           <div className="flex justify-end gap-3 items-center">
-            <p className="text-sm font-bold text-black">Sort by:</p>
+            <p className="text-sm font-bold text-black dark:text-white">
+              {t(translations.eventsPage.sort)}:
+            </p>
             <select
               value={sortOrder}
               onChange={handleSortChange}
               className="appearance-none border border-primary-green rounded-md font-medium text-[0.875rem] px-2 bg-light-green text-primary-green focus:outline-none focus:ring-2 focus:primary-green"
             >
-              <option value="Newest">Newest</option>
-              <option value="Oldest">Oldest</option>
+              <option value="Newest">{t(translations.eventsPage.new)}</option>
+              <option value="Oldest">{t(translations.eventsPage.old)}</option>
             </select>
 
             <button
               className="block lg:hidden text-primary-green mr-5"
               onClick={() => setIsFilterSidebarOpen(!isFilterSidebarOpen)}
             >
-              Filters
+              {t(translations.eventsPage.filter)}
             </button>
           </div>
         </div>
@@ -201,8 +216,8 @@ const EventsListingPage = () => {
             {error ? (
               <div>{error}</div>
             ) : loading ? (
-              <div className="flex text-md justify-center items-center text-center w-[200px] mx-auto mt-14">
-                Loading events...{" "}
+              <div className="flex text-md justify-center items-center text-center w-[200px] mx-auto mt-14 dark:text-white">
+                {t(translations.eventsPage.loading)}...{" "}
                 <span className="animate-spin text-primary-green text-3xl">
                   <LiaSpinnerSolid />
                 </span>
