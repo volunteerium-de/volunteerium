@@ -8,12 +8,25 @@ import { formatDateWithTime } from "../../../helpers/formatDate"
 import { Link } from "react-router-dom"
 import { UserAvatar } from "../Avatar/userAvatar"
 import { formatName } from "../../../helpers/formatName"
+import { useNavigate } from "react-router-dom"
+import { useTranslation } from "react-i18next"
+import { translations } from "../../../locales/translations"
 
 const EventCardHorizontal = ({ event }) => {
+  const { t } = useTranslation()
+  const navigate = useNavigate()
   const startDate = new Date(event.startDate).toLocaleDateString()
   const endDate = new Date(event.endDate).toLocaleDateString()
-  const { getLangName } = useLanguageOptions()
+  const { getLangName, getTranslatedCategory } = useLanguageOptions()
   const areDatesSame = startDate === endDate
+
+  const handleProfileNavigate = () => {
+    navigate(`/profile/${event.createdBy._id}`)
+  }
+
+  const handleNavigate = () => {
+    navigate(`/events/${event._id}`)
+  }
 
   return (
     <Link
@@ -39,7 +52,10 @@ const EventCardHorizontal = ({ event }) => {
         <div>
           {/* Organizer Information */}
           {event.createdBy && event.createdBy.userDetailsId && (
-            <div className="flex gap-x-1 items-center mb-[7px] py-1">
+            <div
+              className="flex gap-x-1 items-center mb-[7px] py-1 cursor-pointer"
+              onClick={handleProfileNavigate}
+            >
               <UserAvatar user={event.createdBy} size="w-6 h-6" backgroundActive={true} />
               <p className="text-gray-2 dark:text-white text-[0.7rem]">
                 {event.createdBy.userType === "individual"
@@ -79,7 +95,7 @@ const EventCardHorizontal = ({ event }) => {
               <div className="flex items-center">
                 <IoPeople className="text-primary-green" />
                 <p className="text-gray-2 dark:text-white text-[0.7rem] p-1">
-                  Max. {event.maxParticipant} People
+                  Max. {event.maxParticipant} {t(translations.eventsPage.people)}
                 </p>
               </div>
 
@@ -102,15 +118,18 @@ const EventCardHorizontal = ({ event }) => {
                     className="border border-primary-green dark:border-gray-1 px-2 py-1 rounded-full w-fit h-6"
                   >
                     <p className="font-semibold tracking-wide text-[0.6rem] sm:text-[0.6rem] text-primary-green  text-center dark:text-gray-1">
-                      {interest.name.toUpperCase()}
+                      {getTranslatedCategory(interest.name).toUpperCase()}
                     </p>
                   </div>
                 ))}
               </div>
               {/* Event Button */}
               <div className="text-end">
-                <button className="font-medium text-white text-[0.7rem] text-center bg-primary-green px-4 py-1 rounded">
-                  Join
+                <button
+                  className="font-medium text-white text-[0.7rem] text-center bg-primary-green px-4 py-1 rounded"
+                  onClick={handleNavigate}
+                >
+                  {t(translations.eventsPage.more)}
                 </button>
               </div>
             </div>
