@@ -253,18 +253,18 @@ const IndividualSettingsForm = () => {
                   placeholder={t(translations.indvSettings.label6PH)}
                   className="w-full p-2 border border-gray-1 rounded h-[100px] focus:outline-none focus:border-primary-green"
                 />
-                <p className="text-sm text-gray-500 dark:text-white">
+                <p className="text-sm text-gray-2 dark:text-white">
                   {values.bio.length}/250 characters
                 </p>
               </div>
 
               <div className="mx-auto ">
-                <div className="flex justify-between">
-                  <p className="text-[1rem] leading-[1.5625] text-gray-2 dark:text-white">
+                <div className="flex justify-between ">
+                  <p className="text-[1rem] leading-[1.5625] text-dark-gray-2 dark:text-white">
                     {t(translations.indvSettings.label7)}
                   </p>
                   <p
-                    className="text-[1rem] leading-[1.5625] text-primary-green cursor-pointer"
+                    className="text-[1rem] leading-[1.5625] text-primary-green  cursor-pointer"
                     onClick={openModal}
                   >
                     {t(translations.indvSettings.edit)}
@@ -273,7 +273,7 @@ const IndividualSettingsForm = () => {
                 {/* Files */}
                 <div className="max-h-[200px] overflow-y-auto p-2 border border-gray-1 rounded focus:outline-none focus:border-primary-green">
                   {certificates.length === 0 ? (
-                    <p className="dark:text-white">{t(translations.indvSettings.label10)}</p>
+                    <p className="dark:text-white ">{t(translations.indvSettings.label10)}</p>
                   ) : (
                     certificates.map((certificate, index) => {
                       const marginBottom = index === certificates.length - 1 ? "mb-25" : "mb-15"

@@ -178,7 +178,7 @@ const OrganisationSettingsForm = () => {
               {/* Files */}
               <div className="mx-auto">
                 <div className="flex justify-between">
-                  <p className="text-[1rem] dark:text-white ">
+                  <p className="text-[1rem] dark:text-white text-dark-gray-2">
                     {t(translations.orgSettings.files)}
                   </p>
                   <p
