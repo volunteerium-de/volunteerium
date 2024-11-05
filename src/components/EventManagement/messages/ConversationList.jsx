@@ -31,9 +31,11 @@ const ConversationList = ({
           const eventCreatorFullName = createdBy.fullName
 
           const conversationParticipant = participantIds.find(
-            (participant) => participant._id !== currentUser._id
+            (participant) => participant !== eventCreatorId
           )
           const conversationParticipantFullName = conversationParticipant?.fullName || ""
+          const conversationParticipantIsFullNameDisplay =
+            conversationParticipant?.userDetailsId?.isFullNameDisplay
 
           let displayName
 
@@ -44,7 +46,7 @@ const ConversationList = ({
               createdBy._id === currentUser._id
                 ? formatName(
                     conversationParticipantFullName,
-                    conversationParticipantFullName.userDetailsId?.isFullNameDisplay
+                    conversationParticipantIsFullNameDisplay
                   )
                 : formatName(eventCreatorFullName, createdBy.userDetailsId?.isFullNameDisplay)
           }
@@ -94,7 +96,7 @@ const ConversationList = ({
                   </div>
                 </div>
                 <p className="text-xs sm:text-sm text-gray-2 font-bold">{displayName}</p>
-                <p className="text-xs sm:text-sm text-gray-2 truncate overflow-hidden text-ellipsis max-w-[200px] sm:max-w-[370px]">
+                <p className="text-xs sm:text-sm text-gray-2 truncate overflow-hidden text-ellipsis w-[50vw] sm:w-[42vw] lg:w-[20vw]">
                   {unreadCount > 0 ? (
                     <span className="text-dark-gray-1 dark:text-white font-semibold">
                       {messageContent}

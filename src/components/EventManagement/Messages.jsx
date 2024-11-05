@@ -7,7 +7,6 @@ import MessageView from "./messages/MessageView"
 import { useTranslation } from "react-i18next"
 import { translations } from "../../locales/translations"
 import DeleteModal from "../ui/Modals/DeleteModal"
-import { formatName } from "../../helpers/formatName"
 
 const Messages = ({ conversations, currentUser }) => {
   const { t } = useTranslation()
@@ -97,7 +96,7 @@ const Messages = ({ conversations, currentUser }) => {
         </div>
       ) : (
         <>
-          <div className="flex dark:bg-black mr-3">
+          <div className="flex dark:bg-black mr-3 max-w-[1400px]">
             <div className={`w-full lg:w-1/2 xl:w-2/5 ${selectedId ? "hidden lg:block" : "block"}`}>
               <ConversationList
                 conversations={conversations}

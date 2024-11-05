@@ -49,16 +49,10 @@ const MessageView = ({
               {selectedConversation.messageIds.map((message) => (
                 <div key={message._id} className="mb-4">
                   <div
-                    className={`p-3 mx-4 w-[80%] md:w-[70%] rounded ${
-                      message.senderId._id === currentUser._id
-                        ? "bg-primary-green ml-auto"
-                        : "bg-light-gray-2"
-                    }`}
+                    className={`p-3 mx-4 w-[250px] md:w-[400px] lg:w-[250px] xl:w-[450px] rounded ${message.senderId._id === currentUser._id ? "bg-primary-green ml-auto" : "bg-light-gray-2"}`}
                   >
                     <p
-                      className={
-                        message.senderId._id === currentUser._id ? "text-white" : "text-black"
-                      }
+                      className={` ${message.senderId._id === currentUser._id ? "text-white" : "text-black"} whitespace-normal break-words`}
                     >
                       {message.content}
                     </p>
