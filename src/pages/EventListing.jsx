@@ -41,7 +41,7 @@ const EventsListingPage = () => {
   const [currentPage, setCurrentPage] = useState(pageFromUrl > 0 ? pageFromUrl : 1)
   const [totalPages, setTotalPages] = useState(0)
   const [totalEventRecord, setTotalEventRecord] = useState(0)
-  const { getLangName } = useLanguageOptions()
+  const { getLangName, getTranslatedCategory } = useLanguageOptions()
 
   useEffect(() => {
     const fetchEvents = async () => {
@@ -124,7 +124,7 @@ const EventsListingPage = () => {
       resultParts.push(
         renderFilterMessagePart(
           `${t(translations.eventsPage.category)}`,
-          categoryFilters.join(", ")
+          categoryFilters.map((cat) => getTranslatedCategory(cat)).join(", ")
         )
       )
     }
@@ -138,6 +138,25 @@ const EventsListingPage = () => {
         )
       )
     }
+
+    // if (categoryFilters.length > 0) {
+    //   resultParts.push(
+    //     renderFilterMessagePart(
+    //       `${t(translations.eventsPage.category)}`,
+    //       categoryFilters.map((cat) => getTranslatedCategory(cat)).join(", ")
+    //     )
+    //   )
+    // }
+    // console.log("Category", categoryFilters)
+
+    // if (languageFilters.length > 0) {
+    //   resultParts.push(
+    //     renderFilterMessagePart(
+    //       `${t(translations.eventsPage.language)}`,
+    //       languageFilters.map((lang) => getLangName(lang)).join(", ")
+    //     )
+    //   )
+    // }
 
     if (!totalEventRecord) {
       resultMessage += `${t(translations.eventsPage.notFound)}`

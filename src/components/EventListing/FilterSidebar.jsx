@@ -174,7 +174,7 @@ const FilterSidebar = () => {
                 checked={selectedCategories.includes(category.name)}
               />
               <span className="text-[0.75rem] text-black dark:text-white font-medium">
-                {getTranslatedCategory(category)}
+                {getTranslatedCategory(category.name)}
               </span>
             </label>
           ))}

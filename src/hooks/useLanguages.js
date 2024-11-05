@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import { useTranslation } from "react-i18next"
 import eng_languages from "../helpers/languages_english.json"
 import de_languages from "../helpers/languages_deutsch.json"
-import de_categories from "../helpers/categories_deutsch.json"
+import categories_translations from "../helpers/categories_translations.json"
 
 const useLanguage = () => {
   const { i18n } = useTranslation()
@@ -26,13 +26,15 @@ const useLanguage = () => {
     return undefined
   }
 
-  const getTranslatedCategory = (category) => {
-    let translatedCategory = category
+  const getTranslatedCategory = (categoryName) => {
+    let translatedCategory = categoryName
     if (i18n.language === "de") {
-      translatedCategory = de_categories.filter((deCategory) => deCategory._id == category._id)
-      return translatedCategory[0].name
+      translatedCategory = categories_translations.filter(
+        (category) => category.enName.toLowerCase() === categoryName.toLowerCase()
+      )
+      return translatedCategory[0].deName
     }
-    return translatedCategory.name
+    return translatedCategory
   }
 
   return { getLangName, getTranslatedCategory, languageOptions }

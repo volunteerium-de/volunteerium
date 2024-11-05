@@ -228,7 +228,7 @@ const IndividualSettingsForm = () => {
                   isMultiple={true}
                   placeholder={t(translations.indvSettings.label5PH)}
                   options={categories.map((category) => ({
-                    label: getTranslatedCategory(category),
+                    label: getTranslatedCategory(category.name),
                     value: category._id,
                   }))}
                   onChange={(selectedOptions) => {
