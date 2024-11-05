@@ -1,4 +1,5 @@
 import Subscribe from "../components/Footer/Subscribe"
+import { conversationSuccess } from "../features/chatSlice"
 
 export const translations = {
   langSwitch: {
@@ -212,6 +213,8 @@ export const translations = {
     accountDesc: "delModal.account-desc",
     documentTitle: "delModal.document-title",
     documentDesc: "delModal.document-desc",
+    conversationTitle: "delModal.conversation-title",
+    conversationDesc: "delModal.conversation-desc",
     cancelButton: "delModal.cancelButton",
     delButton: "delModal.delButton",
   },
