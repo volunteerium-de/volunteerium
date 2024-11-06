@@ -87,6 +87,7 @@ const Messages = ({ conversations, currentUser }) => {
   }
 
   const getDisplayName = (conversation) => {
+    if (!conversation || !conversation.createdBy) return ""
     const { createdBy, eventId: { createdBy: eventCreatorId } = {}, participantIds } = conversation
 
     const isAnnouncement = createdBy._id === eventCreatorId
@@ -114,7 +115,11 @@ const Messages = ({ conversations, currentUser }) => {
     return displayName
   }
 
-  const mappedConversations = conversations.map((conversation) => ({
+  const validConversations = conversations.filter(
+    (conversation) =>
+      conversation && conversation.createdBy && conversation.eventId && conversation.participantIds
+  )
+  const mappedConversations = validConversations.map((conversation) => ({
     ...conversation,
     displayName: getDisplayName(conversation),
   }))
