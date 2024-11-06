@@ -59,15 +59,13 @@ const useAuthCall = () => {
     try {
       const { data } = await axiosWithPublic.post("auth/login", userInfo)
       dispatch(loginSuccess(data))
-
+      console.log(data)
       const link = getLoginRedirectLink(data.user)
 
       setTimeout(() => {
         navigate(link)
         if (link === "/") toastNotify("success", data.message)
       }, 0)
-
-      console.log(data)
     } catch (error) {
       dispatch(fetchFail())
       toastNotify("error", error.response.data.message)

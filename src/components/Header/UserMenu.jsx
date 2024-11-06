@@ -13,6 +13,7 @@ import { UserAvatar } from "../ui/Avatar/userAvatar"
 const UserMenu = ({ user }) => {
   const { t } = useTranslation()
   const mode = useSelector((state) => state.theme.mode)
+  const { currentUser } = useSelector((state) => state.auth)
   const { logout } = useAuthCall()
   const { toggleTheme } = useTheme()
   const [isOpen, setIsOpen] = useState(false)
@@ -43,8 +44,6 @@ const UserMenu = ({ user }) => {
       document.removeEventListener("mousedown", handleClickOutside)
     }
   }, [menuRef])
-  const { currentUser } = useSelector((state) => state.auth)
-
   return (
     <div className="relative" ref={menuRef}>
       <div
