@@ -15,15 +15,14 @@ import { FaExternalLinkAlt } from "react-icons/fa"
 import { useState } from "react"
 import { useRef } from "react"
 import DeleteModal from "../../../ui/Modals/DeleteModal"
-import { IoClose } from "react-icons/io5"
 
 const SingleEventPanel = ({ eventId, setIdentifier }) => {
   const navigate = useNavigate()
   const { singleEvent, loading } = useSelector((state) => state.event)
   const { getSingleEvent, editEvent, deleteEvent } = useEventCall()
   const { getLangName } = useLanguage()
-  const [isModalOpen, setIsModalOpen] = useState(false)
-  const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false)
+  const [isSettingsModalOpen, setIsSettingsModalOpen] = useState(false)
+  const [isDeleteEventModalOpen, setIsDeleteEventModalOpen] = useState(false)
   const modalRef = useRef(null)
   const settingsButtonRef = useRef(null)
 
@@ -36,16 +35,16 @@ const SingleEventPanel = ({ eventId, setIdentifier }) => {
     navigate(`/admin-panel?tab=events`)
   }
 
-  const closeDeleteModal = () => {
-    setIsDeleteModalOpen(false)
+  const closeDeleteEventModal = () => {
+    setIsDeleteEventModalOpen(false)
   }
 
-  const openDeleteModal = () => {
-    setIsDeleteModalOpen(true)
+  const openDeleteEventModal = () => {
+    setIsDeleteEventModalOpen(true)
   }
 
   const handleSettingsButtonClick = () => {
-    setIsModalOpen((prevState) => !prevState)
+    setIsSettingsModalOpen((prevState) => !prevState)
   }
 
   const handleOutsideClick = (e) => {
@@ -56,14 +55,14 @@ const SingleEventPanel = ({ eventId, setIdentifier }) => {
       settingsButtonRef.current &&
       !settingsButtonRef.current.contains(e.target)
     ) {
-      setIsModalOpen(false)
+      setIsSettingsModalOpen(false)
     }
   }
 
   const handleDeleteEvent = () => {
     deleteEvent(singleEvent._id)
     navigate(`/admin-panel?tab=events`)
-    setIsModalOpen(false)
+    setIsSettingsModalOpen(false)
   }
 
   const handleSuspendEvent = () => {
@@ -72,7 +71,7 @@ const SingleEventPanel = ({ eventId, setIdentifier }) => {
     } else {
       editEvent(singleEvent._id, { isActive: true })
     }
-    setIsModalOpen(false)
+    setIsSettingsModalOpen(false)
   }
 
   useEffect(() => {
@@ -126,7 +125,7 @@ const SingleEventPanel = ({ eventId, setIdentifier }) => {
               </div>
             </div>
             <div className="flex flex-col xl:flex-row gap-2 h-full">
-              <div className="bg-white dark:bg-dark-gray-1 rounded-lg w-full md:w-1/2 p-4">
+              <div className="bg-white dark:bg-dark-gray-1 rounded-lg w-full xl:w-1/2 p-4">
                 <h1 className="text-xl font-semibold text-primary-green dark:text-white">
                   Event Details
                 </h1>
@@ -229,94 +228,92 @@ const SingleEventPanel = ({ eventId, setIdentifier }) => {
                   </li>
                 </ul>
               </div>
-              <div className="bg-white dark:bg-dark-gray-1 rounded-lg w-full md:w-1/2 p-4">
+              <div className="bg-white dark:bg-dark-gray-1 rounded-lg w-full xl:w-1/2 p-4">
                 <h1 className="text-xl font-semibold text-primary-green dark:text-white">
                   Event Participants
                 </h1>
-                <div className="overflow-y-auto scrollbar h-auto max-h-[75vh] mt-5">
+                <div className="h-auto mt-5">
                   {singleEvent?.eventParticipantIds.length > 0 ? (
-                    <table className="min-w-full bg-white dark:bg-dark-gray-1">
-                      <thead>
-                        <tr className="w-full border-b text-gray-600 dark:text-light-gray uppercase text-xs leading-normal">
-                          <th className="py-3 text-left">Participant ID</th>
-                          <th className="py-3 text-left">User</th>
-                          <th className="py-3 text-center">Status</th>
-                          <th className="py-3 text-center">Join Date</th>
-                          <th className="py-3 text-center md:max-w-[80px]">Remove</th>
-                        </tr>
-                      </thead>
-                      {
-                        <tbody className="text-gray-600 dark:text-gray-200 text-sm font-light">
-                          {singleEvent?.eventParticipantIds.map((participant) => (
-                            <tr
-                              key={participant._id}
-                              // onClick={() => handleNavigateSingleEvent(participant._id)}
-                              className="border-b border-gray-200 dark:border-gray-600 cursor-pointer"
+                    <div className="min-w-full bg-white dark:bg-dark-gray-1">
+                      {/* Header Row */}
+                      <div className="w-full border-b text-gray-600 dark:text-light-gray uppercase text-xs leading-normal flex">
+                        <div className="py-3 text-left flex-[2]">Participant ID</div>
+                        <div className="py-3 text-left flex-[2]">User</div>
+                        <div className="py-3 text-center flex-[1]">Status</div>
+                        <div className="py-3 text-center flex-[1]">Join Date</div>
+                      </div>
+
+                      {/* Data Rows */}
+                      <div className="text-gray-600 dark:text-gray-200 text-sm font-light w-full">
+                        {singleEvent?.eventParticipantIds.map((participant) => (
+                          <ul
+                            key={participant._id}
+                            className="border-b border-gray-200 dark:border-gray-600 flex gap-2"
+                          >
+                            {/* Participant ID */}
+                            <li
+                              className="text-left flex-[2] whitespace-nowrap overflow-x-scroll scrollbar-hide py-3"
+                              data-label="Participant ID"
                             >
-                              <td
-                                className="text-left whitespace-nowrap md:max-w-[130px] overflow-ellipsis overflow-hidden"
-                                data-label="Participant ID"
-                              >
-                                {participant._id}
-                              </td>
-                              <td
-                                onClick={() =>
-                                  navigate(
-                                    `/admin-panel?tab=users&identifier=${participant.userId._id}`
-                                  )
-                                }
-                                className="text-center whitespace-nowrap flex gap-1 items-center min-w-[180px]"
-                                data-label="User"
-                              >
+                              {participant._id}
+                            </li>
+                            {/* User */}
+                            <li
+                              onClick={() =>
+                                navigate(
+                                  `/admin-panel?tab=users&identifier=${participant.userId._id}`
+                                )
+                              }
+                              className="text-center flex-[2] whitespace-nowrap overflow-x-scroll scrollbar-hide py-3"
+                              data-label="User"
+                            >
+                              <div className="flex gap-1 items-center w-full cursor-pointer">
                                 <UserAvatar
                                   user={participant.userId}
                                   size="h-6 w-6"
                                   backgroundActive={true}
                                 />
-                                <span className="text-xs">{participant.userId.fullName}</span>
-                              </td>
-                              <td
-                                className={`whitespace-nowrap ${
-                                  participant.isPending
-                                    ? "text-warning"
-                                    : participant.isApproved && !participant.isPending
-                                      ? "text-primary-green"
-                                      : !participant.isApproved && !participant.isPending
-                                        ? "text-danger"
-                                        : participant.hasJoined === "joined"
-                                          ? "text-primary-green"
-                                          : "text-danger"
-                                }`}
-                                data-label="Participant Status"
-                              >
-                                {participant.isPending
-                                  ? "Pending"
+                                <span className="text-xs text-left overflow-x-scroll scrollbar-hide whitespace-nowrap flex-1">
+                                  {participant.userId.fullName}
+                                </span>
+                              </div>
+                            </li>
+                            {/* Status */}
+                            <li
+                              className={`text-center flex-[1] py-3 ${
+                                participant.isPending
+                                  ? "text-warning"
                                   : participant.isApproved && !participant.isPending
-                                    ? "Approved"
+                                    ? "text-primary-green"
                                     : !participant.isApproved && !participant.isPending
-                                      ? "Rejected"
+                                      ? "text-danger"
                                       : participant.hasJoined === "joined"
-                                        ? "Joined"
-                                        : "Not Joined"}
-                              </td>
-                              <td
-                                className="text-center min-w-[100px] whitespace-nowrap"
-                                data-label="Join Date"
-                              >
-                                {new Date(participant.createdAt).toLocaleDateString()}
-                              </td>
-
-                              <td
-                                className="flex text-center md:max-w-[80px] items-center whitespace-nowrap"
-                                data-label="Remove"
-                              >
-                                <IoClose className="text-danger w-6 h-6" />
-                              </td>
-                            </tr>
-                          ))}
-                        </tbody>
-                      }
-                    </table>
+                                        ? "text-primary-green"
+                                        : "text-danger"
+                              }`}
+                              data-label="Participant Status"
+                            >
+                              {participant.isPending
+                                ? "Pending"
+                                : participant.isApproved && !participant.isPending
+                                  ? "Approved"
+                                  : !participant.isApproved && !participant.isPending
+                                    ? "Rejected"
+                                    : participant.hasJoined === "joined"
+                                      ? "Joined"
+                                      : "Not Joined"}
+                            </li>
+                            {/* Join Date */}
+                            <li
+                              className="text-center flex-[1] py-3 overflow-x-scroll scrollbar-hide"
+                              data-label="Join Date"
+                            >
+                              {new Date(participant.createdAt).toLocaleDateString()}
+                            </li>
+                          </ul>
+                        ))}
+                      </div>
+                    </div>
                   ) : (
                     <div className="text-gray-600 dark:text-light-gray">No Participant yet</div>
                   )}
@@ -326,12 +323,12 @@ const SingleEventPanel = ({ eventId, setIdentifier }) => {
           </div>
         )}
       </div>
-      {isModalOpen && (
+      {isSettingsModalOpen && (
         <div className="absolute z-50 top-14 right-8 border border-gray-1 dark:border-gray-1 overflow-hidden rounded-lg">
           <div ref={modalRef} className="bg-white dark:bg-gray-1 shadow-lg w-[120px] md:w-[200px]">
             <div className="flex flex-col justify-between">
               <button
-                onClick={openDeleteModal}
+                onClick={openDeleteEventModal}
                 className="text-danger hover:text-danger/50 border-b dark:border-gray-2 hover:bg-light-gray-2 w-full py-2"
               >
                 Delete Event
@@ -343,7 +340,7 @@ const SingleEventPanel = ({ eventId, setIdentifier }) => {
                 {singleEvent?.isActive ? "Suspend Event" : "Unsuspend Event"}
               </button>
               <button
-                onClick={() => setIsModalOpen(false)}
+                onClick={() => setIsSettingsModalOpen(false)}
                 className=" text-primary-green hover:text-primary-green/50 hover:bg-light-gray-2 w-full py-2"
               >
                 Cancel
@@ -353,9 +350,9 @@ const SingleEventPanel = ({ eventId, setIdentifier }) => {
         </div>
       )}
       {/* Delete Modal */}
-      {isDeleteModalOpen && (
+      {isDeleteEventModalOpen && (
         <DeleteModal
-          onClose={closeDeleteModal}
+          onClose={closeDeleteEventModal}
           onDelete={handleDeleteEvent}
           title={`Delete Event`}
           description={`Are you sure you want to delete this event?`}

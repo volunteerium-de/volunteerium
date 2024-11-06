@@ -1,9 +1,13 @@
 import React from "react"
-import useAdminCall from "../../../../hooks/useAdminCall"
 import { ImSpinner9 } from "react-icons/im"
+import { useNavigate } from "react-router-dom"
 
-const UsersTable = ({ data }) => {
-  const { loading } = useAdminCall()
+const UsersTable = ({ data, loading }) => {
+  const navigate = useNavigate()
+
+  const handleNavigateSingleUser = (userId) => {
+    navigate(`?tab=eusers&identifier=${userId}`)
+  }
 
   return (
     <>

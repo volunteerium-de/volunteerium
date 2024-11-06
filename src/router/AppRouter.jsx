@@ -122,7 +122,7 @@ export default AppRouter
 
 export const ProfileRedirect = () => {
   const { userId } = useParams()
-  if (userId === import.meta.env.ADMIN_ID) {
+  if (String(userId) === String(import.meta.env.VITE_ADMIN_ID)) {
     return <Navigate to="/" />
   } else {
     return <Profile />

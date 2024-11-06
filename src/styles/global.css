@@ -1,5 +1,9 @@
 /* Only Custom */
 
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
 /* datepicker custom styles */
 .react-datepicker {
   font-family: "Arial", sans-serif;
@@ -44,16 +48,6 @@ td {
   text-align: left;
 }
 
-/* Set width and overflow for specific columns */
-td[data-label="Event ID"],
-td[data-label="Event Title"],
-td[data-label="Created At"] {
-  max-width: 150px; /* Set max width to limit how wide these columns can grow */
-  overflow: hidden; /* Hide overflow */
-  text-overflow: ellipsis; /* Show ellipsis for overflowed text */
-  white-space: nowrap; /* Prevent text from wrapping */
-}
-
 /* Responsive Design for Smaller Screens (less than 768px) */
 @media (max-width: 768px) {
   /* Hide the table headers on small screens */
@@ -71,12 +65,16 @@ td[data-label="Created At"] {
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Shadow for depth */
   }
 
+  tr {
+    padding: 1rem;
+  }
+
   td {
     display: flex; /* Use flexbox for responsive display */
     flex-direction: row;
     justify-content: start; /* Space out content */
-    gap: 1rem; /* Space between elements */
-    padding: 0.75rem; /* Adjust padding for smaller screens */
+    gap: 0.5rem; /* Space between elements */
+    padding: 0.3rem; /* Adjust padding for smaller screens */
     position: relative; /* Keep relative positioning for layout */
     overflow: hidden; /* Hide overflow */
     text-overflow: ellipsis; /* Show ellipsis for overflowed text */
@@ -95,9 +93,8 @@ td[data-label="Created At"] {
     flex-basis: 100%; /* Make label take full width */
   }
 }
-
-/* Responsive Design for Mid-range Screens (768px to 1300px) */
-@media (min-width: 768px) and (max-width: 1300px) {
+/* Responsive Design for Mid-range Screens (768px to 1440px) */
+@media (min-width: 768px) and (max-width: 1440px) {
   /* Hide the table headers on medium screens */
   thead {
     display: none; /* Hide the header */
@@ -111,11 +108,15 @@ td[data-label="Created At"] {
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Shadow for depth */
   }
 
+  tr {
+    padding: 0.5rem;
+  }
+
   td {
     display: flex; /* Use flex for td elements */
     flex-direction: column; /* Stack elements vertically */
-    padding: 0.75rem; /* Maintain padding */
     position: relative; /* Relative positioning for layout */
+    padding: 0.2rem;
     overflow: hidden; /* Hide overflow */
     text-overflow: ellipsis; /* Show ellipsis for overflowed text */
     white-space: nowrap; /* Prevent text from wrapping */
@@ -124,29 +125,21 @@ td[data-label="Created At"] {
   /* Ensure that Event ID takes the full width */
   td[data-label="Event ID"] {
     flex: 1 1 100%; /* Event ID should take full width */
+    flex-direction: row; /* Align content horizontally */
+    justify-content: space-between; /* Space out the content */
+    width: 100% !important;
   }
 
   /* Ensure that Event Status and Completion Status are side by side */
   td[data-label="Event Status"],
-  td[data-label="Completion Status"] {
-    display: flex; /* Use flex to align them side by side */
-    justify-content: space-between; /* Space out the values */
-    flex: 1 1 48%; /* Give them equal width */
-  }
-
-  /* Ensure Event Creator and Event Title are side by side */
+  td[data-label="Completion Status"],
   td[data-label="Event Creator"],
-  td[data-label="Event Title"] {
-    display: flex; /* Align them side by side */
-    justify-content: space-between; /* Space out the content */
-    flex: 1 1 48%; /* Give them equal width */
-  }
-
-  /* Ensure Created At and Attendants are side by side */
+  td[data-label="Event Title"],
   td[data-label="Created At"],
   td[data-label="Attendants"] {
-    display: flex; /* Align them side by side */
-    justify-content: space-between; /* Space out the content */
+    display: flex; /* Use flex to align them side by side */
+    flex-direction: row; /* Align content horizontally */
+    justify-content: space-between; /* Space out the values */
     flex: 1 1 48%; /* Give them equal width */
   }
 

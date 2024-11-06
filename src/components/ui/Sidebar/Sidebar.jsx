@@ -50,33 +50,30 @@ const Sidebar = ({ items, activeTab, onTabChange, onEditAvatar, contacts = [], r
           </p>
         </div>
         <div className="relative my-[30px] ">
-          <ul className="text-gray-2 dark:bg-dark-gray- text-[1.125rem] font-medium text-center ">
+          <ul className="text-gray-2 dark:bg-dark-gray- text-[1rem] font-medium text-center ">
             {items.map((item) => (
               <li
                 key={item.key}
-                className={`${getMenuClassName(item)} text-center dark:bg-dark-gray-1 dark:text-white`}
+                className={`${getMenuClassName(item)} text-left dark:bg-dark-gray-1 dark:text-white`}
                 onClick={() => onTabChange(item.key)}
               >
+                {item.icon}
                 <Link
                   to={item.label}
                   className={`flex-1 sm:block hidden ${item.key === "feedback-contacts" && "ellipsis me-4 lg:me-10"}`}
                 >
                   {item.label}
                 </Link>
-
                 {item.key === "feedback-contacts" && contacts.length > 0 && (
-                  <span className="bg-primary-green text-white rounded-full text-sm text-center font-bold absolute right-4 top-2 sm:flex h-5 w-5 sm:h-8 sm:w-8  items-center justify-center sm:me-3">
+                  <span className="bg-primary-green text-white rounded-full text-sm text-center font-bold absolute right-4 top-2 sm:flex h-5 w-5 sm:h-7 sm:w-7  items-center justify-center sm:me-3">
                     {contacts.length}
                   </span>
                 )}
                 {item.key === "reports" && reports.length > 0 && (
-                  <span className="bg-primary-green text-white rounded-full text-sm text-center font-bold absolute right-4 top-2 sm:flex h-5 w-5 sm:h-8 sm:w-8  items-center justify-center sm:me-3">
+                  <span className="bg-primary-green text-white rounded-full text-sm text-center font-bold absolute right-4 top-2 sm:flex h-5 w-5 sm:h-7 sm:w-7  items-center justify-center sm:me-3">
                     {reports.length}
                   </span>
                 )}
-                {item.icon}
-                <Link className=" flex-1 sm:block hidden">{item.label}</Link>
-
                 {activeTab === item.key && (
                   <span className="sm:w-[16px] w-[8px] sm:h-[50px] h-[50px] bg-dark-green dark:bg-primary-green absolute right-[-0px] top-0"></span>
                 )}
