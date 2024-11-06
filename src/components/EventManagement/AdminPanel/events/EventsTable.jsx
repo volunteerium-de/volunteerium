@@ -34,55 +34,55 @@ const EventsTable = ({ data, loading }) => {
             <tbody className="tbody text-gray-600 dark:text-gray-200 text-sm font-light">
               {data.map((event) => (
                 <tr
-                  key={event._id}
-                  onClick={() => handleNavigateSingleEvent(event._id)}
+                  key={event?._id}
+                  onClick={() => handleNavigateSingleEvent(event?._id)}
                   className="border-b border-gray-200 dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer"
                 >
                   <td
                     className="td text-left whitespace-nowrap 2xl:max-w-[140px] overflow-x-scroll scrollbar-hide"
                     data-label="Event ID"
                   >
-                    {event._id}
+                    {event?._id}
                   </td>
                   <td
-                    className={`td text-center whitespace-nowrap ${event.isActive ? "text-primary-green" : "text-danger"}`}
+                    className={`td text-center whitespace-nowrap ${event?.isActive ? "text-primary-green" : "text-danger"}`}
                     data-label="Event Status"
                   >
-                    {event.isActive ? "Active" : "Suspended"}
+                    {event?.isActive ? "Active" : "Suspended"}
                   </td>
                   <td
-                    className={`td text-center whitespace-nowrap ${event.isDone ? "text-primary-green" : "text-warning"}`}
+                    className={`td text-center whitespace-nowrap ${event?.isDone ? "text-primary-green" : "text-warning"}`}
                     data-label="Completion Status"
                   >
-                    {event.isDone ? "Completed" : "Waiting"}
+                    {event?.isDone ? "Completed" : "Waiting"}
                   </td>
                   <td
                     className="td text-left whitespace-nowrap overflow-ellipsis overflow-hidden"
                     data-label="Event Title"
                   >
-                    {event.title}
+                    {event?.title}
                   </td>
                   <td
                     className="td text-left 2xl:w-[100px] whitespace-nowrap"
                     data-label="Event Creator"
                   >
-                    {event.createdBy.fullName || event.createdBy.organizationName}
+                    {event?.createdBy?.fullName || event?.createdBy?.organizationName}
                   </td>
                   <td
                     className="td text-center whitespace-nowrap flex justify-center items-center"
                     data-label="Attendants"
                   >
                     <AttendantsAvatars
-                      participants={event.eventParticipantIds}
-                      totalParticipants={event.eventParticipantIds.length}
-                      maxParticipant={event.maxParticipant}
+                      participants={event?.eventParticipantIds}
+                      totalParticipants={event?.eventParticipantIds.length}
+                      maxParticipant={event?.maxParticipant}
                       avatarCount={4}
                       gap={1}
                       showAll={true}
                     />
                   </td>
                   <td className="td text-center whitespace-nowrap" data-label="Created At">
-                    {new Date(event.createdAt).toLocaleDateString()}
+                    {new Date(event?.createdAt).toLocaleDateString()}
                   </td>
                 </tr>
               ))}

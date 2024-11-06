@@ -83,7 +83,7 @@ const SingleEventPanel = ({ eventId, setIdentifier }) => {
   }, [])
 
   return (
-    <div className="relative">
+    <div className="relative ">
       <button
         onClick={handleNavigateBack}
         className="absolute -top-8 left-0 md:-left-5 flex items-center gap-1 text-primary-green dark:text-white"
@@ -99,15 +99,17 @@ const SingleEventPanel = ({ eventId, setIdentifier }) => {
         ) : (
           <div className="my-8 md:my-4 space-y-2 h-max">
             <div className="flex justify-between items-center p-4 bg-white dark:bg-dark-gray-1 rounded-lg ">
-              <div className="text-[1rem] flex gap-1 md:gap-2 items-center text-dark-gray-1">
-                <span className="text-primary-green dark:text-white font-semibold">Event ID:</span>{" "}
+              <div className="text-[1.125rem] flex gap-1 md:gap-2 items-center text-dark-gray-1">
+                <span className="text-primary-green dark:text-white font-semibold">Event ID:</span>
                 <span className="w-[100px] md:w-auto overflow-ellipsis overflow-hidden">
                   {eventId}
                 </span>
-                <FaExternalLinkAlt
-                  onClick={() => navigate(`/events/${singleEvent._id}`)}
-                  className="hover:text-gray-1 cursor-pointer"
-                />
+                <span>
+                  <FaExternalLinkAlt
+                    onClick={() => navigate(`/events/${singleEvent?._id}`)}
+                    className="hover:text-gray-1 cursor-pointer"
+                  />
+                </span>
               </div>
               <div className="flex gap-1 md:gap-2 items-center">
                 {singleEvent?.isActive ? (
@@ -126,7 +128,7 @@ const SingleEventPanel = ({ eventId, setIdentifier }) => {
             </div>
             <div className="flex flex-col xl:flex-row gap-2 h-full">
               <div className="bg-white dark:bg-dark-gray-1 rounded-lg w-full xl:w-1/2 p-4">
-                <h1 className="text-xl font-semibold text-primary-green dark:text-white">
+                <h1 className="text-[1.125rem] font-semibold text-primary-green dark:text-white">
                   Event Details
                 </h1>
                 <ul className="space-y-2 text-dark-gray-1 dark:text-light-gray-2">
@@ -157,7 +159,8 @@ const SingleEventPanel = ({ eventId, setIdentifier }) => {
                         backgroundActive={true}
                       />
                       <span>
-                        {singleEvent?.createdBy.fullName || singleEvent?.createdBy.organizationName}
+                        {singleEvent?.createdBy?.fullName ||
+                          singleEvent?.createdBy?.organizationName}
                       </span>
                     </Link>
                   </li>
@@ -204,7 +207,10 @@ const SingleEventPanel = ({ eventId, setIdentifier }) => {
                   </li>
                   <li className="flex gap-1 flex-col">
                     <span className="font-semibold">Event Location:</span>
-                    <span>{`${singleEvent?.addressId?.streetName} ${singleEvent?.addressId?.streetNumber} ${singleEvent?.addressId?.zipCode}, ${singleEvent?.addressId?.city} ${singleEvent?.addressId?.state} ${singleEvent?.addressId?.country}`}</span>
+                    <span>
+                      {!singleEvent?.isOnline &&
+                        `${singleEvent?.addressId?.streetName} ${singleEvent?.addressId?.streetNumber} ${singleEvent?.addressId?.zipCode}, ${singleEvent?.addressId?.city} ${singleEvent?.addressId?.state} ${singleEvent?.addressId?.country}`}
+                    </span>
                   </li>
                   <li className="flex gap-1 flex-col">
                     <span className="font-semibold">Documents: </span>
@@ -229,9 +235,18 @@ const SingleEventPanel = ({ eventId, setIdentifier }) => {
                 </ul>
               </div>
               <div className="bg-white dark:bg-dark-gray-1 rounded-lg w-full xl:w-1/2 p-4">
-                <h1 className="text-xl font-semibold text-primary-green dark:text-white">
-                  Event Participants
-                </h1>
+                <div className="flex justify-between text-[1.125rem] font-semibold text-primary-green dark:text-white">
+                  <h1>Event Participants</h1>
+                  <p className="px-2 text-lg">
+                    (
+                    {
+                      singleEvent?.eventParticipantIds.filter(
+                        (participant) => participant.isApproved === true
+                      ).length
+                    }
+                    /{singleEvent?.maxParticipant})
+                  </p>
+                </div>
                 <div className="h-auto mt-5">
                   {singleEvent?.eventParticipantIds.length > 0 ? (
                     <div className="min-w-full bg-white dark:bg-dark-gray-1">

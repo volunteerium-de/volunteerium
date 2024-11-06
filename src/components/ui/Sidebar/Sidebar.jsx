@@ -65,7 +65,7 @@ const Sidebar = ({ items, activeTab, onTabChange, onEditAvatar, contacts = [], r
                   {item.label}
                 </Link>
                 {item.key === "feedback-contacts" && contacts.length > 0 && (
-                  <span className="bg-primary-green text-white rounded-full text-sm text-center font-bold absolute right-4 top-2 sm:flex h-5 w-5 sm:h-7 sm:w-7  items-center justify-center sm:me-3">
+                  <span className="bg-primary-green text-white rounded-full text-sm text-center font-bold absolute right-4 top-3 sm:flex h-5 w-5 sm:h-7 sm:w-7 items-center justify-center sm:me-3">
                     {contacts.length}
                   </span>
                 )}

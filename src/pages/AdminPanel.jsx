@@ -107,7 +107,7 @@ const EventManagement = () => {
           contacts={contacts}
           reports={reports}
         />
-        <div className="flex-1 my-3 me-3 p-[10px] md:p-[30px] bg-light-gray dark:bg-dark-gray-3 rounded-lg">
+        <div className="flex-1 my-3 me-3 p-[10px] max-w-[calc(100vw-85px)] sm:max-w-[calc(100vw-280px)] w-auto md:p-[30px] bg-light-gray dark:bg-dark-gray-3 rounded-lg">
           {renderContent()}
         </div>
       </div>
