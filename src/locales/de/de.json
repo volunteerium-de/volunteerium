@@ -3,12 +3,10 @@
     "en": "Englisch",
     "de": "Deutsch"
   },
-
   "hero": {
     "h2": "Werden Sie Teil von etwas",
     "span": "Größerem"
   },
-
   "searchbar": {
     "event": {
       "label": "Veranstaltung",
@@ -23,12 +21,17 @@
       "placeholder": "Kategorie wählen"
     }
   },
-
   "upcomingOpportunities": {
     "title": "Bevorstehende Veranstaltungen",
     "discoverMore": "Mehr entdecken",
     "loadingEvents": "Kommende Veranstaltungen werden geladen...",
     "noEvents": "Keine kommenden Veranstaltungen!"
+  },
+
+  "onlineOpportunities": {
+    "title": "Online Veranstaltungen",
+    "loadingEvents": "Lade bevorstehende Veranstaltungen...",
+    "noEvents": "Keine bevorstehenden Veranstaltungen!"
   },
 
   "getToKnowUs": {
@@ -38,13 +41,11 @@
     "description3": "Ob es darum geht, lokale Gemeinschaften zu unterstützen, soziale Anliegen zu unterstützen oder globale Auswirkungen zu erzielen, wir glauben, dass jeder etwas bewirken kann.",
     "imageAlt": "Lernen Sie uns kennen"
   },
-
   "subscribe": {
     "h3": "Abonnieren",
     "p": " Werden Sie Teil unserer Freiwilligengemeinschaft, indem Sie unseren Newsletter abonnieren. Bleiben Sie über bevorstehende Freiwilligenveranstaltungen und besondere Projekte auf dem Laufenden",
     "emailPH": "Geben Sie Ihre E-Mail-Adresse ein"
   },
-
   "footer": {
     "information": "Informationen",
     "company": "Unternehmen",
@@ -58,7 +59,6 @@
     "terms": "Zustellungsbedingungen",
     "p": " Volunteerium | Alle Rechte vorbehalten"
   },
-
   "register": {
     "h1": "Erstellen Sie Ihr Konto",
     "accountQuestion": "Sie erstellen ein Konto als?",
@@ -72,7 +72,6 @@
     "createAccount": "Erstellen Sie Ihr Konto",
     "creatingAs": "Sie erstellen ein Konto als?"
   },
-
   "registerForm": {
     "yup1": "Benutzertyp ist erforderlich",
     "yup2": "Muss mindestens 3 Zeichen lang sein",
@@ -108,7 +107,6 @@
     "pPrivacy": "und bestätigen Sie, dass Sie unsere gelesen haben",
     "privacy": "Datenschutzerklärung"
   },
-
   "registerSuccess": {
     "emailVerifyAlt": "E-Mail-Bestätigung",
     "h1": "Bestätigen Sie Ihre E-Mail-Adresse",
@@ -116,7 +114,6 @@
     "p2": "Bitte überprüfen Sie Ihren Posteingang und klicken Sie auf den Link, um Ihre E-Mail-Adresse zu bestätigen.",
     "p3": "Haben Sie die E-Mail nicht erhalten? Überprüfen Sie unbedingt Ihren Spam-Ordner oder senden Sie die E-Mail erneut."
   },
-
   "login": {
     "p1": "Verbindung an die",
     "p2": "Gemeinschaft",
@@ -127,7 +124,6 @@
     "p7": "Wir freuen uns, Sie bei uns zu haben!",
     "signIn": "Anmelden"
   },
-
   "loginForm": {
     "yup1": "Ungültige E-Mail-Adresse",
     "yup2": "E-Mail ist ein Pflichtfeld",
@@ -150,7 +146,6 @@
     "or": "oder",
     "contGoogle": "Weiter mit Google"
   },
-
   "profile": {
     "memberSince": "Mitglied seit",
     "edit": "Bearbeiten",
@@ -173,7 +168,6 @@
     "logoAlt": "Logo der Organisation",
     "eventImageAlt": "Veranstaltungsbild"
   },
-
   "userSettings": {
     "avatarAlt": "Avatar des Benutzers",
     "edit": "Bearbeiten",
@@ -182,7 +176,6 @@
     "security": "Sicherheit",
     "visibility": "Sichtweite"
   },
-
   "addNewDoc": {
     "newDocument": "Neues Dokument",
     "documentTitle": "Dokumenttitel",
@@ -191,7 +184,6 @@
     "cancel": "Stornieren",
     "save": "Speichern"
   },
-
   "avatarEdit": {
     "networkError": "Network response war nicht ok",
     "photoAlert": "Foto erfolgreich hochgeladen!",
@@ -203,16 +195,16 @@
     "addPhoto": "Foto hinzufügen",
     "delete": "Löschen"
   },
-
   "delModal": {
     "account-title": "Konto löschen",
     "account-desc": "Sind Sie sicher, dass Sie Ihr Konto löschen möchten? Diese Aktion kann nicht rückgängig gemacht werden.",
     "document-title": "Dokument löschen",
     "document-desc": "Sind Sie sicher, dass Sie Ihr Dokument löschen möchten? Diese Aktion kann nicht rückgängig gemacht werden.",
+    "conversation-title": "Konversation löschen",
+    "conversation-desc": "Sind Sie sicher, dass Sie diese Konversation löschen möchten?",
     "cancelButton": "Stornieren",
     "delButton": "Löschen"
   },
-
   "indvSettings": {
     "success": "Daten erfolgreich gespeichert!",
     "catchError": "Fehler beim Speichern der Daten: ",
@@ -225,8 +217,14 @@
     "label2": "Land",
     "label2PH": "Land",
     "label3": "Geschlecht",
+    "label3PH": "Geschlecht hinzufügen",
+    "male": "Männlich",
+    "female": "Weiblich",
+    "notSay": "Bevorzuge, es nicht zu sagen",
     "label4": "Altersgruppe",
-    "label5": "Sprachen",
+    "label4PH": "Altersgruppe hinzufügen",
+    "label5": "Interessen",
+    "label5PH": "Interessen hinzufügen",
     "label6": "Biografie",
     "label6PH": "Schreiben Sie hier Ihre Biografie...",
     "label7": "Dateien",
@@ -235,7 +233,6 @@
     "save": "Speichern",
     "reset": "Zurücksetzen"
   },
-
   "myDocs": {
     "alertSuccess": "Änderungen erfolgreich gespeichert!",
     "alertError": "Fehler beim Speichern der Dokumente: ",
@@ -247,7 +244,6 @@
     "cancel": "Abbrechen",
     "saveChanges": "Änderungen speichern"
   },
-
   "orgSettings": {
     "handleErrorMsg": "Bitte füllen Sie alle Felder aus.",
     "successMsg": "Daten erfolgreich gespeichert!",
@@ -276,7 +272,6 @@
     "edit": "Bearbeiten",
     "save": "Speichern"
   },
-
   "pswModal": {
     "yup1": "Das aktuelle Passwort ist erforderlich",
     "yup2": "Ein neues Passwort ist erforderlich",
@@ -290,11 +285,9 @@
     "cancel": "Abbrechen",
     "saveChng": "Änderungen speichern"
   },
-
   "profileSettings": {
     "p": "Ungültiger Benutzertyp"
   },
-
   "secSett": {
     "feedbackMsg1": "Ihr Konto wurde erfolgreich gelöscht.",
     "feedbackMsg2": "Beim Löschen Ihres Kontos ist ein Fehler aufgetreten.",
@@ -311,10 +304,8 @@
     "delAccount": "Konto löschen",
     "delAlert1": "Möchten Sie Ihr Konto löschen? Das Löschen Ihres Kontos entfernt alle damit verbundenen Inhalte.",
     "delAlert2": "Möchten Sie Ihre Organisation löschen? Das Löschen Ihrer Organisation entfernt alle damit verbundenen Inhalte.",
-    "userRes1": "Ich möchte mein Konto löschen",
-    "userRes2": "Ich möchte meine Organisation löschen"
+    "userRes": "Ich möchte mein Konto löschen"
   },
-
   "updateDoc": {
     "error": "Fehler beim Aktualisieren der Datei.",
     "h2": "Dokument aktualisieren",
@@ -324,7 +315,6 @@
     "cancel": "Abbrechen",
     "update": "Aktualisieren"
   },
-
   "msgMenu": {
     "h3": "Nachrichten",
     "link": "Alle anzeigen",
@@ -332,12 +322,10 @@
     "announce": "Ankündigung",
     "noMsg": "Keine Nachrichten"
   },
-
   "notifMenu": {
     "notif": "Benachrichtigungen",
     "noNotif": "Keine Benachrichtigungen"
   },
-
   "userMenu": {
     "user": "Benutzer",
     "profile": "Profil",
@@ -349,7 +337,6 @@
     "light": "Hell",
     "dark": "Dunkel"
   },
-
   "aboutUs": {
     "aboutUs": "Über uns",
     "p1": "     Wir bringen Menschen zusammen, um zu helfen, zu unterstützen und starke Gemeinschaften aufzubauen, damit sie einen positiven Einfluss schaffen und ein erfülltes Leben führen können.",
@@ -380,7 +367,6 @@
     "eventCardP1": "500+",
     "eventCardP2": "Veranstaltungen"
   },
-
   "contactUs": {
     "p1": "Ihre Rückmeldung",
     "p2": "ist uns wichtig!",
@@ -393,7 +379,6 @@
     "p9": "Vielen Dank, dass Sie bei uns sind!",
     "h1": "Kontaktieren Sie uns"
   },
-
   "contactUsForm": {
     "name": "Name",
     "namePH": "Geben Sie Ihren Namen ein",
@@ -406,7 +391,6 @@
     "messageMaxLength": "Maximal 1000 Zeichen",
     "submit": "Absenden"
   },
-
   "faqPage": {
     "q1": "Wie kann ich freiwillig helfen?",
     "a1": "Freiwilligenarbeit ist einfach! Melden Sie sich einfach auf unserer Website an, durchsuchen Sie die verfügbaren Möglichkeiten und wählen Sie die aus, die am besten zu Ihnen passt.",
@@ -424,13 +408,38 @@
     "p1": "Finden Sie Antworten auf häufig gestellte Fragen zu Volunteerium"
   },
 
+  "eventsPage": {
+    "sec1": "Verfügbarkeit",
+    "from": "von",
+    "to": "bis",
+    "check": "Veranstaltungen prüfen",
+    "sec2": "Kategorien",
+    "sec3": "Sprachen",
+    "new": "Neueste",
+    "old": "Älteste",
+    "result": "Ergebnisse für Ihre Suche",
+    "notFound": "Keine Veranstaltungen gefunden",
+    "more": "Mehr",
+    "event": "Veranstaltung",
+    "events": "Veranstaltungen",
+    "found": "Gefunden",
+    "filter": "Filter",
+    "loading": "Laden",
+    "people": "Personen",
+    "match": "Keine Veranstaltungen gefunden, die Ihren Filtern entsprechen.",
+    "sort": "Sortieren nach",
+    "search": "Suche",
+    "location": "Standort",
+    "category": "Kategorie",
+    "language": "Sprache"
+  },
+
   "googleAuthFall": {
     "h1": "Authentifizierung fehlgeschlagen.",
     "h2": "Bitte versuchen Sie es erneut oder kontaktieren Sie den Support, wenn das Problem weiterhin besteht.",
     "p1": "Weiterleitung in",
     "p2": "Sekunden"
   },
-
   "googleAS": {
     "successMsg": "Erfolg, Sie haben sich erfolgreich mit Google angemeldet",
     "h1": "Erfolgreich mit Google authentifiziert",
@@ -442,7 +451,6 @@
     "p": "Seite nicht gefunden",
     "link": "Zurück zur Startseite"
   },
-
   "setupIndv": {
     "successMsg": "Bitte geben Sie Ihre Profildaten ein, um fortzufahren",
     "share": "Teilen Sie Ihr Alter und Geschlecht",
@@ -502,11 +510,23 @@
   "sidebar": {
     "welcome": "Wilkommen"
   },
+  "sidebar": {
+    "welcome": "Wilkommen"
+  },
 
   "emailVerify": {
     "h1": "Ihre E-Mail wird überprüft..."
   },
+  "emailVerify": {
+    "h1": "Ihre E-Mail wird überprüft..."
+  },
 
+  "sidebar": {
+    "welcome": "Wilkommen"
+  },
+  "emailVerify": {
+    "h1": "Ihre E-Mail wird überprüft..."
+  },
   "verifySuccess": {
     "h1": "Sie sind verifiziert! 🎉",
     "p1": "Wir freuen uns, Sie bei uns zu haben!",
@@ -515,7 +535,6 @@
     "p4": "Bevor wir beginnen, möchten wir ein bisschen mehr über Sie erfahren.",
     "link": "Lass uns anfangen!"
   },
-
   "privacyPolicy": {
     "h1": "Datenschutzrichtlinie",
     "p1": "Veröffentlichungsdatum:",
@@ -565,13 +584,11 @@
     "lang": "Sprache",
     "PH": "Veranstaltungssprachen hinzufügen"
   },
-
   "eventCardVer": {
     "imgAlt": "Veranstaltung",
     "people": "Personen",
     "more": "Mehr"
   },
-
   "eventDetails": {
     "backButton": "Zurück",
     "locationLabel": "Veranstaltungsort",
@@ -587,9 +604,7 @@
     "rejectedButton": "Abgelehnt",
     "completedButton": "Abgeschlossen",
     "maxReacedButton": "Volle Kapazität",
-    "manageButton": "Verwalten"
-  },
-
+    "manageButton": "Verwalten",
     "feedback": {
       "h2": "Danke für Ihre Teilnahme!",
       "p1": "Bitte teilen Sie Ihre Erfahrungen über",
@@ -598,7 +613,6 @@
       "submit": "Teilen Sie Ihr Feedback",
       "close": "Schließen"
     },
-
     "report": {
       "h2": "Veranstaltung melden",
       "p1": "Wenn Sie auf Probleme mit dieser Veranstaltung gestoßen sind, lassen Sie es uns bitte wissen. Ihr Bericht hilft uns, eine sichere und respektvolle Umgebung für alle zu erhalten.",
@@ -647,5 +661,37 @@
       "p12": "Falls Sie Fragen oder Bedenken bezüglich dieser Nutzungsbedingungen haben, kontaktieren Sie uns bitte unter:",
       "p13": "Volunteerium-Team",
       "p14": "E-Mail: info.volunteerium@gmail.com"
+  },
+
+  "eventMng": {
+    "addNew": "Neue Veranstaltung hinzufügen",
+    "eventName": "Veranstaltungsname",
+    "eventPhoto": "Veranstaltungsfoto",
+    "eventDate": "Datum*",
+    "from": "von*",
+    "to": "bis*",
+    "eventLocation": "Veranstaltungsort",
+    "virtual": "Virtuell",
+    "physical": "Physisch",
+    "strName": "Straßenname*",
+    "strNumbr": "Hausnummer*",
+    "city": "Stadt*",
+    "country": "Land*",
+    "code": "Postleitzahl*",
+    "cancel": "Abbrechen",
+    "next": "Weiter",
+    "category": "Kategorie*",
+    "choose": "Kategorie auswählen",
+    "participants": "Maximale Teilnehmer*",
+    "max": "Maximale Teilnehmerzahl auswählen",
+    "desc": "Beschreibung",
+    "addContact": "Möchten Sie einen Ansprechpartner hinzufügen?",
+    "name": "Ansprechpartnername*",
+    "email": "E-Mail des Ansprechpartners*",
+    "phone": "Telefon des Ansprechpartners*",
+    "yes": "Ja",
+    "no": "Nein",
+    "back": "Zurück",
+    "submit": "Absenden"
     }
   }

@@ -3,12 +3,10 @@
     "en": "English",
     "de": "German"
   },
-
   "hero": {
     "h2": "Become a part of something",
     "span": "bigger"
   },
-
   "searchbar": {
     "event": {
       "label": "Event",
@@ -23,10 +21,15 @@
       "placeholder": "Choose Category"
     }
   },
-
   "upcomingOpportunities": {
     "title": "Upcoming Events",
     "discoverMore": "Discover More",
+    "loadingEvents": "Loading Upcomming Events...",
+    "noEvents": "No Upcoming Events!"
+  },
+  
+  "onlineOpportunities": {
+    "title": "Online Events",
     "loadingEvents": "Loading Upcomming Events...",
     "noEvents": "No Upcoming Events!"
   },
@@ -38,13 +41,11 @@
     "description3": "Whether it's helping local communities, supporting social causes, or making a global impact, we believe that everyone can make a difference.",
     "imageAlt": "Get to know us"
   },
-
   "subscribe": {
     "h3": "Subscribe",
     "p": " Join our community of volunteers by subscribing to our newsletter. Stay informed about upcoming volunteer events, special projects.",
     "emailPH": "Enter your email"
   },
-
   "footer": {
     "information": "Information",
     "company": "Company",
@@ -58,7 +59,6 @@
     "terms": "Terms of Service",
     "p": " Volunteerium | All rights reserved"
   },
-
   "register": {
     "h1": "Create Your Account",
     "accountQuestion": "You’re creating an account as?",
@@ -72,7 +72,6 @@
     "createAccount": "Create Your Account",
     "creatingAs": "You’re creating an account as?"
   },
-
   "registerForm": {
     "yup1": "User type is required",
     "yup2": "Must be at least 3 characters",
@@ -108,7 +107,6 @@
     "pPrivacy": "and acknowledge you’ve read our",
     "privacy": "Privacy Policy"
   },
-
   "registerSuccess": {
     "emailVerifyAlt": "Email Verification",
     "h1": "Verify Your Email Address",
@@ -116,7 +114,6 @@
     "p2": "Please check your inbox and click the link to verify your email address.",
     "p3": "Didn’t receive the email? Be sure to check your spam folder or resend the email."
   },
-
   "login": {
     "p1": "Reconnect with",
     "p2": "Community",
@@ -127,7 +124,6 @@
     "p7": "We're glad to have you with us!",
     "signIn": "Sign In"
   },
-
   "loginForm": {
     "yup1": "Invalid email address",
     "yup2": "Email is a required field",
@@ -150,7 +146,6 @@
     "or": "or",
     "contGoogle": "Continue with Google"
   },
-
   "profile": {
     "memberSince": "Member since",
     "edit": "Edit",
@@ -173,7 +168,6 @@
     "logoAlt": "Organization logo",
     "eventImageAlt": "Event image"
   },
-
   "userSettings": {
     "avatarAlt": "User avatar",
     "edit": "Edit",
@@ -182,7 +176,6 @@
     "security": "Security",
     "visibility": "Visibility"
   },
-
   "addNewDoc": {
     "newDocument": "New Document",
     "documentTitle": "Document Title",
@@ -191,7 +184,6 @@
     "cancel": "Cancel",
     "save": "Save"
   },
-
   "avatarEdit": {
     "networkError": "Network response was not ok",
     "photoAlert": "Photo uploaded successfully!",
@@ -203,16 +195,16 @@
     "addPhoto": "Add Photo",
     "delete": "Delete"
   },
-
   "delModal": {
     "account-title": "Delete Account",
     "account-desc": "Are you sure you want to delete your account? This action cannot be undone.",
     "document-title": "Delete Document",
     "document-desc": "Are you sure you want to delete your document? This action cannot be undone.",
+    "conversation-title": "Delete Conversation",
+    "conversation-desc": "Are you sure you want to delete this conversation?",
     "cancelButton": "Cancel",
     "delButton": "Delete"
   },
-
   "indvSettings": {
     "success": "Data saved successfully!",
     "catchError": "Error saving data: ",
@@ -225,8 +217,14 @@
     "label2": "Country",
     "label2PH": "Country",
     "label3": "Gender",
+    "label3PH": "Add gender",
+    "male": "Male",
+    "female": "Female",
+    "notSay": "Prefer not to say",
     "label4": "Age Group",
-    "label5": "Languages",
+    "label4PH": "Add age group",
+    "label5": "Interests",
+    "label5PH": "Add interests",
     "label6": "Bio",
     "label6PH": "Write your bio here...",
     "label7": "Files",
@@ -235,7 +233,6 @@
     "save": "Save",
     "reset": "Reset"
   },
-
   "myDocs": {
     "alertSuccess": "Changes saved successfully!",
     "alertError": "Error saving documents: ",
@@ -247,7 +244,6 @@
     "cancel": "Cancel",
     "saveChanges": "Save Changes"
   },
-
   "orgSettings": {
     "handleErrorMsg": "Please fill in all fields.",
     "successMsg": "Data saved successfully!",
@@ -276,7 +272,6 @@
     "edit": "Edit",
     "save": "Save"
   },
-
   "pswModal": {
     "yup1": "Current password is required",
     "yup2": "New password is required",
@@ -290,11 +285,9 @@
     "cancel": "Cancel",
     "saveChng": "Save Changes"
   },
-
   "profileSettings": {
     "p": "Invalid user type"
   },
-
   "secSett": {
     "feedbackMsg1": "Your account has been deleted successfully.",
     "feedbackMsg2": "There was an error deleting your account.",
@@ -311,10 +304,8 @@
     "delAccount": "Delete Account",
     "delAlert1": "Would you like to delete your account? Deleting your account will remove all the content associated with it.",
     "delAlert2": "Would you like to delete your organization? Deleting your organization will remove all the content associated with it.",
-    "userRes1": "I want to delete my account",
-    "userRes2": "I want to delete my organization"
+    "userRes": "I want to delete my account"
   },
-
   "updateDoc": {
     "error": "Error updating file.",
     "h2": "Update Document",
@@ -324,7 +315,6 @@
     "cancel": "Cancel",
     "update": "Update"
   },
-
   "msgMenu": {
     "h3": "Messages",
     "link": "View All",
@@ -332,12 +322,10 @@
     "announce": "Announcement",
     "noMsg": "No Messages"
   },
-
   "notifMenu": {
     "notif": "Notifications",
     "noNotif": "No Notifications"
   },
-
   "userMenu": {
     "user": "User",
     "profile": "Profile",
@@ -349,7 +337,6 @@
     "light": "Light",
     "dark": "Dark"
   },
-
   "aboutUs": {
     "aboutUs": "About Us",
     "p1": "     We bring people together to volunteer, support, and build strong communities, so they can create a positive impact and lead fulfilling lives.",
@@ -380,7 +367,6 @@
     "eventCardP1": "500+",
     "eventCardP2": "Events"
   },
-
   "contactUs": {
     "p1": "Your Feedback",
     "p2": "Matters to Us!",
@@ -393,7 +379,6 @@
     "p9": "Thank you for being with us!",
     "h1": "Contact Us"
   },
-
   "contactUsForm": {
     "name": "Name",
     "namePH": "Enter your name",
@@ -406,7 +391,6 @@
     "messageMaxLength": "Max 1000 characters",
     "submit": "Submit"
   },
-
   "faqPage": {
     "q1": "How can I volunteer?",
     "a1": "Volunteering is easy! Just sign up on our website, explore the available opportunities, and pick the one that suits you best.",
@@ -424,25 +408,47 @@
     "p1": "Find answers to commonly asked questions about Volunteerium"
   },
 
+  "eventsPage": {
+    "sec1": "Availability",
+    "from": "from",
+    "to": "to",
+    "check": "Check Events",
+    "sec2": "Categories",
+    "sec3": "languages",
+    "new": "Newest",
+    "old": "Oldest",
+    "result": "Results for your search",
+    "notFound": "No Events Found",
+    "more": "More",
+    "event": "Event",
+    "events": "Events",
+    "found": "Found",
+    "filter": "Filters",
+    "loading": "Loading",
+    "people": "People",
+    "match": "No events found that match your filters",
+    "sort": "Sort by",
+    "search": "Search Term",
+    "location": "Location",
+    "category": "Category",
+    "language": "Language"
+  },
   "googleAuthFall": {
     "h1": "Authentication failed.",
     "h2": " Please try again or contact support if the problem persists.",
     "p1": "Redirecting in",
     "p2": "seconds"
   },
-
   "googleAS": {
     "successMsg": "You have successfully logged in with Google",
     "h1": " Successfully authenticated with Google",
     "p": "Redirecting..."
   },
-
   "notFound": {
     "imgAlt": "Not Found",
     "p": "Page Not Found",
     "link": "Back to Homepage"
   },
-
   "setupIndv": {
     "successMsg": "Please set up your profile details to proceed",
     "share": "Share Your Age and Gender",
@@ -465,7 +471,6 @@
     "skip": "Skip for now",
     "finish": "Finish"
   },
-
   "setupOrg": {
     "details": "Share Your Organization Details",
     "p": "This information is necessary for us to understand your organization and provide you with better services",
@@ -489,7 +494,6 @@
     "countryPH": "Enter Country",
     "finish": "Finish"
   },
-
   "profileCard": {
     "attendEvents": "Attended Events",
     "organizedEvents": "Organized Events",
@@ -498,15 +502,12 @@
     "infoAlt": "Organizator Avatar",
     "joined": "joined"
   },
-
   "sidebar": {
     "welcome": "Welcome"
   },
-
   "emailVerify": {
     "h1": "Verifying your email..."
   },
-
   "verifySuccess": {
     "h1": "you're verified! 🎉",
     "p1": "We're thrilled to have you with us!",
@@ -515,12 +516,10 @@
     "p4": " Before we start, we'd like to know a bit more about you.",
     "link": "Let's Start!"
   },
-
   "langSelect": {
     "lang": "Language",
     "PH": "Add event languages"
   },
-
   "privacyPolicy": {
     "h1": "Privacy Policy",
     "p1": "Published Date:",
@@ -565,13 +564,11 @@
     "p15": "Volunteerium Team",
     "p16": "Email: info.volunteerium@gmail.com"
   },
-
   "eventCardVer": {
     "imgAlt": "event",
     "people": "People",
     "more": "More"
   },
-
   "eventDetails": {
     "backButton": "Back",
     "locationLabel": "Event Location",
@@ -587,9 +584,7 @@
     "rejectedButton": "Rejected",
     "completedButton": "Completed",
     "maxReacedButton": "Full Capacity",
-    "manageButton": "Manage"
-  },
-
+    "manageButton": "Manage",
     "feedback": {
       "h2": "Thank you for participating!",
       "p1": "Please share your experience about",
@@ -598,7 +593,6 @@
       "submit": "Share your feedback",
       "close": "Close"
     },
-
     "report": {
       "h2": "Report Event",
       "p1": "If you have encountered any issues with this event, please let us know. Your report will help us maintain a safe and respectful environment for everyone.",
@@ -616,9 +610,41 @@
       "option8": "violence",
       "option9": "discrimination",
       "option10": "other"
-    },
+    }
+  },
+  "eventMng": {
+    "addNew": "Add New Event",
+    "eventName": "Event Name",
+    "eventPhoto": "Event Photo",
+    "eventDate": "Date*",
+    "from": "from*",
+    "to": "to*",
+    "eventLocation": "Location",
+    "virtual": "Virtual",
+    "physical": "Physical",
+    "strName": "Street Name*",
+    "strNumbr": "Street Number*",
+    "city": "City*",
+    "country": "Country*",
+    "code": "Zip Code*",
+    "cancel": "Cancel",
+    "next": "Next",
+    "category": "Category*",
+    "choose": "Choose a category ",
+    "participants": "Max Participants*",
+    "max": "Select maximum participants",
+    "desc": "Description",
+    "addContact": "Would you like to add a Contact Person?",
+    "name": "Contact Name*",
+    "email": "Contact Email*",
+    "phone": "Contact Phone*",
+    "yes": "yes",
+    "no": "no",
+    "back": "back",
+    "submit": "submit"
+  },
 
-    "termsOfService": {
+  "termsOfService": {
       "h1": "Terms of Service",
       "p1": "Published Date:",
       "p2": "[30.10.2024]",
@@ -648,5 +674,5 @@
       "p13": "Volunteerium Team",
       "p14": "Email: info.volunteerium@gmail.com"
     }
-  }
 
+}

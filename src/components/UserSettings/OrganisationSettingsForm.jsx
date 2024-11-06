@@ -125,7 +125,7 @@ const OrganisationSettingsForm = () => {
   }
   return (
     <div>
-      <div className="max-w-4xl mx-auto p-8 bg-light-gray dark:bg-dark-gray-3  rounded-lg shadow-md">
+      <div className="max-w-4xl mx-auto p-8 bg-light-gray dark:bg-dark-gray-3 rounded-lg shadow-md">
         <Formik
           initialValues={defaultUserDetails}
           validationSchema={OrganisationSchema}
@@ -178,7 +178,7 @@ const OrganisationSettingsForm = () => {
               {/* Files */}
               <div className="mx-auto">
                 <div className="flex justify-between">
-                  <p className="text-[1rem] dark:text-white ">
+                  <p className="text-[1rem] dark:text-white text-dark-gray-2">
                     {t(translations.orgSettings.files)}
                   </p>
                   <p

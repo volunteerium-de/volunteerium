@@ -5,6 +5,8 @@ import { FaCheck } from "react-icons/fa"
 import { HiDotsHorizontal } from "react-icons/hi"
 import { Link } from "react-router-dom"
 import { AddEventStep1Schema } from "../../../validators/NewEventValidator"
+import { useTranslation } from "react-i18next"
+import { translations } from "../../../locales/translations/"
 
 const getTomorrowDate = () => {
   const tomorrowDate = new Date()
@@ -14,6 +16,7 @@ const getTomorrowDate = () => {
 }
 
 const StepOne = ({ setStep, values, setFieldValue, onClose, step }) => {
+  const { t } = useTranslation()
   const [isOnlineLocal, setIsOnlineLocal] = useState(values.isOnline ?? true)
   const [isValidForNext, setIsValidForNext] = useState(false)
 
@@ -106,7 +109,9 @@ const StepOne = ({ setStep, values, setFieldValue, onClose, step }) => {
       <div className="max-w-6xl mx-auto p-4">
         {/* Event Name */}
         <div className="mb-4">
-          <label className="block text-dark-gray-2 dark:text-white mb-2">Event Name</label>
+          <label className="block text-dark-gray-2 dark:text-white mb-2">
+            {t(translations.eventMng.eventName)}
+          </label>
 
           <Field
             type="text"
@@ -118,7 +123,10 @@ const StepOne = ({ setStep, values, setFieldValue, onClose, step }) => {
         </div>
         {/* Event Photo */}
         <div className="mb-4">
-          <label className="block text-dark-gray-2 dark:text-white mb-2">Event Photo</label>
+          <label className="block text-dark-gray-2 dark:text-white mb-2">
+            {" "}
+            {t(translations.eventMng.eventPhoto)}
+          </label>
           <input
             id="eventPhoto"
             name="eventPhoto"
@@ -130,7 +138,9 @@ const StepOne = ({ setStep, values, setFieldValue, onClose, step }) => {
         {/* Date & Time */}
         <div className="flex flex-col md:flex-row md:space-x-4 mb-4">
           <div className="flex-1 mb-4 md:mb-0">
-            <label className="block text-dark-gray-2 dark:text-white mb-2">Date*</label>
+            <label className="block text-dark-gray-2 dark:text-white mb-2">
+              {t(translations.eventMng.eventDate)}
+            </label>
             <Field
               type="date"
               name="date"
@@ -141,7 +151,9 @@ const StepOne = ({ setStep, values, setFieldValue, onClose, step }) => {
             <ErrorMessage name="date" component="div" className="text-danger" />
           </div>
           <div className="flex-1 mb-4 md:mb-0">
-            <label className="block text-dark-gray-2 dark:text-white mb-2">From*</label>
+            <label className="block text-dark-gray-2 dark:text-white mb-2">
+              {t(translations.eventMng.from)}
+            </label>
             <Field
               type="time"
               name="fromTime"
@@ -151,7 +163,9 @@ const StepOne = ({ setStep, values, setFieldValue, onClose, step }) => {
             <ErrorMessage name="fromTime" component="div" className="text-danger" />
           </div>
           <div className="flex-1 mb-4 md:mb-0">
-            <label className="block text-dark-gray-2 dark:text-white mb-2">To*</label>
+            <label className="block text-dark-gray-2 dark:text-white mb-2">
+              {t(translations.eventMng.to)}
+            </label>
             <Field
               type="time"
               name="toTime"
@@ -165,7 +179,9 @@ const StepOne = ({ setStep, values, setFieldValue, onClose, step }) => {
         </div>
         {/* Location */}
         <div className="mb-4">
-          <label className="block text-dark-gray-2 dark:text-white mb-2">Location</label>
+          <label className="block text-dark-gray-2 dark:text-white mb-2">
+            {t(translations.eventMng.eventLocation)}
+          </label>
           <div className="flex space-x-4">
             <button
               type="button"
@@ -177,7 +193,7 @@ const StepOne = ({ setStep, values, setFieldValue, onClose, step }) => {
                   : "border-gray-1 dark:text-white"
               }`}
             >
-              Virtual
+              {t(translations.eventMng.virtual)}
             </button>
             <button
               type="button"
@@ -189,7 +205,7 @@ const StepOne = ({ setStep, values, setFieldValue, onClose, step }) => {
                   : "border-gray-1 dark:text-white"
               }`}
             >
-              Physical
+              {t(translations.eventMng.physical)}
             </button>
           </div>
         </div>
@@ -199,7 +215,9 @@ const StepOne = ({ setStep, values, setFieldValue, onClose, step }) => {
             {/* Street Name and Street Number Fields */}
             <div className="flex flex-col sm:flex-row sm:space-x-4 mb-4">
               <div className="flex-1">
-                <label className="block text-dark-gray-2 dark:text-white mb-2">Street Name*</label>
+                <label className="block text-dark-gray-2 dark:text-white mb-2">
+                  {t(translations.eventMng.strName)}
+                </label>
                 <Field
                   type="text"
                   name="streetName"
@@ -210,7 +228,7 @@ const StepOne = ({ setStep, values, setFieldValue, onClose, step }) => {
               </div>
               <div className="flex-1">
                 <label className="block text-dark-gray-2 dark:text-white mb-2">
-                  Street Number*
+                  {t(translations.eventMng.strNumbr)}
                 </label>
                 <Field
                   type="text"
@@ -225,7 +243,9 @@ const StepOne = ({ setStep, values, setFieldValue, onClose, step }) => {
             {/* City, Zip Code and Country Fields */}
             <div className="flex flex-col sm:flex-row sm:space-x-4">
               <div className="mb-4 flex-1">
-                <label className="block text-dark-gray-2 dark:text-white mb-2">City*</label>
+                <label className="block text-dark-gray-2 dark:text-white mb-2">
+                  {t(translations.eventMng.city)}
+                </label>
                 <Field
                   type="text"
                   name="city"
@@ -235,7 +255,9 @@ const StepOne = ({ setStep, values, setFieldValue, onClose, step }) => {
                 <ErrorMessage name="city" component="div" className="text-danger" />
               </div>
               <div className="mb-4 flex-1">
-                <label className="block text-dark-gray-2 dark:text-white mb-2">Zip Code*</label>
+                <label className="block text-dark-gray-2 dark:text-white mb-2">
+                  {t(translations.eventMng.code)}
+                </label>
                 <Field
                   type="text"
                   name="zipCode"
@@ -245,7 +267,9 @@ const StepOne = ({ setStep, values, setFieldValue, onClose, step }) => {
                 <ErrorMessage name="zipCode" component="div" className="text-danger" />
               </div>
               <div className="mb-4 flex-1">
-                <label className="block text-dark-gray-2 dark:text-white mb-2">Country*</label>
+                <label className="block text-dark-gray-2 dark:text-white mb-2">
+                  {t(translations.eventMng.country)}
+                </label>
                 <Field
                   type="text"
                   name="country"
@@ -261,7 +285,7 @@ const StepOne = ({ setStep, values, setFieldValue, onClose, step }) => {
         {/* Buttons */}
         <div className="flex flex-col md:flex-row justify-end mt-8 space-x-0 md:space-x-4">
           <button type="button" className="py-2 px-4 text-primary-green" onClick={onClose}>
-            Cancel
+            {t(translations.eventMng.cancel)}
           </button>
           <button
             type="button"
@@ -275,7 +299,7 @@ const StepOne = ({ setStep, values, setFieldValue, onClose, step }) => {
               }
             }}
           >
-            Next
+            {t(translations.eventMng.next)}
           </button>
         </div>
       </div>

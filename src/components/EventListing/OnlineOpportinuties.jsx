@@ -7,9 +7,9 @@ import { translations } from "../../locales/translations"
 import useEventCall from "../../hooks/useEventCall"
 import { ImSpinner9 } from "react-icons/im"
 import { useDispatch, useSelector } from "react-redux"
-import { fetchStart, fetchSuccess, fetchFail } from "../../features/authSlice";
+import { fetchStart, fetchSuccess, fetchFail } from "../../features/authSlice"
 
-const UpcomingOpportunities = () => {
+const OnlineOpportinuties = () => {
   const { t } = useTranslation()
   const sliderRef = useRef(null)
   const [scrollPosition, setScrollPosition] = useState(0)
@@ -17,7 +17,7 @@ const UpcomingOpportunities = () => {
   const [isRightDisabled, setIsRightDisabled] = useState(false)
   const [eventData, setEventData] = useState([])
   const loading = useSelector((state) => state.auth.loading)
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
 
   const { getEvents } = useEventCall()
 
@@ -63,16 +63,16 @@ const UpcomingOpportunities = () => {
   }, [scrollPosition, eventData.length])
 
   const fetchEvents = async () => {
-    dispatch(fetchStart());
+    dispatch(fetchStart())
     try {
       const response = await getEvents(
-        "events/?filter[isActive]=true&filter[isDone]=false&sort[startDate]=asc&limit=10"
+        "events/?filter[isActive]=true&filter[isDone]=false&filter[isOnline]=true&sort[startDate]=asc"
       )
       setEventData(response.data)
-      dispatch(fetchSuccess());
+      dispatch(fetchSuccess())
     } catch (error) {
       console.error("Error fetching events:", error)
-      dispatch(fetchFail());
+      dispatch(fetchFail())
     }
   }
 
@@ -83,26 +83,20 @@ const UpcomingOpportunities = () => {
   console.log(eventData)
 
   return (
-    <div className="pt-5">
+    <div className="px-4  mx-auto  shadow-lg">
       {/* Latest Card Container */}
-      <div className="max-w-[1840px] mx-auto w-[80%] sm:w-[90%] pb-8 font-poppins dark:text-white dark:black rounded-lg">
+      <div className="max-w-[1370px] mx-auto font-poppins dark:text-white dark:black rounded-lg">
         {/* Header */}
         <div className="flex justify-between flex-wrap mb-[5px]">
           <h2 className="text-[1.5rem] font-semibold text-dark-gray-1 dark:text-white py-3">
-            {t(translations.upcomingOpp.title)}
+            {t(translations.onlineOpp.title)}
           </h2>
-          <Link
-            to="/events"
-            className="text-primary-green font-medium pt-[10px] text-[0.9375rem] self-center leading-[1.66] ml-auto"
-          >
-            {t(translations.upcomingOpp.discover)}
-          </Link>
         </div>
 
         <div className="relative rounded-lg">
           {/* Arrow Left */}
           <button
-            className={`absolute top-[calc(60%-25px)] left-[-40px] ${isLeftDisabled ? "hidden" : "block"}`}
+            className={`absolute top-[calc(60%-25px)] left-[-50px] ${isLeftDisabled ? "hidden" : "block"}`}
             onClick={handleScrollLeft}
             disabled={isLeftDisabled}
           >
@@ -110,7 +104,7 @@ const UpcomingOpportunities = () => {
           </button>
           {/* Arrow Right */}
           <button
-            className={`absolute top-[calc(60%-25px)] right-[-40px] ${isRightDisabled ? "hidden" : "block"}`}
+            className={`absolute top-[calc(60%-25px)] right-[-50px] ${isRightDisabled ? "hidden" : "block"}`}
             onClick={handleScrollRight}
             disabled={isRightDisabled}
           >
@@ -120,19 +114,19 @@ const UpcomingOpportunities = () => {
           <div
             id="opportunities"
             ref={sliderRef}
-            className="flex gap-x-4 overflow-x-hidden items-start scroll-smooth px-2"
+            className="flex gap-x-[40px] overflow-x-hidden items-start scroll-smooth"
           >
             {/* Map through event data */}
-            <div className="flex flex-row flex-grow gap-6 p-2 min-h-[200px] rounded-md">
+            <div className="flex flex-row flex-grow gap-6 p-2 pb-8 min-h-[200px] rounded-md">
               {loading ? (
                 <div className="flex items-center gap-2">
                   <ImSpinner9 className="animate-spin text-primary-green" />
-                  <span>{t(translations.upcomingOpp.loadingEvents)}</span>
+                  <span>{t(translations.onlineOpp.loadingEvents)}</span>
                 </div>
               ) : eventData.length > 0 ? (
                 eventData.map((event, _id) => <EventCardVertical key={event._id} event={event} />)
               ) : (
-                <p>{t(translations.upcomingOpp.noEvents)}</p>
+                <p>{t(translations.onlineOpp.noEvents)}</p>
               )}
             </div>
           </div>
@@ -142,4 +136,4 @@ const UpcomingOpportunities = () => {
   )
 }
 
-export default UpcomingOpportunities
+export default OnlineOpportinuties

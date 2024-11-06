@@ -15,7 +15,7 @@ const Hero = () => {
         />
         <div className="absolute inset-0 backdrop-blur-sm bg-black/10"></div>
       </div>
-      <div className="absolute inset-0 bottom-20 sm:bottom-28 flex items-center justify-center">
+      <div className="absolute inset-0 bottom-10 sm:bottom-28 flex items-center justify-center">
         <h2 className="relative text-white text-[1.7rem] sm:text-[2rem] transform -translate-y-16">
           {t(translations.heroSection.h2)}
           <span className="absolute font-bad-script top-6 sm:top-8 -right-0 sm:-right-5 bad-script-regular text-[2.5rem]">
