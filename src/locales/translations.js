@@ -1,4 +1,5 @@
 import Subscribe from "../components/Footer/Subscribe"
+import { conversationSuccess } from "../features/chatSlice"
 
 export const translations = {
   langSwitch: {
@@ -218,6 +219,8 @@ export const translations = {
     accountDesc: "delModal.account-desc",
     documentTitle: "delModal.document-title",
     documentDesc: "delModal.document-desc",
+    conversationTitle: "delModal.conversation-title",
+    conversationDesc: "delModal.conversation-desc",
     cancelButton: "delModal.cancelButton",
     delButton: "delModal.delButton",
   },
@@ -626,5 +629,37 @@ export const translations = {
     completedButton: "eventDetails.completedButton",
     maxReacedButton: "eventDetails.maxReacedButton",
     manageButton: "eventDetails.manageButton",
+  },
+
+  eventMng: {
+    addNew: "eventMng.addNew",
+    eventName: "eventMng.eventName",
+    eventPhoto: "eventMng.eventPhoto",
+    eventDate: "eventMng.eventDate",
+    from: "eventMng.from",
+    to: "eventMng.to",
+    eventLocation: "eventMng.eventLocation",
+    virtual: "eventMng.virtual",
+    physical: "eventMng.physical",
+    strName: "eventMng.strName",
+    strNumbr: "eventMng.strNumbr",
+    city: "eventMng.city",
+    country: "eventMng.country",
+    code: "eventMng.code",
+    cancel: "eventMng.cancel",
+    next: "eventMng.next",
+    category: "eventMng.category",
+    choose: "eventMng.choose",
+    participants: "eventMng.participants",
+    max: "eventMng.max",
+    desc: "eventMng.desc",
+    addContact: "eventMng.addContact",
+    name: "eventMng.name",
+    email: "eventMng.email",
+    phone: "eventMng.phone",
+    yes: "eventMng.yes",
+    no: "eventMng.no",
+    back: "eventMng.back",
+    submit: "eventMng.submit",
   },
 }
