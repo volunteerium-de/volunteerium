@@ -27,6 +27,13 @@
     "loadingEvents": "Kommende Veranstaltungen werden geladen...",
     "noEvents": "Keine kommenden Veranstaltungen!"
   },
+
+  "onlineOpportunities": {
+    "title": "Online Veranstaltungen",
+    "loadingEvents": "Lade bevorstehende Veranstaltungen...",
+    "noEvents": "Keine bevorstehenden Veranstaltungen!"
+  },
+
   "getToKnowUs": {
     "h2": "Lernen Sie uns kennen",
     "description1": "Bei Volunterium ist es unser Ziel, die Freiwilligen mit denjenigen zu verbinden, die Unterstützung benötigen.",
@@ -418,7 +425,7 @@
     "found": "Gefunden",
     "filter": "Filter",
     "loading": "Laden",
-    "people": "Person",
+    "people": "Personen",
     "match": "Keine Veranstaltungen gefunden, die Ihren Filtern entsprechen.",
     "sort": "Sortieren nach",
     "search": "Suche",
@@ -438,6 +445,7 @@
     "h1": "Erfolgreich mit Google authentifiziert",
     "p": "Weiterleitung..."
   },
+
   "notFound": {
     "imgAlt": "Nicht gefunden",
     "p": "Seite nicht gefunden",
@@ -465,6 +473,7 @@
     "skip": "Überspringen",
     "finish": "Beenden"
   },
+
   "setupOrg": {
     "details": "Teilen Sie Ihre Organisationsdaten",
     "p": "Diese Informationen sind notwendig, damit wir Ihre Organisation verstehen und Ihnen bessere Dienstleistungen anbieten können",
@@ -488,6 +497,7 @@
     "countryPH": "Land eingeben",
     "finish": "Fertigstellen"
   },
+
   "profileCard": {
     "attendEvents": "Teilgenommene Veranstaltungen",
     "organizedEvents": "Organisierte Veranstaltungen",
@@ -496,6 +506,21 @@
     "infoAlt": "Organisator-Avatar",
     "joined": "beigetreten"
   },
+
+  "sidebar": {
+    "welcome": "Wilkommen"
+  },
+  "sidebar": {
+    "welcome": "Wilkommen"
+  },
+
+  "emailVerify": {
+    "h1": "Ihre E-Mail wird überprüft..."
+  },
+  "emailVerify": {
+    "h1": "Ihre E-Mail wird überprüft..."
+  },
+
   "sidebar": {
     "welcome": "Wilkommen"
   },
@@ -554,6 +579,7 @@
     "p15": "Volunteerium-Team",
     "p16": "E-Mail: info.volunteerium@gmail.com"
   },
+
   "langSelect": {
     "lang": "Sprache",
     "PH": "Veranstaltungssprachen hinzufügen"

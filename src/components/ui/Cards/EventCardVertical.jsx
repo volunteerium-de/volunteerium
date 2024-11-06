@@ -14,7 +14,7 @@ const EventCardVertical = ({ event }) => {
   const {t} = useTranslation()
   const { currentUser: user } = useSelector((state) => state.auth)
   const navigate = useNavigate()
-  const { getLangName } = useLanguageOptions()
+  const { getLangName, getTranslatedCategory } = useLanguageOptions()
 
   const startDate = new Date(event.startDate).toLocaleDateString()
 
@@ -68,7 +68,7 @@ const EventCardVertical = ({ event }) => {
             <div className="flex gap-x-[8px] items-center mb-[1px]">
               <IoCalendar className="text-primary-green" />
               <p className="text-gray-2 dark:text-light-gray-2 text-sm p-1">
-                {formatDate(startDate)}
+                {formatDate(event.startDate)}
               </p>
             </div>
 
@@ -105,28 +105,32 @@ const EventCardVertical = ({ event }) => {
 
       <div>
         {/* Category Area */}
-        <div className="flex flex-row flex-wrap gap-2  ">
+        <div className="flex flex-row flex-wrap gap-2 px-2 ">
           {event.interestIds?.map((interest, index) => (
             <div
               key={index}
               className="border border-primary-green dark:border-gray-1 px-2 py-1 rounded-full w-fit h-6"
             >
               <p className="font-semibold tracking-wide text-[0.6rem] sm:text-[0.6rem] text-primary-green text-center dark:text-gray-1">
-                {interest.name.toUpperCase()}
+                {getTranslatedCategory(interest.name).toUpperCase()}
               </p>
             </div>
           ))}
         </div>
         {/* Event Button */}
         <div className="flex flex-row p-2 justify-end">
-          {user ? (
-            <button
-              onClick={() => navigate(`events/${event._id}`)}
+          <button
+             onClick={() => {
+      const currentPath = window.location.pathname;
+      const newPath = currentPath.includes("/events") && !currentPath.endsWith("/events")
+        ? `/${event._id}`
+        : `/events/${event._id}`;
+      navigate(newPath);
+    }}
               className="font-medium text-white text-[0.9rem] text-center bg-primary-green px-3 py-1 rounded"
             >
               {t(translations.eventCardVer.more)}
             </button>
-          ) : null}
         </div>
       </div>
     </div>

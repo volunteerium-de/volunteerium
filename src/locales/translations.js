@@ -34,6 +34,12 @@ export const translations = {
     noEvents: "upcomingOpportunities.noEvents",
   },
 
+  onlineOpp: {
+    title: "onlineOpportunities.title",
+    loadingEvents: "onlineOpportunities.loadingEvents",
+    noEvents: "onlineOpportunities.noEvents"
+  },
+
   getToKnowUs: {
     h2: "getToKnowUs.h2",
     description1: "getToKnowUs.description1",

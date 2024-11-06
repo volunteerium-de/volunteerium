@@ -27,6 +27,13 @@
     "loadingEvents": "Loading Upcomming Events...",
     "noEvents": "No Upcoming Events!"
   },
+  
+  "onlineOpportunities": {
+    "title": "Online Events",
+    "loadingEvents": "Loading Upcomming Events...",
+    "noEvents": "No Upcoming Events!"
+  },
+
   "getToKnowUs": {
     "h2": "Get to Know Us",
     "description1": "At Volunterium, our goal is to connect those who want to volunteer with those in need of support.",
