@@ -6,8 +6,6 @@ import { useTranslation } from "react-i18next"
 import { translations } from "../../locales/translations"
 import useEventCall from "../../hooks/useEventCall"
 import { ImSpinner9 } from "react-icons/im"
-import { useDispatch, useSelector } from "react-redux"
-import { fetchStart, fetchSuccess, fetchFail } from "../../features/authSlice";
 
 const UpcomingOpportunities = () => {
   const { t } = useTranslation()
@@ -16,9 +14,7 @@ const UpcomingOpportunities = () => {
   const [isLeftDisabled, setIsLeftDisabled] = useState(true)
   const [isRightDisabled, setIsRightDisabled] = useState(false)
   const [eventData, setEventData] = useState([])
-  const loading = useSelector((state) => state.auth.loading)
-  const dispatch = useDispatch();
-
+  const [loading, setLoading] = useState(false)
   const { getEvents } = useEventCall()
 
   // Function to handle scroll left
@@ -63,24 +59,22 @@ const UpcomingOpportunities = () => {
   }, [scrollPosition, eventData.length])
 
   const fetchEvents = async () => {
-    dispatch(fetchStart());
+    setLoading(true)
     try {
       const response = await getEvents(
         "events/?filter[isActive]=true&filter[isDone]=false&sort[startDate]=asc&limit=10"
       )
       setEventData(response.data)
-      dispatch(fetchSuccess());
     } catch (error) {
       console.error("Error fetching events:", error)
-      dispatch(fetchFail());
+    } finally {
+      setLoading(false)
     }
   }
 
   useEffect(() => {
     fetchEvents()
   }, [])
-
-  console.log(eventData)
 
   return (
     <div className="pt-5">

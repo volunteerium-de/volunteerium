@@ -11,8 +11,9 @@ import { translations } from "../../locales/translations"
 import { UserAvatar } from "../ui/Avatar/userAvatar"
 
 const UserMenu = ({ user }) => {
-  const {t} = useTranslation()
+  const { t } = useTranslation()
   const mode = useSelector((state) => state.theme.mode)
+  const { currentUser } = useSelector((state) => state.auth)
   const { logout } = useAuthCall()
   const { toggleTheme } = useTheme()
   const [isOpen, setIsOpen] = useState(false)
@@ -43,8 +44,6 @@ const UserMenu = ({ user }) => {
       document.removeEventListener("mousedown", handleClickOutside)
     }
   }, [menuRef])
-  const { currentUser } = useSelector((state) => state.auth)
-
   return (
     <div className="relative" ref={menuRef}>
       <div
@@ -54,7 +53,6 @@ const UserMenu = ({ user }) => {
         {/* Menu Icon */}
         <FaBars className="text-primary-green dark:text-gray-2  h-5 w- mr-2" />
         <UserAvatar user={currentUser} size="h-6 w-6" />
-
       </div>
 
       {/* Dropdown menu */}
