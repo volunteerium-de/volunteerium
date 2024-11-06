@@ -297,8 +297,7 @@
     "delAccount": "Konto löschen",
     "delAlert1": "Möchten Sie Ihr Konto löschen? Das Löschen Ihres Kontos entfernt alle damit verbundenen Inhalte.",
     "delAlert2": "Möchten Sie Ihre Organisation löschen? Das Löschen Ihrer Organisation entfernt alle damit verbundenen Inhalte.",
-    "userRes1": "Ich möchte mein Konto löschen",
-    "userRes2": "Ich möchte meine Organisation löschen"
+    "userRes": "Ich möchte mein Konto löschen"
   },
   "updateDoc": {
     "error": "Fehler beim Aktualisieren der Datei.",
