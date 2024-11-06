@@ -587,7 +587,8 @@
     "rejectedButton": "Abgelehnt",
     "completedButton": "Abgeschlossen",
     "maxReacedButton": "Volle Kapazität",
-    "manageButton": "Verwalten",
+    "manageButton": "Verwalten"
+  },
 
     "feedback": {
       "h2": "Danke für Ihre Teilnahme!",
@@ -615,6 +616,36 @@
       "option8": "Gewalt",
       "option9": "Diskriminierung",
       "option10": "Sonstiges"
+    },
+
+    "termsOfService": {
+      "h1": "Nutzungsbedingungen",
+      "p1": "Veröffentlichungsdatum:",
+      "p2": "[30.10.2024]",
+      "p3": "Willkommen bei Volunteerium. Durch den Zugriff auf unsere Plattform erklären Sie sich mit den folgenden Nutzungsbedingungen einverstanden. Bitte lesen Sie diese sorgfältig durch, bevor Sie die Plattform nutzen.",
+      "h2info": "1. Annahme der Bedingungen",
+      "p4": "Durch die Erstellung eines Kontos oder die Nutzung von Volunteerium akzeptieren Sie diese Nutzungsbedingungen und erklären sich mit ihrer Einhaltung einverstanden. Wenn Sie mit einem Teil dieser Bedingungen nicht einverstanden sind, sollten Sie unsere Plattform nicht nutzen.",
+      "h2user": "2. Benutzerverantwortlichkeiten",
+      "p5": "Benutzer stimmen zu, während des Registrierungsprozesses genaue, vollständige und aktuelle Informationen bereitzustellen und sind für alle Aktivitäten unter ihrem Konto verantwortlich. Sie erklären sich damit einverstanden, die Plattform verantwortungsbewusst und nur für rechtmäßige Zwecke zu nutzen.",
+      "h2prohibited": "3. Verbotenes Verhalten",
+      "p6": "Benutzern ist es untersagt, Aktivitäten auszuführen, die der Plattform, ihren Benutzern schaden oder geltende Gesetze verletzen könnten. Beispiele für verbotenes Verhalten umfassen unter anderem:",
+      "li1": "Belästigung, Bedrohung oder Verleumdung anderer Benutzer.",
+      "li2": "Spam, Phishing oder betrügerische Aktivitäten.",
+      "li3": "Versuch, unbefugten Zugriff auf die Plattform oder Benutzerkonten zu erlangen.",
+      "li4": "Verbreitung von Malware oder schädlichem Code.",
+      "h2intellectual": "4. Geistiges Eigentum",
+      "p7": "Alle Inhalte, einschließlich, aber nicht beschränkt auf Texte, Bilder, Grafiken und Logos auf Volunteerium, sind Eigentum von Volunteerium oder seinen Lizenzgebern. Die unbefugte Nutzung oder Verbreitung von Inhalten ist strengstens untersagt.",
+      "h2user-Generated": "5. Benutzererstellte Inhalte",
+      "p8": "Volunteerium kann es Benutzern ermöglichen, Inhalte wie Veranstaltungsdetails, Kommentare und Nachrichten zu posten. Durch das Posten von Inhalten gewähren Sie Volunteerium eine nicht-exklusive, gebührenfreie, weltweite Lizenz zur Nutzung, Vervielfältigung und Anzeige der Inhalte auf unserer Plattform. Sie sind verantwortlich für die von Ihnen veröffentlichten Inhalte und müssen sicherstellen, dass diese keine Gesetze oder Rechte Dritter verletzen.",
+      "h2limitation": "6. Haftungsbeschränkung",
+      "p9": "Volunteerium wird auf einer 'wie besehen'- und 'wie verfügbar'-Basis bereitgestellt. Wir garantieren nicht, dass die Plattform fehlerfrei, sicher oder unterbrechungsfrei sein wird. Wir haften nicht für direkte oder indirekte Schäden, die sich aus der Nutzung oder der Unfähigkeit zur Nutzung unserer Plattform ergeben.",
+      "h2changes": "7. Änderungen der Bedingungen",
+      "p10": "Volunteerium behält sich das Recht vor, diese Nutzungsbedingungen jederzeit zu ändern. Wesentliche Änderungen werden über die Plattform oder per E-Mail mitgeteilt. Die fortgesetzte Nutzung der Plattform nach Änderungen gilt als Ihre Zustimmung zu den neuen Bedingungen.",
+      "h2governing": "8. Anwendbares Recht und Streitbeilegung",
+      "p11": "Diese Bedingungen unterliegen den Gesetzen von [Ihr Land/Ihre Region]. Alle Streitigkeiten, die sich aus der Nutzung von Volunteerium ergeben, werden durch Schiedsverfahren gemäß den [anwendbaren Schiedsregeln] beigelegt.",
+      "h2contact": "9. Kontaktieren Sie uns",
+      "p12": "Falls Sie Fragen oder Bedenken bezüglich dieser Nutzungsbedingungen haben, kontaktieren Sie uns bitte unter:",
+      "p13": "Volunteerium-Team",
+      "p14": "E-Mail: info.volunteerium@gmail.com"
     }
   }
-}
