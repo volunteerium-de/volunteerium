@@ -297,8 +297,7 @@
     "delAccount": "Delete Account",
     "delAlert1": "Would you like to delete your account? Deleting your account will remove all the content associated with it.",
     "delAlert2": "Would you like to delete your organization? Deleting your organization will remove all the content associated with it.",
-    "userRes1": "I want to delete my account",
-    "userRes2": "I want to delete my organization"
+    "userRes": "I want to delete my account"
   },
   "updateDoc": {
     "error": "Error updating file.",

@@ -323,8 +323,7 @@ export const translations = {
     delAccount: "secSett.delAccount",
     delAlert1: "secSett.delAlert1",
     delAlert2: "secSett.delAlert2",
-    userRes1: "secSett.userRes1",
-    userRes2: "secSett.userRes2",
+    userRes: "secSett.userRes",
   },
   updateDoc: {
     error: "updateDoc.error",
