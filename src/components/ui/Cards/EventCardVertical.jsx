@@ -68,7 +68,7 @@ const EventCardVertical = ({ event }) => {
             <div className="flex gap-x-[8px] items-center mb-[1px]">
               <IoCalendar className="text-primary-green" />
               <p className="text-gray-2 dark:text-light-gray-2 text-sm p-1">
-                {formatDate(startDate)}
+                {formatDate(event.startDate)}
               </p>
             </div>
 

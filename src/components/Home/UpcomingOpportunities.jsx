@@ -66,7 +66,7 @@ const UpcomingOpportunities = () => {
     dispatch(fetchStart());
     try {
       const response = await getEvents(
-        "events/?filter[isActive]=true&filter[isDone]=false&sort[startDate]=asc"
+        "events/?filter[isActive]=true&filter[isDone]=false&sort[startDate]=asc&limit=10"
       )
       setEventData(response.data)
       dispatch(fetchSuccess());
