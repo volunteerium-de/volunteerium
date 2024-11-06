@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from "react"
+import React, { useState, useRef, useEffect } from "react"
 import { AiFillStar, AiOutlineStar } from "react-icons/ai"
 import useEventCall from "../../hooks/useEventCall"
 import { useSelector } from "react-redux"
@@ -6,6 +7,7 @@ import { useSelector } from "react-redux"
 const EventFeedback = ({ eventName, eventId, onClose }) => {
   const { currentUser } = useSelector((state) => state.auth)
   const [rating, setRating] = useState(0)
+  const [hoverRating, setHoverRating] = useState(0)
   const [hoverRating, setHoverRating] = useState(0)
   const [feedback, setFeedback] = useState("")
   const [error, setError] = useState("")
@@ -96,6 +98,12 @@ const EventFeedback = ({ eventName, eventId, onClose }) => {
         </button>
 
         {/* Close Button */}
+        <button
+          type="button"
+          onClick={onClose}
+          className="w-full bg-gray-300 text-gray-800 py-2 rounded-md font-semibold"
+        >
+          CANCEL
         <button
           type="button"
           onClick={onClose}

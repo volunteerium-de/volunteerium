@@ -111,6 +111,23 @@ const ReportEvent = ({ eventTitle, eventId, onClose }) => {
             </Form>
           )}
         </Formik>
+              {/* Submit and Close Buttons */}
+              <button
+                type="submit"
+                className="w-full bg-primary-green text-white py-2 rounded-md font-semibold mb-2"
+              >
+                SUBMIT
+              </button>
+              <button
+                type="button"
+                onClick={onClose}
+                className="w-full bg-gray-300 text-gray-800 py-2 rounded-md font-semibold"
+              >
+                CANCEL
+              </button>
+            </Form>
+          )}
+        </Formik>
       </div>
     </div>
   )

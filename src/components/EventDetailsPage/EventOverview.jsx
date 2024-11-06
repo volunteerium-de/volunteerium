@@ -14,7 +14,17 @@ import { useSelector } from "react-redux"
 import useChatCall from "../../hooks/useChatCall"
 import { useNavigate } from "react-router-dom"
 
-const EventOverview = () => {
+const EventOverview = ({
+  _id,
+  title,
+  startDate,
+  addressId,
+  isOnline,
+  maxParticipant,
+  languages,
+  totalParticipants,
+  eventParticipantIds,
+}) => {
   const [isFeedbackOpen, setIsFeedbackOpen] = useState(false)
   const { singleEvent } = useSelector((state) => state.event)
   const { t } = useTranslation()
@@ -96,7 +106,17 @@ const EventOverview = () => {
         >
           {t(translations.eventDetails.sendMessageButton)}
         </button>
-        <EventParticipationButtons event={singleEvent} toggleFeedbackModal={toggleFeedbackModal} />
+        {/* <EventParticipationButton eventId={_id} /> */}
+        <div>
+          <button
+            className="bg-primary-green text-white font-semibold px-2 py-1 text-center min-w-[100px] max-w-full h-8 rounded-lg text-xs md:text-sm"
+            onClick={toggleFeedbackModal}
+          >
+            Share Your Feedback
+          </button>
+
+          {isFeedbackOpen && <EventFeedback eventName={title} onClose={toggleFeedbackModal} />}
+        </div>
       </div>
       {isFeedbackOpen && (
         <EventFeedback
