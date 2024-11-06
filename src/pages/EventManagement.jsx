@@ -29,6 +29,17 @@ const EventManagement = () => {
     navigate(`/event-management?tab=${tab}`)
   }
 
+  const getUnreadMessageCount = () => {
+    return (conversations || []).reduce((count, conversation) => {
+      const unreadMessages = conversation.messageIds.filter(
+        (message) => !message.readerIds.includes(currentUser._id)
+      )
+      return count + unreadMessages.length
+    }, 0)
+  }
+
+  const unreadMessageCount = getUnreadMessageCount()
+
   const menuItems = [
     {
       key: "organized-events",
@@ -44,7 +55,14 @@ const EventManagement = () => {
     {
       key: "messages",
       label: "Messages",
-      icon: <FaEnvelope className="text-2xl mx-auto" />,
+      icon: (
+        <>
+          <FaEnvelope className="text-2xl" />
+          {unreadMessageCount > 0 && (
+            <span className="absolute top-4 left-16 sm:left-72 md:left-64 w-2 h-2 bg-primary-green rounded-full"></span>
+          )}
+        </>
+      ),
     },
   ].filter((item) => item.show !== false)
 
@@ -57,9 +75,7 @@ const EventManagement = () => {
       case "attended-events":
         return <AttendedEvents />
       case "messages":
-        return (
-          <Messages conversations={conversations} currentUser={currentUser} loading={loading} />
-        )
+        return <Messages conversations={conversations} currentUser={currentUser} />
       default:
         return <OrganizedEvents onAddEvent={() => setIsAddingEvent(true)} />
     }

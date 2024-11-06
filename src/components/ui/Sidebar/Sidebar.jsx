@@ -8,24 +8,12 @@ import { GrUserAdmin } from "react-icons/gr"
 
 const Sidebar = ({ items, activeTab, onTabChange, onEditAvatar, contacts = [], reports = [] }) => {
   const { currentUser: user } = useSelector((state) => state.auth)
-  const { conversations } = useSelector((state) => state.chat)
   const { t } = useTranslation()
   const getMenuClassName = (item) => {
-    return `max-w-[374px] h-[50px]  bg-white flex items-center gap-5 p-4 hover:bg-gray-100 mt-[20px] relative ${
+    return `max-w-[374px] h-[50px]  bg-white flex items-center justify-center	 gap-5 p-4 hover:bg-gray-100 mt-[20px] relative ${
       activeTab === item.key ? "bg-gray-white" : ""
     }`
   }
-
-  const getUnreadMessageCount = () => {
-    return conversations.reduce((count, conversation) => {
-      const unreadMessages = conversation.messageIds.filter(
-        (message) => !message.readerIds.includes(user._id)
-      )
-      return count + unreadMessages.length
-    }, 0)
-  }
-
-  const unreadMessageCount = getUnreadMessageCount()
 
   return (
     <div className="h-auto min-h-[calc(100vh-116px)] m-3 mr-3">
@@ -61,12 +49,12 @@ const Sidebar = ({ items, activeTab, onTabChange, onEditAvatar, contacts = [], r
             <span className="text-primary-green">{user.fullName || user.organizationName}!</span>
           </p>
         </div>
-        <div className="my-[30px]">
-          <ul className="text-gray-2 dark:bg-dark-gray- text-[1.125rem] font-medium ">
+        <div className="relative my-[30px] ">
+          <ul className="text-gray-2 dark:bg-dark-gray- text-[1.125rem] font-medium text-center ">
             {items.map((item) => (
               <li
                 key={item.key}
-                className={`${getMenuClassName(item)} dark:bg-dark-gray-1 dark:text-white`}
+                className={`${getMenuClassName(item)} text-center dark:bg-dark-gray-1 dark:text-white`}
                 onClick={() => onTabChange(item.key)}
               >
                 {item.icon}
@@ -81,16 +69,6 @@ const Sidebar = ({ items, activeTab, onTabChange, onEditAvatar, contacts = [], r
                 )}
                 {item.key === "messages" && unreadMessageCount > 0 && (
                   <span className="absolute right-6 md:left-40 top-2 bg-primary-green text-white rounded-full w-[9px] h-[9px] text-xs font-bold"></span>
-                )}
-                {item.key === "feedback-contacts" && contacts.length > 0 && (
-                  <span className="bg-primary-green text-white rounded-full text-sm text-center font-bold absolute right-4 top-2 sm:flex h-5 w-5 sm:h-8 sm:w-8  items-center justify-center sm:me-3">
-                    {contacts.length}
-                  </span>
-                )}
-                {item.key === "reports" && reports.length > 0 && (
-                  <span className="bg-primary-green text-white rounded-full text-sm text-center font-bold absolute right-4 top-2 sm:flex h-5 w-5 sm:h-8 sm:w-8  items-center justify-center sm:me-3">
-                    {reports.length}
-                  </span>
                 )}
               </li>
             ))}

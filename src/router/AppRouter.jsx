@@ -25,6 +25,7 @@ import EventManagement from "../pages/EventManagement"
 import PrivacyPolicy from "../pages/PrivacyPolicy"
 import AdminPanel from "../pages/AdminPanel"
 import { useParams } from "react-router-dom"
+import TermsOfService from "../pages/TermsOfService"
 
 const AppRouter = () => {
   const { currentUser: user } = useSelector((state) => state.auth)
@@ -90,6 +91,7 @@ const AppRouter = () => {
           />
         </Route>
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+        <Route path="/terms-of-service" element={<TermsOfService />} />
         <Route path="*" element={<NotFound />} />
 
         {/* Conditinally Rendered Routers */}
