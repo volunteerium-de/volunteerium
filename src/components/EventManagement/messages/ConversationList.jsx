@@ -11,7 +11,6 @@ const ConversationList = ({
   getUnreadCount,
 }) => {
   const defaultEventPhoto = eventPhoto
-  console.log(conversations)
 
   return (
     <div className="h-[88vh] py-3 mt-3 -ml-2 sm:ml-0 rounded-lg lg:rounded-r-none overflow-y-auto scrollbar dark:bg-dark-gray-3 dark:pt-5">
@@ -21,36 +20,14 @@ const ConversationList = ({
             _id,
             participantIds,
             eventId: { eventPhoto, title, createdBy: eventCreatorId } = {},
+            displayName,
             createdBy,
             messageIds = [],
           } = conversation
           const lastMessage = messageIds[messageIds.length - 1]
           const unreadCount = getUnreadCount(messageIds)
-          const isSelected = selectedConversation?._id === _id
           const isAnnouncement = createdBy._id === eventCreatorId
-          const eventCreatorFullName = createdBy.fullName
-
-          const conversationParticipant = participantIds.find(
-            (participant) => participant !== eventCreatorId
-          )
-          const conversationParticipantFullName = conversationParticipant?.fullName || ""
-          const conversationParticipantIsFullNameDisplay =
-            conversationParticipant?.userDetailsId?.isFullNameDisplay
-
-          let displayName
-
-          if (isAnnouncement) {
-            displayName = "Announcement"
-          } else {
-            displayName =
-              createdBy._id === currentUser._id
-                ? formatName(
-                    conversationParticipantFullName,
-                    conversationParticipantIsFullNameDisplay
-                  )
-                : formatName(eventCreatorFullName, createdBy.userDetailsId?.isFullNameDisplay)
-          }
-
+          const isSelected = selectedConversation?._id === _id
           const messageContent =
             lastMessage?.senderId?._id === currentUser._id
               ? `You: ${lastMessage.content}`

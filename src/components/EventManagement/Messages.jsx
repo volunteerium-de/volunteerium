@@ -7,6 +7,7 @@ import MessageView from "./messages/MessageView"
 import { useTranslation } from "react-i18next"
 import { translations } from "../../locales/translations"
 import DeleteModal from "../ui/Modals/DeleteModal"
+import { formatName } from "../../helpers/formatName"
 
 const Messages = ({ conversations, currentUser }) => {
   const { t } = useTranslation()
@@ -85,6 +86,39 @@ const Messages = ({ conversations, currentUser }) => {
     )
   }
 
+  const getDisplayName = (conversation) => {
+    const { createdBy, eventId: { createdBy: eventCreatorId } = {}, participantIds } = conversation
+
+    const isAnnouncement = createdBy._id === eventCreatorId
+    const eventCreatorFullName = createdBy.fullName
+
+    const conversationParticipant = participantIds.find(
+      (participant) => participant !== eventCreatorId
+    )
+    const conversationParticipantFullName =
+      conversationParticipant?.fullName || conversationParticipant?.organizationName
+    const conversationParticipantIsFullNameDisplay =
+      conversationParticipant?.userDetailsId?.isFullNameDisplay
+
+    let displayName
+
+    if (isAnnouncement) {
+      displayName = "Announcement"
+    } else {
+      displayName =
+        createdBy._id === currentUser._id
+          ? formatName(conversationParticipantFullName, conversationParticipantIsFullNameDisplay)
+          : formatName(eventCreatorFullName, createdBy.userDetailsId?.isFullNameDisplay)
+    }
+
+    return displayName
+  }
+
+  const mappedConversations = conversations.map((conversation) => ({
+    ...conversation,
+    displayName: getDisplayName(conversation),
+  }))
+
   return (
     <>
       {loading ? (
@@ -99,7 +133,7 @@ const Messages = ({ conversations, currentUser }) => {
           <div className="flex dark:bg-black mr-3 max-w-[1400px]">
             <div className={`w-full lg:w-1/2 xl:w-2/5 ${selectedId ? "hidden lg:block" : "block"}`}>
               <ConversationList
-                conversations={conversations}
+                conversations={mappedConversations}
                 selectedConversation={selectedConversation}
                 currentUser={currentUser}
                 onConversationClick={handleConversationClick}
@@ -109,6 +143,7 @@ const Messages = ({ conversations, currentUser }) => {
             </div>
             <div className={`w-full lg:w-1/2 xl:w-3/5 ${selectedId ? "block" : "hidden lg:block"}`}>
               <MessageView
+                conversations={mappedConversations}
                 selectedConversation={selectedConversation}
                 currentUser={currentUser}
                 onBackClick={() => {
