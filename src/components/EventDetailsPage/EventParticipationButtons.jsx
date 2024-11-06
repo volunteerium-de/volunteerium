@@ -19,6 +19,8 @@ const EventParticipationButtons = ({ toggleFeedbackModal }) => {
       (participant) => participant?.userId?._id === user?._id
     )[0] || null
 
+  console.log(singleEvent)
+
   const isEventDone = new Date() > new Date(singleEvent?.startDate)
   const isMaxParticipantsReached =
     singleEvent?.eventParticipantIds.filter((participant) => participant?.isApproved === true)
@@ -26,7 +28,7 @@ const EventParticipationButtons = ({ toggleFeedbackModal }) => {
   const isPending = participant?.isPending
   const isApproved = participant?.isApproved
   const isFeedbackGiven = singleEvent?.eventFeedbackIds.some(
-    (feedback) => feedback?.userId === user?._id
+    (feedback) => feedback?.userId?._id === user?._id
   )
   const isRejected = !isApproved && !isPending
   const isAdmin = user?._id === import.meta.env.VITE_ADMIN_ID
@@ -131,7 +133,7 @@ const EventParticipationButtons = ({ toggleFeedbackModal }) => {
     <>
       {singleEvent && (
         <button
-          className={`${buttonConfig.className || ""} text-white font-semibold px-2 py-1 text-center min-w-[100px] max-w-full h-8 grid place-content-center rounded-lg text-xs md:text-sm`}
+          className={`${buttonConfig.className || ""} text-white font-semibold px-2 py-1 text-center min-w-[100px] max-w-full h-8 grid place-content-center rounded-lg text-xs md:text-[10px] lg:text-[12px]`}
           onClick={buttonConfig.action}
           // disabled={isMaxParticipantsReached || isEventDone || (participant && isRejected)}
           aria-label={buttonConfig.text}

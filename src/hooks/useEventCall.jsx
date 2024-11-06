@@ -16,21 +16,22 @@ const useEventCall = () => {
   const { currentUser: user } = useSelector((state) => state.auth)
   const dispatch = useDispatch()
 
-  
   const getEvents = async (url) => {
     try {
-      const { data } = await axiosWithPublic(url);
-      return data;
+      const { data } = await axiosWithPublic(url)
+      return data
     } catch (error) {
-      console.error("Error fetching events:", error.response ? error.response.data.message : error.message);
+      console.error(
+        "Error fetching events:",
+        error.response ? error.response.data.message : error.message
+      )
     }
-  };
+  }
 
   const getSingleEvent = async (eventId) => {
     dispatch(fetchEventStart())
     try {
       const { data } = await axiosWithPublic(`events/${eventId}`)
-      console.log(data)
       dispatch(fetchSingleEventSuccess(data.data))
     } catch (error) {
       console.log(error.response.data.message)
@@ -176,6 +177,30 @@ const useEventCall = () => {
     }
   }
 
+  const sendEventFeedback = async (formData) => {
+    try {
+      const { data } = await axiosWithToken.post(`event-feedbacks`, formData)
+      // console.log(data)
+      toastNotify("success", data.message)
+    } catch (error) {
+      toastNotify("error", error?.response?.data?.message)
+      console.log(error)
+    } finally {
+      getSingleEvent(formData.eventId)
+    }
+  }
+
+  const sendEventReport = async (formData) => {
+    try {
+      const { data } = await axiosWithToken.post(`event-reports`, formData)
+      // console.log(data)
+      toastNotify("success", data.message)
+    } catch (error) {
+      toastNotify("error", error?.response?.data?.message)
+      console.log(error)
+    }
+  }
+
   return {
     getEvents,
     getSingleEvent,
@@ -189,6 +214,8 @@ const useEventCall = () => {
     confirmAttendance,
     confirmAbsence,
     deleteEventParticipation,
+    sendEventFeedback,
+    sendEventReport,
   }
 }
 
