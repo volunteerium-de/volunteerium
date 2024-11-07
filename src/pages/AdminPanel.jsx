@@ -14,13 +14,17 @@ import SingleEventPanel from "../components/EventManagement/AdminPanel/events/Si
 import SingleUserPanel from "../components/EventManagement/AdminPanel/users/SingleUserPanel"
 import SingleContactPanel from "../components/EventManagement/AdminPanel/contacts/SingleContactPanel"
 import SingleReportPanel from "../components/EventManagement/AdminPanel/reports/SingleReportPanel"
+import SingleFeedbackPanel from "../components/EventManagement/AdminPanel/feedbacks/SingleFeedbackPanel"
+import { SiImessage } from "react-icons/si"
+import FeedbacksPanel from "../components/EventManagement/AdminPanel/feedbacks/FeedbacksPanel"
 
-const EventManagement = () => {
+const AdminPanel = () => {
   const location = useLocation()
   const navigate = useNavigate()
   const [activeTab, setActiveTab] = useState("events")
   const [contacts, setContacts] = useState([])
   const [reports, setReports] = useState([])
+  const [feedbacks, setFeedbacks] = useState([])
   const [identifier, setIdentifier] = useState(null)
   const { fetchAllData } = useAdminCall()
 
@@ -41,6 +45,7 @@ const EventManagement = () => {
   useEffect(() => {
     fetchAllData("contacts").then((data) => setContacts(data.data))
     fetchAllData("event-reports").then((data) => setReports(data.data))
+    fetchAllData("event-feedbacks").then((data) => setFeedbacks(data.data))
   }, [])
 
   const adminMenuItems = [
@@ -55,9 +60,14 @@ const EventManagement = () => {
       icon: <FaUsersGear className="text-2xl mx-auto" />,
     },
     {
-      key: "feedback-contacts",
-      label: "Feedback & Contact",
+      key: "contacts",
+      label: "Contacts",
       icon: <MdEmail className="text-2xl mx-auto" />,
+    },
+    {
+      key: "feedbacks",
+      label: "Feedbacks",
+      icon: <SiImessage className="text-2xl mx-auto" />,
     },
     {
       key: "reports",
@@ -73,10 +83,12 @@ const EventManagement = () => {
           return <SingleEventPanel eventId={identifier} setIdentifier={setIdentifier} />
         case "users":
           return <SingleUserPanel userId={identifier} setIdentifier={setIdentifier} />
-        case "feedback-contacts":
+        case "contacts":
           return <SingleContactPanel contactId={identifier} setIdentifier={setIdentifier} />
         case "reports":
           return <SingleReportPanel reportId={identifier} setIdentifier={setIdentifier} />
+        case "feedbacks":
+          return <SingleFeedbackPanel feedbackId={identifier} setIdentifier={setIdentifier} />
         default:
           return <SingleEventPanel eventId={identifier} setIdentifier={setIdentifier} />
       }
@@ -87,10 +99,12 @@ const EventManagement = () => {
         return <EventsPanel />
       case "users":
         return <UsersPanel />
-      case "feedback-contacts":
-        return <ContactPanel contacts-={contacts} setContacts={setContacts} />
+      case "contacts":
+        return <ContactPanel />
       case "reports":
-        return <ReportsPanel reports={reports} setReports={setReports} />
+        return <ReportsPanel />
+      case "feedbacks":
+        return <FeedbacksPanel />
       default:
         return <EventsPanel />
     }
@@ -106,6 +120,7 @@ const EventManagement = () => {
           onTabChange={handleTabChange}
           contacts={contacts}
           reports={reports}
+          feedbacks={feedbacks}
         />
         <div className="flex-1 my-3 me-3 p-[10px] max-w-[calc(100vw-85px)] sm:max-w-[calc(100vw-280px)] w-auto md:p-[30px] bg-light-gray dark:bg-dark-gray-3 rounded-lg">
           {renderContent()}
@@ -115,4 +130,4 @@ const EventManagement = () => {
   )
 }
 
-export default EventManagement
+export default AdminPanel

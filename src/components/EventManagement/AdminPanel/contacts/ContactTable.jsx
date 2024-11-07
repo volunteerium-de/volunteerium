@@ -2,12 +2,14 @@ import React from "react"
 import { ImSpinner9 } from "react-icons/im"
 import { useNavigate } from "react-router-dom"
 
-const ReportsTable = ({ data, loading }) => {
+const ContactTable = ({ data, loading }) => {
   const navigate = useNavigate()
 
-  const handleNavigateSingleUser = (reportId) => {
-    navigate(`?tab=feedback-contacts&identifier=${reportId}`)
+  const handleNavigateSingleContact = (contactId) => {
+    navigate(`?tab=contacts&identifier=${contactId}`)
   }
+
+  console.log(data)
 
   return (
     <>
@@ -22,4 +24,4 @@ const ReportsTable = ({ data, loading }) => {
   )
 }
 
-export default ReportsTable
+export default ContactTable

@@ -5,15 +5,15 @@ import { IoIosArrowBack } from "react-icons/io"
 import { useNavigate } from "react-router-dom"
 import useAdminCall from "../../../../hooks/useAdminCall"
 
-const SingleContactPanel = ({ contactId, setIdentifier }) => {
+const SingleFeedbackPanel = ({ feedbackId, setIdentifier }) => {
   const navigate = useNavigate()
-  const [contactData, setContactData] = useState([])
+  const [feedbackData, setFeedbackData] = useState([])
   const [loading, setLoading] = useState(false)
   const { fetchSingleData } = useAdminCall()
 
   const handleNavigateBack = () => {
     setIdentifier(null)
-    navigate(`/admin-panel?tab=contacts`)
+    navigate(`/admin-panel?tab=feedbacks`)
   }
 
   return (
@@ -33,7 +33,7 @@ const SingleContactPanel = ({ contactId, setIdentifier }) => {
         ) : (
           <div className="my-8 md:my-4 space-y-2 h-max">
             <div className="flex justify-between items-center p-4 bg-white dark:bg-dark-gray-1 rounded-lg ">
-              ContactId - {contactId}
+              FeedbackId - {feedbackId}
             </div>
           </div>
         )}
@@ -42,4 +42,4 @@ const SingleContactPanel = ({ contactId, setIdentifier }) => {
   )
 }
 
-export default SingleContactPanel
+export default SingleFeedbackPanel

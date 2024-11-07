@@ -32,60 +32,64 @@ const EventsTable = ({ data, loading }) => {
               </tr>
             </thead>
             <tbody className="tbody text-gray-600 dark:text-gray-200 text-sm font-light">
-              {data.map((event) => (
-                <tr
-                  key={event?._id}
-                  onClick={() => handleNavigateSingleEvent(event?._id)}
-                  className="border-b border-gray-200 dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer"
-                >
-                  <td
-                    className="td text-left whitespace-nowrap 2xl:max-w-[140px] overflow-x-scroll scrollbar-hide"
-                    data-label="Event ID"
+              {data &&
+                data.length > 0 &&
+                data.map((event) => (
+                  <tr
+                    key={event?._id}
+                    onClick={() => handleNavigateSingleEvent(event?._id)}
+                    className="border-b border-gray-200 dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer"
                   >
-                    {event?._id}
-                  </td>
-                  <td
-                    className={`td text-center whitespace-nowrap ${event?.isActive ? "text-primary-green" : "text-danger"}`}
-                    data-label="Event Status"
-                  >
-                    {event?.isActive ? "Active" : "Suspended"}
-                  </td>
-                  <td
-                    className={`td text-center whitespace-nowrap ${event?.isDone ? "text-primary-green" : "text-warning"}`}
-                    data-label="Completion Status"
-                  >
-                    {event?.isDone ? "Completed" : "Waiting"}
-                  </td>
-                  <td
-                    className="td text-left whitespace-nowrap overflow-ellipsis overflow-hidden"
-                    data-label="Event Title"
-                  >
-                    {event?.title}
-                  </td>
-                  <td
-                    className="td text-left 2xl:w-[100px] whitespace-nowrap"
-                    data-label="Event Creator"
-                  >
-                    {event?.createdBy?.fullName || event?.createdBy?.organizationName}
-                  </td>
-                  <td
-                    className="td text-center max-w-[150px] whitespace-nowrap flex justify-between items-center overflow-x-scroll scrollbar-hide"
-                    data-label="Attendants"
-                  >
-                    <AttendantsAvatars
-                      participants={event?.eventParticipantIds}
-                      totalParticipants={event?.eventParticipantIds.length}
-                      maxParticipant={event?.maxParticipant}
-                      avatarCount={4}
-                      gap={1}
-                      showAll={true}
-                    />
-                  </td>
-                  <td className="td text-center whitespace-nowrap" data-label="Created At">
-                    {new Date(event?.createdAt).toLocaleDateString()}
-                  </td>
-                </tr>
-              ))}
+                    <td
+                      className="td text-left whitespace-nowrap 2xl:max-w-[140px] overflow-x-scroll scrollbar-hide"
+                      data-label="Event ID"
+                    >
+                      {event?._id}
+                    </td>
+                    <td
+                      className={`td text-center whitespace-nowrap ${event?.isActive ? "text-primary-green" : "text-danger"}`}
+                      data-label="Event Status"
+                    >
+                      {event?.isActive ? "Active" : "Suspended"}
+                    </td>
+                    <td
+                      className={`td text-center whitespace-nowrap ${event?.isDone ? "text-primary-green" : "text-warning"}`}
+                      data-label="Completion Status"
+                    >
+                      {event?.isDone ? "Completed" : "Waiting"}
+                    </td>
+                    <td
+                      className="td text-left whitespace-nowrap overflow-ellipsis overflow-hidden"
+                      data-label="Event Title"
+                    >
+                      {event?.title}
+                    </td>
+                    <td
+                      className="td text-left 2xl:w-[100px] whitespace-nowrap"
+                      data-label="Event Creator"
+                    >
+                      {event?.createdBy?.fullName || event?.createdBy?.organizationName}
+                    </td>
+                    <td
+                      className="td text-center max-w-[150px] whitespace-nowrap flex justify-between items-center overflow-x-scroll scrollbar-hide"
+                      data-label="Attendants"
+                    >
+                      {event?.eventParticipantIds && (
+                        <AttendantsAvatars
+                          participants={event?.eventParticipantIds}
+                          totalParticipants={event?.eventParticipantIds?.length}
+                          maxParticipant={event?.maxParticipant}
+                          avatarCount={4}
+                          gap={1}
+                          showAll={true}
+                        />
+                      )}
+                    </td>
+                    <td className="td text-center whitespace-nowrap" data-label="Created At">
+                      {new Date(event?.createdAt).toLocaleDateString()}
+                    </td>
+                  </tr>
+                ))}
             </tbody>
           </table>
         </div>

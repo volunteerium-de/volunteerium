@@ -6,7 +6,15 @@ import { translations } from "../../../locales/translations"
 import { Link } from "react-router-dom"
 import { GrUserAdmin } from "react-icons/gr"
 
-const Sidebar = ({ items, activeTab, onTabChange, onEditAvatar, contacts = [], reports = [] }) => {
+const Sidebar = ({
+  items,
+  activeTab,
+  onTabChange,
+  onEditAvatar,
+  contacts = [],
+  feedbacks = [],
+  reports = [],
+}) => {
   const { currentUser: user } = useSelector((state) => state.auth)
   const { t } = useTranslation()
   const getMenuClassName = (item) => {
@@ -60,16 +68,21 @@ const Sidebar = ({ items, activeTab, onTabChange, onEditAvatar, contacts = [], r
                 {item.icon}
                 <Link
                   to={item.label}
-                  className={`flex-1 sm:block hidden ${item.key === "feedback-contacts" && "ellipsis me-4 lg:me-10"}`}
+                  className={`flex-1 sm:block hidden ${item.key === "contacts" && "ellipsis me-4 lg:me-10"}`}
                 >
                   {item.label}
                 </Link>
-                {item.key === "feedback-contacts" && contacts.length > 0 && (
+                {item.key === "contacts" && (
                   <span className="bg-primary-green text-white rounded-full text-sm text-center font-bold absolute right-4 top-3 sm:flex h-5 w-5 sm:h-7 sm:w-7 items-center justify-center sm:me-3">
                     {contacts.length}
                   </span>
                 )}
-                {item.key === "reports" && reports.length > 0 && (
+                {item.key === "feedbacks" && (
+                  <span className="bg-primary-green text-white rounded-full text-sm text-center font-bold absolute right-4 top-3 sm:flex h-5 w-5 sm:h-7 sm:w-7 items-center justify-center sm:me-3">
+                    {feedbacks.length}
+                  </span>
+                )}
+                {item.key === "reports" && (
                   <span className="bg-primary-green text-white rounded-full text-sm text-center font-bold absolute right-4 top-2 sm:flex h-5 w-5 sm:h-7 sm:w-7  items-center justify-center sm:me-3">
                     {reports.length}
                   </span>

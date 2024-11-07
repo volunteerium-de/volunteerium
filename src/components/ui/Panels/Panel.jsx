@@ -26,13 +26,11 @@ const Panel = ({ title, fetchUrl, TableComponent }) => {
           setTotalPages(fetchedData.details.pages.total || 1)
           setCurrentPage(fetchedData.details.pages.current || 1)
 
-          if (!isNaN(currentPage) && currentPage > 0) {
+          if (currentPage > 0) {
             navigate(
-              `?tab=${title === "Feedback & Contacts" ? "feedback-contacts" : title.toLowerCase()}&page=${currentPage}`,
+              `?tab=${title === "Event Feedbacks" ? "feedbacks" : title === "Event Reports" ? "reports" : title.toLowerCase()}&page=${currentPage}`,
               { replace: true }
             )
-          } else {
-            setCurrentPage(1)
           }
         })
         .catch((error) => {

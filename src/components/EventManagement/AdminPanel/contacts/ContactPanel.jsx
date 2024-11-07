@@ -3,7 +3,7 @@ import ContactTable from "./ContactTable"
 import Panel from "../../../ui/Panels/Panel"
 
 const ContactPanel = () => {
-  return <Panel title="Feedback & Contacts" fetchUrl="contacts" TableComponent={ContactTable} />
+  return <Panel title="Contacts" fetchUrl="contacts" TableComponent={ContactTable} />
 }
 
 export default ContactPanel
