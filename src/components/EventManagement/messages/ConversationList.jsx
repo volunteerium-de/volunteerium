@@ -12,10 +12,22 @@ const ConversationList = ({
 }) => {
   const defaultEventPhoto = eventPhoto
 
+  const updatedConversations = conversations.map((conversation) => {
+    const lastMessage = conversation.messageIds[conversation.messageIds.length - 1]
+    return {
+      ...conversation,
+      lastMessageTimestamp: lastMessage?.createdAt || 0,
+    }
+  })
+
+  const sortedConversations = updatedConversations.sort(
+    (a, b) => new Date(b.lastMessageTimestamp) - new Date(a.lastMessageTimestamp)
+  )
+
   return (
     <div className="h-[88vh] py-3 mt-3 -ml-2 sm:ml-0 rounded-lg lg:rounded-r-none overflow-y-auto scrollbar dark:bg-dark-gray-3 dark:pt-5">
       <div className="mx-4">
-        {conversations?.map((conversation) => {
+        {sortedConversations?.map((conversation) => {
           const {
             _id,
             participantIds,
