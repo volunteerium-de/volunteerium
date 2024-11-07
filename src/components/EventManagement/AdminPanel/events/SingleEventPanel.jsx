@@ -99,9 +99,11 @@ const SingleEventPanel = ({ eventId, setIdentifier }) => {
         ) : (
           <div className="my-8 md:my-4 space-y-2 h-max">
             <div className="flex justify-between items-center p-4 bg-white dark:bg-dark-gray-1 rounded-lg ">
-              <div className="text-[1.125rem] flex gap-1 md:gap-2 items-center text-dark-gray-1">
-                <span className="text-primary-green dark:text-white font-semibold">Event ID:</span>
-                <span className="w-[100px] md:w-auto overflow-ellipsis overflow-hidden">
+              <div className="text-sm sm:text-[1.125rem] flex gap-1 md:gap-2 items-center text-dark-gray-1 me-3">
+                <span className="text-primary-green dark:text-white font-semibold w-[55px] sm:w-fit">
+                  Event ID:
+                </span>
+                <span className="w-[100px] md:w-auto overflow-x-scroll scrollbar-hide">
                   {eventId}
                 </span>
                 <span>
@@ -113,16 +115,16 @@ const SingleEventPanel = ({ eventId, setIdentifier }) => {
               </div>
               <div className="flex gap-1 md:gap-2 items-center">
                 {singleEvent?.isActive ? (
-                  <span className="text-primary-green dark:bg-white text-xl border border-primary-green dark:border-white px-2 py1">
+                  <span className="text-primary-green dark:bg-white text-md sm:text-xl border border-primary-green dark:border-white px-1 sm:px-2 py-1">
                     ACTIVE
                   </span>
                 ) : (
-                  <span className="text-warning dark:bg-white text-xl border border-warning px-2 py1">
+                  <span className="text-warning dark:bg-white text-md sm:text-xl border border-warning px-1 sm:px-2 py-1">
                     SUSPENDED
                   </span>
                 )}
                 <button ref={settingsButtonRef} onClick={handleSettingsButtonClick}>
-                  <MdOutlineSettings className="w-8 h-8 text-dark-gray-1 dark:text-white hover:text-dark-gray-1" />
+                  <MdOutlineSettings className="w-5 h-5 sm:w-8 sm:h-8 text-dark-gray-1 dark:text-white hover:text-dark-gray-1" />
                 </button>
               </div>
             </div>
@@ -219,11 +221,15 @@ const SingleEventPanel = ({ eventId, setIdentifier }) => {
                         singleEvent?.documentIds.map((document) => {
                           return (
                             <div
-                              onClick={() => window.open(`${document.fileUrl}`, "_blank")}
                               key={document._id}
-                              className="mt-2 p-2 text-dark-gray-1 rounded cursor-pointer hover:text-light-gray"
+                              className="p-1 text-dark-gray-1 rounded cursor-pointer flex flex-col gap-1 items-start"
                             >
-                              <span className="font-semibold">{document.title}</span>
+                              <span
+                                onClick={() => window.open(`${document.fileUrl}`, "_blank")}
+                                className="text-sm font-medium flex gap-1 items-center hover:text-gray-1"
+                              >
+                                - {document.title} <FaExternalLinkAlt />
+                              </span>
                               <span className="text-xs text-gray-500">
                                 Document Id: {document._id}
                               </span>

@@ -131,12 +131,7 @@ td {
   }
 
   /* Ensure that Event Status and Completion Status are side by side */
-  td[data-label="Event Status"],
-  td[data-label="Completion Status"],
-  td[data-label="Event Creator"],
-  td[data-label="Event Title"],
-  td[data-label="Created At"],
-  td[data-label="Attendants"] {
+  td {
     display: flex; /* Use flex to align them side by side */
     flex-direction: row; /* Align content horizontally */
     justify-content: space-between; /* Space out the values */

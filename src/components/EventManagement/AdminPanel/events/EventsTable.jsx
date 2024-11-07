@@ -69,7 +69,7 @@ const EventsTable = ({ data, loading }) => {
                     {event?.createdBy?.fullName || event?.createdBy?.organizationName}
                   </td>
                   <td
-                    className="td text-center whitespace-nowrap flex justify-center items-center"
+                    className="td text-center max-w-[150px] whitespace-nowrap flex justify-between items-center overflow-x-scroll scrollbar-hide"
                     data-label="Attendants"
                   >
                     <AttendantsAvatars
