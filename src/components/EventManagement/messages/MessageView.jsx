@@ -5,21 +5,27 @@ import { IoChevronBackOutline } from "react-icons/io5"
 import { FiMessageCircle } from "react-icons/fi"
 
 const MessageView = ({
+  conversations,
   selectedConversation,
   currentUser,
   onBackClick,
   onSendMessage,
   bottomRef,
 }) => {
+  const selectedConversationId = conversations.find(
+    (conv) => conv._id === selectedConversation?._id
+  )
   const handleSelectPromptClick = () => {
-    if (!selectedConversation) {
+    if (!selectedConversationId) {
       onBackClick()
     }
   }
+  console.log(conversations)
+
   return (
     <>
       <div className="flex flex-col py-2 h-[88vh] mt-3 -ml-2 sm:ml-0 lg:border-l rounded-r-lg rounded-lg lg:rounded-l-none bg-white dark:bg-dark-gray-3 border-primary-green border-opacity-40 dark:border-dark-gray-1 px-2">
-        {!selectedConversation ? (
+        {!selectedConversationId ? (
           <div
             onClick={handleSelectPromptClick}
             className="flex flex-col items-center h-[88vh] p-3 mt-3 rounded-r-lg rounded-lg lg:rounded-l-none dark:bg-dark-gray-3 justify-center mb-44 sm:mb-0"
@@ -37,28 +43,22 @@ const MessageView = ({
                   onClick={onBackClick}
                   className="block lg:hidden dark:text-white text-xl mt-0.5 cursor-pointer"
                 />
-                {selectedConversation.eventId.title}
+                {selectedConversationId.eventId.title}
               </h3>
               <p className="text-[0.8rem] text-primary-green mb-1 ml-6 lg:ml-0">
-                {selectedConversation?.createdBy?.fullName ||
-                  selectedConversation.createdBy?.organizationName}
+                {selectedConversationId.displayName ||
+                  selectedConversationId.createdBy?.organizationName}
               </p>
               <div className="border-b mb-5 -ml-4 w-full dark:border-dark-gray-1" />
             </div>
             <div className="flex-grow overflow-y-auto scrollbar">
-              {selectedConversation.messageIds.map((message) => (
+              {selectedConversationId.messageIds.map((message) => (
                 <div key={message._id} className="mb-4">
                   <div
-                    className={`p-3 mx-4 w-[80%] md:w-[70%] rounded ${
-                      message.senderId._id === currentUser._id
-                        ? "bg-primary-green ml-auto"
-                        : "bg-light-gray-2"
-                    }`}
+                    className={`p-3 mx-4 w-[250px] md:w-[400px] lg:w-[250px] xl:w-[450px] rounded ${message.senderId._id === currentUser._id ? "bg-primary-green ml-auto" : "bg-light-gray-2"}`}
                   >
                     <p
-                      className={
-                        message.senderId._id === currentUser._id ? "text-white" : "text-black"
-                      }
+                      className={` ${message.senderId._id === currentUser._id ? "text-white" : "text-black"} whitespace-normal break-words`}
                     >
                       {message.content}
                     </p>
@@ -81,7 +81,7 @@ const MessageView = ({
                       >
                         {message?.senderId?._id === currentUser._id
                           ? "You"
-                          : message?.senderId?.fullName || message?.senderId?.organizationName}
+                          : selectedConversationId.displayName}
                       </p>
                     </div>
                   </div>

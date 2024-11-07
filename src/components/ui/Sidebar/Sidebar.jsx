@@ -15,7 +15,7 @@ const Sidebar = ({ items, activeTab, onTabChange, onEditAvatar }) => {
   }
 
   return (
-    <div className="h-screen max-h-[80vh] m-3 mr-3">
+    <div className="h-screen max-h-[80vh] m-3">
       <div className="w-[85px] sm:w-[240px] lg:w-[300px] 2xl:w-[350px] h-[88vh] py-[30px] bg-light-gray dark:bg-dark-gray-3 rounded-lg">
         <div className="flex flex-col items-center gap-4">
           <div>
