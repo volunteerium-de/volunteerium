@@ -169,7 +169,7 @@ const SingleUserPanel = ({ userId, setIdentifier }) => {
                       href={`https://mail.google.com/mail/?view=cm&fs=1&to=${userData?.email}`}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex gap-1 items-center text-primary-green hover:underline"
+                      className="flex gap-1 items-center text-primary-green dark:text-green-300 hover:underline"
                     >
                       {userData?.email} <LuMailPlus />
                     </a>

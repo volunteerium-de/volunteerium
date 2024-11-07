@@ -18,9 +18,9 @@ const UsersTable = ({ data, loading }) => {
         </div>
       ) : data && Array.isArray(data) && data.length > 0 ? (
         <div className="overflow-x-auto mt-5">
-          <table className="table min-w-full bg-white dark:bg-dark-gray-2">
+          <table className="table min-w-full bg-white dark:bg-dark-gray-1">
             <thead className="thead">
-              <tr className="tr w-full bg-primary-green dark:bg-light-gray text-light-gray dark:text-gray-600 uppercase text-sm leading-normal">
+              <tr className="tr w-full bg-primary-green dark:bg-light-gray text-light-gray dark:text-dark-gray-1 uppercase text-sm leading-normal">
                 <th className="th p-3 text-left">User ID</th>
                 <th className="th p-3 text-center">Status</th>
                 <th className="th p-3 text-center">User Type</th>
@@ -29,14 +29,14 @@ const UsersTable = ({ data, loading }) => {
                 <th className="th p-3 text-center">Created At</th>
               </tr>
             </thead>
-            <tbody className="tbody text-gray-600 dark:text-gray-200 text-sm font-light">
+            <tbody className="tbody text-dark-gray-1 dark:text-light-gray text-sm font-light">
               {data
                 .filter((user) => user._id !== import.meta.env.VITE_ADMIN_ID)
                 .map((user) => (
                   <tr
                     key={user?._id}
                     onClick={() => handleNavigateSingleUser(user?._id)}
-                    className="border-b border-gray-200 dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700 text-sm cursor-pointer"
+                    className="border-b border-light-gray dark:border-dark-gray-1 hover:bg-gray-100 dark:hover:bg-dark-gray-2 text-sm cursor-pointer"
                   >
                     <td
                       className="td text-left whitespace-nowrap 2xl:max-w-[140px] overflow-x-scroll scrollbar-hide"
@@ -45,13 +45,13 @@ const UsersTable = ({ data, loading }) => {
                       {user?._id}
                     </td>
                     <td
-                      className={`td text-center whitespace-nowrap 2xl:w-[100px] ${user?.isActive ? "text-primary-green" : "text-danger"}`}
+                      className={`td text-center whitespace-nowrap 2xl:w-[100px] ${user?.isActive ? "text-primary-green dark:text-green-300" : "text-danger dark:text-red-300"}`}
                       data-label="User Status"
                     >
                       {user?.isActive ? "Active" : "Suspended"}
                     </td>
                     <td
-                      className={`td text-center whitespace-nowrap 2xl:w-[100px] ${user?.userType === "individual" ? "text-blue-400" : "text-warning"}`}
+                      className={`td text-center whitespace-nowrap 2xl:w-[100px] ${user?.userType === "individual" ? "text-blue-400 dark:text-blue-200" : "text-warning dark:text-orange-300"}`}
                       data-label="User Type"
                     >
                       {user?.userType.toUpperCase()}

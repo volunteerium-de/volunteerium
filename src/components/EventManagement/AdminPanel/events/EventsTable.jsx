@@ -19,9 +19,9 @@ const EventsTable = ({ data, loading }) => {
         </div>
       ) : data && Array.isArray(data) && data.length > 0 ? (
         <div className="overflow-x-auto mt-5">
-          <table className="table min-w-full bg-white dark:bg-dark-gray-2">
+          <table className="table min-w-full bg-white dark:bg-dark-gray-1">
             <thead className="thead">
-              <tr className="tr w-full bg-primary-green dark:bg-light-gray text-light-gray dark:text-gray-600 uppercase text-sm leading-normal">
+              <tr className="tr w-full bg-primary-green dark:bg-light-gray text-light-gray dark:text-dark-gray-1 uppercase text-sm leading-normal">
                 <th className="th p-3 text-left">Event ID</th>
                 <th className="th p-3 text-center">Status</th>
                 <th className="th p-3 text-center">Completion</th>
@@ -31,14 +31,14 @@ const EventsTable = ({ data, loading }) => {
                 <th className="th p-3 text-center">Created At</th>
               </tr>
             </thead>
-            <tbody className="tbody text-gray-600 dark:text-gray-200 text-sm font-light">
+            <tbody className="tbody text-gray-600 dark:text-light-gray text-sm font-light">
               {data &&
                 data.length > 0 &&
                 data.map((event) => (
                   <tr
                     key={event?._id}
                     onClick={() => handleNavigateSingleEvent(event?._id)}
-                    className="border-b border-gray-200 dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer"
+                    className="border-b border-light-gray dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-dark-gray-2 cursor-pointer"
                   >
                     <td
                       className="td text-left whitespace-nowrap 2xl:max-w-[140px] overflow-x-scroll scrollbar-hide"
@@ -47,13 +47,13 @@ const EventsTable = ({ data, loading }) => {
                       {event?._id}
                     </td>
                     <td
-                      className={`td text-center whitespace-nowrap ${event?.isActive ? "text-primary-green" : "text-danger"}`}
+                      className={`td text-center whitespace-nowrap ${event?.isActive ? "text-primary-green dark:text-green-300" : "text-danger dark:text-red-300"}`}
                       data-label="Event Status"
                     >
                       {event?.isActive ? "Active" : "Suspended"}
                     </td>
                     <td
-                      className={`td text-center whitespace-nowrap ${event?.isDone ? "text-primary-green" : "text-warning"}`}
+                      className={`td text-center whitespace-nowrap ${event?.isDone ? "text-primary-green dark:text-green-300" : "text-warning dark:text-orange-300"}`}
                       data-label="Completion Status"
                     >
                       {event?.isDone ? "Completed" : "Waiting"}
