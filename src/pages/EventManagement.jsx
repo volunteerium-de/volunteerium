@@ -59,7 +59,7 @@ const EventManagement = () => {
         <>
           <FaEnvelope className="text-2xl" />
           {unreadMessageCount > 0 && (
-            <span className="absolute top-4 left-16 sm:left-72 md:left-64 w-2 h-2 bg-primary-green rounded-full"></span>
+            <span className="absolute top-4 left-[62px] sm:left-[185px] md:left-52 lg:left-[230px] xl:left-[230px] 2xl:left-[250px] w-2 h-2 bg-primary-green rounded-full"></span>
           )}
         </>
       ),
