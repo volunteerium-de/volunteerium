@@ -41,8 +41,16 @@ const EventDetails = () => {
     fetchSingleEvent()
   }, [eventId])
 
-  const { eventPhoto, title, createdBy, interestIds, description, addressId, eventParticipantIds } =
-    singleEvent || {}
+  const {
+    eventPhoto,
+    isOnline,
+    title,
+    createdBy,
+    interestIds,
+    description,
+    addressId,
+    eventParticipantIds,
+  } = singleEvent || {}
 
   const userType = createdBy?.userType
   const isFullNameDisplay = createdBy?.userDetailsId?.isFullNameDisplay
@@ -131,6 +139,7 @@ const EventDetails = () => {
                             participant?.isPending === false
                           )
                         }) &&
+                        !isOnline &&
                         `${addressId?.streetName} ${addressId?.streetNumber} ${addressId?.zipCode}, ${addressId?.city} ${addressId?.country}`}
                     </p>
                     <iframe

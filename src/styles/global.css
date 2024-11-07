@@ -1,7 +1,10 @@
 /* Only Custom */
 
-/* datepicker custom styles */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
 
+/* datepicker custom styles */
 .react-datepicker {
   font-family: "Arial", sans-serif;
   background-color: #f1f3f9;
@@ -31,4 +34,130 @@
 
 input[type="checkbox"] {
   accent-color: #69957b;
+}
+
+/* Main Table Styles */
+table {
+  border-collapse: collapse;
+  width: 100%; /* Ensure the table uses full width */
+}
+
+th,
+td {
+  padding: 1rem;
+  text-align: left;
+}
+
+/* Responsive Design for Smaller Screens (less than 768px) */
+@media (max-width: 768px) {
+  /* Hide the table headers on small screens */
+  thead {
+    display: none; /* Hide the header */
+  }
+
+  tbody,
+  tr {
+    display: flex; /* Make rows block elements */
+    flex-direction: column; /* Stack rows vertically */
+    justify-content: start; /* Start content */
+    margin-bottom: 1rem; /* Space between rows */
+    border-radius: 0.5rem; /* Rounded corners */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Shadow for depth */
+  }
+
+  tr {
+    padding: 1rem;
+  }
+
+  td {
+    display: flex; /* Use flexbox for responsive display */
+    flex-direction: row;
+    justify-content: start; /* Space out content */
+    gap: 0.5rem; /* Space between elements */
+    padding: 0.3rem; /* Adjust padding for smaller screens */
+    position: relative; /* Keep relative positioning for layout */
+    overflow: hidden; /* Hide overflow */
+    text-overflow: ellipsis; /* Show ellipsis for overflowed text */
+    white-space: nowrap; /* Prevent text from wrapping */
+  }
+
+  /* Show the data-label on mobile */
+  td::before {
+    content: attr(data-label); /* Use data-label for headers */
+    font-weight: bold; /* Bold text for label */
+    text-align: left; /* Align text to left */
+    text-transform: uppercase; /* Uppercase for labels */
+    font-size: 0.75rem; /* Smaller font size for labels */
+    color: gray; /* Label color */
+    margin-bottom: 0.5rem; /* Space between label and content */
+    flex-basis: 100%; /* Make label take full width */
+  }
+}
+/* Responsive Design for Mid-range Screens (768px to 1440px) */
+@media (min-width: 768px) and (max-width: 1440px) {
+  /* Hide the table headers on medium screens */
+  thead {
+    display: none; /* Hide the header */
+  }
+
+  tbody,
+  tr {
+    display: block; /* Make each row block elements */
+    margin-bottom: 1rem; /* Space between rows */
+    border-radius: 0.5rem; /* Rounded corners */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Shadow for depth */
+  }
+
+  tr {
+    padding: 0.5rem;
+  }
+
+  td {
+    display: flex; /* Use flex for td elements */
+    flex-direction: column; /* Stack elements vertically */
+    position: relative; /* Relative positioning for layout */
+    padding: 0.2rem;
+    overflow: hidden; /* Hide overflow */
+    text-overflow: ellipsis; /* Show ellipsis for overflowed text */
+    white-space: nowrap; /* Prevent text from wrapping */
+  }
+
+  /* Ensure that Event ID takes the full width */
+  td[data-label="Event ID"] {
+    flex: 1 1 100%; /* Event ID should take full width */
+    flex-direction: row; /* Align content horizontally */
+    justify-content: space-between; /* Space out the content */
+    width: 100% !important;
+  }
+
+  /* Ensure that Event Status and Completion Status are side by side */
+  td {
+    display: flex; /* Use flex to align them side by side */
+    flex-direction: row; /* Align content horizontally */
+    justify-content: space-between; /* Space out the values */
+    flex: 1 1 48%; /* Give them equal width */
+  }
+
+  /* Ensure data-label is visible */
+  td::before {
+    content: attr(data-label); /* Use data-label for headers */
+    font-weight: bold; /* Bold text for label */
+    text-align: left; /* Align text to left */
+    text-transform: uppercase; /* Uppercase for labels */
+    font-size: 0.75rem; /* Smaller font size for labels */
+    color: gray; /* Label color */
+    margin-bottom: 0.5rem; /* Space between label and content */
+    display: block; /* Make sure labels are block elements */
+  }
+
+  /* Ensure the values are properly displayed below the labels */
+  td > span {
+    grid-column: span 1; /* Allow values to occupy their columns */
+  }
+
+  /* Specific styling for spans to handle positioning correctly */
+  td[data-label="Event Status"] span,
+  td[data-label="Completion Status"] span {
+    display: block; /* Ensuring block display for values */
+  }
 }
