@@ -13,6 +13,7 @@ import { useNavigate } from "react-router-dom"
 import { useLocation } from "react-router-dom"
 import { useTranslation } from "react-i18next"
 import { translations } from "../../locales/translations"
+import useLanguageOptions from "../../hooks/useLanguages"
 
 const SearchBar = () => {
   const { t } = useTranslation() // i18next hook
@@ -27,6 +28,7 @@ const SearchBar = () => {
   const dispatch = useDispatch()
   const navigate = useNavigate()
   const location = useLocation()
+  const { getTranslatedCategory } = useLanguageOptions()
 
   const searchBarItems = [
     {
@@ -133,7 +135,7 @@ const SearchBar = () => {
                       className="p-2 text-[0.7rem] hover:bg-light-green hover:dark:bg-primary-green cursor-pointer dark:hover:text-white"
                       onClick={() => handleCategorySelect(category)}
                     >
-                      {category?.name}
+                      {getTranslatedCategory(category.name)}
                     </li>
                   ))}
                 </ul>

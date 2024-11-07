@@ -63,6 +63,7 @@ const Profile = () => {
   const pageFromUrl = queryParams.get("page") || 1
   const [currentPage, setCurrentPage] = useState(pageFromUrl > 0 ? pageFromUrl : 1)
   const [totalPages, setTotalPages] = useState(0)
+  const { getTranslatedCategory } = useLanguageOptions()
 
   useEffect(() => {
     const fetchEvents = async () => {
@@ -70,7 +71,7 @@ const Profile = () => {
       try {
         const query =
           eventType === "Attended Events"
-            ? `events/?filter[eventParticipantIds]=${userId}&page=${currentPage}`
+            ? `events/participant/${userId}?page=${currentPage}`
             : `events/?filter[createdBy]=${userId}&page=${currentPage}`
         const eventData = await getEvents(query)
         const { data } = await axiosWithPublic(`users/${userId}`)
@@ -92,7 +93,6 @@ const Profile = () => {
     }
     fetchEvents()
   }, [currentPage, eventType, t])
-
   const {
     _id,
     fullName,
@@ -234,7 +234,7 @@ const Profile = () => {
                       {interestIds.map((interest) => (
                         <div key={interest._id}>
                           <p className="text-[0.6875rem] text-center text-primary-green border border-primary-green px-2 py-1 rounded-2xl font-bold">
-                            {interest.name.toUpperCase()}
+                            {getTranslatedCategory(interest.name).toUpperCase()}
                           </p>
                         </div>
                       ))}

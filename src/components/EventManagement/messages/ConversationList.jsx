@@ -11,7 +11,6 @@ const ConversationList = ({
   getUnreadCount,
 }) => {
   const defaultEventPhoto = eventPhoto
-  console.log(conversations)
 
   return (
     <div className="h-[88vh] py-3 mt-3 -ml-2 sm:ml-0 rounded-lg lg:rounded-r-none overflow-y-auto scrollbar dark:bg-dark-gray-3 dark:pt-5">
