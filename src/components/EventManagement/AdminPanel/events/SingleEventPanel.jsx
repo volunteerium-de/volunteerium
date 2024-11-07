@@ -303,14 +303,14 @@ const SingleEventPanel = ({ eventId, setIdentifier }) => {
                             <li
                               className={`text-center flex-[1] py-3 ${
                                 participant.isPending
-                                  ? "text-warning"
+                                  ? "text-warning dark:text-orange-300"
                                   : participant.isApproved && !participant.isPending
-                                    ? "text-primary-green"
+                                    ? "text-primary-green dark:text-green-300"
                                     : !participant.isApproved && !participant.isPending
-                                      ? "text-danger"
+                                      ? "text-danger dark:text-red-300"
                                       : participant.hasJoined === "joined"
-                                        ? "text-primary-green"
-                                        : "text-danger"
+                                        ? "text-primary-green dark:text-green-300"
+                                        : "text-danger dark:text-red-300"
                               }`}
                               data-label="Participant Status"
                             >
