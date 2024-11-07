@@ -1,5 +1,4 @@
 import React, { useState, useRef, useEffect } from "react"
-import React, { useState, useRef, useEffect } from "react"
 import { AiFillStar, AiOutlineStar } from "react-icons/ai"
 import useEventCall from "../../hooks/useEventCall"
 import { useSelector } from "react-redux"
@@ -7,7 +6,6 @@ import { useSelector } from "react-redux"
 const EventFeedback = ({ eventName, eventId, onClose }) => {
   const { currentUser } = useSelector((state) => state.auth)
   const [rating, setRating] = useState(0)
-  const [hoverRating, setHoverRating] = useState(0)
   const [hoverRating, setHoverRating] = useState(0)
   const [feedback, setFeedback] = useState("")
   const [error, setError] = useState("")
@@ -47,14 +45,18 @@ const EventFeedback = ({ eventName, eventId, onClose }) => {
   }
 
   return (
-    <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
-      <div ref={modalRef} className="bg-white p-8 rounded-lg w-4/5 shadow-lg max-w-lg mx-auto">
-        <h2 className="text-[1.25rem] text-center text-dark-gray-3 font-semibold mb-4">
+    <div className="fixed -inset-5 flex items-center justify-center bg-black bg-opacity-50 ">
+      <div
+        ref={modalRef}
+        className="bg-white dark:bg-dark-gray-3 p-8 rounded-lg w-4/5 max-w-lg mx-auto shadow-lg "
+      >
+        <h2 className="text-[1.25rem] text-center text-dark-gray-3 dark:text-white font-semibold mb-4">
           Thank you for your participation!
         </h2>
-        <p className="text-dark-gray-1 mb-4 text-center">
+        <p className="text-dark-gray-1 dark:text-white mb-4 text-center">
           Please share your experience about
-          <span className="text-dark-gray-3 font-semibold"> {eventName}</span> to help us improve.
+          <span className="text-dark-gray-3 dark:text-white font-semibold"> {eventName}</span> to
+          help us improve.
         </p>
 
         {/* Star Rating */}
@@ -76,14 +78,17 @@ const EventFeedback = ({ eventName, eventId, onClose }) => {
             </span>
           ))}
         </div>
-        <p className="text-sm text-red-500 text-center ">*Rating is a required field.</p>
-        {error && <p className="text-red-500 text-center mb-4">{error}</p>}
+
+        {error && <p className="text-danger text-center mb-4">{error}</p>}
 
         {/* Text Area for feedback */}
-        <label className="block text-dark-gray-2 text-left mb-2 mt-4">Feedback (Optional):</label>
+        <label className="block text-dark-gray-2 dark:text-white text-left mb-2 mt-4">
+          Feedback (Optional):
+        </label>
         <textarea
-          className="w-full h-32 p-2 border border-gray-1 rounded focus:outline-none focus:border-primary-green mb-4 placeholder-dark-gray-1 resize-none"
+          className="w-full  p-2 border border-gray-1 rounded focus:outline-none focus:border-primary-green mb-4 placeholder-dark-gray-1 resize-none"
           placeholder="Write your feedback here..."
+          rows={4}
           value={feedback}
           onChange={(e) => setFeedback(e.target.value)}
         />
@@ -101,13 +106,7 @@ const EventFeedback = ({ eventName, eventId, onClose }) => {
         <button
           type="button"
           onClick={onClose}
-          className="w-full bg-gray-300 text-gray-800 py-2 rounded-md font-semibold"
-        >
-          CANCEL
-        <button
-          type="button"
-          onClick={onClose}
-          className="w-full bg-gray-300 text-gray-800 py-2 rounded-md font-semibold"
+          className="w-full bg-gray-300 text-dark-gray-2 py-2 rounded-md font-semibold"
         >
           CANCEL
         </button>

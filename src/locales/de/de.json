@@ -581,12 +581,12 @@
     "maxReacedButton": "Volle Kapazität",
     "manageButton": "Verwalten",
     "feedback": {
-      "h2": "Danke für Ihre Teilnahme!",
+      "h2": "Vielen Dank für Ihre Teilnahme!",
       "p1": "Bitte teilen Sie Ihre Erfahrungen über",
       "p2": "um uns zu helfen, uns zu verbessern.",
       "placeholder": "Schreiben Sie Ihr Feedback hier...",
       "submit": "Teilen Sie Ihr Feedback",
-      "close": "Schließen"
+      "cancel": "Abbrechen"
     },
     "report": {
       "h2": "Veranstaltung melden",

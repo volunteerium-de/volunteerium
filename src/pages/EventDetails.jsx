@@ -49,7 +49,7 @@ const EventDetails = () => {
     <div>
       <Header />
       {loading ? (
-        <div className="h-screen flex flex-col justify-center items-center max-width-[1800px] mx-aouto">
+        <div className="h-screen flex flex-col justify-center items-center">
           <div className="animate-spin rounded-full h-14 w-14 border-t-4 border-primary-green border-opacity-50 dark:border-light-green"></div>
           <p className="text-xl mt-4 font-semibold text-primary-green dark:text-light-gray">
             {t(translations.profile.loading)}
