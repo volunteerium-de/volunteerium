@@ -110,6 +110,18 @@ const IndividualSettingsForm = () => {
     { label: t(translations.indvSettings.notSay), value: "Prefer not to say" },
   ]
 
+  const getShortName = (fullName) => {
+    const nameParts = fullName.split(" ")
+
+    if (nameParts.length === 2) {
+      return `${nameParts[0]} ${nameParts[1].charAt(0)}.`
+    } else if (nameParts.length > 2) {
+      return `${nameParts[0]} ${nameParts.slice(1, -1).join(" ")} ${nameParts[nameParts.length - 1].charAt(0)}.`
+    } else {
+      return fullName
+    }
+  }
+
   return (
     <div>
       <div className="mx-auto max-w-4xl p-8 bg-light-gray dark:bg-dark-gray-3 rounded-lg shadow-md  ">
@@ -140,7 +152,7 @@ const IndividualSettingsForm = () => {
                     />
                     <RadioInput
                       id="shortName"
-                      label={`${currentUser.fullName.split(" ")[0]} ${currentUser.fullName.split(" ")[1]?.charAt(0)}.`}
+                      label={getShortName(currentUser.fullName)}
                       checked={!values.isFullNameDisplay}
                       onChange={() => setFieldValue("isFullNameDisplay", false)}
                     />
