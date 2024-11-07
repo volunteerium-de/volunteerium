@@ -45,16 +45,16 @@ const UsersTable = ({ data, loading }) => {
                       {user?._id}
                     </td>
                     <td
-                      className={`td text-center whitespace-nowrap 2xl:w-[100px] ${user?.userType === "individual" ? "text-blue-400" : "text-warning"}`}
-                      data-label="User Type"
-                    >
-                      {user?.userType.toUpperCase()}
-                    </td>
-                    <td
                       className={`td text-center whitespace-nowrap 2xl:w-[100px] ${user?.isActive ? "text-primary-green" : "text-danger"}`}
                       data-label="User Status"
                     >
                       {user?.isActive ? "Active" : "Suspended"}
+                    </td>
+                    <td
+                      className={`td text-center whitespace-nowrap 2xl:w-[100px] ${user?.userType === "individual" ? "text-blue-400" : "text-warning"}`}
+                      data-label="User Type"
+                    >
+                      {user?.userType.toUpperCase()}
                     </td>
                     <td
                       className="td text-left 2xl:w-[100px] whitespace-nowrap overflow-ellipsis overflow-hidden"
