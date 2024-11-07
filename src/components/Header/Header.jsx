@@ -5,7 +5,6 @@ import MessageMenu from "./MessageMenu"
 import { Link } from "react-router-dom"
 import { useSelector } from "react-redux"
 
-
 const Header = () => {
   const { currentUser: user } = useSelector((state) => state.auth)
 
@@ -28,7 +27,7 @@ const Header = () => {
         </Link>
         {/* User - Notification - Message Menu  */}
         <div className="flex items-center space-x-4">
-          {user ? (
+          {user && user.userType !== "admin" ? (
             <>
               <NotificationMenu />
               <MessageMenu />

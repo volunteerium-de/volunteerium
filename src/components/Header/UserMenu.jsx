@@ -62,17 +62,21 @@ const UserMenu = ({ user }) => {
             <div className="mt-2">
               {user ? (
                 <>
+                  {user.userType !== "admin" && (
+                    <button
+                      className="block w-full text-left p-1 hover:text-primary-green"
+                      onClick={() => navigate(`/profile/${user._id}`)}
+                    >
+                      {t(translations.userMenu.profile)}
+                    </button>
+                  )}
                   <button
                     className="block w-full text-left p-1 hover:text-primary-green"
-                    onClick={() => navigate(`/profile/${user._id}`)}
+                    onClick={() =>
+                      navigate(`/${user.userType === "admin" ? "admin-panel" : "event-management"}`)
+                    }
                   >
-                    {t(translations.userMenu.profile)}
-                  </button>
-                  <button
-                    className="block w-full text-left p-1 hover:text-primary-green"
-                    onClick={() => navigate("/event-management")}
-                  >
-                    {t(translations.userMenu.eventMng)}
+                    {user.userType === "admin" ? "Admin Panel" : t(translations.userMenu.eventMng)}
                   </button>
                   <button
                     className="block w-full text-left p-1 hover:text-primary-green"

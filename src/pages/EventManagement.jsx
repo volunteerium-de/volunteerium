@@ -14,7 +14,7 @@ const EventManagement = () => {
   const location = useLocation()
   const navigate = useNavigate()
   const { conversations } = useSelector((state) => state.chat)
-  const { currentUser } = useSelector((state) => state.auth)
+  const { currentUser, loading } = useSelector((state) => state.auth)
   const [activeTab, setActiveTab] = useState("organized-events")
   const [isAddingEvent, setIsAddingEvent] = useState(false)
 
@@ -50,6 +50,7 @@ const EventManagement = () => {
       key: "attended-events",
       label: "Attended Events",
       icon: <FaPeopleGroup className="text-2xl mx-auto" />,
+      show: currentUser?.userType !== "organization",
     },
     {
       key: "messages",
@@ -63,7 +64,7 @@ const EventManagement = () => {
         </>
       ),
     },
-  ]
+  ].filter((item) => item.show !== false)
 
   const renderContent = () => {
     if (isAddingEvent) return <AddEvent onClose={() => setIsAddingEvent(false)} />
