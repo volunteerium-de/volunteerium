@@ -10,6 +10,7 @@ import { formatDateWithTime } from "../../../../helpers/formatDate"
 import useLanguage from "../../../../hooks/useLanguages"
 import { MdOutlineSettings } from "react-icons/md"
 import { LuMailPlus } from "react-icons/lu"
+import { AiFillStar, AiOutlineStar } from "react-icons/ai"
 
 const SingleFeedbackPanel = ({ feedbackId, setIdentifier }) => {
   const navigate = useNavigate()
@@ -100,7 +101,7 @@ const SingleFeedbackPanel = ({ feedbackId, setIdentifier }) => {
           <div className="my-8 md:my-4 space-y-2 h-max">
             <div className="flex justify-between items-center p-4 bg-white dark:bg-dark-gray-1 rounded-lg ">
               <div className="text-sm sm:text-[1.125rem] flex gap-1 md:gap-2 items-center text-dark-gray-1 me-3">
-                FeedbackId - {feedbackId}
+                Feedback ID - {feedbackId}
               </div>
               <div className="flex gap-1 md:gap-2 items-center">
                 <button ref={settingsButtonRef} onClick={handleSettingsButtonClick}>
@@ -117,7 +118,11 @@ const SingleFeedbackPanel = ({ feedbackId, setIdentifier }) => {
                 <ul className="space-y-2 text-dark-gray-1 dark:text-light-gray-2">
                   {/* User Avatar */}
                   <li className="flex justify-start my-4">
-                    <UserAvatar user={feedbackData} size="h-24 w-24" backgroundActive={true} />
+                    <UserAvatar
+                      user={feedbackData?.userId}
+                      size="h-24 w-24"
+                      backgroundActive={true}
+                    />
                   </li>
                   {/* Full Name  */}
                   <li className="flex gap-1 mt-4">
@@ -161,10 +166,19 @@ const SingleFeedbackPanel = ({ feedbackId, setIdentifier }) => {
                   Feedback Details
                 </h1>
                 <ul className="space-y-2 text-dark-gray-1 dark:text-light-gray-2">
-                  <li className="flex gap-1">
+                  <li className="flex items-center my-4">
                     <span className="font-semibold">Rating:</span>
-                    <span>{feedbackData?.rating}</span>
+                    {[1, 2, 3, 4, 5].map((star) => (
+                      <span key={star}>
+                        {star <= (feedbackData?.rating || 0) ? (
+                          <AiFillStar className="text-yellow-500" />
+                        ) : (
+                          <AiOutlineStar />
+                        )}
+                      </span>
+                    ))}
                   </li>
+
                   <li className="flex gap-1 my-4">
                     <span className="font-semibold">Feedback:</span>
                     <span>{feedbackData?.feedback}</span>

@@ -99,7 +99,7 @@ const SingleContactPanel = ({ contactId, setIdentifier }) => {
           <div className="my-8 md:my-4 space-y-2 h-max">
             <div className="flex justify-between items-center p-4 bg-white dark:bg-dark-gray-1 rounded-lg ">
               <div className="text-sm sm:text-[1.125rem] flex gap-1 md:gap-2 items-center text-dark-gray-1 me-3">
-                ContactId - {contactId}
+                Contact ID- {contactId}
               </div>
               <div className="flex gap-1 md:gap-2 items-center">
                 <button ref={settingsButtonRef} onClick={handleSettingsButtonClick}>
@@ -114,13 +114,10 @@ const SingleContactPanel = ({ contactId, setIdentifier }) => {
                   Contact Informations
                 </h1>
                 <ul className="space-y-2 text-dark-gray-1 dark:text-light-gray-2">
-                  {/* User Avatar */}
-                  <li className="flex justify-start my-4">
-                    <UserAvatar user={contactData} size="h-24 w-24" backgroundActive={true} />
-                  </li>
                   {/* Full Name  */}
                   <li className="flex gap-1 mt-4">
-                    <span className="font-semibold">{contactData?.name}</span>
+                    <span className="font-semibold">Name:</span>
+                    <span>{contactData?.name}</span>
                   </li>
 
                   <li className="flex flex-col sm:flex-row gap-1">

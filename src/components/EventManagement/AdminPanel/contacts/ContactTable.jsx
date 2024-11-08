@@ -50,7 +50,6 @@ const ContactTable = ({ data, loading }) => {
                       data-label="Name"
                     >
                       <div className="flex flex-row gap-1 items-center">
-                        <UserAvatar user={contact} size="h-6 w-6" backgroundActive={true} />
                         <span>{contact?.name}</span>
                       </div>
                     </td>

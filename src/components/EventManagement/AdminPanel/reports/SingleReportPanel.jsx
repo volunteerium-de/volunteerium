@@ -97,7 +97,7 @@ const SingleReportPanel = ({ reportId, setIdentifier }) => {
           <div className="my-8 md:my-4 space-y-2 h-max">
             <div className="flex justify-between items-center p-4 bg-white dark:bg-dark-gray-1 rounded-lg ">
               <div className="text-sm sm:text-[1.125rem] flex gap-1 md:gap-2 items-center text-dark-gray-1 me-3">
-                ReportId - {reportId}
+                Report ID - {reportId}
               </div>
 
               <div className="flex gap-1 md:gap-2 items-center">
@@ -120,11 +120,29 @@ const SingleReportPanel = ({ reportId, setIdentifier }) => {
                   </li>
                   <li className="flex gap-1 mt-4">
                     <span className="font-semibold">Reported By:</span>
-                    <span>{reportData?.reportedBy}</span>
+                    {reportData?.reportedBy ? (
+                      <span
+                        className="text-primary-green cursor-pointer"
+                        onClick={() =>
+                          navigate(`/admin-panel?tab=users&identifier=${reportData?.reportedBy}`)
+                        }
+                      >
+                        {reportData?.reportedBy}
+                      </span>
+                    ) : (
+                      <span className="text-gray-500 italic">Guest User</span>
+                    )}
                   </li>
                   <li className="flex gap-1 mt-4">
                     <span className="font-semibold">Event Id:</span>
-                    <span>{reportData?.eventId}</span>
+                    <span
+                      className="text-primary-green cursor-pointer"
+                      onClick={() =>
+                        navigate(`/admin-panel?tab=events&identifier=${reportData?.eventId}`)
+                      }
+                    >
+                      {reportData?.eventId}
+                    </span>
                   </li>
                   <li className="flex flex-col sm:flex-row gap-1">
                     <span className="font-semibold">Created At:</span>

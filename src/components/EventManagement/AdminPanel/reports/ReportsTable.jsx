@@ -40,6 +40,12 @@ const ReportsTable = ({ data, loading }) => {
                   >
                     <td
                       className={"td text-left 2xl:w-[150px] whitespace-nowrap"}
+                      data-label="Report ID"
+                    >
+                      {report?._id}
+                    </td>
+                    <td
+                      className={"td text-left 2xl:w-[150px] whitespace-nowrap"}
                       data-label="Report Type"
                     >
                       {report?.reportType}
