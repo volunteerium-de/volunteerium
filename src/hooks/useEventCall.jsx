@@ -179,6 +179,30 @@ const useEventCall = () => {
     }
   }
 
+  const sendEventFeedback = async (formData) => {
+    try {
+      const { data } = await axiosWithToken.post(`event-feedbacks`, formData)
+      // console.log(data)
+      toastNotify("success", data.message)
+    } catch (error) {
+      toastNotify("error", error?.response?.data?.message)
+      console.log(error)
+    } finally {
+      getSingleEvent(formData.eventId)
+    }
+  }
+
+  const sendEventReport = async (formData) => {
+    try {
+      const { data } = await axiosWithToken.post(`event-reports`, formData)
+      // console.log(data)
+      toastNotify("success", data.message)
+    } catch (error) {
+      toastNotify("error", error?.response?.data?.message)
+      console.log(error)
+    }
+  }
+
   return {
     getEvents,
     getSingleEvent,
@@ -192,6 +216,8 @@ const useEventCall = () => {
     confirmAttendance,
     confirmAbsence,
     deleteEventParticipation,
+    sendEventFeedback,
+    sendEventReport,
   }
 }
 

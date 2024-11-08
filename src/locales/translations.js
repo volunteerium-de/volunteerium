@@ -37,7 +37,7 @@ export const translations = {
   onlineOpp: {
     title: "onlineOpportunities.title",
     loadingEvents: "onlineOpportunities.loadingEvents",
-    noEvents: "onlineOpportunities.noEvents"
+    noEvents: "onlineOpportunities.noEvents",
   },
 
   getToKnowUs: {
@@ -628,6 +628,33 @@ export const translations = {
     completedButton: "eventDetails.completedButton",
     maxReacedButton: "eventDetails.maxReacedButton",
     manageButton: "eventDetails.manageButton",
+    feedback: {
+      h2: "eventDetails.feedback.h2",
+      p1: "eventDetails.feedback.p1",
+      p2: "eventDetails.feedback.p2",
+      placeholder: "eventDetails.feedback.placeholder",
+      submit: "eventDetails.feedback.submit",
+      cancel: "eventDetails.feedback.cancel",
+    },
+    report: {
+      h2: "eventDetails.report.h2",
+      p1: "eventDetails.report.p1",
+      placeholder1: "eventDetails.report.placeholder1",
+      placeholder2: "eventDetails.report.placeholder2",
+      issueLabel: "eventDetails.report.issueLabel",
+      submit: "eventDetails.report.submit",
+      cancel: "eventDetails.report.cancel",
+      option1: "eventDetails.report.option1",
+      option2: "eventDetails.report.option2",
+      option3: "eventDetails.report.option3",
+      option4: "eventDetails.report.option4",
+      option5: "eventDetails.report.option5",
+      option6: "eventDetails.report.option6",
+      option7: "eventDetails.report.option7",
+      option8: "eventDetails.report.option8",
+      option9: "eventDetails.report.option9",
+      option10: "eventDetails.report.option10",
+    },
   },
 
   eventMng: {
