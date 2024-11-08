@@ -23,8 +23,7 @@ const ContactTable = ({ data, loading }) => {
                 <th className="th p-3 text-left">Contact ID</th>
                 <th className="th p-3 text-left">Name</th>
                 <th className="th p-3 text-left">Mail</th>
-                <th className="th p-3 text-center">Subject</th>
-                <th className="th p-3 text-left">Message</th>
+                <th className="th p-3 text-left">Subject</th>
                 <th className="th p-3 text-center">Created At</th>
               </tr>
             </thead>
@@ -58,14 +57,6 @@ const ContactTable = ({ data, loading }) => {
                     data-label="Subject"
                   >
                     {contact?.subject}
-                  </td>
-                  <td
-                    className={
-                      "td text-left 2xl:w-[150px] whitespace-nowrap s: overflow-x-auto scrollbar-hide"
-                    }
-                    data-label="Message"
-                  >
-                    {contact?.message}
                   </td>
                   <td className="td text-center whitespace-nowrap" data-label="Created At">
                     {new Date(contact?.createdAt).toLocaleDateString()}
