@@ -251,11 +251,6 @@
     "save": "Speichern"
   },
   "pswModal": {
-    "yup1": "Das aktuelle Passwort ist erforderlich",
-    "yup2": "Ein neues Passwort ist erforderlich",
-    "yup3": "Das Passwort muss mindestens 8 Zeichen lang sein",
-    "yup4": "Die Passwörter müssen übereinstimmen",
-    "yup5": "Die Bestätigung des Passworts ist erforderlich",
     "changePsw": "Ändern Sie Ihr Passwort",
     "currPsw": "Aktuelles Passwort",
     "newPsw": "Neues Passwort",

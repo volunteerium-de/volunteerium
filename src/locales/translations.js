@@ -84,19 +84,6 @@ export const translations = {
   },
 
   registerForm: {
-    yup1: "registerForm.yup1",
-    yup2: "registerForm.yup2",
-    yup3: "registerForm.yup3",
-    yup4: "registerForm.yup4",
-    yup5: "registerForm.yup5",
-    yup6: "registerForm.yup6",
-    yup7: "registerForm.yup7",
-    yup8: "registerForm.yup8",
-    yup9: "registerForm.yup9",
-    yup10: "registerForm.yup10",
-    yup11: "registerForm.yup11",
-    yup12: "registerForm.yup12",
-    yup13: "registerForm.yup13",
     radioIndv: "registerForm.radioIndv",
     radioOrg: "registerForm.radioOrg",
     fullname: "registerForm.fullname",
@@ -139,15 +126,6 @@ export const translations = {
   },
 
   loginForm: {
-    yup1: "loginForm.yup1",
-    yup2: "loginForm.yup2",
-    yup3: "loginForm.yup3",
-    yup4: "loginForm.yup4",
-    yup5: "loginForm.yup5",
-    yup6: "loginForm.yup6",
-    yup7: "loginForm.yup7",
-    yup8: "loginForm.yup8",
-    yup9: "loginForm.yup9",
     email: "loginForm.email",
     emailPH: "loginForm.emailPH",
     password: "loginForm.password",
@@ -296,11 +274,6 @@ export const translations = {
   },
 
   pswModal: {
-    yup1: "pswModal.yup1",
-    yup2: "pswModal.yup2",
-    yup3: "pswModal.yup3",
-    yup4: "pswModal.yup4",
-    yup5: "pswModal.yup5",
     changePsw: "pswModal.changePsw",
     currPsw: "pswModal.currPsw",
     newPsw: "pswModal.newPsw",

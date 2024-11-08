@@ -251,11 +251,6 @@
     "save": "Save"
   },
   "pswModal": {
-    "yup1": "Current password is required",
-    "yup2": "New password is required",
-    "yup3": "Password must be at least 8 characters",
-    "yup4": "Passwords must match",
-    "yup5": "Confirm password is required",
     "changePsw": "Change your password",
     "currPsw": "Current Password",
     "newPsw": "New Password",
