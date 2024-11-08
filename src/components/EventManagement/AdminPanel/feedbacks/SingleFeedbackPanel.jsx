@@ -133,8 +133,15 @@ const SingleFeedbackPanel = ({ feedbackId, setIdentifier }) => {
                     <span>{feedbackData?.eventId?.title}</span>
                   </li>
                   <li className="flex gap-1 mt-4">
-                    <span className="font-semibold">Event ID:</span>
-                    <span>{feedbackData?.eventId?._id}</span>
+                    <span className="font-semibold">Event Id:</span>
+                    <span
+                      className="text-primary-green cursor-pointer"
+                      onClick={() =>
+                        navigate(`/admin-panel?tab=events&identifier=${feedbackData?.eventId?._id}`)
+                      }
+                    >
+                      {feedbackData?.eventId?._id}
+                    </span>
                   </li>
                   <li className="flex flex-col sm:flex-row gap-1">
                     <span className="font-semibold">Email Address:</span>
