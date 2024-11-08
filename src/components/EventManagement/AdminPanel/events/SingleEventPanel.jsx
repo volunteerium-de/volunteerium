@@ -63,6 +63,7 @@ const SingleEventPanel = ({ eventId, setIdentifier }) => {
     deleteEvent(singleEvent._id)
     navigate(`/admin-panel?tab=events`)
     setIsSettingsModalOpen(false)
+    closeDeleteEventModal()
   }
 
   const handleSuspendEvent = () => {

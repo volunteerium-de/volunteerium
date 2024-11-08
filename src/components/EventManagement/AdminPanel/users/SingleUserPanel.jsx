@@ -75,6 +75,7 @@ const SingleUserPanel = ({ userId, setIdentifier }) => {
     deleteData("users", userId)
     navigate(`/admin-panel?tab=users`)
     setIsSettingsModalOpen(false)
+    closeDeleteUserModal()
   }
 
   const handleSuspendEvent = async () => {

@@ -12,6 +12,7 @@ import * as Yup from "yup"
 import LanguageSelect from "../../components/ui/Selects/LanguageSelect"
 import SelectInput from "../ui/Selects/SelectInput"
 import useLanguage from "../../hooks/useLanguages"
+import { formatName } from "../../helpers/formatName"
 
 // Validation Schema
 const IndividualSchema = Yup.object().shape({
@@ -140,7 +141,7 @@ const IndividualSettingsForm = () => {
                     />
                     <RadioInput
                       id="shortName"
-                      label={`${currentUser.fullName.split(" ")[0]} ${currentUser.fullName.split(" ")[1]?.charAt(0)}.`}
+                      label={formatName(currentUser.fullName, false)}
                       checked={!values.isFullNameDisplay}
                       onChange={() => setFieldValue("isFullNameDisplay", false)}
                     />

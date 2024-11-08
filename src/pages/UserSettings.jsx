@@ -8,7 +8,10 @@ import SecuritySettings from "../components/UserSettings/SecuritySettings"
 import VisibilitySettings from "../components/UserSettings/VisibilitySettings"
 import { useSelector } from "react-redux"
 import { useState } from "react"
+import { useNavigate } from "react-router-dom"
+
 const UserSettings = () => {
+  const navigate = useNavigate()
   const { currentUser } = useSelector((state) => state.auth)
   const isAdmin = currentUser.userType === "admin"
   const [activeTab, setActiveTab] = useState(isAdmin ? "security" : "profile")
@@ -44,15 +47,21 @@ const UserSettings = () => {
     }
   }
   const handleTabChange = (newTab) => {
+    let tab
     if (isAdmin && newTab === "profile") {
       setActiveTab("security")
+      tab = "security"
     } else {
       setActiveTab(newTab)
+      tab = newTab
     }
+    navigate(`?tab=${tab}`)
   }
+
   const handleEditAvatar = () => {
     setModalOpen(true)
   }
+
   return (
     <div>
       <Header />
