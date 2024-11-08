@@ -1,7 +1,6 @@
 import React from "react"
 import { ImSpinner9 } from "react-icons/im"
 import { useNavigate } from "react-router-dom"
-import { UserAvatar } from "../../../ui/Avatar/userAvatar"
 
 const ReportsTable = ({ data, loading }) => {
   const navigate = useNavigate()
@@ -9,7 +8,6 @@ const ReportsTable = ({ data, loading }) => {
   const handleNavigateSingleReport = (reportId) => {
     navigate(`?tab=reports&identifier=${reportId}`)
   }
-  console.log(data)
 
   return (
     <>
@@ -30,43 +28,41 @@ const ReportsTable = ({ data, loading }) => {
               </tr>
             </thead>
             <tbody className="tbody text-dark-gray-1 dark:text-light-gray text-sm font-light">
-              {data
-                .filter((report) => report._id !== import.meta.env.VITE_ADMIN_ID)
-                .map((report) => (
-                  <tr
-                    key={report?._id}
-                    onClick={() => handleNavigateSingleReport(report?._id)}
-                    className="border-b border-light-gray dark:border-dark-gray-1 hover:bg-gray-100 dark:hover:bg-dark-gray-2 text-sm cursor-pointer"
+              {data.map((report) => (
+                <tr
+                  key={report?._id}
+                  onClick={() => handleNavigateSingleReport(report?._id)}
+                  className="border-b border-light-gray dark:border-dark-gray-1 hover:bg-gray-100 dark:hover:bg-dark-gray-2 text-sm cursor-pointer"
+                >
+                  <td
+                    className={"td text-left 2xl:w-[150px] whitespace-nowrap"}
+                    data-label="Report ID"
                   >
-                    <td
-                      className={"td text-left 2xl:w-[150px] whitespace-nowrap"}
-                      data-label="Report ID"
-                    >
-                      {report?._id}
-                    </td>
-                    <td
-                      className={"td text-left 2xl:w-[150px] whitespace-nowrap"}
-                      data-label="Report Type"
-                    >
-                      {report?.reportType}
-                    </td>
-                    <td
-                      className={"td text-left 2xl:w-[150px] whitespace-nowrap"}
-                      data-label="Reported By"
-                    >
-                      {report?.reportedBy}
-                    </td>
-                    <td
-                      className={"td text-left 2xl:w-[150px] whitespace-nowrap"}
-                      data-label="Event ID"
-                    >
-                      {report?.eventId}
-                    </td>
-                    <td className="td text-center whitespace-nowrap" data-label="Created At">
-                      {new Date(report?.createdAt).toLocaleDateString()}
-                    </td>
-                  </tr>
-                ))}
+                    {report?._id}
+                  </td>
+                  <td
+                    className={"td text-left 2xl:w-[150px] whitespace-nowrap"}
+                    data-label="Report Type"
+                  >
+                    {report?.reportType}
+                  </td>
+                  <td
+                    className={"td text-left 2xl:w-[150px] whitespace-nowrap"}
+                    data-label="Reported By"
+                  >
+                    {report?.reportedBy}
+                  </td>
+                  <td
+                    className={"td text-left 2xl:w-[150px] whitespace-nowrap"}
+                    data-label="Event ID"
+                  >
+                    {report?.eventId}
+                  </td>
+                  <td className="td text-center whitespace-nowrap" data-label="Created At">
+                    {new Date(report?.createdAt).toLocaleDateString()}
+                  </td>
+                </tr>
+              ))}
             </tbody>
           </table>
         </div>

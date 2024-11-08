@@ -8,7 +8,7 @@ const FeedbacksTable = ({ data, loading }) => {
   const handleNavigateSingleFeedback = (feedbackId) => {
     navigate(`?tab=feedbacks&identifier=${feedbackId}`)
   }
-  console.log(data)
+
   return (
     <>
       {loading ? (
@@ -28,46 +28,41 @@ const FeedbacksTable = ({ data, loading }) => {
               </tr>
             </thead>
             <tbody className="tbody text-dark-gray-1 dark:text-light-gray text-sm font-light">
-              {data
-                .filter((feedback) => feedback._id !== import.meta.env.VITE_ADMIN_ID)
-                .map((feedback) => (
-                  <tr
-                    key={feedback?._id}
-                    onClick={() => handleNavigateSingleFeedback(feedback?._id)}
-                    className="border-b border-light-gray dark:border-dark-gray-1 hover:bg-gray-100 dark:hover:bg-dark-gray-2 text-sm cursor-pointer"
+              {data.map((feedback) => (
+                <tr
+                  key={feedback?._id}
+                  onClick={() => handleNavigateSingleFeedback(feedback?._id)}
+                  className="border-b border-light-gray dark:border-dark-gray-1 hover:bg-gray-100 dark:hover:bg-dark-gray-2 text-sm cursor-pointer"
+                >
+                  <td
+                    className="td text-left whitespace-nowrap 2xl:max-w-[140px] overflow-x-scroll scrollbar-hide"
+                    data-label="Event ID"
                   >
-                    <td
-                      className="td text-left whitespace-nowrap 2xl:max-w-[140px] overflow-x-scroll scrollbar-hide"
-                      data-label="Event ID"
-                    >
-                      {feedback?.eventId.title || "N/A"}
-                    </td>
+                    {feedback?.eventId.title || "N/A"}
+                  </td>
 
-                    <td
-                      className="td text-left 2xl:w-[100px] whitespace-nowrap overflow-ellipsis overflow-hidden"
-                      data-label="User ID"
-                    >
-                      <div className="flex flex-row gap-1 items-center">
-                        <span>{feedback?.userId?.fullName}</span>
-                      </div>
-                    </td>
-                    <td
-                      className={"td text-left 2xl:w-[150px] whitespace-nowrap"}
-                      data-label="Email"
-                    >
-                      {feedback?.userId.email}
-                    </td>
-                    <td
-                      className={"td text-center 2xl:w-[150px] whitespace-nowrap"}
-                      data-label="Rating"
-                    >
-                      {feedback?.rating}
-                    </td>
-                    <td className="td text-center whitespace-nowrap" data-label="Created At">
-                      {new Date(feedback?.createdAt).toLocaleDateString()}
-                    </td>
-                  </tr>
-                ))}
+                  <td
+                    className="td text-left 2xl:w-[100px] whitespace-nowrap overflow-ellipsis overflow-hidden"
+                    data-label="User ID"
+                  >
+                    <div className="flex flex-row gap-1 items-center">
+                      <span>{feedback?.userId?.fullName}</span>
+                    </div>
+                  </td>
+                  <td className={"td text-left 2xl:w-[150px] whitespace-nowrap"} data-label="Email">
+                    {feedback?.userId.email}
+                  </td>
+                  <td
+                    className={"td text-center 2xl:w-[150px] whitespace-nowrap"}
+                    data-label="Rating"
+                  >
+                    {feedback?.rating}
+                  </td>
+                  <td className="td text-center whitespace-nowrap" data-label="Created At">
+                    {new Date(feedback?.createdAt).toLocaleDateString()}
+                  </td>
+                </tr>
+              ))}
             </tbody>
           </table>
         </div>

@@ -1,7 +1,6 @@
 import React from "react"
 import { ImSpinner9 } from "react-icons/im"
 import { useNavigate } from "react-router-dom"
-import { UserAvatar } from "../../../ui/Avatar/userAvatar"
 
 const ContactTable = ({ data, loading }) => {
   const navigate = useNavigate()
@@ -9,7 +8,7 @@ const ContactTable = ({ data, loading }) => {
   const handleNavigateSingleContact = (contactId) => {
     navigate(`?tab=contacts&identifier=${contactId}`)
   }
-  console.log(data)
+
   return (
     <>
       {loading ? (
@@ -30,52 +29,49 @@ const ContactTable = ({ data, loading }) => {
               </tr>
             </thead>
             <tbody className="tbody text-dark-gray-1 dark:text-light-gray text-sm font-light">
-              {data
-                .filter((contact) => contact._id !== import.meta.env.VITE_ADMIN_ID)
-                .map((contact) => (
-                  <tr
-                    key={contact?._id}
-                    onClick={() => handleNavigateSingleContact(contact?._id)}
-                    className="border-b border-light-gray dark:border-dark-gray-1 hover:bg-gray-100 dark:hover:bg-dark-gray-2 text-sm cursor-pointer"
+              {data.map((contact) => (
+                <tr
+                  key={contact?._id}
+                  onClick={() => handleNavigateSingleContact(contact?._id)}
+                  className="border-b border-light-gray dark:border-dark-gray-1 hover:bg-gray-100 dark:hover:bg-dark-gray-2 text-sm cursor-pointer"
+                >
+                  <td
+                    className="td text-left whitespace-nowrap 2xl:max-w-[140px] overflow-x-scroll scrollbar-hide"
+                    data-label="Contact ID"
                   >
-                    <td
-                      className="td text-left whitespace-nowrap 2xl:max-w-[140px] overflow-x-scroll scrollbar-hide"
-                      data-label="Contact ID"
-                    >
-                      {contact?._id}
-                    </td>
+                    {contact?._id}
+                  </td>
 
-                    <td
-                      className="td text-left 2xl:w-[100px] whitespace-nowrap overflow-ellipsis overflow-hidden"
-                      data-label="Name"
-                    >
-                      <div className="flex flex-row gap-1 items-center">
-                        <span>{contact?.name}</span>
-                      </div>
-                    </td>
-                    <td
-                      className={"td text-left 2xl:w-[150px] whitespace-nowrap"}
-                      data-label="Email"
-                    >
-                      {contact?.email}
-                    </td>
-                    <td
-                      className={"td text-left 2xl:w-[150px] whitespace-nowrap"}
-                      data-label="Subject"
-                    >
-                      {contact?.subject}
-                    </td>
-                    <td
-                      className={"td text-left 2xl:w-[150px] whitespace-nowrap"}
-                      data-label="Message"
-                    >
-                      {contact?.message}
-                    </td>
-                    <td className="td text-center whitespace-nowrap" data-label="Created At">
-                      {new Date(contact?.createdAt).toLocaleDateString()}
-                    </td>
-                  </tr>
-                ))}
+                  <td
+                    className="td text-left 2xl:w-[100px] whitespace-nowrap overflow-ellipsis overflow-hidden"
+                    data-label="Name"
+                  >
+                    <div className="flex flex-row gap-1 items-center">
+                      <span>{contact?.name}</span>
+                    </div>
+                  </td>
+                  <td className={"td text-left 2xl:w-[150px] whitespace-nowrap"} data-label="Email">
+                    {contact?.email}
+                  </td>
+                  <td
+                    className={"td text-left 2xl:w-[150px] whitespace-nowrap"}
+                    data-label="Subject"
+                  >
+                    {contact?.subject}
+                  </td>
+                  <td
+                    className={
+                      "td text-left 2xl:w-[150px] whitespace-nowrap s: overflow-x-auto scrollbar-hide"
+                    }
+                    data-label="Message"
+                  >
+                    {contact?.message}
+                  </td>
+                  <td className="td text-center whitespace-nowrap" data-label="Created At">
+                    {new Date(contact?.createdAt).toLocaleDateString()}
+                  </td>
+                </tr>
+              ))}
             </tbody>
           </table>
         </div>
