@@ -9,8 +9,11 @@ import { useNavigate } from "react-router-dom"
 import logo from "../../../assets/logo.png"
 import { axiosWithPublic } from "../../../hooks/useAxios"
 import toastNotify from "../../../utils/toastNotify"
+import { useTranslation } from "react-i18next"
+import { translations } from "../../../locales/translations"
 
 const ResetPasswordForm = ({ identifier, email }) => {
+  const {t} = useTranslation()
   const navigate = useNavigate()
   const [showPassword, setShowPassword] = useState(false)
   const [showConfirmPassword, setShowConfirmPassword] = useState(false)
@@ -43,19 +46,16 @@ const ResetPasswordForm = ({ identifier, email }) => {
     validationSchema: Yup.object({
       // Password validation rules
       newPassword: Yup.string()
-        .min(8, "Password must be at least 8 characters long")
-        .max(16, "Password cannot be longer than 16 characters")
-        .matches(/[A-Z]/, "Password must contain at least one uppercase letter")
-        .matches(/[a-z]/, "Password must contain at least one lowercase letter")
-        .matches(/[0-9]/, "Password must contain at least one digit")
-        .matches(
-          /[\W_]/,
-          "Password must contain at least one special character (e.g., @, #, $, etc.)"
-        )
-        .required("New Password is a required field"),
+        .min(8, t(translations.yup.minLength.characters8))
+        .max(30, t(translations.yup.maxLength.characters30))
+        .matches(/[A-Z]/, t(translations.yup.password.containsUppercase))
+        .matches(/[a-z]/, t(translations.yup.password.containsLowercase))
+        .matches(/[0-9]/, t(translations.yup.password.containsDigit))
+        .matches(/[@$?!%&*]+/, t(translations.yup.password.containsSpecialCharacter))
+        .required(t(translations.yup.required.oldPassword)),
       confirmPassword: Yup.string()
-        .oneOf([Yup.ref("newPassword"), null], "Passwords must match")
-        .required("Confirm Password is a required field"),
+        .oneOf([Yup.ref("newPassword"), null], t(translations.yup.password.match))
+        .required(t(translations.yup.required.confirmPassword)),
     }),
     onSubmit: (values) => {
       // console.log(values)

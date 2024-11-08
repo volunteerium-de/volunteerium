@@ -73,19 +73,6 @@
     "creatingAs": "Sie erstellen ein Konto als?"
   },
   "registerForm": {
-    "yup1": "Benutzertyp ist erforderlich",
-    "yup2": "Muss mindestens 3 Zeichen lang sein",
-    "yup3": "Kann maximal 30 Zeichen lang sein",
-    "yup4": "Name ist ein Pflichtfeld",
-    "yup5": "Ungültige E-Mail-Adresse",
-    "yup6": "E-Mail ist ein Pflichtfeld",
-    "yup7": "Muss mindestens 6 Zeichen lang sein",
-    "yup8": "Kann maximal 30 Zeichen lang sein",
-    "yup9": "Muss mindestens eine Ziffer enthalten",
-    "yup10": "Muss mindestens einen Kleinbuchstaben enthalten",
-    "yup11": "Muss mindestens einen Großbuchstaben enthalten",
-    "yup12": "Muss mindestens ein Sonderzeichen enthalten (@$!%*?&)",
-    "yup13": "Passwort ist ein Pflichtfeld",
     "radioIndv": "als Einzelperson",
     "radioOrg": "als Organisation",
     "fullname": "Vollname",
@@ -125,15 +112,6 @@
     "signIn": "Anmelden"
   },
   "loginForm": {
-    "yup1": "Ungültige E-Mail-Adresse",
-    "yup2": "E-Mail ist ein Pflichtfeld",
-    "yup3": "Muss mindestens 6 Zeichen lang sein!",
-    "yup4": "Kann maximal 30 Zeichen lang sein!",
-    "yup5": "Muss mindestens eine Ziffer enthalten!",
-    "yup6": "Muss mindestens einen Kleinbuchstaben enthalten!",
-    "yup7": "Muss mindestens einen Großbuchstaben enthalten!",
-    "yup8": "Muss mindestens ein Sonderzeichen enthalten (@$!%*?&)!",
-    "yup9": "Passwort ist ein Pflichtfeld",
     "email": "E-Mail",
     "emailPH": "Geben Sie Ihre E-Mail-Adresse ein",
     "password": "Passwort",
@@ -371,7 +349,7 @@
     "p1": "Ihre Rückmeldung",
     "p2": "ist uns wichtig!",
     "p3": " Tragen Sie weiterhin zu unserer Gemeinschaft bei, indem Sie Ihr",
-    "p4": "Rückmeldung",
+    "p4": " Rückmeldung",
     "p5": "Helfen Sie uns, einen Unterschied zu machen mit Ihren",
     "p6": "Ideen",
     "p7": "und",
@@ -412,7 +390,7 @@
     "sec1": "Verfügbarkeit",
     "from": "von",
     "to": "bis",
-    "check": "Veranstaltungen prüfen",
+    "check": "Veranstaltungen Prüfen",
     "sec2": "Kategorien",
     "sec3": "Sprachen",
     "new": "Neueste",
@@ -680,5 +658,48 @@
     "p12": "Falls Sie Fragen oder Bedenken bezüglich dieser Nutzungsbedingungen haben, kontaktieren Sie uns bitte unter:",
     "p13": "Volunteerium-Team",
     "p14": "E-Mail: info.volunteerium@gmail.com"
+  },
+
+  "yup": {
+    "required": {
+      "userType": "Benutzertyp ist erforderlich!",
+      "name": "Name ist erforderlich!",
+      "fullName": "Vollname ist erforderlich!",
+      "email": "E-Mail ist erforderlich!",
+      "password": "Passwort ist erforderlich!",
+      "subject": "Betreff der Nachricht ist erforderlich!",
+      "message": "Nachricht ist erforderlich!",
+      "organizationName": "Organisationsname ist erforderlich!",
+      "streetName": "Straßenname ist erforderlich!",
+      "streetNumber": "Hausnummer ist erforderlich!",
+      "zipCode": "Postleitzahl ist erforderlich!",
+      "city": "Stadt ist erforderlich!",
+      "country": "Land ist erforderlich!",
+      "oldPassword": "Altes Passwort ist erforderlich!",
+      "confirmPassword": "Passwortbestätigung ist erforderlich!"
+    },
+    "minLength": {
+      "characters3": "Muss mindestens 3 Zeichen lang sein!",
+      "characters8": "Muss mindestens 8 Zeichen lang sein!",
+      "characters10": "Muss mindestens 10 Zeichen lang sein!"
+    },
+    "maxLength": {
+      "characters30": "Darf maximal 30 Zeichen lang sein!",
+      "characters50": "Darf maximal 50 Zeichen lang sein!",
+      "characters100": "Darf maximal 100 Zeichen lang sein!",
+      "characters250Bio": "Bio darf nicht länger als 250 Zeichen sein!",
+      "characters250": "Beschreibung darf maximal 250 Zeichen lang sein!",
+      "characters1000": "Darf maximal 1000 Zeichen lang sein!"
+    },
+    "password": {
+      "containsDigit": "Muss eine Ziffer enthalten!",
+      "containsLowercase": "Muss einen Kleinbuchstaben enthalten!",
+      "containsUppercase": "Muss einen Großbuchstaben enthalten!",
+      "containsSpecialCharacter": "Muss ein Sonderzeichen enthalten (@$!%*?&)!",
+      "match": "Passwörter müssen übereinstimmen!"
+    },
+    "invalid":{
+      "email": "Ungültige E-Mail-Adresse!"
+    }
   }
 }

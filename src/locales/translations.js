@@ -692,4 +692,48 @@ export const translations = {
     p13: "termsOfService.p13",
     p14: "termsOfService.p14",
   },
+
+  yup: {
+    required: {
+      userType: "yup.required.userType",
+      name: "yup.required.name",
+      fullName: "yup.required.fullName",
+      email: "yup.required.email",
+      password: "yup.required.password",
+      subject: "yup.required.subject",
+      message: "yup.required.message",
+      organizationName: "yup.required.organizationName",
+      streetName: "yup.required.streetName",
+      streetNumber: "yup.required.streetNumber",
+      zipCode: "yup.required.zipCode",
+      city: "yup.required.city",
+      country: "yup.required.country",
+      oldPassword: "yup.required.oldPassword",
+      confirmPassword: "yup.required.confirmPassword"
+    },
+    minLength: {
+      characters3: "yup.minLength.characters3",
+      characters8: "yup.minLength.characters8",
+      characters10: "yup.minLength.characters10"
+    },
+    maxLength: {
+      characters30: "yup.maxLength.characters30",
+      characters50: "yup.maxLength.characters50",
+      characters100: "yup.maxLength.characters100",
+      characters250Bio: "yup.maxLength.characters250Bio",
+      characters250: "yup.maxLength.characters250",
+      characters1000: "yup.maxLength.characters1000"
+    },
+    password: {
+      containsDigit: "yup.password.containsDigit",
+      containsLowercase: "yup.password.containsLowercase",
+      containsUppercase: "yup.password.containsUppercase",
+      containsSpecialCharacter: "yup.password.containsSpecialCharacter",
+      match: "yup.password.match"
+    },
+    invalid: {
+      email: "yup.invalid.email",
+    }
+  }
+
 }

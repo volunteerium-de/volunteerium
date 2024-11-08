@@ -8,10 +8,12 @@ import { useNavigate } from "react-router-dom"
 import logo from "../../../assets/logo.png"
 import toastNotify from "../../../utils/toastNotify"
 import { axiosWithPublic } from "../../../hooks/useAxios"
+import { translations } from "../../../locales/translations"
+import { useTranslation } from "react-i18next"
 
 const ForgotPasswordForm = ({ setIssue, setIdentifier, setEmail }) => {
   const navigate = useNavigate()
- 
+  const {t} = useTranslation() 
 
   const forgotPassword = async (email) => {
     try {
@@ -30,8 +32,8 @@ const ForgotPasswordForm = ({ setIssue, setIdentifier, setEmail }) => {
     initialValues: { email: "" },
     validationSchema: Yup.object({
       email: Yup.string()
-        .email("Please enter a valid email address")
-        .required("Email is a required field"),
+        .email(t(translations.yup.invalid.email))
+        .required(t(translations.yup.required.email)),
     }),
     onSubmit: (values) => {
       // console.log("Email:", values.email)

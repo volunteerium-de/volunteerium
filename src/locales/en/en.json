@@ -73,19 +73,6 @@
     "creatingAs": "You’re creating an account as?"
   },
   "registerForm": {
-    "yup1": "User type is required",
-    "yup2": "Must be at least 3 characters",
-    "yup3": "Can be maximum 30 characters",
-    "yup4": "Name is a required field",
-    "yup5": "Invalid email address",
-    "yup6": "Email is a required field",
-    "yup7": "Must be at least 6 characters",
-    "yup8": "Can be maximum 30 characters",
-    "yup9": "Must contain at least one digit",
-    "yup10": "Must contain at least one lowercase letter",
-    "yup11": "Must contain at least one uppercase letter",
-    "yup12": "Must contain at least one special character (@$!%*?&)",
-    "yup13": "Password is a required field",
     "radioIndv": "As an Individual",
     "radioOrg": "As an Organization",
     "fullname": "Full Name",
@@ -125,15 +112,6 @@
     "signIn": "Sign In"
   },
   "loginForm": {
-    "yup1": "Invalid email address",
-    "yup2": "Email is a required field",
-    "yup3": "Must be at least 6 characters!",
-    "yup4": "Can be maximum 30 characters!",
-    "yup5": "Must contain at least one digit!",
-    "yup6": "Must contain at least one lowercase letter!",
-    "yup7": "Must contain at least one uppercase letter!",
-    "yup8": "Must contain at least one special character (@$!%*?&)!",
-    "yup9": "Password is a required field",
     "email": "Email",
     "emailPH": "Enter your email address",
     "password": "Password",
@@ -371,7 +349,7 @@
     "p1": "Your Feedback",
     "p2": "Matters to Us!",
     "p3": " Continue contributing to our community by sharing your",
-    "p4": "feedback",
+    "p4": " feedback",
     "p5": "Help us make a difference with your ",
     "p6": "ideas",
     "p7": "and",
@@ -673,5 +651,48 @@
     "p12": "If you have any questions or concerns about these Terms of Service, please contact us at:",
     "p13": "Volunteerium Team",
     "p14": "Email: info.volunteerium@gmail.com"
+  },
+
+  "yup": {
+    "required": {
+      "userType": "User type is required!",
+      "name": "Name is required!",
+      "fullName": "Fullname is required!",
+      "email": "Email is required!",
+      "password": "Password is required!",
+      "subject": "Message subject is required!",
+      "message": "Message is required!",
+      "organizationName": "Organization name is required!",
+      "streetName": "Street name is required!",
+      "streetNumber": "Street number is required!",
+      "zipCode": "ZIP code is required!",
+      "city": "City is required!",
+      "country": "Country is required!",
+      "oldPassword": "Old password is required!",
+      "confirmPassword": "Confirm password is required!"
+    },
+    "minLength": {
+      "characters3": "Must be at least 3 characters!",
+      "characters8": "Must be at least 8 characters!",
+      "characters10": "Must be at least 10 characters!"
+    },
+    "maxLength": {
+      "characters30": "Can be maximum 30 characters!",
+      "characters50": "Can be maximum 50 characters!",
+      "characters100": "Can be maximum 100 characters!",
+      "characters250Bio": "Bio cannot exceed 250 characters!",
+      "characters250": "Description cannot exceed 250 characters!",
+      "characters1000": "Can be maximum 1000 characters!"
+    },
+    "password": {
+      "containsDigit": "Must contain one digit!",
+      "containsLowercase": "Must contain one lowercase letter!",
+      "containsUppercase": "Must contain one uppercase letter!",
+      "containsSpecialCharacter": "Must contain special character (@$!%*?&)!",
+      "match": "Passwords must match!"
+    },
+    "invalid": {
+      "email": "Invalid email address!"
+    }
   }
 }

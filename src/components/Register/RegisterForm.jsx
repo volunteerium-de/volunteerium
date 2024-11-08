@@ -15,24 +15,25 @@ import { useSelector } from "react-redux"
 const RegisterForm = () => {
   const { t } = useTranslation()
 
-  const validationSchema = Yup.object({
-    userType: Yup.string().required(t(translations.registerForm.yup1)),
-    fullName: Yup.string()
-      .min(3, t(translations.registerForm.yup2))
-      .max(30, t(translations.registerForm.yup3))
-      .required(t(translations.registerForm.yup4)),
-    email: Yup.string()
-      .matches(/^[^\s@]+@[^\s@]+\.[^\s@]+$/, t(translations.registerForm.yup5))
-      .required(t(translations.registerForm.yup6)),
-    password: Yup.string()
-      .min(6, t(translations.registerForm.yup7))
-      .max(30, t(translations.registerForm.yup8))
-      .matches(/\d+/, t(translations.registerForm.yup9))
-      .matches(/[a-z]/, t(translations.registerForm.yup10))
-      .matches(/[A-Z]/, t(translations.registerForm.yup11))
-      .matches(/[@$?!%&*]+/, t(translations.registerForm.yup12))
-      .required(t(translations.registerForm.yup13)),
-  })
+const validationSchema = Yup.object({
+  userType: Yup.string().required(t(translations.registerForm.yup1)),
+  fullName: Yup.string()
+    .min(3, t(translations.yup.minLength.characters3))
+    .max(30, t(translations.yup.maxLength.characters30))
+    .required(t(translations.yup.required.fullName)),
+  email: Yup.string()
+    .matches(/^[^\s@]+@[^\s@]+\.[^\s@]+$/, t(translations.yup.invalid.email))
+    .required(t(translations.yup.required.email)),
+  password: Yup.string()
+    .min(8, t(translations.yup.minLength.characters8))
+    .max(30, t(translations.yup.maxLength.characters30))
+    .matches(/\d+/, t(translations.yup.password.containsDigit))
+    .matches(/[a-z]/, t(translations.yup.password.containsLowercase))
+    .matches(/[A-Z]/, t(translations.yup.password.containsUppercase))
+    .matches(/[@$?!%&*]+/, t(translations.yup.password.containsSpecialCharacter))
+    .required(t(translations.yup.required.password)),
+})
+
 
   const [userType, setUserType] = useState("individual")
   const [showPassword, setShowPassword] = useState(false)
