@@ -10,33 +10,42 @@ const AttendantsAvatars = ({
   totalParticipants,
   maxParticipant,
   avatarCount,
+  showAll,
   gap,
 }) => {
   const { t } = useTranslation()
+  const navigate = useNavigate()
 
-  const approvedParticipants = useMemo(() => {
-    return participants ? participants.filter((participant) => participant.isApproved === true) : []
-  }, [participants])
+  // Use the participants directly if showAll is true, otherwise filter for approved ones
+  const filteredParticipants = useMemo(() => {
+    return showAll
+      ? participants
+      : participants
+        ? participants.filter((participant) => participant.isApproved === true)
+        : []
+  }, [participants, showAll])
 
   // Limit the displayed participants to avatarCount
   const visibleParticipants = useMemo(() => {
-    return approvedParticipants.slice(0, avatarCount)
-  }, [approvedParticipants, avatarCount])
+    return filteredParticipants.slice(0, avatarCount)
+  }, [filteredParticipants, avatarCount])
 
-  const remainingCount = participants ? approvedParticipants.length - visibleParticipants.length : 0
+  const remainingCount = filteredParticipants.length - visibleParticipants.length
+
   // console.log(visibleParticipants)
 
-  const navigate = useNavigate()
   const handleAvatarClick = (userId) => {
     navigate(`/profile/${userId}`)
   }
 
   return (
     <div>
-      <h3 className="text-dark-gray-2 dark:text-white text-[1rem] font-semibold">
-        {t(translations.eventDetails.attendants)} ({totalParticipants}/{maxParticipant})
-      </h3>
-      <div className={`avatars flex flex-wrap gap-${gap} py-2`}>
+      {!showAll && (
+        <h3 className="text-dark-gray-2 dark:text-white text-[1rem] font-semibold">
+          {t(translations.eventDetails.attendants)} ({totalParticipants}/{maxParticipant})
+        </h3>
+      )}
+      <div className={`avatars flex flex-wrap gap-${gap} ${!showAll ? "py-2" : "py-0"} `}>
         {/* Display the first 6 avatars */}
 
         {visibleParticipants.length > 0 ? (

@@ -27,6 +27,13 @@
     "loadingEvents": "Loading Upcomming Events...",
     "noEvents": "No Upcoming Events!"
   },
+
+  "onlineOpportunities": {
+    "title": "Online Events",
+    "loadingEvents": "Loading Upcomming Events...",
+    "noEvents": "No Upcoming Events!"
+  },
+
   "getToKnowUs": {
     "h2": "Get to Know Us",
     "description1": "At Volunterium, our goal is to connect those who want to volunteer with those in need of support.",
@@ -297,8 +304,7 @@
     "delAccount": "Delete Account",
     "delAlert1": "Would you like to delete your account? Deleting your account will remove all the content associated with it.",
     "delAlert2": "Would you like to delete your organization? Deleting your organization will remove all the content associated with it.",
-    "userRes1": "I want to delete my account",
-    "userRes2": "I want to delete my organization"
+    "userRes": "I want to delete my account"
   },
   "updateDoc": {
     "error": "Error updating file.",
@@ -637,5 +643,36 @@
     "no": "no",
     "back": "back",
     "submit": "submit"
+  },
+
+  "termsOfService": {
+    "h1": "Terms of Service",
+    "p1": "Published Date:",
+    "p2": "[30.10.2024]",
+    "p3": "Welcome to Volunteerium. By accessing or using our platform, you agree to comply with and be bound by the following Terms of Service. Please read them carefully before using the platform.",
+    "h2info": "1. Acceptance of Terms",
+    "p4": "By creating an account or using Volunteerium, you accept these Terms of Service and agree to comply with them. If you do not agree with any part of these terms, you should not use our platform.",
+    "h2user": "2. User Responsibilities",
+    "p5": "Users agree to provide accurate, complete, and up-to-date information during the registration process and are responsible for all activities under their account. You agree to use the platform responsibly and only for lawful purposes.",
+    "h2prohibited": "3. Prohibited Conduct",
+    "p6": " Users are prohibited from engaging in activities that may harm the platform, its users, or violate applicable laws. Examples of prohibited conduct include, but are not limited to:",
+    "li1": "Harassing, threatening, or defaming other users.",
+    "li2": "Spamming, phishing, or engaging in fraudulent activities.",
+    "li3": "Attempting to gain unauthorized access to the platform or user accounts.",
+    "li4": "Distributing malware or harmful code.",
+    "h2intellectual": "4. Intellectual Property",
+    "p7": "All content, including but not limited to text, images, graphics, and logos on Volunteerium, are owned by Volunteerium or its licensors. Unauthorized use or distribution of any content is strictly prohibited.",
+    "h2user-Generated": "5. User-Generated Content",
+    "p8": "Volunteerium may allow users to post content such as event details, comments, and messages. By posting content, you grant Volunteerium a non-exclusive, royalty-free, worldwide license to use, reproduce, and display the content on our platform. You are responsible for the content you post and must ensure it does not violate any laws or third-party rights.",
+    "h2limitation": "6. Limitation of Liability",
+    "p9": "Volunteerium is provided on an 'as-is' and 'as-available' basis. We make no guarantees that the platform will be error-free, secure, or uninterrupted. We are not liable for any damages, direct or indirect, resulting from the use or inability to use our platform.",
+    "h2changes": "7. Changes to Terms",
+    "p10": " Volunteerium reserves the right to modify these Terms of Service at any time. Significant changes will be notified through the platform or via email. Continued use of the platform after changes indicates your acceptance of the new terms.",
+    "h2governing": "8. Governing Law and Dispute Resolution",
+    "p11": " These terms are governed by the laws of [Your Country/Region]. Any disputes arising from the use of Volunteerium will be resolved through arbitration in accordance with [applicable arbitration rules].",
+    "h2contact": "9. Contact Us",
+    "p12": "If you have any questions or concerns about these Terms of Service, please contact us at:",
+    "p13": "Volunteerium Team",
+    "p14": "Email: info.volunteerium@gmail.com"
   }
 }

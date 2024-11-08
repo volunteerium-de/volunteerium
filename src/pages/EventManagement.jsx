@@ -14,7 +14,7 @@ const EventManagement = () => {
   const location = useLocation()
   const navigate = useNavigate()
   const { conversations } = useSelector((state) => state.chat)
-  const { currentUser } = useSelector((state) => state.auth)
+  const { currentUser, loading } = useSelector((state) => state.auth)
   const [activeTab, setActiveTab] = useState("organized-events")
   const [isAddingEvent, setIsAddingEvent] = useState(false)
 
@@ -50,6 +50,7 @@ const EventManagement = () => {
       key: "attended-events",
       label: "Attended Events",
       icon: <FaPeopleGroup className="text-2xl mx-auto" />,
+      show: currentUser?.userType !== "organization",
     },
     {
       key: "messages",
@@ -58,12 +59,12 @@ const EventManagement = () => {
         <>
           <FaEnvelope className="text-2xl" />
           {unreadMessageCount > 0 && (
-            <span className="absolute top-4 left-16 sm:left-72 md:left-64 w-2 h-2 bg-primary-green rounded-full"></span>
+            <span className="absolute top-4 left-[62px] sm:left-[185px] md:left-52 lg:left-[230px] xl:left-[230px] 2xl:left-[250px] w-2 h-2 bg-primary-green rounded-full"></span>
           )}
         </>
       ),
     },
-  ]
+  ].filter((item) => item.show !== false)
 
   const renderContent = () => {
     if (isAddingEvent) return <AddEvent onClose={() => setIsAddingEvent(false)} />

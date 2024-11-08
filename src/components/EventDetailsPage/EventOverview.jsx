@@ -87,6 +87,7 @@ const EventOverview = () => {
         maxParticipant={maxParticipant}
         avatarCount={6}
         gap={5}
+        showAll={false}
       />
       {/* Buttons */}
       <div className="flex justify-center xl:justify-end space-x-4 lg:px-2">

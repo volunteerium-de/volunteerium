@@ -42,7 +42,7 @@ const EventParticipationButtons = ({ toggleFeedbackModal }) => {
         text: t(translations.eventDetails.manageButton),
         action: () =>
           navigate(
-            `/event-management/?tab=${isAdmin ? "events" : "organized-events"}&identifier=${singleEvent?._id}`
+            `/${isAdmin ? "admin-panel" : "event-management"}/?tab=${isAdmin ? "events" : "organized-events"}&identifier=${singleEvent?._id}`
           ),
         className: "bg-purple-400 hover:bg-purple-400/60",
       }

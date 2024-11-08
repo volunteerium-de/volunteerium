@@ -40,8 +40,17 @@ const EventDetails = () => {
     }
   }, [eventId, singleEvent, getSingleEvent, navigate])
 
-  const { eventPhoto, title, createdBy, interestIds, description, addressId, eventParticipantIds } =
-    singleEvent || {}
+  const {
+    eventPhoto,
+    isOnline,
+    title,
+    createdBy,
+    interestIds,
+    description,
+    addressId,
+    eventParticipantIds,
+  } = singleEvent || {}
+
   const userType = createdBy?.userType
   const isFullNameDisplay = createdBy?.userDetailsId?.isFullNameDisplay
 
@@ -124,10 +133,11 @@ const EventDetails = () => {
                         eventParticipantIds.some(
                           (participant) =>
                             participant?.userId._id === currentUser?._id &&
-                            participant?.isApproved &&
-                            !participant?.isPending
-                        ) &&
-                        `${addressId?.streetName} ${addressId?.streetNumber} ${addressId?.zipCode}, ${addressId?.city} ${addressId?.country}`}
+                            participant?.isApproved === true &&
+                            participant?.isPending === false
+                        )}
+                      ) && `${addressId?.streetName} ${addressId?.streetNumber} $
+                      {addressId?.zipCode}, ${addressId?.city} ${addressId?.country}`}
                     </p>
                     <iframe
                       src={addressId?.iframeSrc}

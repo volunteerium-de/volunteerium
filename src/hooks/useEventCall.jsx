@@ -12,7 +12,7 @@ import {
 } from "../features/eventSlice"
 
 const useEventCall = () => {
-  const { axiosWithToken } = useAxios()
+  const { axiosWithToken, axiosWithBearer } = useAxios()
   const { currentUser: user } = useSelector((state) => state.auth)
   const dispatch = useDispatch()
 
@@ -31,7 +31,8 @@ const useEventCall = () => {
   const getSingleEvent = async (eventId) => {
     dispatch(fetchEventStart())
     try {
-      const { data } = await axiosWithPublic(`events/${eventId}`)
+      const axiosInstance = user ? axiosWithBearer : axiosWithPublic
+      const { data } = await axiosInstance(`events/${eventId}`)
       dispatch(fetchSingleEventSuccess(data.data))
     } catch (error) {
       console.log(error.response.data.message)
@@ -51,6 +52,7 @@ const useEventCall = () => {
   }
 
   const postEvent = async (eventInfo) => {
+    dispatch(fetchEventStart())
     try {
       const { data } = await axiosWithToken.post(`events`, eventInfo, {
         headers: {
@@ -65,31 +67,31 @@ const useEventCall = () => {
   }
 
   const editEvent = async (eventId, eventInfo) => {
+    dispatch(fetchEventStart())
     try {
       const { data } = await axiosWithToken.put(`events/${eventId}`, eventInfo, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
       })
-      console.log(data)
+      dispatch(fetchSingleEventSuccess(data.new))
       toastNotify("success", data.message)
     } catch (error) {
       console.log(error)
       toastNotify("error", error?.response?.data?.message)
-    } finally {
-      getSingleEvent(eventId)
+      dispatch(fetchEventFail())
     }
   }
 
   const deleteEvent = async (eventId) => {
+    dispatch(fetchEventStart())
     try {
       const { data } = await axiosWithToken.delete(`events/${eventId}`)
-      console.log("Delete response:", data)
-
       toastNotify("success", data.message)
     } catch (error) {
       console.log(error)
       toastNotify("error", error?.response?.data?.message)
+      dispatch(fetchEventFail())
     }
   }
 
