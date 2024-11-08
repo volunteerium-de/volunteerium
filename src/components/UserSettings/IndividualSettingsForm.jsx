@@ -12,6 +12,7 @@ import * as Yup from "yup"
 import LanguageSelect from "../../components/ui/Selects/LanguageSelect"
 import SelectInput from "../ui/Selects/SelectInput"
 import useLanguage from "../../hooks/useLanguages"
+import { formatName } from "../../helpers/formatName"
 
 // Validation Schema
 const IndividualSchema = Yup.object().shape({
@@ -110,18 +111,6 @@ const IndividualSettingsForm = () => {
     { label: t(translations.indvSettings.notSay), value: "Prefer not to say" },
   ]
 
-  const getShortName = (fullName) => {
-    const nameParts = fullName.split(" ")
-
-    if (nameParts.length === 2) {
-      return `${nameParts[0]} ${nameParts[1].charAt(0)}.`
-    } else if (nameParts.length > 2) {
-      return `${nameParts[0]} ${nameParts.slice(1, -1).join(" ")} ${nameParts[nameParts.length - 1].charAt(0)}.`
-    } else {
-      return fullName
-    }
-  }
-
   return (
     <div>
       <div className="mx-auto max-w-4xl p-8 bg-light-gray dark:bg-dark-gray-3 rounded-lg shadow-md  ">
@@ -152,7 +141,7 @@ const IndividualSettingsForm = () => {
                     />
                     <RadioInput
                       id="shortName"
-                      label={getShortName(currentUser.fullName)}
+                      label={formatName(currentUser.fullName, false)}
                       checked={!values.isFullNameDisplay}
                       onChange={() => setFieldValue("isFullNameDisplay", false)}
                     />
