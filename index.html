@@ -1,13 +1,67 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en" class="">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/png" href="/favicon.png" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.css"
+    />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Volunteerium</title>
   </head>
   <body>
     <div id="root"></div>
+    <script src="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.js"></script>
+    <script>
+      window.addEventListener("load", function () {
+        window.cookieconsent.initialise({
+          palette: {
+            popup: {
+              background: "#DCE6E0",
+            },
+            button: {
+              background: "#4B6D59",
+            },
+          },
+          theme: "classic",
+          type: "opt-in", // Requires users to opt-in for cookies
+          content: {
+            message:
+              "This website uses cookies to ensure you get the best experience on our website.",
+            dismiss: "Got it!",
+            allow: "Allow cookies",
+            deny: "Decline", // Optional: You can add a decline button if desired
+            link: "Learn more",
+            href: "/privacy-policy", // Link to your privacy policy
+          },
+          onInitialise: function (status) {
+            var type = this.options.type
+            var didConsent = this.hasConsented()
+            if (type == "opt-in" && !didConsent) {
+              // The user has not consented to cookies, disable necessary cookies here.
+              console.log("Cookies not accepted")
+            } else {
+              // The user has consented to cookies, enable necessary cookies here.
+              console.log("Cookies accepted")
+            }
+          },
+          onStatusChange: function (status, chosenBefore) {
+            var type = this.options.type
+            var didConsent = this.hasConsented()
+            if (type == "opt-in" && didConsent) {
+              // The user has consented to cookies, enable necessary cookies here.
+              console.log("Cookies accepted")
+            } else {
+              // The user has not consented to cookies, disable necessary cookies here.
+              console.log("Cookies not accepted")
+            }
+          },
+        })
+      })
+    </script>
+
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>
