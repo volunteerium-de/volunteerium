@@ -2,6 +2,8 @@ import React, { useState, useRef, useEffect } from "react"
 import { AiFillStar, AiOutlineStar } from "react-icons/ai"
 import useEventCall from "../../hooks/useEventCall"
 import { useSelector } from "react-redux"
+import { useTranslation } from "react-i18next"
+import { translations } from "../../locales/translations"
 
 const EventFeedback = ({ eventName, eventId, onClose }) => {
   const { currentUser } = useSelector((state) => state.auth)
@@ -10,6 +12,8 @@ const EventFeedback = ({ eventName, eventId, onClose }) => {
   const [feedback, setFeedback] = useState("")
   const [error, setError] = useState("")
   const { sendEventFeedback } = useEventCall()
+
+  const { t } = useTranslation()
 
   // Handle star click
   const handleStarClick = (value) => {
@@ -51,12 +55,12 @@ const EventFeedback = ({ eventName, eventId, onClose }) => {
         className="bg-white dark:bg-dark-gray-3 p-8 rounded-lg w-4/5 max-w-lg mx-auto shadow-lg "
       >
         <h2 className="text-[1.25rem] text-center text-dark-gray-3 dark:text-white font-semibold mb-4">
-          Thank you for your participation!
+          {t(translations.eventDetails.feedback.h2)}
         </h2>
         <p className="text-dark-gray-1 dark:text-white mb-4 text-center">
-          Please share your experience about
-          <span className="text-dark-gray-3 dark:text-white font-semibold"> {eventName}</span> to
-          help us improve.
+          {t(translations.eventDetails.report.p1)}
+          <span className="text-dark-gray-3 dark:text-white font-semibold"> {eventName}</span>{" "}
+          {t(translations.eventDetails.report.p2)}
         </p>
 
         {/* Star Rating */}
@@ -87,7 +91,7 @@ const EventFeedback = ({ eventName, eventId, onClose }) => {
         </label>
         <textarea
           className="w-full  p-2 border border-gray-1 rounded focus:outline-none focus:border-primary-green mb-4 placeholder-dark-gray-1 resize-none"
-          placeholder="Write your feedback here..."
+          placeholder={t(translations.eventDetails.feedback.placeholder)}
           rows={4}
           value={feedback}
           onChange={(e) => setFeedback(e.target.value)}
@@ -99,7 +103,7 @@ const EventFeedback = ({ eventName, eventId, onClose }) => {
           className="w-full bg-primary-green text-white py-2 rounded-md font-semibold mb-2"
           onClick={handleFeedbackSubmit}
         >
-          Share Your Feedback
+          {t(translations.eventDetails.feedback.submit)}
         </button>
 
         {/* Close Button */}
@@ -108,7 +112,7 @@ const EventFeedback = ({ eventName, eventId, onClose }) => {
           onClick={onClose}
           className="w-full bg-gray-300 text-dark-gray-2 py-2 rounded-md font-semibold"
         >
-          CANCEL
+          {t(translations.eventDetails.feedback.cancel)}
         </button>
       </div>
     </div>

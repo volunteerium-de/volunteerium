@@ -15,20 +15,20 @@ const validationSchema = Yup.object({
 const ReportEvent = ({ eventTitle, eventId, onClose }) => {
   const { currentUser } = useSelector((state) => state.auth)
   const { sendEventReport } = useEventCall()
-
-  const options = [
-    { value: "spam", label: "Spam" },
-    { value: "offensive", label: "Offensive" },
-    { value: "harmful", label: "Harmful" },
-    { value: "inappropriate", label: "Inappropriate" },
-    { value: "misleading", label: "Misleading" },
-    { value: "harassment", label: "Harassment" },
-    { value: "fraud", label: "Fraud" },
-    { value: "violence", label: "Violence" },
-    { value: "discrimination", label: "Discrimination" },
-    { value: "other", label: "Other" },
-  ]
   const { t } = useTranslation()
+  const options = [
+    { value: "spam", label: t("eventDetails.report.reasons.spam") },
+    { value: "offensive", label: t("eventDetails.report.reasons.offensive") },
+    { value: "harmful", label: t("eventDetails.report.reasons.harmful") },
+    { value: "inappropriate", label: t("eventDetails.report.reasons.inappropriate") },
+    { value: "misleading", label: t("eventDetails.report.reasons.misleading") },
+    { value: "harassment", label: t("eventDetails.report.reasons.harassment") },
+    { value: "fraud", label: t("eventDetails.report.reasons.fraud") },
+    { value: "violence", label: t("eventDetails.report.reasons.violence") },
+    { value: "discrimination", label: t("eventDetails.report.reasons.discrimination") },
+    { value: "other", label: t("eventDetails.report.reasons.other") },
+  ]
+
   // Reference for the modal container
   const modalRef = useRef(null)
 
@@ -81,7 +81,7 @@ const ReportEvent = ({ eventTitle, eventId, onClose }) => {
                 name="reportType"
                 options={options}
                 label="Report Reason*:"
-                placeholder="Choose your report reason"
+                placeholder={t(translations.eventDetails.report.placeholder1)}
               />
               {errors.reportType && touched.reportType && (
                 <div className="text-red-500 text-sm">{errors.reportType}</div>
@@ -97,7 +97,7 @@ const ReportEvent = ({ eventTitle, eventId, onClose }) => {
                 maxLength={300}
                 className="w-full p-2 border border-gray-1 rounded focus:outline-none focus:border-primary-green placeholder-dark-gray-1 resize-none"
                 rows="4"
-                placeholder={t(translations.eventDetails.report.placeholder)}
+                placeholder={t(translations.eventDetails.report.placeholder2)}
               />
               <p className="text-gray-2 font-medium text-xs text-right mb-4">
                 <Field name="content">{({ field }) => `${field.value.length}/300`}</Field>
