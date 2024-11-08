@@ -13,20 +13,21 @@ const validationSchema = Yup.object({
 })
 
 const ReportEvent = ({ eventTitle, eventId, onClose }) => {
+  const { t } = useTranslation()
   const { currentUser } = useSelector((state) => state.auth)
   const { sendEventReport } = useEventCall()
-  const { t } = useTranslation()
+
   const options = [
-    { value: "spam", label: t("eventDetails.report.reasons.spam") },
-    { value: "offensive", label: t("eventDetails.report.reasons.offensive") },
-    { value: "harmful", label: t("eventDetails.report.reasons.harmful") },
-    { value: "inappropriate", label: t("eventDetails.report.reasons.inappropriate") },
-    { value: "misleading", label: t("eventDetails.report.reasons.misleading") },
-    { value: "harassment", label: t("eventDetails.report.reasons.harassment") },
-    { value: "fraud", label: t("eventDetails.report.reasons.fraud") },
-    { value: "violence", label: t("eventDetails.report.reasons.violence") },
-    { value: "discrimination", label: t("eventDetails.report.reasons.discrimination") },
-    { value: "other", label: t("eventDetails.report.reasons.other") },
+    { value: "spam", label: t("eventDetails.report.option1") },
+    { value: "offensive", label: t("eventDetails.report.option2") },
+    { value: "harmful", label: t("eventDetails.report.option3") },
+    { value: "inappropriate", label: t("eventDetails.report.option4") },
+    { value: "misleading", label: t("eventDetails.report.option5") },
+    { value: "harassment", label: t("eventDetails.report.option6") },
+    { value: "fraud", label: t("eventDetails.report.option7") },
+    { value: "violence", label: t("eventDetails.report.option8") },
+    { value: "discrimination", label: t("eventDetails.report.option9") },
+    { value: "other", label: t("eventDetails.report.option10") },
   ]
 
   // Reference for the modal container

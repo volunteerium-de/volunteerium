@@ -58,9 +58,9 @@ const EventFeedback = ({ eventName, eventId, onClose }) => {
           {t(translations.eventDetails.feedback.h2)}
         </h2>
         <p className="text-dark-gray-1 dark:text-white mb-4 text-center">
-          {t(translations.eventDetails.report.p1)}
+          {t(translations.eventDetails.feedback.p1)}
           <span className="text-dark-gray-3 dark:text-white font-semibold"> {eventName}</span>{" "}
-          {t(translations.eventDetails.report.p2)}
+          {t(translations.eventDetails.feedback.p2)}
         </p>
 
         {/* Star Rating */}

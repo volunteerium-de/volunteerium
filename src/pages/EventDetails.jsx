@@ -135,10 +135,10 @@ const EventDetails = () => {
                             participant?.userId._id === currentUser?._id &&
                             participant?.isApproved === true &&
                             participant?.isPending === false
-                        )}
-                      ) && `${addressId?.streetName} ${addressId?.streetNumber} $
-                      {addressId?.zipCode}, ${addressId?.city} ${addressId?.country}`}
+                        ) &&
+                        `${addressId?.streetName} ${addressId?.streetNumber} ${addressId?.zipCode}, ${addressId?.city} ${addressId?.country}`}
                     </p>
+
                     <iframe
                       src={addressId?.iframeSrc}
                       width="100%"
