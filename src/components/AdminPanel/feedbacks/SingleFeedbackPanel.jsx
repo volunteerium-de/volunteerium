@@ -1,28 +1,33 @@
 import React from "react"
-import { useState, useRef, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
 import { ImSpinner9 } from "react-icons/im"
 import { IoIosArrowBack } from "react-icons/io"
 import { useNavigate } from "react-router-dom"
-import useAdminCall from "../../../../hooks/useAdminCall"
-import DeleteModal from "../../../ui/Modals/DeleteModal"
-import { formatDateWithTime } from "../../../../helpers/formatDate"
+import useAdminCall from "../../../hooks/useAdminCall"
+import DeleteModal from "../../ui/Modals/DeleteModal"
+import { UserAvatar } from "../../ui/Avatar/userAvatar"
+import { formatDateWithTime } from "../../../helpers/formatDate"
+import useLanguage from "../../../hooks/useLanguages"
 import { MdOutlineSettings } from "react-icons/md"
+import { LuMailPlus } from "react-icons/lu"
+import { AiFillStar, AiOutlineStar } from "react-icons/ai"
 
-const SingleReportPanel = ({ reportId, setIdentifier }) => {
+const SingleFeedbackPanel = ({ feedbackId, setIdentifier }) => {
   const navigate = useNavigate()
-  const [reportData, setReportData] = useState([])
+  const [feedbackData, setFeedbackData] = useState([])
   const [loading, setLoading] = useState(false)
   const { fetchSingleData, deleteData } = useAdminCall()
   const [isSettingsModalOpen, setIsSettingsModalOpen] = useState(false)
-  const [isDeleteReportModalOpen, setIsDeleteReportModalOpen] = useState(false)
-  const modalRef = useRef(null)
+  const [isDeleteFeedbackModalOpen, setIsDeleteFeedbackModalOpen] = useState(false)
+  const { getLangName } = useLanguage()
   const settingsButtonRef = useRef(null)
+  const modalRef = useRef(null)
 
-  const fetchReportData = async () => {
+  const fetchFeedbackData = async () => {
     setLoading(true)
     try {
-      const data = await fetchSingleData("event-reports", reportId)
-      setReportData(data)
+      const data = await fetchSingleData("event-feedbacks", feedbackId)
+      setFeedbackData(data)
       console.log(data)
     } catch (error) {
       console.error(error)
@@ -32,20 +37,20 @@ const SingleReportPanel = ({ reportId, setIdentifier }) => {
   }
 
   useEffect(() => {
-    fetchReportData()
-  }, [reportId])
+    fetchFeedbackData()
+  }, [feedbackId])
 
   const handleNavigateBack = () => {
     setIdentifier(null)
-    navigate(`/admin-panel?tab=reports`)
+    navigate(`/admin-panel?tab=feedbacks`)
   }
 
-  const closeDeleteReportModal = () => {
-    setIsDeleteReportModalOpen(false)
+  const closeDeleteFeedbackModal = () => {
+    setIsDeleteFeedbackModalOpen(false)
   }
 
-  const openDeleteReportModal = () => {
-    setIsDeleteReportModalOpen(true)
+  const openDeleteFeedbackModal = () => {
+    setIsDeleteFeedbackModalOpen(true)
   }
 
   const handleSettingsButtonClick = () => {
@@ -53,7 +58,6 @@ const SingleReportPanel = ({ reportId, setIdentifier }) => {
   }
 
   const handleOutsideClick = (e) => {
-    // Check if the click is outside the settings button and modal
     if (
       modalRef.current &&
       !modalRef.current.contains(e.target) &&
@@ -72,11 +76,11 @@ const SingleReportPanel = ({ reportId, setIdentifier }) => {
     }
   }, [])
 
-  const handleDeleteReport = () => {
-    deleteData("event-reports", reportId)
-    navigate(`/admin-panel?tab=reports`)
+  const handleDeleteFeedback = () => {
+    deleteData("event-feedbacks", feedbackId)
+    navigate(`/admin-panel?tab=feedbacks`)
     setIsSettingsModalOpen(false)
-    closeDeleteReportModal()
+    closeDeleteFeedbackModal()
   }
 
   return (
@@ -93,13 +97,12 @@ const SingleReportPanel = ({ reportId, setIdentifier }) => {
           <div className="my-4 flex h-max justify-center items-start pt-24">
             <ImSpinner9 className="animate-spin h-8 w-8 text-primary-green dark:text-white" />
           </div>
-        ) : reportData ? (
+        ) : feedbackData ? (
           <div className="my-8 md:my-4 space-y-2 h-max">
             <div className="flex justify-between items-center p-4 bg-white dark:bg-dark-gray-1 rounded-lg ">
               <div className="text-sm sm:text-[1.125rem] flex gap-1 md:gap-2 items-center text-dark-gray-1 me-3">
-                Report ID - {reportId}
+                Feedback ID - {feedbackId}
               </div>
-
               <div className="flex gap-1 md:gap-2 items-center">
                 <button ref={settingsButtonRef} onClick={handleSettingsButtonClick}>
                   <MdOutlineSettings className="w-5 h-5 sm:w-8 sm:h-8 text-dark-gray-1 dark:text-white hover:text-dark-gray-1" />
@@ -110,65 +113,89 @@ const SingleReportPanel = ({ reportId, setIdentifier }) => {
               {/* User Information */}
               <div className="bg-white dark:bg-dark-gray-1 rounded-lg w-full xl:w-1/2 p-4">
                 <h1 className="text-[1.125rem] font-semibold text-primary-green dark:text-white">
-                  Reports Informations
+                  Feedback Informations
                 </h1>
                 <ul className="space-y-2 text-dark-gray-1 dark:text-light-gray-2">
+                  {/* User Avatar */}
+                  <li className="flex justify-start my-4">
+                    <UserAvatar
+                      user={feedbackData?.userId}
+                      size="h-24 w-24"
+                      backgroundActive={true}
+                    />
+                  </li>
                   {/* Full Name  */}
                   <li className="flex gap-1 mt-4">
-                    <span className="font-semibold">Report Type:</span>
-                    <span>{reportData?.reportType}</span>
+                    <span className="font-semibold">{feedbackData?.name}</span>
                   </li>
                   <li className="flex gap-1 mt-4">
-                    <span className="font-semibold">Reported By:</span>
-                    {reportData?.reportedBy ? (
-                      <span
-                        className="text-primary-green cursor-pointer"
-                        onClick={() =>
-                          navigate(`/admin-panel?tab=users&identifier=${reportData?.reportedBy}`)
-                        }
-                      >
-                        {reportData?.reportedBy}
-                      </span>
-                    ) : (
-                      <span className="text-gray-500 italic">Guest User</span>
-                    )}
+                    <span className="font-semibold">Title:</span>
+                    <span>{feedbackData?.eventId?.title}</span>
                   </li>
                   <li className="flex gap-1 mt-4">
                     <span className="font-semibold">Event Id:</span>
                     <span
                       className="text-primary-green cursor-pointer"
                       onClick={() =>
-                        navigate(`/admin-panel?tab=events&identifier=${reportData?.eventId}`)
+                        navigate(`/admin-panel?tab=events&identifier=${feedbackData?.eventId?._id}`)
                       }
                     >
-                      {reportData?.eventId}
+                      {feedbackData?.eventId?._id}
                     </span>
                   </li>
                   <li className="flex flex-col sm:flex-row gap-1">
+                    <span className="font-semibold">Email Address:</span>
+                    <a
+                      href={`https://mail.google.com/mail/?view=cm&fs=1&to=${feedbackData?.userId?.email}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex gap-1 items-center text-primary-green dark:text-green-300 hover:underline"
+                    >
+                      {feedbackData?.userId?.email} <LuMailPlus />
+                    </a>
+                  </li>
+                  <li className="flex gap-1 mt-4">
+                    <span className="font-semibold">Name:</span>
+                    <span>{feedbackData?.userId?.fullName}</span>
+                  </li>
+                  <li className="flex flex-col sm:flex-row gap-1">
                     <span className="font-semibold">Created At:</span>
-                    <span>{formatDateWithTime(reportData?.createdAt)}</span>
+                    <span>{formatDateWithTime(feedbackData?.createdAt)}</span>
                   </li>
                   <li className="flex flex-col sm:flex-row gap-1">
                     <span className="font-semibold">Last Updated At:</span>
-                    <span>{formatDateWithTime(reportData?.updatedAt)}</span>
+                    <span>{formatDateWithTime(feedbackData?.updatedAt)}</span>
                   </li>
                 </ul>
               </div>
               <div className="bg-white dark:bg-dark-gray-1 rounded-lg w-full xl:w-1/2 p-4">
                 <h1 className="text-[1.125rem] font-semibold text-primary-green dark:text-white">
-                  Reports Details
+                  Feedback Details
                 </h1>
                 <ul className="space-y-2 text-dark-gray-1 dark:text-light-gray-2">
+                  <li className="flex items-center my-4">
+                    <span className="font-semibold">Rating:</span>
+                    {[1, 2, 3, 4, 5].map((star) => (
+                      <span key={star}>
+                        {star <= (feedbackData?.rating || 0) ? (
+                          <AiFillStar className="text-yellow-500" />
+                        ) : (
+                          <AiOutlineStar />
+                        )}
+                      </span>
+                    ))}
+                  </li>
+
                   <li className="flex gap-1 my-4">
-                    <span className="font-semibold">Content:</span>
-                    <span>{reportData?.content}</span>
+                    <span className="font-semibold">Feedback:</span>
+                    <span>{feedbackData?.feedback}</span>
                   </li>
                 </ul>
               </div>
             </div>
           </div>
         ) : (
-          <div>No Report Found</div>
+          <div>No Feedback Found</div>
         )}
       </div>
       {isSettingsModalOpen && (
@@ -176,10 +203,10 @@ const SingleReportPanel = ({ reportId, setIdentifier }) => {
           <div ref={modalRef} className="bg-white dark:bg-gray-1 shadow-lg w-[120px] md:w-[200px]">
             <div className="flex flex-col justify-between">
               <button
-                onClick={openDeleteReportModal}
+                onClick={openDeleteFeedbackModal}
                 className="text-danger hover:text-danger/50 border-b dark:border-gray-2 hover:bg-light-gray-2 w-full py-2"
               >
-                Delete Report
+                Delete Feedback
               </button>
               <button
                 onClick={() => setIsSettingsModalOpen(false)}
@@ -192,16 +219,16 @@ const SingleReportPanel = ({ reportId, setIdentifier }) => {
         </div>
       )}
       {/* Delete Modal */}
-      {isDeleteReportModalOpen && (
+      {isDeleteFeedbackModalOpen && (
         <DeleteModal
-          onClose={closeDeleteReportModal}
-          onDelete={handleDeleteReport}
-          title={`Delete Report`}
-          description={`Are you sure you want to delete this report?`}
+          onClose={closeDeleteFeedbackModal}
+          onDelete={handleDeleteFeedback}
+          title={`Delete Feedback`}
+          description={`Are you sure you want to delete this feedback?`}
         />
       )}
     </div>
   )
 }
 
-export default SingleReportPanel
+export default SingleFeedbackPanel
