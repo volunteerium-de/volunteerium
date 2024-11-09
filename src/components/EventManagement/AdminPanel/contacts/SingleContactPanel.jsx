@@ -4,8 +4,11 @@ import { ImSpinner9 } from "react-icons/im"
 import { IoIosArrowBack } from "react-icons/io"
 import { useNavigate } from "react-router-dom"
 import useAdminCall from "../../../../hooks/useAdminCall"
+import { useTranslation } from "react-i18next"
+import { translations } from "../../../../locales/translations"
 
 const SingleContactPanel = ({ contactId, setIdentifier }) => {
+  const {t} = useTranslation()
   const navigate = useNavigate()
   const [contactData, setContactData] = useState([])
   const [loading, setLoading] = useState(false)
@@ -23,7 +26,7 @@ const SingleContactPanel = ({ contactId, setIdentifier }) => {
         className="absolute -top-8 left-0 md:-left-5 flex items-center gap-1 text-primary-green dark:text-white"
       >
         <IoIosArrowBack className="w-5 h-5" />
-        <span>Back</span>
+        <span>{t(translations.adminPanel.backButton)}</span>
       </button>
       <div>
         {loading ? (
@@ -33,7 +36,7 @@ const SingleContactPanel = ({ contactId, setIdentifier }) => {
         ) : (
           <div className="my-8 md:my-4 space-y-2 h-max">
             <div className="flex justify-between items-center p-4 bg-white dark:bg-dark-gray-1 rounded-lg ">
-              ContactId - {contactId}
+            {t(translations.adminPanel.contacts.singleContactPanel.contactId)} - {contactId}
             </div>
           </div>
         )}

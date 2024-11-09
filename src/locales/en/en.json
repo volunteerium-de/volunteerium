@@ -647,6 +647,140 @@
     "p13": "Volunteerium Team",
     "p14": "Email: info.volunteerium@gmail.com"
   },
+  "adminPanel": {
+    "backButton": "Back",
+    "activeUpper": "ACTIVE",
+    "active": "Active",
+    "suspendedUpper": "SUSPENDED",
+    "suspended": "Suspended",
+    "yes": "Yes",
+    "no": "No",
+    "cancel": "Cancel",
+
+    "contacts": {
+      "contactTable": {
+        "header": "Contacts Table"
+      },
+      "singleContactPanel": {
+        "contactId": "ContactId"
+      }
+    },
+    "events": {
+      "eventsTable": {
+        "eventId": "Event ID",
+        "eventIdDL": "Event ID",
+        "status": "Status",
+        "statusDL": "Event Status",
+        "completion": "Completion",
+        "completionDL": "Completion Status",
+        "completed": "Completed",
+        "waiting": "Waiting",
+        "eventTitle": "Event Title",
+        "eventTitleDL": "Event Title",
+        "eventCreator": "Event Creator",
+        "eventCreatorDL": "Event Creator",
+        "attendants": "Attendants",
+        "attendantsDL": "Attendants",
+        "createdAt": "Created At",
+        "createdAtDL": "Created At",
+        "noEvents": "No events found"
+      },
+      "singleEventPanel": {
+        "eventId": "Event ID:",
+        "eventDetails": "Event Details",
+        "eventPhotoAlt": "Event-Photo",
+        "eventName": "Event Name: ",
+        "eventDescription": "Event Description: ",
+        "eventCreator": "Event Creator: ",
+        "startDate": "Start Date: ",
+        "endDate": "End Date: ",
+        "contactName": "Contact Name: ",
+        "contactEmail": "Contact Email",
+        "contactPhone": "Contact Phone",
+        "languages": "Languages",
+        "interests": "Interests",
+        "onlineEvent": "Online Event: ",
+        "eventLocation": "Event Location: ",
+        "documents": "Documents: ",
+        "documentId": "Document Id: ",
+        "eventParticipants": "Event Participants",
+        "participantId": "Participant ID",
+        "participantIdDL": "Participant ID",
+        "user": "User",
+        "userDL": "User",
+        "joined": "Joined",
+        "pending": "Pending",
+        "approved": "Approved",
+        "rejected": "Rejected",
+        "notJoined": "Not Joined",
+        "joinDateDL": "Join Date",
+        "suspendEvent": "Suspend Event",
+        "unsuspendEvent": "Unsuspend Event",
+        "status": "Status",
+        "statusDL": "Participant Status",
+        "joinDate": "Join Date",
+        "noParticipantYet": "No Participant Yet",
+        "deleteEvent": "Delete Event",
+        "desc": "Are you sure you want to delete this event?"
+      }
+    },
+    "feedbacks": {
+      "feedbacksTable": {
+        "header": "Feedbacks Table"
+      },
+      "singleFeedbackPanel": {
+        "feedbackId": "FeedbackId "
+      }
+    },
+    "reports": {
+      "reportsTable": {
+        "header": "Reports Table"
+      },
+      "singleReportPanel": {
+        "reportId": "ReportId "
+      }
+    },
+    "users": {
+      "singleUserPanel": {
+        "userId": "User ID: ",
+        "userInformations": "User Informations",
+        "fullName": "Full Name",
+        "orgName": "Organization Name",
+        "userType": "User Type: ",
+        "emailAddress": "Email Address: ",
+        "createdAt": "Created At: ",
+        "lastUpdatedAt": "Last Updated At: ",
+        "userDetails": "User Details",
+        "fullNameDisplay": "Full Name Display: ",
+        "profileSetup": "Profile Setup: ",
+        "emailVerified": "Email Verified: ",
+        "languages": "Languages: ",
+        "interests": "Interests: ",
+        "address": "Address: ",
+        "documents": "Documents: ",
+        "documentId": "Document Id: ",
+        "noUserFound": "No  User Found",
+        "deleteUser": "Delete User",
+        "deleteDescription": "Are you sure you want to delete this user?"
+      },
+      "usersTable": {
+        "userId": "User ID",
+        "userIdDL": "User ID",
+        "status": "Status",
+        "statusDL": "User Status",
+        "userType": "User Type",
+        "userTypeDL": "User Type",
+        "nameOrg": "Name/Organization",
+        "nameOrgDL": "Name",
+        "email": "Email",
+        "emailDL": "Email",
+        "nameDL": "Name",
+        "createdAt": "Created At",
+        "createdAtDL": "Created At",
+        "noUsersFound": "No Users Found"
+      }
+    }
+  },
 
   "yup": {
     "required": {

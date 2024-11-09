@@ -665,6 +665,140 @@ export const translations = {
     p13: "termsOfService.p13",
     p14: "termsOfService.p14",
   },
+adminPanel: {
+  backButton: "adminPanel.backButton",
+  activeUpper: "adminPanel.activeUpper",
+  active: "adminPanel.active",
+  suspendedUpper: "adminPanel.suspendedUpper",
+  suspended: "adminPanel.suspended",
+  yes: "adminPanel.yes",
+  no: "adminPanel.no",
+  cancel: "adminPanel.cancel",
+  contacts: {
+    contactTable: {
+      header: "adminPanel.contacts.contactTable.header"
+    },
+    singleContactPanel: {
+      contactId: "adminPanel.contacts.singleContactPanel.contactId"
+    }
+  },
+  events: {
+    eventsTable: {
+      eventId: "adminPanel.events.eventsTable.eventId",
+      eventIdDL: "adminPanel.events.eventsTable.eventIdDL",
+      status: "adminPanel.events.eventsTable.status",
+      statusDL: "adminPanel.events.eventsTable.statusDL",
+      completion: "adminPanel.events.eventsTable.completion",
+      completionDL: "adminPanel.events.eventsTable.completionDL",
+      completed: "adminPanel.events.eventsTable.completed",
+      waiting: "adminPanel.events.eventsTable.waiting",
+      eventTitle: "adminPanel.events.eventsTable.eventTitle",
+      eventTitleDL: "adminPanel.events.eventsTable.eventTitleDL",
+      eventCreator: "adminPanel.events.eventsTable.eventCreator",
+      eventCreatorDL: "adminPanel.events.eventsTable.eventCreatorDL",
+      attendants: "adminPanel.events.eventsTable.attendants",
+      attendantsDL: "adminPanel.events.eventsTable.attendantsDL",
+      createdAt: "adminPanel.events.eventsTable.createdAt",
+      createdAtDL: "adminPanel.events.eventsTable.createdAtDL",
+      noEvents: "adminPanel.events.eventsTable.noEvents"
+    },
+    singleEventPanel: {
+      eventId: "adminPanel.events.singleEventPanel.eventId",
+      eventDetails: "adminPanel.events.singleEventPanel.eventDetails",
+      eventPhotoAlt: "adminPanel.events.singleEventPanel.eventPhotoAlt",
+      eventName: "adminPanel.events.singleEventPanel.eventName",
+      eventDescription: "adminPanel.events.singleEventPanel.eventDescription",
+      eventCreator: "adminPanel.events.singleEventPanel.eventCreator",
+      startDate: "adminPanel.events.singleEventPanel.startDate",
+      endDate: "adminPanel.events.singleEventPanel.endDate",
+      contactName: "adminPanel.events.singleEventPanel.contactName",
+      contactEmail: "adminPanel.events.singleEventPanel.contactEmail",
+      contactPhone: "adminPanel.events.singleEventPanel.contactPhone",
+      languages: "adminPanel.events.singleEventPanel.languages",
+      interests: "adminPanel.events.singleEventPanel.interests",
+      onlineEvent: "adminPanel.events.singleEventPanel.onlineEvent",
+      eventLocation: "adminPanel.events.singleEventPanel.eventLocation",
+      documents: "adminPanel.events.singleEventPanel.documents",
+      documentId: "adminPanel.events.singleEventPanel.documentId",
+      eventParticipants: "adminPanel.events.singleEventPanel.eventParticipants",
+      participantId: "adminPanel.events.singleEventPanel.participantId",
+      participantIdDL: "adminPanel.events.singleEventPanel.participantIdDL",
+      user: "adminPanel.events.singleEventPanel.user",
+      userDL: "adminPanel.events.singleEventPanel.userDL",
+      joined: "adminPanel.events.singleEventPanel.joined",
+      pending: "adminPanel.events.singleEventPanel.pending",
+      approved: "adminPanel.events.singleEventPanel.approved",
+      rejected: "adminPanel.events.singleEventPanel.rejected",
+      notJoined: "adminPanel.events.singleEventPanel.notJoined",
+      joinDateDL: "adminPanel.events.singleEventPanel.joinDateDL",
+      suspendEvent: "adminPanel.events.singleEventPanel.suspendEvent",
+      unsuspendEvent: "adminPanel.events.singleEventPanel.unsuspendEvent",
+      status: "adminPanel.events.singleEventPanel.status",
+      statusDL: "adminPanel.events.singleEventPanel.statusDL",
+      joinDate: "adminPanel.events.singleEventPanel.joinDate",
+      noParticipantYet: "adminPanel.events.singleEventPanel.noParticipantYet",
+      deleteEvent: "adminPanel.events.singleEventPanel.deleteEvent",
+      desc: "adminPanel.events.singleEventPanel.desc"
+    }
+  },
+  feedbacks: {
+    feedbacksTable: {
+      header: "adminPanel.feedbacks.feedbacksTable.header"
+    },
+    singleFeedbackPanel: {
+      feedbackId: "adminPanel.feedbacks.singleFeedbackPanel.feedbackId"
+    }
+  },
+  reports: {
+    reportsTable: {
+      header: "adminPanel.reports.reportsTable.header"
+    },
+    singleReportPanel: {
+      reportId: "adminPanel.reports.singleReportPanel.reportId"
+    }
+  },
+  users: {
+    singleUserPanel: {
+      userId: "adminPanel.users.singleUserPanel.userId",
+      userInformations: "adminPanel.users.singleUserPanel.userInformations",
+      fullName: "adminPanel.users.singleUserPanel.fullName",
+      orgName: "adminPanel.users.singleUserPanel.orgName",
+      userType: "adminPanel.users.singleUserPanel.userType",
+      emailAddress: "adminPanel.users.singleUserPanel.emailAddress",
+      createdAt: "adminPanel.users.singleUserPanel.createdAt",
+      lastUpdatedAt: "adminPanel.users.singleUserPanel.lastUpdatedAt",
+      userDetails: "adminPanel.users.singleUserPanel.userDetails",
+      fullNameDisplay: "adminPanel.users.singleUserPanel.fullNameDisplay",
+      profileSetup: "adminPanel.users.singleUserPanel.profileSetup",
+      emailVerified: "adminPanel.users.singleUserPanel.emailVerified",
+      languages: "adminPanel.users.singleUserPanel.languages",
+      interests: "adminPanel.users.singleUserPanel.interests",
+      address: "adminPanel.users.singleUserPanel.address",
+      documents: "adminPanel.users.singleUserPanel.documents",
+      documentId: "adminPanel.users.singleUserPanel.documentId",
+      noUserFound: "adminPanel.users.singleUserPanel.noUserFound",
+      deleteUser: "adminPanel.users.singleUserPanel.deleteUser",
+      deleteDescription: "adminPanel.users.singleUserPanel.deleteDescription"
+    },
+    usersTable: {
+      userId: "adminPanel.users.usersTable.userId",
+      userIdDL: "adminPanel.users.usersTable.userIdDL",
+      status: "adminPanel.users.usersTable.status",
+      statusDL: "adminPanel.users.usersTable.statusDL",
+      userType: "adminPanel.users.usersTable.userType",
+      userTypeDL: "adminPanel.users.usersTable.userTypeDL",
+      nameOrg: "adminPanel.users.usersTable.nameOrg",
+      nameOrgDL: "adminPanel.users.usersTable.nameOrgDL",
+      email: "adminPanel.users.usersTable.email",
+      emailDL: "adminPanel.users.usersTable.emailDL",
+      nameDL: "adminPanel.users.usersTable.nameDL",
+      createdAt: "adminPanel.users.usersTable.createdAt",
+      createdAtDL: "adminPanel.users.usersTable.createdAtDL",
+      noUsersFound: "adminPanel.users.usersTable.noUsersFound"
+    }
+  }
+},
+
 
   yup: {
     required: {

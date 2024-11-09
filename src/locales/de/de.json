@@ -477,7 +477,7 @@
     "p1": "Keine Veranstaltungen gefunden",
     "p2": "Es scheint, dass momentan keine Veranstaltungen verfügbar sind.",
     "infoAlt": "Organisator-Avatar",
-    "joined": "beigetreten"
+    "joined": "Beigetreten"
   },
 
   "sidebar": {
@@ -655,6 +655,140 @@
     "p14": "E-Mail: info.volunteerium@gmail.com"
   },
 
+  "adminPanel": {
+    "backButton": "Zurück",
+    "activeUpper": "AKTIV",
+    "active": "Aktiv",
+    "suspendedUpper": "GESPERRT",
+    "suspended": "Gesperrt",
+    "yes": "Ja",
+    "no": "Nein",
+    "cancel": "Abbrechen",
+
+    "contacts": {
+      "contactTable": {
+        "header": "Kontakttabelle"
+      },
+      "singleContactPanel": {
+        "contactId": "Kontakt-ID"
+      }
+    },
+    "events": {
+      "eventsTable": {
+        "eventId": "Veranstaltungs-ID",
+        "eventIdDL": "Veranstaltungs-ID",
+        "status": "Status",
+        "statusDL": "Veranstaltungsstatus",
+        "completion": "Abschluss",
+        "completionDL": "Abschlussstatus",
+        "completed": "Abgeschlossen",
+        "waiting": "Warten",
+        "eventTitle": "Veranstaltungstitel",
+        "eventTitleDL": "Veranstaltungstitel",
+        "eventCreator": "Veranstalter",
+        "eventCreatorDL": "Veranstalter",
+        "attendants": "Teilnehmer",
+        "createdAt": "Erstellt am",
+        "createdAtDL": "Erstellt am",
+        "noEvents": "Keine Veranstaltungen gefunden"
+      },
+      "singleEventPanel": {
+        "eventId": "Veranstaltungs-ID:",
+        "eventDetails": "Veranstaltungsdetails",
+        "eventPhotoAlt": "Veranstaltungsfoto",
+        "eventName": "Veranstaltungsname: ",
+        "eventDescription": "Veranstaltungsbeschreibung: ",
+        "eventCreator": "Veranstalter: ",
+        "startDate": "Startdatum: ",
+        "endDate": "Enddatum: ",
+        "contactName": "Kontaktname: ",
+        "contactEmail": "Kontakt-E-Mail",
+        "contactPhone": "Kontakt-Telefon",
+        "langugages": "Sprachen",
+        "interests": "Interessen",
+        "onlineEvent": "Online-Veranstaltung: ",
+        "eventLocation": "Veranstaltungsort: ",
+        "documents": "Dokumente: ",
+        "documentId": "Dokumenten-ID: ",
+        "eventParticipants": "Veranstaltungsteilnehmer",
+        "participantId": "Teilnehmer-ID",
+        "participantIdDL": "Teilnehmer-ID",
+        "user": "Benutzer",
+        "userDL": "Benutzer",
+        "joined": "Beigetreten",
+    "pending": "Ausstehend",
+    "approved": "Genehmigt",
+    "rejected": "Abgelehnt",
+    "notJoined": "Nicht beigetreten",
+    "joinDateDL": "Beitrittsdatum",
+    "suspendEvent": "Veranstaltung aussetzen",
+    "unsuspendEvent": "Veranstaltung fortsetzen",
+    "status": "Status",
+    "statusDL": "Teilnehmerstatus",
+    "joinDate": "Beitrittsdatum",
+    "noParticipantYet": "Noch kein Teilnehmer",
+    "deleteEvent": "Veranstaltung löschen",
+    "desc": "Sind Sie sicher, dass Sie diese Veranstaltung löschen möchten?"
+      }
+    },
+    "feedbacks": {
+      "feedbacksTable": {
+        "header": "Feedback-Tabelle"
+      },
+      "singleFeedbackPanel": {
+        "feedbackId": "Feedback-ID "
+      }
+    },
+    "reports": {
+      "reportsTable": {
+        "header": "Berichtstabelle"
+      },
+      "singleReportPanel": {
+        "reportId": "Bericht-ID "
+      }
+    },
+    "users": {
+      "singleUserPanel": {
+        "userId": "Benutzer-ID: ",
+        "userInformations": "Benutzerinformationen",
+        "fullName": "Vollname",
+        "orgName": "Organisation Name",
+        "userType": "Benutzertyp: ",
+        "emailAddress": "E-Mail-Adresse: ",
+        "createdAt": "Erstellt am: ",
+        "lastUpdatedAt": "Zuletzt aktualisiert am: ",
+        "userDetails": "Benutzerdetails",
+        "fullNameDisplay": "Vollständiger Name: ",
+        "profileSetup": "Profil eingerichtet: ",
+        "emailVerified": "E-Mail verifiziert: ",
+        "languages": "Sprachen: ",
+        "interests": "Interessen: ",
+        "address": "Adresse: ",
+        "documents": "Dokumente: ",
+        "documentId": "Dokumenten-ID: ",
+        "noUserFound": "Kein Benutzer gefunden",
+        "deleteUser": "Benutzer löschen",
+        "deleteDescription": "Möchten Sie diesen Benutzer wirklich löschen?"
+      },
+      "usersTable": {
+        "userId": "Benutzer-ID",
+        "userIdDL": "Benutzer-ID",
+        "status": "Status",
+        "statusDL": "Benutzerstatus",
+        "userType": "Benutzertyp",
+        "userTypeDL": "Benutzertyp",
+        "nameOrg": "Name/Organisation",
+        "nameOrgDL": "Name",
+        "email": "E-Mail",
+        "emailDL": "E-Mail",
+        "nameDL": "Name",
+        "createdAt": "Erstellt am",
+        "createdAtDL": "Erstellt am",
+        "noUsersFound": "Keine Benutzer gefunden"
+      }
+    }
+  },
+
   "yup": {
     "required": {
       "userType": "Benutzertyp ist erforderlich!",
@@ -693,7 +827,7 @@
       "containsSpecialCharacter": "Muss ein Sonderzeichen enthalten (@$!%*?&)!",
       "match": "Passwörter müssen übereinstimmen!"
     },
-    "invalid":{
+    "invalid": {
       "email": "Ungültige E-Mail-Adresse!"
     }
   }
