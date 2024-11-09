@@ -1,7 +1,7 @@
 import React from "react"
 import { ImSpinner9 } from "react-icons/im"
-import AttendantsAvatars from "../../../EventDetailsPage/AttendantsAvatars"
-import "../../../../styles/global.css"
+import AttendantsAvatars from "../../EventDetailsPage/AttendantsAvatars"
+import "../../../styles/global.css"
 import { useNavigate } from "react-router-dom"
 
 const EventsTable = ({ data, loading }) => {
