@@ -3,9 +3,9 @@ import { useState } from "react"
 import { ImSpinner9 } from "react-icons/im"
 import { IoIosArrowBack } from "react-icons/io"
 import { useNavigate } from "react-router-dom"
-import useAdminCall from "../../../../hooks/useAdminCall"
+import useAdminCall from "../../../hooks/useAdminCall"
 import { useTranslation } from "react-i18next"
-import { translations } from "../../../../locales/translations"
+import { translations } from "../../../locales/translations"
 
 const SingleFeedbackPanel = ({ feedbackId, setIdentifier }) => {
   const {t} = useTranslation()

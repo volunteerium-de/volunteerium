@@ -4,7 +4,7 @@ import AttendantsAvatars from "../../EventDetailsPage/AttendantsAvatars"
 import "../../../styles/global.css"
 import { useNavigate } from "react-router-dom"
 import { useTranslation } from "react-i18next"
-import { translations } from "../../../../locales/translations"
+import { translations } from "../../../locales/translations"
 
 const EventsTable = ({ data, loading }) => {
   const {t} = useTranslation()

@@ -14,7 +14,7 @@ import { formatDateWithTime } from "../../../helpers/formatDate"
 import useLanguage from "../../../hooks/useLanguages"
 import { LuMailPlus } from "react-icons/lu"
 import { useTranslation } from "react-i18next"
-import { translations } from "../../../../locales/translations"
+import { translations } from "../../../locales/translations"
 
 const SingleUserPanel = ({ userId, setIdentifier }) => {
   const {t} = useTranslation()

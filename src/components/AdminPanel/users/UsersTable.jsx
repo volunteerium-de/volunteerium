@@ -1,9 +1,9 @@
 import React from "react"
 import { ImSpinner9 } from "react-icons/im"
 import { useNavigate } from "react-router-dom"
-import { UserAvatar } from "../../../ui/Avatar/userAvatar"
+import { UserAvatar } from "../../ui/Avatar/userAvatar"
 import { useTranslation } from "react-i18next"
-import { translations } from "../../../../locales/translations"
+import { translations } from "../../../locales/translations"
 
 const UsersTable = ({ data, loading }) => {
   const {t} = useTranslation()

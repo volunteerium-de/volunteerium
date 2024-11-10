@@ -1,8 +1,8 @@
 import React from "react"
-import Panel from "../../../ui/Panels/Panel"
+import Panel from "../../ui/Panels/Panel"
 import FeedbacksTable from "./FeedbacksTable"
 import { useTranslation } from "react-i18next"
-import { translations } from "../../../../locales/translations"
+import { translations } from "../../../locales/translations"
 
 const FeedbacksPanel = () => {
   const {t} = useTranslation()

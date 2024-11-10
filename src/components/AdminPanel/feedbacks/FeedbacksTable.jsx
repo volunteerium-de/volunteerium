@@ -3,7 +3,7 @@ import React from "react"
 import { useTranslation } from "react-i18next"
 import { ImSpinner9 } from "react-icons/im"
 import { useNavigate } from "react-router-dom"
-import { translations } from "../../../../locales/translations"
+import { translations } from "../../../locales/translations"
 
 const FeedbacksTable = ({ data, loading }) => {
   const {t} = useTranslation()
