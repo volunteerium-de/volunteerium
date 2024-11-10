@@ -560,30 +560,31 @@
     "maxReacedButton": "Full Capacity",
     "manageButton": "Manage",
     "feedback": {
-      "h2": "Thank you for participating!",
+      "h2": "Thank you for your participation!",
       "p1": "Please share your experience about",
       "p2": "to help us improve.",
       "placeholder": "Write your feedback here...",
-      "submit": "Share your feedback",
-      "close": "Close"
+      "submit": "Share your Feedback",
+      "cancel": "Cancel"
     },
     "report": {
       "h2": "Report Event",
       "p1": "If you have encountered any issues with this event, please let us know. Your report will help us maintain a safe and respectful environment for everyone.",
-      "placeholder": "Write your report here...",
-      "issueLabel": "Describe issue (optional):",
+      "placeholder1": "Choose a report reason",
+      "placeholder2": "Write your report here...",
+      "issueLabel": "Describe Issue (Optional):",
       "submit": "Submit",
       "cancel": "Cancel",
-      "option1": "offensive",
-      "option2": "harmful",
-      "option3": "inappropriate",
-      "option4": "misleading",
-      "option5": "spam",
-      "option6": "harassment",
-      "option7": "fraud",
-      "option8": "violence",
-      "option9": "discrimination",
-      "option10": "other"
+      "option1": "Spam",
+      "option2": "Offensive",
+      "option3": "Harmful",
+      "option4": "Inappropriate",
+      "option5": "Misleading",
+      "option6": "Harassment",
+      "option7": "Fraud",
+      "option8": "Violence",
+      "option9": "Discrimination",
+      "option10": "Other"
     }
   },
   "eventMng": {

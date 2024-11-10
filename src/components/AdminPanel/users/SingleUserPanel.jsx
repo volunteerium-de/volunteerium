@@ -3,15 +3,15 @@ import { useState } from "react"
 import { ImSpinner9 } from "react-icons/im"
 import { IoIosArrowBack } from "react-icons/io"
 import { useNavigate } from "react-router-dom"
-import useAdminCall from "../../../../hooks/useAdminCall"
+import useAdminCall from "../../../hooks/useAdminCall"
 import { useEffect } from "react"
 import { useRef } from "react"
-import DeleteModal from "../../../ui/Modals/DeleteModal"
+import DeleteModal from "../../ui/Modals/DeleteModal"
 import { MdOutlineSettings } from "react-icons/md"
 import { FaExternalLinkAlt } from "react-icons/fa"
-import { UserAvatar } from "../../../ui/Avatar/userAvatar"
-import { formatDateWithTime } from "../../../../helpers/formatDate"
-import useLanguage from "../../../../hooks/useLanguages"
+import { UserAvatar } from "../../ui/Avatar/userAvatar"
+import { formatDateWithTime } from "../../../helpers/formatDate"
+import useLanguage from "../../../hooks/useLanguages"
 import { LuMailPlus } from "react-icons/lu"
 import { useTranslation } from "react-i18next"
 import { translations } from "../../../../locales/translations"
@@ -78,6 +78,7 @@ const SingleUserPanel = ({ userId, setIdentifier }) => {
     deleteData("users", userId)
     navigate(`/admin-panel?tab=users`)
     setIsSettingsModalOpen(false)
+    closeDeleteUserModal()
   }
 
   const handleSuspendEvent = async () => {
