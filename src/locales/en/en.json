@@ -190,6 +190,8 @@
     "security": "Security",
     "visibility": "Visibility"
   },
+
+
   "addNewDoc": {
     "newDocument": "New Document",
     "documentTitle": "Document Title",
@@ -460,19 +462,13 @@
     "link": "Back to Homepage"
   },
   "setupIndv": {
-    "successMsg": "Please set up your profile details to proceed",
+    "genderLabel1": "Male",
+    "genderLabel2": "Female",
+    "genderLabel3": "Prefer not to say",
     "share": "Share Your Age and Gender",
     "p1": "Providing this information is optional but may be useful for certain events",
     "ageRange": "Age Range*",
-    "option1": "Choose Age Range",
-    "option2": "16-25",
-    "option3": "26-35",
-    "option4": "35+",
     "gender": "Gender*",
-    "option5": "Choose Gender",
-    "option6": "Male",
-    "option7": "Female",
-    "option8": "Prefer not to say",
     "next": "Next",
     "choose": "Choose Your Interests",
     "p2": "Explore volunteer opportunities and make a meaningful impact",
@@ -851,7 +847,11 @@
     }
   },
   "adminPanelPage": {
-    
+    "eventLabel": "Events",
+    "userLabel": "Users",
+    "contactLabel": "Contacts",
+    "feedbackLabel": "Feedbacks",
+    "reportLabel": "Reports"
   },
 
   "yup": {
@@ -871,14 +871,36 @@
       "country": "Country is required!",
       "oldPassword": "Old password is required!",
       "confirmPassword": "Confirm password is required!",
-      "reason": "Please select a reason"
+      "reason": "Please select a reason",
+      "eventName": "Event name is required!",
+      "date": "Date isrequired!",
+      "startTime": "Start time is required!",
+      "endTime": "End time is required!",
+      "endShouldLater": "End time should be later than start time",
+      "streetNameOnline": "Street Name is required when online",
+      "category": "Category is required",
+      "participants": "Max Participants is required",
+      "description": "Description is required",
+      "newDate": "Date cannot be in the past",
+      "onlyNumbers": "Must contain only numbers",
+      "onlyLetters": "Must contain only letters",
+      "interestId": "InterestIds must be a valid ObjectId",
+      "logo": "Logo is required!",
+      "addressId": "AddressId must be a valid ObjectId"
+
     },
     "minLength": {
+      "select1": "At least one category must be selected.",
+      "phoneNumber": "Phone number must be at least 10 digits",
+      "totalPoint": "Total point cannot be negative",
+      "characters1": "Must be at least 1 characters!",
       "characters3": "Must be at least 3 characters!",
       "characters8": "Must be at least 8 characters!",
       "characters10": "Must be at least 10 characters!"
     },
     "maxLength": {
+      "select3": "You can select up to 3 categories.",
+      "characters8": "Can be maximum 8 characters!",
       "characters30": "Can be maximum 30 characters!",
       "characters50": "Can be maximum 50 characters!",
       "characters100": "Can be maximum 100 characters!",
@@ -894,7 +916,13 @@
       "match": "Passwords must match!"
     },
     "invalid": {
-      "email": "Invalid email address!"
+      "email": "Invalid email address!",
+      "url": "Invalid URL format!"
+    },
+    "oneOf": {
+      "gender": "Please choose a valid gender",
+      "ageRange": "Please choose a valid age range",
+      "language": "Please choose a valid language"
     }
   }
 }

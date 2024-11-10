@@ -49,9 +49,9 @@ const SetupIndividual = () => {
   ]
 
   const genderOptions = [
-    { label: "Male", value: "male" },
-    { label: "Female", value: "female" },
-    { label: "Prefer not to say", value: "Prefer not to say" },
+    { label: t(translations.setupIndv.genderLabel1), value: "male" },
+    { label: t(translations.setupIndv.genderLabel2), value: "female" },
+    { label: t(translations.setupIndv.genderLabel3), value: "Prefer not to say" },
   ]
 
   const handleNext = (isValid) => {

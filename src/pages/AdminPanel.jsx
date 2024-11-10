@@ -17,8 +17,11 @@ import SingleReportPanel from "../components/AdminPanel/reports/SingleReportPane
 import SingleFeedbackPanel from "../components/AdminPanel/feedbacks/SingleFeedbackPanel"
 import { SiImessage } from "react-icons/si"
 import FeedbacksPanel from "../components/AdminPanel/feedbacks/FeedbacksPanel"
+import { useTranslation } from "react-i18next"
+import { translations } from "../locales/translations"
 
 const AdminPanel = () => {
+  const {t} = useTranslation()
   const location = useLocation()
   const navigate = useNavigate()
   const [activeTab, setActiveTab] = useState("events")
@@ -51,27 +54,27 @@ const AdminPanel = () => {
   const adminMenuItems = [
     {
       key: "events",
-      label: "Events",
+      label: t(translations.adminPanelPage.eventLabel),
       icon: <FaCalendar className="text-2xl mx-auto" />,
     },
     {
       key: "users",
-      label: "Users",
+      label: t(translations.adminPanelPage.userLabel),
       icon: <FaUsersGear className="text-2xl mx-auto" />,
     },
     {
       key: "contacts",
-      label: "Contacts",
+      label: t(translations.adminPanelPage.contactLabel),
       icon: <MdEmail className="text-2xl mx-auto" />,
     },
     {
       key: "feedbacks",
-      label: "Feedbacks",
+      label: t(translations.adminPanelPage.feedbackLabel),
       icon: <SiImessage className="text-2xl mx-auto" />,
     },
     {
       key: "reports",
-      label: "Reports",
+      label: t(translations.adminPanelPage.reportLabel),
       icon: <MdReportProblem className="text-2xl mx-auto" />,
     },
   ]

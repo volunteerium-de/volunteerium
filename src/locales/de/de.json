@@ -462,19 +462,14 @@
     "link": "Zurück zur Startseite"
   },
   "setupIndv": {
+    "genderLabel1": "Männlich",
+    "genderLabel2": "Weiblich",
+    "genderLabel3": "Keine Angabe",
     "successMsg": "Bitte geben Sie Ihre Profildaten ein, um fortzufahren",
     "share": "Teilen Sie Ihr Alter und Geschlecht",
     "p1": "Diese Angaben sind optional, können aber für bestimmte Veranstaltungen nützlich sein",
     "ageRange": "Altersbereich*",
-    "option1": "Altersbereich wählen",
-    "option2": "16-25",
-    "option3": "26-35",
-    "option4": "35+",
     "gender": "Geschlecht*",
-    "option5": "Geschlecht wählen",
-    "option6": "Männlich",
-    "option7": "Weiblich",
-    "option8": "Keine Angabe",
     "next": "Weiter",
     "choose": "Wählen Sie Ihre Interessen",
     "p2": "Entdecken Sie Freiwilligenmöglichkeiten und leisten Sie einen sinnvollen Beitrag",
@@ -858,6 +853,14 @@
     }
   },
 
+  "adminPanelPage": {
+    "eventLabel": "Veranstaltungen",
+    "userLabel": "Benutzer",
+    "contactLabel": "Kontakte",
+    "feedbackLabel": "Feedbacks",
+    "reportLabel": "Berichte"
+  },
+
   "yup": {
     "required": {
       "userType": "Benutzertyp ist erforderlich!",
@@ -875,14 +878,36 @@
       "country": "Land ist erforderlich!",
       "oldPassword": "Altes Passwort ist erforderlich!",
       "confirmPassword": "Passwortbestätigung ist erforderlich!",
-      "reason": "Bitte wählen Sie einen Grund aus"
+      "reason": "Bitte wählen Sie einen Grund aus",
+      "eventName": "Veranstaltungsname ist erforderlich!",
+      "date": "Datum ist erforderlich!",
+      "startTime": "Startzeit ist erforderlich!",
+      "endTime": "Endzeit ist erforderlich!",
+      "endShouldLater": "Endzeit sollte nach der Startzeit liegen",
+      "streetNameOnline": "Straßenname ist erforderlich, wenn online",
+      "category": "Kategorie ist erforderlich",
+      "participants": "Maximale Teilnehmeranzahl ist erforderlich",
+      "description": "Beschreibung ist erforderlich",
+      "newDate": "Datum darf nicht in der Vergangenheit liegen",
+      "onlyNumbers": "Darf nur Zahlen enthalten",
+      "onlyLetters": "Darf nur  Buchstaben enthalten",
+      "interestId": "InterestIds muss eine gültige Objekt-ID sein",
+      "logo": "Firmenzeichen ist erforderlich!",
+      "addressId": "AddressId muss eine gültige Objekt-ID sein"
+
     },
     "minLength": {
+      "select1": "Mindestens eine Kategorie muss ausgewählt werden.",
+      "phoneNumber": "Die Telefonnummer muss mindestens 10 Ziffern enthalten",
+      "totalPoint": "Gesamtpunktzahl darf nicht negativ sein",
+      "characters1": "Muss mindestens 1 Zeichen lang sein!",
       "characters3": "Muss mindestens 3 Zeichen lang sein!",
       "characters8": "Muss mindestens 8 Zeichen lang sein!",
       "characters10": "Muss mindestens 10 Zeichen lang sein!"
     },
     "maxLength": {
+      "select3": "Sie können bis zu 3 Kategorien auswählen.",
+      "characters8": "Darf maximal 8 Zeichen lang sein!",
       "characters30": "Darf maximal 30 Zeichen lang sein!",
       "characters50": "Darf maximal 50 Zeichen lang sein!",
       "characters100": "Darf maximal 100 Zeichen lang sein!",
@@ -898,7 +923,13 @@
       "match": "Passwörter müssen übereinstimmen!"
     },
     "invalid": {
-      "email": "Ungültige E-Mail-Adresse!"
-    }
+      "email": "Ungültige E-Mail-Adresse!",
+      "url": "Ungültiges URL-Format!"
+    },
+    "oneOf": {
+      "gender": "Bitte wählen Sie ein gültiges Geschlecht",
+      "ageRange": "Bitte wählen Sie einen gültigen Altersbereich",
+      "language": "Bitte wählen Sie eine gültige Sprache"
+    }  
   }
 }

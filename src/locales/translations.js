@@ -493,19 +493,14 @@ export const translations = {
   },
 
   setupIndv: {
+    genderLabel1: "setupIndv.genderLabel1",
+    genderLabel2: "setupIndv.genderLabel2",
+    genderLabel3: "setupIndv.genderLabel3",
     successMsg: "setupIndv.successMsg",
     share: "setupIndv.share",
     p1: "setupIndv.p1",
     ageRange: "setupIndv.ageRange",
-    option1: "setupIndv.option1",
-    option2: "setupIndv.option2",
-    option3: "setupIndv.option3",
-    option4: "setupIndv.option4",
     gender: "setupIndv.gender",
-    option5: "setupIndv.option5",
-    option6: "setupIndv.option6",
-    option7: "setupIndv.option7",
-    option8: "setupIndv.option8",
     next: "setupIndv.next",
     choose: "setupIndv.choose",
     p2: "setupIndv.p2",
@@ -893,6 +888,13 @@ adminPanel: {
     }
   }
 },
+  adminPanelPage: {
+    eventLabel: "adminPanelPage.eventLabel",
+    userLabel: "adminPanelPage.userLabel",
+    contactLabel: "adminPanelPage.contactLabel",
+    feedbackLabel: "adminPanelPage.feedbackLabel",
+    reportLabel: "adminPanelPage.reportLabel"
+  },
 
   yup: {
     required: {
@@ -911,14 +913,35 @@ adminPanel: {
       country: "yup.required.country",
       oldPassword: "yup.required.oldPassword",
       confirmPassword: "yup.required.confirmPassword",
-      reason:"yup.required.reason"
+      reason:"yup.required.reason",
+      eventName: "yup.required.eventname",
+      date:"yup.required.date",
+      startTime:"yup.required.startTime",
+      endTime:"yup.required.endTime",
+      endShouldLater:"yup.required.endShouldLater",
+      streetNameOnline:"yup.required.streetNameOnline",
+      category:"yup.required.category",
+      participants:"yup.required.participants",
+      description:"yup.required.description",
+      newDate:"yup.required.newDate",
+      onlyNumbers: "yup.required.onlyNumbers",
+      onlyLetters: "yup.required.onlyLetters",
+      interestId: "yup.required.interestId",
+      logo: "yup.required.logo",
+      addressId: "yup.required.addressId"
     },
     minLength: {
+      select1: "yup.minLength.select1",
+      phoneNumber: "yup.minLength.phoneNumber",
+      totalPoint: "yup.minLength.totalPoint",
+      characters1: "yup.minLength.characters1",
       characters3: "yup.minLength.characters3",
       characters8: "yup.minLength.characters8",
       characters10: "yup.minLength.characters10"
     },
     maxLength: {
+      select3: "yup.maxLength.select3",
+      characters8: "yup.maxLength.characters8",
       characters30: "yup.maxLength.characters30",
       characters50: "yup.maxLength.characters50",
       characters100: "yup.maxLength.characters100",
@@ -935,6 +958,12 @@ adminPanel: {
     },
     invalid: {
       email: "yup.invalid.email",
+      url: "yup.invalid.url"
+    },
+    oneOf:{
+      gender: "yup.oneOf.gender",
+      ageRange: "yup.oneOf.ageRange",
+      language: "yup.oneOf.language"
     }
   }
 
