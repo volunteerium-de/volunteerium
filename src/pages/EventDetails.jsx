@@ -38,7 +38,7 @@ const EventDetails = () => {
       }
       fetchSingleEvent()
     }
-  }, [eventId, singleEvent, getSingleEvent, navigate])
+  }, [eventId, singleEvent])
 
   const {
     eventPhoto,
