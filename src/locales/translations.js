@@ -1,3 +1,4 @@
+import { password } from "pg/lib/defaults";
 
 export const translations = {
   langSwitch: {
@@ -6,6 +7,7 @@ export const translations = {
   },
 
   heroSection: {
+    imgAlt: "hero.imgAlt",
     h2: "hero.h2",
     span: "hero.span",
   },
@@ -135,6 +137,42 @@ export const translations = {
     or: "loginForm.or",
     contGoogle: "loginForm.contGoogle",
   },
+
+  password: {
+    forgotPassForm: {
+      backToLogin: "password.forgotPassForm.backToLogin",
+      logoAlt:"password.forgotPassForm.logoAlt",
+      forgotPassword:"password.forgotPassForm.forgotPassword",
+      forgotDesc:"password.forgotPassForm.forgotDesc",
+      email:"password.forgotPassForm.email",
+      emailPH:"password.forgotPassForm.emailPH",
+      submit:"password.forgotPassForm.submit",
+      dontHave:"password.forgotPassForm.dontHave",
+      signUp:"password.forgotPassForm.signUp"
+    },
+    resetPassForm: {
+      backToLogin: "password.resetPassForm.backToLogin",
+      logoAlt:"password.resetPassForm.logoAlt",
+      resetPassword:"password.resetPassForm.resetPassword",
+      resetDesc:"password.resetPassForm.resetDesc",
+      newPassword:"password.resetPassForm.newPassword",
+      newPasswordPH:"password.resetPassForm.newPasswordPH",
+      confirmPassword:"password.resetPassForm.confirmPassword",
+      confirmPasswordPH:"password.resetPassForm.confirmPasswordPH",
+      reset:"password.resetPassForm.reset",
+    },
+    verificationForm:{
+      timerMsg: "password.verificationForm.timerMsg",
+      backToLogin:"password.verificationForm.backToLogin",
+      logoAlt:"password.verificationForm.logoAlt",
+      verification:"password.verificationForm.verification",
+      verifyDesc:"password.verificationForm.verificationDesc",
+      verify: "password.verificationForm.verify",
+      resend:"password.verificationForm.resend",
+
+    }
+  },
+
 
   profile: {
     memberSince: "profile.memberSince",
@@ -658,6 +696,22 @@ export const translations = {
     no: "eventMng.no",
     back: "eventMng.back",
     submit: "eventMng.submit",
+    messages: {
+      messageInput: {
+        messagePH1:  "eventMng.messages.messageInput.messagePH1",
+        messagePH2: "eventMng.messages.messageInput.messagePH2",
+        messagePH3: "eventMng.messages.messageInput.messagePH3",
+        messagePH4: "eventMng.messages.messageInput.messagePH4"
+      },
+      messageView:{
+        startMsg: "eventMng.messages.messageView.startMsg",
+        you: "eventMng.messages.messageView.you"
+      }
+    },
+    messagesComp: {
+      noConversations: "eventMng.messagesComp.noConversations",
+      loading: "eventMng.messagesComp.loading"
+    }
   },
 
   termsOfService: {
@@ -856,7 +910,8 @@ adminPanel: {
       city: "yup.required.city",
       country: "yup.required.country",
       oldPassword: "yup.required.oldPassword",
-      confirmPassword: "yup.required.confirmPassword"
+      confirmPassword: "yup.required.confirmPassword",
+      reason:"yup.required.reason"
     },
     minLength: {
       characters3: "yup.minLength.characters3",

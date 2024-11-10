@@ -4,6 +4,7 @@
     "de": "German"
   },
   "hero": {
+    "imgAlt": "Homepage hero background image",
     "h2": "Become a part of something",
     "span": "bigger"
   },
@@ -124,6 +125,41 @@
     "or": "or",
     "contGoogle": "Continue with Google"
   },
+
+  "password": {
+    "forgotPassForm": {
+      "backToLogin": "Back to login",
+      "logoAlt": "Logo",
+      "forgotPassword": "Forgot your password?",
+      "forgotDesc": "Don't worry, this can happen to anyone. To reset your account password, we will send you a verification code via email.",
+      "email": "Email Address",
+      "emailPH": "Enter your email address",
+      "submit": "Submit",
+      "dontHave": "Don't have an account yet?",
+      "signUp": "Sign Up"
+    },
+    "resetPassForm": {
+      "backToLogin": "Back to login",
+      "logoAlt": "Logo",
+      "resetPassword": "Reset your password",
+      "resetDesc": "Your previous password has been reset. Please set a new password to regain access to your account.",
+      "newPassword": "New Password",
+      "newPasswordPH": "Enter your new password",
+      "confirmPassword": "Confirm New Password",
+      "confirmPasswordPH": "Confirm your new password",
+      "reset": "Reset"
+    },
+    "verificationForm": {
+      "timerMsg": "Is there a problem? Request code again!",
+      "backToLogin": "Back to login",
+      "logoAlt": "Logo",
+      "verification": "Verification",
+      "verifyDesc": "Enter your 6-digit code that you received on your email.",
+      "verify": "Verify",
+      "resend": "Resend"
+    }
+  },
+
   "profile": {
     "memberSince": "Member since",
     "edit": "Edit",
@@ -616,7 +652,23 @@
     "yes": "yes",
     "no": "no",
     "back": "back",
-    "submit": "submit"
+    "submit": "submit",
+      "messages": {
+        "messageInput": {
+          "messagePH1":  "As the organizer, only you can send messages to this group.",
+          "messagePH2": "This space is reserved for announcements from the organizer only.",
+          "messagePH3": "Type your message here...",
+          "messagePH4": "Do you have a question about the event?"
+        },
+        "messageView": {
+          "startMsg": "Select a conversation to start messaging",
+          "you": "You"
+        }
+      },
+      "messagesComp": {
+        "noConversations": "No conversations found",
+        "loading": "Loading..."
+      }
   },
 
   "termsOfService": {
@@ -798,6 +850,9 @@
       }
     }
   },
+  "adminPanelPage": {
+    
+  },
 
   "yup": {
     "required": {
@@ -815,7 +870,8 @@
       "city": "City is required!",
       "country": "Country is required!",
       "oldPassword": "Old password is required!",
-      "confirmPassword": "Confirm password is required!"
+      "confirmPassword": "Confirm password is required!",
+      "reason": "Please select a reason"
     },
     "minLength": {
       "characters3": "Must be at least 3 characters!",

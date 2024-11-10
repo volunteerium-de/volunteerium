@@ -7,27 +7,27 @@ import useEventCall from "../../hooks/useEventCall"
 import { useTranslation } from "react-i18next"
 import { translations } from "../../locales/translations"
 // Validation schema
-const validationSchema = Yup.object({
-  reportType: Yup.string().required("Please select a reason"),
-  content: Yup.string().max(300, "Description must be 300 characters or less"),
-})
 
 const ReportEvent = ({ eventTitle, eventId, onClose }) => {
   const { t } = useTranslation()
   const { currentUser } = useSelector((state) => state.auth)
   const { sendEventReport } = useEventCall()
-
+  
+  const validationSchema = Yup.object({
+    reportType: Yup.string().required(t(translations.yup.required.reason)),
+    content: Yup.string().max(250, t(translations.yup.maxLength.characters250)),
+  })
   const options = [
-    { value: "spam", label: t("eventDetails.report.option1") },
-    { value: "offensive", label: t("eventDetails.report.option2") },
-    { value: "harmful", label: t("eventDetails.report.option3") },
-    { value: "inappropriate", label: t("eventDetails.report.option4") },
-    { value: "misleading", label: t("eventDetails.report.option5") },
-    { value: "harassment", label: t("eventDetails.report.option6") },
-    { value: "fraud", label: t("eventDetails.report.option7") },
-    { value: "violence", label: t("eventDetails.report.option8") },
-    { value: "discrimination", label: t("eventDetails.report.option9") },
-    { value: "other", label: t("eventDetails.report.option10") },
+    { value: "spam", label: t(translations.eventDetails.report.option1) },
+    { value: "offensive", label: t(translations.eventDetails.report.option2) },
+    { value: "harmful", label: t(translations.eventDetails.report.option3) },
+    { value: "inappropriate", label: t(translations.eventDetails.report.option4) },
+    { value: "misleading", label: t(translations.eventDetails.report.option5) },
+    { value: "harassment", label: t(translations.eventDetails.report.option6) },
+    { value: "fraud", label: t(translations.eventDetails.report.option7) },
+    { value: "violence", label: t(translations.eventDetails.report.option8) },
+    { value: "discrimination", label: t(translations.eventDetails.report.option9) },
+    { value: "other", label: t(translations.eventDetails.report.option10) },
   ]
 
   // Reference for the modal container

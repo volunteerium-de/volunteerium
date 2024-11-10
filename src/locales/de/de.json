@@ -4,6 +4,7 @@
     "de": "Deutsch"
   },
   "hero": {
+    "imgAlt": "Startseiten-Hintergrundbild für Hero-Bereich",
     "h2": "Werden Sie Teil von etwas",
     "span": "Größerem"
   },
@@ -124,6 +125,41 @@
     "or": "oder",
     "contGoogle": "Weiter mit Google"
   },
+
+  "password": {
+    "forgotPassForm": {
+      "backToLogin": "Zurück zum Login",
+      "logoAlt": "Firmenzeichen",
+      "forgotPassword": "Passwort vergessen?",
+      "forgotDesc": "Kein Problem, das kann jedem passieren. Um Ihr Passwort zurückzusetzen, senden wir Ihnen einen Bestätigungscode per E-Mail.",
+      "email": "E-Mail-Adresse",
+      "emailPH": "Geben Sie Ihre E-Mail-Adresse ein",
+      "submit": "Absenden",
+      "dontHave": "Noch kein Konto?",
+      "signUp": "Registrieren"
+    },
+    "resetPassForm": {
+      "backToLogin": "Zurück zum Login",
+      "logoAlt": "Firmenzeichen",
+      "resetPassword": "Setzen Sie Ihr Passwort zurück",
+      "resetDesc": "Ihr vorheriges Passwort wurde zurückgesetzt. Bitte legen Sie ein neues Passwort fest, um wieder auf Ihr Konto zugreifen zu können.",
+      "newPassword": "Neues Passwort",
+      "newPasswordPH": "Geben Sie Ihr neues Passwort ein",
+      "confirmPassword": "Bestätigen Sie das neue Passwort",
+      "confirmPasswordPH": "Bestätigen Sie Ihr neues Passwort",
+      "reset": "Zurücksetzen"
+      },
+    "verificationForm": {
+      "timerMsg": "Gibt es ein Problem? Fordern Sie den Code erneut an!",
+      "backToLogin": "Zurück zum Login",
+      "logoAlt": "Firmenzeichen",
+      "verification": "Verifizierung",
+      "verifyDesc": "Geben Sie den 6-stelligen Code ein, den Sie per E-Mail erhalten haben.",
+      "verify": "Verifizieren",
+      "resend": "Erneut senden"
+    }
+  },
+
   "profile": {
     "memberSince": "Mitglied seit",
     "edit": "Bearbeiten",
@@ -623,7 +659,23 @@
     "yes": "Ja",
     "no": "Nein",
     "back": "Zurück",
-    "submit": "Absenden"
+    "submit": "Absenden",
+    "messages": {
+      "messageInput": {
+        "messagePH1": "Als Organisator können nur Sie Nachrichten an diese Gruppe senden.",
+        "messagePH2": "Dieser Bereich ist ausschließlich für Ankündigungen des Organisators reserviert.",
+        "messagePH3": "Geben Sie hier Ihre Nachricht ein...",
+        "messagePH4": "Haben Sie eine Frage zur Veranstaltung?"
+      },
+      "messageView": {
+        "startMsg": "Wählen Sie eine Unterhaltung aus, um Nachrichten zu starten",
+        "you": "Du"
+      }
+    },
+    "messagesComp": {
+      "noConversations": "Keine Unterhaltungen gefunden",
+      "loading": "Laden..."
+}
   },
 
   "termsOfService": {
@@ -822,7 +874,8 @@
       "city": "Stadt ist erforderlich!",
       "country": "Land ist erforderlich!",
       "oldPassword": "Altes Passwort ist erforderlich!",
-      "confirmPassword": "Passwortbestätigung ist erforderlich!"
+      "confirmPassword": "Passwortbestätigung ist erforderlich!",
+      "reason": "Bitte wählen Sie einen Grund aus"
     },
     "minLength": {
       "characters3": "Muss mindestens 3 Zeichen lang sein!",

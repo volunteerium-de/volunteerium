@@ -1,6 +1,4 @@
-import { TbMessage2X } from "react-icons/tb"
 import eventPhoto from "../../../assets/default-event-photo-.jpg"
-import { formatName } from "../../../helpers/formatName"
 
 const ConversationList = ({
   conversations,

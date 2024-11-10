@@ -53,29 +53,28 @@ const ForgotPasswordForm = ({ setIssue, setIdentifier, setEmail }) => {
         onClick={() => navigate("/login")}
       >
         <IoIosArrowBack className="text-2xl text-black dark:text-white" />
-        <span className="text-lg font-semibold text-black dark:text-white">Back to login</span>
+        <span className="text-lg font-semibold text-black dark:text-white">{t(translations.password.forgotPassForm.backToLogin)}</span>
       </div>
 
       {/* Mobile View - Logo Centered */}
       <div className="md:hidden w-full flex justify-center mb-6 mt-[5rem]">
-        <img src={logo} alt="Logo" className="h-12 w-auto" />
+        <img src={logo} alt= {t(translations.password.forgotPassForm.logoAlt)} className="h-12 w-auto" />
       </div>
 
       {/* Title and Description */}
       <div className="w-full">
         <h1 className="text-left text-[1.5rem] md:text-[2rem] font-semibold dark:text-white leading-tight mb-4">
-          Forgot your password?
+        {t(translations.password.forgotPassForm.forgotPassword)}
         </h1>
         <p className="text-left w-full text-[1rem] md:text-[1.125rem] font-normal text-gray-2 dark:text-white leading-snug">
-          Don't worry, this can happen to anyone. To reset your account password, we will send you a
-          verification code via email.
+        {t(translations.password.forgotPassForm.forgotDesc)}
         </p>
       </div>
 
       {/* Email Field */}
       <div className="flex flex-col w-full">
         <label htmlFor="email" className="text-sm font-medium mb-1 text-gray-2 dark:text-white">
-          Email Address
+        {t(translations.password.forgotPassForm.email)}
         </label>
         <input
           id="email"
@@ -85,7 +84,7 @@ const ForgotPasswordForm = ({ setIssue, setIdentifier, setEmail }) => {
           onBlur={formik.handleBlur}
           value={formik.values.email}
           className="border border-gray-2 p-2 rounded-lg dark:bg-black dark:text-white focus:border-primary-green"
-          placeholder="Enter your email address"
+          placeholder={t(translations.password.forgotPassForm.emailPH)}
         />
         {formik.touched.email && formik.errors.email && (
           <span className="text-danger text-sm mt-1">{formik.errors.email}</span>
@@ -97,17 +96,17 @@ const ForgotPasswordForm = ({ setIssue, setIdentifier, setEmail }) => {
         type="submit"
         className="bg-primary-green text-white w-full max-w-[44.1875rem] h-[2.8125rem] rounded-lg hover:bg-dark-green transition duration-300"
       >
-        Submit
+        {t(translations.password.forgotPassForm.submit)}
       </button>
 
       {/* Sign Up Link */}
       <p className="mt-4 text-center text-sm dark:text-white w-full">
-        Don't have an account yet?{" "}
+      {t(translations.password.forgotPassForm.dontHave)}{" "}
         <span
           onClick={() => navigate("/register")}
           className="text-primary-green cursor-pointer underline"
         >
-          Sign Up
+          {t(translations.password.forgotPassForm.signUp)}
         </span>
       </p>
     </form>
