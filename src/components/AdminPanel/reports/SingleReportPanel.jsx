@@ -37,7 +37,6 @@ const SingleReportPanel = ({ reportId, setIdentifier }) => {
   useEffect(() => {
     fetchReportData()
   }, [reportId])
-  const { fetchSingleData } = useAdminCall()
 
   const handleNavigateBack = () => {
     setIdentifier(null)

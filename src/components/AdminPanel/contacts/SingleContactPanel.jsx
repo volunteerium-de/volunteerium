@@ -39,7 +39,6 @@ const SingleContactPanel = ({ contactId, setIdentifier }) => {
   useEffect(() => {
     fetchContactData()
   }, [contactId])
-  const { fetchSingleData } = useAdminCall()
 
   const handleNavigateBack = () => {
     setIdentifier(null)

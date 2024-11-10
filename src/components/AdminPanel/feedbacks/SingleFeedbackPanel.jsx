@@ -42,7 +42,6 @@ const SingleFeedbackPanel = ({ feedbackId, setIdentifier }) => {
   useEffect(() => {
     fetchFeedbackData()
   }, [feedbackId])
-  const { fetchSingleData } = useAdminCall()
 
   const handleNavigateBack = () => {
     setIdentifier(null)
