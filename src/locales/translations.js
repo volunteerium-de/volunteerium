@@ -1,5 +1,3 @@
-import Subscribe from "../components/Footer/Subscribe"
-import { conversationSuccess } from "../features/chatSlice"
 
 export const translations = {
   langSwitch: {
@@ -55,7 +53,6 @@ export const translations = {
   },
 
   footer: {
-    // Yeni ekleme
     information: "footer.information",
     company: "footer.company",
     aboutUs: "footer.aboutUs",
@@ -326,10 +323,11 @@ export const translations = {
     notif: "notifMenu.notif",
     noNotif: "notifMenu.noNotif",
   },
-
+  
   userMenu: {
     user: "userMenu.user",
     profile: "userMenu.profile",
+    adminPanel: "userMenu.adminPanel",
     eventMng: "userMenu.eventMng",
     settings: "userMenu.settings",
     logout: "userMenu.logout",
@@ -665,6 +663,7 @@ export const translations = {
     p13: "termsOfService.p13",
     p14: "termsOfService.p14",
   },
+
 adminPanel: {
   backButton: "adminPanel.backButton",
   activeUpper: "adminPanel.activeUpper",
@@ -675,6 +674,9 @@ adminPanel: {
   no: "adminPanel.no",
   cancel: "adminPanel.cancel",
   contacts: {
+    contactPanel: {
+      title: "adminPanel.contacts.contactPanel.title"
+    },
     contactTable: {
       header: "adminPanel.contacts.contactTable.header"
     },
@@ -683,6 +685,9 @@ adminPanel: {
     }
   },
   events: {
+    eventsPanel: {
+      title: "adminPanel.events.eventsPanel.title"
+    },
     eventsTable: {
       eventId: "adminPanel.events.eventsTable.eventId",
       eventIdDL: "adminPanel.events.eventsTable.eventIdDL",
@@ -742,6 +747,9 @@ adminPanel: {
     }
   },
   feedbacks: {
+    feedbacksPanel: {
+      title: "adminPanel.feedbacks.feedbacksPanel.title"
+    },
     feedbacksTable: {
       header: "adminPanel.feedbacks.feedbacksTable.header"
     },
@@ -750,6 +758,9 @@ adminPanel: {
     }
   },
   reports: {
+    reportsPanel: {
+      title: "adminPanel.reports.reportsPanel.title"
+    },
     reportsTable: {
       header: "adminPanel.reports.reportsTable.header"
     },
@@ -780,6 +791,9 @@ adminPanel: {
       deleteUser: "adminPanel.users.singleUserPanel.deleteUser",
       deleteDescription: "adminPanel.users.singleUserPanel.deleteDescription"
     },
+    usersPanel: {
+      title: "adminPanel.users.usersPanel.title"
+    },
     usersTable: {
       userId: "adminPanel.users.usersTable.userId",
       userIdDL: "adminPanel.users.usersTable.userIdDL",
@@ -798,7 +812,6 @@ adminPanel: {
     }
   }
 },
-
 
   yup: {
     required: {

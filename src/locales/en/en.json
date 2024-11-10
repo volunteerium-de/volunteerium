@@ -302,6 +302,7 @@
   "userMenu": {
     "user": "User",
     "profile": "Profile",
+    "adminPanel": "Admin Panel",
     "eventMng": "Event Management",
     "settings": "Settings",
     "logout": "Logout",
@@ -658,6 +659,9 @@
     "cancel": "Cancel",
 
     "contacts": {
+      "contactPanel": {
+        "title": "Contacts"
+      },
       "contactTable": {
         "header": "Contacts Table"
       },
@@ -666,6 +670,9 @@
       }
     },
     "events": {
+      "eventsPanel": {
+        "title": "Events"
+      },
       "eventsTable": {
         "eventId": "Event ID",
         "eventIdDL": "Event ID",
@@ -725,6 +732,9 @@
       }
     },
     "feedbacks": {
+      "feedbacksPanel": {
+        "title": "Event Feedbacks"
+      },
       "feedbacksTable": {
         "header": "Feedbacks Table"
       },
@@ -733,6 +743,9 @@
       }
     },
     "reports": {
+      "reportsPanel": {
+        "title": "Event Reports"
+      },
       "reportsTable": {
         "header": "Reports Table"
       },
@@ -762,6 +775,9 @@
         "noUserFound": "No  User Found",
         "deleteUser": "Delete User",
         "deleteDescription": "Are you sure you want to delete this user?"
+      },
+      "usersPanel": {
+        "title": "Users"
       },
       "usersTable": {
         "userId": "User ID",

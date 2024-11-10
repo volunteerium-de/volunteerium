@@ -302,6 +302,7 @@
   "userMenu": {
     "user": "Benutzer",
     "profile": "Profil",
+    "adminPanel": "Adminbereich",
     "eventMng": "Eventverwaltung",
     "settings": "Einstellungen",
     "logout": "Abmelden",
@@ -666,6 +667,9 @@
     "cancel": "Abbrechen",
 
     "contacts": {
+      "contactPanel": {
+        "title": "Kontakte"
+      },
       "contactTable": {
         "header": "Kontakttabelle"
       },
@@ -674,6 +678,9 @@
       }
     },
     "events": {
+      "eventsPanel": {
+        "title": "Veranstaltungen"
+      },
       "eventsTable": {
         "eventId": "Veranstaltungs-ID",
         "eventIdDL": "Veranstaltungs-ID",
@@ -704,7 +711,7 @@
         "contactName": "Kontaktname: ",
         "contactEmail": "Kontakt-E-Mail",
         "contactPhone": "Kontakt-Telefon",
-        "langugages": "Sprachen",
+        "languages": "Sprachen",
         "interests": "Interessen",
         "onlineEvent": "Online-Veranstaltung: ",
         "eventLocation": "Veranstaltungsort: ",
@@ -732,6 +739,9 @@
       }
     },
     "feedbacks": {
+      "feedbacksPanel": {
+        "title": "Veranstaltungsfeedback"
+      },
       "feedbacksTable": {
         "header": "Feedback-Tabelle"
       },
@@ -740,6 +750,9 @@
       }
     },
     "reports": {
+      "reportsPanel": {
+        "title": "Veranstaltungsberichte"
+      },
       "reportsTable": {
         "header": "Berichtstabelle"
       },
@@ -769,6 +782,9 @@
         "noUserFound": "Kein Benutzer gefunden",
         "deleteUser": "Benutzer löschen",
         "deleteDescription": "Möchten Sie diesen Benutzer wirklich löschen?"
+      },
+      "usersPanel": {
+        "title": "Benutzer"
       },
       "usersTable": {
         "userId": "Benutzer-ID",
