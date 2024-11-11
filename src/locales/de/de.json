@@ -410,8 +410,8 @@
 
   "eventsPage": {
     "sec1": "Verfügbarkeit",
-    "from": "von",
-    "to": "bis",
+    "from": "Von",
+    "to": "Bis",
     "check": "Veranstaltungen prüfen",
     "sec2": "Kategorien",
     "sec3": "Sprachen",

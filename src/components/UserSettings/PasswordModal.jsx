@@ -124,7 +124,7 @@ const PasswordModal = ({ isOpen, onClose }) => {
                 <button
                   type="submit"
                   disabled={loading}
-                  className={`flex justify-center items-center ${loading ? "bg-primary-green/60" : "bg-primary-green"} px-2 py-1 rounded-md text-white w-[150px] h-[40px]`}
+                  className={`flex justify-center items-center ${loading ? "bg-primary-green/60" : "bg-primary-green"} px-2 py-1 rounded-md text-white w-[150px] h-[45px]`}
                 >
                   {loading ? (
                     <ImSpinner9 className="animate-spin" />
