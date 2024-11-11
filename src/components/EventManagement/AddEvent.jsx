@@ -59,7 +59,6 @@ const AddEvent = ({ onClose }) => {
 
     const body = {
       createdBy: user._id,
-      eventParticipantIds: [user._id],
       ...payload,
       startDate,
       endDate,

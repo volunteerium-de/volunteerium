@@ -5,7 +5,7 @@ import Sidebar from "../components/ui/Sidebar/Sidebar"
 import { FaCalendar, FaEnvelope } from "react-icons/fa"
 import { FaPeopleGroup } from "react-icons/fa6"
 import OrganizedEvents from "../components/EventManagement/OrganizedEvents"
-import AttendedEvents from "../components/EventManagement/AttendedEvents"
+import AttendingEvents from "../components/EventManagement/AttendingEvents"
 import Messages from "../components/EventManagement/Messages"
 import { useLocation, useNavigate } from "react-router-dom"
 import { useSelector } from "react-redux"
@@ -25,6 +25,7 @@ const EventManagement = () => {
   }, [location.search])
 
   const handleTabChange = (tab) => {
+    setIsAddingEvent(false)
     setActiveTab(tab)
     navigate(`/event-management?tab=${tab}`)
   }
@@ -47,8 +48,8 @@ const EventManagement = () => {
       icon: <FaCalendar className="text-2xl mx-auto" />,
     },
     {
-      key: "attendedEvents",
-      label: "Attended Events",
+      key: "attendingEvents",
+      label: "Attending Events",
       icon: <FaPeopleGroup className="text-2xl mx-auto" />,
     },
     {
@@ -71,8 +72,8 @@ const EventManagement = () => {
     switch (activeTab) {
       case "organizedEvents":
         return <OrganizedEvents onAddEvent={() => setIsAddingEvent(true)} />
-      case "attendedEvents":
-        return <AttendedEvents />
+      case "attendingEvents":
+        return <AttendingEvents />
       case "messages":
         return (
           <Messages conversations={conversations} currentUser={currentUser} loading={loading} />

@@ -1,4 +1,4 @@
-import { FaUser, FaBars } from "react-icons/fa"
+import { FaBars } from "react-icons/fa"
 import { FiSun, FiMoon } from "react-icons/fi"
 import { useState, useEffect, useRef } from "react"
 import LanguageSwitcher from "./LanguageSwitcher"
@@ -11,7 +11,7 @@ import { translations } from "../../locales/translations"
 import { UserAvatar } from "../ui/Avatar/userAvatar"
 
 const UserMenu = ({ user }) => {
-  const {t} = useTranslation()
+  const { t } = useTranslation()
   const mode = useSelector((state) => state.theme.mode)
   const { logout } = useAuthCall()
   const { toggleTheme } = useTheme()
@@ -54,7 +54,6 @@ const UserMenu = ({ user }) => {
         {/* Menu Icon */}
         <FaBars className="text-primary-green dark:text-gray-2  h-5 w- mr-2" />
         <UserAvatar user={currentUser} size="h-6 w-6" />
-
       </div>
 
       {/* Dropdown menu */}

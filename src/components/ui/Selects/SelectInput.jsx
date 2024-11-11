@@ -6,7 +6,7 @@ const SelectInput = ({ name, options, label, placeholder, isMultiple }) => {
 
   return (
     <div className="mb-4">
-      <label className="block text-dark-gray-2 mb-2">{label}</label>
+      <label className="block text-dark-gray-2 dark:text-white mb-2">{label}</label>
       <Select
         name={name}
         options={options}

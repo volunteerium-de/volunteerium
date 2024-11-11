@@ -616,5 +616,32 @@
       "option9": "Diskriminierung",
       "option10": "Sonstiges"
     }
+  },
+    
+  "eventManagement": {
+    "addNewEvent": "Neues Event hinzufügen",
+    "searchInput": "Suchen",
+    "editButton": "Bearbeiten",
+    "cancelButton": "Abbrechen",
+    "deleteButton": "Löschen",
+    "organizedEvents": "Organisiertes Events",
+    "upcomingEvents": "Bevorstehende Events",
+    "noUpcomingEvents": "Keine bevorstehenden Events",
+    "yourPastEvents": "Ihre vergangenen Events",
+    "noPastEvents": "Keine vergangenen Events",
+    "attendingEvents": "Teilnehmende Events",
+    "leaveEventButton": "Event verlassen",
+    "acceptButton": "Akzeptieren",
+    "rejectButton": "Ablehnen",
+    "loading": "Wird geladen",
+    "removeButton": "Entfernen",
+    "attendants": "Teilnehmer",
+    "noAttendants": "Noch keine Teilnehmer",
+    "joinRequests": "Beitrittsanfragen",
+    "participants": "Teilnehmer",
+    "no": "Keine",
+    "volunteer": "Freiwilliger",
+    "joining": "beitreten",
+    "joined": "beigetreten"
   }
 }

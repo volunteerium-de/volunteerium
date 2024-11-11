@@ -16,15 +16,17 @@ const useEventCall = () => {
   const { currentUser: user } = useSelector((state) => state.auth)
   const dispatch = useDispatch()
 
-  
   const getEvents = async (url) => {
     try {
-      const { data } = await axiosWithPublic(url);
-      return data;
+      const { data } = await axiosWithPublic(url)
+      return data
     } catch (error) {
-      console.error("Error fetching events:", error.response ? error.response.data.message : error.message);
+      console.error(
+        "Error fetching events:",
+        error.response ? error.response.data.message : error.message
+      )
     }
-  };
+  }
 
   const getSingleEvent = async (eventId) => {
     dispatch(fetchEventStart())
@@ -84,7 +86,6 @@ const useEventCall = () => {
     try {
       const { data } = await axiosWithToken.delete(`events/${eventId}`)
       console.log("Delete response:", data)
-
       toastNotify("success", data.message)
     } catch (error) {
       console.log(error)
@@ -106,6 +107,15 @@ const useEventCall = () => {
       console.log(error)
       toastNotify("error", error?.response?.data?.message)
       dispatch(participationFail())
+    }
+  }
+
+  const getEventParticipant = async () => {
+    try {
+      const { data } = await axiosWithToken.get("event-participants")
+      return data
+    } catch (error) {
+      toastNotify("error", error?.response?.data?.message)
     }
   }
 
@@ -184,6 +194,7 @@ const useEventCall = () => {
     editEvent,
     deleteEvent,
     joinEvent,
+    getEventParticipant,
     approveParticipant,
     rejectParticipant,
     confirmAttendance,
