@@ -88,7 +88,6 @@ td {
     text-align: left; /* Align text to left */
     text-transform: uppercase; /* Uppercase for labels */
     font-size: 0.75rem; /* Smaller font size for labels */
-    color: gray; /* Label color */
     margin-bottom: 0.5rem; /* Space between label and content */
     flex-basis: 100%; /* Make label take full width */
   }
@@ -145,7 +144,6 @@ td {
     text-align: left; /* Align text to left */
     text-transform: uppercase; /* Uppercase for labels */
     font-size: 0.75rem; /* Smaller font size for labels */
-    color: gray; /* Label color */
     margin-bottom: 0.5rem; /* Space between label and content */
     display: block; /* Make sure labels are block elements */
   }
