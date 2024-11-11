@@ -75,7 +75,6 @@ const SingleContactPanel = ({ contactId, setIdentifier }) => {
 
   const handleDeleteEvent = () => {
     deleteData("contacts", contactId)
-    setIdentifier(null)
     navigate(`/admin-panel?tab=contacts`)
     setIsSettingsModalOpen(false)
     closeDeleteContactModal()

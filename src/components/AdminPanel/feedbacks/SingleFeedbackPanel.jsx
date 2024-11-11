@@ -78,7 +78,6 @@ const SingleFeedbackPanel = ({ feedbackId, setIdentifier }) => {
 
   const handleDeleteFeedback = () => {
     deleteData("event-feedbacks", feedbackId)
-    setIdentifier(null)
     navigate(`/admin-panel?tab=feedbacks`)
     setIsSettingsModalOpen(false)
     closeDeleteFeedbackModal()
