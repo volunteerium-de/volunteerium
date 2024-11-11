@@ -151,7 +151,7 @@ const OrganizedEvents = ({ onAddEvent }) => {
             {pastEvents.length > 0 ? (
               pastEvents.map((event) => <EventManagementCard key={event._id} eventId={event} />)
             ) : (
-              <p>{t(translations.eventManagement.noPastEvents)}</p>
+              <p className="dark:text-white">{t(translations.eventManagement.noPastEvents)}</p>
             )}
           </div>
         )}

@@ -1,20 +1,17 @@
 import { GoReport } from "react-icons/go"
 import Header from "../components/Header/Header"
-import { useState } from "react"
-import useEventCall from "../hooks/useEventCall"
-import { useParams } from "react-router-dom"
-import { useEffect } from "react"
-import { formatName } from "../helpers/formatName"
-import EventOverview from "../components/EventDetailsPage/EventOverview"
-import { Link } from "react-router-dom"
-import { useNavigate } from "react-router-dom"
+import { useState, useEffect } from "react"
+import { useParams, Link, useNavigate } from "react-router-dom"
+import { useSelector } from "react-redux"
 import { translations } from "../locales/translations"
 import { useTranslation } from "react-i18next"
 import defaultEventPhoto from "../assets/default-event-photo-.jpg"
+import useEventCall from "../hooks/useEventCall"
 import ReportEvent from "../components/EventDetailsPage/ReportEvent"
+import EventOverview from "../components/EventDetailsPage/EventOverview"
 import { UserAvatar } from "../components/ui/Avatar/userAvatar"
 import { IoIosArrowBack } from "react-icons/io"
-import { useSelector } from "react-redux"
+import { formatName } from "../helpers/formatName"
 
 const EventDetails = () => {
   const { singleEvent, loading } = useSelector((state) => state.event)
@@ -26,28 +23,37 @@ const EventDetails = () => {
 
   const [isReportModalOpen, setIsReportModalOpen] = useState(false)
 
-  // const handleOpenReportModal = () => setIsReportModalOpen(true)
-  // const handleCloseReportModal = () => setIsReportModalOpen(false)
+  const toggleReportModal = () => {
+    setIsReportModalOpen(!isReportModalOpen)
+  }
 
   useEffect(() => {
-    const fetchSingleEvent = async () => {
-      try {
-        await getSingleEvent(eventId)
-      } catch (error) {
-        // console.log(error)
-        navigate("/not-found")
+    if (!singleEvent || singleEvent._id !== eventId) {
+      const fetchSingleEvent = async () => {
+        try {
+          await getSingleEvent(eventId)
+        } catch (error) {
+          navigate("/not-found")
+        }
       }
+      fetchSingleEvent()
     }
-    fetchSingleEvent()
-  }, [eventId])
+  }, [eventId, singleEvent])
 
-  const { eventPhoto, title, createdBy, interestIds, description, addressId, eventParticipantIds } =
-    singleEvent || {}
+  const {
+    eventPhoto,
+    isOnline,
+    title,
+    createdBy,
+    interestIds,
+    description,
+    addressId,
+    eventParticipantIds,
+  } = singleEvent || {}
 
   const userType = createdBy?.userType
   const isFullNameDisplay = createdBy?.userDetailsId?.isFullNameDisplay
 
-  // console.log(singleEvent)
   return (
     <div>
       <Header />
@@ -72,16 +78,16 @@ const EventDetails = () => {
               {/* Event Photo */}
               <div className="w-full mb-6 md:mb-10">
                 <img
-                  src={eventPhoto ? eventPhoto : defaultEventPhoto}
+                  src={eventPhoto || defaultEventPhoto}
                   alt="event photo"
                   className="w-full max-h-[30vh] md:max-h-[40vh] object-cover object-center rounded-md shadow-md"
                 />
               </div>
 
               {/* Main Content Section */}
-              <div className="flex flex-col md:flex-row gap-8  font-poppins">
+              <div className="flex flex-col md:flex-row gap-8 font-poppins">
                 {/* Left Side - General Info and Map */}
-                <div className="lg:w-8/12 md:border-r md:border-b md:border-light-gray-3 rounded my-1 px-2 ">
+                <div className="lg:w-8/12 md:border-r md:border-b md:border-light-gray-3 rounded my-1 px-2">
                   <h2 className="text-[1.75rem] md:text-[1.75rem] text-dark-gray-2 dark:text-white font-semibold mb-1">
                     {title}
                   </h2>
@@ -113,7 +119,7 @@ const EventDetails = () => {
                   <p className="text-[1rem] md:text-dark-gray-3 dark:text-gray-2 mb-12 pr-3">
                     {description}
                   </p>
-                  {/* RightSide-Join Operations: */}
+                  {/* RightSide-Join Operations */}
                   <div className="block md:hidden">
                     <EventOverview />
                   </div>
@@ -124,21 +130,21 @@ const EventDetails = () => {
                     </h3>
                     <p className="text-dark-gray-1 dark:text-light-gray-2 py-2">
                       {eventParticipantIds.length > 0 &&
-                        eventParticipantIds.some((participant) => {
-                          return (
+                        eventParticipantIds.some(
+                          (participant) =>
                             participant?.userId._id === currentUser?._id &&
                             participant?.isApproved === true &&
                             participant?.isPending === false
-                          )
-                        }) &&
+                        ) &&
                         `${addressId?.streetName} ${addressId?.streetNumber} ${addressId?.zipCode}, ${addressId?.city} ${addressId?.country}`}
                     </p>
+
                     <iframe
                       src={addressId?.iframeSrc}
                       width="100%"
                       height="100%"
                       style={{ border: 0 }}
-                      allowFullScreen=""
+                      allowFullScreen
                       loading="lazy"
                       title={t(translations.eventDetails.locationLabel)}
                     ></iframe>
@@ -158,11 +164,13 @@ const EventDetails = () => {
                 {/* Right Side - Date, Location, Language Toggle, Attendants List, and Buttons */}
                 <div className="hidden md:block lg:w-4/12">
                   <EventOverview />
-
                   {/* Report Button */}
                   <div className="sm:flex items-center justify-center text-gray-2 text-[0.75rem] md:text-[0.875rem] mt-3">
                     <GoReport />
-                    <span className="ml-1" onClick={() => setIsReportModalOpen(true)}>
+                    <span
+                      className="ml-1 cursor-pointer"
+                      onClick={() => setIsReportModalOpen(true)}
+                    >
                       {t(translations.eventDetails.reportEventButton)}
                     </span>
                   </div>
@@ -171,8 +179,8 @@ const EventDetails = () => {
               {isReportModalOpen && (
                 <ReportEvent
                   eventTitle={title}
-                  isOpen={isReportModalOpen}
-                  onClose={() => setIsReportModalOpen(false)}
+                  eventId={singleEvent._id}
+                  onClose={toggleReportModal}
                 />
               )}
             </div>

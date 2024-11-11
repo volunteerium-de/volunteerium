@@ -15,7 +15,7 @@ const EventManagement = () => {
   const navigate = useNavigate()
   const { conversations } = useSelector((state) => state.chat)
   const { currentUser, loading } = useSelector((state) => state.auth)
-  const [activeTab, setActiveTab] = useState("organizedEvents")
+  const [activeTab, setActiveTab] = useState("organized-events")
   const [isAddingEvent, setIsAddingEvent] = useState(false)
 
   useEffect(() => {
@@ -43,7 +43,7 @@ const EventManagement = () => {
 
   const menuItems = [
     {
-      key: "organizedEvents",
+      key: "organized-events",
       label: "Organized Events",
       icon: <FaCalendar className="text-2xl mx-auto" />,
     },
@@ -51,6 +51,7 @@ const EventManagement = () => {
       key: "attendingEvents",
       label: "Attending Events",
       icon: <FaPeopleGroup className="text-2xl mx-auto" />,
+      show: currentUser?.userType !== "organization",
     },
     {
       key: "messages",
@@ -59,25 +60,24 @@ const EventManagement = () => {
         <>
           <FaEnvelope className="text-2xl" />
           {unreadMessageCount > 0 && (
-            <span className="absolute top-4 left-16 sm:left-72 md:left-64 w-2 h-2 bg-primary-green rounded-full"></span>
+            <span className="absolute top-4 left-[62px] sm:left-[185px] md:left-52 lg:left-[230px] xl:left-[230px] 2xl:left-[250px] w-2 h-2 bg-primary-green rounded-full"></span>
           )}
         </>
       ),
     },
-  ]
+  ].filter((item) => item.show !== false)
 
   const renderContent = () => {
     if (isAddingEvent) return <AddEvent onClose={() => setIsAddingEvent(false)} />
 
     switch (activeTab) {
-      case "organizedEvents":
+      case "organized-events":
         return <OrganizedEvents onAddEvent={() => setIsAddingEvent(true)} />
       case "attendingEvents":
         return <AttendingEvents />
+
       case "messages":
-        return (
-          <Messages conversations={conversations} currentUser={currentUser} loading={loading} />
-        )
+        return <Messages conversations={conversations} currentUser={currentUser} />
       default:
         return <OrganizedEvents onAddEvent={() => setIsAddingEvent(true)} />
     }

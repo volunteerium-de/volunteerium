@@ -13,6 +13,7 @@ import { UserAvatar } from "../ui/Avatar/userAvatar"
 const UserMenu = ({ user }) => {
   const { t } = useTranslation()
   const mode = useSelector((state) => state.theme.mode)
+  const { currentUser } = useSelector((state) => state.auth)
   const { logout } = useAuthCall()
   const { toggleTheme } = useTheme()
   const [isOpen, setIsOpen] = useState(false)
@@ -43,8 +44,6 @@ const UserMenu = ({ user }) => {
       document.removeEventListener("mousedown", handleClickOutside)
     }
   }, [menuRef])
-  const { currentUser } = useSelector((state) => state.auth)
-
   return (
     <div className="relative" ref={menuRef}>
       <div
@@ -63,17 +62,21 @@ const UserMenu = ({ user }) => {
             <div className="mt-2">
               {user ? (
                 <>
+                  {user.userType !== "admin" && (
+                    <button
+                      className="block w-full text-left p-1 hover:text-primary-green"
+                      onClick={() => navigate(`/profile/${user._id}`)}
+                    >
+                      {t(translations.userMenu.profile)}
+                    </button>
+                  )}
                   <button
                     className="block w-full text-left p-1 hover:text-primary-green"
-                    onClick={() => navigate(`/profile/${user._id}`)}
+                    onClick={() =>
+                      navigate(`/${user.userType === "admin" ? "admin-panel" : "event-management"}`)
+                    }
                   >
-                    {t(translations.userMenu.profile)}
-                  </button>
-                  <button
-                    className="block w-full text-left p-1 hover:text-primary-green"
-                    onClick={() => navigate("/event-management")}
-                  >
-                    {t(translations.userMenu.eventMng)}
+                    {user.userType === "admin" ? "Admin Panel" : t(translations.userMenu.eventMng)}
                   </button>
                   <button
                     className="block w-full text-left p-1 hover:text-primary-green"

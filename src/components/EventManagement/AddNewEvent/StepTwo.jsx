@@ -9,8 +9,12 @@ import { useEffect } from "react"
 import { useSelector } from "react-redux"
 import useEventCall from "../../../hooks/useEventCall"
 import { useState } from "react"
+import { useTranslation } from "react-i18next"
+import { translations } from "../../../locales/translations/"
 
 const StepTwo = ({ setStep, values, step, isValid, setFieldValue }) => {
+  const { t } = useTranslation()
+
   const { getEventCategories } = useEventCall()
   const { currentUser: user } = useSelector((state) => state.auth)
   const [addContactPerson, setAddContactPerson] = useState(values?.isContactPersonAdded ?? false)
@@ -87,25 +91,29 @@ const StepTwo = ({ setStep, values, step, isValid, setFieldValue }) => {
 
       <div>
         <div className="mb-4">
-          <label className="block text-dark-gray-2 dark:text-white mb-2">Category*</label>
+          <label className="block text-dark-gray-2 dark:text-white mb-2">
+            {t(translations.eventMng.category)}
+          </label>
           <SelectInput
             name="interestIds"
             options={categories?.map((category) => ({
               label: category.name,
               value: category._id,
             }))}
-            placeholder="Choose a category"
+            placeholder={t(translations.eventMng.choose)}
             isMultiple={true}
           />
           <ErrorMessage name="interestIds" component="div" className="text-danger" />
         </div>
 
         <div className="mb-4">
-          <label className="block text-dark-gray-2 dark:text-white mb-2">Max Participants*</label>
+          <label className="block text-dark-gray-2 dark:text-white mb-2">
+            {t(translations.eventMng.participants)}
+          </label>
           <SelectInput
             name="maxParticipant"
             options={maxParticipantsOptions}
-            placeholder="Select maximum participants"
+            placeholder={t(translations.eventMng.max)}
           />
           <ErrorMessage name="maxParticipant" component="div" className="text-danger" />
         </div>
@@ -114,7 +122,8 @@ const StepTwo = ({ setStep, values, step, isValid, setFieldValue }) => {
 
         {/* Description */}
         <div className="mb-4">
-          <label className="block text-dark-gray-2 mb-2 dark:text-white">Description*</label>
+          {t(translations.eventMng.desc)}
+          <label className="block text-dark-gray-2 mb-2 dark:text-white"></label>
           <Field
             as="textarea"
             name="description"
@@ -129,7 +138,7 @@ const StepTwo = ({ setStep, values, step, isValid, setFieldValue }) => {
         {true && (
           <div className="mb-4">
             <label className="block text-dark-gray-2 mb-2 dark:text-white">
-              Would you like to add a Contact Person?
+              {t(translations.eventMng.addContact)}
             </label>
             <div className="flex space-x-4">
               <button
@@ -144,7 +153,7 @@ const StepTwo = ({ setStep, values, step, isValid, setFieldValue }) => {
                     : "border-gray-1 dark:text-white"
                 }`}
               >
-                Yes
+                {t(translations.eventMng.yes)}
               </button>
               <button
                 type="button"
@@ -158,7 +167,7 @@ const StepTwo = ({ setStep, values, step, isValid, setFieldValue }) => {
                     : "border-gray-1 dark:text-white"
                 }`}
               >
-                No
+                {t(translations.eventMng.no)}
               </button>
             </div>
           </div>
@@ -167,7 +176,9 @@ const StepTwo = ({ setStep, values, step, isValid, setFieldValue }) => {
           <div className="mb-4">
             {/* Contact Name Field */}
             <div className="mb-4">
-              <label className="block text-dark-gray-2 mb-2 dark:text-white">Contact Name*</label>
+              <label className="block text-dark-gray-2 mb-2 dark:text-white">
+                {t(translations.eventMng.name)}
+              </label>
               <Field
                 type="text"
                 name="contactName"
@@ -181,7 +192,7 @@ const StepTwo = ({ setStep, values, step, isValid, setFieldValue }) => {
             <div className="flex flex-col sm:flex-row sm:space-x-4">
               <div className="mb-4 flex-1">
                 <label className="block text-dark-gray-2 mb-2 dark:text-white">
-                  Contact Email*
+                  {t(translations.eventMng.email)}
                 </label>
                 <Field
                   type="email"
@@ -193,7 +204,9 @@ const StepTwo = ({ setStep, values, step, isValid, setFieldValue }) => {
               </div>
 
               <div className="mb-4 flex-1">
-                <label className="block text-dark-gray-2 mb-2 dark:text-white">Contact Phone</label>
+                <label className="block text-dark-gray-2 mb-2 dark:text-white">
+                  {t(translations.eventMng.phone)}
+                </label>
                 <Field
                   type="tel"
                   name="contactPhone"
@@ -209,7 +222,7 @@ const StepTwo = ({ setStep, values, step, isValid, setFieldValue }) => {
         {/* Buttons */}
         <div className="flex justify-end mt-8">
           <button type="button" className="py-2 px-4 text-primary-green" onClick={() => setStep(1)}>
-            Back
+            {t(translations.eventMng.back)}
           </button>
           <button
             type="submit"
@@ -218,7 +231,7 @@ const StepTwo = ({ setStep, values, step, isValid, setFieldValue }) => {
             }`}
             disabled={!isValid}
           >
-            Submit
+            {t(translations.eventMng.submit)}
           </button>
         </div>
       </div>

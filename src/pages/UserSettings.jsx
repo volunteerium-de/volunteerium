@@ -1,4 +1,3 @@
-import { useState } from "react"
 import AvatarEditModal from "../components/UserSettings/AvatarEditModal"
 import Header from "../components/Header/Header"
 import Sidebar from "../components/ui/Sidebar/Sidebar"
@@ -8,11 +7,15 @@ import ProfileSettings from "../components/UserSettings/ProfileSettings"
 import SecuritySettings from "../components/UserSettings/SecuritySettings"
 import VisibilitySettings from "../components/UserSettings/VisibilitySettings"
 import { useSelector } from "react-redux"
-const UserSettings = () => {
-  const [activeTab, setActiveTab] = useState("organizedEvents")
-  const [isModalOpen, setModalOpen] = useState(false)
-  const { currentUser } = useSelector((state) => state.auth)
+import { useState } from "react"
+import { useNavigate } from "react-router-dom"
 
+const UserSettings = () => {
+  const navigate = useNavigate()
+  const { currentUser } = useSelector((state) => state.auth)
+  const isAdmin = currentUser.userType === "admin"
+  const [activeTab, setActiveTab] = useState(isAdmin ? "security" : "profile")
+  const [isModalOpen, setModalOpen] = useState(false)
   const menuItems = [
     {
       key: "profile",
@@ -30,18 +33,29 @@ const UserSettings = () => {
       icon: <MdOutlineVisibility className="text-2xl mx-auto" />,
     },
   ]
-
+  const filteredMenuItems = isAdmin ? menuItems.filter((item) => item.key !== "profile") : menuItems
   const renderContent = () => {
     switch (activeTab) {
       case "profile":
-        return <ProfileSettings />
+        return isAdmin ? <SecuritySettings /> : <ProfileSettings />
       case "security":
         return <SecuritySettings />
       case "visibility":
         return <VisibilitySettings />
       default:
-        return <ProfileSettings />
+        return isAdmin ? <SecuritySettings /> : <ProfileSettings />
     }
+  }
+  const handleTabChange = (newTab) => {
+    let tab
+    if (isAdmin && newTab === "profile") {
+      setActiveTab("security")
+      tab = "security"
+    } else {
+      setActiveTab(newTab)
+      tab = newTab
+    }
+    navigate(`?tab=${tab}`)
   }
 
   const handleEditAvatar = () => {
@@ -54,15 +68,14 @@ const UserSettings = () => {
       <div className="mx-auto max-w-[1800px]">
         <div className="flex">
           <Sidebar
-            items={menuItems}
+            items={filteredMenuItems}
             activeTab={activeTab}
-            onTabChange={setActiveTab}
+            onTabChange={handleTabChange}
             onEditAvatar={handleEditAvatar}
           />
           <div className="flex-1 p-3">{renderContent()}</div>
         </div>
       </div>
-
       {isModalOpen && (
         <AvatarEditModal
           isOpen={isModalOpen}
@@ -74,5 +87,4 @@ const UserSettings = () => {
     </div>
   )
 }
-
 export default UserSettings

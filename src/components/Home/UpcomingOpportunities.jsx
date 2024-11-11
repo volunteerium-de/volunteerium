@@ -14,8 +14,7 @@ const UpcomingOpportunities = () => {
   const [isLeftDisabled, setIsLeftDisabled] = useState(true)
   const [isRightDisabled, setIsRightDisabled] = useState(false)
   const [eventData, setEventData] = useState([])
-  const [loading, setLoading] = useState(true)
-
+  const [loading, setLoading] = useState(false)
   const { getEvents } = useEventCall()
 
   // Function to handle scroll left
@@ -63,9 +62,8 @@ const UpcomingOpportunities = () => {
     setLoading(true)
     try {
       const response = await getEvents(
-        "events/?filter[isActive]=true&filter[isDone]=false&sort[startDate]=asc"
+        "events/?filter[isActive]=true&filter[isDone]=false&sort[startDate]=asc&limit=10"
       )
-      console.log("Fetched response:", response)
       setEventData(response.data)
     } catch (error) {
       console.error("Error fetching events:", error)
@@ -77,8 +75,6 @@ const UpcomingOpportunities = () => {
   useEffect(() => {
     fetchEvents()
   }, [])
-
-  console.log(eventData)
 
   return (
     <div className="pt-5">
@@ -100,7 +96,7 @@ const UpcomingOpportunities = () => {
         <div className="relative rounded-lg">
           {/* Arrow Left */}
           <button
-            className={`absolute top-[calc(60%-25px)] left-[-30px] ${isLeftDisabled ? "hidden" : "block"}`}
+            className={`absolute top-[calc(60%-25px)] left-[-40px] ${isLeftDisabled ? "hidden" : "block"}`}
             onClick={handleScrollLeft}
             disabled={isLeftDisabled}
           >
@@ -108,7 +104,7 @@ const UpcomingOpportunities = () => {
           </button>
           {/* Arrow Right */}
           <button
-            className={`absolute top-[calc(60%-25px)] right-[-30px] ${isRightDisabled ? "hidden" : "block"}`}
+            className={`absolute top-[calc(60%-25px)] right-[-40px] ${isRightDisabled ? "hidden" : "block"}`}
             onClick={handleScrollRight}
             disabled={isRightDisabled}
           >
@@ -118,7 +114,7 @@ const UpcomingOpportunities = () => {
           <div
             id="opportunities"
             ref={sliderRef}
-            className="flex gap-x-[40px] overflow-x-hidden items-start scroll-smooth"
+            className="flex gap-x-4 overflow-x-auto scrollbar-hide items-start scroll-smooth px-2"
           >
             {/* Map through event data */}
             <div className="flex flex-row flex-grow gap-6 p-2 min-h-[200px] rounded-md">
