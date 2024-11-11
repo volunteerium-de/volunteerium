@@ -74,6 +74,7 @@ const SingleReportPanel = ({ reportId, setIdentifier }) => {
 
   const handleDeleteReport = () => {
     deleteData("event-reports", reportId)
+    setIdentifier(null)
     navigate(`/admin-panel?tab=reports`)
     setIsSettingsModalOpen(false)
     closeDeleteReportModal()

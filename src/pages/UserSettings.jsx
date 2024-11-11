@@ -27,11 +27,11 @@ const UserSettings = () => {
       label: "Security",
       icon: <MdOutlineSecurity className="text-2xl mx-auto" />,
     },
-    {
-      key: "visibility",
-      label: "Visibility",
-      icon: <MdOutlineVisibility className="text-2xl mx-auto" />,
-    },
+    // {
+    //   key: "visibility",
+    //   label: "Visibility",
+    //   icon: <MdOutlineVisibility className="text-2xl mx-auto" />,
+    // },
   ]
   const filteredMenuItems = isAdmin ? menuItems.filter((item) => item.key !== "profile") : menuItems
   const renderContent = () => {
@@ -40,8 +40,8 @@ const UserSettings = () => {
         return isAdmin ? <SecuritySettings /> : <ProfileSettings />
       case "security":
         return <SecuritySettings />
-      case "visibility":
-        return <VisibilitySettings />
+      // case "visibility":
+      //   return <VisibilitySettings />
       default:
         return isAdmin ? <SecuritySettings /> : <ProfileSettings />
     }
