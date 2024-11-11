@@ -61,7 +61,7 @@ const Panel = ({ title, fetchUrl, TableComponent }) => {
               <div className="relative">
                 <input
                   type="text"
-                  className="rounded px-2 py-1 w-[150px] border border-primary-green placeholder:text-primary-green focus:outline-none text-sm"
+                  className="rounded px-2 py-1 w-[80px] md:w-[150px] border border-primary-green placeholder:text-primary-green focus:outline-none text-sm"
                   placeholder="Search"
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}

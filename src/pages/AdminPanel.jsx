@@ -142,7 +142,7 @@ const AdminPanel = () => {
   return (
     <>
       <Header />
-      <div className="flex max-w-[1800px] mx-auto">
+      <div className="flex max-w-[1800px] mx-auto min-h-[calc(100vh-50px)] sm:min-h-[calc(100vh-100px)]">
         <Sidebar
           items={adminMenuItems}
           activeTab={activeTab}

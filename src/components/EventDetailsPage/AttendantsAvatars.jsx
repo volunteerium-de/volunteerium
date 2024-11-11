@@ -45,7 +45,9 @@ const AttendantsAvatars = ({
           {t(translations.eventDetails.attendants)} ({totalParticipants}/{maxParticipant})
         </h3>
       )}
-      <div className={`avatars flex flex-wrap gap-${gap} ${!showAll ? "py-2" : "py-0"} `}>
+      <div
+        className={`avatars flex ${!showAll && "flex-wrap"} gap-${gap} ${!showAll ? "py-2" : "py-0"} `}
+      >
         {/* Display the first 6 avatars */}
 
         {visibleParticipants.length > 0 ? (
