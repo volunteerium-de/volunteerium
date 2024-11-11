@@ -197,7 +197,8 @@ const FilterSidebar = () => {
                 checked={selectedLanguages.includes(language.langCode)}
               />
               <span className="text-[0.75rem] text-black dark:text-white font-medium">
-                {getLangName(language.langCode)} ({language.eventCount})
+                {getLangName(language.langCode)}
+                {selectedCategories.length === 0 && `(${language.eventCount})`}
               </span>
             </label>
           ))}
