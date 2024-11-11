@@ -74,6 +74,7 @@ const SingleUserPanel = ({ userId, setIdentifier }) => {
   const handleDeleteEvent = () => {
     deleteData("users", userId)
     navigate(`/admin-panel?tab=users`)
+    setIdentifier(null)
     setIsSettingsModalOpen(false)
     closeDeleteUserModal()
   }

@@ -62,6 +62,7 @@ const SingleEventPanel = ({ eventId, setIdentifier }) => {
   const handleDeleteEvent = () => {
     deleteEvent(singleEvent._id)
     navigate(`/admin-panel?tab=events`)
+    setIdentifier(null)
     setIsSettingsModalOpen(false)
     closeDeleteEventModal()
   }
