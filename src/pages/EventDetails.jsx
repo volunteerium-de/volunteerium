@@ -58,7 +58,7 @@ const EventDetails = () => {
     <div>
       <Header />
       {loading ? (
-        <div className="h-screen flex flex-col justify-center items-center">
+        <div className="h-screen flex flex-col justify-center items-center max-width-[1800px] mx-auto">
           <div className="animate-spin rounded-full h-14 w-14 border-t-4 border-primary-green border-opacity-50 dark:border-light-green"></div>
           <p className="text-xl mt-4 font-semibold text-primary-green dark:text-light-gray">
             {t(translations.profile.loading)}
@@ -124,31 +124,34 @@ const EventDetails = () => {
                     <EventOverview />
                   </div>
                   {/* Event Location */}
-                  <div className="overflow-hidden w-[100%] md:w-[95%] h-64 order-3 mt-4 md:mt-0">
-                    <h3 className="font-semibold text-dark-gray-2 dark:text-white py-2">
-                      {t(translations.eventDetails.locationLabel)}
-                    </h3>
-                    <p className="text-dark-gray-1 dark:text-light-gray-2 py-2">
+                  {!isOnline && (
+                    <div className="overflow-hidden w-[100%] md:w-[95%] h-64 order-3 mt4 md:mt-0">
+                      <h3 className="font-semibold text-dark-gray-2 dark:text-white py-2">
+                        {t(translations.eventDetails.locationLabel)}
+                      </h3>
                       {eventParticipantIds.length > 0 &&
                         eventParticipantIds.some(
                           (participant) =>
                             participant?.userId._id === currentUser?._id &&
                             participant?.isApproved === true &&
                             participant?.isPending === false
-                        ) &&
-                        `${addressId?.streetName} ${addressId?.streetNumber} ${addressId?.zipCode}, ${addressId?.city} ${addressId?.country}`}
-                    </p>
+                        ) && (
+                          <p className="text-dark-gray-1 dark:text-light-gray-2 py-2">
+                            {`${addressId?.streetName} ${addressId?.streetNumber} ${addressId?.zipCode}, ${addressId?.city} ${addressId?.country}`}
+                          </p>
+                        )}
 
-                    <iframe
-                      src={addressId?.iframeSrc}
-                      width="100%"
-                      height="100%"
-                      style={{ border: 0 }}
-                      allowFullScreen
-                      loading="lazy"
-                      title={t(translations.eventDetails.locationLabel)}
-                    ></iframe>
-                  </div>
+                      <iframe
+                        src={addressId?.iframeSrc}
+                        width="100%"
+                        height="100%"
+                        style={{ border: 0 }}
+                        allowFullScreen
+                        loading="lazy"
+                        title={t(translations.eventDetails.locationLabel)}
+                      ></iframe>
+                    </div>
+                  )}
                   {/* Report Button */}
                   <div className="flex md:hidden items-center justify-center text-gray-2 text-[0.75rem] md:text-[0.875rem] mt-3">
                     <GoReport />
