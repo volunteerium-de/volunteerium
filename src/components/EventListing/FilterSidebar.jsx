@@ -34,6 +34,10 @@ const FilterSidebar = () => {
   const selectedCategories = useSelector((state) => state.search.categoryFilters)
   const [eventLanguages, setEventLanguages] = useState([])
   const selectedLanguages = useSelector((state) => state.search.languageFilters)
+  const searchTermLocation = useSelector((state) => state.search.searchTermLocation)
+  const searchTermEvent = useSelector((state) => state.search.searchTermEvent)
+  const startDate = useSelector((state) => state.search.startDate)
+  const endDate = useSelector((state) => state.search.endDate)
   const { getLangName, getTranslatedCategory } = useLanguageOptions()
 
   useEffect(() => {
@@ -81,6 +85,14 @@ const FilterSidebar = () => {
 
     dispatch(setLanguageFilters(updatedLanguages))
   }
+
+  const showEventCount =
+    searchTermEvent === "" &&
+    searchTermLocation === "" &&
+    startDate === null &&
+    endDate === null &&
+    selectedCategories.length === 0 &&
+    (selectedLanguages.length === 1 || selectedLanguages.length === 0)
 
   // Custom Input for DatePicker
   const CustomInput = forwardRef(({ value, onClick }, ref) => (
@@ -198,7 +210,7 @@ const FilterSidebar = () => {
               />
               <span className="text-[0.75rem] text-black dark:text-white font-medium">
                 {getLangName(language.langCode)}
-                {selectedCategories.length === 0 && `(${language.eventCount})`}
+                {showEventCount && ` (${language.eventCount})`}
               </span>
             </label>
           ))}
