@@ -2,11 +2,8 @@ import React from "react"
 import { ImSpinner9 } from "react-icons/im"
 import { useNavigate } from "react-router-dom"
 import { UserAvatar } from "../../ui/Avatar/userAvatar"
-import { useTranslation } from "react-i18next"
-import { translations } from "../../../locales/translations"
 
 const UsersTable = ({ data, loading }) => {
-  const {t} = useTranslation()
   const navigate = useNavigate()
 
   const handleNavigateSingleUser = (userId) => {
@@ -24,12 +21,12 @@ const UsersTable = ({ data, loading }) => {
           <table className="table min-w-full bg-white dark:bg-dark-gray-1">
             <thead className="thead">
               <tr className="tr w-full bg-primary-green dark:bg-light-gray text-light-gray dark:text-dark-gray-1 uppercase text-sm leading-normal">
-                <th className="th p-3 text-left">{t(translations.adminPanel.users.usersTable.userId)}</th>
-                <th className="th p-3 text-center">{t(translations.adminPanel.users.usersTable.status)}</th>
-                <th className="th p-3 text-center">{t(translations.adminPanel.users.usersTable.userType)}</th>
-                <th className="th p-3 text-left">{t(translations.adminPanel.users.usersTable.nameOrg)}</th>
-                <th className="th p-3 text-left">{t(translations.adminPanel.users.usersTable.email)}</th>
-                <th className="th p-3 text-center">{t(translations.adminPanel.users.usersTable.createdAt)}</th>
+                <th className="th p-3 text-left">User ID</th>
+                <th className="th p-3 text-center">Status</th>
+                <th className="th p-3 text-center">User Type</th>
+                <th className="th p-3 text-left">Name/Organization</th>
+                <th className="th p-3 text-left">Email</th>
+                <th className="th p-3 text-center">Created At</th>
               </tr>
             </thead>
             <tbody className="tbody text-dark-gray-1 dark:text-light-gray text-sm font-light">
@@ -43,25 +40,25 @@ const UsersTable = ({ data, loading }) => {
                   >
                     <td
                       className="td text-left whitespace-nowrap 2xl:max-w-[140px] overflow-x-scroll scrollbar-hide"
-                      data-label={t(translations.adminPanel.users.usersTable.userIdDL)}
+                      data-label="User ID"
                     >
                       {user?._id}
                     </td>
                     <td
                       className={`td text-center whitespace-nowrap 2xl:w-[100px] ${user?.isActive ? "text-primary-green dark:text-green-300" : "text-danger dark:text-red-300"}`}
-                      data-label={t(translations.adminPanel.users.usersTable.statusDL)}
+                      data-label="User Status"
                     >
-                      {user?.isActive ? t(translations.adminPanel.active) : t(translations.adminPanel.suspended)}
+                      {user?.isActive ? "Active" : "Suspended"}
                     </td>
                     <td
                       className={`td text-center whitespace-nowrap 2xl:w-[100px] ${user?.userType === "individual" ? "text-blue-400 dark:text-blue-200" : "text-warning dark:text-orange-300"}`}
-                      data-label={t(translations.adminPanel.users.usersTable.userTypeDL)}
+                      data-label="User Type"
                     >
                       {user?.userType.toUpperCase()}
                     </td>
                     <td
                       className="td text-left 2xl:w-[100px] whitespace-nowrap overflow-ellipsis overflow-hidden"
-                      data-label={t(translations.adminPanel.users.usersTable.nameDL)}
+                      data-label="Name"
                     >
                       <div className="flex flex-row gap-1 items-center">
                         <UserAvatar user={user} size="h-6 w-6" backgroundActive={true} />
@@ -70,11 +67,11 @@ const UsersTable = ({ data, loading }) => {
                     </td>
                     <td
                       className={"td text-left 2xl:w-[150px] whitespace-nowrap"}
-                      data-label={t(translations.adminPanel.users.usersTable.emailDL)}
+                      data-label="Email"
                     >
                       {user?.email}
                     </td>
-                    <td className="td text-center whitespace-nowrap" data-label={t(translations.adminPanel.users.usersTable.createdAtDL)}>
+                    <td className="td text-center whitespace-nowrap" data-label="Created At">
                       {new Date(user?.createdAt).toLocaleDateString()}
                     </td>
                   </tr>
@@ -83,7 +80,7 @@ const UsersTable = ({ data, loading }) => {
           </table>
         </div>
       ) : (
-        <div>{t(translations.adminPanel.users.usersTable.noUsersFound)}</div>
+        <div>No users found</div>
       )}
     </>
   )

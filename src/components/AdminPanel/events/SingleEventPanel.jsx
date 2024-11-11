@@ -15,11 +15,8 @@ import { FaExternalLinkAlt } from "react-icons/fa"
 import { useState } from "react"
 import { useRef } from "react"
 import DeleteModal from "../../ui/Modals/DeleteModal"
-import { useTranslation } from "react-i18next"
-import { translations } from "../../../locales/translations"
 
 const SingleEventPanel = ({ eventId, setIdentifier }) => {
-  const {t} = useTranslation()
   const navigate = useNavigate()
   const { singleEvent, loading } = useSelector((state) => state.event)
   const { getSingleEvent, editEvent, deleteEvent } = useEventCall()
@@ -66,6 +63,7 @@ const SingleEventPanel = ({ eventId, setIdentifier }) => {
     deleteEvent(singleEvent._id)
     navigate(`/admin-panel?tab=events`)
     setIsSettingsModalOpen(false)
+    closeDeleteEventModal()
   }
 
   const handleSuspendEvent = () => {
@@ -92,7 +90,7 @@ const SingleEventPanel = ({ eventId, setIdentifier }) => {
         className="absolute -top-8 left-0 md:-left-5 flex items-center gap-1 text-primary-green dark:text-white"
       >
         <IoIosArrowBack className="w-5 h-5" />
-        <span>{t(translations.adminPanel.backButton)}</span>
+        <span>Back</span>
       </button>
       <div>
         {loading ? (
@@ -104,7 +102,7 @@ const SingleEventPanel = ({ eventId, setIdentifier }) => {
             <div className="flex justify-between items-center p-4 bg-white dark:bg-dark-gray-1 rounded-lg ">
               <div className="text-sm sm:text-[1.125rem] flex gap-1 md:gap-2 items-center text-dark-gray-1 me-3">
                 <span className="text-primary-green dark:text-white font-semibold w-[55px] sm:w-fit">
-                {t(translations.adminPanel.events.singleEventPanel.eventId)}
+                  Event ID:
                 </span>
                 <span className="w-[100px] md:w-auto overflow-x-scroll scrollbar-hide">
                   {eventId}
@@ -119,11 +117,11 @@ const SingleEventPanel = ({ eventId, setIdentifier }) => {
               <div className="flex gap-1 md:gap-2 items-center">
                 {singleEvent?.isActive ? (
                   <span className="text-primary-green dark:bg-white text-md sm:text-xl border border-primary-green dark:border-white px-1 sm:px-2 py-1">
-                  {t(translations.adminPanel.activeUpper)}
+                    ACTIVE
                   </span>
                 ) : (
                   <span className="text-warning dark:bg-white text-md sm:text-xl border border-warning px-1 sm:px-2 py-1">
-                  {t(translations.adminPanel.suspendedUpper)}
+                    SUSPENDED
                   </span>
                 )}
                 <button ref={settingsButtonRef} onClick={handleSettingsButtonClick}>
@@ -134,26 +132,26 @@ const SingleEventPanel = ({ eventId, setIdentifier }) => {
             <div className="flex flex-col xl:flex-row gap-2 h-full">
               <div className="bg-white dark:bg-dark-gray-1 rounded-lg w-full xl:w-1/2 p-4">
                 <h1 className="text-[1.125rem] font-semibold text-primary-green dark:text-white">
-                {t(translations.adminPanel.events.singleEventPanel.eventDetails)}
+                  Event Details
                 </h1>
                 <ul className="space-y-2 text-dark-gray-1 dark:text-light-gray-2">
                   <li className="flex gap-1 rounded-md overflow-hidden mt-2">
                     <img
                       src={singleEvent?.eventPhoto || defaultPhoto}
-                      alt= {t(translations.adminPanel.events.singleEventPanel.eventPhotoAlt)}
+                      alt="Event-Photo"
                       className="object-cover"
                     />
                   </li>
                   <li className="flex gap-1">
-                    <span className="font-semibold">{t(translations.adminPanel.events.singleEventPanel.eventName)}</span>
+                    <span className="font-semibold">Event Name:</span>
                     <span>{singleEvent?.title}</span>
                   </li>
                   <li className="flex flex-col gap-1">
-                    <span className="font-semibold">{t(translations.adminPanel.events.singleEventPanel.eventDescription)}</span>
+                    <span className="font-semibold">Event Description:</span>
                     <span>{singleEvent?.description}</span>
                   </li>
                   <li className="flex flex-col gap-1">
-                    <span className="font-semibold">{t(translations.adminPanel.events.singleEventPanel.eventCreator)}</span>
+                    <span className="font-semibold">Event Creator:</span>
                     <Link
                       to={`?tab=users&identifier=${singleEvent?.createdBy?._id}`}
                       className="flex gap-1 hover:underline"
@@ -170,27 +168,27 @@ const SingleEventPanel = ({ eventId, setIdentifier }) => {
                     </Link>
                   </li>
                   <li className="flex gap-1">
-                    <span className="font-semibold">{t(translations.adminPanel.events.singleEventPanel.startDate)}</span>
+                    <span className="font-semibold">Start Date:</span>
                     <span>{formatDateWithTime(singleEvent?.startDate)}</span>
                   </li>
                   <li className="flex gap-1">
-                    <span className="font-semibold">{t(translations.adminPanel.events.singleEventPanel.endDate)}</span>
+                    <span className="font-semibold">End Date:</span>
                     <span>{formatDateWithTime(singleEvent?.endDate)}</span>
                   </li>
                   <li className="flex gap-1">
-                    <span className="font-semibold">{t(translations.adminPanel.events.singleEventPanel.contactName)}</span>
+                    <span className="font-semibold">Contact Name:</span>
                     <span>{singleEvent?.contactName}</span>
                   </li>
                   <li className="flex gap-1">
-                    <span className="font-semibold">{t(translations.adminPanel.events.singleEventPanel.contactEmail)} </span>
+                    <span className="font-semibold">Contact Email: </span>
                     <span>{singleEvent?.contactEmail}</span>
                   </li>
                   <li className="flex gap-1">
-                    <span className="font-semibold">{t(translations.adminPanel.events.singleEventPanel.contactPhone)}</span>
+                    <span className="font-semibold">Contact Phone:</span>
                     <span>{singleEvent?.contactPhone}</span>
                   </li>
                   <li className="flex gap-1">
-                    <span className="font-semibold">{t(translations.adminPanel.events.singleEventPanel.languages)}</span>
+                    <span className="font-semibold">Languages:</span>
                     <span>
                       {singleEvent?.languages.length > 0 &&
                         singleEvent.languages
@@ -200,25 +198,25 @@ const SingleEventPanel = ({ eventId, setIdentifier }) => {
                     </span>
                   </li>
                   <li className="flex gap-1">
-                    <span className="font-semibold">{t(translations.adminPanel.events.singleEventPanel.interests)}</span>
+                    <span className="font-semibold">Interests</span>
                     <span>
                       {singleEvent?.interestIds.length > 0 &&
                         singleEvent?.interestIds.map((interest) => interest.name).join(" , ")}
                     </span>
                   </li>
                   <li className="flex gap-1">
-                    <span className="font-semibold">{t(translations.adminPanel.events.singleEventPanel.onlineEvent)}</span>
+                    <span className="font-semibold">Online Event:</span>
                     <span>{singleEvent?.isOnline ? "Yes" : "No"}</span>
                   </li>
                   <li className="flex gap-1 flex-col">
-                    <span className="font-semibold">{t(translations.adminPanel.events.singleEventPanel.eventLocation)}</span>
+                    <span className="font-semibold">Event Location:</span>
                     <span>
                       {!singleEvent?.isOnline &&
                         `${singleEvent?.addressId?.streetName} ${singleEvent?.addressId?.streetNumber} ${singleEvent?.addressId?.zipCode}, ${singleEvent?.addressId?.city} ${singleEvent?.addressId?.state} ${singleEvent?.addressId?.country}`}
                     </span>
                   </li>
                   <li className="flex gap-1 flex-col">
-                    <span className="font-semibold">{t(translations.adminPanel.events.singleEventPanel.documents)} </span>
+                    <span className="font-semibold">Documents: </span>
                     <span>
                       {singleEvent?.documentIds.length > 0 &&
                         singleEvent?.documentIds.map((document) => {
@@ -234,7 +232,7 @@ const SingleEventPanel = ({ eventId, setIdentifier }) => {
                                 - {document.title} <FaExternalLinkAlt />
                               </span>
                               <span className="text-xs text-gray-500">
-                              {t(translations.adminPanel.events.singleEventPanel.documentId)} {document._id}
+                                Document Id: {document._id}
                               </span>
                             </div>
                           )
@@ -245,7 +243,7 @@ const SingleEventPanel = ({ eventId, setIdentifier }) => {
               </div>
               <div className="bg-white dark:bg-dark-gray-1 rounded-lg w-full xl:w-1/2 p-4">
                 <div className="flex justify-between text-[1.125rem] font-semibold text-primary-green dark:text-white">
-                  <h1>{t(translations.adminPanel.events.singleEventPanel.eventParticipants)}</h1>
+                  <h1>Event Participants</h1>
                   <p className="px-2 text-lg">
                     (
                     {
@@ -261,10 +259,10 @@ const SingleEventPanel = ({ eventId, setIdentifier }) => {
                     <div className="min-w-full bg-white dark:bg-dark-gray-1">
                       {/* Header Row */}
                       <div className="w-full border-b text-gray-600 dark:text-light-gray uppercase text-xs leading-normal flex">
-                        <div className="py-3 text-left flex-[2]">{t(translations.adminPanel.events.singleEventPanel.participantId)}</div>
-                        <div className="py-3 text-left flex-[2]">{t(translations.adminPanel.events.singleEventPanel.user)}</div>
-                        <div className="py-3 text-center flex-[1]">{t(translations.adminPanel.events.singleEventPanel.status)}</div>
-                        <div className="py-3 text-center flex-[1]">{t(translations.adminPanel.events.singleEventPanel.joinDate)}</div>
+                        <div className="py-3 text-left flex-[2]">Participant ID</div>
+                        <div className="py-3 text-left flex-[2]">User</div>
+                        <div className="py-3 text-center flex-[1]">Status</div>
+                        <div className="py-3 text-center flex-[1]">Join Date</div>
                       </div>
 
                       {/* Data Rows */}
@@ -289,7 +287,7 @@ const SingleEventPanel = ({ eventId, setIdentifier }) => {
                                 )
                               }
                               className="text-center flex-[2] whitespace-nowrap overflow-x-scroll scrollbar-hide py-3"
-                              data-label={t(translations.adminPanel.events.singleEventPanel.userDL)}
+                              data-label="User"
                             >
                               <div className="flex gap-1 items-center w-full cursor-pointer">
                                 <UserAvatar
@@ -315,22 +313,22 @@ const SingleEventPanel = ({ eventId, setIdentifier }) => {
                                         ? "text-primary-green dark:text-green-300"
                                         : "text-danger dark:text-red-300"
                               }`}
-                              data-label= {(translations.adminPanel.events.singleEventPanel.participantIdDL)}
+                              data-label="Participant Status"
                             >
                               {participant.isPending
-                                ? t(translations.adminPanel.events.singleEventPanel.pending)
+                                ? "Pending"
                                 : participant.isApproved && !participant.isPending
-                                  ? t(translations.adminPanel.events.singleEventPanel.approved)
+                                  ? "Approved"
                                   : !participant.isApproved && !participant.isPending
-                                    ? t(translations.adminPanel.events.singleEventPanel.rejected)
+                                    ? "Rejected"
                                     : participant.hasJoined === "joined"
-                                      ? t(translations.adminPanel.events.singleEventPanel.joined)
-                                      : t(translations.adminPanel.events.singleEventPanel.notJoined)}
+                                      ? "Joined"
+                                      : "Not Joined"}
                             </li>
                             {/* Join Date */}
                             <li
                               className="text-center flex-[1] py-3 overflow-x-scroll scrollbar-hide"
-                              data-label= {t(translations.adminPanel.events.singleEventPanel.joinDateDL)}
+                              data-label="Join Date"
                             >
                               {new Date(participant.createdAt).toLocaleDateString()}
                             </li>
@@ -339,7 +337,7 @@ const SingleEventPanel = ({ eventId, setIdentifier }) => {
                       </div>
                     </div>
                   ) : (
-                    <div className="text-gray-600 dark:text-light-gray">{t(translations.adminPanel.events.singleEventPanel.noParticipantYet)}</div>
+                    <div className="text-gray-600 dark:text-light-gray">No Participant yet</div>
                   )}
                 </div>
               </div>
@@ -355,19 +353,19 @@ const SingleEventPanel = ({ eventId, setIdentifier }) => {
                 onClick={openDeleteEventModal}
                 className="text-danger hover:text-danger/50 border-b dark:border-gray-2 hover:bg-light-gray-2 w-full py-2"
               >
-                {t(translations.adminPanel.events.singleEventPanel.deleteEvent)}
+                Delete Event
               </button>
               <button
                 onClick={handleSuspendEvent}
                 className="text-warning hover:text-warning/50 border-b dark:border-gray-2 hover:bg-light-gray-2 w-full py-2"
               >
-                {singleEvent?.isActive ? t(translations.adminPanel.events.singleEventPanel.suspendEvent) : t(translations.adminPanel.events.singleEventPanel.unsuspendEvent)}
+                {singleEvent?.isActive ? "Suspend Event" : "Unsuspend Event"}
               </button>
               <button
                 onClick={() => setIsSettingsModalOpen(false)}
                 className=" text-primary-green hover:text-primary-green/50 hover:bg-light-gray-2 w-full py-2"
               >
-                {t(translations.adminPanel.cancel)}
+                Cancel
               </button>
             </div>
           </div>
@@ -378,8 +376,8 @@ const SingleEventPanel = ({ eventId, setIdentifier }) => {
         <DeleteModal
           onClose={closeDeleteEventModal}
           onDelete={handleDeleteEvent}
-          title={t(translations.adminPanel.events.singleEventPanel.deleteEvent)}
-          description={t(translations.adminPanel.events.singleEventPanel.desc)}
+          title={`Delete Event`}
+          description={`Are you sure you want to delete this event?`}
         />
       )}
     </div>

@@ -1,11 +1,8 @@
 import React from "react"
-import { useTranslation } from "react-i18next"
 import { ImSpinner9 } from "react-icons/im"
 import { useNavigate } from "react-router-dom"
-import { translations } from "../../../locales/translations"
 
 const FeedbacksTable = ({ data, loading }) => {
-  const {t} = useTranslation()
   const navigate = useNavigate()
 
   const handleNavigateSingleFeedback = (feedbackId) => {
@@ -70,7 +67,7 @@ const FeedbacksTable = ({ data, loading }) => {
           </table>
         </div>
       ) : (
-        <div>{t(translations.adminPanel.feedbacks.feedbacksTable.header)}</div>
+        <div>No feedbacks found</div>
       )}
     </>
   )

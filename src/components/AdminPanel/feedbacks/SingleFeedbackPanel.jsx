@@ -1,10 +1,9 @@
 import React from "react"
-import { useState, useEffect, useRef  } from "react"
+import { useState, useEffect, useRef } from "react"
 import { ImSpinner9 } from "react-icons/im"
 import { IoIosArrowBack } from "react-icons/io"
 import { useNavigate } from "react-router-dom"
 import useAdminCall from "../../../hooks/useAdminCall"
-import { useTranslation } from "react-i18next"
 import DeleteModal from "../../ui/Modals/DeleteModal"
 import { UserAvatar } from "../../ui/Avatar/userAvatar"
 import { formatDateWithTime } from "../../../helpers/formatDate"
@@ -12,10 +11,8 @@ import useLanguage from "../../../hooks/useLanguages"
 import { MdOutlineSettings } from "react-icons/md"
 import { LuMailPlus } from "react-icons/lu"
 import { AiFillStar, AiOutlineStar } from "react-icons/ai"
-import { translations } from "../../../locales/translations"
 
 const SingleFeedbackPanel = ({ feedbackId, setIdentifier }) => {
-  const {t} = useTranslation()
   const navigate = useNavigate()
   const [feedbackData, setFeedbackData] = useState([])
   const [loading, setLoading] = useState(false)
@@ -85,6 +82,7 @@ const SingleFeedbackPanel = ({ feedbackId, setIdentifier }) => {
     setIsSettingsModalOpen(false)
     closeDeleteFeedbackModal()
   }
+
   return (
     <div className="relative">
       <button
@@ -92,7 +90,7 @@ const SingleFeedbackPanel = ({ feedbackId, setIdentifier }) => {
         className="absolute -top-8 left-0 md:-left-5 flex items-center gap-1 text-primary-green dark:text-white"
       >
         <IoIosArrowBack className="w-5 h-5" />
-        <span>{t(translations.adminPanel.backButton)}</span>
+        <span>Back</span>
       </button>
       <div>
         {loading ? (
@@ -102,7 +100,7 @@ const SingleFeedbackPanel = ({ feedbackId, setIdentifier }) => {
         ) : feedbackData ? (
           <div className="my-8 md:my-4 space-y-2 h-max">
             <div className="flex justify-between items-center p-4 bg-white dark:bg-dark-gray-1 rounded-lg ">
-            <div className="text-sm sm:text-[1.125rem] flex gap-1 md:gap-2 items-center text-dark-gray-1 me-3">
+              <div className="text-sm sm:text-[1.125rem] flex gap-1 md:gap-2 items-center text-dark-gray-1 me-3">
                 Feedback ID - {feedbackId}
               </div>
               <div className="flex gap-1 md:gap-2 items-center">
@@ -194,7 +192,6 @@ const SingleFeedbackPanel = ({ feedbackId, setIdentifier }) => {
                   </li>
                 </ul>
               </div>
-            {t(translations.adminPanel.feedbacks.singleFeedbackPanel.feedbackId)} - {feedbackId}
             </div>
           </div>
         ) : (

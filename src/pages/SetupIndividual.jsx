@@ -18,9 +18,9 @@ import SelectInput from "../components/ui/Selects/SelectInput"
 
 // Validation schema
 const IndividualSchema = Yup.object({
-  gender: UserDetailSchema.fields.gender,
-  ageRange: UserDetailSchema.fields.ageRange,
-  interests: UserDetailSchema.fields.interests,
+  gender: UserDetailSchema.gender,
+  ageRange: UserDetailSchema.ageRange,
+  interests: UserDetailSchema.interests,
 })
 
 const SetupIndividual = () => {

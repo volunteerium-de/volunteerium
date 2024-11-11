@@ -8,11 +8,8 @@ import useAdminCall from "../../../hooks/useAdminCall"
 import DeleteModal from "../../ui/Modals/DeleteModal"
 import { formatDateWithTime } from "../../../helpers/formatDate"
 import useLanguage from "../../../hooks/useLanguages"
-import { useTranslation } from "react-i18next"
-import { translations } from "../../../locales/translations"
 
 const SingleContactPanel = ({ contactId, setIdentifier }) => {
-  const {t} = useTranslation()
   const navigate = useNavigate()
   const [contactData, setContactData] = useState([])
   const [loading, setLoading] = useState(false)
@@ -90,7 +87,7 @@ const SingleContactPanel = ({ contactId, setIdentifier }) => {
         className="absolute -top-8 left-0 md:-left-5 flex items-center gap-1 text-primary-green dark:text-white"
       >
         <IoIosArrowBack className="w-5 h-5" />
-        <span>{t(translations.adminPanel.backButton)}</span>
+        <span>Back</span>
       </button>
       <div>
         {loading ? (
@@ -100,7 +97,7 @@ const SingleContactPanel = ({ contactId, setIdentifier }) => {
         ) : contactData ? (
           <div className="my-8 md:my-4 space-y-2 h-max">
             <div className="flex justify-between items-center p-4 bg-white dark:bg-dark-gray-1 rounded-lg ">
-            <div className="text-sm sm:text-[1.125rem] flex gap-1 md:gap-2 items-center text-dark-gray-1 me-3">
+              <div className="text-sm sm:text-[1.125rem] flex gap-1 md:gap-2 items-center text-dark-gray-1 me-3">
                 Contact ID- {contactId}
               </div>
               <div className="flex gap-1 md:gap-2 items-center">
@@ -158,7 +155,6 @@ const SingleContactPanel = ({ contactId, setIdentifier }) => {
                   </li>
                 </ul>
               </div>
-            {t(translations.adminPanel.contacts.singleContactPanel.contactId)} - {contactId}
             </div>
           </div>
         ) : (

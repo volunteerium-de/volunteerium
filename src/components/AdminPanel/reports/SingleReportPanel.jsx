@@ -7,11 +7,8 @@ import useAdminCall from "../../../hooks/useAdminCall"
 import DeleteModal from "../../ui/Modals/DeleteModal"
 import { formatDateWithTime } from "../../../helpers/formatDate"
 import { MdOutlineSettings } from "react-icons/md"
-import { useTranslation } from "react-i18next"
-import { translations } from "../../../locales/translations"
 
 const SingleReportPanel = ({ reportId, setIdentifier }) => {
-  const {t} = useTranslation()
   const navigate = useNavigate()
   const [reportData, setReportData] = useState([])
   const [loading, setLoading] = useState(false)
@@ -89,7 +86,7 @@ const SingleReportPanel = ({ reportId, setIdentifier }) => {
         className="absolute -top-8 left-0 md:-left-5 flex items-center gap-1 text-primary-green dark:text-white"
       >
         <IoIosArrowBack className="w-5 h-5" />
-        <span>{t(translations.adminPanel.backButton)}</span>
+        <span>Back</span>
       </button>
       <div>
         {loading ? (
@@ -98,7 +95,7 @@ const SingleReportPanel = ({ reportId, setIdentifier }) => {
           </div>
         ) : reportData ? (
           <div className="my-8 md:my-4 space-y-2 h-max">
-          <div className="flex justify-between items-center p-4 bg-white dark:bg-dark-gray-1 rounded-lg ">
+            <div className="flex justify-between items-center p-4 bg-white dark:bg-dark-gray-1 rounded-lg ">
               <div className="text-sm sm:text-[1.125rem] flex gap-1 md:gap-2 items-center text-dark-gray-1 me-3">
                 Report ID - {reportId}
               </div>
@@ -168,16 +165,12 @@ const SingleReportPanel = ({ reportId, setIdentifier }) => {
                   </li>
                 </ul>
               </div>
-            <div className="22flex justify-between items-center p-4 bg-white dark:bg-dark-gray-1 rounded-lg ">
-            {t(translations.adminPanel.reports.singleReportPanel.reportId)} - {reportId}
             </div>
-          </div>
           </div>
         ) : (
           <div>No Report Found</div>
         )}
       </div>
-      
       {isSettingsModalOpen && (
         <div className="absolute z-50 top-14 right-8 border border-gray-1 dark:border-gray-1 overflow-hidden rounded-lg">
           <div ref={modalRef} className="bg-white dark:bg-gray-1 shadow-lg w-[120px] md:w-[200px]">
@@ -208,7 +201,6 @@ const SingleReportPanel = ({ reportId, setIdentifier }) => {
         />
       )}
     </div>
-    
   )
 }
 
