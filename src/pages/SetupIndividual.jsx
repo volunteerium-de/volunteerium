@@ -63,11 +63,11 @@ const SetupIndividual = () => {
   useEffect(() => {
     const queryParams = new URLSearchParams(location.search)
     const clientIdParam = queryParams.get("clientId")
-  
+
     if (!clientIdParam || clientIdParam !== user._id) {
       logout(false)
     }
-  
+
     if (
       user.userType === "individual" &&
       !user.userDetailsId.isProfileSetup &&
@@ -75,22 +75,20 @@ const SetupIndividual = () => {
     ) {
       toastNotify("success", "Please set up your profile details to proceed")
     }
+  }, [])
 
+  useEffect(() => {
     if (!categories.length > 0) {
       getEventCategories()
     }
-  
   }, [categories])
-  
-  
-
 
   return (
     <div className="min-h-screen flex items-center justify-center font-poppins dark:bg-black">
       <div className="bg-white max-w-4xl w-full px-6 py-12 rounded-lg dark:bg-black">
         <Formik
           initialValues={{
-            ageRange:  defaultUserDetails.ageRange,
+            ageRange: defaultUserDetails.ageRange,
             gender: defaultUserDetails.gender,
             interests: defaultUserDetails.interestIds,
           }}
@@ -98,9 +96,9 @@ const SetupIndividual = () => {
           onSubmit={(values) => {
             console.log(values)
             const payload = {
-      ...values,
-      interestIds: values.interests,
-      isProfileSetup: true,
+              ...values,
+              interestIds: values.interests,
+              isProfileSetup: true,
             }
             updateUserDetails(payload)
             navigate("/")
@@ -159,40 +157,34 @@ const SetupIndividual = () => {
                     {t(translations.setupIndv.share)}
                   </h2>
                   <p className="text-dark-gray-1 dark:text-white text-center mb-8">
-                  {t(translations.setupIndv.p1)}
+                    {t(translations.setupIndv.p1)}
                   </p>
-
-
-
-
 
                   <div className="w-3/5 md:w-2/5  mx-auto">
-                    
-
                     <div className="flex flex-col flex-wrap gap-4 mb-[5px]">
-                <div className="flex-1">
-                  <p className="block text-center text-dark-gray-2 dark:text-white mb-2">
-                    {t(translations.setupIndv.gender)}
-                  </p>
-                  <SelectInput
-                    name="gender"
-                    placeholder= "CHoose Gender"
-                    options={genderOptions}
-                    onChange={(value) => setFieldValue("gender", value)}
-                  />
-                </div>
-                <div className="flex-1">
-                  <p className="block text-center text-dark-gray-2 dark:text-white mb-2">
-                    {t(translations.setupIndv.ageRange)}
-                  </p>
-                  <SelectInput
-                    name="ageRange"
-                    placeholder= "Choose Age Range"
-                    options={ageRangeOptions}
-                    onChange={(value) => setFieldValue("ageRange", value)}
-                  />
-                </div>
-              </div>
+                      <div className="flex-1">
+                        <p className="block text-center text-dark-gray-2 dark:text-white mb-2">
+                          {t(translations.setupIndv.gender)}
+                        </p>
+                        <SelectInput
+                          name="gender"
+                          placeholder="CHoose Gender"
+                          options={genderOptions}
+                          onChange={(value) => setFieldValue("gender", value)}
+                        />
+                      </div>
+                      <div className="flex-1">
+                        <p className="block text-center text-dark-gray-2 dark:text-white mb-2">
+                          {t(translations.setupIndv.ageRange)}
+                        </p>
+                        <SelectInput
+                          name="ageRange"
+                          placeholder="Choose Age Range"
+                          options={ageRangeOptions}
+                          onChange={(value) => setFieldValue("ageRange", value)}
+                        />
+                      </div>
+                    </div>
                   </div>
 
                   <div className="text-center">
@@ -212,20 +204,19 @@ const SetupIndividual = () => {
                 <>
                   <div className="flex flex-col items-center text-center mb-10">
                     <h2 className="text-[1.75rem] dark:text-white font-bold mb-2">
-                    {t(translations.setupIndv.choose)}
+                      {t(translations.setupIndv.choose)}
                     </h2>
                     <p className="text-dark-gray-1 w-4/5 dark:text-white mb-2 sm:block md:hidden">
-                    {t(translations.setupIndv.p2)}
+                      {t(translations.setupIndv.p2)}
                     </p>
                     <p className="text-dark-gray-1 w-4/5 dark:text-white mb-2 hidden md:block">
-                    {t(translations.setupIndv.p3)}.{" "}
-                      <br />
+                      {t(translations.setupIndv.p3)}. <br />
                       {t(translations.setupIndv.p4)}
                     </p>
                   </div>
 
                   <div className="px:2 md:px-0 flex flex-wrap justify-center gap-2 md:gap-4 mb-8">
-                  {categories.map((category) => (
+                    {categories.map((category) => (
                       <button
                         key={category._id}
                         type="button"
@@ -235,21 +226,20 @@ const SetupIndividual = () => {
                             : "100 text-gray-2"
                         }`}
                         onClick={() => {
-      if (
-        values.interests.includes(category._id) ||
-        values.interests.length < 3
-      ) {
-        setFieldValue(
-          "interests",
-          values.interests.includes(category._id)
-            ? values.interests.filter((id) => id !== category._id)
-            : [...values.interests, category._id]
-            
-        )
-      } 
-    }}
-  >
-    {category.name}
+                          if (
+                            values.interests.includes(category._id) ||
+                            values.interests.length < 3
+                          ) {
+                            setFieldValue(
+                              "interests",
+                              values.interests.includes(category._id)
+                                ? values.interests.filter((id) => id !== category._id)
+                                : [...values.interests, category._id]
+                            )
+                          }
+                        }}
+                      >
+                        {category.name}
                       </button>
                     ))}
                   </div>
