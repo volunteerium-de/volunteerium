@@ -63,6 +63,7 @@ const Profile = () => {
   const pageFromUrl = queryParams.get("page") || 1
   const [currentPage, setCurrentPage] = useState(pageFromUrl > 0 ? pageFromUrl : 1)
   const [totalPages, setTotalPages] = useState(0)
+  const { getTranslatedCategory } = useLanguageOptions()
 
   useEffect(() => {
     const fetchEvents = async () => {
@@ -70,7 +71,7 @@ const Profile = () => {
       try {
         const query =
           eventType === "Attended Events"
-            ? `events/?filter[eventParticipantIds]=${userId}&page=${currentPage}`
+            ? `events/participant/${userId}?page=${currentPage}`
             : `events/?filter[createdBy]=${userId}&page=${currentPage}`
         const eventData = await getEvents(query)
         const { data } = await axiosWithPublic(`users/${userId}`)
@@ -92,6 +93,12 @@ const Profile = () => {
     }
     fetchEvents()
   }, [currentPage, eventType, t])
+
+  const pastEvents = events?.filter((event) => event.isDone) || []
+  const approvedEvents =
+    pastEvents?.filter((event) =>
+      event.eventParticipantIds.some((participant) => participant.isApproved === true)
+    ) || []
 
   const {
     _id,
@@ -234,7 +241,7 @@ const Profile = () => {
                       {interestIds.map((interest) => (
                         <div key={interest._id}>
                           <p className="text-[0.6875rem] text-center text-primary-green border border-primary-green px-2 py-1 rounded-2xl font-bold">
-                            {interest.name.toUpperCase()}
+                            {getTranslatedCategory(interest.name).toUpperCase()}
                           </p>
                         </div>
                       ))}
@@ -279,23 +286,43 @@ const Profile = () => {
               </div>
             </div>
             <div className="w-full max-w-full bg-light-gray rounded-b-md sm:rounded-md px-8 sm:px-2 lg:px-12 dark:bg-dark-gray-3 -mt-3 sm:mt-0">
-              <div className="flex flex-col justify-between h-full">
-                <ProfileCard
-                  events={events}
-                  loading={loading}
-                  currentUserId={currentUser?._id}
-                  eventType={eventType}
-                  setEventType={setEventType}
-                  setCurrentPage={setCurrentPage}
-                />
-                {events.length > 0 && (
-                  <Pagination
-                    currentPage={currentPage}
-                    onPageChange={setCurrentPage}
-                    totalPages={totalPages}
+              {eventType === "Attended Events" ? (
+                <div className="flex flex-col justify-between h-full">
+                  <ProfileCard
+                    events={approvedEvents}
+                    loading={loading}
+                    currentUserId={currentUser?._id}
+                    eventType={eventType}
+                    setEventType={setEventType}
+                    setCurrentPage={setCurrentPage}
                   />
-                )}
-              </div>
+                  {events.length > 0 && (
+                    <Pagination
+                      currentPage={currentPage}
+                      onPageChange={setCurrentPage}
+                      totalPages={totalPages}
+                    />
+                  )}
+                </div>
+              ) : (
+                <div className="flex flex-col justify-between h-full">
+                  <ProfileCard
+                    events={events}
+                    loading={loading}
+                    currentUserId={currentUser?._id}
+                    eventType={eventType}
+                    setEventType={setEventType}
+                    setCurrentPage={setCurrentPage}
+                  />
+                  {events.length > 0 && (
+                    <Pagination
+                      currentPage={currentPage}
+                      onPageChange={setCurrentPage}
+                      totalPages={totalPages}
+                    />
+                  )}
+                </div>
+              )}
             </div>
           </div>
         </>
