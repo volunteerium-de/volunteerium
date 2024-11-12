@@ -93,6 +93,13 @@ const Profile = () => {
     }
     fetchEvents()
   }, [currentPage, eventType, t])
+
+  const pastEvents = events?.filter((event) => event.isDone) || []
+  const approvedEvents =
+    pastEvents?.filter((event) =>
+      event.eventParticipantIds.some((participant) => participant.isApproved === true)
+    ) || []
+
   const {
     _id,
     fullName,
@@ -279,23 +286,43 @@ const Profile = () => {
               </div>
             </div>
             <div className="w-full max-w-full bg-light-gray rounded-b-md sm:rounded-md px-8 sm:px-2 lg:px-12 dark:bg-dark-gray-3 -mt-3 sm:mt-0">
-              <div className="flex flex-col justify-between h-full">
-                <ProfileCard
-                  events={events}
-                  loading={loading}
-                  currentUserId={currentUser?._id}
-                  eventType={eventType}
-                  setEventType={setEventType}
-                  setCurrentPage={setCurrentPage}
-                />
-                {events.length > 0 && (
-                  <Pagination
-                    currentPage={currentPage}
-                    onPageChange={setCurrentPage}
-                    totalPages={totalPages}
+              {eventType === "Attended Events" ? (
+                <div className="flex flex-col justify-between h-full">
+                  <ProfileCard
+                    events={approvedEvents}
+                    loading={loading}
+                    currentUserId={currentUser?._id}
+                    eventType={eventType}
+                    setEventType={setEventType}
+                    setCurrentPage={setCurrentPage}
                   />
-                )}
-              </div>
+                  {events.length > 0 && (
+                    <Pagination
+                      currentPage={currentPage}
+                      onPageChange={setCurrentPage}
+                      totalPages={totalPages}
+                    />
+                  )}
+                </div>
+              ) : (
+                <div className="flex flex-col justify-between h-full">
+                  <ProfileCard
+                    events={events}
+                    loading={loading}
+                    currentUserId={currentUser?._id}
+                    eventType={eventType}
+                    setEventType={setEventType}
+                    setCurrentPage={setCurrentPage}
+                  />
+                  {events.length > 0 && (
+                    <Pagination
+                      currentPage={currentPage}
+                      onPageChange={setCurrentPage}
+                      totalPages={totalPages}
+                    />
+                  )}
+                </div>
+              )}
             </div>
           </div>
         </>

@@ -16,7 +16,6 @@ const ProfileCard = ({ events, loading, eventType, setEventType, setCurrentPage 
   const { t } = useTranslation()
   const navigate = useNavigate()
   const { getTranslatedCategory } = useLanguageOptions()
-  console.log(events)
 
   return (
     <div className="py-4">
