@@ -763,20 +763,6 @@ export const translations = {
     joined: "eventManagement.joined",
   },
 
-  adminPanel: {
-    backButton: "adminPanel.backButton",
-    activeUpper: "adminPanel.activeUpper",
-    active: "adminPanel.active",
-    suspendedUpper: "adminPanel.suspendedUpper",
-    suspended: "adminPanel.suspended",
-    yes: "adminPanel.yes",
-    no: "adminPanel.no",
-    cancel: "adminPanel.cancel",
-    contacts: {
-      contactPanel: {
-        title: "adminPanel.contacts.contactPanel.title",
-      },
-
       adminPanel: {
         backButton: "adminPanel.backButton",
         activeUpper: "adminPanel.activeUpper",
@@ -1001,8 +987,6 @@ export const translations = {
           gender: "yup.oneOf.gender",
           ageRange: "yup.oneOf.ageRange",
           language: "yup.oneOf.language",
-        },
-      },
-    },
-  },
-}
+        }
+      }
+    }
