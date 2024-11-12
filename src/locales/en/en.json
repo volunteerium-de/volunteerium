@@ -645,7 +645,8 @@
     "volunteer": "volunteer",
     "joining": "joining",
     "joined": "joined"
-
+  },
+  
   "eventMng": {
     "addNew": "Add New Event",
     "eventName": "Event Name",

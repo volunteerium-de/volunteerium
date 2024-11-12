@@ -650,7 +650,8 @@
     "volunteer": "Freiwilliger",
     "joining": "beitreten",
     "joined": "beigetreten"
-
+  },
+  
   "eventMng": {
     "addNew": "Neue Veranstaltung hinzufügen",
     "eventName": "Veranstaltungsname",
