@@ -14,17 +14,7 @@ import SelectInput from "../ui/Selects/SelectInput"
 import useLanguage from "../../hooks/useLanguages"
 import { formatName } from "../../helpers/formatName"
 
-// Validation Schema
-const IndividualSchema = Yup.object().shape({
-  city: Yup.string().nullable().max(100, "City cannot exceed 100 characters"),
-  country: Yup.string().nullable().max(100, "Country cannot exceed 100 characters"),
-  bio: Yup.string().max(250, "Bio cannot exceed 250 characters"),
-  gender: Yup.string().nullable(),
-  ageRange: Yup.string().nullable(),
-  isFullNameDisplay: Yup.boolean(),
-  languages: Yup.array().nullable(),
-  interestIds: Yup.array().nullable(),
-})
+
 
 // Reusable Radio Input Component
 const RadioInput = ({ id, label, checked, onChange }) => (
@@ -56,6 +46,18 @@ const IndividualSettingsForm = () => {
   const { updateUserDetails } = useAccountCall()
   const { getEventCategories } = useEventCall()
   const { userDetailsId } = currentUser
+
+  // Validation Schema
+const IndividualSchema = Yup.object().shape({
+  city: Yup.string().nullable().max(100, t(translations.yup.maxLength.characters100)),
+  country: Yup.string().nullable().max(100, t(translations.yup.maxLength.characters100)),
+  bio: Yup.string().max(250, t(translations.yup.maxLength.characters250Bio)),
+  gender: Yup.string().nullable(),
+  ageRange: Yup.string().nullable(),
+  isFullNameDisplay: Yup.boolean(),
+  languages: Yup.array().nullable(),
+  interestIds: Yup.array().nullable(),
+})
 
   const defaultUserDetails = {
     isFullNameDisplay: userDetailsId?.isFullNameDisplay || false,

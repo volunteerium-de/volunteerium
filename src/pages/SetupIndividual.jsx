@@ -18,9 +18,9 @@ import SelectInput from "../components/ui/Selects/SelectInput"
 
 // Validation schema
 const IndividualSchema = Yup.object({
-  gender: UserDetailSchema.fields.gender,
-  ageRange: UserDetailSchema.fields.ageRange,
-  interests: UserDetailSchema.fields.interests,
+  gender: UserDetailSchema.gender,
+  ageRange: UserDetailSchema.ageRange,
+  interests: UserDetailSchema.interests,
 })
 
 const SetupIndividual = () => {
@@ -49,9 +49,9 @@ const SetupIndividual = () => {
   ]
 
   const genderOptions = [
-    { label: "Male", value: "male" },
-    { label: "Female", value: "female" },
-    { label: "Prefer not to say", value: "Prefer not to say" },
+    { label: t(translations.setupIndv.genderLabel1), value: "male" },
+    { label: t(translations.setupIndv.genderLabel2), value: "female" },
+    { label: t(translations.setupIndv.genderLabel3), value: "Prefer not to say" },
   ]
 
   const handleNext = (isValid) => {

@@ -13,13 +13,13 @@ const PasswordModal = ({ isOpen, onClose }) => {
   const { loading } = useSelector((state) => state.auth)
 
   const validationSchema = Yup.object().shape({
-    oldPassword: Yup.string().required(t(translations.pswModal.yup1)),
+    oldPassword: Yup.string().required(t(translations.yup.required.oldPassword)),
     password: Yup.string()
-      .required(t(translations.pswModal.yup2))
-      .min(8, t(translations.pswModal.yup3)),
+      .required(t(translations.yup.required.password))
+      .min(8, t(translations.yup.minLength.characters8)),
     confirmPassword: Yup.string()
-      .oneOf([Yup.ref("password"), null], t(translations.pswModal.yup4))
-      .required(t(translations.pswModal.yup5)),
+      .oneOf([Yup.ref("password"), null], t(translations.yup.password.match))
+      .required(t(translations.yup.required.confirmPassword)),
   })
   const formik = useFormik({
     initialValues: {

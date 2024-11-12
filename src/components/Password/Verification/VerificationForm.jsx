@@ -6,8 +6,11 @@ import logo from "../../../assets/logo.png"
 import { useNavigate } from "react-router-dom"
 import { axiosWithPublic } from "../../../hooks/useAxios"
 import toastNotify from "../../../utils/toastNotify"
+import { translations } from "../../../locales/translations"
+import { useTranslation } from "react-i18next"
 
 const VerificationForm = ({ setIssue, identifier, setIdentifier, email }) => {
+  const {t} = useTranslation()
   const [code, setCode] = useState(["", "", "", "", "", ""])
   const [timeLeft, setTimeLeft] = useState(90) // 01:30 seconds (90 seconds)
   const [timerMessage, setTimerMessage] = useState("If you didn’t receive a code!") // Message changes when time runs out
@@ -57,7 +60,7 @@ const VerificationForm = ({ setIssue, identifier, setIdentifier, email }) => {
       const timer = setTimeout(() => setTimeLeft(timeLeft - 1), 1000)
       return () => clearTimeout(timer)
     } else {
-      setTimerMessage("Is there a problem? Request code again!")
+      setTimerMessage(t(translations.password.verificationForm.timerMsg))
     }
   }, [timeLeft])
 
@@ -108,22 +111,22 @@ const VerificationForm = ({ setIssue, identifier, setIdentifier, email }) => {
       >
         <IoIosArrowBack className="text-2xl text-black dark:text-white" />{" "}
         {/* Light mode: `text-black`, Dark mode: `dark:text-white` */}
-        <span className="text-lg font-semibold text-black dark:text-white">Back to login</span>{" "}
+        <span className="text-lg font-semibold text-black dark:text-white">{t(translations.password.verificationForm.backToLogin)}</span>{" "}
         {/* Light mode: `text-black`, Dark mode: `dark:text-white` */}
       </div>
 
       {/* Mobile View - Centered Logo */}
       <div className="md:hidden w-full flex justify-center mb-6 mt-[5rem]">
-        <img src={logo} alt="Logo" className="h-12 w-auto" />
+        <img src={logo} alt= {t(translations.password.verificationForm.logoAlt)} className="h-12 w-auto" />
       </div>
 
       {/* Title and Description */}
       <div className="w-full">
         <h1 className="text-left text-[1.5rem] md:text-[2rem] font-semibold dark:text-white leading-tight mb-4">
-          Verification
+        {t(translations.password.verificationForm.verification)}
         </h1>
         <p className="text-left w-full text-[1rem] md:text-[1.125rem] font-normal text-gray-2 dark:text-white leading-snug">
-          Enter your 6-digit code that you received on your email.
+        {t(translations.password.verificationForm.verifyDesc)}
         </p>
       </div>
 
@@ -157,7 +160,7 @@ const VerificationForm = ({ setIssue, identifier, setIdentifier, email }) => {
         ${isCodeComplete ? "bg-primary-green hover:bg-dark-green text-white cursor-pointer" : "bg-primary-green cursor-not-allowed"}`}
         disabled={!isCodeComplete}
       >
-        Verify
+        {t(translations.password.verificationForm.verify)}
       </button>
 
       {/* Resend Code Option */}
@@ -167,7 +170,7 @@ const VerificationForm = ({ setIssue, identifier, setIdentifier, email }) => {
           onClick={() => resendForgotPassword()}
           className="text-primary-green cursor-pointer underline"
         >
-          Resend
+          {t(translations.password.verificationForm.resend)}
         </span>
       </p>
     </form>

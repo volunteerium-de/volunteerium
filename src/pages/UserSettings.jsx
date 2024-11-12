@@ -9,8 +9,11 @@ import VisibilitySettings from "../components/UserSettings/VisibilitySettings"
 import { useSelector } from "react-redux"
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
+import { useTranslation } from "react-i18next"
+import { translations } from "../locales/translations"
 
 const UserSettings = () => {
+  const {t} = useTranslation()
   const navigate = useNavigate()
   const { currentUser } = useSelector((state) => state.auth)
   const isAdmin = currentUser.userType === "admin"
@@ -19,17 +22,17 @@ const UserSettings = () => {
   const menuItems = [
     {
       key: "profile",
-      label: "Profile",
+      label: t(translations.userSettings.profile),
       icon: <IoSettingsOutline className="text-2xl mx-auto" />,
     },
     {
       key: "security",
-      label: "Security",
+      label: t(translations.userSettings.security),
       icon: <MdOutlineSecurity className="text-2xl mx-auto" />,
     },
     // {
     //   key: "visibility",
-    //   label: "Visibility",
+    //   label: t(translations.userSettings.visibility),
     //   icon: <MdOutlineVisibility className="text-2xl mx-auto" />,
     // },
   ]

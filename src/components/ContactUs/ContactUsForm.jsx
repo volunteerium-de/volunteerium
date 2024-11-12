@@ -8,26 +8,26 @@ import toastNotify from "../../utils/toastNotify"
 import { useTranslation } from "react-i18next"
 import { translations } from "../../locales/translations"
 
-const validationSchema = Yup.object({
-  name: Yup.string()
-    .min(3, "Must be at least 3 characters")
-    .max(30, "Can be maximum 30 characters")
-    .required("Name is a required field"),
-  email: Yup.string()
-    .matches(/^[^\s@]+@[^\s@]+\.[^\s@]+$/, "Invalid email address")
-    .required("Email is a required field"),
-  subject: Yup.string()
-    .min(3, "Must be at least 3 characters")
-    .max(50, "Can be maximum 50 characters")
-    .required("Message subject is required"),
-  message: Yup.string()
-    .min(10, "Must be at least 10 characters")
-    .max(1000, "Can be maximum 1000 characters")
-    .required("Message is a required field"),
-})
 
 const ContactUsForm = () => {
   const {t} = useTranslation()
+  const validationSchema = Yup.object({
+    name: Yup.string()
+      .min(3, t(translations.yup.minLength.characters3))
+      .max(30, t(translations.yup.maxLength.characters30))
+      .required(t(translations.yup.required.name)),
+    email: Yup.string()
+      .matches(/^[^\s@]+@[^\s@]+\.[^\s@]+$/, t(translations.yup.invalid.email))
+      .required(t(translations.yup.required.email)),
+    subject: Yup.string()
+      .min(3, t(translations.yup.minLength.characters3))
+      .max(50, t(translations.yup.maxLength.characters30))
+      .required(t(translations.yup.required.subject)),
+    message: Yup.string()
+      .min(10, t(translations.yup.minLength.characters10))
+      .max(1000, t(translations.yup.maxLength.characters1000))
+      .required(t(translations.yup.required.message)),
+  })
   const handleSubmit = async(values) => {
     try {
       const {data}=await axiosWithPublic.post("/contacts",values)

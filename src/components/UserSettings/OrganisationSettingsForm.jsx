@@ -9,17 +9,6 @@ import useAccountCall from "../../hooks/useAccountCall"
 import { FaExternalLinkAlt } from "react-icons/fa"
 import toastNotify from "../../utils/toastNotify"
 
-// Validation Schema
-const OrganisationSchema = Yup.object().shape({
-  organizationName: Yup.string().required("Organization name is required"),
-  // organizationUrl: Yup.string().url("Please enter a valid URL"),
-  streetName: Yup.string().required("Street name is required"),
-  streetNumber: Yup.string().required("Street number is required"),
-  zipCode: Yup.string().required("ZIP code is required"),
-  city: Yup.string().required("City is required"),
-  country: Yup.string().required("Country is required"),
-  organizationDesc: Yup.string().max(250, "Description cannot exceed 250 characters"),
-})
 
 const OrganisationSettingsForm = () => {
   const { t } = useTranslation()
@@ -27,6 +16,18 @@ const OrganisationSettingsForm = () => {
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [certificates, setCertificates] = useState([])
   const { updateUserDetails } = useAccountCall()
+
+  // Validation Schema
+const OrganisationSchema = Yup.object().shape({
+  organizationName: Yup.string().required(t(translations.yup.required.organizationName)),
+  // organizationUrl: Yup.string().url("Please enter a valid URL"),
+  streetName: Yup.string().required(t(translations.yup.required.streetName)),
+  streetNumber: Yup.string().required(t(translations.yup.required.streetNumber)),
+  zipCode: Yup.string().required(t(translations.yup.required.zipCode)),
+  city: Yup.string().required(t(translations.yup.required.city)),
+  country: Yup.string().required(t(translations.yup.required.country)),
+  organizationDesc: Yup.string().max(250, t(translations.yup.maxLength.characters250)),
+})
 
   const { userDetailsId } = currentUser
   const defaultUserDetails = {

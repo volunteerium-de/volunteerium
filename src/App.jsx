@@ -13,7 +13,6 @@ function App() {
           <AppRouter />
         </PersistGate>
       </Provider>
-
       <ToastContainer
         autoClose={3000}
         closeOnClick
