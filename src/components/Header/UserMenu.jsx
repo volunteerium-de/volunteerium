@@ -1,4 +1,4 @@
-import { FaUser, FaBars } from "react-icons/fa"
+import { FaBars } from "react-icons/fa"
 import { FiSun, FiMoon } from "react-icons/fi"
 import { useState, useEffect, useRef } from "react"
 import LanguageSwitcher from "./LanguageSwitcher"

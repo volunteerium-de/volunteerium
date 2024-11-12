@@ -1,49 +1,28 @@
 import { useEffect } from "react"
 import { useState } from "react"
-import { FaPlus, FaSearch, FaChevronDown, FaChevronUp, FaSpinner } from "react-icons/fa"
+import { FaSearch, FaChevronDown, FaChevronUp, FaSpinner } from "react-icons/fa"
 import { useSelector } from "react-redux"
 import useEventCall from "../../hooks/useEventCall"
 import EventManagementCard from "./EventCard/EventManagementCard"
-import ParticipantRequestsModal from "./EventCard/ParticipantRequestsModal"
 import { useTranslation } from "react-i18next"
 import { translations } from "../../locales/translations"
 
-const OrganizedEvents = ({ onAddEvent }) => {
+const AttendingEvents = () => {
   const { currentUser: user } = useSelector((state) => state.auth)
   const [isUpcomingOpen, setIsUpcomingOpen] = useState(true)
   const [isPastOpen, setIsPastOpen] = useState(false)
   const [loading, setLoading] = useState(true)
   const { getEvents } = useEventCall()
   const [events, setEvents] = useState([])
-  const [filteredEvents, setFilteredEvents] = useState([])
   const [refetch, setRefetch] = useState(null)
-  const [isModalOpen, setIsModalOpen] = useState(false)
-  const [selectedEvent, setSelectedEvent] = useState(null)
   const { t } = useTranslation()
-
-  const openModal = (event) => {
-    setSelectedEvent(event)
-    setIsModalOpen(true)
-  }
-  const closeModal = () => {
-    setSelectedEvent(null)
-    setIsModalOpen(false)
-  }
 
   useEffect(() => {
     const fetchEvents = async () => {
       setLoading(true)
       try {
-        const eventsResponse = await getEvents(`events/?filter[createdBy]=${user._id}`)
+        const eventsResponse = await getEvents(`events/participant/${user._id}`)
         setEvents(eventsResponse.data)
-
-        setFilteredEvents(eventsResponse.data)
-
-        if (selectedEvent) {
-          const updatedSelectedEvent = eventsResponse.data.find((e) => e._id === selectedEvent._id)
-          setSelectedEvent(updatedSelectedEvent)
-        }
-
         console.log("events", eventsResponse)
       } catch (error) {
         console.error("Error fetching events:", error)
@@ -59,14 +38,8 @@ const OrganizedEvents = ({ onAddEvent }) => {
     setRefetch(new Date().getTime())
   }
 
-  const handleSearchChange = (e) => {
-    const query = e.target.value.toLowerCase()
-    const filtered = events.filter((event) => event.title.toLowerCase().includes(query))
-    setFilteredEvents(filtered)
-  }
-
-  const upcomingEvents = filteredEvents?.filter((event) => !event.isDone) || []
-  const pastEvents = filteredEvents?.filter((event) => event.isDone) || []
+  const upcomingEvents = events?.filter((event) => !event.isDone) || []
+  const pastEvents = events?.filter((event) => event.isDone) || []
 
   return loading ? (
     <div className="flex mt-12 items-center justify-center text-primary-green text-md font-semibold">
@@ -77,25 +50,16 @@ const OrganizedEvents = ({ onAddEvent }) => {
     <div className="mt-3 p-4 max-w-[77vw] min-h-[88vh] rounded-lg bg-light-gray dark:bg-dark-gray-3 ">
       <div className="flex justify-between items-center mb-8">
         <h2 className="text-primary-green text-[1.5rem] font-semibold">
-          {t(translations.eventManagement.organizedEvents)}
+          {t(translations.eventManagement.attendingEvents)}
         </h2>
-        <div className="flex flex-col md:flex-row gap-2">
-          <button
-            onClick={onAddEvent}
-            className="flex md:text-[0.8rem] text-[0.6rem] px-2 sm:py-1 py-2 items-center border hover:bg-dark-green rounded-lg bg-primary-green text-white"
-          >
-            <FaPlus className="mr-2" />
-            {t(translations.eventManagement.addNewEvent)}
-          </button>
-          <div className="flex items-center border border-primary-green dark:border-white rounded-lg">
-            <FaSearch className="mx-2 text-primary-green dark:text-white" />
-            <input
-              onChange={handleSearchChange}
-              type="text"
-              placeholder={t(translations.eventManagement.searchInput)}
-              className="text-[0.7rem] py-1 border-none rounded-lg focus:outline-none focus:ring-0  text-primary-green font-medium bg-light-gray dark:bg-dark-gray-3 dark:text-white"
-            />
-          </div>
+
+        <div className="flex items-center border border-primary-green dark:border-white rounded-lg py-[0.36rem]">
+          <FaSearch className="mx-2 text-primary-green dark:text-white" />
+          <input
+            type="text"
+            placeholder={t(translations.eventManagement.searchInput)}
+            className="text-[0.7rem] border-none rounded-lg focus:outline-none focus:ring-0 text-primary-green font-medium bg-light-gray dark:bg-dark-gray-3 dark:text-white"
+          />
         </div>
       </div>
 
@@ -113,16 +77,10 @@ const OrganizedEvents = ({ onAddEvent }) => {
           )}
         </div>
         {isUpcomingOpen && (
-          <div className="flex flex-col gap-4">
+          <div className="mt-2 p-2 flex flex-col gap-3">
             {upcomingEvents.length > 0 ? (
               upcomingEvents.map((event) => (
-                <EventManagementCard
-                  key={event._id}
-                  eventId={event}
-                  isOrganized={true}
-                  refetch={handleRefetch}
-                  openModal={openModal}
-                />
+                <EventManagementCard key={event._id} eventId={event} refetch={handleRefetch} />
               ))
             ) : (
               <p>{t(translations.eventManagement.noUpcomingEvents)}</p>
@@ -144,28 +102,18 @@ const OrganizedEvents = ({ onAddEvent }) => {
             <FaChevronDown className="text-primary-green" />
           )}
         </div>
-
-        {/* Conditionally render the past events */}
         {isPastOpen && (
           <div className="mt-2 p-2 flex flex-col gap-3">
             {pastEvents.length > 0 ? (
               pastEvents.map((event) => <EventManagementCard key={event._id} eventId={event} />)
             ) : (
-              <p className="dark:text-white">{t(translations.eventManagement.noPastEvents)}</p>
+              <p>{t(translations.eventManagement.noUpcomingEvents)}</p>
             )}
           </div>
         )}
       </div>
-
-      {isModalOpen && (
-        <ParticipantRequestsModal
-          onClose={closeModal}
-          event={selectedEvent}
-          refetch={handleRefetch}
-        />
-      )}
     </div>
   )
 }
 
-export default OrganizedEvents
+export default AttendingEvents

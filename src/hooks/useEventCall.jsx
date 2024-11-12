@@ -112,6 +112,15 @@ const useEventCall = () => {
     }
   }
 
+  const getEventParticipant = async () => {
+    try {
+      const { data } = await axiosWithToken.get("event-participants")
+      return data
+    } catch (error) {
+      toastNotify("error", error?.response?.data?.message)
+    }
+  }
+
   const approveParticipant = async (userId, eventId) => {
     try {
       const { data } = await axiosWithToken.post(`event-participants/approve`, {
@@ -211,6 +220,7 @@ const useEventCall = () => {
     editEvent,
     deleteEvent,
     joinEvent,
+    getEventParticipant,
     approveParticipant,
     rejectParticipant,
     confirmAttendance,

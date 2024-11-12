@@ -736,6 +736,47 @@ export const translations = {
     p14: "termsOfService.p14",
   },
 
+  eventManagement: {
+    addNewEvent: "eventManagement.addNewEvent",
+    searchInput: "eventManagement.searchInput",
+    editButton: "eventManagement.editButton",
+    cancelButton: "eventManagement.cancelButton",
+    deleteButton: "eventManagement.deleteButton",
+    organizedEvents: "eventManagement.organizedEvents",
+    upcomingEvents: "eventManagement.upcomingEvents",
+    noUpcomingEvents: "eventManagement.noUpcomingEvents",
+    yourPastEvents: "eventManagement.yourPastEvents",
+    noPastEvents: "eventManagement.noPastEvents",
+    attendingEvents: "eventManagement.attendingEvents",
+    leaveEventButton: "eventManagement.leaveEventButton",
+    acceptButton: "eventManagement.acceptButton",
+    rejectButton: "eventManagement.rejectButton",
+    loading: "eventManagement.loading",
+    removeButton: "eventManagement.removeButton",
+    attendants: "eventManagement.attendants",
+    noAttendants: "eventManagement.noAttendants",
+    joinRequests: "eventManagement.joinRequests",
+    participants: "eventManagement.participants",
+    no: "eventManagement.no",
+    volunteer: "eventManagement.volunteer",
+    joining: "eventManagement.joining",
+    joined: "eventManagement.joined",
+  },
+
+adminPanel: {
+  backButton: "adminPanel.backButton",
+  activeUpper: "adminPanel.activeUpper",
+  active: "adminPanel.active",
+  suspendedUpper: "adminPanel.suspendedUpper",
+  suspended: "adminPanel.suspended",
+  yes: "adminPanel.yes",
+  no: "adminPanel.no",
+  cancel: "adminPanel.cancel",
+  contacts: {
+    contactPanel: {
+      title: "adminPanel.contacts.contactPanel.title"
+    },
+
   adminPanel: {
     backButton: "adminPanel.backButton",
     activeUpper: "adminPanel.activeUpper",
@@ -755,6 +796,7 @@ export const translations = {
       singleContactPanel: {
         contactId: "adminPanel.contacts.singleContactPanel.contactId",
       },
+
     },
     events: {
       eventsPanel: {

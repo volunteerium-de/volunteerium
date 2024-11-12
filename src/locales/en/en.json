@@ -619,6 +619,33 @@
       "option10": "Other"
     }
   },
+
+  "eventManagement": {
+    "addNewEvent": "Add new event",
+    "searchInput": "Search",
+    "editButton": "Edit",
+    "cancelButton": "Cancel",
+    "deleteButton": "Delete",
+    "organizedEvents": "Organized events",
+    "upcomingEvents": "Upcoming Events",
+    "noUpcomingEvents": "No upcoming events",
+    "yourPastEvents": "Your Past Events",
+    "noPastEvents": "No past events",
+    "attendingEvents": "Attending Events",
+    "leaveEventButton": "Leave Event",
+    "acceptButton": "Accept",
+    "rejectButton": "Reject",
+    "loading": "Loading...",
+    "removeButton": "Remove",
+    "attendants": "Attendants",
+    "noAttendants": "No Attendants yet",
+    "joinRequests": "Join Requests",
+    "no": "No",
+    "participants": "Participants",
+    "volunteer": "volunteer",
+    "joining": "joining",
+    "joined": "joined"
+
   "eventMng": {
     "addNew": "Add New Event",
     "eventName": "Event Name",
