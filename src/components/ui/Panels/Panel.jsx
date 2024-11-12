@@ -3,6 +3,7 @@ import { CiSearch } from "react-icons/ci"
 import { useNavigate, useLocation } from "react-router-dom"
 import Pagination from "../Pagination/Pagination"
 import useAdminCall from "../../../hooks/useAdminCall"
+import { ImSpinner9 } from "react-icons/im"
 
 const Panel = ({ title, fetchUrl, TableComponent }) => {
   const [searchQuery, setSearchQuery] = useState("")
@@ -16,6 +17,7 @@ const Panel = ({ title, fetchUrl, TableComponent }) => {
   const [totalPages, setTotalPages] = useState(0)
   const { fetchAllData } = useAdminCall()
   const [loading, setLoading] = useState(false)
+  const [totalRecords, setTotalRecords] = useState(0)
 
   useEffect(() => {
     if (!identifier) {
@@ -25,6 +27,7 @@ const Panel = ({ title, fetchUrl, TableComponent }) => {
           setData(fetchedData.data)
           setTotalPages(fetchedData.details.pages.total || 1)
           setCurrentPage(fetchedData.details.pages.current || 1)
+          setTotalRecords(fetchedData.details.totalRecords || 0)
 
           if (currentPage > 0) {
             navigate(
@@ -43,35 +46,45 @@ const Panel = ({ title, fetchUrl, TableComponent }) => {
   }, [currentPage])
 
   return (
-    <div className="flex flex-col justify-between h-full">
-      <div className="h-full">
-        <div className="flex justify-between">
-          <h1 className="text-2xl font-bold text-primary-green dark:text-light-gray">{title}</h1>
-          <div className="relative">
-            <input
-              type="text"
-              className="rounded px-2 py-1 w-[150px] border border-primary-green placeholder:text-primary-green focus:outline-none text-sm"
-              placeholder="Search"
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-            />
-            {!searchQuery && (
-              <CiSearch className="absolute top-[6px] right-2 text-primary-green " />
+    <>
+      {loading ? (
+        <div className="flex h-full justify-center items-start mt-24">
+          <ImSpinner9 className="animate-spin h-8 w-8 text-primary-green" />
+        </div>
+      ) : (
+        <div className="flex flex-col justify-between h-full">
+          <div className="h-full">
+            <div className="flex justify-between">
+              <h1 className="text-2xl font-bold text-primary-green dark:text-light-gray">
+                {title} ({totalRecords})
+              </h1>
+              <div className="relative">
+                <input
+                  type="text"
+                  className="rounded px-2 py-1 w-[80px] md:w-[150px] border border-primary-green placeholder:text-primary-green focus:outline-none text-sm"
+                  placeholder="Search"
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                />
+                {!searchQuery && (
+                  <CiSearch className="absolute top-[6px] right-2 text-primary-green " />
+                )}
+              </div>
+            </div>
+            <TableComponent data={data} loading={loading} />
+          </div>
+          <div className="mx-auto sm:mx-0 sm:ms-auto">
+            {data.length > 0 && (
+              <Pagination
+                currentPage={currentPage}
+                onPageChange={setCurrentPage}
+                totalPages={totalPages}
+              />
             )}
           </div>
         </div>
-        <TableComponent data={data} loading={loading} />
-      </div>
-      <div className="ms-auto">
-        {data.length > 0 && (
-          <Pagination
-            currentPage={currentPage}
-            onPageChange={setCurrentPage}
-            totalPages={totalPages}
-          />
-        )}
-      </div>
-    </div>
+      )}
+    </>
   )
 }
 

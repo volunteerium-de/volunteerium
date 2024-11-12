@@ -420,9 +420,9 @@
 
   "eventsPage": {
     "sec1": "Verfügbarkeit",
-    "from": "von",
-    "to": "bis",
-    "check": "Veranstaltungen Prüfen",
+    "from": "Von",
+    "to": "Bis",
+    "check": "Veranstaltungen prüfen",
     "sec2": "Kategorien",
     "sec3": "Sprachen",
     "new": "Neueste",

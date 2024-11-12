@@ -16,7 +16,6 @@ const SingleContactPanel = ({ contactId, setIdentifier }) => {
   const { fetchSingleData, deleteData } = useAdminCall()
   const [isSettingsModalOpen, setIsSettingsModalOpen] = useState(false)
   const [isDeleteContactModalOpen, setIsDeleteContactModalOpen] = useState(false)
-  const { getLangName } = useLanguage()
   const settingsButtonRef = useRef(null)
   const modalRef = useRef(null)
 
@@ -76,6 +75,7 @@ const SingleContactPanel = ({ contactId, setIdentifier }) => {
   const handleDeleteEvent = () => {
     deleteData("contacts", contactId)
     navigate(`/admin-panel?tab=contacts`)
+    setIdentifier(null)
     setIsSettingsModalOpen(false)
     closeDeleteContactModal()
   }

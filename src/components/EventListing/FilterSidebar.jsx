@@ -34,6 +34,10 @@ const FilterSidebar = () => {
   const selectedCategories = useSelector((state) => state.search.categoryFilters)
   const [eventLanguages, setEventLanguages] = useState([])
   const selectedLanguages = useSelector((state) => state.search.languageFilters)
+  const searchTermLocation = useSelector((state) => state.search.searchTermLocation)
+  const searchTermEvent = useSelector((state) => state.search.searchTermEvent)
+  const startDate = useSelector((state) => state.search.startDate)
+  const endDate = useSelector((state) => state.search.endDate)
   const { getLangName, getTranslatedCategory } = useLanguageOptions()
 
   useEffect(() => {
@@ -82,6 +86,14 @@ const FilterSidebar = () => {
     dispatch(setLanguageFilters(updatedLanguages))
   }
 
+  const showEventCount =
+    searchTermEvent === "" &&
+    searchTermLocation === "" &&
+    startDate === null &&
+    endDate === null &&
+    selectedCategories.length === 0 &&
+    (selectedLanguages.length === 1 || selectedLanguages.length === 0)
+
   // Custom Input for DatePicker
   const CustomInput = forwardRef(({ value, onClick }, ref) => (
     <button
@@ -106,9 +118,9 @@ const FilterSidebar = () => {
 
         <div className="mb-4 p-5 flex flex-col gap-5 ">
           <div className="mx-auto">
-            {t(translations.eventsPage.from)}
-            <h3 className="font-semibold mb-2 text-black dark:text-white text-[0.9375rem]"></h3>
-
+            <h3 className="font-semibold mb-2 text-black dark:text-white text-[0.9375rem]">
+              {t(translations.eventsPage.from)}
+            </h3>
             <div className="flex flex-col items-center justify-center lg:items-start gap-5">
               {/* Start Date Picker */}
               <DatePicker
@@ -183,7 +195,7 @@ const FilterSidebar = () => {
 
       {/* Languages */}
       <div className="mt-10 m-auto shadow-lg bg-light-white p-5 max-w-[400px] mx-auto dark:bg-dark-gray-1 rounded  ">
-        <h3 className="font-semibold mb-2 p-2 text-black dark:text-white text-[0.9375rem] text-center lg:text-left">
+        <h3 className="font-semibold mb-2 p-2 text-black dark:text-white text-[0.9375rem] lg:text-left">
           {t(translations.eventsPage.sec3)}
         </h3>
         <hr className="border border-light-gray-3 mb-3" />
@@ -197,7 +209,8 @@ const FilterSidebar = () => {
                 checked={selectedLanguages.includes(language.langCode)}
               />
               <span className="text-[0.75rem] text-black dark:text-white font-medium">
-                {getLangName(language.langCode)} ({language.eventCount})
+                {getLangName(language.langCode)}
+                {showEventCount && ` (${language.eventCount})`}
               </span>
             </label>
           ))}
