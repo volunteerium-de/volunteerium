@@ -6,11 +6,26 @@ import { useState } from "react"
 import { useEffect } from "react"
 import { translations } from "../locales/translations"
 import { useTranslation } from "react-i18next"
+import { useLocation } from "react-router-dom"
 
 const GoogleAuthFail = () => {
   const { t } = useTranslation()
   const navigate = useNavigate()
-  const [countdown, setCountdown] = useState(5)
+  const location = useLocation()
+  const [countdown, setCountdown] = useState(10)
+  const [message, setMessage] = useState("")
+
+  // Extract message from query params if available
+
+  useEffect(() => {
+    const queryParams = new URLSearchParams(location.search)
+    const messageParam = queryParams.get("message")
+    if (messageParam) {
+      // Remove quotation marks from the message
+      const cleanedMessage = messageParam.replace(/"/g, "")
+      setMessage(cleanedMessage)
+    }
+  }, [location.search])
 
   // Redirect to homepage after 5 seconds
   useEffect(() => {
@@ -41,7 +56,7 @@ const GoogleAuthFail = () => {
           {t(translations.googleAuthFall.h1)}
         </h1>
         <h2 className="text-dark-gray-1 dark:text-gray-1 text-md lg:text-lg font-semibold">
-          {t(translations.googleAuthFall.h2)}
+          {message || t(translations.googleAuthFall.h2)}
         </h2>
         <p className="text-dark-gray-1 dark:text-gray-1 text-md lg:text-lg">
           <span>
