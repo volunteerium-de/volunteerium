@@ -3,7 +3,7 @@ import { Provider } from "react-redux"
 import { PersistGate } from "redux-persist/integration/react"
 import store, { persistor } from "./app/store"
 import { ToastContainer } from "react-toastify"
-import "./i18n"; 
+import "./i18n"
 
 function App() {
   return (
@@ -13,7 +13,6 @@ function App() {
           <AppRouter />
         </PersistGate>
       </Provider>
-      
       <ToastContainer
         autoClose={3000}
         closeOnClick
