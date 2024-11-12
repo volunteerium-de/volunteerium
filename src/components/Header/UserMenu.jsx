@@ -76,7 +76,7 @@ const UserMenu = ({ user }) => {
                       navigate(`/${user.userType === "admin" ? "admin-panel" : "event-management"}`)
                     }
                   >
-                    {user.userType === "admin" ? "Admin Panel" : t(translations.userMenu.eventMng)}
+                    {user.userType === "admin" ? t(translations.userMenu.adminPanel) : t(translations.userMenu.eventMng)}
                   </button>
                   <button
                     className="block w-full text-left p-1 hover:text-primary-green"

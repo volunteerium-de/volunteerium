@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react"
+import { useState, useEffect, useCallback } from "react"
 import Header from "../components/Header/Header"
 import Sidebar from "../components/ui/Sidebar/Sidebar"
 import { FaCalendar } from "react-icons/fa"
@@ -17,6 +17,7 @@ import SingleReportPanel from "../components/AdminPanel/reports/SingleReportPane
 import SingleFeedbackPanel from "../components/AdminPanel/feedbacks/SingleFeedbackPanel"
 import { SiImessage } from "react-icons/si"
 import FeedbacksPanel from "../components/AdminPanel/feedbacks/FeedbacksPanel"
+import { debounce } from "../utils/functions"
 
 const AdminPanel = () => {
   const location = useLocation()
@@ -26,6 +27,8 @@ const AdminPanel = () => {
   const [reports, setReports] = useState([])
   const [feedbacks, setFeedbacks] = useState([])
   const [identifier, setIdentifier] = useState(null)
+  const [debouncedActiveTab, setDebouncedActiveTab] = useState(activeTab)
+  const [debouncedIdentifier, setDebouncedIdentifier] = useState(identifier)
   const { fetchAllData } = useAdminCall()
 
   useEffect(() => {
@@ -42,11 +45,33 @@ const AdminPanel = () => {
     navigate(`?tab=${tab}`)
   }
 
+  const debouncedSetActiveTab = useCallback(
+    debounce((tab) => {
+      setDebouncedActiveTab(tab)
+    }, 300),
+    []
+  )
+
+  const debouncedSetIdentifier = useCallback(
+    debounce((id) => {
+      setDebouncedIdentifier(id)
+    }, 300),
+    []
+  )
+
   useEffect(() => {
     fetchAllData("contacts").then((data) => setContacts(data.data))
     fetchAllData("event-reports").then((data) => setReports(data.data))
     fetchAllData("event-feedbacks").then((data) => setFeedbacks(data.data))
   }, [])
+
+  useEffect(() => {
+    debouncedSetActiveTab(activeTab)
+  }, [activeTab, debouncedSetActiveTab])
+
+  useEffect(() => {
+    debouncedSetIdentifier(identifier)
+  }, [identifier, debouncedSetIdentifier])
 
   const adminMenuItems = [
     {
@@ -77,24 +102,28 @@ const AdminPanel = () => {
   ]
 
   const renderContent = () => {
-    if (identifier) {
-      switch (activeTab) {
+    if (debouncedIdentifier) {
+      switch (debouncedActiveTab) {
         case "events":
-          return <SingleEventPanel eventId={identifier} setIdentifier={setIdentifier} />
+          return <SingleEventPanel eventId={debouncedIdentifier} setIdentifier={setIdentifier} />
         case "users":
-          return <SingleUserPanel userId={identifier} setIdentifier={setIdentifier} />
+          return <SingleUserPanel userId={debouncedIdentifier} setIdentifier={setIdentifier} />
         case "contacts":
-          return <SingleContactPanel contactId={identifier} setIdentifier={setIdentifier} />
+          return (
+            <SingleContactPanel contactId={debouncedIdentifier} setIdentifier={setIdentifier} />
+          )
         case "reports":
-          return <SingleReportPanel reportId={identifier} setIdentifier={setIdentifier} />
+          return <SingleReportPanel reportId={debouncedIdentifier} setIdentifier={setIdentifier} />
         case "feedbacks":
-          return <SingleFeedbackPanel feedbackId={identifier} setIdentifier={setIdentifier} />
+          return (
+            <SingleFeedbackPanel feedbackId={debouncedIdentifier} setIdentifier={setIdentifier} />
+          )
         default:
-          return <SingleEventPanel eventId={identifier} setIdentifier={setIdentifier} />
+          return <SingleEventPanel eventId={debouncedIdentifier} setIdentifier={setIdentifier} />
       }
     }
 
-    switch (activeTab) {
+    switch (debouncedActiveTab) {
       case "events":
         return <EventsPanel />
       case "users":
@@ -113,7 +142,7 @@ const AdminPanel = () => {
   return (
     <>
       <Header />
-      <div className="flex max-w-[1800px] mx-auto">
+      <div className="flex max-w-[1800px] mx-auto min-h-[calc(100vh-50px)] sm:min-h-[calc(100vh-100px)]">
         <Sidebar
           items={adminMenuItems}
           activeTab={activeTab}

@@ -13,13 +13,13 @@ const PasswordModal = ({ isOpen, onClose }) => {
   const { loading } = useSelector((state) => state.auth)
 
   const validationSchema = Yup.object().shape({
-    oldPassword: Yup.string().required(t(translations.pswModal.yup1)),
+    oldPassword: Yup.string().required(t(translations.yup.required.oldPassword)),
     password: Yup.string()
-      .required(t(translations.pswModal.yup2))
-      .min(8, t(translations.pswModal.yup3)),
+      .required(t(translations.yup.required.password))
+      .min(8, t(translations.yup.minLength.characters8)),
     confirmPassword: Yup.string()
-      .oneOf([Yup.ref("password"), null], t(translations.pswModal.yup4))
-      .required(t(translations.pswModal.yup5)),
+      .oneOf([Yup.ref("password"), null], t(translations.yup.password.match))
+      .required(t(translations.yup.required.confirmPassword)),
   })
   const formik = useFormik({
     initialValues: {
@@ -124,7 +124,7 @@ const PasswordModal = ({ isOpen, onClose }) => {
                 <button
                   type="submit"
                   disabled={loading}
-                  className={`flex justify-center items-center ${loading ? "bg-primary-green/60" : "bg-primary-green"} px-2 py-1 rounded-md text-white w-[150px] h-[40px]`}
+                  className={`flex justify-center items-center ${loading ? "bg-primary-green/60" : "bg-primary-green"} px-2 py-1 rounded-md text-white w-[150px] h-[45px]`}
                 >
                   {loading ? (
                     <ImSpinner9 className="animate-spin" />

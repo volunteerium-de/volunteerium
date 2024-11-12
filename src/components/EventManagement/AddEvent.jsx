@@ -6,6 +6,8 @@ import StepTwo from "./AddNewEvent/StepTwo"
 import { AddEventSchema } from "../../validators/NewEventValidator"
 import useEventCall from "../../hooks/useEventCall"
 import { useSelector } from "react-redux"
+import { t } from "i18next"
+import toastNotify from "../../utils/toastNotify"
 
 const AddEvent = ({ onClose }) => {
   const { currentUser: user } = useSelector((state) => state.auth)
@@ -80,7 +82,7 @@ const AddEvent = ({ onClose }) => {
       await postEvent(body)
       onClose()
     } catch (error) {
-      toast.error("An error occurred while posting the event. Please try again.")
+      toastNotify("error", "An error occurred while posting the event. Please try again.")
     }
   }
 
@@ -88,7 +90,7 @@ const AddEvent = ({ onClose }) => {
     <div className="max-w-4xl mx-auto p-8 bg-light-gray mt-3 dark:bg-dark-gray-3 rounded-lg shadow-md">
       <Formik
         initialValues={initialValues}
-        validationSchema={AddEventSchema}
+        validationSchema={AddEventSchema(t)}
         onSubmit={handleSubmit}
       >
         {({ setFieldValue, values, isValid }) => (

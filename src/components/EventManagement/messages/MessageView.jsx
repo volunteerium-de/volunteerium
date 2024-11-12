@@ -3,6 +3,8 @@ import { formatDateWithTime } from "../../../helpers/formatDate"
 import { UserAvatar } from "../../ui/Avatar/userAvatar"
 import { IoChevronBackOutline } from "react-icons/io5"
 import { FiMessageCircle } from "react-icons/fi"
+import { useTranslation } from "react-i18next"
+import { translations } from "../../../locales/translations"
 
 const MessageView = ({
   conversations,
@@ -12,6 +14,7 @@ const MessageView = ({
   onSendMessage,
   bottomRef,
 }) => {
+  const {t} = useTranslation()
   const selectedConversationId = conversations.find(
     (conv) => conv._id === selectedConversation?._id
   )
@@ -32,7 +35,7 @@ const MessageView = ({
           >
             <FiMessageCircle className="text-6xl opacity-70 text-dark-gray-3 dark:text-white mb-4" />
             <p className="text-lg font-semibold text-dark-gray-1 dark:text-white text-center cursor-pointer lg:cursor-default">
-              Select a conversation to start messaging
+              {t(translations.eventMng.messages.messageView.startMsg)}
             </p>
           </div>
         ) : (
@@ -80,7 +83,7 @@ const MessageView = ({
                         }`}
                       >
                         {message?.senderId?._id === currentUser._id
-                          ? "You"
+                          ? t(translations.eventMng.messages.messageView.you)
                           : selectedConversationId.displayName}
                       </p>
                     </div>

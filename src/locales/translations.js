@@ -1,5 +1,4 @@
-import Subscribe from "../components/Footer/Subscribe"
-import { conversationSuccess } from "../features/chatSlice"
+import { password } from "pg/lib/defaults";
 
 export const translations = {
   langSwitch: {
@@ -8,6 +7,7 @@ export const translations = {
   },
 
   heroSection: {
+    imgAlt: "hero.imgAlt",
     h2: "hero.h2",
     span: "hero.span",
   },
@@ -55,7 +55,6 @@ export const translations = {
   },
 
   footer: {
-    // Yeni ekleme
     information: "footer.information",
     company: "footer.company",
     aboutUs: "footer.aboutUs",
@@ -84,19 +83,6 @@ export const translations = {
   },
 
   registerForm: {
-    yup1: "registerForm.yup1",
-    yup2: "registerForm.yup2",
-    yup3: "registerForm.yup3",
-    yup4: "registerForm.yup4",
-    yup5: "registerForm.yup5",
-    yup6: "registerForm.yup6",
-    yup7: "registerForm.yup7",
-    yup8: "registerForm.yup8",
-    yup9: "registerForm.yup9",
-    yup10: "registerForm.yup10",
-    yup11: "registerForm.yup11",
-    yup12: "registerForm.yup12",
-    yup13: "registerForm.yup13",
     radioIndv: "registerForm.radioIndv",
     radioOrg: "registerForm.radioOrg",
     fullname: "registerForm.fullname",
@@ -139,15 +125,6 @@ export const translations = {
   },
 
   loginForm: {
-    yup1: "loginForm.yup1",
-    yup2: "loginForm.yup2",
-    yup3: "loginForm.yup3",
-    yup4: "loginForm.yup4",
-    yup5: "loginForm.yup5",
-    yup6: "loginForm.yup6",
-    yup7: "loginForm.yup7",
-    yup8: "loginForm.yup8",
-    yup9: "loginForm.yup9",
     email: "loginForm.email",
     emailPH: "loginForm.emailPH",
     password: "loginForm.password",
@@ -160,6 +137,42 @@ export const translations = {
     or: "loginForm.or",
     contGoogle: "loginForm.contGoogle",
   },
+
+  password: {
+    forgotPassForm: {
+      backToLogin: "password.forgotPassForm.backToLogin",
+      logoAlt:"password.forgotPassForm.logoAlt",
+      forgotPassword:"password.forgotPassForm.forgotPassword",
+      forgotDesc:"password.forgotPassForm.forgotDesc",
+      email:"password.forgotPassForm.email",
+      emailPH:"password.forgotPassForm.emailPH",
+      submit:"password.forgotPassForm.submit",
+      dontHave:"password.forgotPassForm.dontHave",
+      signUp:"password.forgotPassForm.signUp"
+    },
+    resetPassForm: {
+      backToLogin: "password.resetPassForm.backToLogin",
+      logoAlt:"password.resetPassForm.logoAlt",
+      resetPassword:"password.resetPassForm.resetPassword",
+      resetDesc:"password.resetPassForm.resetDesc",
+      newPassword:"password.resetPassForm.newPassword",
+      newPasswordPH:"password.resetPassForm.newPasswordPH",
+      confirmPassword:"password.resetPassForm.confirmPassword",
+      confirmPasswordPH:"password.resetPassForm.confirmPasswordPH",
+      reset:"password.resetPassForm.reset",
+    },
+    verificationForm:{
+      timerMsg: "password.verificationForm.timerMsg",
+      backToLogin:"password.verificationForm.backToLogin",
+      logoAlt:"password.verificationForm.logoAlt",
+      verification:"password.verificationForm.verification",
+      verifyDesc:"password.verificationForm.verificationDesc",
+      verify: "password.verificationForm.verify",
+      resend:"password.verificationForm.resend",
+
+    }
+  },
+
 
   profile: {
     memberSince: "profile.memberSince",
@@ -296,11 +309,6 @@ export const translations = {
   },
 
   pswModal: {
-    yup1: "pswModal.yup1",
-    yup2: "pswModal.yup2",
-    yup3: "pswModal.yup3",
-    yup4: "pswModal.yup4",
-    yup5: "pswModal.yup5",
     changePsw: "pswModal.changePsw",
     currPsw: "pswModal.currPsw",
     newPsw: "pswModal.newPsw",
@@ -353,10 +361,11 @@ export const translations = {
     notif: "notifMenu.notif",
     noNotif: "notifMenu.noNotif",
   },
-
+  
   userMenu: {
     user: "userMenu.user",
     profile: "userMenu.profile",
+    adminPanel: "userMenu.adminPanel",
     eventMng: "userMenu.eventMng",
     settings: "userMenu.settings",
     logout: "userMenu.logout",
@@ -484,19 +493,14 @@ export const translations = {
   },
 
   setupIndv: {
+    genderLabel1: "setupIndv.genderLabel1",
+    genderLabel2: "setupIndv.genderLabel2",
+    genderLabel3: "setupIndv.genderLabel3",
     successMsg: "setupIndv.successMsg",
     share: "setupIndv.share",
     p1: "setupIndv.p1",
     ageRange: "setupIndv.ageRange",
-    option1: "setupIndv.option1",
-    option2: "setupIndv.option2",
-    option3: "setupIndv.option3",
-    option4: "setupIndv.option4",
     gender: "setupIndv.gender",
-    option5: "setupIndv.option5",
-    option6: "setupIndv.option6",
-    option7: "setupIndv.option7",
-    option8: "setupIndv.option8",
     next: "setupIndv.next",
     choose: "setupIndv.choose",
     p2: "setupIndv.p2",
@@ -687,6 +691,22 @@ export const translations = {
     no: "eventMng.no",
     back: "eventMng.back",
     submit: "eventMng.submit",
+    messages: {
+      messageInput: {
+        messagePH1:  "eventMng.messages.messageInput.messagePH1",
+        messagePH2: "eventMng.messages.messageInput.messagePH2",
+        messagePH3: "eventMng.messages.messageInput.messagePH3",
+        messagePH4: "eventMng.messages.messageInput.messagePH4"
+      },
+      messageView:{
+        startMsg: "eventMng.messages.messageView.startMsg",
+        you: "eventMng.messages.messageView.you"
+      }
+    },
+    messagesComp: {
+      noConversations: "eventMng.messagesComp.noConversations",
+      loading: "eventMng.messagesComp.loading"
+    }
   },
 
   termsOfService: {
@@ -746,4 +766,232 @@ export const translations = {
     joining: "eventManagement.joining",
     joined: "eventManagement.joined",
   },
+
+adminPanel: {
+  backButton: "adminPanel.backButton",
+  activeUpper: "adminPanel.activeUpper",
+  active: "adminPanel.active",
+  suspendedUpper: "adminPanel.suspendedUpper",
+  suspended: "adminPanel.suspended",
+  yes: "adminPanel.yes",
+  no: "adminPanel.no",
+  cancel: "adminPanel.cancel",
+  contacts: {
+    contactPanel: {
+      title: "adminPanel.contacts.contactPanel.title"
+    },
+    contactTable: {
+      header: "adminPanel.contacts.contactTable.header"
+    },
+    singleContactPanel: {
+      contactId: "adminPanel.contacts.singleContactPanel.contactId"
+    }
+  },
+  events: {
+    eventsPanel: {
+      title: "adminPanel.events.eventsPanel.title"
+    },
+    eventsTable: {
+      eventId: "adminPanel.events.eventsTable.eventId",
+      eventIdDL: "adminPanel.events.eventsTable.eventIdDL",
+      status: "adminPanel.events.eventsTable.status",
+      statusDL: "adminPanel.events.eventsTable.statusDL",
+      completion: "adminPanel.events.eventsTable.completion",
+      completionDL: "adminPanel.events.eventsTable.completionDL",
+      completed: "adminPanel.events.eventsTable.completed",
+      waiting: "adminPanel.events.eventsTable.waiting",
+      eventTitle: "adminPanel.events.eventsTable.eventTitle",
+      eventTitleDL: "adminPanel.events.eventsTable.eventTitleDL",
+      eventCreator: "adminPanel.events.eventsTable.eventCreator",
+      eventCreatorDL: "adminPanel.events.eventsTable.eventCreatorDL",
+      attendants: "adminPanel.events.eventsTable.attendants",
+      attendantsDL: "adminPanel.events.eventsTable.attendantsDL",
+      createdAt: "adminPanel.events.eventsTable.createdAt",
+      createdAtDL: "adminPanel.events.eventsTable.createdAtDL",
+      noEvents: "adminPanel.events.eventsTable.noEvents"
+    },
+    singleEventPanel: {
+      eventId: "adminPanel.events.singleEventPanel.eventId",
+      eventDetails: "adminPanel.events.singleEventPanel.eventDetails",
+      eventPhotoAlt: "adminPanel.events.singleEventPanel.eventPhotoAlt",
+      eventName: "adminPanel.events.singleEventPanel.eventName",
+      eventDescription: "adminPanel.events.singleEventPanel.eventDescription",
+      eventCreator: "adminPanel.events.singleEventPanel.eventCreator",
+      startDate: "adminPanel.events.singleEventPanel.startDate",
+      endDate: "adminPanel.events.singleEventPanel.endDate",
+      contactName: "adminPanel.events.singleEventPanel.contactName",
+      contactEmail: "adminPanel.events.singleEventPanel.contactEmail",
+      contactPhone: "adminPanel.events.singleEventPanel.contactPhone",
+      languages: "adminPanel.events.singleEventPanel.languages",
+      interests: "adminPanel.events.singleEventPanel.interests",
+      onlineEvent: "adminPanel.events.singleEventPanel.onlineEvent",
+      eventLocation: "adminPanel.events.singleEventPanel.eventLocation",
+      documents: "adminPanel.events.singleEventPanel.documents",
+      documentId: "adminPanel.events.singleEventPanel.documentId",
+      eventParticipants: "adminPanel.events.singleEventPanel.eventParticipants",
+      participantId: "adminPanel.events.singleEventPanel.participantId",
+      participantIdDL: "adminPanel.events.singleEventPanel.participantIdDL",
+      user: "adminPanel.events.singleEventPanel.user",
+      userDL: "adminPanel.events.singleEventPanel.userDL",
+      joined: "adminPanel.events.singleEventPanel.joined",
+      pending: "adminPanel.events.singleEventPanel.pending",
+      approved: "adminPanel.events.singleEventPanel.approved",
+      rejected: "adminPanel.events.singleEventPanel.rejected",
+      notJoined: "adminPanel.events.singleEventPanel.notJoined",
+      joinDateDL: "adminPanel.events.singleEventPanel.joinDateDL",
+      suspendEvent: "adminPanel.events.singleEventPanel.suspendEvent",
+      unsuspendEvent: "adminPanel.events.singleEventPanel.unsuspendEvent",
+      status: "adminPanel.events.singleEventPanel.status",
+      statusDL: "adminPanel.events.singleEventPanel.statusDL",
+      joinDate: "adminPanel.events.singleEventPanel.joinDate",
+      noParticipantYet: "adminPanel.events.singleEventPanel.noParticipantYet",
+      deleteEvent: "adminPanel.events.singleEventPanel.deleteEvent",
+      desc: "adminPanel.events.singleEventPanel.desc"
+    }
+  },
+  feedbacks: {
+    feedbacksPanel: {
+      title: "adminPanel.feedbacks.feedbacksPanel.title"
+    },
+    feedbacksTable: {
+      header: "adminPanel.feedbacks.feedbacksTable.header"
+    },
+    singleFeedbackPanel: {
+      feedbackId: "adminPanel.feedbacks.singleFeedbackPanel.feedbackId"
+    }
+  },
+  reports: {
+    reportsPanel: {
+      title: "adminPanel.reports.reportsPanel.title"
+    },
+    reportsTable: {
+      header: "adminPanel.reports.reportsTable.header"
+    },
+    singleReportPanel: {
+      reportId: "adminPanel.reports.singleReportPanel.reportId"
+    }
+  },
+  users: {
+    singleUserPanel: {
+      userId: "adminPanel.users.singleUserPanel.userId",
+      userInformations: "adminPanel.users.singleUserPanel.userInformations",
+      fullName: "adminPanel.users.singleUserPanel.fullName",
+      orgName: "adminPanel.users.singleUserPanel.orgName",
+      userType: "adminPanel.users.singleUserPanel.userType",
+      emailAddress: "adminPanel.users.singleUserPanel.emailAddress",
+      createdAt: "adminPanel.users.singleUserPanel.createdAt",
+      lastUpdatedAt: "adminPanel.users.singleUserPanel.lastUpdatedAt",
+      userDetails: "adminPanel.users.singleUserPanel.userDetails",
+      fullNameDisplay: "adminPanel.users.singleUserPanel.fullNameDisplay",
+      profileSetup: "adminPanel.users.singleUserPanel.profileSetup",
+      emailVerified: "adminPanel.users.singleUserPanel.emailVerified",
+      languages: "adminPanel.users.singleUserPanel.languages",
+      interests: "adminPanel.users.singleUserPanel.interests",
+      address: "adminPanel.users.singleUserPanel.address",
+      documents: "adminPanel.users.singleUserPanel.documents",
+      documentId: "adminPanel.users.singleUserPanel.documentId",
+      noUserFound: "adminPanel.users.singleUserPanel.noUserFound",
+      deleteUser: "adminPanel.users.singleUserPanel.deleteUser",
+      deleteDescription: "adminPanel.users.singleUserPanel.deleteDescription"
+    },
+    usersPanel: {
+      title: "adminPanel.users.usersPanel.title"
+    },
+    usersTable: {
+      userId: "adminPanel.users.usersTable.userId",
+      userIdDL: "adminPanel.users.usersTable.userIdDL",
+      status: "adminPanel.users.usersTable.status",
+      statusDL: "adminPanel.users.usersTable.statusDL",
+      userType: "adminPanel.users.usersTable.userType",
+      userTypeDL: "adminPanel.users.usersTable.userTypeDL",
+      nameOrg: "adminPanel.users.usersTable.nameOrg",
+      nameOrgDL: "adminPanel.users.usersTable.nameOrgDL",
+      email: "adminPanel.users.usersTable.email",
+      emailDL: "adminPanel.users.usersTable.emailDL",
+      nameDL: "adminPanel.users.usersTable.nameDL",
+      createdAt: "adminPanel.users.usersTable.createdAt",
+      createdAtDL: "adminPanel.users.usersTable.createdAtDL",
+      noUsersFound: "adminPanel.users.usersTable.noUsersFound"
+    }
+  }
+},
+  adminPanelPage: {
+    eventLabel: "adminPanelPage.eventLabel",
+    userLabel: "adminPanelPage.userLabel",
+    contactLabel: "adminPanelPage.contactLabel",
+    feedbackLabel: "adminPanelPage.feedbackLabel",
+    reportLabel: "adminPanelPage.reportLabel"
+  },
+
+  yup: {
+    required: {
+      userType: "yup.required.userType",
+      name: "yup.required.name",
+      fullName: "yup.required.fullName",
+      email: "yup.required.email",
+      password: "yup.required.password",
+      subject: "yup.required.subject",
+      message: "yup.required.message",
+      organizationName: "yup.required.organizationName",
+      streetName: "yup.required.streetName",
+      streetNumber: "yup.required.streetNumber",
+      zipCode: "yup.required.zipCode",
+      city: "yup.required.city",
+      country: "yup.required.country",
+      oldPassword: "yup.required.oldPassword",
+      confirmPassword: "yup.required.confirmPassword",
+      reason:"yup.required.reason",
+      eventName: "yup.required.eventname",
+      date:"yup.required.date",
+      startTime:"yup.required.startTime",
+      endTime:"yup.required.endTime",
+      endShouldLater:"yup.required.endShouldLater",
+      streetNameOnline:"yup.required.streetNameOnline",
+      category:"yup.required.category",
+      participants:"yup.required.participants",
+      description:"yup.required.description",
+      newDate:"yup.required.newDate",
+      onlyNumbers: "yup.required.onlyNumbers",
+      onlyLetters: "yup.required.onlyLetters",
+      interestId: "yup.required.interestId",
+      logo: "yup.required.logo",
+      addressId: "yup.required.addressId"
+    },
+    minLength: {
+      select1: "yup.minLength.select1",
+      phoneNumber: "yup.minLength.phoneNumber",
+      totalPoint: "yup.minLength.totalPoint",
+      characters1: "yup.minLength.characters1",
+      characters3: "yup.minLength.characters3",
+      characters8: "yup.minLength.characters8",
+      characters10: "yup.minLength.characters10"
+    },
+    maxLength: {
+      select3: "yup.maxLength.select3",
+      characters8: "yup.maxLength.characters8",
+      characters30: "yup.maxLength.characters30",
+      characters50: "yup.maxLength.characters50",
+      characters100: "yup.maxLength.characters100",
+      characters250Bio: "yup.maxLength.characters250Bio",
+      characters250: "yup.maxLength.characters250",
+      characters1000: "yup.maxLength.characters1000"
+    },
+    password: {
+      containsDigit: "yup.password.containsDigit",
+      containsLowercase: "yup.password.containsLowercase",
+      containsUppercase: "yup.password.containsUppercase",
+      containsSpecialCharacter: "yup.password.containsSpecialCharacter",
+      match: "yup.password.match"
+    },
+    invalid: {
+      email: "yup.invalid.email",
+      url: "yup.invalid.url"
+    },
+    oneOf:{
+      gender: "yup.oneOf.gender",
+      ageRange: "yup.oneOf.ageRange",
+      language: "yup.oneOf.language"
+    }
+  }
+
 }

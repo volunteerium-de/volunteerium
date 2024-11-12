@@ -19,17 +19,17 @@ import { translations } from "../locales/translations"
 
 const OrganizationSchema = Yup.object({
   organizationLogo: UserDetailSchema.fields.organizationLogo,
-  organizationDesc: UserDetailSchema.fields.organizationDesc,
-  organizationUrl: UserDetailSchema.fields.organizationUrl,
-  streetName: UserDetailSchema.fields.streetName,
-  streetNumber: UserDetailSchema.fields.streetNumber,
-  zipCode: UserDetailSchema.fields.zipCode,
-  city: UserDetailSchema.fields.city,
-  country: UserDetailSchema.fields.country,
+  organizationDesc: UserDetailSchema.organizationDesc,
+  organizationUrl: UserDetailSchema.organizationUrl,
+  streetName: UserDetailSchema.streetName,
+  streetNumber: UserDetailSchema.streetNumber,
+  zipCode: UserDetailSchema.zipCode,
+  city: UserDetailSchema.city,
+  country: UserDetailSchema.country,
 })
 
 const SetupOrganization = () => {
-  const { t } = useTranslation()
+
   const { currentUser: user } = useSelector((state) => state.auth)
   const [step, setStep] = useState(1)
   const { updateUserDetails } = useAccountCall()
@@ -38,6 +38,7 @@ const SetupOrganization = () => {
   const [logoPreview, setLogoPreview] = useState(null) // For logo preview
   const navigate = useNavigate()
   const location = useLocation()
+  const {t} = useTranslation()
 
   // Toggle between steps
   const handleNext = () => {

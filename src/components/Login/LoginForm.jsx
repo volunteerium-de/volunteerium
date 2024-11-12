@@ -14,19 +14,21 @@ import { useSelector } from "react-redux"
 const LoginForm = () => {
   const { t } = useTranslation()
 
-  const validationSchema = Yup.object({
-    email: Yup.string()
-      .email(t(translations.loginForm.yup1))
-      .required(t(translations.loginForm.yup2)),
-    password: Yup.string()
-      .min(6, t(translations.loginForm.yup3))
-      .max(30, t(translations.loginForm.yup4))
-      .matches(/\d+/, t(translations.loginForm.yup5))
-      .matches(/[a-z]/, t(translations.loginForm.yup6))
-      .matches(/[A-Z]/, t(translations.loginForm.yup7))
-      .matches(/[@$?!%&*]+/, t(translations.loginForm.yup8))
-      .required(t(translations.loginForm.yup9)),
-  })
+const validationSchema = Yup.object({
+  email: Yup
+  .string()
+  .matches(/^[^\s@]+@[^\s@]+\.[^\s@]+$/, t(translations.yup.invalid.email))
+  .required(t(translations.yup.required.email)),
+  password: Yup.string()
+    .min(8, t(translations.yup.minLength.characters8))
+    .max(30, t(translations.yup.maxLength.characters30))
+    .matches(/\d+/, t(translations.yup.password.containsDigit))
+    .matches(/[a-z]/, t(translations.yup.password.containsLowercase))
+    .matches(/[A-Z]/, t(translations.yup.password.containsUppercase))
+    .matches(/[@$?!%&*]+/, t(translations.yup.password.containsSpecialCharacter))
+    .required(t(translations.yup.required.password)),
+})
+
 
   const [showPassword, setShowPassword] = useState(false)
   const passwordTimeoutRef = useRef(null)
