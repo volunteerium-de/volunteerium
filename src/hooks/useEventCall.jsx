@@ -10,11 +10,13 @@ import {
   participationFail,
   participationStart,
 } from "../features/eventSlice"
+import { useNavigate } from "react-router-dom"
 
 const useEventCall = () => {
   const { axiosWithToken, axiosWithBearer } = useAxios()
   const { currentUser: user } = useSelector((state) => state.auth)
   const dispatch = useDispatch()
+  const navigate = useNavigate()
 
   const getEvents = async (url) => {
     try {
@@ -37,6 +39,7 @@ const useEventCall = () => {
     } catch (error) {
       console.log(error.response.data.message)
       dispatch(fetchEventFail())
+      navigate("/not-found")
     }
   }
 

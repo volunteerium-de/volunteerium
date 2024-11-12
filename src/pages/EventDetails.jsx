@@ -30,11 +30,7 @@ const EventDetails = () => {
   useEffect(() => {
     if (!singleEvent || singleEvent._id !== eventId) {
       const fetchSingleEvent = async () => {
-        try {
-          await getSingleEvent(eventId)
-        } catch (error) {
-          navigate("/not-found")
-        }
+        await getSingleEvent(eventId)
       }
       fetchSingleEvent()
     }
