@@ -38,7 +38,7 @@ const ParticipantRequestsModal = ({ onClose, event, refetch }) => {
           className="bg-white dark:bg-dark-gray-3 p-4 rounded-lg max-w-[30rem] w-full space-y-4"
         >
           <div className="flex justify-end" onClick={onClose}>
-            <FaX className="text-dark-gray-3" />
+            <FaX className="text-dark-gray-3 dark:text-white" />
           </div>
 
           <ParticipantRequestList

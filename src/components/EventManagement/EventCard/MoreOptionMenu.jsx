@@ -33,14 +33,14 @@ const MoreOptionsMenu = ({ isOrganized, eventId, refetch, event }) => {
       <div className="gap-3 hidden sm:flex">
         {isOrganized && (
           <>
-            <button className="flex md:text-[0.8rem] text-[0.6rem] px-3 sm:py-1 py-2 items-center rounded-lg border border-primary-green text-primary-green">
+            <button className="flex md:text-[0.8rem] text-[0.6rem] px-3 sm:py-1 py-2 items-center rounded-lg border border-primary-green text-primary-green dark:text-light-green dark:border-light-greens hover:text-white hover:bg-primary-green hover:border-white">
               <FaEdit className="mr-1" />
               {t(translations.eventManagement.editButton)}
             </button>
 
             <button
               onClick={handleDelete}
-              className="flex md:text-[0.8rem] text-[0.6rem] px-1 sm:py-1 py-2 items-center border border-danger dark:text-red-100 dark:border-red-100 rounded-lg text-danger"
+              className="flex md:text-[0.8rem] text-[0.6rem] px-1 sm:py-1 py-2 items-center border  border-danger dark:text-red-100 dark:border-red-100 rounded-lg text-danger hover:text-white hover:bg-danger hover:border-white"
             >
               <FaX className="mr-1 text-[0.6rem]" />
               {t(translations.eventManagement.deleteButton)}
@@ -50,7 +50,7 @@ const MoreOptionsMenu = ({ isOrganized, eventId, refetch, event }) => {
         {!isOrganized && (
           <button
             onClick={handleLeaveEvent}
-            className="flex md:text-[0.8rem] text-[0.6rem] px-1 sm:py-1 py-2 items-center border dark:text-red-100 dark:border-red-100 border-danger rounded-lg text-danger"
+            className="flex md:text-[0.8rem] text-[0.6rem] px-1 sm:py-1 py-2 items-center border dark:text-red-100 dark:border-red-100 border-danger rounded-lg text-danger hover:text-white hover:bg-danger hover:border-white"
           >
             <FaX className="mr-1 text-[0.6rem]" />
             {t(translations.eventManagement.leaveEventButton)}

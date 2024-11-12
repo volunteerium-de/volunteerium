@@ -26,13 +26,9 @@ const EventManagementCard = ({ eventId: event, isOrganized = false, openModal, r
   const approvedParticipants = event.eventParticipantIds.filter(
     (participant) => participant.isApproved === true
   )
-  const joinedParticipantsCount = event?.eventParticipantIds.filter(
-    (participant) => participant.joinStatus === "joined"
-  ).length
-
-  // const isCurrentUserApproved = event?.eventParticipantIds.find(
-  //   (participant) => participant.userId._id === user._id
-  // ).isApproved
+  const isCurrentUserApproved = event?.eventParticipantIds.find(
+    (participant) => participant.userId._id === user._id
+  )?.isApproved
 
   return (
     <div>
@@ -56,7 +52,7 @@ const EventManagementCard = ({ eventId: event, isOrganized = false, openModal, r
             <div className="flex w-full justify-between">
               <h2 className="text-[1.2rem] font-semibold text-dark-gray-1 dark:text-white cursor-pointer">
                 {event?.title}
-                {!event?.isDone && !isOrganized && (
+                {!event?.isDone && !isOrganized && isCurrentUserApproved === false && (
                   <span className="text-yellow-500 text-[0.8rem] p-2 mb-12">(Pending)</span>
                 )}
               </h2>
@@ -142,7 +138,7 @@ const EventManagementCard = ({ eventId: event, isOrganized = false, openModal, r
                   <div className="flex gap-2">
                     <HiOutlineUserGroup className="text-[1.1rem] text-primary-green dark:text-light-gray" />
                     <div className="flex gap-1 text-[0.66rem] sm:text-[0.9rem] font-medium text-gray-2 dark:text-white ">
-                      {joinedParticipantsCount}
+                      {approvedParticipants.length ?? 0}
                       <p>
                         {t(translations.eventManagement.volunteer)}{" "}
                         {event.isDone

@@ -12,7 +12,7 @@ const ParticipantRequestList = ({ title, event, participants, refetch }) => {
       {participants.map((user, index) => (
         <div
           key={index}
-          className="flex items-center w-full justify-between bg-light-gray rounded-md py-2 px-2"
+          className="flex items-center w-full justify-between bg-light-gray dark:bg-dark-gray-1  rounded-md py-2 px-2"
         >
           <ParticipantRequestItem user={user} event={event} key={index} refetch={refetch} />
         </div>
@@ -20,7 +20,7 @@ const ParticipantRequestList = ({ title, event, participants, refetch }) => {
 
       {participants.length === 0 && (
         <div
-          className="px-3 py-2 text-sm text-blue-400 rounded-lg bg-blue-50 dark:bg-gray-800 dark:text-blue-400"
+          className="px-3 py-2 text-sm text-blue-400 dark:text-blue-200 rounded-lg bg-light-gray dark:bg-dark-gray-2"
           role="alert"
         >
           <span className="font-medium">

@@ -22,7 +22,6 @@ const AttendingEvents = () => {
       setLoading(true)
       try {
         const eventsResponse = await getEvents(`events/participant/${user._id}`)
-
         setEvents(eventsResponse.data)
         console.log("events", eventsResponse)
       } catch (error) {
