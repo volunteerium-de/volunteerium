@@ -26,6 +26,7 @@ import PrivacyPolicy from "../pages/PrivacyPolicy"
 import AdminPanel from "../pages/AdminPanel"
 import { useParams } from "react-router-dom"
 import TermsOfService from "../pages/TermsOfService"
+import Unsubscription from "../pages/Unsubscription"
 
 const AppRouter = () => {
   const { currentUser: user } = useSelector((state) => state.auth)
@@ -42,6 +43,7 @@ const AppRouter = () => {
         <Route path="events" element={<EventListing />} />
         <Route path="events/:eventId" element={<EventDetails />} />
         <Route path="password" element={<Password />} />
+        <Route path="unsubscribe" element={<Unsubscription />} />
         <Route path="auth/success" element={<GoogleAuthSuccess />} />
         {/* Private Routers */}
         <Route element={<PrivateRouter />}>
