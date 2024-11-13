@@ -9,7 +9,6 @@ import useAccountCall from "../../hooks/useAccountCall"
 import { FaExternalLinkAlt } from "react-icons/fa"
 import toastNotify from "../../utils/toastNotify"
 
-
 const OrganisationSettingsForm = () => {
   const { t } = useTranslation()
   const { currentUser } = useSelector((state) => state.auth)
@@ -18,16 +17,16 @@ const OrganisationSettingsForm = () => {
   const { updateUserDetails } = useAccountCall()
 
   // Validation Schema
-const OrganisationSchema = Yup.object().shape({
-  organizationName: Yup.string().required(t(translations.yup.required.organizationName)),
-  // organizationUrl: Yup.string().url("Please enter a valid URL"),
-  streetName: Yup.string().required(t(translations.yup.required.streetName)),
-  streetNumber: Yup.string().required(t(translations.yup.required.streetNumber)),
-  zipCode: Yup.string().required(t(translations.yup.required.zipCode)),
-  city: Yup.string().required(t(translations.yup.required.city)),
-  country: Yup.string().required(t(translations.yup.required.country)),
-  organizationDesc: Yup.string().max(250, t(translations.yup.maxLength.characters250)),
-})
+  const OrganisationSchema = Yup.object().shape({
+    organizationName: Yup.string().required(t(translations.yup.required.organizationName)),
+    // organizationUrl: Yup.string().url("Please enter a valid URL"),
+    streetName: Yup.string().required(t(translations.yup.required.streetName)),
+    streetNumber: Yup.string().required(t(translations.yup.required.streetNumber)),
+    zipCode: Yup.string().required(t(translations.yup.required.zipCode)),
+    city: Yup.string().required(t(translations.yup.required.city)),
+    country: Yup.string().required(t(translations.yup.required.country)),
+    organizationDesc: Yup.string().max(250, t(translations.yup.maxLength.characters250)),
+  })
 
   const { userDetailsId } = currentUser
   const defaultUserDetails = {
@@ -164,7 +163,7 @@ const OrganisationSchema = Yup.object().shape({
                   id="organizationDesc"
                   name="organizationDesc"
                   placeholder={t(translations.orgSettings.label8PH)}
-                  className="w-full h-[100px] p-2 border border-gray-1 rounded focus:outline-none focus:border-primary-green"
+                  className="w-full h-[100px] p-2 border border-gray-1 rounded focus:outline-none focus:border-primary-green resize-none"
                 />
                 <ErrorMessage
                   name="organizationDesc"

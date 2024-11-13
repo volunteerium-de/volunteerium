@@ -124,17 +124,17 @@ const EventCardHorizontal = ({ event }) => {
                 ))}
               </div>
               {/* Event Button */}
-              <div className="text-end">
-                <button
-                  className="font-medium text-white text-[0.7rem] text-center bg-primary-green px-4 py-1 rounded"
-                  onClick={handleNavigate}
-                >
-                  {t(translations.eventsPage.more)}
-                </button>
-              </div>
             </div>
           </div>
         </div>
+      </div>
+      <div className="text-end mt-auto pb-2 pr-2">
+        <button
+          className="font-medium text-white text-[0.7rem] text-center bg-primary-green px-4 py-1 rounded "
+          onClick={handleNavigate}
+        >
+          {t(translations.eventsPage.more)}
+        </button>
       </div>
     </Link>
   )

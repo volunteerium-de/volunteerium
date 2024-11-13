@@ -234,7 +234,7 @@ const EventsListingPage = () => {
           </div>
         </div>
       </div>
-      <OnlineOpportinuties/>
+      <OnlineOpportinuties />
       <Footer />
     </div>
   )
