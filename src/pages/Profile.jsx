@@ -150,7 +150,7 @@ const Profile = () => {
     },
     {
       icon: <BsGenderAmbiguous />,
-      description: gender,
+      description: gender?.charAt(0).toUpperCase() + gender?.slice(1).toLowerCase(),
     },
     {
       icon: <MdLanguage />,
@@ -195,21 +195,23 @@ const Profile = () => {
                     : organizationName}
                 </h1>
                 <div className="flex">
-                  {medalInfo?.medal && (
-                    <h5 className={`italic font-semibold flex gap-1 mt-1 ${medalInfo.textClass}`}>
-                      {medalInfo.medal} {medalInfo.icon}
-                    </h5>
-                  )}
-                  <div className="relative inline-block group">
-                    <IoInformationCircleOutline className="absolute left-2 opacity-50 cursor-pointer group-hover:opacity-100" />
-                    <div className="absolute mb-2 top-7 -left-14 sm:-left-10 w-[281px] h-[140px] rounded-md bg-light-gray-2 text-white text-sm px-3 py-2 opacity-0 translate-y-4 transition-all duration-500 ease-in-out group-hover:opacity-100 group-hover:translate-y-0 font-semibold pointer-events-none group-hover:pointer-events-auto dark:bg-dark-gray-2 dark:text-dark-gray-2">
-                      {medalInfoText.map((item, i) => (
-                        <p key={i} className={item.className}>
-                          {item.label}
-                        </p>
-                      ))}
+                  {userType === "individual" && medalInfo?.medal && (
+                    <div className="flex">
+                      <h5 className={`italic font-semibold flex gap-1 mt-1 ${medalInfo.textClass}`}>
+                        {medalInfo.medal} {medalInfo.icon}
+                      </h5>
+                      <div className="relative inline-block group">
+                        <IoInformationCircleOutline className="absolute left-2 opacity-50 cursor-pointer group-hover:opacity-100" />
+                        <div className="absolute mb-2 top-7 -left-14 sm:-left-10 w-[281px] h-[140px] rounded-md bg-light-gray-2 text-white text-sm px-3 py-2 opacity-0 translate-y-4 transition-all duration-500 ease-in-out group-hover:opacity-100 group-hover:translate-y-0 font-semibold pointer-events-none group-hover:pointer-events-auto dark:bg-dark-gray-2 dark:text-dark-gray-2">
+                          {medalInfoText.map((item, i) => (
+                            <p key={i} className={item.className}>
+                              {item.label}
+                            </p>
+                          ))}
+                        </div>
+                      </div>
                     </div>
-                  </div>
+                  )}
                 </div>
                 {/* Info */}
                 <div className="pt-2 sm:mt-4">

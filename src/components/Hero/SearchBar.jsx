@@ -52,7 +52,7 @@ const SearchBar = () => {
   ]
 
   const handleCategorySelect = (category) => {
-    dispatch(setHomeSelectedCategory(category.name))
+    dispatch(setHomeSelectedCategory(getTranslatedCategory(category.name)))
     dispatch(setCategoryFilters([category.name]))
     setIsDropdownOpen(false)
   }
