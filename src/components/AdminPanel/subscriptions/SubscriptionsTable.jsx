@@ -1,7 +1,39 @@
 import React from "react"
+import { useState } from "react"
 import { ImSpinner9 } from "react-icons/im"
+import DeleteModal from "../../ui/Modals/DeleteModal"
+import useAccountCall from "../../../hooks/useAccountCall"
+import toastNotify from "../../../utils/toastNotify"
 
-const SubscriptionsTable = ({ data, loading }) => {
+const SubscriptionsTable = ({ data, loading, refreshData }) => {
+  const [isOpenDeleteModal, setIsOpenDeleteModal] = useState(false)
+  const { unsubscribe } = useAccountCall()
+  const [subscriptionId, setSubscriptionId] = useState(null)
+
+  const handleClickUnsubscription = (id) => {
+    setIsOpenDeleteModal(true)
+    setSubscriptionId(id)
+  }
+
+  const closeDeleteModal = () => {
+    setIsOpenDeleteModal(false)
+  }
+
+  const handleUnsubscribe = async () => {
+    if (subscriptionId) {
+      try {
+        await unsubscribe(subscriptionId)
+        refreshData()
+      } catch (error) {
+        console.error(error)
+      } finally {
+        setIsOpenDeleteModal(false)
+      }
+    } else {
+      toastNotify("error", "Failed to unsubscribe. Please try again later.")
+    }
+  }
+
   return (
     <>
       {loading ? (
@@ -22,7 +54,8 @@ const SubscriptionsTable = ({ data, loading }) => {
               {data.map((subscription) => (
                 <tr
                   key={subscription?._id}
-                  className="border-b border-light-gray dark:border-dark-gray-1  text-sm"
+                  onClick={() => handleClickUnsubscription(subscription?._id)}
+                  className="border-b border-light-gray dark:border-dark-gray-1 text-sm cursor-pointer hover:bg-light-gray-2 dark:hover:bg-dark-gray-2"
                 >
                   <td
                     className="td text-left whitespace-nowrap 2xl:max-w-[140px] overflow-x-scroll scrollbar-hide"
@@ -43,6 +76,15 @@ const SubscriptionsTable = ({ data, loading }) => {
         </div>
       ) : (
         <div>No subscription found</div>
+      )}
+      {/* Delete Modal */}
+      {isOpenDeleteModal && (
+        <DeleteModal
+          onClose={closeDeleteModal}
+          onDelete={handleUnsubscribe}
+          title={`Delete Subscription`}
+          description={`Are you sure you want to delete this subscription?`}
+        />
       )}
     </>
   )
