@@ -11,6 +11,7 @@ import { formatName } from "../../../helpers/formatName"
 import { useNavigate } from "react-router-dom"
 import { useTranslation } from "react-i18next"
 import { translations } from "../../../locales/translations"
+import { validateLocation } from "../../../utils/functions"
 
 const EventCardHorizontal = ({ event }) => {
   const { t } = useTranslation()
@@ -21,17 +22,19 @@ const EventCardHorizontal = ({ event }) => {
   const areDatesSame = startDate === endDate
 
   const handleProfileNavigate = () => {
-    navigate(`/profile/${event.createdBy._id}`)
+    navigate(`/profile/${event.createdBy?._id}`)
   }
 
   const handleNavigate = () => {
     navigate(`/events/${event._id}`)
   }
 
+  const locationText = validateLocation(event)
+
   return (
-    <Link
-      to={`${event._id}`}
-      className="shadow-[0_1px_1px_rgba(0,0,0,.25)] mb-2  flex justify-center items-center gap-5 dark:bg-dark-gray-3 rounded-lg "
+    <div
+      key={event._id}
+      className="shadow-[0_1px_1px_rgba(0,0,0,.25)] mb-2  flex justify-center items-center gap-5 dark:bg-dark-gray-1 rounded-lg "
     >
       {/* Event Image */}
       <div className="w-full max-w-[250px] h-[200px] flex justify-center items-center overflow-hidden rounded-l-lg ">
@@ -42,8 +45,13 @@ const EventCardHorizontal = ({ event }) => {
         />
       </div>
       {/* Event Content */}
-      <div className="p-2 flex flex-col justify-between w-full gap-1 ">
-        <h2 className="text-black dark:text-white font-semibold text-[1rem] mb-3">{event.title}</h2>
+      <div className="p-2 flex flex-col justify-between w-full gap-1">
+        <h2
+          className="text-black dark:text-white font-semibold text-[1rem] mb-3 cursor-pointer"
+          onClick={handleNavigate}
+        >
+          {event.title}
+        </h2>
         <p className="text-dark-gray-1 dark:text-white text-[0.8125rem] mb-[10px]">
           {event.description.split(" ").slice(0, 10).join(" ")}
           {event.description.split(" ").length > 10 ? "..." : ""}
@@ -52,20 +60,19 @@ const EventCardHorizontal = ({ event }) => {
         <div>
           {/* Organizer Information */}
           {event.createdBy && event.createdBy.userDetailsId && (
-            <div
-              className="flex gap-x-1 items-center mb-[7px] py-1 cursor-pointer"
-              onClick={handleProfileNavigate}
-            >
-              <UserAvatar user={event.createdBy} size="w-6 h-6" backgroundActive={true} />
-              <p className="text-gray-2 dark:text-white text-[0.7rem]">
-                {event.createdBy.userType === "individual"
-                  ? formatName(
-                      event.createdBy.fullName,
-                      event.createdBy.userDetailsId.isFullNameDisplay
-                    )
-                  : event.createdBy.organizationName}
-              </p>
-            </div>
+            <Link to={`/profile/${event.createdBy?._id}`} className="flex items-center">
+              <div className="flex gap-x-1 items-center mb-[7px] py-1 cursor-pointer ">
+                <UserAvatar user={event.createdBy} size="w-6 h-6" backgroundActive={true} />
+                <p className="text-gray-2 dark:text-white text-[0.7rem]">
+                  {event.createdBy.userType === "individual"
+                    ? formatName(
+                        event.createdBy.fullName,
+                        event.createdBy.userDetailsId.isFullNameDisplay
+                      )
+                    : event.createdBy.organizationName}
+                </p>
+              </div>
+            </Link>
           )}
 
           <div>
@@ -79,17 +86,13 @@ const EventCardHorizontal = ({ event }) => {
                     : `${formatDateWithTime(event.startDate)} - ${formatDateWithTime(event.endDate)}`}
                 </p>
               </div>
-
               {/* Event Location */}
-              {event.addressId && (
-                <div className="flex items-center">
-                  <IoLocation className="text-primary-green" />
-                  <p className="text-gray-2 dark:text-white text-[0.7rem] p-0.5">
-                    {event.addressId.city}, {event.addressId.country}
-                  </p>
-                  {!areDatesSame && <RxDividerVertical className="text-gray-2" />}
-                </div>
-              )}
+
+              <div className="flex items-center">
+                <IoLocation className="text-primary-green" />
+                <p className="text-gray-2 dark:text-white text-[0.7rem] p-0.5">{locationText}</p>
+                {!areDatesSame && <RxDividerVertical className="text-gray-2" />}
+              </div>
 
               {/* Max Participants */}
               <div className="flex items-center">
@@ -136,7 +139,7 @@ const EventCardHorizontal = ({ event }) => {
           {t(translations.eventsPage.more)}
         </button>
       </div>
-    </Link>
+    </div>
   )
 }
 

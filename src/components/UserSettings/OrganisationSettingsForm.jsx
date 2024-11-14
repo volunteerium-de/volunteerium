@@ -18,7 +18,7 @@ const OrganisationSettingsForm = () => {
 
   // Validation Schema
   const OrganisationSchema = Yup.object().shape({
-    organizationName: Yup.string().required(t(translations.yup.required.organizationName)),
+    // organizationName: Yup.string().required(t(translations.yup.required.organizationName)),
     // organizationUrl: Yup.string().url("Please enter a valid URL"),
     streetName: Yup.string().required(t(translations.yup.required.streetName)),
     streetNumber: Yup.string().required(t(translations.yup.required.streetNumber)),
@@ -30,7 +30,7 @@ const OrganisationSettingsForm = () => {
 
   const { userDetailsId } = currentUser
   const defaultUserDetails = {
-    organizationName: currentUser.organizationName || "",
+    // organizationName: currentUser.organizationName || "",
     organizationUrl: userDetailsId.organizationUrl || "",
     streetName: userDetailsId.addressId?.streetName || "",
     streetNumber: userDetailsId.addressId?.streetNumber || "",
@@ -46,12 +46,12 @@ const OrganisationSettingsForm = () => {
   }, [currentUser])
 
   const fields = [
-    {
-      name: "organizationName",
-      label: t(translations.orgSettings.label1),
-      placeholder: t(translations.orgSettings.label1PH),
-      type: "text",
-    },
+    // {
+    //   name: "organizationName",
+    //   label: t(translations.orgSettings.label1),
+    //   placeholder: t(translations.orgSettings.label1PH),
+    //   type: "text",
+    // },
     {
       name: "organizationUrl",
       label: t(translations.orgSettings.label2),

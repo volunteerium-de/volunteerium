@@ -9,58 +9,63 @@ import { UserAvatar } from "../Avatar/userAvatar"
 import { Link, useNavigate } from "react-router-dom"
 import { useTranslation } from "react-i18next"
 import { translations } from "../../../locales/translations"
+import { validateLocation } from "../../../utils/functions"
 
 const EventCardVertical = ({ event }) => {
-  const {t} = useTranslation()
+  const { t } = useTranslation()
   const { currentUser: user } = useSelector((state) => state.auth)
   const navigate = useNavigate()
   const { getLangName, getTranslatedCategory } = useLanguageOptions()
 
   const startDate = new Date(event.startDate).toLocaleDateString()
 
+  const handleNavigate = () => {
+    navigate(`/events/${event._id}`)
+  }
+
+  const locationText = validateLocation(event)
+
   return (
     <div
       key={event._id}
-      className="flex flex-col justify-between rounded max-w-[200px] sm:max-w-[330px] shadow-[0_1px_1px_rgba(0,0,0,.25)] overflow-x-hidden shrink-0 mb-2 dark:bg-dark-gray-3"
+      className="flex flex-col justify-between rounded max-w-[200px] sm:max-w-[330px] min-w-[330px] shadow-[0_1px_1px_rgba(0,0,0,.25)] overflow-x-hidden shrink-0 mb-2 dark:bg-dark-gray-3"
     >
       {/* Event Image */}
       <div>
         <img
           src={event?.eventPhoto || defaulEventPhoto}
-          alt= {t(translations.eventCardVer.imgAlt)}
+          alt={t(translations.eventCardVer.imgAlt)}
           className="rounded-t-sm object-cover w-full h-[200px]"
         />
       </div>
       {/* Event Content */}
       <div className="p-2 h-full">
-        <h2 
-        className="text-dark-gray-1 dark:text-white font-bold text-[0.9375rem] ">
+        <h2
+          className="text-dark-gray-1 dark:text-white font-bold text-[0.9375rem] cursor-pointer "
+          onClick={handleNavigate}
+        >
           {event.title}
         </h2>
-        <p className="text-dark-gray-1 dark:text-light-gray-2 text-[0.75rem] mb-[10px] h-[3rem]"
-        >
+        <p className="text-dark-gray-1 dark:text-light-gray-2 text-[0.75rem] mb-[10px] h-[3rem]">
           {event.description.split(" ").slice(0, 10).join(" ")}
           {event.description.split(" ").length > 10 ? "..." : ""}
         </p>
         {/* Details */}
-        
+
         <div>
           {/* User */}
-          <Link
-                to={`/profile/${event?.createdBy?._id}`}
-                className="flex items-center"
-              >
-          <div className="flex gap-x-3 items-center mb-[10px] ">
-            <UserAvatar user={event.createdBy} size="h-6 w-6" backgroundActive={true} />
-            <p className="text-primary-green">
-              {event.createdBy?.userType === "individual"
-                ? formatName(
-                    event.createdBy?.fullName,
-                    event.createdBy?.userDetailsId?.isFullNameDisplay
-                  )
-                : event.createdBy?.organizationName}
-            </p>
-          </div>
+          <Link to={`/profile/${event.createdBy?._id}`} className="flex items-center">
+            <div className="flex gap-x-3 items-center mb-[10px] ">
+              <UserAvatar user={event.createdBy} size="h-6 w-6" backgroundActive={true} />
+              <p className="text-primary-green">
+                {event.createdBy?.userType === "individual"
+                  ? formatName(
+                      event.createdBy?.fullName,
+                      event.createdBy?.userDetailsId?.isFullNameDisplay
+                    )
+                  : event.createdBy?.organizationName}
+              </p>
+            </div>
           </Link>
 
           {/* Event Details */}
@@ -71,17 +76,12 @@ const EventCardVertical = ({ event }) => {
                 {formatDate(event.startDate)}
               </p>
             </div>
+            {/* Event Location */}
 
-            {event.addressId && (
-              <div className="flex gap-x-[8px] items-center mb-[1px]">
-                <IoLocation className="text-primary-green" />
-                <p className="text-gray-2 dark:text-light-gray-2 text-sm p-0.5">
-                  {event.isOnline
-                    ? "Online"
-                    : `${event.addressId?.city}, ${event.addressId?.country}`}
-                </p>
-              </div>
-            )}
+            <div className="flex gap-x-[8px] items-center mb-[1px]">
+              <IoLocation className="text-primary-green" />
+              <p className="text-gray-2 dark:text-light-gray-2 text-sm p-0.5">{locationText}</p>
+            </div>
 
             <div className="flex gap-x-[8px] items-center  mb-[1px]">
               <IoPeople className="text-primary-green" />
@@ -120,17 +120,18 @@ const EventCardVertical = ({ event }) => {
         {/* Event Button */}
         <div className="flex flex-row p-2 justify-end">
           <button
-             onClick={() => {
-      const currentPath = window.location.pathname;
-      const newPath = currentPath.includes("/events") && !currentPath.endsWith("/events")
-        ? `/${event._id}`
-        : `/events/${event._id}`;
-      navigate(newPath);
-    }}
-              className="font-medium text-white text-[0.9rem] text-center bg-primary-green px-3 py-1 rounded"
-            >
-              {t(translations.eventCardVer.more)}
-            </button>
+            onClick={() => {
+              const currentPath = window.location.pathname
+              const newPath =
+                currentPath.includes("/events") && !currentPath.endsWith("/events")
+                  ? `/${event._id}`
+                  : `/events/${event._id}`
+              navigate(newPath)
+            }}
+            className="font-medium text-white text-[0.9rem] text-center bg-primary-green px-3 py-1 rounded"
+          >
+            {t(translations.eventCardVer.more)}
+          </button>
         </div>
       </div>
     </div>

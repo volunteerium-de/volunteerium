@@ -82,7 +82,7 @@ const UpcomingOpportunities = () => {
       <div className="max-w-[1840px] mx-auto w-[80%] sm:w-[90%] pb-8 font-poppins dark:text-white dark:black rounded-lg">
         {/* Header */}
         <div className="flex justify-between flex-wrap mb-[5px]">
-          <h2 className="text-[1.5rem] font-semibold text-dark-gray-1 dark:text-white py-3">
+          <h2 className="text-[1.5rem] font-semibold text-dark-gray-1 dark:text-primary-green py-3">
             {t(translations.upcomingOpp.title)}
           </h2>
           <Link
