@@ -181,7 +181,7 @@ const Profile = () => {
                 {_id === currentUser?._id && (
                   <button
                     onClick={() => navigate("/settings")}
-                    className="w-auto px-2 h-8 sm:h-[30px] text-[0.9375rem] rounded-md bg-primary-green text-white mt-4 sm:mt-8"
+                    className="w-auto px-2 h-8 sm:h-[30px] text-[0.9375rem] rounded-md bg-primary-green text-white mt-4 sm:mt-8 hover:bg-primary-green/60"
                   >
                     {t(translations.profile.edit)}
                   </button>

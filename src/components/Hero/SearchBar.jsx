@@ -97,13 +97,13 @@ const SearchBar = () => {
   }
 
   return (
-    <div className="relative w-[80%] md:w-[75%] lg:w-[65%] xl:w-[55%] max-w-[1000px] min-w-[26rem] mx-auto p-2 sm:p-2 bottom-28 sm:bottom-48 rounded-lg border border-light-gray-1 dark:border-dark-gray-2 bg-white flex items-center justify-between dark:bg-dark-gray-3 dark:text-white">
+    <div className="relative w-[80%] md:w-[75%] lg:w-[65%] xl:w-[55%] max-w-[1000px] min-w-[26rem] mx-auto p-2 bottom-28 sm:bottom-48 rounded-lg border border-light-gray-1 dark:border-dark-gray-2 bg-white flex items-center justify-between dark:bg-dark-gray-3 dark:text-white">
       {searchBarItems.map(({ id, label, placeholder, type }) => (
         <div
           key={id}
-          className={`flex flex-col ${id !== "event" && "border-l border-opacity-30 border-gray-2 pl-3"}`}
+          className={`flex flex-col w-1/3 px-2 ${id !== "event" && "border-l border-opacity-30 border-gray-2 sm:pl-3"}`}
         >
-          <label htmlFor={id} className="text-[1rem] font-semibold">
+          <label htmlFor={id} className="font-semibold ml-1">
             {label}
           </label>
           {type === "input" ? (
@@ -111,15 +111,15 @@ const SearchBar = () => {
               id={id}
               type="text"
               placeholder={placeholder}
-              className="text-[0.6rem] sm:text-[0.8rem] -ml-1 text-gray-2 focus:outline-none w-full p-1 dark:bg-dark-gray-3"
+              className="text-[0.6rem] sm:text-[0.8rem] text-gray-2 focus:outline-none w-full p-1 dark:bg-dark-gray-3"
               onChange={(e) => {
                 id === "event" ? setTerm(e.target.value) : setEventLocation(e.target.value)
               }}
             />
           ) : (
-            <div className="relative sm:min-w-[110px]">
+            <div className="relative w-full">
               <div
-                className="cursor-pointer text-[0.6rem] sm:text-[0.8rem] -ml-1 text-gray-2 p-1 rounded-md"
+                className="cursor-pointer text-[0.6rem] sm:text-[0.8rem] text-gray-2 p-1 rounded-md"
                 onClick={() => setIsDropdownOpen(!isDropdownOpen)}
               >
                 {homeSelectedCategory || t("searchbar.category.placeholder")}
