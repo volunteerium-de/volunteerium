@@ -27,6 +27,8 @@ import AdminPanel from "../pages/AdminPanel"
 import { useParams } from "react-router-dom"
 import TermsOfService from "../pages/TermsOfService"
 import Unsubscription from "../pages/Unsubscription"
+import GooglePassword from "../pages/GooglePassword"
+
 
 const AppRouter = () => {
   const { currentUser: user } = useSelector((state) => state.auth)
@@ -45,10 +47,12 @@ const AppRouter = () => {
         <Route path="password" element={<Password />} />
         <Route path="unsubscribe" element={<Unsubscription />} />
         <Route path="auth/success" element={<GoogleAuthSuccess />} />
+
         {/* Private Routers */}
         <Route element={<PrivateRouter />}>
           <Route path="/settings" element={<UserSettings />} />
           <Route path="/verify-email/success" element={<VerificationSuccess />} />
+
           <Route
             path="/account-setup/organization"
             element={
@@ -103,7 +107,9 @@ const AppRouter = () => {
             <Route path="register" element={<Register />} />
             <Route path="register/success" element={<RegisterSuccess />} />
             <Route path="auth/failure" element={<GoogleAuthFail />} />
+            <Route path="auth/success" element={<GoogleAuthSuccess />} />
             <Route path="/verify-email" element={<EmailVerify />} />
+            <Route path="auth/password" element={<Navigate to="/" />} />
             <Route path="*" element={<Home />} />
           </>
         ) : (
@@ -112,6 +118,8 @@ const AppRouter = () => {
             <Route path="register" element={<Navigate to="/" />} />
             <Route path="register/success" element={<Navigate to="/" />} />
             <Route path="auth/failure" element={<Navigate to="/" />} />
+            <Route path="auth/password" element={<GooglePassword />} />
+            <Route path="auth/success" element={<Navigate to="/" />} />
             <Route path="/verify-email" element={<Navigate to="/" />} />
           </>
         )}
