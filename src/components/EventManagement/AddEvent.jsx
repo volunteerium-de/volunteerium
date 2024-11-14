@@ -7,6 +7,8 @@ import { AddEventSchema } from "../../validators/NewEventValidator"
 import useEventCall from "../../hooks/useEventCall"
 import { useSelector } from "react-redux"
 import toastNotify from "../../utils/toastNotify"
+import { translations } from "../../locales/translations"
+import { t } from "i18next"
 
 const AddEvent = ({ onClose }) => {
   const { currentUser: user } = useSelector((state) => state.auth)
@@ -81,7 +83,7 @@ const AddEvent = ({ onClose }) => {
       await postEvent(body)
       onClose()
     } catch (error) {
-      toastNotify("error", "An error occurred while posting the event. Please try again.")
+      toastNotify("error", t(translations.toastify.error))
     }
   }
 

@@ -607,6 +607,7 @@
     "report": {
       "h2": "Veranstaltung melden",
       "p1": "Wenn Sie auf Probleme mit dieser Veranstaltung gestoßen sind, lassen Sie es uns bitte wissen. Ihr Bericht hilft uns, eine sichere und respektvolle Umgebung für alle zu erhalten.",
+      "reportReason": "Berichtsgrund*:",
       "placeholder1": "Wählen Sie einen Berichtsgrund",
       "placeholder2": "Schreiben Sie Ihren Bericht hier...",
       "issueLabel": "Beschreiben Sie das Problem (optional):",
@@ -958,5 +959,16 @@
       "ageRange": "Bitte wählen Sie einen gültigen Altersbereich",
       "language": "Bitte wählen Sie eine gültige Sprache"
     }  
-  }
+  },
+
+  "toastify": {
+    "error": "Ein Fehler ist aufgetreten. Bitte versuchen Sie es erneut.",
+    "verifyFailError": "Verifizierung fehlgeschlagen. Bitte versuchen Sie es erneut!",
+    "verifySecureError": "Fehlende Sicherheitsüberprüfung. Bitte versuchen Sie es erneut.",
+    "selectFile": "Bitte wählen Sie eine Datei zum Löschen aus.",
+    "selectConversation": "Bitte wählen Sie ein Gespräch aus.",
+    "enterMessage": "Bitte geben Sie eine Nachricht ein.",
+    "idMissing": "Event-ID oder Teilnehmer-ID fehlen.",
+    "setupProfile": "Bitte richten Sie Ihre Profildaten ein, um fortzufahren."
+}
 }

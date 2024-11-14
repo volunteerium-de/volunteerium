@@ -73,7 +73,7 @@ const SetupIndividual = () => {
       !user.userDetailsId.isProfileSetup &&
       clientIdParam === user._id
     ) {
-      toastNotify("success", "Please set up your profile details to proceed")
+      toastNotify("success", t(translations.toastify.setupProfile))
     }
   }, [])
 

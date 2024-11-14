@@ -121,7 +121,7 @@ const OrganisationSchema = Yup.object().shape({
       toastNotify("success", data.message)
     } catch (error) {
       console.error("Update failed:", error)
-      toastNotify("error", error.response?.data?.message || "An error occurred")
+      toastNotify("error", error.response?.data?.message || t(translations.toastify.error))
     }
   }
   return (

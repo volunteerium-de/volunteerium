@@ -60,7 +60,7 @@ const SetupOrganization = () => {
       !user.userDetailsId.isProfileSetup &&
       clientIdParam == user._id
     ) {
-      toastNotify("info", "Please set up your organization details to proceed")
+      toastNotify("info", t(translations.toastify.setupProfile))
     }
   }, [])
 

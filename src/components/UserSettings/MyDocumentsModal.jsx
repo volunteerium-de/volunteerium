@@ -32,7 +32,7 @@ const MyDocumentsModal = ({ isOpen, onClose, certificates }) => {
         closeDeleteModal()
       }
     } else {
-      toastNotify("error", "Please select a file to delete")
+      toastNotify("error", t(translations.toastify.selectError))
     }
   }
 

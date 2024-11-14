@@ -639,6 +639,7 @@ export const translations = {
     report: {
       h2: "eventDetails.report.h2",
       p1: "eventDetails.report.p1",
+      reportReason: "eventDetails.report.reportReason",
       placeholder1: "eventDetails.report.placeholder1",
       placeholder2: "eventDetails.report.placeholder2",
       issueLabel: "eventDetails.report.issueLabel",
@@ -988,5 +989,15 @@ export const translations = {
           ageRange: "yup.oneOf.ageRange",
           language: "yup.oneOf.language",
         }
+      },
+      toastify: {
+        error: "toastify.error",
+        verifyFailError: "toastify.verifyFailError",
+        verifySecureError: "toastify.verifySecureError",
+        selectFile: "toastify.selectFile",
+        selectConversation: "toastify.selectConversation",
+        enterMessage: "toastify.enterMessage",
+        idMissing: "toastify.idMissing",
+        setupProfile: "toastify.setupProfile",
       }
     }

@@ -602,6 +602,7 @@
     "report": {
       "h2": "Report Event",
       "p1": "If you have encountered any issues with this event, please let us know. Your report will help us maintain a safe and respectful environment for everyone.",
+      "reportReason": "Report Reason*:",
       "placeholder1": "Choose a report reason",
       "placeholder2": "Write your report here...",
       "issueLabel": "Describe Issue (Optional):",
@@ -952,5 +953,16 @@
       "ageRange": "Please choose a valid age range",
       "language": "Please choose a valid language"
     }
+  },
+
+  "toastify": {
+    "error": "An error occurred. Please try again",
+    "verifyFailError": "Verification failed. Please try again!",
+    "verifySecureError": "Missing security verification. Please try again.",
+    "selectFile": "Please select a file to delete",
+    "selectConversation": "Please select a conversation",
+    "enterMessage": "Please enter a message.",
+    "idMissing": "Event ID or Participant ID are missing.",
+    "setupProfile": "Please set up your profile details to proceed"
   }
 }
