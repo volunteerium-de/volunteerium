@@ -1,7 +1,7 @@
 import React from "react"
 import { ImSpinner9 } from "react-icons/im"
 import { useNavigate } from "react-router-dom"
-import { UserAvatar } from "../../../ui/Avatar/userAvatar"
+import { UserAvatar } from "../../ui/Avatar/userAvatar"
 
 const UsersTable = ({ data, loading }) => {
   const navigate = useNavigate()

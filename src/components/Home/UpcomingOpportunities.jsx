@@ -114,7 +114,7 @@ const UpcomingOpportunities = () => {
           <div
             id="opportunities"
             ref={sliderRef}
-            className="flex gap-x-4 overflow-x-hidden items-start scroll-smooth px-2"
+            className="flex gap-x-4 overflow-x-auto scrollbar-hide items-start scroll-smooth px-2"
           >
             {/* Map through event data */}
             <div className="flex flex-row flex-grow gap-6 p-2 min-h-[200px] rounded-md">

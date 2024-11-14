@@ -3,23 +3,25 @@ import { useEffect } from "react"
 import { IoIosArrowBack } from "react-icons/io"
 import { useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom"
-import useEventCall from "../../../../hooks/useEventCall"
+import useEventCall from "../../../hooks/useEventCall"
 import { ImSpinner9 } from "react-icons/im"
 import { MdOutlineSettings } from "react-icons/md"
-import { formatDateWithTime } from "../../../../helpers/formatDate"
-import useLanguage from "../../../../hooks/useLanguages"
-import { UserAvatar } from "../../../ui/Avatar/userAvatar"
-import defaultPhoto from "../../../../assets/default-event-photo-.jpg"
+import { formatDateWithTime } from "../../../helpers/formatDate"
+import useLanguage from "../../../hooks/useLanguages"
+import { UserAvatar } from "../../ui/Avatar/userAvatar"
+import defaultPhoto from "../../../assets/default-event-photo-.jpg"
 import { Link } from "react-router-dom"
 import { FaExternalLinkAlt } from "react-icons/fa"
 import { useState } from "react"
 import { useRef } from "react"
-import DeleteModal from "../../../ui/Modals/DeleteModal"
+import DeleteModal from "../../ui/Modals/DeleteModal"
+import useAdminCall from "../../../hooks/useAdminCall"
 
 const SingleEventPanel = ({ eventId, setIdentifier }) => {
   const navigate = useNavigate()
   const { singleEvent, loading } = useSelector((state) => state.event)
-  const { getSingleEvent, editEvent, deleteEvent } = useEventCall()
+  const { getSingleEvent, deleteEvent } = useEventCall()
+  const { updateData } = useAdminCall()
   const { getLangName } = useLanguage()
   const [isSettingsModalOpen, setIsSettingsModalOpen] = useState(false)
   const [isDeleteEventModalOpen, setIsDeleteEventModalOpen] = useState(false)
@@ -62,14 +64,16 @@ const SingleEventPanel = ({ eventId, setIdentifier }) => {
   const handleDeleteEvent = () => {
     deleteEvent(singleEvent._id)
     navigate(`/admin-panel?tab=events`)
+    setIdentifier(null)
     setIsSettingsModalOpen(false)
+    closeDeleteEventModal()
   }
 
   const handleSuspendEvent = () => {
     if (singleEvent?.isActive) {
-      editEvent(singleEvent._id, { isActive: false })
+      updateData("events", singleEvent._id, { isActive: false })
     } else {
-      editEvent(singleEvent._id, { isActive: true })
+      updateData("events", singleEvent._id, { isActive: true })
     }
     setIsSettingsModalOpen(false)
   }
@@ -268,7 +272,7 @@ const SingleEventPanel = ({ eventId, setIdentifier }) => {
                       <div className="text-gray-600 dark:text-gray-200 text-sm font-light w-full">
                         {singleEvent?.eventParticipantIds.map((participant) => (
                           <ul
-                            key={participant._id}
+                            key={participant?._id}
                             className="border-b border-gray-200 dark:border-gray-600 flex gap-2"
                           >
                             {/* Participant ID */}
@@ -276,13 +280,13 @@ const SingleEventPanel = ({ eventId, setIdentifier }) => {
                               className="text-left flex-[2] whitespace-nowrap overflow-x-scroll scrollbar-hide py-3"
                               data-label="Participant ID"
                             >
-                              {participant._id}
+                              {participant?._id}
                             </li>
                             {/* User */}
                             <li
                               onClick={() =>
                                 navigate(
-                                  `/admin-panel?tab=users&identifier=${participant.userId._id}`
+                                  `/admin-panel?tab=users&identifier=${participant?.userId?._id}`
                                 )
                               }
                               className="text-center flex-[2] whitespace-nowrap overflow-x-scroll scrollbar-hide py-3"
@@ -290,37 +294,37 @@ const SingleEventPanel = ({ eventId, setIdentifier }) => {
                             >
                               <div className="flex gap-1 items-center w-full cursor-pointer">
                                 <UserAvatar
-                                  user={participant.userId}
+                                  user={participant?.userId}
                                   size="h-6 w-6"
                                   backgroundActive={true}
                                 />
                                 <span className="text-xs text-left overflow-x-scroll scrollbar-hide whitespace-nowrap flex-1">
-                                  {participant.userId.fullName}
+                                  {participant?.userId?.fullName}
                                 </span>
                               </div>
                             </li>
                             {/* Status */}
                             <li
                               className={`text-center flex-[1] py-3 ${
-                                participant.isPending
+                                participant?.isPending
                                   ? "text-warning dark:text-orange-300"
-                                  : participant.isApproved && !participant.isPending
+                                  : participant?.isApproved && !participant?.isPending
                                     ? "text-primary-green dark:text-green-300"
-                                    : !participant.isApproved && !participant.isPending
+                                    : !participant?.isApproved && !participant?.isPending
                                       ? "text-danger dark:text-red-300"
-                                      : participant.hasJoined === "joined"
+                                      : participant?.hasJoined === "joined"
                                         ? "text-primary-green dark:text-green-300"
                                         : "text-danger dark:text-red-300"
                               }`}
                               data-label="Participant Status"
                             >
-                              {participant.isPending
+                              {participant?.isPending
                                 ? "Pending"
-                                : participant.isApproved && !participant.isPending
+                                : participant?.isApproved && !participant?.isPending
                                   ? "Approved"
-                                  : !participant.isApproved && !participant.isPending
+                                  : !participant?.isApproved && !participant?.isPending
                                     ? "Rejected"
-                                    : participant.hasJoined === "joined"
+                                    : participant?.hasJoined === "joined"
                                       ? "Joined"
                                       : "Not Joined"}
                             </li>
@@ -329,7 +333,7 @@ const SingleEventPanel = ({ eventId, setIdentifier }) => {
                               className="text-center flex-[1] py-3 overflow-x-scroll scrollbar-hide"
                               data-label="Join Date"
                             >
-                              {new Date(participant.createdAt).toLocaleDateString()}
+                              {new Date(participant?.createdAt).toLocaleDateString()}
                             </li>
                           </ul>
                         ))}

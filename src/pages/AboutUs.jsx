@@ -69,13 +69,13 @@ const AboutUs = () => {
                 {["explore", "join", "make"].map((key, index) => (
                   <div
                     key={index}
-                    className="w-full max-w-[300px] min-h-[150px] sm:max-w-[408px] sm:min-h-[250px] bg-white rounded-lg p-[20px] sm:p-[30px] text-center"
+                    className="w-full max-w-[300px] min-h-[150px] sm:max-w-[408px] sm:min-h-[250px] bg-white dark:bg-black rounded-lg p-[20px] sm:p-[30px] text-center"
                   >
-                    <h1 className=" text-[1.25rem] sm:text-[1.5rem] font-medium">
-                      <span className="text-primary-green">{t(translations.aboutUs[key])} </span>
+                    <h1 className=" text-[1.25rem] sm:text-[1.5rem] font-medium ">
+                      <span className="text-primary-green ">{t(translations.aboutUs[key])} </span>
                       {t(translations.aboutUs[`${key}Opportunities`])}
                     </h1>
-                    <p className="text-[0.875rem] sm:text-[1rem] text-gray-2 mt-4">
+                    <p className="text-[0.875rem] sm:text-[1rem] text-gray-2 mt-4 dark:text-white">
                       {t(translations.aboutUs[`p${index + 3}`])}
                     </p>
                   </div>
@@ -124,7 +124,7 @@ const AboutUs = () => {
               ].map((card, index) => (
                 <div
                   key={index}
-                  className="w-full max-w-[300px] h-[142px] bg-white rounded-3xl text-center p-5"
+                  className="w-full max-w-[300px] h-[142px] bg-white rounded-3xl text-center p-5 dark:bg-black dark:text-primary-green"
                 >
                   {/* Card Title */}
                   <p className="font-medium text-[1.75rem] mt-2">

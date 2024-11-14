@@ -1,22 +1,25 @@
-import { useState, useEffect } from "react"
+import { useState, useEffect, useCallback } from "react"
 import Header from "../components/Header/Header"
 import Sidebar from "../components/ui/Sidebar/Sidebar"
 import { FaCalendar } from "react-icons/fa"
 import { useLocation, useNavigate } from "react-router-dom"
 import { FaUsersGear } from "react-icons/fa6"
 import { MdEmail, MdReportProblem } from "react-icons/md"
-import EventsPanel from "../components/EventManagement/AdminPanel/events/EventsPanel"
-import UsersPanel from "../components/EventManagement/AdminPanel/users/UsersPanel"
-import ContactPanel from "../components/EventManagement/AdminPanel/contacts/ContactPanel"
-import ReportsPanel from "../components/EventManagement/AdminPanel/reports/ReportsPanel"
+import EventsPanel from "../components/AdminPanel/events/EventsPanel"
+import UsersPanel from "../components/AdminPanel/users/UsersPanel"
+import ContactPanel from "../components/AdminPanel/contacts/ContactPanel"
+import ReportsPanel from "../components/AdminPanel/reports/ReportsPanel"
 import useAdminCall from "../hooks/useAdminCall"
-import SingleEventPanel from "../components/EventManagement/AdminPanel/events/SingleEventPanel"
-import SingleUserPanel from "../components/EventManagement/AdminPanel/users/SingleUserPanel"
-import SingleContactPanel from "../components/EventManagement/AdminPanel/contacts/SingleContactPanel"
-import SingleReportPanel from "../components/EventManagement/AdminPanel/reports/SingleReportPanel"
-import SingleFeedbackPanel from "../components/EventManagement/AdminPanel/feedbacks/SingleFeedbackPanel"
+import SingleEventPanel from "../components/AdminPanel/events/SingleEventPanel"
+import SingleUserPanel from "../components/AdminPanel/users/SingleUserPanel"
+import SingleContactPanel from "../components/AdminPanel/contacts/SingleContactPanel"
+import SingleReportPanel from "../components/AdminPanel/reports/SingleReportPanel"
+import SingleFeedbackPanel from "../components/AdminPanel/feedbacks/SingleFeedbackPanel"
 import { SiImessage } from "react-icons/si"
-import FeedbacksPanel from "../components/EventManagement/AdminPanel/feedbacks/FeedbacksPanel"
+import FeedbacksPanel from "../components/AdminPanel/feedbacks/FeedbacksPanel"
+import { debounce } from "../utils/functions"
+import SubscriptionsPanel from "../components/AdminPanel/subscriptions/SubscriptionsPanel"
+import { PiNewspaperClippingFill } from "react-icons/pi"
 
 const AdminPanel = () => {
   const location = useLocation()
@@ -26,6 +29,8 @@ const AdminPanel = () => {
   const [reports, setReports] = useState([])
   const [feedbacks, setFeedbacks] = useState([])
   const [identifier, setIdentifier] = useState(null)
+  const [debouncedActiveTab, setDebouncedActiveTab] = useState(activeTab)
+  const [debouncedIdentifier, setDebouncedIdentifier] = useState(identifier)
   const { fetchAllData } = useAdminCall()
 
   useEffect(() => {
@@ -42,11 +47,33 @@ const AdminPanel = () => {
     navigate(`?tab=${tab}`)
   }
 
+  const debouncedSetActiveTab = useCallback(
+    debounce((tab) => {
+      setDebouncedActiveTab(tab)
+    }, 300),
+    []
+  )
+
+  const debouncedSetIdentifier = useCallback(
+    debounce((id) => {
+      setDebouncedIdentifier(id)
+    }, 300),
+    []
+  )
+
   useEffect(() => {
     fetchAllData("contacts").then((data) => setContacts(data.data))
     fetchAllData("event-reports").then((data) => setReports(data.data))
     fetchAllData("event-feedbacks").then((data) => setFeedbacks(data.data))
   }, [])
+
+  useEffect(() => {
+    debouncedSetActiveTab(activeTab)
+  }, [activeTab, debouncedSetActiveTab])
+
+  useEffect(() => {
+    debouncedSetIdentifier(identifier)
+  }, [identifier, debouncedSetIdentifier])
 
   const adminMenuItems = [
     {
@@ -74,27 +101,36 @@ const AdminPanel = () => {
       label: "Reports",
       icon: <MdReportProblem className="text-2xl mx-auto" />,
     },
+    {
+      key: "subscriptions",
+      label: "Subscriptions",
+      icon: <PiNewspaperClippingFill className="text-2xl mx-auto" />,
+    },
   ]
 
   const renderContent = () => {
-    if (identifier) {
-      switch (activeTab) {
+    if (debouncedIdentifier) {
+      switch (debouncedActiveTab) {
         case "events":
-          return <SingleEventPanel eventId={identifier} setIdentifier={setIdentifier} />
+          return <SingleEventPanel eventId={debouncedIdentifier} setIdentifier={setIdentifier} />
         case "users":
-          return <SingleUserPanel userId={identifier} setIdentifier={setIdentifier} />
+          return <SingleUserPanel userId={debouncedIdentifier} setIdentifier={setIdentifier} />
         case "contacts":
-          return <SingleContactPanel contactId={identifier} setIdentifier={setIdentifier} />
+          return (
+            <SingleContactPanel contactId={debouncedIdentifier} setIdentifier={setIdentifier} />
+          )
         case "reports":
-          return <SingleReportPanel reportId={identifier} setIdentifier={setIdentifier} />
+          return <SingleReportPanel reportId={debouncedIdentifier} setIdentifier={setIdentifier} />
         case "feedbacks":
-          return <SingleFeedbackPanel feedbackId={identifier} setIdentifier={setIdentifier} />
+          return (
+            <SingleFeedbackPanel feedbackId={debouncedIdentifier} setIdentifier={setIdentifier} />
+          )
         default:
-          return <SingleEventPanel eventId={identifier} setIdentifier={setIdentifier} />
+          return <SingleEventPanel eventId={debouncedIdentifier} setIdentifier={setIdentifier} />
       }
     }
 
-    switch (activeTab) {
+    switch (debouncedActiveTab) {
       case "events":
         return <EventsPanel />
       case "users":
@@ -105,6 +141,8 @@ const AdminPanel = () => {
         return <ReportsPanel />
       case "feedbacks":
         return <FeedbacksPanel />
+      case "subscriptions":
+        return <SubscriptionsPanel />
       default:
         return <EventsPanel />
     }
@@ -113,7 +151,7 @@ const AdminPanel = () => {
   return (
     <>
       <Header />
-      <div className="flex max-w-[1800px] mx-auto">
+      <div className="flex max-w-[1800px] mx-auto min-h-[calc(100vh-50px)] sm:min-h-[calc(100vh-100px)]">
         <Sidebar
           items={adminMenuItems}
           activeTab={activeTab}

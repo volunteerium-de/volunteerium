@@ -1,5 +1,5 @@
 import React from "react"
-import Panel from "../../../ui/Panels/Panel"
+import Panel from "../../ui/Panels/Panel"
 import ReportsTable from "./ReportsTable"
 
 const ReportsPanel = () => {

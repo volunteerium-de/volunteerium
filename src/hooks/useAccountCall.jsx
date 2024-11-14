@@ -1,7 +1,7 @@
 import { useDispatch } from "react-redux"
 import { fetchFail, fetchStart, fetchSuccess, logoutSuccess } from "../features/authSlice"
 import { useNavigate } from "react-router-dom"
-import useAxios from "./useAxios"
+import useAxios, { axiosWithPublic } from "./useAxios"
 import toastNotify from "../utils/toastNotify"
 import { useSelector } from "react-redux"
 
@@ -111,6 +111,26 @@ const useAccountCall = () => {
     }
   }
 
+  const subscribe = async (email) => {
+    try {
+      const { data } = await axiosWithPublic.post("/subscriptions", { email })
+      toastNotify("success", data.message)
+    } catch (error) {
+      toastNotify("error", error.response.data.message)
+    }
+  }
+
+  const unsubscribe = async (subscriptionId) => {
+    try {
+      // Choose the correct axios instance based on the presence of currentUser
+      const axiosInstance = currentUser ? axiosWithToken : axiosWithPublic
+      const { data } = await axiosInstance.delete(`/subscriptions/${subscriptionId}`)
+      toastNotify("success", data.message)
+    } catch (error) {
+      toastNotify("error", error?.response?.data?.message)
+    }
+  }
+
   return {
     updateUserDetails,
     deleteUser,
@@ -119,6 +139,8 @@ const useAccountCall = () => {
     deleteAccountFile,
     getSingleUser,
     updateUser,
+    subscribe,
+    unsubscribe,
   }
 }
 

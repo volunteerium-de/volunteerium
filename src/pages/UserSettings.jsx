@@ -8,7 +8,13 @@ import SecuritySettings from "../components/UserSettings/SecuritySettings"
 import VisibilitySettings from "../components/UserSettings/VisibilitySettings"
 import { useSelector } from "react-redux"
 import { useState } from "react"
+import { useNavigate } from "react-router-dom"
+import { useTranslation } from "react-i18next"
+import { translations } from "../locales/translations"
+
 const UserSettings = () => {
+  const {t} = useTranslation()
+  const navigate = useNavigate()
   const { currentUser } = useSelector((state) => state.auth)
   const isAdmin = currentUser.userType === "admin"
   const [activeTab, setActiveTab] = useState(isAdmin ? "security" : "profile")
@@ -16,19 +22,19 @@ const UserSettings = () => {
   const menuItems = [
     {
       key: "profile",
-      label: "Profile",
+      label: t(translations.userSettings.profile),
       icon: <IoSettingsOutline className="text-2xl mx-auto" />,
     },
     {
       key: "security",
-      label: "Security",
+      label: t(translations.userSettings.security),
       icon: <MdOutlineSecurity className="text-2xl mx-auto" />,
     },
-    {
-      key: "visibility",
-      label: "Visibility",
-      icon: <MdOutlineVisibility className="text-2xl mx-auto" />,
-    },
+    // {
+    //   key: "visibility",
+    //   label: t(translations.userSettings.visibility),
+    //   icon: <MdOutlineVisibility className="text-2xl mx-auto" />,
+    // },
   ]
   const filteredMenuItems = isAdmin ? menuItems.filter((item) => item.key !== "profile") : menuItems
   const renderContent = () => {
@@ -37,22 +43,28 @@ const UserSettings = () => {
         return isAdmin ? <SecuritySettings /> : <ProfileSettings />
       case "security":
         return <SecuritySettings />
-      case "visibility":
-        return <VisibilitySettings />
+      // case "visibility":
+      //   return <VisibilitySettings />
       default:
         return isAdmin ? <SecuritySettings /> : <ProfileSettings />
     }
   }
   const handleTabChange = (newTab) => {
+    let tab
     if (isAdmin && newTab === "profile") {
       setActiveTab("security")
+      tab = "security"
     } else {
       setActiveTab(newTab)
+      tab = newTab
     }
+    navigate(`?tab=${tab}`)
   }
+
   const handleEditAvatar = () => {
     setModalOpen(true)
   }
+
   return (
     <div>
       <Header />

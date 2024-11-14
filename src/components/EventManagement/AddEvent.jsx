@@ -6,6 +6,7 @@ import StepTwo from "./AddNewEvent/StepTwo"
 import { AddEventSchema } from "../../validators/NewEventValidator"
 import useEventCall from "../../hooks/useEventCall"
 import { useSelector } from "react-redux"
+import toastNotify from "../../utils/toastNotify"
 
 const AddEvent = ({ onClose }) => {
   const { currentUser: user } = useSelector((state) => state.auth)
@@ -59,7 +60,6 @@ const AddEvent = ({ onClose }) => {
 
     const body = {
       createdBy: user._id,
-      eventParticipantIds: [user._id],
       ...payload,
       startDate,
       endDate,
@@ -81,7 +81,7 @@ const AddEvent = ({ onClose }) => {
       await postEvent(body)
       onClose()
     } catch (error) {
-      toast.error("An error occurred while posting the event. Please try again.")
+      toastNotify("error", "An error occurred while posting the event. Please try again.")
     }
   }
 

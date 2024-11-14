@@ -13,12 +13,14 @@ import { useLocation } from "react-router-dom"
 import useAuthCall from "../hooks/useAuthCall"
 import { useTranslation } from "react-i18next"
 import { translations } from "../locales/translations"
+import useEventCall from "../hooks/useEventCall"
+import SelectInput from "../components/ui/Selects/SelectInput"
 
 // Validation schema
 const IndividualSchema = Yup.object({
-  gender: UserDetailSchema.fields.gender,
-  ageRange: UserDetailSchema.fields.ageRange,
-  interests: UserDetailSchema.fields.interests,
+  gender: UserDetailSchema.gender,
+  ageRange: UserDetailSchema.ageRange,
+  interests: UserDetailSchema.interests,
 })
 
 const SetupIndividual = () => {
@@ -30,6 +32,27 @@ const SetupIndividual = () => {
   const [step, setStep] = useState(1)
   const navigate = useNavigate()
   const location = useLocation()
+  const { categories } = useSelector((state) => state.search)
+  const { getEventCategories } = useEventCall()
+  const { userDetailsId } = user
+
+  const defaultUserDetails = {
+    gender: userDetailsId?.gender || "",
+    ageRange: userDetailsId?.ageRange || "",
+    interestIds: userDetailsId?.interestIds.map((x) => x._id) || [],
+  }
+
+  const ageRangeOptions = [
+    { label: "16-25", value: "16-25" },
+    { label: "26-35", value: "26-35" },
+    { label: "35+", value: "35+" },
+  ]
+
+  const genderOptions = [
+    { label: t(translations.setupIndv.genderLabel1), value: "male" },
+    { label: t(translations.setupIndv.genderLabel2), value: "female" },
+    { label: t(translations.setupIndv.genderLabel3), value: "Prefer not to say" },
+  ]
 
   const handleNext = (isValid) => {
     if (isValid) {
@@ -40,8 +63,6 @@ const SetupIndividual = () => {
   useEffect(() => {
     const queryParams = new URLSearchParams(location.search)
     const clientIdParam = queryParams.get("clientId")
-
-    // console.log(clientIdParam)
 
     if (!clientIdParam || clientIdParam !== user._id) {
       logout(false)
@@ -56,23 +77,34 @@ const SetupIndividual = () => {
     }
   }, [])
 
+  useEffect(() => {
+    if (!categories.length > 0) {
+      getEventCategories()
+    }
+  }, [categories])
+
   return (
     <div className="min-h-screen flex items-center justify-center font-poppins dark:bg-black">
       <div className="bg-white max-w-4xl w-full px-6 py-12 rounded-lg dark:bg-black">
         <Formik
           initialValues={{
-            ageRange: "",
-            gender: "",
-            interests: [],
+            ageRange: defaultUserDetails.ageRange,
+            gender: defaultUserDetails.gender,
+            interests: defaultUserDetails.interestIds,
           }}
           validationSchema={IndividualSchema}
           onSubmit={(values) => {
             console.log(values)
-            updateUserDetails({ ...values, isProfileSetup: true })
+            const payload = {
+              ...values,
+              interestIds: values.interests,
+              isProfileSetup: true,
+            }
+            updateUserDetails(payload)
             navigate("/")
           }}
         >
-          {({ isValid, values, setFieldValue, handleSubmit, touched, errors }) => (
+          {({ isValid, values, setFieldValue, handleSubmit }) => (
             <Form>
               {/* Progress indicator */}
               <div className="flex justify-center mb-8">
@@ -125,66 +157,34 @@ const SetupIndividual = () => {
                     {t(translations.setupIndv.share)}
                   </h2>
                   <p className="text-dark-gray-1 dark:text-white text-center mb-8">
-                  {t(translations.setupIndv.p1)}
+                    {t(translations.setupIndv.p1)}
                   </p>
 
-                  <div className="w-3/5 md:w-2/5 mx-auto">
-                    <label className=" block text-gray-2 text-sm font-medium mb-1 text-start">
-                    {t(translations.setupIndv.ageRange)}
-                    </label>
-
-                    <Field
-                      as="select"
-                      name="ageRange"
-                      className={`w-full bg-white dark:bg-black border ${
-                        touched.ageRange && errors.ageRange
-                          ? "border-danger"
-                          : values.ageRange
-                            ? "border-primary-green"
-                            : "border-gray-1"
-                      } font-medium ps-2 dark:text-white p-1 rounded-md cursor-pointer`}
-                    >
-                      <option value="">{t(translations.setupIndv.option1)}</option>
-                      <option value="16-25">{t(translations.setupIndv.option2)}</option>
-                      <option value="26-35">{t(translations.setupIndv.option3)}</option>
-                      <option value="35+">{t(translations.setupIndv.option4)}</option>
-                    </Field>
-                    <div className="min-h-[1.5rem]">
-                      <ErrorMessage
-                        name="ageRange"
-                        component="div"
-                        className=" text-danger text-sm"
-                      />
+                  <div className="w-3/5 md:w-2/5  mx-auto">
+                    <div className="flex flex-col flex-wrap gap-4 mb-[5px]">
+                      <div className="flex-1">
+                        <p className="block text-center text-dark-gray-2 dark:text-white mb-2">
+                          {t(translations.setupIndv.gender)}
+                        </p>
+                        <SelectInput
+                          name="gender"
+                          placeholder="CHoose Gender"
+                          options={genderOptions}
+                          onChange={(value) => setFieldValue("gender", value)}
+                        />
+                      </div>
+                      <div className="flex-1">
+                        <p className="block text-center text-dark-gray-2 dark:text-white mb-2">
+                          {t(translations.setupIndv.ageRange)}
+                        </p>
+                        <SelectInput
+                          name="ageRange"
+                          placeholder="Choose Age Range"
+                          options={ageRangeOptions}
+                          onChange={(value) => setFieldValue("ageRange", value)}
+                        />
+                      </div>
                     </div>
-                  </div>
-
-                  <div className="w-3/5 md:w-2/5 mx-auto mb-4">
-                    <label className="block text-gray-2 text-sm font-medium mb-1 text-start">
-                    {t(translations.setupIndv.gender)}
-                    </label>
-                    <Field
-                      as="select"
-                      name="gender"
-                      className={`w-full bg-white dark:bg-black border ${
-                        touched.gender && errors.gender
-                          ? "border-danger"
-                          : values.gender
-                            ? "border-primary-green"
-                            : "border-gray-1"
-                      } font-medium ps-2 dark:text-white p-1  rounded-md cursor-pointer`}
-                    >
-                      <option value="">{t(translations.setupIndv.option5)}</option>
-                      <option value="male">{t(translations.setupIndv.option6)}</option>
-                      <option value="female">{t(translations.setupIndv.option7)}</option>
-                      <option value="n/a">{t(translations.setupIndv.option8)}</option>
-                    </Field>
-                    <div className="min-h-[1.5rem]">
-                      <ErrorMessage
-                        name="gender"
-                        component="div"
-                        className=" text-danger text-sm"
-                      />
-                    </div>{" "}
                   </div>
 
                   <div className="text-center">
@@ -204,58 +204,42 @@ const SetupIndividual = () => {
                 <>
                   <div className="flex flex-col items-center text-center mb-10">
                     <h2 className="text-[1.75rem] dark:text-white font-bold mb-2">
-                    {t(translations.setupIndv.choose)}
+                      {t(translations.setupIndv.choose)}
                     </h2>
                     <p className="text-dark-gray-1 w-4/5 dark:text-white mb-2 sm:block md:hidden">
-                    {t(translations.setupIndv.p2)}
+                      {t(translations.setupIndv.p2)}
                     </p>
                     <p className="text-dark-gray-1 w-4/5 dark:text-white mb-2 hidden md:block">
-                    {t(translations.setupIndv.p3)}.{" "}
-                      <br />
+                      {t(translations.setupIndv.p3)}. <br />
                       {t(translations.setupIndv.p4)}
                     </p>
                   </div>
 
                   <div className="px:2 md:px-0 flex flex-wrap justify-center gap-2 md:gap-4 mb-8">
-                    {[
-                      "Environment",
-                      "Elderly Care",
-                      "Social Projects",
-                      "Human Rights",
-                      "Health",
-                      "Employment",
-                      "Education",
-                      "Disability",
-                      "Music",
-                      "Academic",
-                      "Social Solidarity",
-                      "Cultural Activities",
-                      "Sports & Recreation",
-                      "Computers & IT",
-                      "Housing & Facilities",
-                    ].map((interest) => (
+                    {categories.map((category) => (
                       <button
-                        key={interest}
+                        key={category._id}
                         type="button"
-                        className={`w-1/3 sm:w-1/2  md:w-auto px-1 md:px-4 py-2 border rounded-md cursor-pointer ${
-                          values.interests.includes(interest)
+                        className={`w-1/3 sm:w-1/2 md:w-auto px-1 md:px-4 py-2 border rounded-md cursor-pointer ${
+                          values.interests.includes(category._id)
                             ? "bg-light-green text-dark-gray-1 border-1 border-primary-green"
                             : "100 text-gray-2"
                         }`}
                         onClick={() => {
-                          const newValue = interest
-                          setFieldValue(
-                            "interests",
-                            values.interests.includes(newValue)
-                              ? values.interests.filter((id) => id !== newValue)
-                              : [...values.interests, newValue]
-                          )
+                          if (
+                            values.interests.includes(category._id) ||
+                            values.interests.length < 3
+                          ) {
+                            setFieldValue(
+                              "interests",
+                              values.interests.includes(category._id)
+                                ? values.interests.filter((id) => id !== category._id)
+                                : [...values.interests, category._id]
+                            )
+                          }
                         }}
-                        disabled={
-                          !values.interests.includes(interest) && values.interests.length >= 3
-                        }
                       >
-                        {interest}
+                        {category.name}
                       </button>
                     ))}
                   </div>

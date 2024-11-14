@@ -1,7 +1,10 @@
 import React, { useState } from "react"
+import { useTranslation } from "react-i18next"
 import { FaArrowRight } from "react-icons/fa"
+import { translations } from "../../../locales/translations"
 
 const MessageInput = ({ isAnnouncement, isOwner, sendMessage }) => {
+  const {t} = useTranslation()
   const [message, setMessage] = useState("")
 
   const handleSend = () => {
@@ -28,11 +31,11 @@ const MessageInput = ({ isAnnouncement, isOwner, sendMessage }) => {
         placeholder={
           isAnnouncement
             ? isOwner
-              ? "As the organizer, only you can send messages to this group."
-              : "This space is reserved for announcements from the organizer only."
+              ? t(translations.eventMng.messages.messageInput.messagePH1)
+              : t(translations.eventMng.messages.messageInput.messagePH2)
             : isOwner
-              ? "Type your message here..."
-              : "Do you have a question about the event?"
+              ? t(translations.eventMng.messages.messageInput.messagePH3)
+              : t(translations.eventMng.messages.messageInput.messagePH4)
         }
         className={`text-sm md:text-base border rounded-lg focus:outline-none p-2 mb-2 flex-grow bg-light-gray-2 ${isAnnouncement && !isOwner && "opacity-70 cursor-not-allowed"}`}
         disabled={isAnnouncement && !isOwner}

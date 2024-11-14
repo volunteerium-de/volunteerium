@@ -4,6 +4,7 @@
     "de": "Deutsch"
   },
   "hero": {
+    "imgAlt": "Startseiten-Hintergrundbild für Hero-Bereich",
     "h2": "Werden Sie Teil von etwas",
     "span": "Größerem"
   },
@@ -73,19 +74,6 @@
     "creatingAs": "Sie erstellen ein Konto als?"
   },
   "registerForm": {
-    "yup1": "Benutzertyp ist erforderlich",
-    "yup2": "Muss mindestens 3 Zeichen lang sein",
-    "yup3": "Kann maximal 30 Zeichen lang sein",
-    "yup4": "Name ist ein Pflichtfeld",
-    "yup5": "Ungültige E-Mail-Adresse",
-    "yup6": "E-Mail ist ein Pflichtfeld",
-    "yup7": "Muss mindestens 6 Zeichen lang sein",
-    "yup8": "Kann maximal 30 Zeichen lang sein",
-    "yup9": "Muss mindestens eine Ziffer enthalten",
-    "yup10": "Muss mindestens einen Kleinbuchstaben enthalten",
-    "yup11": "Muss mindestens einen Großbuchstaben enthalten",
-    "yup12": "Muss mindestens ein Sonderzeichen enthalten (@$!%*?&)",
-    "yup13": "Passwort ist ein Pflichtfeld",
     "radioIndv": "als Einzelperson",
     "radioOrg": "als Organisation",
     "fullname": "Vollname",
@@ -125,15 +113,6 @@
     "signIn": "Anmelden"
   },
   "loginForm": {
-    "yup1": "Ungültige E-Mail-Adresse",
-    "yup2": "E-Mail ist ein Pflichtfeld",
-    "yup3": "Muss mindestens 6 Zeichen lang sein!",
-    "yup4": "Kann maximal 30 Zeichen lang sein!",
-    "yup5": "Muss mindestens eine Ziffer enthalten!",
-    "yup6": "Muss mindestens einen Kleinbuchstaben enthalten!",
-    "yup7": "Muss mindestens einen Großbuchstaben enthalten!",
-    "yup8": "Muss mindestens ein Sonderzeichen enthalten (@$!%*?&)!",
-    "yup9": "Passwort ist ein Pflichtfeld",
     "email": "E-Mail",
     "emailPH": "Geben Sie Ihre E-Mail-Adresse ein",
     "password": "Passwort",
@@ -146,6 +125,41 @@
     "or": "oder",
     "contGoogle": "Weiter mit Google"
   },
+
+  "password": {
+    "forgotPassForm": {
+      "backToLogin": "Zurück zum Login",
+      "logoAlt": "Firmenzeichen",
+      "forgotPassword": "Passwort vergessen?",
+      "forgotDesc": "Kein Problem, das kann jedem passieren. Um Ihr Passwort zurückzusetzen, senden wir Ihnen einen Bestätigungscode per E-Mail.",
+      "email": "E-Mail-Adresse",
+      "emailPH": "Geben Sie Ihre E-Mail-Adresse ein",
+      "submit": "Absenden",
+      "dontHave": "Noch kein Konto?",
+      "signUp": "Registrieren"
+    },
+    "resetPassForm": {
+      "backToLogin": "Zurück zum Login",
+      "logoAlt": "Firmenzeichen",
+      "resetPassword": "Setzen Sie Ihr Passwort zurück",
+      "resetDesc": "Ihr vorheriges Passwort wurde zurückgesetzt. Bitte legen Sie ein neues Passwort fest, um wieder auf Ihr Konto zugreifen zu können.",
+      "newPassword": "Neues Passwort",
+      "newPasswordPH": "Geben Sie Ihr neues Passwort ein",
+      "confirmPassword": "Bestätigen Sie das neue Passwort",
+      "confirmPasswordPH": "Bestätigen Sie Ihr neues Passwort",
+      "reset": "Zurücksetzen"
+      },
+    "verificationForm": {
+      "timerMsg": "Gibt es ein Problem? Fordern Sie den Code erneut an!",
+      "backToLogin": "Zurück zum Login",
+      "logoAlt": "Firmenzeichen",
+      "verification": "Verifizierung",
+      "verifyDesc": "Geben Sie den 6-stelligen Code ein, den Sie per E-Mail erhalten haben.",
+      "verify": "Verifizieren",
+      "resend": "Erneut senden"
+    }
+  },
+
   "profile": {
     "memberSince": "Mitglied seit",
     "edit": "Bearbeiten",
@@ -273,11 +287,6 @@
     "save": "Speichern"
   },
   "pswModal": {
-    "yup1": "Das aktuelle Passwort ist erforderlich",
-    "yup2": "Ein neues Passwort ist erforderlich",
-    "yup3": "Das Passwort muss mindestens 8 Zeichen lang sein",
-    "yup4": "Die Passwörter müssen übereinstimmen",
-    "yup5": "Die Bestätigung des Passworts ist erforderlich",
     "changePsw": "Ändern Sie Ihr Passwort",
     "currPsw": "Aktuelles Passwort",
     "newPsw": "Neues Passwort",
@@ -329,6 +338,7 @@
   "userMenu": {
     "user": "Benutzer",
     "profile": "Profil",
+    "adminPanel": "Adminbereich",
     "eventMng": "Eventverwaltung",
     "settings": "Einstellungen",
     "logout": "Abmelden",
@@ -371,7 +381,7 @@
     "p1": "Ihre Rückmeldung",
     "p2": "ist uns wichtig!",
     "p3": " Tragen Sie weiterhin zu unserer Gemeinschaft bei, indem Sie Ihr",
-    "p4": "Rückmeldung",
+    "p4": " Rückmeldung",
     "p5": "Helfen Sie uns, einen Unterschied zu machen mit Ihren",
     "p6": "Ideen",
     "p7": "und",
@@ -410,8 +420,8 @@
 
   "eventsPage": {
     "sec1": "Verfügbarkeit",
-    "from": "von",
-    "to": "bis",
+    "from": "Von",
+    "to": "Bis",
     "check": "Veranstaltungen prüfen",
     "sec2": "Kategorien",
     "sec3": "Sprachen",
@@ -452,19 +462,14 @@
     "link": "Zurück zur Startseite"
   },
   "setupIndv": {
+    "genderLabel1": "Männlich",
+    "genderLabel2": "Weiblich",
+    "genderLabel3": "Keine Angabe",
     "successMsg": "Bitte geben Sie Ihre Profildaten ein, um fortzufahren",
     "share": "Teilen Sie Ihr Alter und Geschlecht",
     "p1": "Diese Angaben sind optional, können aber für bestimmte Veranstaltungen nützlich sein",
     "ageRange": "Altersbereich*",
-    "option1": "Altersbereich wählen",
-    "option2": "16-25",
-    "option3": "26-35",
-    "option4": "35+",
     "gender": "Geschlecht*",
-    "option5": "Geschlecht wählen",
-    "option6": "Männlich",
-    "option7": "Weiblich",
-    "option8": "Keine Angabe",
     "next": "Weiter",
     "choose": "Wählen Sie Ihre Interessen",
     "p2": "Entdecken Sie Freiwilligenmöglichkeiten und leisten Sie einen sinnvollen Beitrag",
@@ -504,7 +509,7 @@
     "p1": "Keine Veranstaltungen gefunden",
     "p2": "Es scheint, dass momentan keine Veranstaltungen verfügbar sind.",
     "infoAlt": "Organisator-Avatar",
-    "joined": "beigetreten"
+    "joined": "Beigetreten"
   },
 
   "sidebar": {
@@ -592,25 +597,26 @@
     "maxReacedButton": "Volle Kapazität",
     "manageButton": "Verwalten",
     "feedback": {
-      "h2": "Danke für Ihre Teilnahme!",
+      "h2": "Vielen Dank für Ihre Teilnahme!",
       "p1": "Bitte teilen Sie Ihre Erfahrungen über",
       "p2": "um uns zu helfen, uns zu verbessern.",
       "placeholder": "Schreiben Sie Ihr Feedback hier...",
       "submit": "Teilen Sie Ihr Feedback",
-      "close": "Schließen"
+      "cancel": "Abbrechen"
     },
     "report": {
       "h2": "Veranstaltung melden",
       "p1": "Wenn Sie auf Probleme mit dieser Veranstaltung gestoßen sind, lassen Sie es uns bitte wissen. Ihr Bericht hilft uns, eine sichere und respektvolle Umgebung für alle zu erhalten.",
-      "placeholder": "Schreiben Sie Ihren Bericht hier...",
+      "placeholder1": "Wählen Sie einen Berichtsgrund",
+      "placeholder2": "Schreiben Sie Ihren Bericht hier...",
       "issueLabel": "Beschreiben Sie das Problem (optional):",
       "submit": "Einreichen",
       "cancel": "Abbrechen",
-      "option1": "Beleidigend",
-      "option2": "Schädlich",
-      "option3": "Unangemessen",
-      "option4": "Irreführend",
-      "option5": "Spam",
+      "option1": "Spam",
+      "option2": "Beleidigend",
+      "option3": "Schädlich",
+      "option4": "Unangemessen",
+      "option5": "Irreführend",
       "option6": "Belästigung",
       "option7": "Betrug",
       "option8": "Gewalt",
@@ -618,7 +624,34 @@
       "option10": "Sonstiges"
     }
   },
-
+    
+  "eventManagement": {
+    "addNewEvent": "Neues Event hinzufügen",
+    "searchInput": "Suchen",
+    "editButton": "Bearbeiten",
+    "cancelButton": "Abbrechen",
+    "deleteButton": "Löschen",
+    "organizedEvents": "Organisiertes Events",
+    "upcomingEvents": "Bevorstehende Events",
+    "noUpcomingEvents": "Keine bevorstehenden Events",
+    "yourPastEvents": "Ihre vergangenen Events",
+    "noPastEvents": "Keine vergangenen Events",
+    "attendingEvents": "Teilnehmende Events",
+    "leaveEventButton": "Event verlassen",
+    "acceptButton": "Akzeptieren",
+    "rejectButton": "Ablehnen",
+    "loading": "Wird geladen",
+    "removeButton": "Entfernen",
+    "attendants": "Teilnehmer",
+    "noAttendants": "Noch keine Teilnehmer",
+    "joinRequests": "Beitrittsanfragen",
+    "participants": "Teilnehmer",
+    "no": "Keine",
+    "volunteer": "Freiwilliger",
+    "joining": "beitreten",
+    "joined": "beigetreten"
+  },
+  
   "eventMng": {
     "addNew": "Neue Veranstaltung hinzufügen",
     "eventName": "Veranstaltungsname",
@@ -648,7 +681,23 @@
     "yes": "Ja",
     "no": "Nein",
     "back": "Zurück",
-    "submit": "Absenden"
+    "submit": "Absenden",
+    "messages": {
+      "messageInput": {
+        "messagePH1": "Als Organisator können nur Sie Nachrichten an diese Gruppe senden.",
+        "messagePH2": "Dieser Bereich ist ausschließlich für Ankündigungen des Organisators reserviert.",
+        "messagePH3": "Geben Sie hier Ihre Nachricht ein...",
+        "messagePH4": "Haben Sie eine Frage zur Veranstaltung?"
+      },
+      "messageView": {
+        "startMsg": "Wählen Sie eine Unterhaltung aus, um Nachrichten zu starten",
+        "you": "Du"
+      }
+    },
+    "messagesComp": {
+      "noConversations": "Keine Unterhaltungen gefunden",
+      "loading": "Laden..."
+}
   },
 
   "termsOfService": {
@@ -680,5 +729,234 @@
     "p12": "Falls Sie Fragen oder Bedenken bezüglich dieser Nutzungsbedingungen haben, kontaktieren Sie uns bitte unter:",
     "p13": "Volunteerium-Team",
     "p14": "E-Mail: info.volunteerium@gmail.com"
+  },
+
+  "adminPanel": {
+    "backButton": "Zurück",
+    "activeUpper": "AKTIV",
+    "active": "Aktiv",
+    "suspendedUpper": "GESPERRT",
+    "suspended": "Gesperrt",
+    "yes": "Ja",
+    "no": "Nein",
+    "cancel": "Abbrechen",
+
+    "contacts": {
+      "contactPanel": {
+        "title": "Kontakte"
+      },
+      "contactTable": {
+        "header": "Kontakttabelle"
+      },
+      "singleContactPanel": {
+        "contactId": "Kontakt-ID"
+      }
+    },
+    "events": {
+      "eventsPanel": {
+        "title": "Veranstaltungen"
+      },
+      "eventsTable": {
+        "eventId": "Veranstaltungs-ID",
+        "eventIdDL": "Veranstaltungs-ID",
+        "status": "Status",
+        "statusDL": "Veranstaltungsstatus",
+        "completion": "Abschluss",
+        "completionDL": "Abschlussstatus",
+        "completed": "Abgeschlossen",
+        "waiting": "Warten",
+        "eventTitle": "Veranstaltungstitel",
+        "eventTitleDL": "Veranstaltungstitel",
+        "eventCreator": "Veranstalter",
+        "eventCreatorDL": "Veranstalter",
+        "attendants": "Teilnehmer",
+        "createdAt": "Erstellt am",
+        "createdAtDL": "Erstellt am",
+        "noEvents": "Keine Veranstaltungen gefunden"
+      },
+      "singleEventPanel": {
+        "eventId": "Veranstaltungs-ID:",
+        "eventDetails": "Veranstaltungsdetails",
+        "eventPhotoAlt": "Veranstaltungsfoto",
+        "eventName": "Veranstaltungsname: ",
+        "eventDescription": "Veranstaltungsbeschreibung: ",
+        "eventCreator": "Veranstalter: ",
+        "startDate": "Startdatum: ",
+        "endDate": "Enddatum: ",
+        "contactName": "Kontaktname: ",
+        "contactEmail": "Kontakt-E-Mail",
+        "contactPhone": "Kontakt-Telefon",
+        "languages": "Sprachen",
+        "interests": "Interessen",
+        "onlineEvent": "Online-Veranstaltung: ",
+        "eventLocation": "Veranstaltungsort: ",
+        "documents": "Dokumente: ",
+        "documentId": "Dokumenten-ID: ",
+        "eventParticipants": "Veranstaltungsteilnehmer",
+        "participantId": "Teilnehmer-ID",
+        "participantIdDL": "Teilnehmer-ID",
+        "user": "Benutzer",
+        "userDL": "Benutzer",
+        "joined": "Beigetreten",
+    "pending": "Ausstehend",
+    "approved": "Genehmigt",
+    "rejected": "Abgelehnt",
+    "notJoined": "Nicht beigetreten",
+    "joinDateDL": "Beitrittsdatum",
+    "suspendEvent": "Veranstaltung aussetzen",
+    "unsuspendEvent": "Veranstaltung fortsetzen",
+    "status": "Status",
+    "statusDL": "Teilnehmerstatus",
+    "joinDate": "Beitrittsdatum",
+    "noParticipantYet": "Noch kein Teilnehmer",
+    "deleteEvent": "Veranstaltung löschen",
+    "desc": "Sind Sie sicher, dass Sie diese Veranstaltung löschen möchten?"
+      }
+    },
+    "feedbacks": {
+      "feedbacksPanel": {
+        "title": "Veranstaltungsfeedback"
+      },
+      "feedbacksTable": {
+        "header": "Feedback-Tabelle"
+      },
+      "singleFeedbackPanel": {
+        "feedbackId": "Feedback-ID "
+      }
+    },
+    "reports": {
+      "reportsPanel": {
+        "title": "Veranstaltungsberichte"
+      },
+      "reportsTable": {
+        "header": "Berichtstabelle"
+      },
+      "singleReportPanel": {
+        "reportId": "Bericht-ID "
+      }
+    },
+    "users": {
+      "singleUserPanel": {
+        "userId": "Benutzer-ID: ",
+        "userInformations": "Benutzerinformationen",
+        "fullName": "Vollname",
+        "orgName": "Organisation Name",
+        "userType": "Benutzertyp: ",
+        "emailAddress": "E-Mail-Adresse: ",
+        "createdAt": "Erstellt am: ",
+        "lastUpdatedAt": "Zuletzt aktualisiert am: ",
+        "userDetails": "Benutzerdetails",
+        "fullNameDisplay": "Vollständiger Name: ",
+        "profileSetup": "Profil eingerichtet: ",
+        "emailVerified": "E-Mail verifiziert: ",
+        "languages": "Sprachen: ",
+        "interests": "Interessen: ",
+        "address": "Adresse: ",
+        "documents": "Dokumente: ",
+        "documentId": "Dokumenten-ID: ",
+        "noUserFound": "Kein Benutzer gefunden",
+        "deleteUser": "Benutzer löschen",
+        "deleteDescription": "Möchten Sie diesen Benutzer wirklich löschen?"
+      },
+      "usersPanel": {
+        "title": "Benutzer"
+      },
+      "usersTable": {
+        "userId": "Benutzer-ID",
+        "userIdDL": "Benutzer-ID",
+        "status": "Status",
+        "statusDL": "Benutzerstatus",
+        "userType": "Benutzertyp",
+        "userTypeDL": "Benutzertyp",
+        "nameOrg": "Name/Organisation",
+        "nameOrgDL": "Name",
+        "email": "E-Mail",
+        "emailDL": "E-Mail",
+        "nameDL": "Name",
+        "createdAt": "Erstellt am",
+        "createdAtDL": "Erstellt am",
+        "noUsersFound": "Keine Benutzer gefunden"
+      }
+    }
+  },
+
+  "adminPanelPage": {
+    "eventLabel": "Veranstaltungen",
+    "userLabel": "Benutzer",
+    "contactLabel": "Kontakte",
+    "feedbackLabel": "Feedbacks",
+    "reportLabel": "Berichte"
+  },
+
+  "yup": {
+    "required": {
+      "userType": "Benutzertyp ist erforderlich!",
+      "name": "Name ist erforderlich!",
+      "fullName": "Vollname ist erforderlich!",
+      "email": "E-Mail ist erforderlich!",
+      "password": "Passwort ist erforderlich!",
+      "subject": "Betreff der Nachricht ist erforderlich!",
+      "message": "Nachricht ist erforderlich!",
+      "organizationName": "Organisationsname ist erforderlich!",
+      "streetName": "Straßenname ist erforderlich!",
+      "streetNumber": "Hausnummer ist erforderlich!",
+      "zipCode": "Postleitzahl ist erforderlich!",
+      "city": "Stadt ist erforderlich!",
+      "country": "Land ist erforderlich!",
+      "oldPassword": "Altes Passwort ist erforderlich!",
+      "confirmPassword": "Passwortbestätigung ist erforderlich!",
+      "reason": "Bitte wählen Sie einen Grund aus",
+      "eventName": "Veranstaltungsname ist erforderlich!",
+      "date": "Datum ist erforderlich!",
+      "startTime": "Startzeit ist erforderlich!",
+      "endTime": "Endzeit ist erforderlich!",
+      "endShouldLater": "Endzeit sollte nach der Startzeit liegen",
+      "streetNameOnline": "Straßenname ist erforderlich, wenn online",
+      "category": "Kategorie ist erforderlich",
+      "participants": "Maximale Teilnehmeranzahl ist erforderlich",
+      "description": "Beschreibung ist erforderlich",
+      "newDate": "Datum darf nicht in der Vergangenheit liegen",
+      "onlyNumbers": "Darf nur Zahlen enthalten",
+      "onlyLetters": "Darf nur  Buchstaben enthalten",
+      "interestId": "InterestIds muss eine gültige Objekt-ID sein",
+      "logo": "Firmenzeichen ist erforderlich!",
+      "addressId": "AddressId muss eine gültige Objekt-ID sein"
+
+    },
+    "minLength": {
+      "select1": "Mindestens eine Kategorie muss ausgewählt werden.",
+      "phoneNumber": "Die Telefonnummer muss mindestens 10 Ziffern enthalten",
+      "totalPoint": "Gesamtpunktzahl darf nicht negativ sein",
+      "characters1": "Muss mindestens 1 Zeichen lang sein!",
+      "characters3": "Muss mindestens 3 Zeichen lang sein!",
+      "characters8": "Muss mindestens 8 Zeichen lang sein!",
+      "characters10": "Muss mindestens 10 Zeichen lang sein!"
+    },
+    "maxLength": {
+      "select3": "Sie können bis zu 3 Kategorien auswählen.",
+      "characters8": "Darf maximal 8 Zeichen lang sein!",
+      "characters30": "Darf maximal 30 Zeichen lang sein!",
+      "characters50": "Darf maximal 50 Zeichen lang sein!",
+      "characters100": "Darf maximal 100 Zeichen lang sein!",
+      "characters250Bio": "Bio darf nicht länger als 250 Zeichen sein!",
+      "characters250": "Beschreibung darf maximal 250 Zeichen lang sein!",
+      "characters1000": "Darf maximal 1000 Zeichen lang sein!"
+    },
+    "password": {
+      "containsDigit": "Muss eine Ziffer enthalten!",
+      "containsLowercase": "Muss einen Kleinbuchstaben enthalten!",
+      "containsUppercase": "Muss einen Großbuchstaben enthalten!",
+      "containsSpecialCharacter": "Muss ein Sonderzeichen enthalten (@$!%*?&)!",
+      "match": "Passwörter müssen übereinstimmen!"
+    },
+    "invalid": {
+      "email": "Ungültige E-Mail-Adresse!",
+      "url": "Ungültiges URL-Format!"
+    },
+    "oneOf": {
+      "gender": "Bitte wählen Sie ein gültiges Geschlecht",
+      "ageRange": "Bitte wählen Sie einen gültigen Altersbereich",
+      "language": "Bitte wählen Sie eine gültige Sprache"
+    }  
   }
 }

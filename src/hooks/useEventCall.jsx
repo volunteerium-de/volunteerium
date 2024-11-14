@@ -10,11 +10,13 @@ import {
   participationFail,
   participationStart,
 } from "../features/eventSlice"
+import { useNavigate } from "react-router-dom"
 
 const useEventCall = () => {
   const { axiosWithToken, axiosWithBearer } = useAxios()
   const { currentUser: user } = useSelector((state) => state.auth)
   const dispatch = useDispatch()
+  const navigate = useNavigate()
 
   const getEvents = async (url) => {
     try {
@@ -37,6 +39,7 @@ const useEventCall = () => {
     } catch (error) {
       console.log(error.response.data.message)
       dispatch(fetchEventFail())
+      navigate("/not-found")
     }
   }
 
@@ -112,6 +115,15 @@ const useEventCall = () => {
     }
   }
 
+  const getEventParticipant = async () => {
+    try {
+      const { data } = await axiosWithToken.get("event-participants")
+      return data
+    } catch (error) {
+      toastNotify("error", error?.response?.data?.message)
+    }
+  }
+
   const approveParticipant = async (userId, eventId) => {
     try {
       const { data } = await axiosWithToken.post(`event-participants/approve`, {
@@ -179,6 +191,30 @@ const useEventCall = () => {
     }
   }
 
+  const sendEventFeedback = async (formData) => {
+    try {
+      const { data } = await axiosWithToken.post(`event-feedbacks`, formData)
+      // console.log(data)
+      toastNotify("success", data.message)
+    } catch (error) {
+      toastNotify("error", error?.response?.data?.message)
+      console.log(error)
+    } finally {
+      getSingleEvent(formData.eventId)
+    }
+  }
+
+  const sendEventReport = async (formData) => {
+    try {
+      const { data } = await axiosWithToken.post(`event-reports`, formData)
+      // console.log(data)
+      toastNotify("success", data.message)
+    } catch (error) {
+      toastNotify("error", error?.response?.data?.message)
+      console.log(error)
+    }
+  }
+
   return {
     getEvents,
     getSingleEvent,
@@ -187,11 +223,14 @@ const useEventCall = () => {
     editEvent,
     deleteEvent,
     joinEvent,
+    getEventParticipant,
     approveParticipant,
     rejectParticipant,
     confirmAttendance,
     confirmAbsence,
     deleteEventParticipation,
+    sendEventFeedback,
+    sendEventReport,
   }
 }
 

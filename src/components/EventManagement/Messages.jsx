@@ -78,7 +78,7 @@ const Messages = ({ conversations, currentUser }) => {
           <div className="flex flex-col items-center">
             <BiConversation className="text-6xl opacity-70 text-dark-gray-3 dark:text-white mb-4" />
             <p className="text-lg font-semibold text-dark-gray-1 dark:text-white text-center">
-              No conversations found
+            {t(translations.eventMng.messagesComp.noConversations)}
             </p>
           </div>
         </div>
@@ -130,7 +130,7 @@ const Messages = ({ conversations, currentUser }) => {
         <div className="h-screen flex flex-col justify-center items-center">
           <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-primary-green border-opacity-50 dark:border-light-green" />
           <p className="text-2xl font-semibold text-primary-green dark:text-light-gray">
-            Loading...
+            {t(translations.eventMng.messagesComp.loading)}
           </p>
         </div>
       ) : (

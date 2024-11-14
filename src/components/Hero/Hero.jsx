@@ -11,7 +11,7 @@ const Hero = () => {
         <img
           className="w-full h-full object-cover"
           src="/src/assets/hero-bg.jpg"
-          alt="Homepage hero background image"
+          alt=  {t(translations.heroSection.imgAlt)}
         />
         <div className="absolute inset-0 backdrop-blur-sm bg-black/10"></div>
       </div>
