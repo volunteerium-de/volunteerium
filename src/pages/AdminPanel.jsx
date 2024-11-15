@@ -18,6 +18,8 @@ import SingleFeedbackPanel from "../components/AdminPanel/feedbacks/SingleFeedba
 import { SiImessage } from "react-icons/si"
 import FeedbacksPanel from "../components/AdminPanel/feedbacks/FeedbacksPanel"
 import { debounce } from "../utils/functions"
+import SubscriptionsPanel from "../components/AdminPanel/subscriptions/SubscriptionsPanel"
+import { PiNewspaperClippingFill } from "react-icons/pi"
 
 const AdminPanel = () => {
   const location = useLocation()
@@ -99,6 +101,11 @@ const AdminPanel = () => {
       label: "Reports",
       icon: <MdReportProblem className="text-2xl mx-auto" />,
     },
+    {
+      key: "subscriptions",
+      label: "Subscriptions",
+      icon: <PiNewspaperClippingFill className="text-2xl mx-auto" />,
+    },
   ]
 
   const renderContent = () => {
@@ -134,6 +141,8 @@ const AdminPanel = () => {
         return <ReportsPanel />
       case "feedbacks":
         return <FeedbacksPanel />
+      case "subscriptions":
+        return <SubscriptionsPanel />
       default:
         return <EventsPanel />
     }
