@@ -17,7 +17,7 @@ const EventManagement = () => {
   const navigate = useNavigate()
   const { conversations } = useSelector((state) => state.chat)
   const { currentUser, loading } = useSelector((state) => state.auth)
-  const [activeTab, setActiveTab] = useState("organizedEvents")
+  const [activeTab, setActiveTab] = useState("organized-events")
   const [isAddingEvent, setIsAddingEvent] = useState(false)
   const { t } = useTranslation()
   const [eventToEdit, setEventToEdit] = useState(null)
@@ -47,12 +47,12 @@ const EventManagement = () => {
 
   const menuItems = [
     {
-      key: "organizedEvents",
+      key: "organized-events",
       label: t(translations.eventManagement.sidebarLabels.organizedEvents),
       icon: <FaCalendar className="text-2xl mx-auto" />,
     },
     {
-      key: "attendingEvents",
+      key: "attending-events",
       label: t(translations.eventManagement.sidebarLabels.attendingEvents),
       icon: <FaPeopleGroup className="text-2xl mx-auto" />,
       show: currentUser?.userType !== "organization",
@@ -82,14 +82,14 @@ const EventManagement = () => {
       )
 
     switch (activeTab) {
-      case "organizedEvents":
+      case "organized-events":
         return (
           <OrganizedEvents
             onAddEvent={() => setIsAddingEvent(true)}
             setEditEvent={setEventToEdit}
           />
         )
-      case "attendingEvents":
+      case "attending-events":
         return <AttendingEvents />
 
       case "messages":
