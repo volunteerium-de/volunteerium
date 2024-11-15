@@ -28,13 +28,11 @@
     "loadingEvents": "Loading Upcomming Events...",
     "noEvents": "No Upcoming Events!"
   },
-
   "onlineOpportunities": {
     "title": "Online Events",
     "loadingEvents": "Loading Upcomming Events...",
     "noEvents": "No Upcoming Events!"
   },
-
   "getToKnowUs": {
     "h2": "Get to Know Us",
     "description1": "At Volunterium, our goal is to connect those who want to volunteer with those in need of support.",
@@ -125,7 +123,6 @@
     "or": "or",
     "contGoogle": "Continue with Google"
   },
-
   "password": {
     "forgotPassForm": {
       "backToLogin": "Back to login",
@@ -159,7 +156,6 @@
       "resend": "Resend"
     }
   },
-
   "profile": {
     "memberSince": "Member since",
     "edit": "Edit",
@@ -190,8 +186,6 @@
     "security": "Security",
     "visibility": "Visibility"
   },
-
-
   "addNewDoc": {
     "newDocument": "New Document",
     "documentTitle": "Document Title",
@@ -419,7 +413,6 @@
     "h1": "Frequently Asked Questions",
     "p1": "Find answers to commonly asked questions about Volunteerium"
   },
-
   "eventsPage": {
     "sec1": "Availability",
     "from": "From",
@@ -503,9 +496,12 @@
   "profileCard": {
     "attendEvents": "Attended Events",
     "organizedEvents": "Organized Events",
+    "unfinishedEvents": "Unfinished Events",
+    "finishedEvents": "Finished Events",
     "p1": "No events found",
     "p2": "It seems there are no events at the moment.",
     "infoAlt": "Organizator Avatar",
+    "joining": "joining",
     "joined": "joined"
   },
   "sidebar": {
@@ -619,7 +615,6 @@
       "option10": "Other"
     }
   },
-
   "eventManagement": {
     "addNewEvent": "Add new event",
     "searchInput": "Search",
@@ -646,7 +641,6 @@
     "joining": "joining",
     "joined": "joined"
   },
-  
   "eventMng": {
     "addNew": "Add New Event",
     "eventName": "Event Name",
@@ -677,24 +671,23 @@
     "no": "no",
     "back": "back",
     "submit": "submit",
-      "messages": {
-        "messageInput": {
-          "messagePH1":  "As the organizer, only you can send messages to this group.",
-          "messagePH2": "This space is reserved for announcements from the organizer only.",
-          "messagePH3": "Type your message here...",
-          "messagePH4": "Do you have a question about the event?"
-        },
-        "messageView": {
-          "startMsg": "Select a conversation to start messaging",
-          "you": "You"
-        }
+    "messages": {
+      "messageInput": {
+        "messagePH1": "As the organizer, only you can send messages to this group.",
+        "messagePH2": "This space is reserved for announcements from the organizer only.",
+        "messagePH3": "Type your message here...",
+        "messagePH4": "Do you have a question about the event?"
       },
-      "messagesComp": {
-        "noConversations": "No conversations found",
-        "loading": "Loading..."
+      "messageView": {
+        "startMsg": "Select a conversation to start messaging",
+        "you": "You"
       }
+    },
+    "messagesComp": {
+      "noConversations": "No conversations found",
+      "loading": "Loading..."
+    }
   },
-
   "termsOfService": {
     "h1": "Terms of Service",
     "p1": "Published Date:",
@@ -734,7 +727,6 @@
     "yes": "Yes",
     "no": "No",
     "cancel": "Cancel",
-
     "contacts": {
       "contactPanel": {
         "title": "Contacts"
@@ -881,7 +873,6 @@
     "feedbackLabel": "Feedbacks",
     "reportLabel": "Reports"
   },
-
   "yup": {
     "required": {
       "userType": "User type is required!",
@@ -915,7 +906,6 @@
       "interestId": "InterestIds must be a valid ObjectId",
       "logo": "Logo is required!",
       "addressId": "AddressId must be a valid ObjectId"
-
     },
     "minLength": {
       "select1": "At least one category must be selected.",

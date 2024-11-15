@@ -28,13 +28,11 @@
     "loadingEvents": "Kommende Veranstaltungen werden geladen...",
     "noEvents": "Keine kommenden Veranstaltungen!"
   },
-
   "onlineOpportunities": {
     "title": "Online Veranstaltungen",
     "loadingEvents": "Lade bevorstehende Veranstaltungen...",
     "noEvents": "Keine bevorstehenden Veranstaltungen!"
   },
-
   "getToKnowUs": {
     "h2": "Lernen Sie uns kennen",
     "description1": "Bei Volunterium ist es unser Ziel, die Freiwilligen mit denjenigen zu verbinden, die Unterstützung benötigen.",
@@ -125,7 +123,6 @@
     "or": "oder",
     "contGoogle": "Weiter mit Google"
   },
-
   "password": {
     "forgotPassForm": {
       "backToLogin": "Zurück zum Login",
@@ -148,7 +145,7 @@
       "confirmPassword": "Bestätigen Sie das neue Passwort",
       "confirmPasswordPH": "Bestätigen Sie Ihr neues Passwort",
       "reset": "Zurücksetzen"
-      },
+    },
     "verificationForm": {
       "timerMsg": "Gibt es ein Problem? Fordern Sie den Code erneut an!",
       "backToLogin": "Zurück zum Login",
@@ -159,7 +156,6 @@
       "resend": "Erneut senden"
     }
   },
-
   "profile": {
     "memberSince": "Mitglied seit",
     "edit": "Bearbeiten",
@@ -417,7 +413,6 @@
     "h1": "Häufig gestellte Fragen",
     "p1": "Finden Sie Antworten auf häufig gestellte Fragen zu Volunteerium"
   },
-
   "eventsPage": {
     "sec1": "Verfügbarkeit",
     "from": "Von",
@@ -443,7 +438,6 @@
     "category": "Kategorie",
     "language": "Sprache"
   },
-
   "googleAuthFall": {
     "h1": "Authentifizierung fehlgeschlagen.",
     "h2": "Bitte versuchen Sie es erneut oder kontaktieren Sie den Support, wenn das Problem weiterhin besteht.",
@@ -455,7 +449,6 @@
     "h1": "Erfolgreich mit Google authentifiziert",
     "p": "Weiterleitung..."
   },
-
   "notFound": {
     "imgAlt": "Nicht gefunden",
     "p": "Seite nicht gefunden",
@@ -478,7 +471,6 @@
     "skip": "Überspringen",
     "finish": "Beenden"
   },
-
   "setupOrg": {
     "details": "Teilen Sie Ihre Organisationsdaten",
     "p": "Diese Informationen sind notwendig, damit wir Ihre Organisation verstehen und Ihnen bessere Dienstleistungen anbieten können",
@@ -502,16 +494,17 @@
     "countryPH": "Land eingeben",
     "finish": "Fertigstellen"
   },
-
   "profileCard": {
     "attendEvents": "Teilgenommene Veranstaltungen",
     "organizedEvents": "Organisierte Veranstaltungen",
+    "unfinishedEvents": "Unvollendete Veranstaltungen",
+    "finishedEvents": "Abgeschlossene Veranstaltungen",
     "p1": "Keine Veranstaltungen gefunden",
     "p2": "Es scheint, dass momentan keine Veranstaltungen verfügbar sind.",
     "infoAlt": "Organisator-Avatar",
-    "joined": "Beigetreten"
+    "joining": "beitreten",
+    "joined": "beigetreten"
   },
-
   "sidebar": {
     "welcome": "Wilkommen"
   },
@@ -570,7 +563,6 @@
     "p15": "Volunteerium-Team",
     "p16": "E-Mail: info.volunteerium@gmail.com"
   },
-
   "langSelect": {
     "lang": "Sprache",
     "PH": "Veranstaltungssprachen hinzufügen"
@@ -624,7 +616,6 @@
       "option10": "Sonstiges"
     }
   },
-    
   "eventManagement": {
     "addNewEvent": "Neues Event hinzufügen",
     "searchInput": "Suchen",
@@ -651,7 +642,6 @@
     "joining": "beitreten",
     "joined": "beigetreten"
   },
-  
   "eventMng": {
     "addNew": "Neue Veranstaltung hinzufügen",
     "eventName": "Veranstaltungsname",
@@ -697,9 +687,8 @@
     "messagesComp": {
       "noConversations": "Keine Unterhaltungen gefunden",
       "loading": "Laden..."
-}
+    }
   },
-
   "termsOfService": {
     "h1": "Nutzungsbedingungen",
     "p1": "Veröffentlichungsdatum:",
@@ -730,7 +719,6 @@
     "p13": "Volunteerium-Team",
     "p14": "E-Mail: info.volunteerium@gmail.com"
   },
-
   "adminPanel": {
     "backButton": "Zurück",
     "activeUpper": "AKTIV",
@@ -740,7 +728,6 @@
     "yes": "Ja",
     "no": "Nein",
     "cancel": "Abbrechen",
-
     "contacts": {
       "contactPanel": {
         "title": "Kontakte"
@@ -798,19 +785,19 @@
         "user": "Benutzer",
         "userDL": "Benutzer",
         "joined": "Beigetreten",
-    "pending": "Ausstehend",
-    "approved": "Genehmigt",
-    "rejected": "Abgelehnt",
-    "notJoined": "Nicht beigetreten",
-    "joinDateDL": "Beitrittsdatum",
-    "suspendEvent": "Veranstaltung aussetzen",
-    "unsuspendEvent": "Veranstaltung fortsetzen",
-    "status": "Status",
-    "statusDL": "Teilnehmerstatus",
-    "joinDate": "Beitrittsdatum",
-    "noParticipantYet": "Noch kein Teilnehmer",
-    "deleteEvent": "Veranstaltung löschen",
-    "desc": "Sind Sie sicher, dass Sie diese Veranstaltung löschen möchten?"
+        "pending": "Ausstehend",
+        "approved": "Genehmigt",
+        "rejected": "Abgelehnt",
+        "notJoined": "Nicht beigetreten",
+        "joinDateDL": "Beitrittsdatum",
+        "suspendEvent": "Veranstaltung aussetzen",
+        "unsuspendEvent": "Veranstaltung fortsetzen",
+        "status": "Status",
+        "statusDL": "Teilnehmerstatus",
+        "joinDate": "Beitrittsdatum",
+        "noParticipantYet": "Noch kein Teilnehmer",
+        "deleteEvent": "Veranstaltung löschen",
+        "desc": "Sind Sie sicher, dass Sie diese Veranstaltung löschen möchten?"
       }
     },
     "feedbacks": {
@@ -879,7 +866,6 @@
       }
     }
   },
-
   "adminPanelPage": {
     "eventLabel": "Veranstaltungen",
     "userLabel": "Benutzer",
@@ -887,7 +873,6 @@
     "feedbackLabel": "Feedbacks",
     "reportLabel": "Berichte"
   },
-
   "yup": {
     "required": {
       "userType": "Benutzertyp ist erforderlich!",
@@ -921,7 +906,6 @@
       "interestId": "InterestIds muss eine gültige Objekt-ID sein",
       "logo": "Firmenzeichen ist erforderlich!",
       "addressId": "AddressId muss eine gültige Objekt-ID sein"
-
     },
     "minLength": {
       "select1": "Mindestens eine Kategorie muss ausgewählt werden.",
@@ -957,6 +941,6 @@
       "gender": "Bitte wählen Sie ein gültiges Geschlecht",
       "ageRange": "Bitte wählen Sie einen gültigen Altersbereich",
       "language": "Bitte wählen Sie eine gültige Sprache"
-    }  
+    }
   }
 }

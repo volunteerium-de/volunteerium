@@ -65,14 +65,21 @@ const Profile = () => {
   const [totalPages, setTotalPages] = useState(0)
   const { getTranslatedCategory } = useLanguageOptions()
 
+  const [organizedFilter, setOrganizedFilter] = useState("Unfinished Events")
+
   useEffect(() => {
     const fetchEvents = async () => {
       setLoading(true)
       try {
-        const query =
-          eventType === "Attended Events"
-            ? `events/participant/${userId}?page=${currentPage}`
-            : `events/?filter[createdBy]=${userId}&page=${currentPage}`
+        let query = `events/?filter[createdBy]=${userId}&page=${currentPage}`
+        if (eventType === "Attended Events") {
+          query = `events/participant/${userId}?sort[startDate]=desc&page=${currentPage}`
+        } else if (organizedFilter === "Finished Events") {
+          query += `&filter[isDone]=true&sort[startDate]=desc`
+        } else if (organizedFilter === "Unfinished Events") {
+          query += `&filter[isDone]=false&sort[startDate]=asc`
+        }
+
         const eventData = await getEvents(query)
         const { data } = await axiosWithPublic(`users/${userId}`)
         setUser(data.data)
@@ -92,7 +99,9 @@ const Profile = () => {
       }
     }
     fetchEvents()
-  }, [currentPage, eventType, t])
+  }, [currentPage, eventType, organizedFilter, t])
+
+  console.log(events)
 
   const pastEvents = events?.filter((event) => event.isDone) || []
   const approvedEvents =
@@ -289,7 +298,7 @@ const Profile = () => {
             </div>
             <div className="w-full max-w-full bg-light-gray rounded-b-md sm:rounded-md px-8 sm:px-2 lg:px-12 dark:bg-dark-gray-3 -mt-3 sm:mt-0">
               {eventType === "Attended Events" ? (
-                <div className="flex flex-col justify-between h-full">
+                <div className="flex flex-col justify-between min-h-[55vh] sm:h-full">
                   <ProfileCard
                     events={approvedEvents}
                     loading={loading}
@@ -297,6 +306,8 @@ const Profile = () => {
                     eventType={eventType}
                     setEventType={setEventType}
                     setCurrentPage={setCurrentPage}
+                    organizedFilter={organizedFilter}
+                    setOrganizedFilter={setOrganizedFilter}
                   />
                   {events.length > 0 && (
                     <Pagination
@@ -307,7 +318,7 @@ const Profile = () => {
                   )}
                 </div>
               ) : (
-                <div className="flex flex-col justify-between h-full">
+                <div className="flex flex-col justify-between min-h-[55vh] sm:h-full">
                   <ProfileCard
                     events={events}
                     loading={loading}
@@ -315,6 +326,8 @@ const Profile = () => {
                     eventType={eventType}
                     setEventType={setEventType}
                     setCurrentPage={setCurrentPage}
+                    organizedFilter={organizedFilter}
+                    setOrganizedFilter={setOrganizedFilter}
                   />
                   {events.length > 0 && (
                     <Pagination
