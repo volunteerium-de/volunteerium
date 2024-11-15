@@ -98,9 +98,13 @@ const SingleReportPanel = ({ reportId, setIdentifier }) => {
           <div className="my-8 md:my-4 space-y-2 h-max">
             <div className="flex justify-between items-center p-4 bg-white dark:bg-dark-gray-1 rounded-lg ">
               <div className="text-sm sm:text-[1.125rem] flex gap-1 md:gap-2 items-center text-dark-gray-1 me-3">
-                Report ID - {reportId}
+                <span className="text-primary-green dark:text-white font-semibold w-[80px] sm:w-fit">
+                  Report ID:
+                </span>
+                <span className="w-[100px] md:w-auto overflow-x-scroll scrollbar-hide">
+                  {reportId}
+                </span>
               </div>
-
               <div className="flex gap-1 md:gap-2 items-center">
                 <button ref={settingsButtonRef} onClick={handleSettingsButtonClick}>
                   <MdOutlineSettings className="w-5 h-5 sm:w-8 sm:h-8 text-dark-gray-1 dark:text-white hover:text-dark-gray-1" />
@@ -115,11 +119,11 @@ const SingleReportPanel = ({ reportId, setIdentifier }) => {
                 </h1>
                 <ul className="space-y-2 text-dark-gray-1 dark:text-light-gray-2">
                   {/* Full Name  */}
-                  <li className="flex gap-1 mt-4">
+                  <li className="flex flex-col sm:flex-row gap-1 mt-4">
                     <span className="font-semibold">Report Type:</span>
                     <span>{reportData?.reportType}</span>
                   </li>
-                  <li className="flex gap-1 mt-4">
+                  <li className="flex gap-1 flex-col sm:flex-row mt-4">
                     <span className="font-semibold">Reported By:</span>
                     {reportData?.reportedBy ? (
                       <span
@@ -134,7 +138,7 @@ const SingleReportPanel = ({ reportId, setIdentifier }) => {
                       <span className="text-gray-500 italic">Guest User</span>
                     )}
                   </li>
-                  <li className="flex gap-1 mt-4">
+                  <li className="flex flex-col sm:flex-row gap-1 mt-4">
                     <span className="font-semibold">Event Id:</span>
                     <span
                       className="text-primary-green cursor-pointer"
@@ -160,7 +164,7 @@ const SingleReportPanel = ({ reportId, setIdentifier }) => {
                   Reports Details
                 </h1>
                 <ul className="space-y-2 text-dark-gray-1 dark:text-light-gray-2">
-                  <li className="flex gap-1 my-4">
+                  <li className="flex flex-col sm:flex-row gap-1 my-4">
                     <span className="font-semibold">Content:</span>
                     <span>{reportData?.content}</span>
                   </li>
