@@ -193,7 +193,7 @@ const PasswordModal = ({ isOpen, onClose }) => {
         isOpen ? "visible" : "invisible"
       }`}
     >
-      <div className="max-w-full sm:w-[600px] w-[350px] sm:h-[400px] h-[450px] font-Poppins p-[50px] text-black rounded-[8px] bg-white dark:bg-dark-gray-3 dark:text-white shadow-2xl">
+      <div className="max-w-full sm:w-[600px] w-[290px] sm:h-[400px] h-[400px] font-Poppins p-[30px] text-black rounded-[8px] bg-white dark:bg-dark-gray-3 dark:text-white shadow-2xl">
         <h1 className="text-center mb-[20px] font-semibold sm:text-[1rem] text-[0.9rem] ">
           {t(translations.pswModal.changePsw)}
         </h1>
@@ -282,13 +282,13 @@ const PasswordModal = ({ isOpen, onClose }) => {
                   </div>
                 </div>
                 {formik.touched.confirmPassword && formik.errors.confirmPassword ? (
-                  <p className="absolute right-[11%]  sm:right-0 -bottom-5 text-danger dark:text-primary-green text-xs sm:text-right text-center">
+                  <p className="absolute right-[10%] sm:right-0 -bottom-5 text-danger dark:text-primary-green text-xs sm:text-right text-center">
                     {formik.errors.confirmPassword}
                   </p>
                 ) : null}
               </div>
 
-              <div className="flex justify-center gap-3 mt-[30px] ">
+              <div className="flex justify-center gap-3 mt-[40px] ">
                 <button
                   type="button"
                   className="text-primary-green text-[0.8rem] sm:text-[0.9rem]"
