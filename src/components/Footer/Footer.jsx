@@ -36,7 +36,7 @@ const Footer = () => {
                     <li key={idx}>
                       <Link
                         to={link.path}
-                        className="text-gray-2 hover:text-primary-green hover:underline stransition-colors duration-300"
+                        className="text-gray-2 hover:text-primary-green hover:underline transition-colors duration-300"
                       >
                         {link.name}
                       </Link>
