@@ -39,17 +39,20 @@ const EventCardVertical = ({ event }) => {
         />
       </div>
       {/* Event Content */}
-      <div className="p-2 h-full">
-        <h2
-          className="text-dark-gray-1 dark:text-white font-bold text-[0.9375rem] cursor-pointer "
-          onClick={handleNavigate}
-        >
-          {event.title}
-        </h2>
-        <p className="text-dark-gray-1 dark:text-light-gray-2 text-[0.75rem] mb-[10px] h-[3rem]">
-          {event.description.split(" ").slice(0, 10).join(" ")}
-          {event.description.split(" ").length > 10 ? "..." : ""}
-        </p>
+      <div className="p-3 h-full">
+        <div className="min-h-[100px]">
+          <h2
+            className="text-dark-gray-1 dark:text-white font-bold text-[0.9375rem] cursor-pointer "
+            onClick={handleNavigate}
+          >
+            {event.title}
+          </h2>
+          <p className="text-dark-gray-1 dark:text-light-gray-2 text-[0.75rem] mt-2">
+            {event.description.split(" ").slice(0, 10).join(" ")}
+            {event.description.split(" ").length > 10 ? "..." : ""}
+          </p>
+        </div>
+
         {/* Details */}
 
         <div>
