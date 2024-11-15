@@ -1,9 +1,5 @@
 {
-  "langSwitch": {
-    "en": "English",
-    "de": "German"
-  },
-  "hero": {
+   "hero": {
     "imgAlt": "Homepage hero background image",
     "h2": "Become a part of something",
     "span": "bigger"
@@ -49,8 +45,6 @@
     "information": "Information",
     "company": "Company",
     "aboutUs": "About Us",
-    "careers": "Careers",
-    "investors": "Investors",
     "h2": "Follow Us",
     "faq": "FAQ",
     "contact": "Contact",
@@ -205,6 +199,7 @@
     "addPhoto": "Add Photo",
     "delete": "Delete"
   },
+
   "delModal": {
     "account-title": "Delete Account",
     "account-desc": "Are you sure you want to delete your account? This action cannot be undone.",
@@ -213,8 +208,13 @@
     "conversation-title": "Delete Conversation",
     "conversation-desc": "Are you sure you want to delete this conversation?",
     "cancelButton": "Cancel",
-    "delButton": "Delete"
+    "delButton": "Delete",
+    "deleteEventDesc":"Are you sure you want to delete this event?",
+    "leaveButton":"Leave",
+    "leaveEvent":"Leave Event",
+    "leaveEventDesc":"Are you sure you want to leave this event?"
   },
+
   "indvSettings": {
     "success": "Data saved successfully!",
     "catchError": "Error saving data: ",
@@ -641,6 +641,14 @@
     "joining": "joining",
     "joined": "joined"
   },
+    "joined": "joined",
+    "sidebarLabels": {
+      "attendingEvents": "Attending Events",
+      "organizedEvents": "Organized Events",
+      "messages": "Messages"
+  }
+ },
+
   "eventMng": {
     "addNew": "Add New Event",
     "eventName": "Event Name",

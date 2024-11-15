@@ -1,8 +1,4 @@
 {
-  "langSwitch": {
-    "en": "Englisch",
-    "de": "Deutsch"
-  },
   "hero": {
     "imgAlt": "Startseiten-Hintergrundbild für Hero-Bereich",
     "h2": "Werden Sie Teil von etwas",
@@ -49,8 +45,6 @@
     "information": "Informationen",
     "company": "Unternehmen",
     "aboutUs": "Über uns",
-    "careers": "Laufbahn",
-    "investors": "Investoren",
     "h2": "Folgen Sie uns",
     "faq": "FAQ",
     "contact": "Kontakt",
@@ -213,7 +207,11 @@
     "conversation-title": "Konversation löschen",
     "conversation-desc": "Sind Sie sicher, dass Sie diese Konversation löschen möchten?",
     "cancelButton": "Stornieren",
-    "delButton": "Löschen"
+    "delButton": "Löschen",
+    "deleteEventDesc":"Sind Sie sicher, dass Sie dieses Ereignis löschen möchten?",
+    "leaveButton":"Verlassen",
+    "leaveEvent":"Ereignis verlassen",
+    "leaveEventDesc":"Sind Sie sicher, dass Sie dieses Ereignis verlassen möchten?"
   },
   "indvSettings": {
     "success": "Daten erfolgreich gespeichert!",
@@ -640,7 +638,12 @@
     "no": "Keine",
     "volunteer": "Freiwilliger",
     "joining": "beitreten",
-    "joined": "beigetreten"
+    "joined": "beigetreten",
+    "sidebarLabels": {
+      "attendingEvents": "Teilnehmende Veranstaltungen",
+      "organizedEvents": "Veranstaltungen Organisieren",
+      "messages": "Nachrichten" 
+  }
   },
   "eventMng": {
     "addNew": "Neue Veranstaltung hinzufügen",

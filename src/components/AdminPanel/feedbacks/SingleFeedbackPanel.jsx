@@ -102,7 +102,12 @@ const SingleFeedbackPanel = ({ feedbackId, setIdentifier }) => {
           <div className="my-8 md:my-4 space-y-2 h-max">
             <div className="flex justify-between items-center p-4 bg-white dark:bg-dark-gray-1 rounded-lg ">
               <div className="text-sm sm:text-[1.125rem] flex gap-1 md:gap-2 items-center text-dark-gray-1 me-3">
-                Feedback ID - {feedbackId}
+                <span className="text-primary-green dark:text-white font-semibold w-[80px] sm:w-fit">
+                  Feedback ID:
+                </span>
+                <span className="w-[100px] md:w-auto overflow-x-scroll scrollbar-hide">
+                  {feedbackId}
+                </span>
               </div>
               <div className="flex gap-1 md:gap-2 items-center">
                 <button ref={settingsButtonRef} onClick={handleSettingsButtonClick}>
@@ -126,14 +131,14 @@ const SingleFeedbackPanel = ({ feedbackId, setIdentifier }) => {
                     />
                   </li>
                   {/* Full Name  */}
-                  <li className="flex gap-1 mt-4">
+                  <li className="flex flex-col sm:flex-row gap-1 mt-4">
                     <span className="font-semibold">{feedbackData?.name}</span>
                   </li>
-                  <li className="flex gap-1 mt-4">
+                  <li className="flex flex-col sm:flex-row gap-1 mt-4">
                     <span className="font-semibold">Title:</span>
                     <span>{feedbackData?.eventId?.title}</span>
                   </li>
-                  <li className="flex gap-1 mt-4">
+                  <li className="flex flex-col sm:flex-row gap-1 mt-4">
                     <span className="font-semibold">Event Id:</span>
                     <span
                       className="text-primary-green cursor-pointer"
@@ -187,7 +192,7 @@ const SingleFeedbackPanel = ({ feedbackId, setIdentifier }) => {
                     ))}
                   </li>
 
-                  <li className="flex gap-1 my-4">
+                  <li className="flex flex-col sm:flex-row gap-1 my-4">
                     <span className="font-semibold">Feedback:</span>
                     <span>{feedbackData?.feedback}</span>
                   </li>

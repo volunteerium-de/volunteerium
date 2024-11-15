@@ -26,12 +26,11 @@ const Sidebar = ({
   return (
     <div className="h-auto min-h-[calc(100vh-116px)] m-3">
       <div className="w-[65px] sm:w-[240px] lg:w-[300px] h-full 2xl:w-[350px] py-[30px] bg-light-gray dark:bg-dark-gray-3 rounded-lg">
-
         <div className="flex flex-col items-center gap-4">
           <div>
             {user.userType !== "admin" ? (
               <>
-                <UserAvatar user={user} size="h-24 w-24 sm:h-32 sm:w-32 p-4" />
+                <UserAvatar user={user} size="h-18 w-18 sm:h-32 sm:w-32 p-4" />
                 {onEditAvatar && (
                   <button
                     onClick={() => {
@@ -53,7 +52,7 @@ const Sidebar = ({
             )}
           </div>
 
-          <p className="font-bold text-gray-2 dark:text-white text-[1rem] text-center tracking-wider mt-[10px] mb-[30px] hidden sm:block">
+          <p className="font-bold text-gray-2 dark:text-white text-[1rem] text-center tracking-wider mt-[10px] mb-[30px] hidden sm:block px-5 max-w-full break-words">
             {t(translations.sidebar.welcome)}{" "}
             <span className="text-primary-green">{user.fullName || user.organizationName}!</span>
           </p>

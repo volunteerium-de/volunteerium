@@ -8,7 +8,7 @@ import ParticipantRequestsModal from "./EventCard/ParticipantRequestsModal"
 import { useTranslation } from "react-i18next"
 import { translations } from "../../locales/translations"
 
-const OrganizedEvents = ({ onAddEvent }) => {
+const OrganizedEvents = ({ onAddEvent, setEditEvent }) => {
   const { currentUser: user } = useSelector((state) => state.auth)
   const [isUpcomingOpen, setIsUpcomingOpen] = useState(true)
   const [isPastOpen, setIsPastOpen] = useState(false)
@@ -43,8 +43,6 @@ const OrganizedEvents = ({ onAddEvent }) => {
           const updatedSelectedEvent = eventsResponse.data.find((e) => e._id === selectedEvent._id)
           setSelectedEvent(updatedSelectedEvent)
         }
-
-        console.log("events", eventsResponse)
       } catch (error) {
         console.error("Error fetching events:", error)
       } finally {
@@ -65,23 +63,27 @@ const OrganizedEvents = ({ onAddEvent }) => {
     setFilteredEvents(filtered)
   }
 
+  const handleAddNewEventButton = () => {
+    onAddEvent()
+    setEditEvent(null)
+  }
   const upcomingEvents = filteredEvents?.filter((event) => !event.isDone) || []
   const pastEvents = filteredEvents?.filter((event) => event.isDone) || []
 
   return loading ? (
     <div className="flex mt-12 items-center justify-center text-primary-green text-md font-semibold">
       <FaSpinner className="animate-spin mr-2" />
-      Loading...
+      {t(translations.registerForm.loading)}
     </div>
   ) : (
-    <div className="mt-3 p-4 max-w-[77vw] min-h-[88vh] rounded-lg bg-light-gray dark:bg-dark-gray-3 ">
+    <div className="mt-3 p-4 max-w-[77vw] min-h-[calc(100vh-116px)] rounded-lg bg-light-gray dark:bg-dark-gray-3 ">
       <div className="flex justify-between items-center mb-8">
         <h2 className="text-primary-green text-[1.5rem] font-semibold">
           {t(translations.eventManagement.organizedEvents)}
         </h2>
         <div className="flex flex-col md:flex-row gap-2">
           <button
-            onClick={onAddEvent}
+            onClick={handleAddNewEventButton}
             className="flex md:text-[0.8rem] text-[0.6rem] px-2 sm:py-1 py-2 items-center border hover:bg-dark-green rounded-lg bg-primary-green text-white"
           >
             <FaPlus className="mr-2" />
@@ -122,6 +124,8 @@ const OrganizedEvents = ({ onAddEvent }) => {
                   isOrganized={true}
                   refetch={handleRefetch}
                   openModal={openModal}
+                  onAddEvent={onAddEvent}
+                  setEditEvent={setEditEvent}
                 />
               ))
             ) : (

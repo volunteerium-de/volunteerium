@@ -75,6 +75,25 @@ const AdminPanel = () => {
     debouncedSetIdentifier(identifier)
   }, [identifier, debouncedSetIdentifier])
 
+  useEffect(() => {
+    // URL değişikliklerini dinleyin ve identifier varsa geri yönlendirme yapın
+    const handlePopState = () => {
+      const queryParams = new URLSearchParams(window.location.search)
+      const tab = queryParams.get("tab")
+      const id = queryParams.get("identifier")
+      if (!id && identifier) {
+        setIdentifier(null)
+        navigate(`?tab=${tab || "events"}`)
+      }
+    }
+
+    window.addEventListener("popstate", handlePopState)
+
+    return () => {
+      window.removeEventListener("popstate", handlePopState)
+    }
+  }, [identifier, navigate])
+
   const adminMenuItems = [
     {
       key: "events",
