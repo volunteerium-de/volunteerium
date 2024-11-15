@@ -2,7 +2,7 @@ import React from "react"
 import { useTranslation } from "react-i18next"
 import { translations } from "../../../locales/translations"
 
-const DeleteModal = ({ onClose, onDelete, title, description }) => {
+const DeleteModal = ({ onClose, onDelete, title, description, buttonName }) => {
   const { t } = useTranslation()
 
   return (
@@ -15,7 +15,7 @@ const DeleteModal = ({ onClose, onDelete, title, description }) => {
             {t(translations.delModal.cancelButton)}
           </button>
           <button className="bg-danger text-white px-2 py-1 rounded" onClick={onDelete}>
-            {t(translations.delModal.delButton)}
+            {buttonName || t(translations.delModal.delButton)}
           </button>
         </div>
       </div>

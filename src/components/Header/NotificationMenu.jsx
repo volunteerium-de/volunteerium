@@ -9,7 +9,6 @@ import { useTranslation } from "react-i18next"
 import { translations } from "../../locales/translations"
 import i18n from "../../i18n"
 
-
 const NotificationMenu = () => {
   const { t } = useTranslation()
   const { fetchNotifications } = useChatCall()
@@ -115,7 +114,7 @@ const NotificationMenu = () => {
               ))
             ) : (
               <div>
-                <p className="text-center text-gray-2 py-3 dark:text-light-gray-2">
+                <p className="text-center py-3 text-gray-2 dark:text-light-gray-2">
                   {t(translations.notifMenu.noNotif)}
                 </p>
               </div>

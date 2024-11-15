@@ -20,7 +20,19 @@ export const AddEventSchema = object().shape({
 
   streetName: string().when("isOnline", {
     is: false,
-    then: () => string().required("Street Name is required when online"),
+    then: () =>
+      string()
+        .required("Street Name is required when online")
+        .matches(/[a-zA-Z]/, "Street Name must contain at least one letter"),
+  }),
+
+  streetNumber: string().when("isOnline", {
+    is: false,
+    then: () =>
+      string()
+        .trim()
+        .matches(/^[0-9]+$/, "Must contain only numbers")
+        .required("Street Number is required"),
   }),
 
   zipCode: string().when("isOnline", {
@@ -39,7 +51,7 @@ export const AddEventSchema = object().shape({
     then: () =>
       string()
         .required("City is required")
-        .matches(/^[a-zA-Z]+$/, "City must contain just letters")
+        .matches(/^[\p{L}]+$/u, "City must contain just letters")
         .min(3, "City must contain at least 3 characters"),
   }),
 
@@ -49,7 +61,7 @@ export const AddEventSchema = object().shape({
       string()
         .trim()
         .required("Country is required")
-        .matches(/^[a-zA-Z]+$/, "Country must contain just letters")
+        .matches(/^[\p{L}]+$/u, "Country must contain just letters")
         .min(3, "Country must contain at least 3 characters"),
   }),
 
@@ -102,7 +114,16 @@ export const AddEventStep1Schema = object().shape({
 
   streetName: string().when("isOnline", {
     is: false,
-    then: () => string().required("Street Name is required when online"),
+    then: () => string().trim().required("Street Name is required when online"),
+  }),
+
+  streetNumber: string().when("isOnline", {
+    is: false,
+    then: () =>
+      string()
+        .trim()
+        .matches(/^[0-9]+$/, "Must contain only numbers")
+        .required("Street Number is required"),
   }),
 
   zipCode: string().when("isOnline", {
@@ -121,7 +142,7 @@ export const AddEventStep1Schema = object().shape({
     then: () =>
       string()
         .required("City is required")
-        .matches(/^[a-zA-Z]+$/, "City must contain just letters")
+        .matches(/^[\p{L}]+$/u, "City must contain just letters")
         .min(3, "City must contain at least 3 characters"),
   }),
 
@@ -131,7 +152,7 @@ export const AddEventStep1Schema = object().shape({
       string()
         .trim()
         .required("Country is required")
-        .matches(/^[a-zA-Z]+$/, "Country must contain just letters")
+        .matches(/^[\p{L}]+$/u, "Country must contain just letters")
         .min(3, "Country must contain at least 3 characters"),
   }),
 })

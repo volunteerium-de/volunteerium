@@ -67,7 +67,9 @@ const useEventCall = () => {
   }
 
   const editEvent = async (eventId, eventInfo) => {
-    dispatch(fetchEventStart())
+    //dispatch(fetchEventStart())
+    console.log("alooo", eventId)
+    console.log("aloooooooo", eventInfo)
     try {
       const { data } = await axiosWithToken.put(`events/${eventId}`, eventInfo, {
         headers: {
