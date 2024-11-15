@@ -221,8 +221,7 @@ const OrganisationSchema = Yup.object().shape({
                   }}
                   className="bg-danger flex-1 py-2 px-4 text-[1rem] text-white rounded hover:bg-danger/20"
                 >
-                  {t(translations.orgSettings.reset)}
-                  Reset
+                  {t(translations.indvSettings.reset)}
                 </button>
 
                 <button

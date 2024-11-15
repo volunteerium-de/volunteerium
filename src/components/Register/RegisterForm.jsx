@@ -54,7 +54,6 @@ const validationSchema = Yup.object({
   }
 
   const handleSubmit = (values, { setSubmitting }) => {
-    // console.log(values)
     formValuesRef.current = values // Save form values
     recaptchaRef.current.execute() // trigger reCAPTCHA
     setSubmitting(false)
@@ -119,7 +118,7 @@ const validationSchema = Yup.object({
 
             {/* Full Name/Organization */}
             <div>
-              <p className="text-gray-2 text-[0.875rem] md:text-[1rem]">
+              <p className="text-gray-2 dark:text-white text-[0.875rem] md:text-[1rem]">
                 {values.userType === "individual"
                   ? t(translations.registerForm.fullname)
                   : t(translations.registerForm.orgname)}
@@ -132,7 +131,7 @@ const validationSchema = Yup.object({
                     ? t(translations.registerForm.fullnamePH)
                     : t(translations.registerForm.orgnamePH)
                 }
-                className={`w-full border dark:border-white rounded-lg text-[1rem] placeholder-gray-2 dark:placeholder-white dark:bg-black dark:text-white p-3 h-[42px] md:h-[48px] focus:outline-none focus:border-primary-green 
+                className={`w-full border dark:border-white rounded-lg text-[1rem] placeholder-gray-2 dark:placeholder-gray-2 dark:bg-black dark:text-white p-3 h-[42px] md:h-[48px] focus:outline-none focus:border-primary-green 
                 ${touched.fullName && errors.fullName ? "border-red" : "border-gray-1"}`}
               />
               <div className="h-[20px]">
@@ -144,14 +143,14 @@ const validationSchema = Yup.object({
 
             {/* Email */}
             <div>
-              <p className="text-gray-2 text-[0.875rem] md:text-[1rem]">
+              <p className="text-gray-2 dark:text-white text-[0.875rem] md:text-[1rem]">
                 {t(translations.registerForm.email)}
               </p>
               <Field
                 type="email"
                 name="email"
                 placeholder={t(translations.registerForm.emailPH)}
-                className={`w-full border dark:border-white rounded-lg text-[1rem] placeholder-gray-2 dark:bg-black dark:text-white dark:placeholder-white  p-3 h-[42px] md:h-[48px] focus:outline-none focus:border-primary-green 
+                className={`w-full border dark:border-white rounded-lg text-[1rem] placeholder-gray-2 dark:placeholder-gray-2 dark:bg-black dark:text-white  p-3 h-[42px] md:h-[48px] focus:outline-none focus:border-primary-green 
                 ${touched.email && errors.email ? "border-red" : "border-gray-1"}`}
               />
               <div className="h-[20px]">
@@ -163,7 +162,7 @@ const validationSchema = Yup.object({
 
             {/* Password */}
             <div>
-              <p className="text-gray-2 text-[0.875rem] md:text-[1rem]">
+              <p className="text-gray-2 dark:text-white text-[0.875rem] md:text-[1rem]">
                 {t(translations.registerForm.password)}
               </p>
               <div className="relative">
@@ -171,7 +170,7 @@ const validationSchema = Yup.object({
                   type={showPassword ? "text" : "password"}
                   name="password"
                   placeholder={t(translations.registerForm.passwordPH)}
-                  className={`w-full border dark:border-white rounded-lg text-[1rem] placeholder-gray-2 dark:bg-black dark:text-white  dark:placeholder-white  p-3 h-[42px] md:h-[48px] focus:outline-none focus:border-primary-green 
+                  className={`w-full border dark:border-white rounded-lg text-[1rem]placeholder-gray-2 dark:placeholder-gray-2 dark:bg-black dark:text-white  p-3 h-[42px] md:h-[48px] focus:outline-none focus:border-primary-green 
                   ${touched.password && errors.password ? "border-red" : "border-gray-1"}`}
                 />
                 <div className="absolute inset-y-0 text-primary-green right-3 pr-3 flex items-center text-2xl cursor-pointer">
@@ -193,7 +192,7 @@ const validationSchema = Yup.object({
             <div className="flex flex-col items-center">
               <button
                 type="submit"
-                className={`w-full bg-primary-green text-white text-[1rem] py-3 mt-3 rounded-lg focus:outline-none flex items-center justify-center ${
+                className={`w-full bg-primary-green hover:bg-primary-green/60 text-white text-[1rem] py-3 mt-3 rounded-lg focus:outline-none flex items-center justify-center ${
                   loading ? "opacity-50 cursor-not-allowed" : ""
                 }`}
                 disabled={loading}
@@ -243,7 +242,7 @@ const validationSchema = Yup.object({
 
             <button
               onClick={authWithGoogle}
-              className="flex items-center justify-center w-[60%] md:w-auto text-gray-2 text-sm md:text-base py-3 px-4 rounded-lg border border-gray-1 dark:border-white hover:bg-gray-100 transition-all duration-300 ease-in-out"
+              className="flex items-center justify-center w-[60%] md:w-auto text-gray-2 hover:text-black text-sm md:text-base py-3 px-4 rounded-lg border border-gray-1 dark:border-white hover:bg-gray-100 transition-all duration-300 ease-in-out"
             >
               <FcGoogle className="text-xl dark:text-white md:text-2xl mr-2" />
               {t(translations.registerForm.contGoogle)}
@@ -253,18 +252,17 @@ const validationSchema = Yup.object({
         {/* Terms and Conditions */}
         <p className="text-[0.75rem] mt-5 text-gray-2 dark:text-white text-center">
           {t(translations.registerForm.pTerms)}{" "}
-          <Link to="/terms" className="text-primary-green dark:text-white underline font-semibold">
+          <Link to="/terms-of-service" className="text-primary-green dark:text-white underline font-semibold">
             {t(translations.registerForm.terms)}
           </Link>{" "}
           <br />
           {t(translations.registerForm.pPrivacy)}{" "}
           <Link
-            to="/privacy"
+            to="/privacy-policy"
             className="text-primary-green dark:text-white underline font-semibold"
           >
             {t(translations.registerForm.privacy)}
           </Link>
-          .
         </p>
       </div>
     </>

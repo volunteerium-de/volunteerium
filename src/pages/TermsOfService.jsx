@@ -11,34 +11,41 @@ const TermsOfService = () => {
       <div className="mt-4 border-8 border-primary-green/40 max-w-[80%] mx-auto p-8 relative overflow-hidden">
         <div className="relative p-4 bg-white bg-opacity-10 dark:bg-black">
           <h1 className="text-[1.25rem] md:text-[1.5rem] font-bold mb-4 text-black dark:text-white text-justify">
-            {t(translations.termsOfService.h1)}
+            {t(translations.termsOfService.header)}
           </h1>
           <p className="text-[1rem] md:text-[1.125rem] text-dark-gray-3 dark:text-light-gray mt-2 text-justify">
-            <strong>{t(translations.termsOfService.p1)}</strong> {t(translations.termsOfService.p2)}
+            <strong>{t(translations.termsOfService.publishedDate)}</strong> {t(translations.termsOfService.date)}
           </p>
           <p className="text-[0.875rem] md:text-[1rem] text-dark-gray-1 dark:text-light-gray mt-4 text-justify">
-            {t(translations.termsOfService.p3)}
+            {t(translations.termsOfService.description)}
           </p>
 
           <h2 className="text-[1.125rem] md:text-[1.25rem] font-bold mt-6 text-dark-gray-3 dark:text-light-gray text-justify">
-            {t(translations.termsOfService.h2info)}
+            {t(translations.termsOfService.h2Acceptance)}
           </h2>
           <p className="text-[0.875rem] md:text-[1rem] text-dark-gray-1 dark:text-light-gray mt-2 text-justify">
-            {t(translations.termsOfService.p4)}
+            {t(translations.termsOfService.pAcceptance)}
           </p>
 
           <h2 className="text-[1.125rem] md:text-[1.25rem] font-bold mt-6 text-dark-gray-3 dark:text-light-gray text-justify">
-            {t(translations.termsOfService.h2user)}
+            {t(translations.termsOfService.h2Responsibility)}
           </h2>
           <p className="text-[0.875rem] md:text-[1rem] text-dark-gray-1 dark:text-light-gray mt-2 text-justify">
-            {t(translations.termsOfService.p5)}
+            {t(translations.termsOfService.pResponsibility)}
           </p>
 
           <h2 className="text-[1.125rem] md:text-[1.25rem] font-bold mt-6 text-dark-gray-3 dark:text-light-gray text-justify">
-            {t(translations.termsOfService.h2prohibited)}
+            {t(translations.termsOfService.h2EmailRestriction)}
           </h2>
           <p className="text-[0.875rem] md:text-[1rem] text-dark-gray-1 dark:text-light-gray mt-2 text-justify">
-            {t(translations.termsOfService.p6)}
+            {t(translations.termsOfService.pEmailRestriction)}
+          </p>
+
+          <h2 className="text-[1.125rem] md:text-[1.25rem] font-bold mt-6 text-dark-gray-3 dark:text-light-gray text-justify">
+            {t(translations.termsOfService.h2Prohibited)}
+          </h2>
+          <p className="text-[0.875rem] md:text-[1rem] text-dark-gray-1 dark:text-light-gray mt-2 text-justify">
+            {t(translations.termsOfService.pProhibited)}
           </p>
           <ul className="list-disc pl-5 mt-2 text-[0.875rem] md:text-[1rem] text-dark-gray-1 dark:text-light-gray text-justify">
             <li>{t(translations.termsOfService.li1)}</li>
@@ -48,49 +55,49 @@ const TermsOfService = () => {
           </ul>
 
           <h2 className="text-[1.125rem] md:text-[1.25rem] font-bold mt-6 text-dark-gray-3 dark:text-light-gray text-justify">
-            {t(translations.termsOfService.h2intellectual)}
+            {t(translations.termsOfService.h2Intellectual)}
           </h2>
           <p className="text-[0.875rem] md:text-[1rem] text-dark-gray-1 dark:text-light-gray mt-2 text-justify">
-            {t(translations.termsOfService.p7)}
+            {t(translations.termsOfService.pIntellectual)}
           </p>
 
           <h2 className="text-[1.125rem] md:text-[1.25rem] font-bold mt-6 text-dark-gray-3 dark:text-light-gray text-justify">
             {t(translations.termsOfService.h2userGenerated)}
           </h2>
           <p className="text-[0.875rem] md:text-[1rem] text-dark-gray-1 dark:text-light-gray mt-2 text-justify">
-            {t(translations.termsOfService.p8)}
+            {t(translations.termsOfService.pUserGenerated)}
           </p>
 
           <h2 className="text-[1.125rem] md:text-[1.25rem] font-bold mt-6 text-dark-gray-3 dark:text-light-gray text-justify">
-            {t(translations.termsOfService.h2limitation)}
+            {t(translations.termsOfService.h2Limitation)}
           </h2>
           <p className="text-[0.875rem] md:text-[1rem] text-dark-gray-1 dark:text-light-gray mt-2 text-justify">
-            {t(translations.termsOfService.p9)}
+            {t(translations.termsOfService.pLimitation)}
           </p>
 
           <h2 className="text-[1.125rem] md:text-[1.25rem] font-bold mt-6 text-dark-gray-3 dark:text-light-gray text-justify">
-            {t(translations.termsOfService.h2changes)}
+            {t(translations.termsOfService.h2Changes)}
           </h2>
           <p className="text-[0.875rem] md:text-[1rem] text-dark-gray-1 dark:text-light-gray mt-2 text-justify">
-            {t(translations.termsOfService.p10)}
+            {t(translations.termsOfService.pChanges)}
           </p>
 
           <h2 className="text-[1.125rem] md:text-[1.25rem] font-bold mt-6 text-dark-gray-3 dark:text-light-gray text-justify">
-            {t(translations.termsOfService.h2governing)}
+            {t(translations.termsOfService.h2Governing)}
           </h2>
           <p className="text-[0.875rem] md:text-[1rem] text-dark-gray-1 dark:text-light-gray mt-2 text-justify">
-            {t(translations.termsOfService.p11)}
+            {t(translations.termsOfService.pGoverning)}
           </p>
 
           <h2 className="text-[1.125rem] md:text-[1.25rem] font-bold mt-6 text-dark-gray-3 dark:text-light-gray text-justify">
-            {t(translations.termsOfService.h2contact)}
+            {t(translations.termsOfService.h2Contact)}
           </h2>
           <p className="text-[0.875rem] md:text-[1rem] text-dark-gray-1 dark:text-light-gray mt-2 text-justify">
-            {t(translations.termsOfService.p12)}
+            {t(translations.termsOfService.pContact)}
             <br />
-            <strong>{t(translations.termsOfService.p13)}</strong>
-            <br />
-            [{t(translations.termsOfService.p14)}]
+            [{t(translations.termsOfService.email)}]
+            <br /> <br />
+            <strong>{t(translations.termsOfService.vTeam)}</strong>
           </p>
         </div>
       </div>

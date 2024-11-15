@@ -1,8 +1,4 @@
 {
-  "langSwitch": {
-    "en": "Englisch",
-    "de": "Deutsch"
-  },
   "hero": {
     "imgAlt": "Startseiten-Hintergrundbild für Hero-Bereich",
     "h2": "Werden Sie Teil von etwas",
@@ -15,7 +11,7 @@
     },
     "location": {
       "label": "Standort",
-      "placeholder": "Standort wählen"
+      "placeholder": "Standort suchen"
     },
     "category": {
       "label": "Kategorie",
@@ -148,8 +144,9 @@
       "confirmPassword": "Bestätigen Sie das neue Passwort",
       "confirmPasswordPH": "Bestätigen Sie Ihr neues Passwort",
       "reset": "Zurücksetzen"
-      },
+    },
     "verificationForm": {
+      "didntRecive": "Wenn Sie keinen Code erhalten haben!",
       "timerMsg": "Gibt es ein Problem? Fordern Sie den Code erneut an!",
       "backToLogin": "Zurück zum Login",
       "logoAlt": "Firmenzeichen",
@@ -380,10 +377,10 @@
   "contactUs": {
     "p1": "Ihre Rückmeldung",
     "p2": "ist uns wichtig!",
-    "p3": " Tragen Sie weiterhin zu unserer Gemeinschaft bei, indem Sie Ihr",
+    "p3": " Tragen Sie weiterhin zu unserer Gemeinschaft bei, indem Sie Ihre",
     "p4": " Rückmeldung",
-    "p5": "Helfen Sie uns, einen Unterschied zu machen mit Ihren",
-    "p6": "Ideen",
+    "p5": "Helfen Sie uns, einen Unterschied zu machen mit Ihren ",
+    "p6": " Ideen",
     "p7": "und",
     "p8": "Vorschlägen",
     "p9": "Vielen Dank, dass Sie bei uns sind!",
@@ -425,8 +422,8 @@
     "check": "Veranstaltungen prüfen",
     "sec2": "Kategorien",
     "sec3": "Sprachen",
-    "new": "Neueste",
-    "old": "Älteste",
+    "new": "Am nächsten",
+    "old": "Am weitesten",
     "result": "Ergebnisse für Ihre Suche",
     "notFound": "Keine Veranstaltungen gefunden",
     "more": "Mehr",
@@ -469,7 +466,9 @@
     "share": "Teilen Sie Ihr Alter und Geschlecht",
     "p1": "Diese Angaben sind optional, können aber für bestimmte Veranstaltungen nützlich sein",
     "ageRange": "Altersbereich*",
+    "ageRangePH": "Altersbereich wählen",
     "gender": "Geschlecht*",
+    "genderPH": "Geschlecht wählen",
     "next": "Weiter",
     "choose": "Wählen Sie Ihre Interessen",
     "p2": "Entdecken Sie Freiwilligenmöglichkeiten und leisten Sie einen sinnvollen Beitrag",
@@ -625,7 +624,7 @@
       "option10": "Sonstiges"
     }
   },
-    
+
   "eventManagement": {
     "addNewEvent": "Neues Event hinzufügen",
     "searchInput": "Suchen",
@@ -652,7 +651,7 @@
     "joining": "beitreten",
     "joined": "beigetreten"
   },
-  
+
   "eventMng": {
     "addNew": "Neue Veranstaltung hinzufügen",
     "eventName": "Veranstaltungsname",
@@ -698,38 +697,40 @@
     "messagesComp": {
       "noConversations": "Keine Unterhaltungen gefunden",
       "loading": "Laden..."
-}
+    }
   },
 
   "termsOfService": {
-    "h1": "Nutzungsbedingungen",
-    "p1": "Veröffentlichungsdatum:",
-    "p2": "[30.10.2024]",
-    "p3": "Willkommen bei Volunteerium. Durch den Zugriff auf unsere Plattform erklären Sie sich mit den folgenden Nutzungsbedingungen einverstanden. Bitte lesen Sie diese sorgfältig durch, bevor Sie die Plattform nutzen.",
-    "h2info": "1. Annahme der Bedingungen",
-    "p4": "Durch die Erstellung eines Kontos oder die Nutzung von Volunteerium akzeptieren Sie diese Nutzungsbedingungen und erklären sich mit ihrer Einhaltung einverstanden. Wenn Sie mit einem Teil dieser Bedingungen nicht einverstanden sind, sollten Sie unsere Plattform nicht nutzen.",
-    "h2user": "2. Benutzerverantwortlichkeiten",
-    "p5": "Benutzer stimmen zu, während des Registrierungsprozesses genaue, vollständige und aktuelle Informationen bereitzustellen und sind für alle Aktivitäten unter ihrem Konto verantwortlich. Sie erklären sich damit einverstanden, die Plattform verantwortungsbewusst und nur für rechtmäßige Zwecke zu nutzen.",
-    "h2prohibited": "3. Verbotenes Verhalten",
-    "p6": "Benutzern ist es untersagt, Aktivitäten auszuführen, die der Plattform, ihren Benutzern schaden oder geltende Gesetze verletzen könnten. Beispiele für verbotenes Verhalten umfassen unter anderem:",
+    "header": "Nutzungsbedingungen",
+    "publishedDate": "Veröffentlichungsdatum:",
+    "date": "[30.10.2024]",
+    "description": "Willkommen bei Volunteerium. Durch den Zugriff auf unsere Plattform erklären Sie sich mit den folgenden Nutzungsbedingungen einverstanden. Bitte lesen Sie diese sorgfältig durch, bevor Sie die Plattform nutzen.",
+    "h2Acceptance": "1. Annahme der Bedingungen",
+    "pAcceptance": "Durch die Erstellung eines Kontos oder die Nutzung von Volunteerium akzeptieren Sie diese Nutzungsbedingungen und erklären sich mit ihrer Einhaltung einverstanden. Wenn Sie mit einem Teil dieser Bedingungen nicht einverstanden sind, sollten Sie unsere Plattform nicht nutzen.",
+    "h2Responsibility": "2. Benutzerverantwortlichkeiten",
+    "pResponsibility": "Benutzer stimmen zu, während des Registrierungsprozesses genaue, vollständige und aktuelle Informationen bereitzustellen und sind für alle Aktivitäten unter ihrem Konto verantwortlich. Sie erklären sich damit einverstanden, die Plattform verantwortungsbewusst und nur für rechtmäßige Zwecke zu nutzen.",
+    "h2EmailRestriction": "3. Einschränkungen bei E-Mail-Adressen",
+    "pEmailRestriction": "Aus Sicherheits- und Datenschutzgründen ist es Benutzern nicht gestattet, ihre registrierte E-Mail-Adresse zu ändern. Diese Richtlinie dient dem Schutz und der Integrität der Benutzerdaten. Wenden Sie sich für Hilfe bei Kontoangelegenheiten an unser Support-Team.",
+    "h2Prohibited": "4. Verbotenes Verhalten",
+    "pProhibited": "Benutzern ist es untersagt, Aktivitäten auszuführen, die der Plattform, ihren Benutzern schaden oder geltende Gesetze verletzen könnten. Beispiele für verbotenes Verhalten umfassen unter anderem:",
     "li1": "Belästigung, Bedrohung oder Verleumdung anderer Benutzer.",
     "li2": "Spam, Phishing oder betrügerische Aktivitäten.",
     "li3": "Versuch, unbefugten Zugriff auf die Plattform oder Benutzerkonten zu erlangen.",
     "li4": "Verbreitung von Malware oder schädlichem Code.",
-    "h2intellectual": "4. Geistiges Eigentum",
-    "p7": "Alle Inhalte, einschließlich, aber nicht beschränkt auf Texte, Bilder, Grafiken und Logos auf Volunteerium, sind Eigentum von Volunteerium oder seinen Lizenzgebern. Die unbefugte Nutzung oder Verbreitung von Inhalten ist strengstens untersagt.",
-    "h2user-Generated": "5. Benutzererstellte Inhalte",
-    "p8": "Volunteerium kann es Benutzern ermöglichen, Inhalte wie Veranstaltungsdetails, Kommentare und Nachrichten zu posten. Durch das Posten von Inhalten gewähren Sie Volunteerium eine nicht-exklusive, gebührenfreie, weltweite Lizenz zur Nutzung, Vervielfältigung und Anzeige der Inhalte auf unserer Plattform. Sie sind verantwortlich für die von Ihnen veröffentlichten Inhalte und müssen sicherstellen, dass diese keine Gesetze oder Rechte Dritter verletzen.",
-    "h2limitation": "6. Haftungsbeschränkung",
-    "p9": "Volunteerium wird auf einer 'wie besehen'- und 'wie verfügbar'-Basis bereitgestellt. Wir garantieren nicht, dass die Plattform fehlerfrei, sicher oder unterbrechungsfrei sein wird. Wir haften nicht für direkte oder indirekte Schäden, die sich aus der Nutzung oder der Unfähigkeit zur Nutzung unserer Plattform ergeben.",
-    "h2changes": "7. Änderungen der Bedingungen",
-    "p10": "Volunteerium behält sich das Recht vor, diese Nutzungsbedingungen jederzeit zu ändern. Wesentliche Änderungen werden über die Plattform oder per E-Mail mitgeteilt. Die fortgesetzte Nutzung der Plattform nach Änderungen gilt als Ihre Zustimmung zu den neuen Bedingungen.",
-    "h2governing": "8. Anwendbares Recht und Streitbeilegung",
-    "p11": "Diese Bedingungen unterliegen den Gesetzen von [Ihr Land/Ihre Region]. Alle Streitigkeiten, die sich aus der Nutzung von Volunteerium ergeben, werden durch Schiedsverfahren gemäß den [anwendbaren Schiedsregeln] beigelegt.",
-    "h2contact": "9. Kontaktieren Sie uns",
-    "p12": "Falls Sie Fragen oder Bedenken bezüglich dieser Nutzungsbedingungen haben, kontaktieren Sie uns bitte unter:",
-    "p13": "Volunteerium-Team",
-    "p14": "E-Mail: info.volunteerium@gmail.com"
+    "h2Intellectual": "5. Geistiges Eigentum",
+    "pIntellectual": "Alle Inhalte, einschließlich, aber nicht beschränkt auf Texte, Bilder, Grafiken und Logos auf Volunteerium, sind Eigentum von Volunteerium oder seinen Lizenzgebern. Die unbefugte Nutzung oder Verbreitung von Inhalten ist strengstens untersagt.",
+    "h2UserGenerated": "6. Benutzererstellte Inhalte",
+    "pUserGenerated": "Volunteerium kann es Benutzern ermöglichen, Inhalte wie Veranstaltungsdetails, Kommentare und Nachrichten zu posten. Durch das Posten von Inhalten gewähren Sie Volunteerium eine nicht-exklusive, gebührenfreie, weltweite Lizenz zur Nutzung, Vervielfältigung und Anzeige der Inhalte auf unserer Plattform. Sie sind verantwortlich für die von Ihnen veröffentlichten Inhalte und müssen sicherstellen, dass diese keine Gesetze oder Rechte Dritter verletzen.",
+    "h2Limitation": "7. Haftungsbeschränkung",
+    "pLimitation": "Volunteerium wird auf einer 'wie besehen'- und 'wie verfügbar'-Basis bereitgestellt. Wir garantieren nicht, dass die Plattform fehlerfrei, sicher oder unterbrechungsfrei sein wird. Wir haften nicht für direkte oder indirekte Schäden, die sich aus der Nutzung oder der Unfähigkeit zur Nutzung unserer Plattform ergeben.",
+    "h2Changes": "8. Änderungen der Bedingungen",
+    "pChanges": "Volunteerium behält sich das Recht vor, diese Nutzungsbedingungen jederzeit zu ändern. Wesentliche Änderungen werden über die Plattform oder per E-Mail mitgeteilt. Die fortgesetzte Nutzung der Plattform nach Änderungen gilt als Ihre Zustimmung zu den neuen Bedingungen.",
+    "h2Governing": "9. Anwendbares Recht und Streitbeilegung",
+    "pGoverning": "Diese Bedingungen unterliegen den Gesetzen von [Ihr Land/Ihre Region]. Alle Streitigkeiten, die sich aus der Nutzung von Volunteerium ergeben, werden durch Schiedsverfahren gemäß den [anwendbaren Schiedsregeln] beigelegt.",
+    "h2Contact": "10. Kontaktieren Sie uns",
+    "pContact": "Falls Sie Fragen oder Bedenken bezüglich dieser Nutzungsbedingungen haben, kontaktieren Sie uns bitte unter:",
+    "vTeam": "Volunteerium-Team",
+    "email": "E-Mail: info.volunteerium@gmail.com"
   },
 
   "adminPanel": {
@@ -799,19 +800,19 @@
         "user": "Benutzer",
         "userDL": "Benutzer",
         "joined": "Beigetreten",
-    "pending": "Ausstehend",
-    "approved": "Genehmigt",
-    "rejected": "Abgelehnt",
-    "notJoined": "Nicht beigetreten",
-    "joinDateDL": "Beitrittsdatum",
-    "suspendEvent": "Veranstaltung aussetzen",
-    "unsuspendEvent": "Veranstaltung fortsetzen",
-    "status": "Status",
-    "statusDL": "Teilnehmerstatus",
-    "joinDate": "Beitrittsdatum",
-    "noParticipantYet": "Noch kein Teilnehmer",
-    "deleteEvent": "Veranstaltung löschen",
-    "desc": "Sind Sie sicher, dass Sie diese Veranstaltung löschen möchten?"
+        "pending": "Ausstehend",
+        "approved": "Genehmigt",
+        "rejected": "Abgelehnt",
+        "notJoined": "Nicht beigetreten",
+        "joinDateDL": "Beitrittsdatum",
+        "suspendEvent": "Veranstaltung aussetzen",
+        "unsuspendEvent": "Veranstaltung fortsetzen",
+        "status": "Status",
+        "statusDL": "Teilnehmerstatus",
+        "joinDate": "Beitrittsdatum",
+        "noParticipantYet": "Noch kein Teilnehmer",
+        "deleteEvent": "Veranstaltung löschen",
+        "desc": "Sind Sie sicher, dass Sie diese Veranstaltung löschen möchten?"
       }
     },
     "feedbacks": {
@@ -922,7 +923,6 @@
       "interestId": "InterestIds muss eine gültige Objekt-ID sein",
       "logo": "Firmenzeichen ist erforderlich!",
       "addressId": "AddressId muss eine gültige Objekt-ID sein"
-
     },
     "minLength": {
       "select1": "Mindestens eine Kategorie muss ausgewählt werden.",
@@ -958,7 +958,7 @@
       "gender": "Bitte wählen Sie ein gültiges Geschlecht",
       "ageRange": "Bitte wählen Sie einen gültigen Altersbereich",
       "language": "Bitte wählen Sie eine gültige Sprache"
-    }  
+    }
   },
 
   "toastify": {
@@ -970,5 +970,5 @@
     "enterMessage": "Bitte geben Sie eine Nachricht ein.",
     "idMissing": "Event-ID oder Teilnehmer-ID fehlen.",
     "setupProfile": "Bitte richten Sie Ihre Profildaten ein, um fortzufahren."
-}
+  }
 }

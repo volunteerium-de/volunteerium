@@ -39,13 +39,13 @@ const LanguageMenu = () => {
             className="block w-full text-left p-1 hover:text-primary-green"
             onClick={() => selectLanguage("en")}
           >
-            {t(translations.langSwitch.en)}
+          English
           </button>
           <button
             className="block w-full text-left p-1 hover:text-primary-green"
             onClick={() => selectLanguage("de")}
           >
-            {t(translations.langSwitch.de)}
+          Deutsch
           </button>
         </div>
       )}

@@ -49,8 +49,6 @@ const SetupOrganization = () => {
     const queryParams = new URLSearchParams(location.search)
     const clientIdParam = queryParams.get("clientId")
 
-    // console.log(clientIdParam)
-
     if (!clientIdParam || clientIdParam !== user._id) {
       logout(false)
     }
@@ -132,7 +130,6 @@ const SetupOrganization = () => {
           }}
           validationSchema={OrganizationSchema}
           onSubmit={(values) => {
-            console.log(values)
             updateUserDetails({ ...values, isProfileSetup: true }, user.userDetailsId._id)
             navigate("/")
           }}
@@ -241,7 +238,7 @@ const SetupOrganization = () => {
                           handleNext()
                         }
                       }}
-                      className="w-auto px-14 py-2 bg-primary-green hover:bg-dark-green text-white rounded-md transition-colors"
+                      className="w-auto px-14 py-2 bg-primary-green hover:bg-primary-green/60 text-white rounded-md transition-colors"
                     >
                       {t(translations.setupOrg.nextButton)}
                     </button>
@@ -393,8 +390,8 @@ const SetupOrganization = () => {
                       disabled={!isValid}
                       className={`w-auto px-14 py-2 ${
                         !isValid
-                          ? "bg-gray-400 cursor-not-allowed"
-                          : "bg-primary-green hover:bg-dark-green"
+                          ? "bg-gray-400 hover:bg-gray-400/60 cursor-not-allowed"
+                          : "bg-primary-green hover:bg-primary-green/60"
                       } text-white rounded-md transition-colors`}
                     >
                       {t(translations.setupOrg.finish)}

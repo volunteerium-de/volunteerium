@@ -13,7 +13,7 @@ const VerificationForm = ({ setIssue, identifier, setIdentifier, email }) => {
   const {t} = useTranslation()
   const [code, setCode] = useState(["", "", "", "", "", ""])
   const [timeLeft, setTimeLeft] = useState(90) // 01:30 seconds (90 seconds)
-  const [timerMessage, setTimerMessage] = useState("If you didn’t receive a code!") // Message changes when time runs out
+  const [timerMessage, setTimerMessage] = useState(t(translations.password.verificationForm.didntRecive)) // Message changes when time runs out
   const inputRefs = useRef([]) // References for code input boxes
   const navigate = useNavigate()
  

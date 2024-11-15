@@ -21,7 +21,7 @@ const Register = () => {
         {/* Main Div */}
         <div className="flex flex-col md:flex-row pt-8 max-w-[1440px]justify-center">
           {/* Left side */}
-          <div className="hidden md:block max-w-full md:max-w-[608px] mx-2 md:mx-4 lg:mx-8 mb-8 w-full bg-primary-green overflow-hidden rounded-lg h-auto">
+          <div className="hidden md:block max-w-full md:max-w-[608px] mx-2 md:mx-4 lg:mx-8 mb-8 w-full bg-primary-green overflow-hidden rounded-lg h-[780px] ">
             <div
               className="flex-grow h-full w-full bg-cover bg-center backdrop-blur-xl relative"
               style={{

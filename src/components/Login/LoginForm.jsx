@@ -50,7 +50,6 @@ const validationSchema = Yup.object({
   }
 
   const handleSubmit = (values, { setSubmitting }) => {
-    // console.log(values)
     formValuesRef.current = values // Save form values
     recaptchaRef.current.execute() // trigger reCAPTCHA
     setSubmitting(false)
@@ -70,15 +69,15 @@ const validationSchema = Yup.object({
           <Form className="md:space-y-3">
             {/* Email */}
             <div>
-              <p className="text-gray-2 text-[0.875rem] md:text-[1rem]">
+              <p className="text-gray-2 dark:text-white text-[0.875rem] md:text-[1rem]">
                 {t(translations.loginForm.email)}
               </p>
               <Field
                 type="email"
                 name="email"
                 placeholder={t(translations.loginForm.emailPH)}
-                className={`w-full border rounded-lg text-[1rem] placeholder-gray-2 dark:placeholder-white dark:bg-black dark:text-white p-3 h-[42px] md:h-[48px] focus:outline-none focus:border-primary-green 
-                ${touched.email && errors.email ? "border-red" : "border-gray-1"}`}
+                className={`w-full border rounded-lg text-[1rem] placeholder-gray-2 dark:placeholder-gray-2 dark:bg-black dark:text-white p-3 h-[42px] md:h-[48px] focus:outline-none focus:border-primary-green 
+                ${touched.email && errors.email ? "border-danger" : "border-gray-1"}`}
               />
               <div className="h-[20px]">
                 {touched.email && errors.email && (
@@ -89,7 +88,7 @@ const validationSchema = Yup.object({
 
             {/* Password */}
             <div>
-              <p className="text-gray-2 text-[0.875rem] md:text-[1rem]">
+              <p className="text-gray-2 dark:text-white text-[0.875rem] md:text-[1rem]">
                 {t(translations.loginForm.password)}
               </p>
               <div className="relative">
@@ -97,8 +96,8 @@ const validationSchema = Yup.object({
                   type={showPassword ? "text" : "password"}
                   name="password"
                   placeholder={t(translations.loginForm.passwordPH)}
-                  className={`w-full border rounded-lg text-[1rem] placeholder-gray-2 dark:placeholder-white dark:bg-black dark:text-white p-3 h-[42px] md:h-[48px] focus:outline-none focus:border-primary-green 
-      ${touched.password && errors.password ? "border-red" : "border-gray-1"}`}
+                  className={`w-full border rounded-lg text-[1rem] placeholder-gray-2 dark:placeholder-gray-2 dark:bg-black dark:text-white p-3 h-[42px] md:h-[48px] focus:outline-none focus:border-primary-green 
+      ${touched.password && errors.password ? "border-danger" : "border-gray-1"}`}
                 />
                 <div className="absolute inset-y-0 text-primary-green right-3 pr-3 flex items-center text-2xl cursor-pointer">
                   {showPassword ? (
@@ -125,7 +124,7 @@ const validationSchema = Yup.object({
             <div className="flex flex-col items-center">
               <button
                 type="submit"
-                className={`w-full bg-primary-green text-white text-[1rem] py-3 mt-3 rounded-lg focus:outline-none  flex justify-center items-center ${
+                className={`w-full bg-primary-green hover:bg-primary-green/60 text-white text-[1rem] py-3 mt-3 rounded-lg focus:outline-none  flex justify-center items-center ${
                   loading ? "opacity-50 cursor-not-allowed" : ""
                 }`}
                 disabled={loading}
@@ -172,7 +171,7 @@ const validationSchema = Yup.object({
       <div className="flex flex-col items-center">
         <button
           onClick={authWithGoogle}
-          className="flex items-center justify-center w-[60%] md:w-auto text-gray-2 dark:text-white text-sm md:text-base py-3 px-4 rounded-lg border border-gray-1 dark:border-white hover:bg-gray-100 transition-all duration-300 ease-in-out"
+          className="flex items-center justify-center w-[60%] md:w-auto text-gray-2 dark:text-white text-sm md:text-base py-3 px-4 rounded-lg border border-gray-1 dark:border-white hover:bg-gray-100 dark:hover:text-black transition-all duration-300 ease-in-out"
         >
           <FcGoogle className="text-xl md:text-2xl mr-2" />
           {t(translations.loginForm.contGoogle)}
