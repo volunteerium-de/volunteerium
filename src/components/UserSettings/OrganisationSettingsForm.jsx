@@ -189,7 +189,7 @@ const OrganisationSettingsForm = () => {
                   </p>
                 </div>
 
-                <div className="max-h-[200px] overflow-y-auto p-2 border border-gray-1 rounded focus:outline-none focus:border-primary-green">
+                <div className="max-h-[150px] overflow-y-auto scrollbar p-2 border border-gray-1 rounded focus:outline-none focus:border-primary-green text-blue-400 dark:text-blue-200 bg-light-gray dark:bg-dark-gray-2">
                   {certificates.length === 0 ? (
                     <p className="dark:text-white">{t(translations.indvSettings.label10)}</p>
                   ) : (
@@ -218,7 +218,7 @@ const OrganisationSettingsForm = () => {
                   onClick={() => {
                     resetForm({ values: defaultUserDetails })
                   }}
-                  className="bg-danger flex-1 py-2 px-4 text-[1rem] text-white rounded hover:bg-danger/20"
+                  className="bg-danger flex-1 py-2 px-4 text-[1rem] text-white rounded hover:bg-danger/60"
                 >
                   {t(translations.orgSettings.reset)}
                   Reset
@@ -227,7 +227,7 @@ const OrganisationSettingsForm = () => {
                 <button
                   type="submit"
                   onClick={() => setTimeout(() => console.log("Button clicked"), 0)}
-                  className="bg-primary-green flex-1 py-2 px-4 text-[1rem] text-white rounded hover:bg-light-green"
+                  className="bg-primary-green flex-1 py-2 px-4 text-[1rem] text-white rounded hover:bg-primary-green/60"
                 >
                   {t(translations.orgSettings.save)}
                 </button>

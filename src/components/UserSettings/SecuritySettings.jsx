@@ -59,8 +59,10 @@ const SecuritySettings = () => {
             type="text"
             id="organizationName"
             placeholder={currentUser?.organizationName || t(translations.secSett.orgNamePH)}
-            className="w-full h-[36px] p-2 border dark:text-black border-gray-1 rounded focus:outline-none focus:border-primary-green"
+            className="w-full h-[36px] p-2 border border-gray-1 rounded focus:outline-none dark:bg-light-gray-3 focus:border-primary-green"
+            disabled={true}
           />
+          <p className="text-sm text-warning dark:text-orange-300">{t(translations.secSett.p1)}</p>
         </div>
       )}
 
@@ -82,7 +84,7 @@ const SecuritySettings = () => {
       {/* Password Change Button */}
       <div className="text-center">
         <button
-          className="bg-primary-green w-[70%] py-2 px-4 rounded my-[50px] duration-200 hover:bg-light-green"
+          className="bg-primary-green w-[70%] py-2 px-4 rounded my-[50px] duration-200 hover:bg-primary-green/60"
           onClick={openModal}
         >
           <p className="text-[1rem] leading-[1.5625] text-white">
@@ -103,7 +105,7 @@ const SecuritySettings = () => {
             : t(translations.secSett.delAlert2)}
         </p>
         <div onClick={() => openDeleteModal()} className="text-center">
-          <button className="bg-danger w-[70%] py-2 px-4 rounded my-[50px] duration-200 hover:bg-danger/50">
+          <button className="bg-danger w-[70%] py-2 px-4 rounded my-[50px] duration-200 hover:bg-danger/60">
             <p className="text-[1rem] leading-[1.5625] text-white">
               {t(translations.secSett.userRes)}
             </p>

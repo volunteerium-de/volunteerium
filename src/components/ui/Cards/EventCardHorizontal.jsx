@@ -37,7 +37,7 @@ const EventCardHorizontal = ({ event }) => {
       className="shadow-[0_1px_1px_rgba(0,0,0,.25)] mb-2  flex justify-center items-center gap-5 dark:bg-dark-gray-1 rounded-lg "
     >
       {/* Event Image */}
-      <div className="w-full max-w-[250px] h-[200px] flex justify-center items-center overflow-hidden rounded-l-lg ">
+      <div className="w-full max-w-[250px] h-[200px] flex justify-center items-center overflow-hidden rounded-l-lg">
         <img
           src={event.eventPhoto || defaultEventPhoto}
           alt="event"
@@ -133,7 +133,7 @@ const EventCardHorizontal = ({ event }) => {
       </div>
       <div className="text-end mt-auto pb-2 pr-2">
         <button
-          className="font-medium text-white text-[0.7rem] text-center bg-primary-green px-4 py-1 rounded "
+          className="font-medium text-white text-[0.7rem] text-center bg-primary-green hover:bg-primary-green/60 px-4 py-1 rounded "
           onClick={handleNavigate}
         >
           {t(translations.eventsPage.more)}

@@ -128,7 +128,7 @@ const EventCardVertical = ({ event }) => {
                   : `/events/${event._id}`
               navigate(newPath)
             }}
-            className="font-medium text-white text-[0.9rem] text-center bg-primary-green px-3 py-1 rounded"
+            className="font-medium text-white text-[0.9rem] text-center bg-primary-green hover:bg-primary-green/60 px-3 py-1 rounded"
           >
             {t(translations.eventCardVer.more)}
           </button>

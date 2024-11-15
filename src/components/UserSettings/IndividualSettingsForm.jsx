@@ -272,7 +272,7 @@ const IndividualSettingsForm = () => {
                   </p>
                 </div>
                 {/* Files */}
-                <div className="max-h-[200px] overflow-y-auto p-2 border border-gray-1 rounded focus:outline-none focus:border-primary-green">
+                <div className="max-h-[200px] overflow-y-auto p-2 border border-gray-1 rounded focus:outline-none focus:border-primary-green text-blue-400 dark:text-blue-200 bg-light-gray dark:bg-dark-gray-2">
                   {certificates.length === 0 ? (
                     <p className="dark:text-white ">{t(translations.indvSettings.label10)}</p>
                   ) : (
@@ -307,7 +307,7 @@ const IndividualSettingsForm = () => {
                 </button>
                 <button
                   type="submit"
-                  className="bg-primary-green flex-1 py-2 px-4 text-[1rem] text-white rounded hover:bg-light-green"
+                  className="bg-primary-green flex-1 py-2 px-4 text-[1rem] text-white rounded hover:bg-primary-green/60"
                 >
                   {t(translations.indvSettings.save)}
                 </button>

@@ -178,20 +178,20 @@ const EventsListingPage = () => {
             </h1>
           </div>
           <div className="flex justify-end gap-3 items-center">
-            <p className="text-sm font-bold text-black dark:text-white">
+            <p className="text-[0.7rem] sm:text-sm font-bold text-black dark:text-white">
               {t(translations.eventsPage.sort)}:
             </p>
             <select
               value={sortOrder}
               onChange={handleSortChange}
-              className="appearance-none border border-primary-green rounded-md font-medium text-[0.875rem] px-2 bg-light-green text-primary-green focus:outline-none focus:ring-2 focus:primary-green"
+              className="appearance-none border border-primary-green rounded-md font-medium  px-2 bg-light-green text-primary-green focus:outline-none focus:ring-2 focus:primary-green text-[0.7rem] sm:text-sm"
             >
               <option value="Newest">{t(translations.eventsPage.new)}</option>
               <option value="Oldest">{t(translations.eventsPage.old)}</option>
             </select>
 
             <button
-              className="block lg:hidden text-primary-green mr-5"
+              className="block lg:hidden text-primary-green mr-5 text-[0.8rem] sm:text-sm"
               onClick={() => setIsFilterSidebarOpen(!isFilterSidebarOpen)}
             >
               {t(translations.eventsPage.filter)}

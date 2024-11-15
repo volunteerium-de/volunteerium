@@ -14,7 +14,10 @@ const DeleteModal = ({ onClose, onDelete, title, description }) => {
           <button className="px-2 py-1 text-primary-green" onClick={() => onClose()}>
             {t(translations.delModal.cancelButton)}
           </button>
-          <button className="bg-danger text-white px-2 py-1 rounded" onClick={onDelete}>
+          <button
+            className="bg-danger hover:bg-danger/60 text-white px-2 py-1 rounded"
+            onClick={onDelete}
+          >
             {t(translations.delModal.delButton)}
           </button>
         </div>

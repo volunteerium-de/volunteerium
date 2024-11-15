@@ -191,7 +191,6 @@
     "visibility": "Visibility"
   },
 
-
   "addNewDoc": {
     "newDocument": "New Document",
     "documentTitle": "Document Title",
@@ -294,7 +293,7 @@
     "newPsw": "New Password",
     "confirmPsw": "Confirm Password",
     "cancel": "Cancel",
-    "saveChng": "Save Changes"
+    "saveChng": "Save "
   },
   "profileSettings": {
     "p": "Invalid user type"
@@ -305,7 +304,7 @@
     "h1": "Security Settings",
     "name": "Name",
     "namePH": "Name",
-    "p1": " Your full name is permanent for account integrity and cannot be changed!",
+    "p1": " Your name is permanent for account integrity and cannot be changed!",
     "orgName": "Organization Name",
     "orgNamePH": "Organization Name",
     "email": "Email",
@@ -646,7 +645,7 @@
     "joining": "joining",
     "joined": "joined"
   },
-  
+
   "eventMng": {
     "addNew": "Add New Event",
     "eventName": "Event Name",
@@ -677,22 +676,22 @@
     "no": "no",
     "back": "back",
     "submit": "submit",
-      "messages": {
-        "messageInput": {
-          "messagePH1":  "As the organizer, only you can send messages to this group.",
-          "messagePH2": "This space is reserved for announcements from the organizer only.",
-          "messagePH3": "Type your message here...",
-          "messagePH4": "Do you have a question about the event?"
-        },
-        "messageView": {
-          "startMsg": "Select a conversation to start messaging",
-          "you": "You"
-        }
+    "messages": {
+      "messageInput": {
+        "messagePH1": "As the organizer, only you can send messages to this group.",
+        "messagePH2": "This space is reserved for announcements from the organizer only.",
+        "messagePH3": "Type your message here...",
+        "messagePH4": "Do you have a question about the event?"
       },
-      "messagesComp": {
-        "noConversations": "No conversations found",
-        "loading": "Loading..."
+      "messageView": {
+        "startMsg": "Select a conversation to start messaging",
+        "you": "You"
       }
+    },
+    "messagesComp": {
+      "noConversations": "No conversations found",
+      "loading": "Loading..."
+    }
   },
 
   "termsOfService": {
@@ -915,7 +914,6 @@
       "interestId": "InterestIds must be a valid ObjectId",
       "logo": "Logo is required!",
       "addressId": "AddressId must be a valid ObjectId"
-
     },
     "minLength": {
       "select1": "At least one category must be selected.",
