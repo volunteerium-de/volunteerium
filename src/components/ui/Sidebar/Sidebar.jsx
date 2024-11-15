@@ -52,7 +52,7 @@ const Sidebar = ({
             )}
           </div>
 
-          <p className="font-bold text-gray-2 dark:text-white text-[1rem] text-center tracking-wider mt-[10px] mb-[30px] hidden sm:block">
+          <p className="font-bold text-gray-2 dark:text-white text-[1rem] text-center tracking-wider mt-[10px] mb-[30px] hidden sm:block px-5 max-w-full break-words">
             {t(translations.sidebar.welcome)}{" "}
             <span className="text-primary-green">{user.fullName || user.organizationName}!</span>
           </p>
