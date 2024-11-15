@@ -12,7 +12,7 @@ const ReportEvent = ({ eventTitle, eventId, onClose }) => {
   const { t } = useTranslation()
   const { currentUser } = useSelector((state) => state.auth)
   const { sendEventReport } = useEventCall()
-  
+
   const validationSchema = Yup.object({
     reportType: Yup.string().required(t(translations.yup.required.reason)),
     content: Yup.string().max(250, t(translations.yup.maxLength.characters250)),
@@ -96,7 +96,7 @@ const ReportEvent = ({ eventTitle, eventId, onClose }) => {
                 as="textarea"
                 name="content"
                 maxLength={300}
-                className="w-full p-2 border border-gray-1 rounded focus:outline-none focus:border-primary-green placeholder-dark-gray-1 resize-none"
+                className="scrollbar w-full p-2 border border-gray-1 rounded focus:outline-none focus:border-primary-green placeholder-dark-gray-1 resize-none"
                 rows="4"
                 placeholder={t(translations.eventDetails.report.placeholder2)}
               />
