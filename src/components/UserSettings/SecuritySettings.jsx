@@ -87,7 +87,7 @@ const SecuritySettings = () => {
           className="bg-primary-green w-[70%] py-2 px-4 rounded my-[50px] duration-200 hover:bg-primary-green/60"
           onClick={openModal}
         >
-          <p className="text-[1rem] leading-[1.5625] text-white">
+          <p className="text-[0.9rem] sm:text-[1rem] text-white">
             {t(translations.secSett.changePsw)}
           </p>
         </button>
@@ -95,7 +95,7 @@ const SecuritySettings = () => {
       </div>
 
       {/* Delete Account Section */}
-      <div className="text-[1rem] leading-[1.5625] my-[10px]">
+      <div className="text-[0.9rem] sm:text-[1rem] my-[10px]">
         <h1 className="text-center font-bold my-[20px] text-dark-gray-3">
           {t(translations.secSett.delAccount)}
         </h1>
@@ -105,8 +105,8 @@ const SecuritySettings = () => {
             : t(translations.secSett.delAlert2)}
         </p>
         <div onClick={() => openDeleteModal()} className="text-center">
-          <button className="bg-danger w-[70%] py-2 px-4 rounded my-[50px] duration-200 hover:bg-danger/60">
-            <p className="text-[1rem] leading-[1.5625] text-white">
+          <button className="bg-danger w-[80%] py-2 px-4 rounded my-[50px] duration-200 hover:bg-danger/60">
+            <p className="text-[0.9rem] sm:text-[1rem] text-white">
               {t(translations.secSett.userRes)}
             </p>
           </button>
