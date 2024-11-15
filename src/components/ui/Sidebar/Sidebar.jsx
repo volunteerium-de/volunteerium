@@ -36,7 +36,7 @@ const Sidebar = ({
                     onClick={() => {
                       onEditAvatar()
                     }}
-                    className=" flex justify-center mx-auto text-center gap-1 sm:translate-y-[-25px] sm:translate-x-[-30px] translate-x-[-10px] translate-y-[-20px] sm:h-7 h-5 md:text-[0.8rem] text-[0.6rem] sm:px-2 px-1 sm:py-1 items-center rounded-lg border border-primary-green text-primary-green dark:text-light-green dark:border-light-green hover:text-white hover:bg-primary-green hover:border-white"
+                    className=" flex justify-center mx-auto text-center gap-1 sm:translate-y-[-25px] sm:translate-x-[-30px] translate-x-[-10px] translate-y-[-20px] sm:h-7 h-5 md:text-[0.8rem] text-[0.6rem] sm:px-2 px-1 sm:py-1 items-center rounded-lg border bg-primary-green text-white"
                   >
                     <FaEdit className="size-[10px]" />
                     <p className="text-[0.75rem] font-medium hidden sm:block">
