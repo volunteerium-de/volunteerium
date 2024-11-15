@@ -9,7 +9,7 @@ const Header = () => {
   const { currentUser: user } = useSelector((state) => state.auth)
 
   return (
-    <header className="relative bg-light-gray dark:bg-dark-gray-3 shadow-sm py-1">
+    <header className="bg-light-gray dark:bg-dark-gray-3 shadow-sm py-1">
       <div className="container mx-auto flex justify-between items-center py-4 px-6">
         <Link to="/" className="flex items-center space-x-4">
           {/* Logo */}
@@ -26,7 +26,7 @@ const Header = () => {
           </div>
         </Link>
         {/* User - Notification - Message Menu  */}
-        <div className="flex items-center space-x-4">
+        <div className="relative flex items-center space-x-4">
           {user && user.userType !== "admin" ? (
             <>
               <NotificationMenu />

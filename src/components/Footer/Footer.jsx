@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom"
-import { FaLinkedinIn, FaInstagram, FaGithub } from "react-icons/fa"
+import { FaGithub } from "react-icons/fa"
 import Subscribe from "./Subscribe"
 import { useTranslation } from "react-i18next"
 import { translations } from "../../locales/translations"
@@ -18,12 +18,7 @@ const Footer = () => {
     },
     {
       title: t(translations.footer.company),
-      links: [
-        { name: t(translations.footer.aboutUs), path: "/about" },
-        { name: t(translations.footer.careers), path: "/careers" },
-
-        { name: t(translations.footer.investors), path: "/investors" },
-      ],
+      links: [{ name: t(translations.footer.aboutUs), path: "/about" }],
     },
   ]
 
@@ -41,7 +36,7 @@ const Footer = () => {
                     <li key={idx}>
                       <Link
                         to={link.path}
-                        className="text-gray-2 hover:text-primary-green transition-colors duration-300"
+                        className="text-gray-2 hover:text-primary-green hover:underline transition-colors duration-300"
                       >
                         {link.name}
                       </Link>
@@ -59,30 +54,12 @@ const Footer = () => {
               <div className="flex space-x-4">
                 {/* GitHub */}
                 <a
-                  href="https://github.com"
+                  href="https://github.com/volunteerium-de"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-gray-2 hover:text-primary-green transition-colors duration-300"
                 >
                   <FaGithub size={25} />
-                </a>
-                {/* LinkedIn */}
-                <a
-                  href="https://linkedin.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-gray-2 hover:text-primary-green transition-colors duration-300"
-                >
-                  <FaLinkedinIn size={25} />
-                </a>
-                {/* Instagram */}
-                <a
-                  href="https://instagram.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-gray-2 hover:text-primary-green transition-colors duration-300"
-                >
-                  <FaInstagram size={25} />
                 </a>
               </div>
             </div>

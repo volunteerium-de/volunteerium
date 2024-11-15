@@ -9,6 +9,8 @@ import AttendingEvents from "../components/EventManagement/AttendingEvents"
 import Messages from "../components/EventManagement/Messages"
 import { useLocation, useNavigate } from "react-router-dom"
 import { useSelector } from "react-redux"
+import { useTranslation } from "react-i18next"
+import { translations } from "../locales/translations"
 
 const EventManagement = () => {
   const location = useLocation()
@@ -17,6 +19,8 @@ const EventManagement = () => {
   const { currentUser, loading } = useSelector((state) => state.auth)
   const [activeTab, setActiveTab] = useState("organized-events")
   const [isAddingEvent, setIsAddingEvent] = useState(false)
+  const { t } = useTranslation()
+  const [eventToEdit, setEventToEdit] = useState(null)
 
   useEffect(() => {
     const queryParams = new URLSearchParams(location.search)
@@ -44,23 +48,23 @@ const EventManagement = () => {
   const menuItems = [
     {
       key: "organized-events",
-      label: "Organized Events",
+      label: t(translations.eventManagement.sidebarLabels.organizedEvents),
       icon: <FaCalendar className="text-2xl mx-auto" />,
     },
     {
-      key: "attendingEvents",
-      label: "Attending Events",
+      key: "attending-events",
+      label: t(translations.eventManagement.sidebarLabels.attendingEvents),
       icon: <FaPeopleGroup className="text-2xl mx-auto" />,
       show: currentUser?.userType !== "organization",
     },
     {
       key: "messages",
-      label: "Messages",
+      label: t(translations.eventManagement.sidebarLabels.messages),
       icon: (
         <>
           <FaEnvelope className="text-2xl" />
           {unreadMessageCount > 0 && (
-            <span className="absolute top-4 left-[62px] sm:left-[185px] md:left-52 lg:left-[230px] xl:left-[230px] 2xl:left-[250px] w-2 h-2 bg-primary-green rounded-full"></span>
+            <span className="absolute top-4 ml-10 sm:ml-10 md:ml-14 lg:-ml-1 xl:ml-4 2xl:-ml-6 w-2 h-2 bg-primary-green rounded-full"></span>
           )}
         </>
       ),
@@ -68,18 +72,28 @@ const EventManagement = () => {
   ].filter((item) => item.show !== false)
 
   const renderContent = () => {
-    if (isAddingEvent) return <AddEvent onClose={() => setIsAddingEvent(false)} />
+    if (isAddingEvent)
+      return (
+        <AddEvent
+          onClose={() => setIsAddingEvent(false)}
+          eventData={eventToEdit}
+          eventToEdit={eventToEdit}
+        />
+      )
 
     switch (activeTab) {
       case "organized-events":
-        return <OrganizedEvents onAddEvent={() => setIsAddingEvent(true)} />
-      case "attendingEvents":
+        return (
+          <OrganizedEvents
+            onAddEvent={() => setIsAddingEvent(true)}
+            setEditEvent={setEventToEdit}
+          />
+        )
+      case "attending-events":
         return <AttendingEvents />
 
       case "messages":
         return <Messages conversations={conversations} currentUser={currentUser} />
-      default:
-        return <OrganizedEvents onAddEvent={() => setIsAddingEvent(true)} />
     }
   }
 

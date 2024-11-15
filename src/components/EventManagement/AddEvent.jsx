@@ -8,35 +8,51 @@ import useEventCall from "../../hooks/useEventCall"
 import { useSelector } from "react-redux"
 import toastNotify from "../../utils/toastNotify"
 
-const AddEvent = ({ onClose }) => {
+const AddEvent = ({ onClose, eventData, eventToEdit }) => {
   const { currentUser: user } = useSelector((state) => state.auth)
 
   const [step, setStep] = useState(1)
-  const { postEvent } = useEventCall()
+  const { postEvent, editEvent } = useEventCall()
+  console.log("eventData", eventData)
 
   const initialValues = {
-    isActive: true,
-    title: "",
-    eventPhoto: null,
-    date: "",
-    fromTime: "",
-    toTime: "",
-    isOnline: true,
-    streetName: "",
-    streetNumber: "",
-    zipCode: "",
-    city: "",
-    country: "",
-    maxParticipant: 1,
-    interestIds: [],
-    languages: [],
-    description: "",
-    isContactPersonAdded: false,
-    contactName: "",
-    contactEmail: "",
-    contactPhone: "",
+    isActive: eventData?.isActive ?? true,
+    title: eventData?.title || "",
+    eventPhoto: eventData?.eventPhoto || null,
+    date: eventData?.startDate ? new Date(eventData.startDate).toISOString().split("T")[0] : "",
+    fromTime: eventData?.startDate
+      ? new Date(eventData.startDate).toLocaleTimeString("en-US", {
+          hour: "2-digit",
+          minute: "2-digit",
+          hour12: false,
+        })
+      : "",
+    toTime: eventData?.endDate
+      ? new Date(eventData.endDate).toLocaleTimeString("en-US", {
+          hour: "2-digit",
+          minute: "2-digit",
+          hour12: false,
+        })
+      : "",
+    isOnline: eventData?.isOnline ?? true,
+    streetName: eventData?.streetName || "",
+    streetNumber: eventData?.streetNumber || "",
+    zipCode: eventData?.zipCode || "",
+    city: eventData?.city || "",
+    country: eventData?.country || "",
+    maxParticipant: eventData?.maxParticipant || 1,
+    interestIds: eventData?.interestIds.map((category) => category._id) || [],
+    languages: eventData?.languages || [],
+    description: eventData?.description || "",
+    isContactPersonAdded: eventData?.isContactPersonAdded || false,
+    contactName: eventData?.contactName || "",
+    contactEmail: eventData?.contactEmail || "",
+    contactPhone: eventData?.contactPhone || "",
   }
+
   const handleSubmit = async (values) => {
+    console.log(values.date)
+
     console.log("Event Data Submitted:", values)
     const {
       date,
@@ -54,10 +70,13 @@ const AddEvent = ({ onClose }) => {
       contactPhone,
       ...payload
     } = values
-
+    console.log(values.date)
+    console.log(values.fromTime)
+    console.log(values.toTime)
     const startDate = new Date(`${date}T${fromTime}:00`)
     const endDate = new Date(`${date}T${toTime}:00`)
-
+    console.log(startDate)
+    console.log(endDate)
     const body = {
       createdBy: user._id,
       ...payload,
@@ -76,17 +95,24 @@ const AddEvent = ({ onClose }) => {
       ...(isContantPersonAdded && { contactName, contactEmail, contactPhone }),
       ...(eventPhoto && { eventPhoto }),
     }
-    console.log(body)
+
+    console.log("bodyyy", body)
+
     try {
-      await postEvent(body)
+      if (eventToEdit === null) {
+        await postEvent(body)
+      } else {
+        await editEvent(eventData._id, body)
+      }
+
       onClose()
     } catch (error) {
-      toastNotify("error", "An error occurred while posting the event. Please try again.")
+      toastNotify("error", "An error occurred. Please try again.")
     }
   }
 
   return (
-    <div className="max-w-4xl mx-auto p-8 bg-light-gray mt-3 dark:bg-dark-gray-3 rounded-lg shadow-md">
+    <div className="max-w-6xl mx-auto p-8 bg-light-gray mt-3 dark:bg-dark-gray-3 rounded-lg shadow-md">
       <Formik
         initialValues={initialValues}
         validationSchema={AddEventSchema}
