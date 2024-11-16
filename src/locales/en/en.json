@@ -681,8 +681,8 @@
     "phone": "Contact Phone*",
     "yes": "yes",
     "no": "no",
-    "back": "back",
-    "submit": "submit",
+    "back": "Back",
+    "submit": "Submit",
     "messages": {
       "messageInput": {
         "messagePH1": "As the organizer, only you can send messages to this group.",
