@@ -130,7 +130,7 @@ const SecuritySettings = () => {
               />
             </div>
             <button
-              className="flex-shrink-0 mx-4 w-[100px] md:text-[0.9rem] text-[0.7rem] px-3 sm:py-1.5 py-2 items-center rounded border border-primary-green bg-primary-green text-white hover:bg-primary-green/60"
+              className="flex-shrink-0 mx-2 w-[100px] md:text-[0.9rem] text-[0.7rem] px-3 sm:py-1.5 py-2 items-center rounded border border-primary-green bg-primary-green text-white hover:bg-primary-green/60"
               onClick={() => {
                 if (isEditingOrgName) {
                   handleSaveChanges("organizationName")
