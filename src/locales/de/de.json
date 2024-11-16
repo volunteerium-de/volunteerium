@@ -212,10 +212,10 @@
     "conversation-desc": "Sind Sie sicher, dass Sie diese Konversation löschen möchten?",
     "cancelButton": "Stornieren",
     "delButton": "Löschen",
-    "deleteEventDesc":"Sind Sie sicher, dass Sie dieses Ereignis löschen möchten?",
-    "leaveButton":"Verlassen",
-    "leaveEvent":"Ereignis verlassen",
-    "leaveEventDesc":"Sind Sie sicher, dass Sie dieses Ereignis verlassen möchten?"
+    "deleteEventDesc": "Sind Sie sicher, dass Sie dieses Ereignis löschen möchten?",
+    "leaveButton": "Verlassen",
+    "leaveEvent": "Ereignis verlassen",
+    "leaveEventDesc": "Sind Sie sicher, dass Sie dieses Ereignis verlassen möchten?"
   },
   "indvSettings": {
     "success": "Daten erfolgreich gespeichert!",
@@ -311,7 +311,9 @@
     "delAccount": "Konto löschen",
     "delAlert1": "Möchten Sie Ihr Konto löschen? Das Löschen Ihres Kontos entfernt alle damit verbundenen Inhalte.",
     "delAlert2": "Möchten Sie Ihre Organisation löschen? Das Löschen Ihrer Organisation entfernt alle damit verbundenen Inhalte.",
-    "userRes": "Ich möchte mein Konto löschen"
+    "userRes": "Ich möchte mein Konto löschen",
+    "edit": "Bearbeiten",
+    "save": "Speichern"
   },
   "updateDoc": {
     "error": "Fehler beim Aktualisieren der Datei.",
@@ -651,8 +653,8 @@
     "sidebarLabels": {
       "attendingEvents": "Teilnehmende Veranstaltungen",
       "organizedEvents": "Veranstaltungen Organisieren",
-      "messages": "Nachrichten" 
-  }
+      "messages": "Nachrichten"
+    }
   },
 
   "eventMng": {
