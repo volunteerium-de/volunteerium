@@ -9,7 +9,7 @@ const EventCardList = ({ events }) => {
   return (
     <div className="">
       {/* Map through event data */}
-      <div className="flex flex-col gap-1 min-h-[200px] ">
+      <div className="flex flex-col gap-2 min-h-[200px] ">
         {events?.length > 0 ? (
           events.map((event) => <EventCardHorizontal key={event._id} event={event} />)
         ) : (

@@ -21,10 +21,6 @@ const EventCardHorizontal = ({ event }) => {
   const { getLangName, getTranslatedCategory } = useLanguageOptions()
   const areDatesSame = startDate === endDate
 
-  const handleProfileNavigate = () => {
-    navigate(`/profile/${event.createdBy?._id}`)
-  }
-
   const handleNavigate = () => {
     navigate(`/events/${event._id}`)
   }
@@ -34,30 +30,29 @@ const EventCardHorizontal = ({ event }) => {
   return (
     <div
       key={event._id}
-      className="shadow-[0_1px_1px_rgba(0,0,0,.25)] mb-2 flex justify-center items-stretch gap-5 dark:bg-dark-gray-1 rounded-lg "
+      className="shadow-[0_1px_1px_rgba(0,0,0,.25)] mb-2  flex justify-center items-center gap-5 dark:bg-dark-gray-1 rounded-lg "
     >
       {/* Event Image */}
-      <div className="xl:flex-[1] l:flex[2] md:flex-[2] flex-[2] min-w-[100px]">
+      <div className="w-full max-w-[250px] h-[200px] flex justify-center items-center overflow-hidden rounded-l-lg ">
         <img
           src={event.eventPhoto || defaultEventPhoto}
           alt="event"
-          className="h-full object-cover object-center rounded-l-lg "
+          className="w-full h-full object-cover"
         />
       </div>
       {/* Event Content */}
-      <div className="flex-[3] p-2 flex flex-col w-full gap-1">
-        <div className="min-h-[50px] my-3">
-          <h2
-            className="text-black dark:text-white font-semibold sm:text-[1rem] text-[0.9rem] mb-3 cursor-pointer"
-            onClick={handleNavigate}
-          >
-            {event.title}
-          </h2>
-          <p className="text-dark-gray-1 dark:text-white sm:text-[0.8125rem] text-[0.7rem] mb-[10px]">
-            {event.description.split(" ").slice(0, 10).join(" ")}
-            {event.description.split(" ").length > 10 ? "..." : ""}
-          </p>
-        </div>
+      <div className="p-2 flex flex-col justify-between w-full gap-1 ">
+        <h2
+          className="text-black dark:text-white font-semibold sm:text-[1rem] text-[0.9rem] mb-3 cursor-pointer"
+          onClick={handleNavigate}
+        >
+          {event.title}
+        </h2>
+        <p className="text-dark-gray-1 dark:text-white sm:text-[0.8125rem] text-[0.7rem] mb-[10px]">
+          {event.description.split(" ").slice(0, 10).join(" ")}
+          {event.description.split(" ").length > 10 ? "..." : ""}
+        </p>
+
         {/* Event Details */}
         <div>
           {/* Organizer Information */}
@@ -129,17 +124,17 @@ const EventCardHorizontal = ({ event }) => {
                 ))}
               </div>
               {/* Event Button */}
+              <div className="flex-[0.5] text-end mt-auto pb-2 pr-2">
+                <button
+                  className="font-medium text-white sm:text-[0.7rem] text-[0.6rem] text-center bg-primary-green hover:bg-primary-green/60 px-4 py-1 rounded "
+                  onClick={handleNavigate}
+                >
+                  {t(translations.eventsPage.more)}
+                </button>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-      <div className="flex-[0.5] text-end mt-auto pb-2 pr-2">
-        <button
-          className="font-medium text-white sm:text-[0.7rem] text-[0.6rem] text-center bg-primary-green hover:bg-primary-green/60 px-4 py-1 rounded "
-          onClick={handleNavigate}
-        >
-          {t(translations.eventsPage.more)}
-        </button>
       </div>
     </div>
   )
