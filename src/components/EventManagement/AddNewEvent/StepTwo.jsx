@@ -100,7 +100,11 @@ const StepTwo = ({ setStep, values, step, isValid, setFieldValue }) => {
               label: category.name,
               value: category._id,
             }))}
-            placeholder={t(translations.eventMng.choose)}
+            placeholder={
+              values.interestIds.length > 0
+                ? values.interestIds.map((category) => category.name)
+                : t(translations.eventMng.choose)
+            }
             isMultiple={true}
           />
           <ErrorMessage name="interestIds" component="div" className="text-danger" />
@@ -113,7 +117,9 @@ const StepTwo = ({ setStep, values, step, isValid, setFieldValue }) => {
           <SelectInput
             name="maxParticipant"
             options={maxParticipantsOptions}
-            placeholder={t(translations.eventMng.max)}
+            placeholder={
+              values.maxParticipant > 0 ? values.maxParticipant : t(translations.eventMng.max)
+            }
           />
           <ErrorMessage name="maxParticipant" component="div" className="text-danger" />
         </div>
@@ -122,7 +128,7 @@ const StepTwo = ({ setStep, values, step, isValid, setFieldValue }) => {
 
         {/* Description */}
         <div className="mb-4">
-          {t(translations.eventMng.desc)}
+          {t(translations.eventMng.desc)}*
           <label className="block text-dark-gray-2 mb-2 dark:text-white"></label>
           <Field
             as="textarea"
@@ -134,8 +140,8 @@ const StepTwo = ({ setStep, values, step, isValid, setFieldValue }) => {
         </div>
 
         {/* Contact Person */}
-        {user.userType === "organization"}
-        {true && (
+
+        {user.userType === "organization" && (
           <div className="mb-4">
             <label className="block text-dark-gray-2 mb-2 dark:text-white">
               {t(translations.eventMng.addContact)}

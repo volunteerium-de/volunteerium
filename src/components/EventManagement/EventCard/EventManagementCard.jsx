@@ -10,12 +10,18 @@ import MoreOptionsMenu from "./MoreOptionMenu"
 import { translations } from "../../../locales/translations"
 import { useSelector } from "react-redux"
 
-const EventManagementCard = ({ eventId: event, isOrganized = false, openModal, refetch }) => {
+const EventManagementCard = ({
+  eventId: event,
+  isOrganized = false,
+  openModal,
+  refetch,
+  onAddEvent,
+  setEditEvent,
+}) => {
   const { t } = useTranslation()
   const navigate = useNavigate()
   const { currentUser: user } = useSelector((state) => state.auth)
 
-  console.log("deneme", event)
   const handleAvatarClick = (userId) => {
     navigate(`/profile/${userId}`)
   }
@@ -41,7 +47,8 @@ const EventManagementCard = ({ eventId: event, isOrganized = false, openModal, r
           <img
             src={event?.eventPhoto || defaultEventPhoto}
             alt={event?.title}
-            className="w-full h-full object-cover rounded-l-lg overflow-hidden"
+            className="w-full h-full object-cover rounded-l-lg overflow-hidden cursor-pointer"
+            onClick={() => navigate(`/events/${event?._id}`)}
           />
         </div>
 
@@ -50,8 +57,12 @@ const EventManagementCard = ({ eventId: event, isOrganized = false, openModal, r
           <div className="flex flex-col gap-3 w-[45vw] lg:w-full py-3 text-[0.9375rem]">
             {/* Title */}
             <div className="flex w-full justify-between">
-              <h2 className="text-[1.2rem] font-semibold text-dark-gray-1 dark:text-white cursor-pointer">
+              <h2
+                onClick={() => navigate(`/events/${event?._id}`)}
+                className="text-[1.2rem] font-semibold text-dark-gray-1 dark:text-white cursor-pointer"
+              >
                 {event?.title}
+
                 {!event?.isDone && !isOrganized && isCurrentUserApproved === false && (
                   <span className="text-yellow-500 text-[0.8rem] p-2 mb-12">(Pending)</span>
                 )}
@@ -62,6 +73,8 @@ const EventManagementCard = ({ eventId: event, isOrganized = false, openModal, r
                   eventId={event._id}
                   event={event}
                   refetch={refetch}
+                  onAddEvent={onAddEvent}
+                  setEditEvent={setEditEvent}
                 />
               )}
             </div>
@@ -131,7 +144,7 @@ const EventManagementCard = ({ eventId: event, isOrganized = false, openModal, r
                     <div className="flex gap-1 text-[0.66rem] sm:text-[0.9rem] font-medium text-gray-2 dark:text-white ">
                       {event.isOnline
                         ? "Online"
-                        : `${event.addressId.city}, ${event.addressId.country}`}
+                        : `${event.addressId?.city}, ${event.addressId?.country}`}
                     </div>
                   </div>
 

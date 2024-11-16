@@ -50,7 +50,7 @@ const FeedbacksTable = ({ data, loading }) => {
                     </div>
                   </td>
                   <td className={"td text-left 2xl:w-[150px] whitespace-nowrap"} data-label="Email">
-                    {feedback?.userId.email}
+                    {feedback?.userId?.email}
                   </td>
                   <td
                     className={"td text-center 2xl:w-[150px] whitespace-nowrap"}
@@ -67,7 +67,9 @@ const FeedbacksTable = ({ data, loading }) => {
           </table>
         </div>
       ) : (
-        <div>No feedbacks found</div>
+        <div className="p-4 sm:p-0 mt-4 text-center sm:text-left text-dark-gray-2 dark:text-light-gray">
+          No feedbacks found
+        </div>
       )}
     </>
   )

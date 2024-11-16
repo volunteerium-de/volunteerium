@@ -9,7 +9,6 @@ import googleAuthSuccessDesktop from "../assets/google-success-desktop.png"
 import googleAuthSuccessMobile from "../assets/google-success-mobile.png"
 import { ImSpinner9 } from "react-icons/im"
 import { useState } from "react"
-import { useSelector } from "react-redux"
 import { useTranslation } from "react-i18next"
 import { translations } from "../locales/translations"
 
@@ -22,27 +21,27 @@ export const getLoginRedirectLink = (user) => {
       redirectLink = `/account-setup/organization?clientId=${user._id}`
     }
   }
-  
+
   return redirectLink
-} 
+}
 
 const GoogleAuthSuccess = () => {
-  const {t} = useTranslation()
+  const { t } = useTranslation()
   const dispatch = useDispatch()
   const navigate = useNavigate()
   const location = useLocation()
-  const { currentUser: user } = useSelector((state) => state.auth)
   const [userData, setUserData] = useState()
+  const [isNewUser, setIsNewUser] = useState(false)
 
   useEffect(() => {
     const getUserData = async () => {
-      if (user) {
-        navigate("/")
-        return
-      }
-
       const queryParams = new URLSearchParams(location.search)
       const userParam = queryParams.get("user")
+
+      const newUser = queryParams.get("new")
+      if (newUser === "true") {
+        setIsNewUser(true)
+      }
 
       const parsedData = JSON.parse(decodeURIComponent(userParam))
       if (!parsedData?.bearer?.access) {
@@ -67,13 +66,21 @@ const GoogleAuthSuccess = () => {
       try {
         dispatch(loginSuccess(userData))
 
-        const redirectLink = getLoginRedirectLink(userData.user)
+        let redirectLink
+
+        if (isNewUser) {
+          redirectLink = `/auth/password?provider=google&clientId=${userData.user._id}`
+        } else {
+          redirectLink = getLoginRedirectLink(userData.user)
+        }
 
         if (redirectLink === "/") {
           toastNotify("success", t(translations.googleAS.successMsg))
         }
 
-        navigate(redirectLink)
+        setTimeout(() => {
+          navigate(redirectLink)
+        }, 0)
       } catch (error) {
         console.error("Failed to parse user data:", error)
         navigate("/auth/failure?provider=google")
@@ -103,4 +110,4 @@ const GoogleAuthSuccess = () => {
   )
 }
 
-export default GoogleAuthSuccess 
+export default GoogleAuthSuccess
