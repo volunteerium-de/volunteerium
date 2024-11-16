@@ -20,6 +20,8 @@ import FeedbacksPanel from "../components/AdminPanel/feedbacks/FeedbacksPanel"
 import { debounce } from "../utils/functions"
 import SubscriptionsPanel from "../components/AdminPanel/subscriptions/SubscriptionsPanel"
 import { PiNewspaperClippingFill } from "react-icons/pi"
+import InterestsPanel from "../components/AdminPanel/interests/InterestsPanel"
+import { BiSolidCategoryAlt } from "react-icons/bi"
 
 const AdminPanel = () => {
   const location = useLocation()
@@ -106,6 +108,11 @@ const AdminPanel = () => {
       icon: <FaUsersGear className="text-2xl mx-auto" />,
     },
     {
+      key: "interests",
+      label: "Interests",
+      icon: <BiSolidCategoryAlt className="text-2xl mx-auto" />,
+    },
+    {
       key: "contacts",
       label: "Contacts",
       icon: <MdEmail className="text-2xl mx-auto" />,
@@ -150,6 +157,8 @@ const AdminPanel = () => {
     }
 
     switch (debouncedActiveTab) {
+      case "interests":
+        return <InterestsPanel />
       case "events":
         return <EventsPanel />
       case "users":

@@ -5,6 +5,7 @@ import Pagination from "../Pagination/Pagination"
 import useAdminCall from "../../../hooks/useAdminCall"
 import { ImSpinner9 } from "react-icons/im"
 import SubscriptionsTable from "../../AdminPanel/subscriptions/SubscriptionsTable"
+import InterestsTable from "../../AdminPanel/interests/InterestsTable"
 
 const Panel = ({ title, fetchUrl, TableComponent }) => {
   const [searchQuery, setSearchQuery] = useState("")
@@ -24,10 +25,10 @@ const Panel = ({ title, fetchUrl, TableComponent }) => {
     setLoading(true)
     fetchAllData(`${fetchUrl}?page=${currentPage}&limit=10`)
       .then((fetchedData) => {
-        setData(fetchedData.data)
-        setTotalPages(fetchedData.details.pages.total || 1)
-        setCurrentPage(fetchedData.details.pages.current || 1)
-        setTotalRecords(fetchedData.details.totalRecords || 0)
+        setData(fetchedData?.data)
+        setTotalPages(fetchedData?.details?.pages?.total || 1)
+        setCurrentPage(fetchedData?.details?.pages?.current || 1)
+        setTotalRecords(fetchedData?.details?.totalRecords || 0)
 
         if (currentPage > 0) {
           navigate(
@@ -52,7 +53,7 @@ const Panel = ({ title, fetchUrl, TableComponent }) => {
 
   // Conditionally pass setData only to SubscriptionsTable
   const renderTableComponent = () => {
-    if (TableComponent == SubscriptionsTable) {
+    if (TableComponent == SubscriptionsTable || TableComponent == InterestsTable) {
       return <TableComponent data={data} loading={loading} refreshData={refreshData} />
     }
     return <TableComponent data={data} loading={loading} />
