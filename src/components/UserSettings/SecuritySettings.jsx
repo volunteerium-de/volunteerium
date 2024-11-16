@@ -76,7 +76,7 @@ const SecuritySettings = () => {
           >
             {t(translations.secSett.name)}
           </label>
-          <div className="flex justify-between items-start">
+          <div className="flex justify-between items-center">
             <div className="flex-grow">
               <input
                 type="text"
@@ -87,12 +87,12 @@ const SecuritySettings = () => {
                 }
                 onChange={handleNameChange}
                 placeholder={currentUser?.fullName || t(translations.secSett.namePH)}
-                className="w-full h-[31px] sm:h-[36px] p-2 border border-gray-1 rounded focus:outline-none dark:bg-light-gray-3 text-black focus:border-primary-green"
+                className="w-full h-[36px] text-[0.9rem] sm:text-[1rem] p-2 border border-gray-1 rounded focus:outline-none dark:bg-light-gray-3 text-black focus:border-primary-green"
                 disabled={!isEditingName}
               />
             </div>
             <button
-              className="flex-shrink-0 mx-2 sm:w-[100px] w-[50px] md:text-[0.9rem] text-[0.7rem] px-3 sm:py-1.5 py-2 items-center rounded border border-primary-green hover:bg-primary-green/60 bg-primary-green dark:text-white"
+              className="flex-shrink-0 mx-2 sm:w-[15%] w-[10%] text-[0.9rem]  px-3 sm:py-1.5 py-2 items-center rounded border border-primary-green hover:bg-primary-green/60 bg-primary-green dark:text-white"
               onClick={() => {
                 if (isEditingName) {
                   handleSaveChanges("name")
@@ -125,12 +125,12 @@ const SecuritySettings = () => {
                 }
                 onChange={handleOrgNameChange}
                 placeholder={currentUser?.organizationName || t(translations.secSett.orgNamePH)}
-                className="w-full h-[31px] sm:h-[36px] p-2 border border-gray-1 rounded focus:outline-none dark:bg-light-gray-3 dark:text-black  focus:border-primary-green"
+                className="w-full h-[36px] text-[0.9rem] sm:text-[1rem] p-2 border border-gray-1 rounded focus:outline-none dark:bg-light-gray-3 dark:text-black  focus:border-primary-green"
                 disabled={!isEditingOrgName}
               />
             </div>
             <button
-              className="flex-shrink-0 mx-2 w-[100px] md:text-[0.9rem] text-[0.7rem] px-3 sm:py-1.5 py-2 items-center rounded border border-primary-green bg-primary-green text-white hover:bg-primary-green/60"
+              className="flex-shrink-0 mx-2 sm:w-[15%] w-[20%] text-[0.9rem] px-3 sm:py-1.5 py-2 items-center rounded border border-primary-green bg-primary-green text-white hover:bg-primary-green/60"
               onClick={() => {
                 if (isEditingOrgName) {
                   handleSaveChanges("organizationName")
@@ -154,7 +154,7 @@ const SecuritySettings = () => {
           type="email"
           id="email"
           placeholder={currentUser?.email || t(translations.secSett.emailPH)}
-          className="w-full h-[31px] sm:h-[36px] p-2 border border-gray-1  rounded focus:outline-none dark:bg-light-gray-3 focus:border-primary-green cursor-not-allowed"
+          className="w-full h-[36px] text-[0.9rem] sm:text-[1rem] p-2 border border-gray-1  rounded focus:outline-none dark:bg-light-gray-3 focus:border-primary-green cursor-not-allowed"
           disabled={true}
         />
         <p className="text-sm text-danger">{t(translations.secSett.p2)}</p>
