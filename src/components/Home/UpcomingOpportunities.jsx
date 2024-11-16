@@ -96,7 +96,7 @@ const UpcomingOpportunities = () => {
         <div className="relative rounded-lg">
           {/* Arrow Left */}
           <button
-            className={`absolute top-[calc(60%-25px)] left-[-40px] ${isLeftDisabled ? "hidden" : "block"}`}
+            className={`absolute top-[calc(60%-25px)] left-[-2.4rem] ${isLeftDisabled ? "hidden" : "block"}`}
             onClick={handleScrollLeft}
             disabled={isLeftDisabled}
           >
@@ -104,7 +104,7 @@ const UpcomingOpportunities = () => {
           </button>
           {/* Arrow Right */}
           <button
-            className={`absolute top-[calc(60%-25px)] right-[-40px] ${isRightDisabled ? "hidden" : "block"}`}
+            className={`absolute top-[calc(60%-25px)] right-[-2.4rem] ${isRightDisabled ? "hidden" : "block"}`}
             onClick={handleScrollRight}
             disabled={isRightDisabled}
           >

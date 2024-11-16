@@ -28,14 +28,14 @@ const EventCardVertical = ({ event }) => {
   return (
     <div
       key={event._id}
-      className="flex flex-col justify-between rounded max-w-[200px] sm:max-w-[330px] min-w-[330px] shadow-[0_1px_1px_rgba(0,0,0,.25)] overflow-x-hidden shrink-0 mb-2 dark:bg-dark-gray-3"
+      className="flex flex-col justify-between rounded max-w-[230px] min-w-[250px] sm:max-w-[330px] sm:min-w-[330px]shadow-[0_1px_1px_rgba(0,0,0,.25)] overflow-x-hidden shrink-0 mb-2 dark:bg-dark-gray-3"
     >
       {/* Event Image */}
       <div>
         <img
           src={event?.eventPhoto || defaulEventPhoto}
           alt={t(translations.eventCardVer.imgAlt)}
-          className="rounded-t-sm object-cover w-full h-[200px]"
+          className="rounded-t-sm object-cover w-full h-[180px]"
         />
       </div>
       {/* Event Content */}
