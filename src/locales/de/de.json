@@ -441,6 +441,12 @@
     "language": "Sprache"
   },
 
+  "googlePassword": {
+    "header": "Legen Sie Ihr Passwort fest",
+    "description": "Um sicherzustellen, dass Ihr Konto sicher ist und Sie in Zukunft problemlos darauf zugreifen können, legen Sie jetzt ein Passwort fest. Dies hilft, Probleme bei zukünftigen Anmeldungen zu vermeiden. Geben Sie Ihr neues Passwort unten ein und bestätigen Sie es.",
+    "saveContinue": "Speichern & Fortfahren"
+  },
+
   "googleAuthFall": {
     "h1": "Authentifizierung fehlgeschlagen.",
     "h2": "Bitte versuchen Sie es erneut oder kontaktieren Sie den Support, wenn das Problem weiterhin besteht.",

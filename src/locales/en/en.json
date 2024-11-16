@@ -441,6 +441,13 @@
     "category": "Category",
     "language": "Language"
   },
+
+  "googlePassword": {
+    "header": "Set Your Password",
+    "description": " To ensure your account is secure and you can access it easily in the future, please set a password now. This will help avoid any issues during future logins. Enter and confirm your new password below.",
+    "saveContinue": "Save & Continue"
+  },
+
   "googleAuthFall": {
     "h1": "Authentication failed.",
     "h2": " Please try again or contact support if the problem persists.",

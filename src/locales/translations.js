@@ -466,6 +466,13 @@ export const translations = {
     category: "eventsPage.category",
     language: "eventsPage.language",
   },
+
+  googlePassword:{
+    header: "googlePassword.header",
+    description: "googlePassword.description",
+    saveContinue: "googlePassword.saveContinue"
+  },
+
   googleAuthFall: {
     h1: "googleAuthFall.h1",
     h2: "googleAuthFall.h2",
