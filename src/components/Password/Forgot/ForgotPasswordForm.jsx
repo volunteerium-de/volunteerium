@@ -18,7 +18,7 @@ const ForgotPasswordForm = ({ setIssue, setIdentifier, setEmail }) => {
   const forgotPassword = async (email) => {
     try {
       const { data } = await axiosWithPublic.post("auth/forgot-password", { email })
-      // console.log(data)
+       
       setIdentifier(data.resetToken)
       setIssue("verify-reset-token")
       toastNotify("success", data.message)
@@ -36,7 +36,7 @@ const ForgotPasswordForm = ({ setIssue, setIdentifier, setEmail }) => {
         .required(t(translations.yup.required.email)),
     }),
     onSubmit: (values) => {
-      // console.log("Email:", values.email)
+      
       setEmail(values.email)
       forgotPassword(values.email)
     },
@@ -49,21 +49,21 @@ const ForgotPasswordForm = ({ setIssue, setIdentifier, setEmail }) => {
     >
       {/* Mobile View - Back Arrow and Back to Login */}
       <div
-        className="md:hidden w-full flex items-center space-x-1 cursor-pointer justify-start absolute top-[-1.25rem] left-[0.0625rem]"
+        className="md:hidden flex flex-col items-center mb-6"
         onClick={() => navigate("/login")}
       >
-        <IoIosArrowBack className="text-2xl text-black dark:text-white" />
+        <IoIosArrowBack className="text-black dark:text-white text-3xl cursor-pointer self-start" />
         <span className="text-lg font-semibold text-black dark:text-white">{t(translations.password.forgotPassForm.backToLogin)}</span>
       </div>
 
       {/* Mobile View - Logo Centered */}
       <div className="md:hidden w-full flex justify-center mb-6 mt-[5rem]">
-        <img src={logo} alt= {t(translations.password.forgotPassForm.logoAlt)} className="h-12 w-auto" />
+        <img src={logo} alt= {t(translations.password.forgotPassForm.logoAlt)} className="h-16 w-auto" />
       </div>
 
       {/* Title and Description */}
-      <div className="w-full">
-        <h1 className="text-left text-[1.5rem] md:text-[2rem] font-semibold dark:text-white leading-tight mb-4">
+      <div className="flex-grow">
+        <h1 className="text-black dark:text-white text-[1.75rem] text-center md:text-center md:text-[2rem] font-semibold mb-6">
         {t(translations.password.forgotPassForm.forgotPassword)}
         </h1>
         <p className="text-left w-full text-[1rem] md:text-[1.125rem] font-normal text-gray-2 dark:text-white leading-snug">
@@ -73,7 +73,7 @@ const ForgotPasswordForm = ({ setIssue, setIdentifier, setEmail }) => {
 
       {/* Email Field */}
       <div className="flex flex-col w-full">
-        <label htmlFor="email" className="text-sm font-medium mb-1 text-gray-2 dark:text-white">
+        <label htmlFor="email" className="text-gray-2 dark:text-white text-[0.875rem] md:text-[1rem]">
         {t(translations.password.forgotPassForm.email)}
         </label>
         <input

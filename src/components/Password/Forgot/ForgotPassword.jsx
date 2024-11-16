@@ -8,36 +8,33 @@ const ForgotPassword = ({ setIssue, setIdentifier, setEmail }) => {
   return (
     <div>
       {/* Main Content Area */}
-      <div className="flex flex-col mx-auto font-poppins bg-white dark:bg-black min-h-screen">
+      <div className="flex flex-col max-w-full w-[1440px] mx-auto font-poppins dark:bg-black ">
         {/* Main Container Wrapping the Image and Form Areas */}
-        <div className="flex flex-col w-[95%] max-w-[1200px] mx-auto">
-          {/* Inner Container for Left Image and Right Form */}
-          <div className="flex flex-col md:flex-row w-full justify-center items-stretch md:space-y-0 space-y-6 md:space-x-6 h-full md:min-h-[calc(100vh-11.25rem)] lg:min-h-[calc(100vh-12.5rem)]">
-            {/* Left Side - Image Area */}
-            <div className="hidden md:flex w-full md:max-w-[50%] lg:max-w-[50%] overflow-hidden rounded-t-lg rounded-b-lg h-[calc(95vh-7.5rem)]">
-              <div
-                className="flex-grow h-full w-full bg-cover bg-center relative"
-                style={{
-                  backgroundImage: `url(${forgotPasswordImage})`,
-                  backgroundBlendMode: "overlay",
-                  backgroundSize: "contain",
-                  backgroundRepeat: "no-repeat",
-                }}
-              >
-                <div className="h-full w-full bg-light-green bg-opacity-50 dark:bg-opacity-70 rounded-t-lg" />
-              </div>
+        <div className="flex flex-col md:flex-row pt-8 max-w-[1440px] justify-center items-center h-full">
+          {/* Left Side - Image Area */}
+          <div className="hidden md:flex w-full md:max-w-[608px] mx-2 md:mx-4 lg:mx-8 mb-8 bg-primary-green overflow-hidden rounded-lg h-[calc(100vh-150px)] lg:h-[780px]">
+            <div
+              className="flex-grow h-full w-full bg-cover bg-center backdrop-blur-xl relative"
+              style={{
+                backgroundImage: `url(${forgotPasswordImage})`,
+                backgroundBlendMode: "overlay",
+                 
+              }}
+            >
+              <div className="h-full w-full flex flex-col justify-center px-5 md:px-0 bg-primary-green bg-opacity-60" />
+              <div className="absolute top-0 left-0 w-full h-full bg-primary-green opacity-[0.4]" />
             </div>
+          </div>
 
-            {/* Right Side - Form Area */}
-            <div className="flex-grow flex justify-center items-center bg-white dark:bg-black rounded-lg h-full p-6 md:max-w-[70%] lg:max-w-[80%]">
-              {/* Form Content */}
-              <div className="flex-grow flex flex-col justify-center items-center w-full max-w">
-                <ForgotPasswordForm
-                  setIssue={setIssue}
-                  setIdentifier={setIdentifier}
-                  setEmail={setEmail}
-                />
-              </div>
+          {/* Right Side - Form Area */}
+          <div className="flex-grow flex flex-col justify-center my-auto p-4 md:px-8">
+            {/* Form Content */}
+            <div className="flex-grow">
+              <ForgotPasswordForm
+                setIssue={setIssue}
+                setIdentifier={setIdentifier}
+                setEmail={setEmail}
+              />
             </div>
           </div>
         </div>
