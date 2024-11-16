@@ -14,6 +14,7 @@ const PasswordModal = ({ isOpen, onClose }) => {
   const { loading } = useSelector((state) => state.auth)
 
   // State for toggling password visibility
+  const [showOldPassword, setShowOldPassword] = useState(false) // Added for old password visibility
   const [showPassword, setShowPassword] = useState(false)
   const [showConfirmPassword, setShowConfirmPassword] = useState(false)
 
@@ -26,6 +27,7 @@ const PasswordModal = ({ isOpen, onClose }) => {
       .oneOf([Yup.ref("password"), null], t(translations.yup.password.match))
       .required(t(translations.yup.required.confirmPassword)),
   })
+
   const formik = useFormik({
     initialValues: {
       oldPassword: "",
@@ -61,21 +63,29 @@ const PasswordModal = ({ isOpen, onClose }) => {
               {/* Current Password Field */}
               <div className="relative flex flex-col sm:flex-row justify-between items-center gap-[3px] mt-[10px]">
                 <p className="sm:text-[0.9rem] text-[0.8rem]">{t(translations.pswModal.currPsw)}</p>
-                <input
-                  type="password"
-                  name="oldPassword"
-                  placeholder="*********"
-                  value={formik.values.oldPassword}
-                  onChange={formik.handleChange}
-                  onBlur={formik.handleBlur}
-                  className={`h-[36px] md:w-[300px] border ${
-                    formik.touched.oldPassword && formik.errors.oldPassword
-                      ? "border-danger"
-                      : "border-gray-1"
-                  } focus:ring-2 focus:ring-primary-green text-dark-gray-1 p-2 rounded focus:outline-none`}
-                />
+                <div className="relative">
+                  <input
+                    type={showOldPassword ? "text" : "password"}
+                    name="oldPassword"
+                    placeholder="*********"
+                    value={formik.values.oldPassword}
+                    onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
+                    className={`h-[36px] md:w-[300px] border ${
+                      formik.touched.oldPassword && formik.errors.oldPassword
+                        ? "border-red-500 focus:ring-2 focus:ring-red-500"
+                        : "border-gray-1 focus:ring-2  focus:ring-primary-green"
+                    } focus:ring-2 text-dark-gray-1 p-2 rounded focus:outline-none`}
+                  />
+                  <div
+                    onClick={() => setShowOldPassword(!showOldPassword)}
+                    className="absolute top-2 right-2 cursor-pointer text-dark-gray-2"
+                  >
+                    {showOldPassword ? <FaEye /> : <FaEyeSlash />}
+                  </div>
+                </div>
                 {formik.touched.oldPassword && formik.errors.oldPassword ? (
-                  <p className="absolute left-1/2 transform -translate-x-1/2 -bottom-5 w-[200px] sm:w-auto sm:left-auto sm:right-0 sm:translate-x-0 sm:transform-none text-red-500  text-xs text-center">
+                  <p className="absolute left-1/2 transform -translate-x-1/2 -bottom-5 w-[200px] sm:w-auto sm:left-auto sm:right-0 sm:translate-x-0 sm:transform-none text-red-500 text-xs text-center">
                     {formik.errors.oldPassword}
                   </p>
                 ) : null}
@@ -94,9 +104,9 @@ const PasswordModal = ({ isOpen, onClose }) => {
                     onBlur={formik.handleBlur}
                     className={`h-[36px] md:w-[300px] border ${
                       formik.touched.password && formik.errors.password
-                        ? "border-danger"
-                        : "border-gray-1"
-                    } focus:ring-2 focus:ring-primary-green text-dark-gray-1 p-2 rounded focus:outline-none`}
+                        ? "border-red-500 focus:ring-2 focus:ring-red-500"
+                        : "border-gray-1 focus:ring-2  focus:ring-primary-green"
+                    } focus:ring-2  text-dark-gray-1 p-2 rounded focus:outline-none`}
                   />
                   <div
                     onClick={() => setShowPassword(!showPassword)}
@@ -127,9 +137,9 @@ const PasswordModal = ({ isOpen, onClose }) => {
                     onBlur={formik.handleBlur}
                     className={`h-[36px] md:w-[300px] border ${
                       formik.touched.confirmPassword && formik.errors.confirmPassword
-                        ? "border-danger"
-                        : "border-gray-1"
-                    } focus:ring-2 focus:ring-primary-green text-dark-gray-1 p-2 rounded focus:outline-none`}
+                        ? "border-red-500 focus:ring-2 focus:ring-red-500"
+                        : "border-gray-1 focus:ring-2  focus:ring-primary-green"
+                    } focus:ring-2 text-dark-gray-1 p-2 rounded focus:outline-none`}
                   />
                   <div
                     onClick={() => setShowConfirmPassword(!showConfirmPassword)}
@@ -139,7 +149,7 @@ const PasswordModal = ({ isOpen, onClose }) => {
                   </div>
                 </div>
                 {formik.touched.confirmPassword && formik.errors.confirmPassword ? (
-                  <p className="absolute left-1/2 transform -translate-x-1/2 -bottom-5 w-[200px] sm:w-auto sm:left-auto sm:right-0 sm:translate-x-0 sm:transform-none text-red-500 text-xs  text-center">
+                  <p className="absolute left-1/2 transform -translate-x-1/2 -bottom-5 w-[200px] sm:w-auto sm:left-auto sm:right-0 sm:translate-x-0 sm:transform-none text-red-500 text-xs text-center">
                     {formik.errors.confirmPassword}
                   </p>
                 ) : null}
@@ -174,4 +184,5 @@ const PasswordModal = ({ isOpen, onClose }) => {
     </div>
   )
 }
+
 export default PasswordModal
