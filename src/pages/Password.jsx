@@ -49,18 +49,13 @@ const Password = () => {
   }
 
   return (
-    <div>
+    <>
       {/* Header Component */}
       <Header />
 
-      {/* Main Container */}
-      <div className="flex flex-col mx-auto font-poppins bg-white dark:bg-black min-h-screen">
-        <div className="flex flex-col w-[95%] max-w-[1200px] mx-auto mt-1 md:mt-2">
-          {/* Render the corresponding content */}
-          {renderContent()}
-        </div>
-      </div>
-    </div>
+      {/* Render the corresponding content */}
+      {renderContent()}
+    </>
   )
 }
 
