@@ -1,4 +1,5 @@
 import i18n from "../i18n"
+// import { useTranslation } from "react-i18next"
 
 export const formatDate = (dateString) => {
   return new Date(dateString).toLocaleDateString(i18n.language, {
@@ -19,4 +20,29 @@ export const formatDateWithTime = (dateString) => {
       hour12: false,
     })
     .replace("at", "-")
+}
+
+export const formatDateWithAll = (startDate, endDate) => {
+  const start = new Date(startDate)
+  const end = new Date(endDate)
+
+  const formattedStartDate = start.toLocaleString(i18n.language, {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+    hour: "2-digit",
+    minute: "2-digit",
+  })
+
+  const formattedStartTime = start.toLocaleTimeString(i18n.language, {
+    hour: "2-digit",
+    minute: "2-digit",
+  })
+
+  const formattedEndTime = end.toLocaleTimeString(i18n.language, {
+    hour: "2-digit",
+    minute: "2-digit",
+  })
+
+  return `${formattedStartDate.split(",")[0]}, ${formattedStartTime} - ${formattedEndTime}`
 }

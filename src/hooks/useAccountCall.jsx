@@ -16,7 +16,6 @@ const useAccountCall = () => {
     try {
       const { data } = await axiosWithToken.put(`users/${currentUser?._id}`, userData)
       dispatch(fetchSuccess(data))
-      console.log(data)
       toastNotify("success", data.message)
       return data
     } catch (error) {
@@ -38,7 +37,6 @@ const useAccountCall = () => {
         }
       )
       dispatch(fetchSuccess(data))
-      console.log(data)
       return data
     } catch (error) {
       dispatch(fetchFail())
@@ -50,7 +48,6 @@ const useAccountCall = () => {
     dispatch(fetchStart())
     try {
       const { data } = await axiosWithToken(`users/${userId}`)
-      console.log(data)
       return data
     } catch (error) {
       dispatch(fetchFail())
@@ -62,7 +59,6 @@ const useAccountCall = () => {
     dispatch(fetchStart())
     try {
       const { data } = await axiosWithToken.delete(`users/${currentUser?._id}`)
-      console.log(data)
       dispatch(logoutSuccess())
       toastNotify("success", data.message)
 
