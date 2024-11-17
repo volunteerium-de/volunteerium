@@ -88,7 +88,7 @@ const ForgotPasswordForm = ({ setIssue, setIdentifier, setEmail }) => {
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
           value={formik.values.email}
-          className="border border-gray-2 p-2 rounded-lg dark:bg-black dark:text-white focus:border-primary-green"
+          className="border border-gray-2 p-2 rounded-lg dark:bg-black dark:text-white focus:border-primary-green focus:outline-none"
           placeholder={t(translations.password.forgotPassForm.emailPH)}
         />
         {formik.touched.email && formik.errors.email && (
