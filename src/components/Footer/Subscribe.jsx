@@ -3,15 +3,22 @@ import { translations } from "../../locales/translations"
 import { useTranslation } from "react-i18next"
 import { Formik, Form, Field, ErrorMessage } from "formik"
 import * as Yup from "yup"
+import useSubscription from "../../hooks/useSubscription"
 
 const Subscribe = () => {
   const { t } = useTranslation()
+  const { subscribe } = useSubscription()
 
   const validationSchema = Yup.object({
     email: Yup.string()
       .matches(/^[^\s@]+@[^\s@]+\.[^\s@]+$/, t(translations.yup.invalid.email))
       .required(t(translations.yup.required.email)),
   })
+
+  const handleSubmit = async (values, { resetForm }) => {
+    await subscribe(values.email)
+    resetForm()
+  }
 
   return (
     <div className="flex flex-col items-center justify-center px-6 py-8 bg-light-green dark:bg-dark-gray-3 rounded-md shadow-md max-w-[60%] mx-auto">
@@ -24,28 +31,24 @@ const Subscribe = () => {
       <Formik
         initialValues={{ email: "" }}
         validationSchema={validationSchema}
-        onSubmit={(values) => {
-          console.log("Form Submitted:", values)
-        }}
+        onSubmit={handleSubmit}
       >
-        {({ handleSubmit }) => (
-          <Form onSubmit={handleSubmit} className="relative w-full">
-            <Field
-              type="email"
-              name="email"
-              placeholder={t(translations.subscribe.emailPH)}
-              className="p-3 pr-12 border border-gray-1 rounded-lg w-full focus:outline-none"
-            />
-            <ErrorMessage name="email" component="div" className="text-danger text-sm mt-1" />
+        <Form className="relative w-full">
+          <Field
+            type="email"
+            name="email"
+            placeholder={t(translations.subscribe.emailPH)}
+            className="p-3 pr-12 border border-gray-1 rounded-lg w-full focus:outline-none"
+          />
+          <ErrorMessage name="email" component="div" className="text-danger text-sm mt-1" />
 
-            <button
-              type="submit"
-              className="absolute top-1/2 right-2 transform -translate-y-1/2 p-2 bg-primary-green text-white rounded-full"
-            >
-              <HiArrowSmRight size={20} />
-            </button>
-          </Form>
-        )}
+          <button
+            type="submit"
+            className="absolute top-1/2 right-2 transform -translate-y-1/2 p-2 bg-primary-green text-white rounded-full"
+          >
+            <HiArrowSmRight size={20} />
+          </button>
+        </Form>
       </Formik>
     </div>
   )
