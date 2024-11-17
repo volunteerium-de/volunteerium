@@ -12,15 +12,13 @@ import { t } from "i18next"
 
 const AddEvent = ({ onClose, eventData, eventToEdit }) => {
   const { currentUser: user } = useSelector((state) => state.auth)
-
   const [step, setStep] = useState(1)
   const { postEvent, editEvent } = useEventCall()
-  console.log("eventData", eventData)
 
   const initialValues = {
     isActive: eventData?.isActive ?? true,
     title: eventData?.title || "",
-    eventPhoto: eventData?.eventPhoto || null,
+    eventPhoto: eventData?.eventPhoto ? eventData.eventPhoto : null,
     date: eventData?.startDate ? new Date(eventData.startDate).toISOString().split("T")[0] : "",
     fromTime: eventData?.startDate
       ? new Date(eventData.startDate).toLocaleTimeString("en-US", {
@@ -37,11 +35,11 @@ const AddEvent = ({ onClose, eventData, eventToEdit }) => {
         })
       : "",
     isOnline: eventData?.isOnline ?? true,
-    streetName: eventData?.streetName || "",
-    streetNumber: eventData?.streetNumber || "",
-    zipCode: eventData?.zipCode || "",
-    city: eventData?.city || "",
-    country: eventData?.country || "",
+    streetName: eventData?.addressId?.streetName || "",
+    streetNumber: eventData?.addressId?.streetNumber || "",
+    zipCode: eventData?.addressId?.zipCode || "",
+    city: eventData?.addressId?.city || "",
+    country: eventData?.addressId?.country || "",
     maxParticipant: eventData?.maxParticipant || 1,
     interestIds: eventData?.interestIds.map((category) => category._id) || [],
     languages: eventData?.languages || [],
@@ -53,9 +51,6 @@ const AddEvent = ({ onClose, eventData, eventToEdit }) => {
   }
 
   const handleSubmit = async (values) => {
-    console.log(values.date)
-
-    console.log("Event Data Submitted:", values)
     const {
       date,
       fromTime,
@@ -72,13 +67,10 @@ const AddEvent = ({ onClose, eventData, eventToEdit }) => {
       contactPhone,
       ...payload
     } = values
-    console.log(values.date)
-    console.log(values.fromTime)
-    console.log(values.toTime)
+
     const startDate = new Date(`${date}T${fromTime}:00`)
     const endDate = new Date(`${date}T${toTime}:00`)
-    console.log(startDate)
-    console.log(endDate)
+
     const body = {
       createdBy: user._id,
       ...payload,
@@ -91,6 +83,7 @@ const AddEvent = ({ onClose, eventData, eventToEdit }) => {
         city,
         country,
       }),
+      ...(eventData && eventData.addressId && { addressId: eventData.addressId }),
       ...(payload?.s?.length > 0 && {
         languages: payload.languages,
       }),
@@ -98,15 +91,12 @@ const AddEvent = ({ onClose, eventData, eventToEdit }) => {
       ...(eventPhoto && { eventPhoto }),
     }
 
-    console.log("bodyyy", body)
-
     try {
       if (eventToEdit === null) {
         await postEvent(body)
       } else {
         await editEvent(eventData._id, body)
       }
-
       onClose()
     } catch (error) {
       toastNotify("error", t(translations.toastify.error))
@@ -131,6 +121,7 @@ const AddEvent = ({ onClose, eventData, eventToEdit }) => {
                 values={values}
                 onClose={onClose}
                 step={step}
+                eventData={eventData}
               />
             )}
             {step === 2 && (
