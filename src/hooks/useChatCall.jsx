@@ -64,7 +64,6 @@ const useChatCall = () => {
       dispatch(notificationSuccess(data.data))
     } catch (error) {
       dispatch(fetchFail())
-      console.log(error)
     }
   }
 
@@ -76,7 +75,6 @@ const useChatCall = () => {
       dispatch(conversationSuccess(data.data))
     } catch (error) {
       dispatch(fetchFail())
-      console.log(error)
     }
   }
 
@@ -85,7 +83,6 @@ const useChatCall = () => {
       try {
         await axiosWithToken.post("/messages", { content, conversationId })
       } catch (error) {
-        console.log(error)
         toastNotify("error", error.response.data.message)
       }
     } else {
@@ -104,7 +101,6 @@ const useChatCall = () => {
         // In Single Event Page , user will click send messages button, after that one conversation will be created. We just navigate with this conversationId to chat section
         return data.data._id
       } catch (error) {
-        console.log(error)
         dispatch(fetchFail())
       }
     } else {
@@ -117,7 +113,6 @@ const useChatCall = () => {
     try {
       await axiosWithToken(`/conversations/${conversationId}`)
     } catch (error) {
-      console.log("error", error.response?.data)
       dispatch(fetchFail())
     } finally {
       fetchConversations()

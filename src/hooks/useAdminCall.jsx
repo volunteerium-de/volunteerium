@@ -24,7 +24,7 @@ const useAdminCall = () => {
         setLoading(false)
       }
     } else {
-      console.log(ErrorMessage)
+      toastNotify("error", ErrorMessage)
     }
   }
 
@@ -40,7 +40,7 @@ const useAdminCall = () => {
         setLoading(false)
       }
     } else {
-      console.log(ErrorMessage)
+      toastNotify("error", ErrorMessage)
     }
   }
 
@@ -57,7 +57,7 @@ const useAdminCall = () => {
         setLoading(false)
       }
     } else {
-      console.log(ErrorMessage)
+      toastNotify("error", ErrorMessage)
     }
   }
 
@@ -85,7 +85,7 @@ const useAdminCall = () => {
         setLoading(false)
       }
     } else {
-      console.log(ErrorMessage)
+      toastNotify("error", ErrorMessage)
     }
   }
 
@@ -103,7 +103,7 @@ const useAdminCall = () => {
         setLoading(false)
       }
     } else {
-      console.log(ErrorMessage)
+      toastNotify("error", ErrorMessage)
     }
   }
 

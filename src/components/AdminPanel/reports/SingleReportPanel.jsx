@@ -26,7 +26,6 @@ const SingleReportPanel = ({ reportId, setIdentifier }) => {
     try {
       const data = await fetchSingleData("event-reports", reportId)
       setReportData(data)
-      console.log(data)
     } catch (error) {
       console.error(error)
     } finally {

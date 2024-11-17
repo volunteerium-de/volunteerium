@@ -22,7 +22,6 @@ const SingleFeedbackPanel = ({ feedbackId, setIdentifier }) => {
   const { fetchSingleData, deleteData } = useAdminCall()
   const [isSettingsModalOpen, setIsSettingsModalOpen] = useState(false)
   const [isDeleteFeedbackModalOpen, setIsDeleteFeedbackModalOpen] = useState(false)
-  const { getLangName } = useLanguage()
   const settingsButtonRef = useRef(null)
   const modalRef = useRef(null)
 
@@ -31,7 +30,6 @@ const SingleFeedbackPanel = ({ feedbackId, setIdentifier }) => {
     try {
       const data = await fetchSingleData("event-feedbacks", feedbackId)
       setFeedbackData(data)
-      console.log(data)
     } catch (error) {
       console.error(error)
     } finally {

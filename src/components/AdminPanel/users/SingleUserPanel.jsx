@@ -33,7 +33,6 @@ const SingleUserPanel = ({ userId, setIdentifier }) => {
     try {
       const data = await fetchSingleData("users", userId)
       setUserData(data)
-      console.log(data)
     } catch (error) {
       console.error(error)
     } finally {

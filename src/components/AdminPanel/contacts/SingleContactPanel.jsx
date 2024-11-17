@@ -26,7 +26,6 @@ const SingleContactPanel = ({ contactId, setIdentifier }) => {
     try {
       const data = await fetchSingleData("contacts", contactId)
       setContactData(data)
-      console.log(data)
     } catch (error) {
       console.error(error)
     } finally {

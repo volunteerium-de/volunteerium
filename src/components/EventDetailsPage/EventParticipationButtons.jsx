@@ -19,7 +19,6 @@ const EventParticipationButtons = ({ toggleFeedbackModal }) => {
       (participant) => participant?.userId?._id === user?._id
     )[0] || null
 
-  console.log(singleEvent)
 
   const isEventDone = new Date() > new Date(singleEvent?.startDate)
   const isMaxParticipantsReached =
