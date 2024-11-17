@@ -28,7 +28,6 @@ const MoreOptionsMenu = ({ isOrganized, eventId, refetch, event, onAddEvent, set
     const eventParticipantId = event.eventParticipantIds.find(
       (participant) => participant.userId._id === user._id
     )._id
-    console.log(eventParticipantId)
     await deleteEventParticipation(eventParticipantId)
     await refetch()
   }
