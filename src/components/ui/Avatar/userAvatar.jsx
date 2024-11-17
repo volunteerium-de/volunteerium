@@ -9,7 +9,7 @@ export const UserAvatar = ({ user, size, backgroundActive }) => {
           <img
             src={avatarSrc}
             alt={user ? user.fullName || user.organizationName : "User"}
-            className={`${size} rounded-full object-cover`}
+            className={`${size} rounded-full object-cover cursor-pointer`}
           />
         ) : (
           <div
@@ -17,7 +17,7 @@ export const UserAvatar = ({ user, size, backgroundActive }) => {
               backgroundActive ? "bg-light-green" : ""
             }`}
           >
-            <FaUser className={`text-primary-green p-1 dark:text-gray-2 ${size}`} />
+            <FaUser className={`text-primary-green p-1 cursor-pointer  dark:text-gray-2 ${size}`} />
           </div>
         )}
       </div>

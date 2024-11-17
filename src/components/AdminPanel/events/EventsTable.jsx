@@ -94,7 +94,9 @@ const EventsTable = ({ data, loading }) => {
           </table>
         </div>
       ) : (
-        <div>No events found</div>
+        <div className="p-4 sm:p-0 mt-4 text-center sm:text-left text-dark-gray-2 dark:text-light-gray">
+          No events found
+        </div>
       )}
     </>
   )
