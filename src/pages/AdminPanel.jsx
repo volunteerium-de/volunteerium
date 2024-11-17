@@ -22,6 +22,8 @@ import SubscriptionsPanel from "../components/AdminPanel/subscriptions/Subscript
 import { PiNewspaperClippingFill } from "react-icons/pi"
 import InterestsPanel from "../components/AdminPanel/interests/InterestsPanel"
 import { BiSolidCategoryAlt } from "react-icons/bi"
+import { translations } from "../locales/translations"
+import { useTranslation } from "react-i18next"
 
 const AdminPanel = () => {
   const location = useLocation()
@@ -34,6 +36,7 @@ const AdminPanel = () => {
   const [debouncedActiveTab, setDebouncedActiveTab] = useState(activeTab)
   const [debouncedIdentifier, setDebouncedIdentifier] = useState(identifier)
   const { fetchAllData } = useAdminCall()
+  const { t } = useTranslation()
 
   useEffect(() => {
     const queryParams = new URLSearchParams(location.search)
@@ -99,37 +102,37 @@ const AdminPanel = () => {
   const adminMenuItems = [
     {
       key: "events",
-      label: "Events",
+      label: t(translations.adminPanel.events.eventsPanel.title),
       icon: <FaCalendar className="text-2xl mx-auto" />,
     },
     {
       key: "users",
-      label: "Users",
+      label: t(translations.adminPanel.users.usersPanel.title),
       icon: <FaUsersGear className="text-2xl mx-auto" />,
     },
     {
       key: "interests",
-      label: "Interests",
+      label: t(translations.adminPanel.interests.interestsPanel.title),
       icon: <BiSolidCategoryAlt className="text-2xl mx-auto" />,
     },
     {
       key: "contacts",
-      label: "Contacts",
+      label: t(translations.adminPanel.contacts.contactPanel.title),
       icon: <MdEmail className="text-2xl mx-auto" />,
     },
     {
       key: "feedbacks",
-      label: "Feedbacks",
+      label: t(translations.adminPanel.feedbacks.feedbacksPanel.title),
       icon: <SiImessage className="text-2xl mx-auto" />,
     },
     {
       key: "reports",
-      label: "Reports",
+      label: t(translations.adminPanel.reports.reportsPanel.title),
       icon: <MdReportProblem className="text-2xl mx-auto" />,
     },
     {
       key: "subscriptions",
-      label: "Subscriptions",
+      label: t(translations.adminPanel.subscriptions.subscriptionsPanel.title),
       icon: <PiNewspaperClippingFill className="text-2xl mx-auto" />,
     },
   ]

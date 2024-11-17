@@ -7,8 +7,11 @@ import useAdminCall from "../../../hooks/useAdminCall"
 import DeleteModal from "../../ui/Modals/DeleteModal"
 import { formatDateWithTime } from "../../../helpers/formatDate"
 import { MdOutlineSettings } from "react-icons/md"
+import { useTranslation } from "react-i18next"
+import { translations } from "../../../locales/translations"
 
 const SingleReportPanel = ({ reportId, setIdentifier }) => {
+  const { t } = useTranslation()
   const navigate = useNavigate()
   const [reportData, setReportData] = useState([])
   const [loading, setLoading] = useState(false)
@@ -87,7 +90,7 @@ const SingleReportPanel = ({ reportId, setIdentifier }) => {
         className="absolute -top-8 left-0 md:-left-5 flex items-center gap-1 text-primary-green dark:text-white"
       >
         <IoIosArrowBack className="w-5 h-5" />
-        <span>Back</span>
+        <span>{t(translations.adminPanel.backButton)}</span>
       </button>
       <div>
         {loading ? (
@@ -99,7 +102,7 @@ const SingleReportPanel = ({ reportId, setIdentifier }) => {
             <div className="flex justify-between items-center p-4 bg-white dark:bg-dark-gray-1 rounded-lg ">
               <div className="text-sm sm:text-[1.125rem] flex gap-1 md:gap-2 items-center text-dark-gray-1 me-3">
                 <span className="text-primary-green dark:text-white font-semibold w-[80px] sm:w-fit">
-                  Report ID:
+                  {t(translations.adminPanel.reports.singleReportPanel.reportId)}:
                 </span>
                 <span className="w-[100px] md:w-auto overflow-x-scroll scrollbar-hide">
                   {reportId}
@@ -115,16 +118,20 @@ const SingleReportPanel = ({ reportId, setIdentifier }) => {
               {/* User Information */}
               <div className="bg-white dark:bg-dark-gray-1 rounded-lg w-full xl:w-1/2 p-4">
                 <h1 className="text-[1.125rem] font-semibold text-primary-green dark:text-white">
-                  Reports Informations
+                  {t(translations.adminPanel.reports.singleReportPanel.reportInfo)}
                 </h1>
                 <ul className="space-y-2 text-dark-gray-1 dark:text-light-gray-2">
                   {/* Full Name  */}
                   <li className="flex flex-col sm:flex-row gap-1 mt-4">
-                    <span className="font-semibold">Report Type:</span>
+                    <span className="font-semibold">
+                      {t(translations.adminPanel.reports.singleReportPanel.reportType)}:
+                    </span>
                     <span>{reportData?.reportType}</span>
                   </li>
                   <li className="flex gap-1 flex-col sm:flex-row mt-4">
-                    <span className="font-semibold">Reported By:</span>
+                    <span className="font-semibold">
+                      {t(translations.adminPanel.reports.singleReportPanel.reportedBy)}:
+                    </span>
                     {reportData?.reportedBy ? (
                       <span
                         className="text-primary-green cursor-pointer"
@@ -135,11 +142,15 @@ const SingleReportPanel = ({ reportId, setIdentifier }) => {
                         {reportData?.reportedBy}
                       </span>
                     ) : (
-                      <span className="text-gray-500 italic">Guest User</span>
+                      <span className="text-gray-500 italic">
+                        {t(translations.adminPanel.reports.singleReportPanel.guest)}
+                      </span>
                     )}
                   </li>
                   <li className="flex flex-col sm:flex-row gap-1 mt-4">
-                    <span className="font-semibold">Event Id:</span>
+                    <span className="font-semibold">
+                      {t(translations.adminPanel.reports.singleReportPanel.eventId)}:
+                    </span>
                     <span
                       className="text-primary-green cursor-pointer"
                       onClick={() =>
@@ -150,22 +161,28 @@ const SingleReportPanel = ({ reportId, setIdentifier }) => {
                     </span>
                   </li>
                   <li className="flex flex-col sm:flex-row gap-1">
-                    <span className="font-semibold">Created At:</span>
+                    <span className="font-semibold">
+                      {t(translations.adminPanel.reports.singleReportPanel.createdAt)}:
+                    </span>
                     <span>{formatDateWithTime(reportData?.createdAt)}</span>
                   </li>
                   <li className="flex flex-col sm:flex-row gap-1">
-                    <span className="font-semibold">Last Updated At:</span>
+                    <span className="font-semibold">
+                      {t(translations.adminPanel.reports.singleReportPanel.lastUpdatedAt)}:
+                    </span>
                     <span>{formatDateWithTime(reportData?.updatedAt)}</span>
                   </li>
                 </ul>
               </div>
               <div className="bg-white dark:bg-dark-gray-1 rounded-lg w-full xl:w-1/2 p-4">
                 <h1 className="text-[1.125rem] font-semibold text-primary-green dark:text-white">
-                  Reports Details
+                  {t(translations.adminPanel.reports.singleReportPanel.reportDetails)}
                 </h1>
                 <ul className="space-y-2 text-dark-gray-1 dark:text-light-gray-2">
                   <li className="flex flex-col sm:flex-row gap-1 my-4">
-                    <span className="font-semibold">Content:</span>
+                    <span className="font-semibold">
+                      {t(translations.adminPanel.reports.singleReportPanel.content)}:
+                    </span>
                     <span>{reportData?.content}</span>
                   </li>
                 </ul>
@@ -173,7 +190,7 @@ const SingleReportPanel = ({ reportId, setIdentifier }) => {
             </div>
           </div>
         ) : (
-          <div>No Report Found</div>
+          <div>{t(translations.adminPanel.reports.singleReportPanel.noReport)}</div>
         )}
       </div>
       {isSettingsModalOpen && (
@@ -184,13 +201,13 @@ const SingleReportPanel = ({ reportId, setIdentifier }) => {
                 onClick={openDeleteReportModal}
                 className="text-danger hover:text-danger/50 border-b dark:border-gray-2 hover:bg-light-gray-2 w-full py-2"
               >
-                Delete Report
+                {t(translations.adminPanel.reports.singleReportPanel.deleteReport)}
               </button>
               <button
                 onClick={() => setIsSettingsModalOpen(false)}
                 className=" text-primary-green hover:text-primary-green/50 hover:bg-light-gray-2 w-full py-2"
               >
-                Cancel
+                {t(translations.adminPanel.cancel)}
               </button>
             </div>
           </div>
@@ -201,8 +218,8 @@ const SingleReportPanel = ({ reportId, setIdentifier }) => {
         <DeleteModal
           onClose={closeDeleteReportModal}
           onDelete={handleDeleteReport}
-          title={`Delete Report`}
-          description={`Are you sure you want to delete this report?`}
+          title={t(translations.adminPanel.reports.singleReportPanel.deleteReport)}
+          description={t(translations.adminPanel.reports.singleReportPanel.deleteDescription)}
         />
       )}
     </div>

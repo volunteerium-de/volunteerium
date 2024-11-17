@@ -7,8 +7,11 @@ import { useNavigate } from "react-router-dom"
 import useAdminCall from "../../../hooks/useAdminCall"
 import DeleteModal from "../../ui/Modals/DeleteModal"
 import { formatDateWithTime } from "../../../helpers/formatDate"
+import { translations } from "../../../locales/translations"
+import { useTranslation } from "react-i18next"
 
 const SingleContactPanel = ({ contactId, setIdentifier }) => {
+  const { t } = useTranslation()
   const navigate = useNavigate()
   const [contactData, setContactData] = useState([])
   const [loading, setLoading] = useState(false)
@@ -86,7 +89,7 @@ const SingleContactPanel = ({ contactId, setIdentifier }) => {
         className="absolute -top-8 left-0 md:-left-5 flex items-center gap-1 text-primary-green dark:text-white"
       >
         <IoIosArrowBack className="w-5 h-5" />
-        <span>Back</span>
+        <span>{t(translations.adminPanel.backButton)}</span>
       </button>
       <div>
         {loading ? (
@@ -98,7 +101,7 @@ const SingleContactPanel = ({ contactId, setIdentifier }) => {
             <div className="flex justify-between items-center p-4 bg-white dark:bg-dark-gray-1 rounded-lg ">
               <div className="text-sm sm:text-[1.125rem] flex gap-1 md:gap-2 items-center text-dark-gray-1 me-3">
                 <span className="text-primary-green dark:text-white font-semibold w-[80px] sm:w-fit">
-                  Contact ID:
+                  {t(translations.adminPanel.contacts.singleContactPanel.contactId)}:
                 </span>
                 <span className="w-[100px] md:w-auto overflow-x-scroll scrollbar-hide">
                   {contactId}
@@ -114,17 +117,21 @@ const SingleContactPanel = ({ contactId, setIdentifier }) => {
               {/* User Information */}
               <div className="bg-white dark:bg-dark-gray-1 rounded-lg w-full xl:w-1/2 p-4">
                 <h1 className="text-[1.125rem] font-semibold text-primary-green dark:text-white">
-                  Contact Informations
+                  {t(translations.adminPanel.contacts.singleContactPanel.contactInfo)}
                 </h1>
                 <ul className="space-y-2 text-dark-gray-1 dark:text-light-gray-2">
                   {/* Full Name  */}
                   <li className="flex gap-1 mt-4">
-                    <span className="font-semibold">Name:</span>
+                    <span className="font-semibold">
+                      {t(translations.adminPanel.contacts.singleContactPanel.name)}:
+                    </span>
                     <span>{contactData?.name}</span>
                   </li>
 
                   <li className="flex flex-col sm:flex-row gap-1">
-                    <span className="font-semibold">Email Address:</span>
+                    <span className="font-semibold">
+                      {t(translations.adminPanel.contacts.singleContactPanel.email)}:
+                    </span>
                     <a
                       href={`https://mail.google.com/mail/?view=cm&fs=1&to=${contactData?.email}`}
                       target="_blank"
@@ -135,26 +142,34 @@ const SingleContactPanel = ({ contactId, setIdentifier }) => {
                     </a>
                   </li>
                   <li className="flex flex-col sm:flex-row gap-1">
-                    <span className="font-semibold">Created At:</span>
+                    <span className="font-semibold">
+                      {t(translations.adminPanel.contacts.singleContactPanel.createdAt)}:
+                    </span>
                     <span>{formatDateWithTime(contactData?.createdAt)}</span>
                   </li>
                   <li className="flex flex-col sm:flex-row gap-1">
-                    <span className="font-semibold">Last Updated At:</span>
+                    <span className="font-semibold">
+                      {t(translations.adminPanel.contacts.singleContactPanel.lastUpdatedAt)}:
+                    </span>
                     <span>{formatDateWithTime(contactData?.updatedAt)}</span>
                   </li>
                 </ul>
               </div>
               <div className="bg-white dark:bg-dark-gray-1 rounded-lg w-full xl:w-1/2 p-4">
                 <h1 className="text-[1.125rem] font-semibold text-primary-green dark:text-white">
-                  Contact Details
+                  {t(translations.adminPanel.contacts.singleContactPanel.contactDetails)}
                 </h1>
                 <ul className="space-y-2 text-dark-gray-1 dark:text-light-gray-2">
                   <li className="flex flex-col sm:flex-row gap-1 my-4">
-                    <span className="font-semibold">Subject:</span>
+                    <span className="font-semibold">
+                      {t(translations.adminPanel.contacts.singleContactPanel.subject)}:
+                    </span>
                     <span>{contactData?.subject}</span>
                   </li>
                   <li className="flex flex-col sm:flex-row gap-1">
-                    <span className="font-semibold">Message:</span>
+                    <span className="font-semibold">
+                      {t(translations.adminPanel.contacts.singleContactPanel.message)}:
+                    </span>
                     <span>{contactData?.message}</span>
                   </li>
                 </ul>
@@ -162,7 +177,7 @@ const SingleContactPanel = ({ contactId, setIdentifier }) => {
             </div>
           </div>
         ) : (
-          <div>No Contact Found</div>
+          <div>{t(translations.adminPanel.contacts.singleContactPanel.noContacts)}</div>
         )}
       </div>
       {isSettingsModalOpen && (
@@ -173,13 +188,13 @@ const SingleContactPanel = ({ contactId, setIdentifier }) => {
                 onClick={openDeleteContactModal}
                 className="text-danger hover:text-danger/50 border-b dark:border-gray-2 hover:bg-light-gray-2 w-full py-2"
               >
-                Delete Contact
+                {t(translations.adminPanel.contacts.singleContactPanel.deleteContact)}
               </button>
               <button
                 onClick={() => setIsSettingsModalOpen(false)}
                 className=" text-primary-green hover:text-primary-green/50 hover:bg-light-gray-2 w-full py-2"
               >
-                Cancel
+                {t(translations.adminPanel.cancel)}
               </button>
             </div>
           </div>
@@ -190,8 +205,8 @@ const SingleContactPanel = ({ contactId, setIdentifier }) => {
         <DeleteModal
           onClose={closeDeleteContactModal}
           onDelete={handleDeleteEvent}
-          title={`Delete Contact`}
-          description={`Are you sure you want to delete this contact?`}
+          title={t(translations.adminPanel.contacts.singleContactPanel.deleteContact)}
+          description={t(translations.adminPanel.contacts.singleContactPanel.deleteDescription)}
         />
       )}
     </div>

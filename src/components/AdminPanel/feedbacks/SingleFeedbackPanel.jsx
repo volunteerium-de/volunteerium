@@ -11,8 +11,11 @@ import useLanguage from "../../../hooks/useLanguages"
 import { MdOutlineSettings } from "react-icons/md"
 import { LuMailPlus } from "react-icons/lu"
 import { AiFillStar, AiOutlineStar } from "react-icons/ai"
+import { useTranslation } from "react-i18next"
+import { translations } from "../../../locales/translations"
 
 const SingleFeedbackPanel = ({ feedbackId, setIdentifier }) => {
+  const { t } = useTranslation()
   const navigate = useNavigate()
   const [feedbackData, setFeedbackData] = useState([])
   const [loading, setLoading] = useState(false)
@@ -91,7 +94,7 @@ const SingleFeedbackPanel = ({ feedbackId, setIdentifier }) => {
         className="absolute -top-8 left-0 md:-left-5 flex items-center gap-1 text-primary-green dark:text-white"
       >
         <IoIosArrowBack className="w-5 h-5" />
-        <span>Back</span>
+        <span>{t(translations.adminPanel.backButton)}</span>
       </button>
       <div>
         {loading ? (
@@ -103,7 +106,7 @@ const SingleFeedbackPanel = ({ feedbackId, setIdentifier }) => {
             <div className="flex justify-between items-center p-4 bg-white dark:bg-dark-gray-1 rounded-lg ">
               <div className="text-sm sm:text-[1.125rem] flex gap-1 md:gap-2 items-center text-dark-gray-1 me-3">
                 <span className="text-primary-green dark:text-white font-semibold w-[80px] sm:w-fit">
-                  Feedback ID:
+                  {t(translations.adminPanel.feedbacks.singleFeedbackPanel.feedbackId)}:
                 </span>
                 <span className="w-[100px] md:w-auto overflow-x-scroll scrollbar-hide">
                   {feedbackId}
@@ -119,7 +122,7 @@ const SingleFeedbackPanel = ({ feedbackId, setIdentifier }) => {
               {/* User Information */}
               <div className="bg-white dark:bg-dark-gray-1 rounded-lg w-full xl:w-1/2 p-4">
                 <h1 className="text-[1.125rem] font-semibold text-primary-green dark:text-white">
-                  Feedback Informations
+                  {t(translations.adminPanel.feedbacks.singleFeedbackPanel.feedbackInfo)}
                 </h1>
                 <ul className="space-y-2 text-dark-gray-1 dark:text-light-gray-2">
                   {/* User Avatar */}
@@ -135,11 +138,15 @@ const SingleFeedbackPanel = ({ feedbackId, setIdentifier }) => {
                     <span className="font-semibold">{feedbackData?.name}</span>
                   </li>
                   <li className="flex flex-col sm:flex-row gap-1 mt-4">
-                    <span className="font-semibold">Title:</span>
+                    <span className="font-semibold">
+                      {t(translations.adminPanel.feedbacks.singleFeedbackPanel.title)}:
+                    </span>
                     <span>{feedbackData?.eventId?.title}</span>
                   </li>
                   <li className="flex flex-col sm:flex-row gap-1 mt-4">
-                    <span className="font-semibold">Event Id:</span>
+                    <span className="font-semibold">
+                      {t(translations.adminPanel.feedbacks.singleFeedbackPanel.eventId)}:
+                    </span>
                     <span
                       className="text-primary-green cursor-pointer"
                       onClick={() =>
@@ -150,7 +157,9 @@ const SingleFeedbackPanel = ({ feedbackId, setIdentifier }) => {
                     </span>
                   </li>
                   <li className="flex flex-col sm:flex-row gap-1">
-                    <span className="font-semibold">Email Address:</span>
+                    <span className="font-semibold">
+                      {t(translations.adminPanel.feedbacks.singleFeedbackPanel.email)}:
+                    </span>
                     <a
                       href={`https://mail.google.com/mail/?view=cm&fs=1&to=${feedbackData?.userId?.email}`}
                       target="_blank"
@@ -161,26 +170,34 @@ const SingleFeedbackPanel = ({ feedbackId, setIdentifier }) => {
                     </a>
                   </li>
                   <li className="flex gap-1 mt-4">
-                    <span className="font-semibold">Name:</span>
+                    <span className="font-semibold">
+                      {t(translations.adminPanel.feedbacks.singleFeedbackPanel.name)}:
+                    </span>
                     <span>{feedbackData?.userId?.fullName}</span>
                   </li>
                   <li className="flex flex-col sm:flex-row gap-1">
-                    <span className="font-semibold">Created At:</span>
+                    <span className="font-semibold">
+                      {t(translations.adminPanel.feedbacks.singleFeedbackPanel.createdAt)}:
+                    </span>
                     <span>{formatDateWithTime(feedbackData?.createdAt)}</span>
                   </li>
                   <li className="flex flex-col sm:flex-row gap-1">
-                    <span className="font-semibold">Last Updated At:</span>
+                    <span className="font-semibold">
+                      {t(translations.adminPanel.feedbacks.singleFeedbackPanel.lastUpdatedAt)}:
+                    </span>
                     <span>{formatDateWithTime(feedbackData?.updatedAt)}</span>
                   </li>
                 </ul>
               </div>
               <div className="bg-white dark:bg-dark-gray-1 rounded-lg w-full xl:w-1/2 p-4">
                 <h1 className="text-[1.125rem] font-semibold text-primary-green dark:text-white">
-                  Feedback Details
+                  {t(translations.adminPanel.feedbacks.singleFeedbackPanel.feedbackDetails)}
                 </h1>
                 <ul className="space-y-2 text-dark-gray-1 dark:text-light-gray-2">
                   <li className="flex items-center my-4">
-                    <span className="font-semibold">Rating:</span>
+                    <span className="font-semibold">
+                      {t(translations.adminPanel.feedbacks.singleFeedbackPanel.rating)}:
+                    </span>
                     {[1, 2, 3, 4, 5].map((star) => (
                       <span key={star}>
                         {star <= (feedbackData?.rating || 0) ? (
@@ -193,7 +210,9 @@ const SingleFeedbackPanel = ({ feedbackId, setIdentifier }) => {
                   </li>
 
                   <li className="flex flex-col sm:flex-row gap-1 my-4">
-                    <span className="font-semibold">Feedback:</span>
+                    <span className="font-semibold">
+                      {t(translations.adminPanel.feedbacks.singleFeedbackPanel.feedback)}:
+                    </span>
                     <span>{feedbackData?.feedback}</span>
                   </li>
                 </ul>
@@ -201,7 +220,7 @@ const SingleFeedbackPanel = ({ feedbackId, setIdentifier }) => {
             </div>
           </div>
         ) : (
-          <div>No Feedback Found</div>
+          <div>{t(translations.adminPanel.feedbacks.singleFeedbackPanel.noFeedbacks)}</div>
         )}
       </div>
       {isSettingsModalOpen && (
@@ -212,13 +231,13 @@ const SingleFeedbackPanel = ({ feedbackId, setIdentifier }) => {
                 onClick={openDeleteFeedbackModal}
                 className="text-danger hover:text-danger/50 border-b dark:border-gray-2 hover:bg-light-gray-2 w-full py-2"
               >
-                Delete Feedback
+                {t(translations.adminPanel.feedbacks.singleFeedbackPanel.deleteFeedback)}
               </button>
               <button
                 onClick={() => setIsSettingsModalOpen(false)}
                 className=" text-primary-green hover:text-primary-green/50 hover:bg-light-gray-2 w-full py-2"
               >
-                Cancel
+                {t(translations.adminPanel.cancel)}
               </button>
             </div>
           </div>
@@ -229,8 +248,8 @@ const SingleFeedbackPanel = ({ feedbackId, setIdentifier }) => {
         <DeleteModal
           onClose={closeDeleteFeedbackModal}
           onDelete={handleDeleteFeedback}
-          title={`Delete Feedback`}
-          description={`Are you sure you want to delete this feedback?`}
+          title={t(translations.adminPanel.feedbacks.singleFeedbackPanel.deleteFeedback)}
+          description={t(translations.adminPanel.feedbacks.singleFeedbackPanel.deleteDescription)}
         />
       )}
     </div>
