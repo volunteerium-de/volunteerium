@@ -21,13 +21,12 @@ const ContactUs = () => {
 
   return (
     <div>
-      {/* Header Component */}
       <Header />
       <div className="flex flex-col max-w-full w-[1440px] mx-auto font-poppins dark:bg-black ">
         {/* Main Container Wrapping the Image and Form Areas */}
-        <div className="flex flex-col md:flex-row pt-8 max-w-[1440px] justify-center items-center h-full ">
+        <div className="flex flex-col md:flex-row pt-8 max-w-[1440px]  justify-center items-center h-full ">
           {/* Left Side Image Container */}
-          <div className="hidden md:block  max-w-full md:max-w-[608px] mx-2 md:mx-4 lg:mx-8 mb-8 w-full bg-primary-green overflow-hidden rounded-lg h-[780px] ">
+          <div className="hidden md:block  max-w-full md:max-w-[608px] mx-2 md:mx-4 lg:mx-8 mb-8 w-auto bg-primary-green overflow-hidden rounded-lg h-[780px]">
             <div
               className="flex-grow h-full w-full bg-cover bg-center backdrop-blur-xl relative"
               style={{
@@ -61,7 +60,7 @@ const ContactUs = () => {
           </div>
 
           {/* Right Side Form Container */}
-          <div className="flex-grow flex flex-col justify-center my-auto p-4 md:px-8 w-2/3 ">
+          <div className="flex-grow flex flex-col w-full sm:w-1/2 justify-center my-auto p-4">
             {/* ArrowBack Icon and Logo for Mobile Design */}
             <div className="md:hidden flex flex-col items-center mb-6">
               <IoIosArrowBack
