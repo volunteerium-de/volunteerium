@@ -9,6 +9,8 @@ import InterestsTable from "../../AdminPanel/interests/InterestsTable"
 import { FaCirclePlus } from "react-icons/fa6"
 import { translations } from "../../../locales/translations"
 import { useTranslation } from "react-i18next"
+import toastNotify from "../../../utils/toastNotify"
+import useEventCall from "../../../hooks/useEventCall"
 
 const Panel = ({ title, fetchUrl, TableComponent }) => {
   const { t } = useTranslation()
@@ -22,9 +24,11 @@ const Panel = ({ title, fetchUrl, TableComponent }) => {
   const [currentPage, setCurrentPage] = useState(pageFromUrl > 0 ? pageFromUrl : 1)
   const [totalPages, setTotalPages] = useState(0)
   const { fetchAllData, postData } = useAdminCall()
+  const { getEventCategories } = useEventCall()
   const [loading, setLoading] = useState(false)
   const [totalRecords, setTotalRecords] = useState(0)
   const [interestName, setInterestName] = useState("")
+  const [interestNameDE, setInterestNameDE] = useState("")
   const [isOpen, setIsOpen] = useState(false)
   const addRef = useRef(null)
 
@@ -67,8 +71,9 @@ const Panel = ({ title, fetchUrl, TableComponent }) => {
   }
 
   const handleAdd = async () => {
-    if (interestName) {
-      await postData("interests", { name: interestName })
+    if (interestName && interestNameDE) {
+      await postData("interests", { name: interestName, nameDE: interestNameDE })
+      await getEventCategories()
       onClose()
       refreshData()
     }
@@ -107,7 +112,7 @@ const Panel = ({ title, fetchUrl, TableComponent }) => {
               {fetchUrl === "interests" && (
                 <button
                   onClick={() => setIsOpen(true)}
-                  className="absolute right-[105px] md:w-[130px]"
+                  className="absolute right-[105px] sm:right-[120px] md:right-[200px]"
                 >
                   <FaCirclePlus className="w-8 h-8 text-primary-green dark:text-light-gray hover:text-primary-green/60 dark:hover:text-light-gray/60 rounded-full" />
                 </button>
@@ -150,20 +155,46 @@ const Panel = ({ title, fetchUrl, TableComponent }) => {
             <h2 className="text-lg font-bold mb-4 text-dark-gray-2 dark:text-white">
               {t(translations.adminPanel.addNewInterest)}
             </h2>
-            <input
-              type="text"
-              value={interestName}
-              onChange={(e) => setInterestName(e.target.value)}
-              placeholder={t(translations.adminPanel.addNewInterestPH)}
-              className="w-full p-2 mb-4 border border-primary-green rounded focus:outline-none"
-            />
+            <div className="mb-4">
+              <label
+                htmlFor="interestName"
+                className="block text-sm font-semibold text-dark-gray-2 dark:text-white"
+              >
+                {t(translations.adminPanel.interestNameEnglish)}
+              </label>
+              <input
+                id="interestName"
+                type="text"
+                value={interestName}
+                onChange={(e) => setInterestName(e.target.value)}
+                placeholder={t(translations.adminPanel.addNewInterestPH)}
+                className="w-full p-2 mb-4 border border-primary-green rounded focus:outline-none placeholder:text-[12px]"
+              />
+            </div>
+
+            <div className="mb-4">
+              <label
+                htmlFor="interestNameDE"
+                className="block text-sm font-semibold text-dark-gray-2 dark:text-white"
+              >
+                {t(translations.adminPanel.interestNameGerman)}{" "}
+              </label>
+              <input
+                id="interestNameDE"
+                type="text"
+                value={interestNameDE}
+                onChange={(e) => setInterestNameDE(e.target.value)}
+                placeholder={t(translations.adminPanel.addNewInterestPHDE)}
+                className="w-full p-2 mb-4 border border-primary-green rounded focus:outline-none placeholder:text-[12px]"
+              />
+            </div>
             <div className="flex justify-end mt-4">
               <button className="px-2 py-1 text-primary-green" onClick={onClose}>
                 {t(translations.adminPanel.cancel)}
               </button>
               <button
-                disabled={!interestName}
-                className={` ${!interestName && "opacity-50"} bg-primary-green text-white px-2 py-1 rounded ml-2`}
+                disabled={!interestName && !interestNameDE}
+                className={` ${!interestName || (!interestNameDE && "opacity-50 cursor-not-allowed")} bg-primary-green text-white px-2 py-1 rounded ml-2`}
                 onClick={handleAdd}
               >
                 {t(translations.adminPanel.create)}

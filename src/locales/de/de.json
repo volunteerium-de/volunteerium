@@ -736,8 +736,11 @@
 
   "adminPanel": {
     "search": "Suche",
-    "addNewInterest": "Neues Interesse hinzufügen",
-    "addNewInterestPH": "Interessenname eingeben",
+    "addNewInterest": "Neues Interesse Hinzufügen",
+    "interestNameEnglish": "Interessenname (Englisch)",
+    "interestNameGerman": "Interessenname (Deutsch)",
+    "addNewInterestPH": "Geben Sie den Interessenname auf Englisch ein",
+    "addNewInterestPHDE": "Geben Sie den Interessenname auf Deutsch ein",
     "create": "Erstellen",
     "backButton": "Zurück",
     "activeUpper": "AKTIV",

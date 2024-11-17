@@ -8,10 +8,12 @@ import { RiDeleteBin5Fill } from "react-icons/ri"
 import { useTranslation } from "react-i18next"
 import { translations } from "../../../locales/translations"
 import useLanguage from "../../../hooks/useLanguages"
+import useEventCall from "../../../hooks/useEventCall"
 
 const InterestsTable = ({ data, loading, refreshData }) => {
   const [isOpenDeleteModal, setIsOpenDeleteModal] = useState(false)
   const { deleteData } = useAdminCall()
+  const { getEventCategories } = useEventCall()
   const { getTranslatedCategory } = useLanguage()
   const [interestId, setInterestId] = useState(null)
   const { t } = useTranslation()
@@ -28,6 +30,7 @@ const InterestsTable = ({ data, loading, refreshData }) => {
   const handleDeleteInterest = async () => {
     if (interestId) {
       await deleteData("interests", interestId)
+      await getEventCategories()
       refreshData()
     } else {
       toastNotify("error", "Failed to delete interest. Please try again later.")
@@ -54,9 +57,6 @@ const InterestsTable = ({ data, loading, refreshData }) => {
                 <th className="th p-3 text-center">
                   {t(translations.adminPanel.interests.interestsTable.createdAt)}
                 </th>
-                {/* <th className="th p-3 text-center">
-                  {t(translations.adminPanel.interests.interestsTable.updatedAt)}
-                </th> */}
                 <th className="th p-3 w-[150px] text-center">
                   {t(translations.adminPanel.interests.interestsTable.actions)}
                 </th>
@@ -87,12 +87,6 @@ const InterestsTable = ({ data, loading, refreshData }) => {
                   >
                     {new Date(interest?.createdAt).toDateString()}
                   </td>
-                  {/* <td
-                    className="td text-center whitespace-nowrap"
-                    data-label={t(translations.adminPanel.interests.interestsTable.updatedAt)}
-                  >
-                    {new Date(interest?.updatedAt).toUTCString()}
-                  </td> */}
                   <td
                     className="td text-center whitespace-nowrap flex flex-row justify-between items-center"
                     data-label={t(translations.adminPanel.interests.interestsTable.actions)}

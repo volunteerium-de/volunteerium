@@ -732,7 +732,10 @@
   "adminPanel": {
     "search": "Search",
     "addNewInterest": "Add new interest",
-    "addNewInterestPH": "Enter interest name",
+    "interestNameEnglish": "Interest Name (English)",
+    "interestNameGerman": "Interest Name (German)",
+    "addNewInterestPH": "Enter interest name in English",
+    "addNewInterestPHDE": "Enter interest name in German",
     "create": "Create",
     "backButton": "Back",
     "activeUpper": "ACTIVE",

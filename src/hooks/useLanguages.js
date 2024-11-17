@@ -2,11 +2,12 @@ import { useEffect, useState } from "react"
 import { useTranslation } from "react-i18next"
 import eng_languages from "../helpers/languages_english.json"
 import de_languages from "../helpers/languages_deutsch.json"
-import categories_translations from "../helpers/categories_translations.json"
+import { useSelector } from "react-redux"
 
 const useLanguage = () => {
   const { i18n } = useTranslation()
   const [languageOptions, setLanguageOptions] = useState([])
+  const { categories } = useSelector((state) => state.search)
 
   useEffect(() => {
     const currentLanguage = i18n.language
@@ -29,10 +30,10 @@ const useLanguage = () => {
   const getTranslatedCategory = (categoryName) => {
     let translatedCategory = categoryName
     if (i18n.language === "de") {
-      translatedCategory = categories_translations.filter(
-        (category) => category.enName.toLowerCase() === categoryName.toLowerCase()
+      translatedCategory = categories.filter(
+        (category) => category.name.toLowerCase() === categoryName.toLowerCase()
       )
-      return translatedCategory[0].deName
+      return translatedCategory[0]?.nameDE || translatedCategory[0]?.name
     }
     return translatedCategory
   }
