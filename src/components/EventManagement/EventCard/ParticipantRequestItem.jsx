@@ -34,7 +34,7 @@ const ParticipantRequestItem = ({ user, event, refetch }) => {
           <>
             {/* Reject */}
             <button
-              className="bg-transparent hover:text-white hover:border-white hover:bg-danger text-dark-gray-1 border-gray-2 px-2 py-0.5 border rounded-md text-sm"
+              className="bg-transparent hover:text-white hover:border-white hover:bg-danger dark:text-dark-gray-1 border-gray-2 px-2 py-0.5 border rounded-md text-sm"
               onClick={handleReject}
             >
               {t(translations.eventManagement.rejectButton)}
@@ -54,7 +54,7 @@ const ParticipantRequestItem = ({ user, event, refetch }) => {
           <>
             {/* Reject */}
             <button
-              className="bg-transparent hover:text-white hover:bg-danger text-gray-600 px-2 py-0.5 border border-gray-400 hover:border-transparent rounded-md text-sm"
+              className="bg-transparent hover:text-white hover:border-white hover:bg-danger dark:text-dark-gray-1 px-2 py-0.5 border  border-gray-2  rounded-md text-sm"
               onClick={handleRemove}
             >
               {t(translations.eventManagement.removeButton)}
