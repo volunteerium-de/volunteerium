@@ -90,7 +90,7 @@ const EventFeedback = ({ eventName, eventId, onClose }) => {
           Feedback (Optional):
         </label>
         <textarea
-          className="w-full  p-2 border border-gray-1 rounded focus:outline-none focus:border-primary-green mb-4 placeholder-dark-gray-1 resize-none"
+          className="scrollbar w-full p-2 border border-gray-1 rounded focus:outline-none focus:border-primary-green mb-4 placeholder-dark-gray-1 resize-none"
           placeholder={t(translations.eventDetails.feedback.placeholder)}
           rows={4}
           value={feedback}

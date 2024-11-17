@@ -5,6 +5,7 @@ import { useParams, Link, useNavigate } from "react-router-dom"
 import { useSelector } from "react-redux"
 import { translations } from "../locales/translations"
 import { useTranslation } from "react-i18next"
+import useLanguageOptions from "../hooks/useLanguages"
 import defaultEventPhoto from "../assets/default-event-photo-.jpg"
 import useEventCall from "../hooks/useEventCall"
 import ReportEvent from "../components/EventDetailsPage/ReportEvent"
@@ -20,7 +21,7 @@ const EventDetails = () => {
   const { eventId } = useParams()
   const navigate = useNavigate()
   const { t } = useTranslation()
-
+  const { getTranslatedCategory } = useLanguageOptions()
   const [isReportModalOpen, setIsReportModalOpen] = useState(false)
 
   const toggleReportModal = () => {
@@ -106,9 +107,9 @@ const EventDetails = () => {
                     {interestIds?.map((interest) => (
                       <span
                         key={interest._id}
-                        className="font-extrabold text-primary-green text-[0.625rem] border border-primary-green rounded-full py-0.5 px-3 mt-1 mb-8"
+                        className="flex items-center justify-center font-extrabold text-primary-green text-[0.625rem] border border-primary-green rounded-full py-0.5 px-3 mt-1 mb-8"
                       >
-                        {interest.name.toUpperCase()}
+                        {getTranslatedCategory(interest.name).toUpperCase()}
                       </span>
                     ))}
                   </div>
@@ -116,12 +117,12 @@ const EventDetails = () => {
                     {description}
                   </p>
                   {/* RightSide-Join Operations */}
-                  <div className="block md:hidden">
+                  <div className="  block md:hidden ">
                     <EventOverview />
                   </div>
                   {/* Event Location */}
-                  {!isOnline && (
-                    <div className="overflow-hidden w-[100%] md:w-[95%] h-64 order-3 mt4 md:mt-0">
+                  {!isOnline && addressId?.iframeSrc && (
+                    <div className="overflow-hidden w-[100%]  h-64 order-3 mt-4 mb-2 md:mt-0">
                       <h3 className="font-semibold text-dark-gray-2 dark:text-white py-2">
                         {t(translations.eventDetails.locationLabel)}
                       </h3>
@@ -148,6 +149,7 @@ const EventDetails = () => {
                       ></iframe>
                     </div>
                   )}
+
                   {/* Report Button */}
                   <div className="flex md:hidden items-center justify-center text-gray-2 text-[0.75rem] md:text-[0.875rem] mt-3">
                     <GoReport />
@@ -161,7 +163,7 @@ const EventDetails = () => {
                 </div>
 
                 {/* Right Side - Date, Location, Language Toggle, Attendants List, and Buttons */}
-                <div className="hidden md:block lg:w-4/12">
+                <div className="hidden md:block lg:w-4/12 ">
                   <EventOverview />
                   {/* Report Button */}
                   <div className="sm:flex items-center justify-center text-gray-2 text-[0.75rem] md:text-[0.875rem] mt-3">
