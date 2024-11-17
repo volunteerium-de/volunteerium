@@ -63,16 +63,13 @@ const useEventCall = () => {
         },
       })
       toastNotify("success", data.message)
-      // getEvents("events")
     } catch (error) {
       toastNotify("error", error?.response?.data?.message)
     }
   }
 
   const editEvent = async (eventId, eventInfo) => {
-    //dispatch(fetchEventStart())
-    console.log("alooo", eventId)
-    console.log("aloooooooo", eventInfo)
+    dispatch(fetchEventStart())
     try {
       const { data } = await axiosWithToken.put(`events/${eventId}`, eventInfo, {
         headers: {
@@ -82,7 +79,6 @@ const useEventCall = () => {
       dispatch(fetchSingleEventSuccess(data.new))
       toastNotify("success", data.message)
     } catch (error) {
-      console.log(error)
       toastNotify("error", error?.response?.data?.message)
       dispatch(fetchEventFail())
     }
@@ -94,7 +90,6 @@ const useEventCall = () => {
       const { data } = await axiosWithToken.delete(`events/${eventId}`)
       toastNotify("success", data.message)
     } catch (error) {
-      console.log(error)
       toastNotify("error", error?.response?.data?.message)
       dispatch(fetchEventFail())
     }
@@ -107,11 +102,9 @@ const useEventCall = () => {
         eventId,
         userId: user?._id,
       })
-      // console.log(data)
       toastNotify("success", data.message)
       dispatch(fetchSingleEventSuccess(data.data))
     } catch (error) {
-      console.log(error)
       toastNotify("error", error?.response?.data?.message)
       dispatch(participationFail())
     }
@@ -132,10 +125,8 @@ const useEventCall = () => {
         userId,
         eventId,
       })
-      // console.log(data)
       toastNotify("success", data.message)
     } catch (error) {
-      console.log(error)
       toastNotify("error", error?.response?.data?.message)
     }
   }
@@ -146,10 +137,8 @@ const useEventCall = () => {
         userId,
         eventId,
       })
-      // console.log(data)
       toastNotify("success", data.message)
     } catch (error) {
-      console.log(error)
       toastNotify("error", error?.response?.data?.message)
     }
   }
@@ -160,10 +149,8 @@ const useEventCall = () => {
         userId,
         eventId,
       })
-      // console.log(data)
       toastNotify("success", data.message)
     } catch (error) {
-      console.log(error)
       toastNotify("error", error?.response?.data?.message)
     }
   }
@@ -174,10 +161,8 @@ const useEventCall = () => {
         userId,
         eventId,
       })
-      // console.log(data)
       toastNotify("success", data.message)
     } catch (error) {
-      console.log(error)
       toastNotify("error", error?.response?.data?.message)
     }
   }
@@ -185,10 +170,8 @@ const useEventCall = () => {
   const deleteEventParticipation = async (eventParticipantId) => {
     try {
       const { data } = await axiosWithToken.delete(`event-participants/${eventParticipantId}`)
-      // console.log(data)
       toastNotify("success", data.message)
     } catch (error) {
-      console.log(error)
       toastNotify("error", error?.response?.data?.message)
     }
   }
@@ -196,11 +179,9 @@ const useEventCall = () => {
   const sendEventFeedback = async (formData) => {
     try {
       const { data } = await axiosWithToken.post(`event-feedbacks`, formData)
-      // console.log(data)
       toastNotify("success", data.message)
     } catch (error) {
       toastNotify("error", error?.response?.data?.message)
-      console.log(error)
     } finally {
       getSingleEvent(formData.eventId)
     }
@@ -209,11 +190,9 @@ const useEventCall = () => {
   const sendEventReport = async (formData) => {
     try {
       const { data } = await axiosWithToken.post(`event-reports`, formData)
-      // console.log(data)
       toastNotify("success", data.message)
     } catch (error) {
       toastNotify("error", error?.response?.data?.message)
-      console.log(error)
     }
   }
 

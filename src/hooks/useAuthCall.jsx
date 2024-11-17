@@ -20,7 +20,6 @@ const useAuthCall = () => {
 
   const onRecaptchaVerify = async (token, values, type) => {
     if (!token) {
-      // console.error("reCAPTCHA verification failed: No token received")
       toastNotify("error", t(translations.toastify.verifySecureError))
       return
     }
@@ -38,7 +37,6 @@ const useAuthCall = () => {
         }
       }
     } catch (error) {
-      // console.error("Error verifying reCAPTCHA:", error)
       toastNotify("error", error.response.data.message)
     }
   }

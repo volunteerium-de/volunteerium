@@ -668,8 +668,8 @@
     "eventName": "Event Name",
     "eventPhoto": "Event Photo",
     "eventDate": "Date*",
-    "from": "from*",
-    "to": "to*",
+    "from": "From*",
+    "to": "To*",
     "eventLocation": "Location",
     "virtual": "Virtual",
     "physical": "Physical",
@@ -689,16 +689,21 @@
     "name": "Contact Name*",
     "email": "Contact Email*",
     "phone": "Contact Phone*",
-    "yes": "yes",
-    "no": "no",
-    "back": "back",
-    "submit": "submit",
-    "messages": {
-      "messageInput": {
-        "messagePH1": "As the organizer, only you can send messages to this group.",
-        "messagePH2": "This space is reserved for announcements from the organizer only.",
-        "messagePH3": "Type your message here...",
-        "messagePH4": "Do you have a question about the event?"
+    "yes": "Yes",
+    "no": "No",
+    "back": "Back",
+    "submit": "Submit",
+      "messages": {
+        "messageInput": {
+          "messagePH1":  "As the organizer, only you can send messages to this group.",
+          "messagePH2": "This space is reserved for announcements from the organizer only.",
+          "messagePH3": "Type your message here...",
+          "messagePH4": "Do you have a question about the event?"
+        },
+        "messageView": {
+          "startMsg": "Select a conversation to start messaging",
+          "you": "You"
+        }
       },
       "messageView": {
         "startMsg": "Select a conversation to start messaging",
