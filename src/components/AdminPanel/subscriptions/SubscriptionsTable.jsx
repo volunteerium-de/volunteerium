@@ -59,7 +59,7 @@ const SubscriptionsTable = ({ data, loading, refreshData }) => {
                 >
                   <td
                     className="td text-left whitespace-nowrap 2xl:max-w-[140px] overflow-x-scroll scrollbar-hide"
-                    data-label="Subscription ID"
+                    data-label="Subs. ID"
                   >
                     {subscription?._id}
                   </td>
@@ -75,7 +75,9 @@ const SubscriptionsTable = ({ data, loading, refreshData }) => {
           </table>
         </div>
       ) : (
-        <div>No subscription found</div>
+        <div className="p-4 sm:p-0 mt-4 text-center sm:text-left text-dark-gray-2 dark:text-light-gray">
+          No subscription found
+        </div>
       )}
       {/* Delete Modal */}
       {isOpenDeleteModal && (

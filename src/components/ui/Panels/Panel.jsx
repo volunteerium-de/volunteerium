@@ -67,8 +67,8 @@ const Panel = ({ title, fetchUrl, TableComponent }) => {
       ) : (
         <div className="flex flex-col justify-between h-full">
           <div className="h-full">
-            <div className="flex justify-between">
-              <h1 className="text-2xl font-bold text-primary-green dark:text-light-gray">
+            <div className="mt-2 sm:mt-0 flex justify-between">
+              <h1 className="text-xl sm:text-2xl font-bold text-primary-green dark:text-light-gray">
                 {title} ({totalRecords})
               </h1>
               <div className="relative">

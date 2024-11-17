@@ -7,7 +7,6 @@ import { useNavigate } from "react-router-dom"
 import useAdminCall from "../../../hooks/useAdminCall"
 import DeleteModal from "../../ui/Modals/DeleteModal"
 import { formatDateWithTime } from "../../../helpers/formatDate"
-import useLanguage from "../../../hooks/useLanguages"
 
 const SingleContactPanel = ({ contactId, setIdentifier }) => {
   const navigate = useNavigate()
@@ -98,7 +97,12 @@ const SingleContactPanel = ({ contactId, setIdentifier }) => {
           <div className="my-8 md:my-4 space-y-2 h-max">
             <div className="flex justify-between items-center p-4 bg-white dark:bg-dark-gray-1 rounded-lg ">
               <div className="text-sm sm:text-[1.125rem] flex gap-1 md:gap-2 items-center text-dark-gray-1 me-3">
-                Contact ID- {contactId}
+                <span className="text-primary-green dark:text-white font-semibold w-[80px] sm:w-fit">
+                  Contact ID:
+                </span>
+                <span className="w-[100px] md:w-auto overflow-x-scroll scrollbar-hide">
+                  {contactId}
+                </span>
               </div>
               <div className="flex gap-1 md:gap-2 items-center">
                 <button ref={settingsButtonRef} onClick={handleSettingsButtonClick}>
@@ -145,11 +149,11 @@ const SingleContactPanel = ({ contactId, setIdentifier }) => {
                   Contact Details
                 </h1>
                 <ul className="space-y-2 text-dark-gray-1 dark:text-light-gray-2">
-                  <li className="flex gap-1 my-4">
+                  <li className="flex flex-col sm:flex-row gap-1 my-4">
                     <span className="font-semibold">Subject:</span>
                     <span>{contactData?.subject}</span>
                   </li>
-                  <li className="flex gap-1">
+                  <li className="flex flex-col sm:flex-row gap-1">
                     <span className="font-semibold">Message:</span>
                     <span>{contactData?.message}</span>
                   </li>
