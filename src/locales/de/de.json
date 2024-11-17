@@ -33,7 +33,7 @@
 
   "getToKnowUs": {
     "h2": "Lernen Sie uns kennen",
-    "description1": "Bei Volunterium ist es unser Ziel, die Freiwilligen mit denjenigen zu verbinden, die Unterstützung benötigen.",
+    "description1": "Bei Volunteerium ist es unser Ziel, die Freiwilligen mit denjenigen zu verbinden, die Unterstützung benötigen.",
     "description2": "Wir sind eine Plattform, die es Einzelpersonen erleichtern soll, sinnvolle Möglichkeiten für Freiwillige zu finden, und Organisationen, mit leidenschaftlichen, eifrigen Freiwilligen in Kontakt zu treten.",
     "description3": "Ob es darum geht, lokale Gemeinschaften zu unterstützen, soziale Anliegen zu unterstützen oder globale Auswirkungen zu erzielen, wir glauben, dass jeder etwas bewirken kann.",
     "imageAlt": "Lernen Sie uns kennen"
@@ -174,7 +174,7 @@
       "bronzeInfo": "🏅 Bronze-Medaille: Verliehen an diejenigen, die 10 Punkte erreichen."
     },
     "avatarAlt": "Avatar des Benutzers",
-    "logoAlt": "Logo der Organisation",
+    "logoAlt": "Firmenzeichen der Organisation",
     "eventImageAlt": "Veranstaltungsbild"
   },
   "userSettings": {
@@ -198,7 +198,7 @@
     "photoAlert": "Foto erfolgreich hochgeladen!",
     "photoError": "Beim Laden des Fotos ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut.",
     "loading": "Laden...",
-    "logo": "Logo",
+    "logo": "Firmenzeichen",
     "profilePhoto": "Profilfoto",
     "avatarAlt": "Avatar des Benutzers ",
     "addPhoto": "Foto hinzufügen",
@@ -338,7 +338,7 @@
     "user": "Benutzer",
     "profile": "Profil",
     "adminPanel": "Adminbereich",
-    "eventMng": "Eventverwaltung",
+    "eventMng": "Veranst.verwaltung",
     "settings": "Einstellungen",
     "logout": "Abmelden",
     "login": "Anmelden",
@@ -491,7 +491,7 @@
     "p": "Diese Informationen sind notwendig, damit wir Ihre Organisation verstehen und Ihnen bessere Dienstleistungen anbieten können",
     "orgDesc": "Organisationsbeschreibung*",
     "orgDescPH": "Organisationsbeschreibung eingeben",
-    "orgLogo": "Organisationslogo*",
+    "orgLogo": "Firmenzeichen der Organisation*",
     "nextButton": "Weiter",
     "completeh2": "Vervollständigen Sie Ihr Organisationsprofil",
     "completeP": "Diese zusätzlichen Angaben sind erforderlich, um ein umfassendes Profil Ihrer Organisation zu erstellen und maßgeschneiderte Dienste anzubieten",
@@ -634,18 +634,18 @@
   },
 
   "eventManagement": {
-    "addNewEvent": "Neues Event hinzufügen",
+    "addNewEvent": "Neue Veranst. hinzufügen",
     "searchInput": "Suchen",
     "editButton": "Bearbeiten",
     "cancelButton": "Abbrechen",
     "deleteButton": "Löschen",
-    "organizedEvents": "Organisiertes Events",
-    "upcomingEvents": "Bevorstehende Events",
-    "noUpcomingEvents": "Keine bevorstehenden Events",
-    "yourPastEvents": "Ihre vergangenen Events",
-    "noPastEvents": "Keine vergangenen Events",
-    "attendingEvents": "Teilnehmende Events",
-    "leaveEventButton": "Event verlassen",
+    "organizedEvents": "Organisierte Veranstaltungen",
+    "upcomingEvents": "Bevorstehende Veranstaltungen",
+    "noUpcomingEvents": "Keine bevorstehenden Veranstaltungen",
+    "yourPastEvents": "Ihre vergangenen Veranstaltungen",
+    "noPastEvents": "Keine vergangenen Veranstaltungen",
+    "attendingEvents": "Teilnehmende Veranstaltungen",
+    "leaveEventButton": "Veranstaltung verlassen",
     "acceptButton": "Akzeptieren",
     "rejectButton": "Ablehnen",
     "loading": "Wird geladen",
