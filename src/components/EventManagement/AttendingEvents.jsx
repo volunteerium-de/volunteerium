@@ -44,10 +44,10 @@ const AttendingEvents = () => {
   return loading ? (
     <div className="flex mt-12 items-center justify-center text-primary-green text-md font-semibold">
       <FaSpinner className="animate-spin mr-2" />
-      Loading...
+      {t(translations.registerForm.loading)}
     </div>
   ) : (
-    <div className="mt-3 p-4 max-w-[77vw] min-h-[88vh] rounded-lg bg-light-gray dark:bg-dark-gray-3 ">
+    <div className="mt-3 p-4 max-w-[77vw] min-h-[calc(100vh-116px)] rounded-lg bg-light-gray dark:bg-dark-gray-3 ">
       <div className="flex justify-between items-center mb-8">
         <h2 className="text-primary-green text-[1.5rem] font-semibold">
           {t(translations.eventManagement.attendingEvents)}
@@ -83,7 +83,7 @@ const AttendingEvents = () => {
                 <EventManagementCard key={event._id} eventId={event} refetch={handleRefetch} />
               ))
             ) : (
-              <p>{t(translations.eventManagement.noUpcomingEvents)}</p>
+              <p className="dark:text-white">{t(translations.eventManagement.noUpcomingEvents)}</p>
             )}
           </div>
         )}
@@ -107,7 +107,7 @@ const AttendingEvents = () => {
             {pastEvents.length > 0 ? (
               pastEvents.map((event) => <EventManagementCard key={event._id} eventId={event} />)
             ) : (
-              <p>{t(translations.eventManagement.noUpcomingEvents)}</p>
+              <p className="dark:text-white">{t(translations.eventManagement.noUpcomingEvents)}</p>
             )}
           </div>
         )}

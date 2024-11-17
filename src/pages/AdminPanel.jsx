@@ -18,6 +18,8 @@ import SingleFeedbackPanel from "../components/AdminPanel/feedbacks/SingleFeedba
 import { SiImessage } from "react-icons/si"
 import FeedbacksPanel from "../components/AdminPanel/feedbacks/FeedbacksPanel"
 import { debounce } from "../utils/functions"
+import SubscriptionsPanel from "../components/AdminPanel/subscriptions/SubscriptionsPanel"
+import { PiNewspaperClippingFill } from "react-icons/pi"
 
 const AdminPanel = () => {
   const location = useLocation()
@@ -73,6 +75,25 @@ const AdminPanel = () => {
     debouncedSetIdentifier(identifier)
   }, [identifier, debouncedSetIdentifier])
 
+  useEffect(() => {
+    // URL değişikliklerini dinleyin ve identifier varsa geri yönlendirme yapın
+    const handlePopState = () => {
+      const queryParams = new URLSearchParams(window.location.search)
+      const tab = queryParams.get("tab")
+      const id = queryParams.get("identifier")
+      if (!id && identifier) {
+        setIdentifier(null)
+        navigate(`?tab=${tab || "events"}`)
+      }
+    }
+
+    window.addEventListener("popstate", handlePopState)
+
+    return () => {
+      window.removeEventListener("popstate", handlePopState)
+    }
+  }, [identifier, navigate])
+
   const adminMenuItems = [
     {
       key: "events",
@@ -98,6 +119,11 @@ const AdminPanel = () => {
       key: "reports",
       label: "Reports",
       icon: <MdReportProblem className="text-2xl mx-auto" />,
+    },
+    {
+      key: "subscriptions",
+      label: "Subscriptions",
+      icon: <PiNewspaperClippingFill className="text-2xl mx-auto" />,
     },
   ]
 
@@ -134,6 +160,8 @@ const AdminPanel = () => {
         return <ReportsPanel />
       case "feedbacks":
         return <FeedbacksPanel />
+      case "subscriptions":
+        return <SubscriptionsPanel />
       default:
         return <EventsPanel />
     }
