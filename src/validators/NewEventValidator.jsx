@@ -23,7 +23,7 @@ export const AddEventSchema = object().shape({
     then: () =>
       string()
         .required("Street Name is required when online")
-        .matches(/[a-zA-Z]/, "Street Name must contain at least one letter"),
+        .matches(/^[\p{L}]+$/u, "Street Name must contain at least one letter"),
   }),
 
   streetNumber: string().when("isOnline", {
@@ -114,7 +114,10 @@ export const AddEventStep1Schema = object().shape({
 
   streetName: string().when("isOnline", {
     is: false,
-    then: () => string().trim().required("Street Name is required when online"),
+    then: () =>
+      string()
+        .required("Street Name is required when online")
+        .matches(/^[\p{L}]+$/u, "Street Name must contain at least one letter"),
   }),
 
   streetNumber: string().when("isOnline", {

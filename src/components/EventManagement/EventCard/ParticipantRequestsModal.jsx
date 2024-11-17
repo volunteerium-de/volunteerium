@@ -16,7 +16,6 @@ const ParticipantRequestsModal = ({ onClose, event, refetch }) => {
 
   useEffect(() => {
     const handleClickOutside = (e) => {
-      console.log(modalRef.current && !modalRef.current.contains(e.target))
       if (modalRef.current && !modalRef.current.contains(e.target)) {
         onClose()
       }
