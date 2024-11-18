@@ -101,8 +101,6 @@ const Profile = () => {
     fetchEvents()
   }, [currentPage, eventType, organizedFilter, t])
 
-  console.log(events)
-
   const pastEvents = events?.filter((event) => event.isDone) || []
   const approvedEvents =
     pastEvents?.filter((event) =>
@@ -250,9 +248,9 @@ const Profile = () => {
                     </h2>
                     <div className=" flex flex-wrap gap-2 my-2 text-dark-gray-1">
                       {interestIds.map((interest) => (
-                        <div key={interest._id}>
+                        <div key={interest?._id}>
                           <p className="text-[0.6875rem] text-center text-primary-green border border-primary-green px-2 py-1 rounded-2xl font-bold">
-                            {getTranslatedCategory(interest.name).toUpperCase()}
+                            {getTranslatedCategory(interest?.name)?.toUpperCase()}
                           </p>
                         </div>
                       ))}

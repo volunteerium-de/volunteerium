@@ -160,7 +160,7 @@ const ProfileCard = ({
                           key={_id}
                           className="flex flex-wrap text-[0.6875rem] border border-primary-green text-primary-green px-2 py-1 rounded-2xl font-bold dark:text-light-green dark:border-2"
                         >
-                          {getTranslatedCategory(name).toUpperCase()}
+                          {getTranslatedCategory(name)?.toUpperCase()}
                         </span>
                       ))}
                     </div>
