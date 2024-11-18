@@ -449,6 +449,11 @@
     "h1": " Successfully authenticated with Google",
     "p": "Redirecting..."
   },
+  "googlePassword": {
+    "header": "Set Your Password",
+    "description": " To ensure your account is secure and you can access it easily in the future, please set a password now. This will help avoid any issues during future logins. Enter and confirm your new password below.",
+    "saveContinue": "Save & Continue"
+  },
   "notFound": {
     "imgAlt": "Not Found",
     "p": "Page Not Found",
@@ -517,10 +522,7 @@
     "p4": " Before we start, we'd like to know a bit more about you.",
     "link": "Let's Start!"
   },
-  "langSelect": {
-    "lang": "Language",
-    "PH": "Add event languages"
-  },
+
   "privacyPolicy": {
     "h1": "Privacy Policy",
     "p1": "Published Date:",
@@ -564,6 +566,10 @@
     "p14": "If you have any questions or concerns about this Privacy Policy or how we handle your personal data, please contact us at:",
     "p15": "Volunteerium Team",
     "p16": "Email: info.volunteerium@gmail.com"
+  },
+  "langSelect": {
+    "lang": "Language",
+    "PH": "Add event languages"
   },
   "eventCardVer": {
     "imgAlt": "event",
@@ -693,35 +699,38 @@
     }
   },
   "termsOfService": {
-    "h1": "Terms of Service",
-    "p1": "Published Date:",
-    "p2": "[30.10.2024]",
-    "p3": "Welcome to Volunteerium. By accessing or using our platform, you agree to comply with and be bound by the following Terms of Service. Please read them carefully before using the platform.",
-    "h2info": "1. Acceptance of Terms",
-    "p4": "By creating an account or using Volunteerium, you accept these Terms of Service and agree to comply with them. If you do not agree with any part of these terms, you should not use our platform.",
-    "h2user": "2. User Responsibilities",
-    "p5": "Users agree to provide accurate, complete, and up-to-date information during the registration process and are responsible for all activities under their account. You agree to use the platform responsibly and only for lawful purposes.",
-    "h2prohibited": "3. Prohibited Conduct",
-    "p6": " Users are prohibited from engaging in activities that may harm the platform, its users, or violate applicable laws. Examples of prohibited conduct include, but are not limited to:",
+    "header": "Terms of Service",
+    "publishedDate": "Published Date:",
+    "date": "[30.10.2024]",
+    "description": "Welcome to Volunteerium. By accessing or using our platform, you agree to comply with and be bound by the following Terms of Service. Please read them carefully before using the platform.",
+    "h2Acceptance": "1. Acceptance of Terms",
+    "pAcceptance": "By creating an account or using Volunteerium, you accept these Terms of Service and agree to comply with them. If you do not agree with any part of these terms, you should not use our platform.",
+    "h2Responsibility": "2. User Responsibilities",
+    "pResponsibility": "Users agree to provide accurate, complete, and up-to-date information during the registration process and are responsible for all activities under their account. You agree to use the platform responsibly and only for lawful purposes.",
+    "h2EmailRestriction": "3. Email Address Restrictions",
+    "pEmailRestriction": "For security and privacy reasons, users are not permitted to change their registered email address associated with their account. This policy ensures the integrity and protection of user data. If you require assistance with account access, please contact our support team.",
+    "h2Prohibited": "4. Prohibited Conduct",
+    "pProhibited": " Users are prohibited from engaging in activities that may harm the platform, its users, or violate applicable laws. Examples of prohibited conduct include, but are not limited to:",
     "li1": "Harassing, threatening, or defaming other users.",
     "li2": "Spamming, phishing, or engaging in fraudulent activities.",
     "li3": "Attempting to gain unauthorized access to the platform or user accounts.",
     "li4": "Distributing malware or harmful code.",
-    "h2intellectual": "4. Intellectual Property",
-    "p7": "All content, including but not limited to text, images, graphics, and logos on Volunteerium, are owned by Volunteerium or its licensors. Unauthorized use or distribution of any content is strictly prohibited.",
-    "h2user-Generated": "5. User-Generated Content",
-    "p8": "Volunteerium may allow users to post content such as event details, comments, and messages. By posting content, you grant Volunteerium a non-exclusive, royalty-free, worldwide license to use, reproduce, and display the content on our platform. You are responsible for the content you post and must ensure it does not violate any laws or third-party rights.",
-    "h2limitation": "6. Limitation of Liability",
-    "p9": "Volunteerium is provided on an 'as-is' and 'as-available' basis. We make no guarantees that the platform will be error-free, secure, or uninterrupted. We are not liable for any damages, direct or indirect, resulting from the use or inability to use our platform.",
-    "h2changes": "7. Changes to Terms",
-    "p10": " Volunteerium reserves the right to modify these Terms of Service at any time. Significant changes will be notified through the platform or via email. Continued use of the platform after changes indicates your acceptance of the new terms.",
-    "h2governing": "8. Governing Law and Dispute Resolution",
-    "p11": " These terms are governed by the laws of [Your Country/Region]. Any disputes arising from the use of Volunteerium will be resolved through arbitration in accordance with [applicable arbitration rules].",
-    "h2contact": "9. Contact Us",
-    "p12": "If you have any questions or concerns about these Terms of Service, please contact us at:",
-    "p13": "Volunteerium Team",
-    "p14": "Email: info.volunteerium@gmail.com"
+    "h2Intellectual": "5. Intellectual Property",
+    "pIntellectual": "All content, including but not limited to text, images, graphics, and logos on Volunteerium, are owned by Volunteerium or its licensors. Unauthorized use or distribution of any content is strictly prohibited.",
+    "h2UserGenerated": "6. User-Generated Content",
+    "pUserGenerated": "Volunteerium may allow users to post content such as event details, comments, and messages. By posting content, you grant Volunteerium a non-exclusive, royalty-free, worldwide license to use, reproduce, and display the content on our platform. You are responsible for the content you post and must ensure it does not violate any laws or third-party rights.",
+    "h2Limitation": "7. Limitation of Liability",
+    "pLimitation": "Volunteerium is provided on an 'as-is' and 'as-available' basis. We make no guarantees that the platform will be error-free, secure, or uninterrupted. We are not liable for any damages, direct or indirect, resulting from the use or inability to use our platform.",
+    "h2Changes": "8. Changes to Terms",
+    "pChanges": " Volunteerium reserves the right to modify these Terms of Service at any time. Significant changes will be notified through the platform or via email. Continued use of the platform after changes indicates your acceptance of the new terms.",
+    "h2Governing": "9. Governing Law and Dispute Resolution",
+    "pGoverning": " These terms are governed by the laws of [Your Country/Region]. Any disputes arising from the use of Volunteerium will be resolved through arbitration in accordance with [applicable arbitration rules].",
+    "h2Contact": "10. Contact Us",
+    "pContact": "If you have any questions or concerns about these Terms of Service, please contact us at:",
+    "email": "Email: info.volunteerium@gmail.com",
+    "vTeam": "Volunteerium Team"
   },
+
   "adminPanel": {
     "search": "Search",
     "addNewInterest": "Add new interest",
@@ -1084,5 +1093,15 @@
       "ageRange": "Please choose a valid age range",
       "language": "Please choose a valid language"
     }
+  },
+  "toastify": {
+    "error": "An error occurred. Please try again.",
+    "verifyFailError": "Verification failed. Please try again!",
+    "verifySecureError": "Security verification is missing. Please try again.",
+    "selectFile": "Please select a file to delete.",
+    "selectConversation": "Please select a conversation.",
+    "enterMessage": "Please enter a message.",
+    "idMissing": "Event ID or participant ID is missing.",
+    "setupProfile": "Please set up your profile data to continue."
   }
 }
