@@ -1109,7 +1109,7 @@
     "selectFile": "Bitte wählen Sie eine Datei zum Löschen aus.",
     "selectConversation": "Bitte wählen Sie ein Gespräch aus.",
     "enterMessage": "Bitte geben Sie eine Nachricht ein.",
-    "idMissing": "Event-ID oder Teilnehmer-ID fehlen.",
+    "idMissing": "Veranstaltung-ID oder Teilnehmer-ID fehlen.",
     "setupProfile": "Bitte richten Sie Ihre Profildaten ein, um fortzufahren."
   }
 }

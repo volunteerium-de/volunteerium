@@ -10,19 +10,20 @@ import { translations } from "../../../locales/translations"
 import { useTranslation } from "react-i18next"
 
 const VerificationForm = ({ setIssue, identifier, setIdentifier, email }) => {
-  const {t} = useTranslation()
+  const { t } = useTranslation()
   const [code, setCode] = useState(["", "", "", "", "", ""])
   const [timeLeft, setTimeLeft] = useState(90) // 01:30 seconds (90 seconds)
-  const [timerMessage, setTimerMessage] = useState(t(translations.password.verificationForm.didntRecive)) // Message changes when time runs out
+  const [timerMessage, setTimerMessage] = useState(
+    t(translations.password.verificationForm.didntRecive)
+  ) // Message changes when time runs out
   const inputRefs = useRef([]) // References for code input boxes
   const navigate = useNavigate()
- 
 
   const resendForgotPassword = async () => {
     if (email) {
       try {
         const { data } = await axiosWithPublic.post("auth/forgot-password", { email })
-        
+
         setIdentifier(data.resetToken)
         setTimeLeft(90)
         toastNotify("success", data.message)
@@ -42,7 +43,7 @@ const VerificationForm = ({ setIssue, identifier, setIdentifier, email }) => {
           resetToken: identifier,
           resetCode: code.join(""),
         })
-         
+
         setIdentifier(data.resetToken)
         setIssue("set-new-password")
         toastNotify("success", data.message)
@@ -105,32 +106,29 @@ const VerificationForm = ({ setIssue, identifier, setIdentifier, email }) => {
       className="flex flex-col items-start space-y-6 p-6 w-full max-w-[44.1875rem] bg-white dark:bg-black rounded-lg relative"
     >
       {/* Mobile View - Back Arrow and "Back to Login" (Below Header) */}
-      <div
-        className="md:hidden flex flex-row items-center mb-6"
-        onClick={() => navigate("/login")}
-      >
+      <div className="md:hidden flex flex-row items-center mb-6" onClick={() => navigate("/login")}>
         <IoIosArrowBack className="text-black dark:text-white text-3xl cursor-pointer self-start" />{" "}
-         
-        <span className="text-lg font-semibold text-black dark:text-white">{t(translations.password.verificationForm.backToLogin)}</span>{" "}
-        
+        <span className="text-lg font-semibold text-black dark:text-white">
+          {t(translations.password.verificationForm.backToLogin)}
+        </span>{" "}
       </div>
 
       {/* Mobile View - Centered Logo */}
       <div className="md:hidden w-full flex justify-center mb-6 mt-[5rem]">
-      <img 
-        src={logo} 
-        alt= {t(translations.password.verificationForm.logoAlt)} 
-        className="h-16 w-auto" 
-      />
+        <img
+          src={logo}
+          alt={t(translations.password.verificationForm.logoAlt)}
+          className="h-16 w-auto"
+        />
       </div>
 
       {/* Title and Description */}
       <div className="flex-grow w-full">
         <h1 className="text-black dark:text-white text-[1.75rem] text-center md:text-center md:text-[2rem] font-semibold mb-6">
-        {t(translations.password.verificationForm.verification)}
+          {t(translations.password.verificationForm.verification)}
         </h1>
         <p className="text-center w-full text-[1rem] md:text-[1.125rem] font-normal text-gray-2 dark:text-white leading-snug">
-        {t(translations.password.verificationForm.verifyDesc)}
+          {t(translations.password.verificationForm.verifyDesc)}
         </p>
       </div>
 
