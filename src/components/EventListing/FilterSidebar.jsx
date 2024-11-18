@@ -97,7 +97,7 @@ const FilterSidebar = () => {
   // Custom Input for DatePicker
   const CustomInput = forwardRef(({ value, onClick }, ref) => (
     <button
-      className="bg-light-gray text-black font-medium text-[0.875rem] py-2 px-4 rounded hover:border hover:border-primary-green flex justify-between items-center gap-10 min-w-[250px]"
+      className="bg-light-gray text-black font-medium text-[0.875rem] py-2 px-4 rounded flex justify-between items-center gap-10 min-w-[250px]"
       ref={ref}
       onClick={onClick}
       aria-label="Select Date"
@@ -158,7 +158,7 @@ const FilterSidebar = () => {
           </div>
           <div className="mx-auto">
             <button
-              className="text-[0.9375rem] font-medium text-white text-center bg-primary-green px-4 py-2 rounded w-[200px] "
+              className="text-[0.9375rem] font-medium text-white text-center bg-primary-green px-4 py-2 rounded w-[200px] hover:bg-primary-green/60 "
               onClick={() => {
                 dispatch(setStartDate(localStartDate))
                 dispatch(setEndDate(localEndDate))
@@ -171,7 +171,7 @@ const FilterSidebar = () => {
       </div>
 
       {/* Categories */}
-      <div className="mb-4 shadow-lg bg-light-white p-5 max-w-[400px] mx-auto dark:bg-dark-gray-1 rounded">
+      <div className="mt-10 m-auto shadow-lgbg-light-white p-5 max-w-[400px] mx-auto dark:bg-dark-gray-1 rounded">
         <h3 className="font-semibold mb-2 p-2 text-black dark:text-white text-[0.9375rem] lg:text-left">
           {t(translations.eventsPage.sec2)}
         </h3>
