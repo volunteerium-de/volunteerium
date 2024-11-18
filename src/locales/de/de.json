@@ -727,11 +727,18 @@
     "p14": "E-Mail: info.volunteerium@gmail.com"
   },
   "adminPanel": {
+    "search": "Suche",
+    "addNewInterest": "Neues Interesse Hinzufügen",
+    "interestNameEnglish": "Interessenname (Englisch)",
+    "interestNameGerman": "Interessenname (Deutsch)",
+    "addNewInterestPH": "Geben Sie den Interessenname auf Englisch ein",
+    "addNewInterestPHDE": "Geben Sie den Interessenname auf Deutsch ein",
+    "create": "Erstellen",
     "backButton": "Zurück",
     "activeUpper": "AKTIV",
     "active": "Aktiv",
-    "suspendedUpper": "GESPERRT",
-    "suspended": "Gesperrt",
+    "suspendedUpper": "SUSPENDIERT",
+    "suspended": "Suspendiert",
     "yes": "Ja",
     "no": "Nein",
     "cancel": "Abbrechen",
@@ -740,10 +747,31 @@
         "title": "Kontakte"
       },
       "contactTable": {
-        "header": "Kontakttabelle"
+        "contactId": "Kontakt-ID",
+        "contactIdDL": "Kont.-ID",
+        "name": "Name",
+        "nameDL": "Name",
+        "mail": "E-Mail",
+        "mailDL": "E-Mail",
+        "subject": "Subject",
+        "subjectDL": "Subject",
+        "createdAt": "Erstellt am",
+        "createdAtDL": "Erstellt am",
+        "noContacts": "Keine Kontakte gefunden"
       },
       "singleContactPanel": {
-        "contactId": "Kontakt-ID"
+        "contactId": "Kontakt-ID",
+        "contactInfo": "Kontaktinformationen",
+        "name": "Name",
+        "email": "E-Mail-Adresse",
+        "createdAt": "Erstellt am",
+        "lastUpdatedAt": "Zuletzt aktualisiert am",
+        "contactDetails": "Kontaktdetails",
+        "subject": "Betreff",
+        "message": "Nachricht",
+        "noContacts": "Keine Kontakte gefunden",
+        "deleteContact": "Kontakt löschen",
+        "deleteDescription": "Sind Sie sicher, dass Sie diesen Kontakt löschen möchten?"
       }
     },
     "events": {
@@ -751,16 +779,16 @@
         "title": "Veranstaltungen"
       },
       "eventsTable": {
-        "eventId": "Veranstaltungs-ID",
-        "eventIdDL": "Veranstaltungs-ID",
+        "eventId": "Veranstalt.-ID",
+        "eventIdDL": "V.-ID",
         "status": "Status",
-        "statusDL": "Veranstaltungsstatus",
+        "statusDL": "Veranst. Status",
         "completion": "Abschluss",
         "completionDL": "Abschlussstatus",
         "completed": "Abgeschlossen",
         "waiting": "Warten",
-        "eventTitle": "Veranstaltungstitel",
-        "eventTitleDL": "Veranstaltungstitel",
+        "eventTitle": "Veranstalt.-Titel",
+        "eventTitleDL": "V. Titel",
         "eventCreator": "Veranstalter",
         "eventCreatorDL": "Veranstalter",
         "attendants": "Teilnehmer",
@@ -769,23 +797,25 @@
         "noEvents": "Keine Veranstaltungen gefunden"
       },
       "singleEventPanel": {
-        "eventId": "Veranstaltungs-ID:",
+        "eventId": "V.-ID:",
+        "active": "ACTIV",
+        "suspended": "SUSPENDIERT",
         "eventDetails": "Veranstaltungsdetails",
         "eventPhotoAlt": "Veranstaltungsfoto",
-        "eventName": "Veranstaltungsname: ",
-        "eventDescription": "Veranstaltungsbeschreibung: ",
-        "eventCreator": "Veranstalter: ",
-        "startDate": "Startdatum: ",
-        "endDate": "Enddatum: ",
-        "contactName": "Kontaktname: ",
+        "eventName": "Veranstaltungsname",
+        "eventDescription": "Veranstaltungsbeschreibung",
+        "eventCreator": "Veranstalter",
+        "startDate": "Startdatum",
+        "endDate": "Enddatum",
+        "contactName": "Kontaktname",
         "contactEmail": "Kontakt-E-Mail",
         "contactPhone": "Kontakt-Telefon",
         "languages": "Sprachen",
         "interests": "Interessen",
-        "onlineEvent": "Online-Veranstaltung: ",
-        "eventLocation": "Veranstaltungsort: ",
-        "documents": "Dokumente: ",
-        "documentId": "Dokumenten-ID: ",
+        "onlineEvent": "Online-Veranstaltung",
+        "eventLocation": "Veranstaltungsort",
+        "documents": "Dokumente",
+        "documentId": "Dokumenten-ID",
         "eventParticipants": "Veranstaltungsteilnehmer",
         "participantId": "Teilnehmer-ID",
         "participantIdDL": "Teilnehmer-ID",
@@ -804,60 +834,129 @@
         "joinDate": "Beitrittsdatum",
         "noParticipantYet": "Noch kein Teilnehmer",
         "deleteEvent": "Veranstaltung löschen",
-        "desc": "Sind Sie sicher, dass Sie diese Veranstaltung löschen möchten?"
+        "desc": "Sind Sie sicher, dass Sie diese Veranstaltung löschen möchten?",
+        "noEvent": "Keine Veranstaltung gefunden"
       }
     },
     "feedbacks": {
       "feedbacksPanel": {
-        "title": "Veranstaltungsfeedback"
+        "title": "V. Rückmeldungen"
       },
       "feedbacksTable": {
-        "header": "Feedback-Tabelle"
+        "title": "Veranstaltungstitel",
+        "name": "Name",
+        "email": "E-Mail",
+        "rating": "Bewertung",
+        "createdAt": "Erstellt am",
+        "noFeedbacks": "Keine Rückmeldungen gefunden"
       },
       "singleFeedbackPanel": {
-        "feedbackId": "Feedback-ID "
+        "feedbackId": "Feedback-ID",
+        "feedbackInfo": "Feedback-Informationen",
+        "title": "Titel",
+        "eventId": "Veranstaltungs-ID",
+        "email": "E-Mail-Adresse",
+        "name": "Name",
+        "createdAt": "Erstellt am",
+        "lastUpdatedAt": "Zuletzt aktualisiert am",
+        "feedbackDetails": "Feedback-Details",
+        "rating": "Bewertung",
+        "feedback": "Feedback",
+        "noFeedbacks": "Keine Feedback gefunden",
+        "deleteFeedback": "Feedback löschen",
+        "deleteDescription": "Sind Sie sicher, dass Sie dieses Feedback löschen möchten?"
       }
     },
     "reports": {
       "reportsPanel": {
-        "title": "Veranstaltungsberichte"
+        "title": "V. Berichte"
       },
       "reportsTable": {
-        "header": "Berichtstabelle"
+        "reportId": "Bericht-ID",
+        "reportType": "Berichtstyp",
+        "reportedBy": "Gemeldet von",
+        "reportedByDL": "Gemeldet v.",
+        "eventId": "Veranstaltungs-ID",
+        "eventIdDL": "Veranst.-ID",
+        "createdAt": "Erstellt am",
+        "noReports": "Keine Berichte gefunden"
       },
       "singleReportPanel": {
-        "reportId": "Bericht-ID "
+        "reportId": "Bericht-ID",
+        "reportInfo": "Berichtsinformationen",
+        "reportType": "Berichtstyp",
+        "reportedBy": "Gemeldet von",
+        "guest": "Gastbenutzer",
+        "eventId": "Veranstaltungs-ID",
+        "createdAt": "Erstellt am",
+        "lastUpdatedAt": "Zuletzt aktualisiert am",
+        "reportDetails": "Bericht Details",
+        "content": "Inhalt",
+        "noReport": "Kein Bericht gefunden",
+        "deleteReport": "Bericht löschen",
+        "deleteDescription": "Möchten Sie diesen Bericht wirklich löschen?"
+      }
+    },
+    "subscriptions": {
+      "subscriptionsPanel": {
+        "title": "Abonnements"
+      },
+      "subscriptionsTable": {
+        "subscriptionsId": "Abonnement ID",
+        "subscriptionsIdDL": "Abonn. ID",
+        "email": "Email",
+        "subscripedAt": "Abonniert am",
+        "noSubscriptionsFound": "Keine Abonnements gefunden",
+        "deleteSubscription": "Abonnement löschen",
+        "deleteDescription": "Sind Sie sicher, dass Sie dieses Abonnement löschen möchten?"
+      }
+    },
+    "interests": {
+      "interestsPanel": {
+        "title": "Interessen"
+      },
+      "interestsTable": {
+        "interestsId": "Interesse ID",
+        "name": "Name",
+        "createdAt": "Erstellt am",
+        "updatedAt": "Aktualisiert am",
+        "actions": "Aktionen",
+        "noSubscriptionsFound": "Keine Interesse gefunden",
+        "deleteInterest": "Interesse löschen",
+        "deleteDescription": "Möchten Sie dieses Interesse wirklich löschen?"
       }
     },
     "users": {
       "singleUserPanel": {
-        "userId": "Benutzer-ID: ",
+        "userId": "B.-ID: ",
         "userInformations": "Benutzerinformationen",
         "fullName": "Vollname",
         "orgName": "Organisation Name",
-        "userType": "Benutzertyp: ",
-        "emailAddress": "E-Mail-Adresse: ",
-        "createdAt": "Erstellt am: ",
-        "lastUpdatedAt": "Zuletzt aktualisiert am: ",
+        "userType": "Benutzertyp",
+        "emailAddress": "E-Mail-Adresse",
+        "createdAt": "Erstellt am",
+        "lastUpdatedAt": "Zuletzt aktualisiert am",
         "userDetails": "Benutzerdetails",
-        "fullNameDisplay": "Vollständiger Name: ",
-        "profileSetup": "Profil eingerichtet: ",
-        "emailVerified": "E-Mail verifiziert: ",
-        "languages": "Sprachen: ",
-        "interests": "Interessen: ",
-        "address": "Adresse: ",
-        "documents": "Dokumente: ",
-        "documentId": "Dokumenten-ID: ",
+        "fullNameDisplay": "Vollständiger Name",
+        "profileSetup": "Profil eingerichtet",
+        "emailVerified": "E-Mail verifiziert",
+        "languages": "Sprachen",
+        "interests": "Interessen",
+        "address": "Adresse",
+        "documents": "Dokumente",
+        "documentId": "Dokumenten-ID",
         "noUserFound": "Kein Benutzer gefunden",
         "deleteUser": "Benutzer löschen",
-        "deleteDescription": "Möchten Sie diesen Benutzer wirklich löschen?"
+        "deleteDescription": "Möchten Sie diesen Benutzer wirklich löschen?",
+        "suspendUser": "Benutzer suspendieren",
+        "unsuspendUser": "Benutzer entsuspendieren"
       },
       "usersPanel": {
         "title": "Benutzer"
       },
       "usersTable": {
         "userId": "Benutzer-ID",
-        "userIdDL": "Benutzer-ID",
+        "userIdDL": "Be.-ID",
         "status": "Status",
         "statusDL": "Benutzerstatus",
         "userType": "Benutzertyp",

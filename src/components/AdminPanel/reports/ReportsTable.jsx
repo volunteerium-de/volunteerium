@@ -1,6 +1,8 @@
+import { t } from "i18next"
 import React from "react"
 import { ImSpinner9 } from "react-icons/im"
 import { useNavigate } from "react-router-dom"
+import { translations } from "../../../locales/translations"
 
 const ReportsTable = ({ data, loading }) => {
   const navigate = useNavigate()
@@ -20,11 +22,21 @@ const ReportsTable = ({ data, loading }) => {
           <table className="table min-w-full bg-white dark:bg-dark-gray-1">
             <thead className="thead">
               <tr className="tr w-full bg-primary-green dark:bg-light-gray text-light-gray dark:text-dark-gray-1 uppercase text-sm leading-normal">
-                <th className="th p-3 text-left">Report ID</th>
-                <th className="th p-3 text-left">Report Type</th>
-                <th className="th p-3 text-left">Reported By</th>
-                <th className="th p-3 text-left">Event ID</th>
-                <th className="th p-3 text-center">Created At</th>
+                <th className="th p-3 text-left">
+                  {t(translations.adminPanel.reports.reportsTable.reportId)}
+                </th>
+                <th className="th p-3 text-left">
+                  {t(translations.adminPanel.reports.reportsTable.reportType)}
+                </th>
+                <th className="th p-3 text-left">
+                  {t(translations.adminPanel.reports.reportsTable.reportedBy)}
+                </th>
+                <th className="th p-3 text-left">
+                  {t(translations.adminPanel.reports.reportsTable.eventId)}
+                </th>
+                <th className="th p-3 text-center">
+                  {t(translations.adminPanel.reports.reportsTable.createdAt)}
+                </th>
               </tr>
             </thead>
             <tbody className="tbody text-dark-gray-1 dark:text-light-gray text-sm font-light">
@@ -36,29 +48,32 @@ const ReportsTable = ({ data, loading }) => {
                 >
                   <td
                     className={"td text-left 2xl:w-[150px] whitespace-nowrap"}
-                    data-label="Report ID"
+                    data-label={t(translations.adminPanel.reports.reportsTable.reportId)}
                   >
                     {report?._id}
                   </td>
                   <td
                     className={"td text-left 2xl:w-[150px] whitespace-nowrap"}
-                    data-label="Report Type"
+                    data-label={t(translations.adminPanel.reports.reportsTable.reportType)}
                   >
                     {report?.reportType}
                   </td>
                   <td
                     className={"td text-left 2xl:w-[150px] whitespace-nowrap"}
-                    data-label="Reported By"
+                    data-label={t(translations.adminPanel.reports.reportsTable.reportedByDL)}
                   >
                     {report?.reportedBy}
                   </td>
                   <td
                     className={"td text-left 2xl:w-[150px] whitespace-nowrap"}
-                    data-label="Event ID"
+                    data-label={t(translations.adminPanel.reports.reportsTable.eventIdDL)}
                   >
                     {report?.eventId}
                   </td>
-                  <td className="td text-center whitespace-nowrap" data-label="Created At">
+                  <td
+                    className="td text-center whitespace-nowrap"
+                    data-label={t(translations.adminPanel.reports.reportsTable.createdAt)}
+                  >
                     {new Date(report?.createdAt).toLocaleDateString()}
                   </td>
                 </tr>
@@ -68,7 +83,7 @@ const ReportsTable = ({ data, loading }) => {
         </div>
       ) : (
         <div className="p-4 sm:p-0 mt-4 text-center sm:text-left text-dark-gray-2 dark:text-light-gray">
-          No Reports found
+          {t(translations.adminPanel.reports.reportsTable.noReports)}
         </div>
       )}
     </>

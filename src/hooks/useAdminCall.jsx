@@ -24,7 +24,7 @@ const useAdminCall = () => {
         setLoading(false)
       }
     } else {
-      console.log(ErrorMessage)
+      toastNotify("error", ErrorMessage)
     }
   }
 
@@ -40,7 +40,24 @@ const useAdminCall = () => {
         setLoading(false)
       }
     } else {
-      console.log(ErrorMessage)
+      toastNotify("error", ErrorMessage)
+    }
+  }
+
+  const postData = async (url, newData) => {
+    if (user.userType === "admin") {
+      setLoading(true)
+      try {
+        const { data } = await axiosWithBearer.post(url, newData)
+        toastNotify("success", data.message)
+        return data
+      } catch (error) {
+        toastNotify("error", error.response.data.message || error.message)
+      } finally {
+        setLoading(false)
+      }
+    } else {
+      toastNotify("error", ErrorMessage)
     }
   }
 
@@ -68,7 +85,7 @@ const useAdminCall = () => {
         setLoading(false)
       }
     } else {
-      console.log(ErrorMessage)
+      toastNotify("error", ErrorMessage)
     }
   }
 
@@ -86,7 +103,7 @@ const useAdminCall = () => {
         setLoading(false)
       }
     } else {
-      console.log(ErrorMessage)
+      toastNotify("error", ErrorMessage)
     }
   }
 
@@ -94,6 +111,7 @@ const useAdminCall = () => {
     loading,
     fetchAllData,
     fetchSingleData,
+    postData,
     updateData,
     deleteData,
   }
