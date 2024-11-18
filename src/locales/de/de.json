@@ -1069,6 +1069,7 @@
   },
   "yup": {
     "required": {
+      "ageRange": "Alter ist erforderlich",
       "userType": "Benutzertyp ist erforderlich!",
       "name": "Name ist erforderlich!",
       "fullName": "Vollname ist erforderlich!",

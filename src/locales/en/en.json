@@ -1053,6 +1053,7 @@
   },
   "yup": {
     "required": {
+      "ageRange": "Age is required",
       "userType": "User type is required!",
       "name": "Name is required!",
       "fullName": "Fullname is required!",
@@ -1082,8 +1083,9 @@
       "onlyNumbers": "Must contain only numbers",
       "onlyLetters": "Must contain only letters",
       "interestId": "InterestIds must be a valid ObjectId",
-      "logo": "Logo is required!",
-      "addressId": "AddressId must be a valid ObjectId"
+      "logo": "Logo is required",
+       "addressId": "AddressId must be a valid ObjectId"
+
     },
     "minLength": {
       "select1": "At least one category must be selected.",
