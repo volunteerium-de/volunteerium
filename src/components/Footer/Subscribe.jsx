@@ -33,7 +33,7 @@ const Subscribe = () => {
         validationSchema={validationSchema}
         onSubmit={handleSubmit}
       >
-        <Form className="w-full py-4">
+        <Form className="w-full py-4 text-[0.8rem]">
           <div>
             <Field
               type="email"
@@ -46,11 +46,11 @@ const Subscribe = () => {
                 type="submit"
                 className="absolute -top-6 right-2 transform -translate-y-1/2 p-2 bg-primary-green text-white rounded-full"
               >
-                <HiArrowSmRight size={20} />
+                <HiArrowSmRight size={14} />
               </button>
             </div>
           </div>
-          <ErrorMessage name="email" component="div" className="text-danger text-sm mt-1" />
+          <ErrorMessage name="email" component="div" className="text-danger mt-1" />
         </Form>
       </Formik>
     </div>
