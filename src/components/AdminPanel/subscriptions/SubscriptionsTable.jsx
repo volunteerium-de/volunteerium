@@ -6,6 +6,7 @@ import useAccountCall from "../../../hooks/useAccountCall"
 import toastNotify from "../../../utils/toastNotify"
 import { useTranslation } from "react-i18next"
 import { translations } from "../../../locales/translations"
+import { formatDateWithTime } from "../../../helpers/formatDate"
 
 const SubscriptionsTable = ({ data, loading, refreshData }) => {
   const { t } = useTranslation()
@@ -86,7 +87,7 @@ const SubscriptionsTable = ({ data, loading, refreshData }) => {
                       translations.adminPanel.subscriptions.subscriptionsTable.subscripedAt
                     )}
                   >
-                    {new Date(subscription?.subscribedAt).toLocaleDateString()}
+                    {formatDateWithTime(subscription?.subscripedAt)}
                   </td>
                 </tr>
               ))}

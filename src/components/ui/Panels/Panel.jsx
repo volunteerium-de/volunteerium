@@ -33,7 +33,9 @@ const Panel = ({ title, fetchUrl, TableComponent }) => {
 
   const refreshData = () => {
     setLoading(true)
-    fetchAllData(`${fetchUrl}?page=${currentPage}&limit=10`)
+    fetchAllData(
+      `${fetchUrl === "interests" ? "interests/pagination" : fetchUrl}?page=${currentPage}&limit=10`
+    )
       .then((fetchedData) => {
         setData(fetchedData?.data)
         setTotalPages(fetchedData?.details?.pages?.total || 1)
@@ -84,6 +86,7 @@ const Panel = ({ title, fetchUrl, TableComponent }) => {
 
   const onClose = () => {
     setInterestName("")
+    setInterestNameDE("")
     setIsOpen(false)
   }
 

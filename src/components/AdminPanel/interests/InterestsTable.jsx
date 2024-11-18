@@ -9,6 +9,7 @@ import { useTranslation } from "react-i18next"
 import { translations } from "../../../locales/translations"
 import useLanguage from "../../../hooks/useLanguages"
 import useEventCall from "../../../hooks/useEventCall"
+import { formatDateWithTime } from "../../../helpers/formatDate"
 
 const InterestsTable = ({ data, loading, refreshData }) => {
   const [isOpenDeleteModal, setIsOpenDeleteModal] = useState(false)
@@ -85,7 +86,7 @@ const InterestsTable = ({ data, loading, refreshData }) => {
                     className="td text-center whitespace-nowrap"
                     data-label={t(translations.adminPanel.interests.interestsTable.createdAt)}
                   >
-                    {new Date(interest?.createdAt).toDateString()}
+                    {formatDateWithTime(interest?.createdAt)}
                   </td>
                   <td
                     className="td text-center whitespace-nowrap flex flex-row justify-between items-center"

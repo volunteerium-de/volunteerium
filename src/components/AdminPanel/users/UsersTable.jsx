@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom"
 import { UserAvatar } from "../../ui/Avatar/userAvatar"
 import { useTranslation } from "react-i18next"
 import { translations } from "../../../locales/translations"
+import { formatDate } from "../../../helpers/formatDate"
 
 const UsersTable = ({ data, loading }) => {
   const { t } = useTranslation()
@@ -92,7 +93,7 @@ const UsersTable = ({ data, loading }) => {
                       className="td text-center whitespace-nowrap"
                       data-label={t(translations.adminPanel.users.usersTable.createdAtDL)}
                     >
-                      {new Date(user?.createdAt).toLocaleDateString()}
+                      {formatDate(user?.createdAt)}
                     </td>
                   </tr>
                 ))}
