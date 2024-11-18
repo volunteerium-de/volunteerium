@@ -24,11 +24,17 @@ import InterestsPanel from "../components/AdminPanel/interests/InterestsPanel"
 import { BiSolidCategoryAlt } from "react-icons/bi"
 import { translations } from "../locales/translations"
 import { useTranslation } from "react-i18next"
+import { IoStatsChart } from "react-icons/io5"
+import { FaSkull } from "react-icons/fa"
+import StatisticsPanel from "../components/AdminPanel/statistics/StatisticsPanel"
+import DangerZonePanel from "../components/AdminPanel/dangerZone/DangerZonePanel"
 
 const AdminPanel = () => {
   const location = useLocation()
   const navigate = useNavigate()
-  const [activeTab, setActiveTab] = useState("events")
+  const [activeTab, setActiveTab] = useState(
+    new URLSearchParams(location.search).get("tab") || "events"
+  )
   const [contacts, setContacts] = useState([])
   const [reports, setReports] = useState([])
   const [feedbacks, setFeedbacks] = useState([])
@@ -135,6 +141,16 @@ const AdminPanel = () => {
       label: t(translations.adminPanel.subscriptions.subscriptionsPanel.title),
       icon: <PiNewspaperClippingFill className="text-2xl mx-auto" />,
     },
+    {
+      key: "statistics",
+      label: t(translations.adminPanel.statistics.statisticsPanel.title),
+      icon: <IoStatsChart className="text-2xl mx-auto" />,
+    },
+    {
+      key: "danger-zone",
+      label: t(translations.adminPanel.dangerZone.title),
+      icon: <FaSkull className="text-2xl mx-auto" />,
+    },
   ]
 
   const renderContent = () => {
@@ -174,6 +190,10 @@ const AdminPanel = () => {
         return <FeedbacksPanel />
       case "subscriptions":
         return <SubscriptionsPanel />
+      case "statistics":
+        return <StatisticsPanel />
+      case "danger-zone":
+        return <DangerZonePanel />
       default:
         return <EventsPanel />
     }

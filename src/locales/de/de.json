@@ -742,6 +742,46 @@
     "yes": "Ja",
     "no": "Nein",
     "cancel": "Abbrechen",
+
+    "statistics": {
+      "statisticsPanel": {
+        "title": "Statistiken"
+      },
+      "statisticsBars": {
+        "users": "Benutzer",
+        "events": "Veranstaltungen",
+        "eventParticipants": "V. Teilnehmer",
+        "eventFeedbacks": "V. Rückmeldungen",
+        "eventReports": "V. Berichte",
+        "interests": "Interessen",
+        "addresses": "Adressen",
+        "documents": "Dokumente",
+        "contacts": "Kontakte",
+        "subscriptions": "Abonnements",
+        "conversations": "Unterhaltungen",
+        "messages": "Nachrichten",
+        "noStatistics": "Keine Statistiken gefunden"
+      }
+    },
+
+    "dangerZone": {
+      "title": "Gefahrenzone",
+      "importantWarning": "Wichtiger Hinweis!",
+      "resetDatabaseWarning": "Das Zurücksetzen der Datenbank ist eine kritische Operation, die alle Daten dauerhaft löschen wird. Diese Aktion kann nicht rückgängig gemacht werden. Sie müssen das Zurücksetzen bestätigen, um fortzufahren.",
+      "databaseResetInfo": "Datenbank-Zurücksetzungsinformationen",
+      "databaseResetInfoList": {
+        "first": "Alle Daten werden gelöscht, mit Ausnahme des Admin-Kontos.",
+        "second": "Diese Operation ist irreversibel.",
+        "third": "Bitte bestätigen Sie nur, wenn Sie sich absolut sicher sind, dass Sie die Datenbank zurücksetzen möchten."
+      },
+      "resetDatabaseButton": "Datenbank zurücksetzen",
+      "resetDatabaseConfirm": "Bestätigen Sie das Zurücksetzen der Datenbank",
+      "invalidCode": "Bitte geben Sie einen gültigen Code ein.",
+      "sessionExpired": "Ihre Sitzung ist abgelaufen. Bitte versuchen Sie es erneut.",
+      "confirmReset": "Zurücksetzen bestätigen"
+    },
+
+
     "contacts": {
       "contactPanel": {
         "title": "Kontakte"
