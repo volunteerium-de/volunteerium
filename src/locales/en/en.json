@@ -641,12 +641,11 @@
     "joining": "joining",
     "joined": "joined"
   },
-    "joined": "joined",
-    "sidebarLabels": {
-      "attendingEvents": "Attending Events",
-      "organizedEvents": "Organized Events",
-      "messages": "Messages"
-    }
+  "joined": "joined",
+  "sidebarLabels": {
+    "attendingEvents": "Attending Events",
+    "organizedEvents": "Organized Events",
+    "messages": "Messages"
   },
   "eventMng": {
     "addNew": "Add New Event",
