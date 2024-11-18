@@ -67,10 +67,13 @@ const AddEvent = ({ onClose, eventData, eventToEdit }) => {
       contactPhone,
       ...payload
     } = values
-
+    console.log(values.date)
+    console.log(values.fromTime)
+    console.log(values.toTime)
     const startDate = new Date(`${date}T${fromTime}:00`)
     const endDate = new Date(`${date}T${toTime}:00`)
-
+    console.log(startDate)
+    console.log(endDate)
     const body = {
       createdBy: user._id,
       ...payload,
@@ -100,7 +103,6 @@ const AddEvent = ({ onClose, eventData, eventToEdit }) => {
       onClose()
     } catch (error) {
       toastNotify("error", t(translations.toastify.error))
-
     }
   }
 

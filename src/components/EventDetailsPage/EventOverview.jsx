@@ -13,8 +13,8 @@ import EventParticipationButtons from "./EventParticipationButtons"
 import { useSelector } from "react-redux"
 import useChatCall from "../../hooks/useChatCall"
 import { useNavigate } from "react-router-dom"
-import { validateLocation } from "../../utils/functions"
 import { useMemo } from "react"
+import { validateLocation } from "../../utils/functions"
 
 const EventOverview = () => {
   const [isFeedbackOpen, setIsFeedbackOpen] = useState(false)
@@ -52,6 +52,7 @@ const EventOverview = () => {
       navigate(`/event-management?tab=messages&conversation=${conversationId}`)
     }, 1000)
   }
+
   const locationText = validateLocation(singleEvent)
 
   const isEventOwner = useMemo(() => user?._id === singleEvent?.createdBy?._id, [user, singleEvent])

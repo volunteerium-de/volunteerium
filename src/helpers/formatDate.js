@@ -30,8 +30,6 @@ export const formatDateWithAll = (startDate, endDate) => {
     year: "numeric",
     month: "long",
     day: "numeric",
-    hour: "2-digit",
-    minute: "2-digit",
   })
 
   const formattedStartTime = start.toLocaleTimeString(i18n.language, {
