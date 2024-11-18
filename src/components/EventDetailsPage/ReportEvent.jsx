@@ -81,7 +81,7 @@ const ReportEvent = ({ eventTitle, eventId, onClose }) => {
               <SelectInput
                 name="reportType"
                 options={options}
-                label="Report Reason*:"
+                label= {t(translations.eventDetails.report.reportReason)}
                 placeholder={t(translations.eventDetails.report.placeholder1)}
               />
               {errors.reportType && touched.reportType && (

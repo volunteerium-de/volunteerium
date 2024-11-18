@@ -11,6 +11,8 @@ import io from "socket.io-client"
 import useAxios from "./useAxios"
 import { useState } from "react"
 import { useSelector } from "react-redux"
+import { translations } from "../locales/translations"
+import { t } from "i18next"
 
 const useChatCall = () => {
   const [socket, setSocket] = useState(null)
@@ -86,7 +88,7 @@ const useChatCall = () => {
         toastNotify("error", error.response.data.message)
       }
     } else {
-      toastNotify("error", "Please enter a message.")
+      toastNotify("error", t(translations.toastify.enterMessage))
     }
   }
 
@@ -104,7 +106,7 @@ const useChatCall = () => {
         dispatch(fetchFail())
       }
     } else {
-      toastNotify("error", "Event ID or Participant ID are missing.")
+      toastNotify("error", t(translations.toastify.idMissing))
     }
   }
 
@@ -128,7 +130,7 @@ const useChatCall = () => {
         toastNotify("error", error.message)
       }
     } else {
-      toastNotify("error", "Please select a conversation!")
+      toastNotify("error", t(translations.toastify.selectConversation))
     }
   }
 

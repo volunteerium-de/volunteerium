@@ -54,17 +54,17 @@ const ContactUsForm = () => {
       }}
     >
       {({ errors, touched }) => (
-        <Form className="space-y-4 dark:bg-black">
+        <Form className="md:space-y-3 dark:bg-black">
           {/* Name Field */}
           <div>
-            <p className="text-gray-2 dark:text-white text-[0.875rem] md:text-[1rem] lg:text-[1.125rem]">
+            <p className="text-gray-2 dark:text-white text-[0.875rem] md:text-[1rem]">
               {t(translations.contactUsForm.name)}
             </p>
             <Field
               type="text"
               name="name"
               placeholder=  {t(translations.contactUsForm.namePH)}
-              className={`w-full border dark:border-gray-2 dark:bg-gray-3 rounded-lg text-[0.875rem] lg:text-[1rem] p-2 lg:p-3 h-[40px] md:h-[42px] focus:outline-none focus:border-primary-green dark:text-white 
+              className={`w-full border rounded-lg text-[1rem] placeholder-gray-2 dark:placeholder-gray-2 dark:bg-black dark:text-white p-3 h-[42px] md:h-[48px] focus:outline-none focus:border-primary-green 
                 ${touched.name && errors.name ? "border-danger dark:border-danger" : "border-gray-1"}`}
             />
             {/* Error Message */}
@@ -77,14 +77,14 @@ const ContactUsForm = () => {
 
           {/* Email Field */}
           <div>
-            <p className="text-gray-2 dark:text-white text-[0.875rem] md:text-[1rem] lg:text-[1.125rem]">
+            <p className="text-gray-2 dark:text-white text-[0.875rem] md:text-[1rem]">
             {t(translations.contactUsForm.email)}
             </p>
             <Field
               type="email"
               name="email"
               placeholder= {t(translations.contactUsForm.emailPH)}
-              className={`w-full border dark:border-gray-2 dark:bg-white rounded-lg text-[0.875rem] lg:text-[1rem] p-2 lg:p-3 h-[40px] md:h-[42px] focus:outline-none focus:border-primary-green dark:text-white 
+              className={`w-full border rounded-lg text-[1rem] placeholder-gray-2 dark:placeholder-gray-2 dark:bg-black dark:text-white p-3 h-[42px] md:h-[48px] focus:outline-none focus:border-primary-green 
                 ${touched.email && errors.email ? "border-danger dark:border-danger" : "border-gray-1"}`}
             />
             {/* Error Message */}
@@ -97,14 +97,14 @@ const ContactUsForm = () => {
 
           {/* Message Subject Field */}
           <div>
-            <p className="text-gray-2 dark:text-white text-[0.875rem] md:text-[1rem] lg:text-[1.125rem]">
+            <p className="text-gray-2 dark:text-white text-[0.875rem] md:text-[1rem]">
             {t(translations.contactUsForm.subject)}
             </p>
             <Field
               type="text"
               name="subject"
               placeholder= {t(translations.contactUsForm.subjectPH)}
-              className={`w-full border dark:border-gray-2 dark:bg-gray-3 rounded-lg text-[0.875rem] lg:text-[1rem] p-2 lg:p-3 h-[40px] md:h-[42px] focus:outline-none focus:border-primary-green dark:text-white 
+              className={`w-full border rounded-lg text-[1rem] placeholder-gray-2 dark:placeholder-gray-2 dark:bg-black dark:text-white p-3 h-[42px] md:h-[48px] focus:outline-none focus:border-primary-green 
                 ${touched.subject && errors.subject ? "border-danger dark:border-danger" : "border-gray-1"}`}
             />
             {/* Error Message */}
@@ -124,7 +124,7 @@ const ContactUsForm = () => {
               as="textarea"
               name="message"
               placeholder={t(translations.contactUsForm.messagePH)}
-              className={`w-full border dark:border-gray-2 dark:bg-gray-3 rounded-lg text-[0.875rem] lg:text-[1rem] p-2 lg:p-3 h-[90px] md:h-[200px] xl:h-[110px]  focus:outline-none focus:border-primary-green dark:text-black 
+              className={`w-full border dark:border-gray-2 dark:bg-gray-3 rounded-lg text-[0.875rem] lg:text-[1rem] p-2 lg:p-3 h-[90px] md:h-[300px] lg:h-[100px] xl:h-[110px]  focus:outline-none focus:border-primary-green dark:text-white dark:bg-black resize-none scrollbar
                 ${touched.message && errors.message ? "border-danger dark:border-danger" : "border-gray-1"}`}
               maxLength="1000"
             />
@@ -143,7 +143,7 @@ const ContactUsForm = () => {
           <div className="flex justify-center">
             <button
               type="submit"
-              className="w-full bg-primary-green text-white text-[0.9rem] lg:text-[1rem] py-2 lg:py-3 rounded-lg focus:outline-none dark:bg-dark-green"
+              className="w-full bg-primary-green hover:bg-primary-green/60 text-white text-[1rem] py-3 mt-3 rounded-lg focus:outline-none  flex justify-center items-center"
             >
               {t(translations.contactUsForm.submit)}
             </button>

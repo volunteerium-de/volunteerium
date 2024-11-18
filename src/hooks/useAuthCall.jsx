@@ -10,6 +10,8 @@ import { useNavigate } from "react-router-dom"
 import useAxios, { axiosWithPublic } from "./useAxios"
 import toastNotify from "../utils/toastNotify"
 import { getLoginRedirectLink } from "../pages/GoogleAuthSuccess"
+import { translations } from "../locales/translations"
+import { t } from "i18next"
 
 const useAuthCall = () => {
   const dispatch = useDispatch()
@@ -18,7 +20,7 @@ const useAuthCall = () => {
 
   const onRecaptchaVerify = async (token, values, type) => {
     if (!token) {
-      toastNotify("error", "Missing security verification. Please try again.")
+      toastNotify("error", t(translations.toastify.verifySecureError))
       return
     }
 

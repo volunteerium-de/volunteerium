@@ -120,7 +120,7 @@ const OrganisationSettingsForm = () => {
       toastNotify("success", data.message)
     } catch (error) {
       console.error("Update failed:", error)
-      toastNotify("error", error.response?.data?.message || "An error occurred")
+      toastNotify("error", error.response?.data?.message || t(translations.toastify.error))
     }
   }
   return (
@@ -220,8 +220,7 @@ const OrganisationSettingsForm = () => {
                   }}
                   className="bg-danger flex-1 py-2 px-4 text-[1rem] text-white rounded hover:bg-danger/60"
                 >
-                  {t(translations.orgSettings.reset)}
-                  Reset
+                  {t(translations.indvSettings.reset)}
                 </button>
 
                 <button

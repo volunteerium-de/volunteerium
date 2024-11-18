@@ -104,7 +104,7 @@ const Messages = ({ conversations, currentUser }) => {
     let displayName
 
     if (isAnnouncement) {
-      displayName = "Announcement"
+      displayName = t(translations.msgMenu.announce)
     } else {
       displayName =
         createdBy._id === currentUser._id

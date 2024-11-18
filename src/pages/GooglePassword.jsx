@@ -57,15 +57,13 @@ const GooglePassword = () => {
     <div className="w-screen h-screen flex justify-center items-center">
       <div className="rounded-[8px] px-5 md:px-0">
         <div className="flex flex-col justify-center items-center gap-5">
-          <img src={logo} alt="Volunterium Logo" className="h-[30px] w-fit sm:h-[40px]" />
+          <img src={logo} alt="Volunteerium Logo" className="h-[30px] w-fit sm:h-[40px]" />
           <h1 className="text-center dark:text-white mb-[1rem] text-[2rem] md:text-[1.6rem] font-bold">
-            Set Your Password
+            {t(translations.googlePassword.header)}
           </h1>
         </div>
         <p className="text-center dark:text-white mb-[1rem] text-[1.2rem] md:text-[1rem] max-w-[700px] lg:max-w-[800px]">
-          To ensure your account is secure and you can access it easily in the future, please set a
-          password now. This will help avoid any issues during future logins. Enter and confirm your
-          new password below.
+        {t(translations.googlePassword.description)}
         </p>
         <form onSubmit={formik.handleSubmit}>
           <div className="mt-[20px] max-w-[500px] lg:max-w-[600px] mx-auto">
@@ -116,7 +114,7 @@ const GooglePassword = () => {
                   disabled={loading}
                   className={`flex justify-center text-[1.3rem] md:text-[1.0rem] items-center ${loading ? "bg-primary-green/60" : "bg-primary-green hover:bg-primary-green/60"} px-2 py-1 rounded-md text-white w-[250px] h-[45px]`}
                 >
-                  {loading ? <ImSpinner9 className="animate-spin" /> : "Save & Continue"}
+                  {loading ? <ImSpinner9 className="animate-spin" /> : t(translations.googlePassword.saveContinue)}
                 </button>
               </div>
             </div>
