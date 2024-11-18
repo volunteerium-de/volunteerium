@@ -111,11 +111,11 @@ const Panel = ({ title, fetchUrl, TableComponent }) => {
       ) : (
         <div className="flex flex-col justify-between h-full">
           <div className="h-full">
-            <div className="mt-2 sm:mt-0 flex justify-between">
+            <div className="mt-2 sm:mt-0 flex justify-between relative">
               {fetchUrl === "interests" && (
                 <button
                   onClick={() => setIsOpen(true)}
-                  className="absolute right-[105px] sm:right-[120px] md:right-[200px]"
+                  className="absolute right-[90px] sm:right-[95px] md:right-[160px]"
                 >
                   <FaCirclePlus className="w-8 h-8 text-primary-green dark:text-light-gray hover:text-primary-green/60 dark:hover:text-light-gray/60 rounded-full" />
                 </button>

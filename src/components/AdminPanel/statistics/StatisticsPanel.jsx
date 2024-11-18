@@ -24,10 +24,11 @@ const StatisticsPanel = () => {
   }
 
   const maxCount = Math.max(
-    statistics?.User || 0,
     statistics?.Event || 0,
-    statistics?.Address || 0,
+    statistics?.User || 0,
     statistics?.Interest || 0,
+    statistics?.Contact || 0,
+    statistics?.Address || 0,
     statistics?.EventParticipant || 0,
     statistics?.EventFeedback || 0,
     statistics?.Subscription || 0,
@@ -77,21 +78,23 @@ const StatisticsPanel = () => {
                               ? "bg-red-500"
                               : key === "Interest"
                                 ? "bg-yellow-500"
-                                : key === "EventParticipant"
-                                  ? "bg-purple-500"
-                                  : key === "EventFeedback"
-                                    ? "bg-pink-500"
-                                    : key === "Subscription"
-                                      ? "bg-teal-500"
-                                      : key === "EventReport"
-                                        ? "bg-indigo-500"
-                                        : key === "Conversation"
-                                          ? "bg-orange-500"
-                                          : key === "Message"
-                                            ? "bg-gray-400"
-                                            : key === "Notification"
-                                              ? "bg-cyan-500"
-                                              : "bg-gray-500"
+                                : key === "Contact"
+                                  ? "bg-amber-800"
+                                  : key === "EventParticipant"
+                                    ? "bg-purple-500"
+                                    : key === "EventFeedback"
+                                      ? "bg-pink-500"
+                                      : key === "Subscription"
+                                        ? "bg-teal-500"
+                                        : key === "EventReport"
+                                          ? "bg-indigo-500"
+                                          : key === "Conversation"
+                                            ? "bg-orange-500"
+                                            : key === "Message"
+                                              ? "bg-gray-400"
+                                              : key === "Notification"
+                                                ? "bg-cyan-500"
+                                                : "bg-gray-500"
                       }`}
                       style={{ width: isLoaded ? calculateBarWidth(count) : "0%" }}
                     ></div>
