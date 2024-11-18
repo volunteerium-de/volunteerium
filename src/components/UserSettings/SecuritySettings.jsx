@@ -92,7 +92,7 @@ const SecuritySettings = () => {
               />
             </div>
             <button
-              className="flex-shrink-0 mx-2 sm:w-[15%] w-[10%] text-[0.9rem]  px-3 sm:py-1.5 py-2 items-center rounded border border-primary-green hover:bg-primary-green/60 bg-primary-green dark:text-white"
+              className="flex-shrink-0 mx-2 sm:w-[15%] w-[10%] text-[0.9rem]  px-3 sm:py-1.5 py-2 items-center rounded border border-primary-green hover:bg-primary-green/60 bg-primary-green text-white"
               onClick={() => {
                 if (isEditingName) {
                   handleSaveChanges("name")
@@ -183,8 +183,18 @@ const SecuritySettings = () => {
             ? t(translations.secSett.delAlert1)
             : t(translations.secSett.delAlert2)}
         </p>
-        <div onClick={() => openDeleteModal()} className="text-center">
-          <button className="bg-danger w-[70%] py-2 px-4 rounded my-[50px] duration-200 hover:bg-danger/60">
+        <div className="text-center">
+          <button
+            className={`w-[70%] py-2 px-4 rounded my-[50px] duration-200 ${
+              currentUser.userType === "admin"
+                ? "bg-dark-gray-1 cursor-not-allowed"
+                : "bg-danger hover:bg-danger/60"
+            }`}
+            onClick={() => {
+              if (currentUser.userType !== "admin") openDeleteModal()
+            }}
+            disabled={currentUser.userType === "admin"}
+          >
             <p className="text-[0.9rem] sm:text-[1rem] text-white">
               {t(translations.secSett.userRes)}
             </p>

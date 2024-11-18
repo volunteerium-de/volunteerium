@@ -323,7 +323,7 @@
     "newPsw": "New Password",
     "confirmPsw": "Confirm Password",
     "cancel": "Cancel",
-    "saveChng": "Save Changes"
+    "saveChng": "Save"
   },
   "profileSettings": {
     "p": "Invalid user type"
