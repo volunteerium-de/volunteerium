@@ -15,6 +15,7 @@ import { useTranslation } from "react-i18next"
 import { translations } from "../locales/translations"
 import useEventCall from "../hooks/useEventCall"
 import SelectInput from "../components/ui/Selects/SelectInput"
+import useLanguage from "../hooks/useLanguages"
 
 // Validation schema
 const IndividualSchema = Yup.object({
@@ -34,6 +35,8 @@ const SetupIndividual = () => {
   const { categories } = useSelector((state) => state.search)
   const { getEventCategories } = useEventCall()
   const { userDetailsId } = user
+  const { getTranslatedCategory } = useLanguage();
+
 
   const defaultUserDetails = {
     gender: userDetailsId?.gender || "",
@@ -249,7 +252,7 @@ const SetupIndividual = () => {
                           }
                         }}
                       >
-                        {category.name}
+                       {getTranslatedCategory(category.name)}
                       </button>
                     ))}
                   </div>
