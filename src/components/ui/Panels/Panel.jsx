@@ -9,7 +9,6 @@ import InterestsTable from "../../AdminPanel/interests/InterestsTable"
 import { FaCirclePlus } from "react-icons/fa6"
 import { translations } from "../../../locales/translations"
 import { useTranslation } from "react-i18next"
-import toastNotify from "../../../utils/toastNotify"
 import useEventCall from "../../../hooks/useEventCall"
 
 const Panel = ({ title, fetchUrl, TableComponent }) => {
@@ -61,6 +60,10 @@ const Panel = ({ title, fetchUrl, TableComponent }) => {
       refreshData() // Load data on initial mount
     }
   }, [currentPage])
+
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
 
   // Conditionally pass setData only to SubscriptionsTable
   const renderTableComponent = () => {

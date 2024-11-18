@@ -781,6 +781,45 @@ export const translations = {
     yes: "adminPanel.yes",
     no: "adminPanel.no",
     cancel: "adminPanel.cancel",
+
+    statistics: {
+      statisticsPanel: {
+        title: "adminPanel.statistics.statisticsPanel.title",
+      },
+      statisticsBars: {
+        User: "adminPanel.statistics.statisticsBars.users",
+        Event: "adminPanel.statistics.statisticsBars.events",
+        EventParticipant: "adminPanel.statistics.statisticsBars.eventParticipants",
+        EventFeedback: "adminPanel.statistics.statisticsBars.eventFeedbacks",
+        EventReport: "adminPanel.statistics.statisticsBars.eventReports",
+        Interest: "adminPanel.statistics.statisticsBars.interests",
+        Address: "adminPanel.statistics.statisticsBars.addresses",
+        Document: "adminPanel.statistics.statisticsBars.documents",
+        Contact: "adminPanel.statistics.statisticsBars.contacts",
+        Subscription: "adminPanel.statistics.statisticsBars.subscriptions",
+        Conversation: "adminPanel.statistics.statisticsBars.conversations",
+        Message: "adminPanel.statistics.statisticsBars.messages",
+        noStatistics: "adminPanel.statistics.statisticsBars.noStatistics",
+      },
+    },
+
+    dangerZone: {
+      title: "adminPanel.dangerZone.title",
+      importantWarning: "adminPanel.dangerZone.importantWarning",
+      resetDatabaseWarning: "adminPanel.dangerZone.resetDatabaseWarning",
+      databaseResetInfo: "adminPanel.dangerZone.databaseResetInfo",
+      databaseResetInfoList: {
+        first: "adminPanel.dangerZone.databaseResetInfoList.first",
+        second: "adminPanel.dangerZone.databaseResetInfoList.second",
+        third: "adminPanel.dangerZone.databaseResetInfoList.third",
+      },
+      resetDatabaseButton: "adminPanel.dangerZone.resetDatabaseButton",
+      resetDatabaseConfirm: "adminPanel.dangerZone.resetDatabaseConfirm",
+      invalidCode: "adminPanel.dangerZone.invalidCode",
+      sessionExpired: "adminPanel.dangerZone.sessionExpired",
+      confirmReset: "adminPanel.dangerZone.confirmReset",
+    },
+
     contacts: {
       contactPanel: {
         title: "adminPanel.contacts.contactPanel.title",

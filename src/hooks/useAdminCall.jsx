@@ -19,7 +19,7 @@ const useAdminCall = () => {
         const { data } = await axiosWithBearer.get(url)
         return data
       } catch (error) {
-        console.error("Error:", error.response.data.message || error.message)
+        toastNotify("error", error.response.data.message || error.message)
       } finally {
         setLoading(false)
       }
@@ -107,6 +107,29 @@ const useAdminCall = () => {
     }
   }
 
+  const requestDatabaseReset = async () => {
+    try {
+      const { data } = await axiosWithBearer.get("administration/reset-database")
+      toastNotify("success", data.message)
+      return data.data
+    } catch (error) {
+      toastNotify("error", error?.response?.data?.message)
+    }
+  }
+
+  const resetDatabase = async (email, resetToken, code) => {
+    try {
+      const { data } = await axiosWithBearer.post("administration/reset-database", {
+        email,
+        resetDatabaseToken: resetToken,
+        resetCode: code,
+      })
+      toastNotify("success", data.message)
+    } catch (error) {
+      toastNotify("error", error?.response?.data?.message)
+    }
+  }
+
   return {
     loading,
     fetchAllData,
@@ -114,6 +137,8 @@ const useAdminCall = () => {
     postData,
     updateData,
     deleteData,
+    requestDatabaseReset,
+    resetDatabase,
   }
 }
 

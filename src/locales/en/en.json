@@ -746,6 +746,44 @@
     "no": "No",
     "cancel": "Cancel",
 
+    "statistics": {
+      "statisticsPanel": {
+        "title": "Statistics"
+      },
+      "statisticsBars": {
+        "users": "Users",
+        "events": "Events",
+        "eventParticipants": "E. Participants",
+        "eventFeedbacks": "E. Feedbacks",
+        "eventReports": "E. Reports",
+        "interests": "Interests",
+        "addresses": "Addresses",
+        "documents": "Documents",
+        "contacts": "Contacts",
+        "subscriptions": "Subscriptions",
+        "conversations": "Conversations",
+        "messages": "Messages",
+        "noStatistics": "No Statistics Found"
+      }
+    },
+
+    "dangerZone": {
+      "title": "Danger Zone",
+      "importantWarning": "Important Warning!",
+      "resetDatabaseWarning": "Resetting the database is a critical operation that will delete all data permanently. This action cannot be undone. You will need to confirm the reset to proceed.",
+      "databaseResetInfo": "Database Reset Information",
+      "databaseResetInfoList": {
+        "first": "All data will be deleted except the admin account.",
+        "second": "This operation is irreversible.",
+        "third": "Please confirm only if you are absolutely sure you want to reset the database."
+      },
+      "resetDatabaseButton": "Reset Database",
+      "resetDatabaseConfirm": "Confirm Database Reset",
+      "invalidCode": "Please enter a valid code.",
+      "sessionExpired": "Your session has expired. Please try again.",
+      "confirmReset": "Confirm Reset"
+    },
+
     "contacts": {
       "contactPanel": {
         "title": "Contacts"
