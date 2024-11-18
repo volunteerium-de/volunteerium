@@ -52,7 +52,7 @@ const SearchBar = () => {
   ]
 
   const handleCategorySelect = (category) => {
-    dispatch(setHomeSelectedCategory(getTranslatedCategory(category.name)))
+    dispatch(setHomeSelectedCategory(category.name))
     dispatch(setCategoryFilters([category.name]))
     setIsDropdownOpen(false)
   }
@@ -122,22 +122,24 @@ const SearchBar = () => {
                 className="cursor-pointer text-[0.6rem] sm:text-[0.8rem] text-gray-2 p-1 rounded-md"
                 onClick={() => setIsDropdownOpen(!isDropdownOpen)}
               >
-                {homeSelectedCategory || t("searchbar.category.placeholder")}
+                {getTranslatedCategory(homeSelectedCategory) || t("searchbar.category.placeholder")}
               </div>
               {isDropdownOpen && (
                 <ul
                   ref={dropdownRef}
                   className="absolute top-full mt-1 w-[8rem] sm:w-[12rem] bg-white dark:bg-dark-gray-3 border border-light-gray-1 dark:border-dark-gray-2 rounded-md shadow-lg z-10 max-h-28 overflow-y-auto text-gray-2  scrollbar"
                 >
-                  {categories?.map((category) => (
-                    <li
-                      key={category._id}
-                      className="p-2 text-[0.7rem] hover:bg-light-green hover:dark:bg-primary-green cursor-pointer dark:hover:text-white"
-                      onClick={() => handleCategorySelect(category)}
-                    >
-                      {getTranslatedCategory(category.name)}
-                    </li>
-                  ))}
+                  {categories
+                    ?.filter((cat) => cat.name !== homeSelectedCategory)
+                    .map((category) => (
+                      <li
+                        key={category._id}
+                        className="p-2 text-[0.6rem] sm:text-[0.8rem] hover:bg-light-green hover:dark:bg-primary-green cursor-pointer dark:hover:text-white"
+                        onClick={() => handleCategorySelect(category)}
+                      >
+                        {getTranslatedCategory(category.name)}
+                      </li>
+                    ))}
                 </ul>
               )}
             </div>
