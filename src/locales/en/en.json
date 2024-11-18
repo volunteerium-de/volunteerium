@@ -496,9 +496,12 @@
   "profileCard": {
     "attendEvents": "Attended Events",
     "organizedEvents": "Organized Events",
+    "unfinishedEvents": "Unfinished Events",
+    "finishedEvents": "Finished Events",
     "p1": "No events found",
     "p2": "It seems there are no events at the moment.",
     "infoAlt": "Organizator Avatar",
+    "joining": "joining",
     "joined": "joined"
   },
   "sidebar": {
@@ -636,6 +639,8 @@
     "participants": "Participants",
     "volunteer": "volunteer",
     "joining": "joining",
+    "joined": "joined"
+  },
     "joined": "joined",
     "sidebarLabels": {
       "attendingEvents": "Attending Events",

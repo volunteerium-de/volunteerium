@@ -29,10 +29,12 @@ const useLanguage = () => {
   const getTranslatedCategory = (categoryName) => {
     let translatedCategory = categoryName
     if (i18n.language === "de") {
-      translatedCategory = categories_translations.filter(
+      const matchedCategory = categories_translations.find(
         (category) => category.enName.toLowerCase() === categoryName.toLowerCase()
       )
-      return translatedCategory[0].deName
+      if (matchedCategory) {
+        return matchedCategory.deName
+      }
     }
     return translatedCategory
   }

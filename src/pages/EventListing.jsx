@@ -122,10 +122,13 @@ const EventsListingPage = () => {
     }
 
     if (categoryFilters.length > 0) {
+      const uniqueCategories = Array.from(
+        new Set(categoryFilters.map((cat) => getTranslatedCategory(cat)))
+      )
       resultParts.push(
         renderFilterMessagePart(
           `${t(translations.eventsPage.category)}`,
-          categoryFilters.map((cat) => getTranslatedCategory(cat)).join(", ")
+          uniqueCategories.join(", ")
         )
       )
     }
