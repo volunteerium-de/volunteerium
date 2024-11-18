@@ -36,10 +36,10 @@ const Sidebar = ({
                     onClick={() => {
                       onEditAvatar()
                     }}
-                    className="mx-auto bg-white p-[2px] rounded text-center border border-primary-green gap-1 flex sm:translate-y-[-20px] sm:translate-x-[-20px] translate-x-[-10px] translate-y-[-20px]"
+                    className=" flex justify-center mx-auto text-center gap-1 sm:translate-y-[-25px] sm:translate-x-[-30px] translate-x-[-10px] translate-y-[-20px] sm:h-7 h-5 md:text-[0.8rem] text-[0.6rem] sm:px-2 px-1 sm:py-1 items-center rounded-lg border bg-primary-green text-white"
                   >
-                    <FaEdit className="text-primary-green" />
-                    <p className="text-[0.75rem] text-primary-green font-medium hidden sm:block">
+                    <FaEdit className="size-[10px]" />
+                    <p className="text-[0.75rem] font-medium hidden sm:block">
                       {t(translations.userSettings.edit)}
                     </p>
                   </button>

@@ -1,5 +1,5 @@
 {
-   "hero": {
+  "hero": {
     "imgAlt": "Homepage hero background image",
     "h2": "Become a part of something",
     "span": "bigger"
@@ -199,7 +199,6 @@
     "addPhoto": "Add Photo",
     "delete": "Delete"
   },
-
   "delModal": {
     "account-title": "Delete Account",
     "account-desc": "Are you sure you want to delete your account? This action cannot be undone.",
@@ -209,12 +208,11 @@
     "conversation-desc": "Are you sure you want to delete this conversation?",
     "cancelButton": "Cancel",
     "delButton": "Delete",
-    "deleteEventDesc":"Are you sure you want to delete this event?",
-    "leaveButton":"Leave",
-    "leaveEvent":"Leave Event",
-    "leaveEventDesc":"Are you sure you want to leave this event?"
+    "deleteEventDesc": "Are you sure you want to delete this event?",
+    "leaveButton": "Leave",
+    "leaveEvent": "Leave Event",
+    "leaveEventDesc": "Are you sure you want to leave this event?"
   },
-
   "indvSettings": {
     "success": "Data saved successfully!",
     "catchError": "Error saving data: ",
@@ -288,7 +286,7 @@
     "newPsw": "New Password",
     "confirmPsw": "Confirm Password",
     "cancel": "Cancel",
-    "saveChng": "Save Changes"
+    "saveChng": "Save "
   },
   "profileSettings": {
     "p": "Invalid user type"
@@ -299,7 +297,7 @@
     "h1": "Security Settings",
     "name": "Name",
     "namePH": "Name",
-    "p1": " Your full name is permanent for account integrity and cannot be changed!",
+    "p1": " Your name is permanent for account integrity and cannot be changed!",
     "orgName": "Organization Name",
     "orgNamePH": "Organization Name",
     "email": "Email",
@@ -309,7 +307,9 @@
     "delAccount": "Delete Account",
     "delAlert1": "Would you like to delete your account? Deleting your account will remove all the content associated with it.",
     "delAlert2": "Would you like to delete your organization? Deleting your organization will remove all the content associated with it.",
-    "userRes": "I want to delete my account"
+    "userRes": "I want to delete my account",
+    "edit": "Edit",
+    "save": "Save"
   },
   "updateDoc": {
     "error": "Error updating file.",
@@ -646,9 +646,8 @@
       "attendingEvents": "Attending Events",
       "organizedEvents": "Organized Events",
       "messages": "Messages"
-  }
- },
-
+    }
+  },
   "eventMng": {
     "addNew": "Add New Event",
     "eventName": "Event Name",
@@ -675,20 +674,16 @@
     "name": "Contact Name*",
     "email": "Contact Email*",
     "phone": "Contact Phone*",
-    "yes": "yes",
-    "no": "no",
-    "back": "back",
-    "submit": "submit",
+    "yes": "Yes",
+    "no": "No",
+    "back": "Back",
+    "submit": "Submit",
     "messages": {
       "messageInput": {
         "messagePH1": "As the organizer, only you can send messages to this group.",
         "messagePH2": "This space is reserved for announcements from the organizer only.",
         "messagePH3": "Type your message here...",
         "messagePH4": "Do you have a question about the event?"
-        "messageView": {
-          "startMsg": "Select a conversation to start messaging",
-          "you": "You"
-        }
       },
       "messageView": {
         "startMsg": "Select a conversation to start messaging",

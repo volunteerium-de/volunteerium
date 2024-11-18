@@ -208,10 +208,10 @@
     "conversation-desc": "Sind Sie sicher, dass Sie diese Konversation löschen möchten?",
     "cancelButton": "Stornieren",
     "delButton": "Löschen",
-    "deleteEventDesc":"Sind Sie sicher, dass Sie dieses Ereignis löschen möchten?",
-    "leaveButton":"Verlassen",
-    "leaveEvent":"Ereignis verlassen",
-    "leaveEventDesc":"Sind Sie sicher, dass Sie dieses Ereignis verlassen möchten?"
+    "deleteEventDesc": "Sind Sie sicher, dass Sie dieses Ereignis löschen möchten?",
+    "leaveButton": "Verlassen",
+    "leaveEvent": "Ereignis verlassen",
+    "leaveEventDesc": "Sind Sie sicher, dass Sie dieses Ereignis verlassen möchten?"
   },
   "indvSettings": {
     "success": "Daten erfolgreich gespeichert!",
@@ -286,7 +286,7 @@
     "newPsw": "Neues Passwort",
     "confirmPsw": "Passwort bestätigen",
     "cancel": "Abbrechen",
-    "saveChng": "Änderungen speichern"
+    "saveChng": "Speichern"
   },
   "profileSettings": {
     "p": "Ungültiger Benutzertyp"
@@ -297,7 +297,7 @@
     "h1": "Sicherheitseinstellungen",
     "name": "Name",
     "namePH": "Name",
-    "p1": "Ihr vollständiger Name ist für die Kontointegrität dauerhaft und kann nicht geändert werden!",
+    "p1": "Ihr Name ist für die Kontointegrität dauerhaft und kann nicht geändert werden!",
     "orgName": "Organisationsname",
     "orgNamePH": "Organisationsname",
     "email": "E-Mail",
@@ -307,7 +307,9 @@
     "delAccount": "Konto löschen",
     "delAlert1": "Möchten Sie Ihr Konto löschen? Das Löschen Ihres Kontos entfernt alle damit verbundenen Inhalte.",
     "delAlert2": "Möchten Sie Ihre Organisation löschen? Das Löschen Ihrer Organisation entfernt alle damit verbundenen Inhalte.",
-    "userRes": "Ich möchte mein Konto löschen"
+    "userRes": "Ich möchte mein Konto löschen",
+    "edit": "Bearbeiten",
+    "save": "Speichern"
   },
   "updateDoc": {
     "error": "Fehler beim Aktualisieren der Datei.",
@@ -614,6 +616,7 @@
       "option10": "Sonstiges"
     }
   },
+
   "eventManagement": {
     "addNewEvent": "Neues Event hinzufügen",
     "searchInput": "Suchen",
@@ -642,9 +645,10 @@
     "sidebarLabels": {
       "attendingEvents": "Teilnehmende Veranstaltungen",
       "organizedEvents": "Veranstaltungen Organisieren",
-      "messages": "Nachrichten" 
-  }
+      "messages": "Nachrichten"
+    }
   },
+
   "eventMng": {
     "addNew": "Neue Veranstaltung hinzufügen",
     "eventName": "Veranstaltungsname",
