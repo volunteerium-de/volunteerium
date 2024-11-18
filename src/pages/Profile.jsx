@@ -65,14 +65,21 @@ const Profile = () => {
   const [totalPages, setTotalPages] = useState(0)
   const { getTranslatedCategory } = useLanguageOptions()
 
+  const [organizedFilter, setOrganizedFilter] = useState("Unfinished Events")
+
   useEffect(() => {
     const fetchEvents = async () => {
       setLoading(true)
       try {
-        const query =
-          eventType === "Attended Events"
-            ? `events/participant/${userId}?page=${currentPage}`
-            : `events/?filter[createdBy]=${userId}&page=${currentPage}`
+        let query = `events/?filter[createdBy]=${userId}&page=${currentPage}`
+        if (eventType === "Attended Events") {
+          query = `events/participant/${userId}?sort[startDate]=desc&page=${currentPage}`
+        } else if (organizedFilter === "Finished Events") {
+          query += `&filter[isDone]=true&sort[startDate]=desc`
+        } else if (organizedFilter === "Unfinished Events") {
+          query += `&filter[isDone]=false&sort[startDate]=asc`
+        }
+
         const eventData = await getEvents(query)
         const { data } = await axiosWithPublic(`users/${userId}`)
         setUser(data.data)
@@ -92,7 +99,9 @@ const Profile = () => {
       }
     }
     fetchEvents()
-  }, [currentPage, eventType, t])
+  }, [currentPage, eventType, organizedFilter, t])
+
+  console.log(events)
 
   const pastEvents = events?.filter((event) => event.isDone) || []
   const approvedEvents =
@@ -150,7 +159,7 @@ const Profile = () => {
     },
     {
       icon: <BsGenderAmbiguous />,
-      description: gender,
+      description: gender?.charAt(0).toUpperCase() + gender?.slice(1).toLowerCase(),
     },
     {
       icon: <MdLanguage />,
@@ -181,7 +190,7 @@ const Profile = () => {
                 {_id === currentUser?._id && (
                   <button
                     onClick={() => navigate("/settings")}
-                    className="w-auto px-2 h-8 sm:h-[30px] text-[0.9375rem] rounded-md bg-primary-green text-white mt-4 sm:mt-8"
+                    className="w-auto px-2 h-8 sm:h-[30px] text-[0.9375rem] rounded-md bg-primary-green text-white mt-4 sm:mt-8 hover:bg-primary-green/60"
                   >
                     {t(translations.profile.edit)}
                   </button>
@@ -195,21 +204,23 @@ const Profile = () => {
                     : organizationName}
                 </h1>
                 <div className="flex">
-                  {medalInfo?.medal && (
-                    <h5 className={`italic font-semibold flex gap-1 mt-1 ${medalInfo.textClass}`}>
-                      {medalInfo.medal} {medalInfo.icon}
-                    </h5>
-                  )}
-                  <div className="relative inline-block group">
-                    <IoInformationCircleOutline className="absolute left-2 opacity-50 cursor-pointer group-hover:opacity-100" />
-                    <div className="absolute mb-2 top-7 -left-14 sm:-left-10 w-[281px] h-[140px] rounded-md bg-light-gray-2 text-white text-sm px-3 py-2 opacity-0 translate-y-4 transition-all duration-500 ease-in-out group-hover:opacity-100 group-hover:translate-y-0 font-semibold pointer-events-none group-hover:pointer-events-auto dark:bg-dark-gray-2 dark:text-dark-gray-2">
-                      {medalInfoText.map((item, i) => (
-                        <p key={i} className={item.className}>
-                          {item.label}
-                        </p>
-                      ))}
+                  {userType === "individual" && medalInfo?.medal && (
+                    <div className="flex">
+                      <h5 className={`italic font-semibold flex gap-1 mt-1 ${medalInfo.textClass}`}>
+                        {medalInfo.medal} {medalInfo.icon}
+                      </h5>
+                      <div className="relative inline-block group">
+                        <IoInformationCircleOutline className="absolute left-2 opacity-50 cursor-pointer group-hover:opacity-100" />
+                        <div className="absolute mb-2 top-7 -left-14 sm:-left-10 w-[281px] h-[140px] rounded-md bg-light-gray-2 text-white text-sm px-3 py-2 opacity-0 translate-y-4 transition-all duration-500 ease-in-out group-hover:opacity-100 group-hover:translate-y-0 font-semibold pointer-events-none group-hover:pointer-events-auto dark:bg-dark-gray-2 dark:text-dark-gray-2">
+                          {medalInfoText.map((item, i) => (
+                            <p key={i} className={item.className}>
+                              {item.label}
+                            </p>
+                          ))}
+                        </div>
+                      </div>
                     </div>
-                  </div>
+                  )}
                 </div>
                 {/* Info */}
                 <div className="pt-2 sm:mt-4">
@@ -287,7 +298,7 @@ const Profile = () => {
             </div>
             <div className="w-full max-w-full bg-light-gray rounded-b-md sm:rounded-md px-8 sm:px-2 lg:px-12 dark:bg-dark-gray-3 -mt-3 sm:mt-0">
               {eventType === "Attended Events" ? (
-                <div className="flex flex-col justify-between h-full">
+                <div className="flex flex-col justify-between min-h-[55vh] sm:h-full">
                   <ProfileCard
                     events={approvedEvents}
                     loading={loading}
@@ -295,6 +306,8 @@ const Profile = () => {
                     eventType={eventType}
                     setEventType={setEventType}
                     setCurrentPage={setCurrentPage}
+                    organizedFilter={organizedFilter}
+                    setOrganizedFilter={setOrganizedFilter}
                   />
                   {events.length > 0 && (
                     <Pagination
@@ -305,7 +318,7 @@ const Profile = () => {
                   )}
                 </div>
               ) : (
-                <div className="flex flex-col justify-between h-full">
+                <div className="flex flex-col justify-between min-h-[55vh] sm:h-full">
                   <ProfileCard
                     events={events}
                     loading={loading}
@@ -313,6 +326,8 @@ const Profile = () => {
                     eventType={eventType}
                     setEventType={setEventType}
                     setCurrentPage={setCurrentPage}
+                    organizedFilter={organizedFilter}
+                    setOrganizedFilter={setOrganizedFilter}
                   />
                   {events.length > 0 && (
                     <Pagination

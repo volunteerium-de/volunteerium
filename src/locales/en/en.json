@@ -24,13 +24,11 @@
     "loadingEvents": "Loading Upcomming Events...",
     "noEvents": "No Upcoming Events!"
   },
-
   "onlineOpportunities": {
     "title": "Online Events",
     "loadingEvents": "Loading Upcomming Events...",
     "noEvents": "No Upcoming Events!"
   },
-
   "getToKnowUs": {
     "h2": "Get to Know Us",
     "description1": "At Volunterium, our goal is to connect those who want to volunteer with those in need of support.",
@@ -119,7 +117,6 @@
     "or": "or",
     "contGoogle": "Continue with Google"
   },
-
   "password": {
     "forgotPassForm": {
       "backToLogin": "Back to login",
@@ -153,7 +150,6 @@
       "resend": "Resend"
     }
   },
-
   "profile": {
     "memberSince": "Member since",
     "edit": "Edit",
@@ -204,7 +200,6 @@
     "addPhoto": "Add Photo",
     "delete": "Delete"
   },
-
   "delModal": {
     "account-title": "Delete Account",
     "account-desc": "Are you sure you want to delete your account? This action cannot be undone.",
@@ -219,7 +214,6 @@
     "leaveEvent": "Leave Event",
     "leaveEventDesc": "Are you sure you want to leave this event?"
   },
-
   "indvSettings": {
     "success": "Data saved successfully!",
     "catchError": "Error saving data: ",
@@ -293,7 +287,7 @@
     "newPsw": "New Password",
     "confirmPsw": "Confirm Password",
     "cancel": "Cancel",
-    "saveChng": "Save Changes"
+    "saveChng": "Save "
   },
   "profileSettings": {
     "p": "Invalid user type"
@@ -304,7 +298,7 @@
     "h1": "Security Settings",
     "name": "Name",
     "namePH": "Name",
-    "p1": " Your full name is permanent for account integrity and cannot be changed!",
+    "p1": " Your name is permanent for account integrity and cannot be changed!",
     "orgName": "Organization Name",
     "orgNamePH": "Organization Name",
     "email": "Email",
@@ -314,7 +308,9 @@
     "delAccount": "Delete Account",
     "delAlert1": "Would you like to delete your account? Deleting your account will remove all the content associated with it.",
     "delAlert2": "Would you like to delete your organization? Deleting your organization will remove all the content associated with it.",
-    "userRes": "I want to delete my account"
+    "userRes": "I want to delete my account",
+    "edit": "Edit",
+    "save": "Save"
   },
   "updateDoc": {
     "error": "Error updating file.",
@@ -418,7 +414,6 @@
     "h1": "Frequently Asked Questions",
     "p1": "Find answers to commonly asked questions about Volunteerium"
   },
-
   "eventsPage": {
     "sec1": "Availability",
     "from": "From",
@@ -502,9 +497,12 @@
   "profileCard": {
     "attendEvents": "Attended Events",
     "organizedEvents": "Organized Events",
+    "unfinishedEvents": "Unfinished Events",
+    "finishedEvents": "Finished Events",
     "p1": "No events found",
     "p2": "It seems there are no events at the moment.",
     "infoAlt": "Organizator Avatar",
+    "joining": "joining",
     "joined": "joined"
   },
   "sidebar": {
@@ -618,7 +616,6 @@
       "option10": "Other"
     }
   },
-
   "eventManagement": {
     "addNewEvent": "Add new event",
     "searchInput": "Search",
@@ -650,7 +647,6 @@
       "messages": "Messages"
     }
   },
-
   "eventMng": {
     "addNew": "Add New Event",
     "eventName": "Event Name",
@@ -698,7 +694,6 @@
       "loading": "Loading..."
     }
   },
-
   "termsOfService": {
     "h1": "Terms of Service",
     "p1": "Published Date:",
@@ -783,6 +778,7 @@
       "sessionExpired": "Your session has expired. Please try again.",
       "confirmReset": "Confirm Reset"
     },
+
 
     "contacts": {
       "contactPanel": {

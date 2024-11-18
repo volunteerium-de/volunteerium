@@ -81,13 +81,13 @@ const UpcomingOpportunities = () => {
       {/* Latest Card Container */}
       <div className="max-w-[1840px] mx-auto w-[80%] sm:w-[90%] pb-8 font-poppins dark:text-white dark:black rounded-lg">
         {/* Header */}
-        <div className="flex justify-between flex-wrap mb-[5px]">
-          <h2 className="text-[1.5rem] font-semibold text-dark-gray-1 dark:text-white py-3">
+        <div className="flex flex-col min-[485px]:flex-row justify-between items-center flex-wrap mb-[5px]">
+          <h2 className="text-[1.3rem] font-semibold text-dark-gray-1 dark:text-gray-2 py-3 mb-5 sm:mb-0">
             {t(translations.upcomingOpp.title)}
           </h2>
           <Link
             to="/events"
-            className="text-primary-green font-medium pt-[10px] text-[0.9375rem] self-center leading-[1.66] ml-auto"
+            className="text-primary-green dark:text-gray-2 font-medium text-[0.9375rem] self-center leading-[1.66] ml-auto sm:pt-1"
           >
             {t(translations.upcomingOpp.discover)}
           </Link>
@@ -96,7 +96,7 @@ const UpcomingOpportunities = () => {
         <div className="relative rounded-lg">
           {/* Arrow Left */}
           <button
-            className={`absolute top-[calc(60%-25px)] left-[-40px] ${isLeftDisabled ? "hidden" : "block"}`}
+            className={`absolute top-[calc(60%-25px)] left-[-2.4rem] ${isLeftDisabled ? "hidden" : "block"}`}
             onClick={handleScrollLeft}
             disabled={isLeftDisabled}
           >
@@ -104,7 +104,7 @@ const UpcomingOpportunities = () => {
           </button>
           {/* Arrow Right */}
           <button
-            className={`absolute top-[calc(60%-25px)] right-[-40px] ${isRightDisabled ? "hidden" : "block"}`}
+            className={`absolute top-[calc(60%-25px)] right-[-2.4rem] ${isRightDisabled ? "hidden" : "block"}`}
             onClick={handleScrollRight}
             disabled={isRightDisabled}
           >
@@ -114,10 +114,10 @@ const UpcomingOpportunities = () => {
           <div
             id="opportunities"
             ref={sliderRef}
-            className="flex gap-x-4 overflow-x-auto scrollbar-hide items-start scroll-smooth px-2"
+            className="flex gap-x-4 overflow-x-auto scrollbar-hide items-start scroll-smooth"
           >
             {/* Map through event data */}
-            <div className="flex flex-row flex-grow gap-6 p-2 min-h-[200px] rounded-md">
+            <div className="flex flex-row flex-grow gap-6 py-2 min-h-[200px] rounded-md">
               {loading ? (
                 <div className="flex items-center gap-2">
                   <ImSpinner9 className="animate-spin text-primary-green" />

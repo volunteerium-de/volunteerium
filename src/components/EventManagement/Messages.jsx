@@ -91,7 +91,7 @@ const Messages = ({ conversations, currentUser }) => {
     const { createdBy, eventId: { createdBy: eventCreatorId } = {}, participantIds } = conversation
 
     const isAnnouncement = createdBy._id === eventCreatorId
-    const eventCreatorFullName = createdBy.fullName
+    const eventCreatorFullName = createdBy.fullName || createdBy.organizationName
 
     const conversationParticipant = participantIds.find(
       (participant) => participant !== eventCreatorId

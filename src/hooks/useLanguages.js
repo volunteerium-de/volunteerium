@@ -34,6 +34,7 @@ const useLanguage = () => {
         (category) => category.name.toLowerCase() === categoryName.toLowerCase()
       )
       return translatedCategory[0]?.nameDE || translatedCategory[0]?.name
+
     }
     return translatedCategory
   }

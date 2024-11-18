@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io"
 import Header from "../components/Header/Header"
 import { useTranslation } from "react-i18next"
@@ -42,6 +42,10 @@ const FAQuestion = () => {
   const toggleQuestion = (index) => {
     setOpenQuestion(openQuestion === index ? null : index)
   }
+
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, []) 
 
   return (
     <>
