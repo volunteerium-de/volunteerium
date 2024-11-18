@@ -24,13 +24,11 @@
     "loadingEvents": "Kommende Veranstaltungen werden geladen...",
     "noEvents": "Keine kommenden Veranstaltungen!"
   },
-
   "onlineOpportunities": {
     "title": "Online Veranstaltungen",
     "loadingEvents": "Lade bevorstehende Veranstaltungen...",
     "noEvents": "Keine bevorstehenden Veranstaltungen!"
   },
-
   "getToKnowUs": {
     "h2": "Lernen Sie uns kennen",
     "description1": "Bei Volunteerium ist es unser Ziel, die Freiwilligen mit denjenigen zu verbinden, die Unterstützung benötigen.",
@@ -119,7 +117,6 @@
     "or": "oder",
     "contGoogle": "Weiter mit Google"
   },
-
   "password": {
     "forgotPassForm": {
       "backToLogin": "Zurück zum Login",
@@ -154,7 +151,6 @@
       "resend": "Erneut senden"
     }
   },
-
   "profile": {
     "memberSince": "Mitglied seit",
     "edit": "Bearbeiten",
@@ -213,10 +209,10 @@
     "conversation-desc": "Sind Sie sicher, dass Sie diese Konversation löschen möchten?",
     "cancelButton": "Stornieren",
     "delButton": "Löschen",
-    "deleteEventDesc":"Sind Sie sicher, dass Sie dieses Ereignis löschen möchten?",
-    "leaveButton":"Verlassen",
-    "leaveEvent":"Ereignis verlassen",
-    "leaveEventDesc":"Sind Sie sicher, dass Sie dieses Ereignis verlassen möchten?"
+    "deleteEventDesc": "Sind Sie sicher, dass Sie dieses Ereignis löschen möchten?",
+    "leaveButton": "Verlassen",
+    "leaveEvent": "Ereignis verlassen",
+    "leaveEventDesc": "Sind Sie sicher, dass Sie dieses Ereignis verlassen möchten?"
   },
   "indvSettings": {
     "success": "Daten erfolgreich gespeichert!",
@@ -291,7 +287,7 @@
     "newPsw": "Neues Passwort",
     "confirmPsw": "Passwort bestätigen",
     "cancel": "Abbrechen",
-    "saveChng": "Änderungen speichern"
+    "saveChng": "Speichern"
   },
   "profileSettings": {
     "p": "Ungültiger Benutzertyp"
@@ -302,7 +298,7 @@
     "h1": "Sicherheitseinstellungen",
     "name": "Name",
     "namePH": "Name",
-    "p1": "Ihr vollständiger Name ist für die Kontointegrität dauerhaft und kann nicht geändert werden!",
+    "p1": "Ihr Name ist für die Kontointegrität dauerhaft und kann nicht geändert werden!",
     "orgName": "Organisationsname",
     "orgNamePH": "Organisationsname",
     "email": "E-Mail",
@@ -312,7 +308,9 @@
     "delAccount": "Konto löschen",
     "delAlert1": "Möchten Sie Ihr Konto löschen? Das Löschen Ihres Kontos entfernt alle damit verbundenen Inhalte.",
     "delAlert2": "Möchten Sie Ihre Organisation löschen? Das Löschen Ihrer Organisation entfernt alle damit verbundenen Inhalte.",
-    "userRes": "Ich möchte mein Konto löschen"
+    "userRes": "Ich möchte mein Konto löschen",
+    "edit": "Bearbeiten",
+    "save": "Speichern"
   },
   "updateDoc": {
     "error": "Fehler beim Aktualisieren der Datei.",
@@ -416,7 +414,6 @@
     "h1": "Häufig gestellte Fragen",
     "p1": "Finden Sie Antworten auf häufig gestellte Fragen zu Volunteerium"
   },
-
   "eventsPage": {
     "sec1": "Verfügbarkeit",
     "from": "Von",
@@ -449,6 +446,7 @@
     "saveContinue": "Speichern & Fortfahren"
   },
 
+
   "googleAuthFall": {
     "h1": "Authentifizierung fehlgeschlagen.",
     "h2": "Bitte versuchen Sie es erneut oder kontaktieren Sie den Support, wenn das Problem weiterhin besteht.",
@@ -460,7 +458,6 @@
     "h1": "Erfolgreich mit Google authentifiziert",
     "p": "Weiterleitung..."
   },
-
   "notFound": {
     "imgAlt": "Nicht gefunden",
     "p": "Seite nicht gefunden",
@@ -485,7 +482,6 @@
     "skip": "Überspringen",
     "finish": "Beenden"
   },
-
   "setupOrg": {
     "details": "Teilen Sie Ihre Organisationsdaten",
     "p": "Diese Informationen sind notwendig, damit wir Ihre Organisation verstehen und Ihnen bessere Dienstleistungen anbieten können",
@@ -509,16 +505,17 @@
     "countryPH": "Land eingeben",
     "finish": "Fertigstellen"
   },
-
   "profileCard": {
     "attendEvents": "Teilgenommene Veranstaltungen",
     "organizedEvents": "Organisierte Veranstaltungen",
+    "unfinishedEvents": "Unvollendete Veranstaltungen",
+    "finishedEvents": "Abgeschlossene Veranstaltungen",
     "p1": "Keine Veranstaltungen gefunden",
     "p2": "Es scheint, dass momentan keine Veranstaltungen verfügbar sind.",
     "infoAlt": "Organisator-Avatar",
-    "joined": "Beigetreten"
+    "joining": "beitreten",
+    "joined": "beigetreten"
   },
-
   "sidebar": {
     "welcome": "Wilkommen"
   },
@@ -577,7 +574,6 @@
     "p15": "Volunteerium-Team",
     "p16": "E-Mail: info.volunteerium@gmail.com"
   },
-
   "langSelect": {
     "lang": "Sprache",
     "PH": "Veranstaltungssprachen hinzufügen"
@@ -661,8 +657,8 @@
     "sidebarLabels": {
       "attendingEvents": "Teilnehmende Veranstaltungen",
       "organizedEvents": "Veranstaltungen Organisieren",
-      "messages": "Nachrichten" 
-  }
+      "messages": "Nachrichten"
+    }
   },
 
   "eventMng": {
@@ -712,7 +708,6 @@
       "loading": "Laden..."
     }
   },
-
   "termsOfService": {
     "header": "Nutzungsbedingungen",
     "publishedDate": "Veröffentlichungsdatum:",
@@ -745,26 +740,92 @@
     "vTeam": "Volunteerium-Team",
     "email": "E-Mail: info.volunteerium@gmail.com"
   },
-
   "adminPanel": {
+    "search": "Suche",
+    "addNewInterest": "Neues Interesse Hinzufügen",
+    "interestNameEnglish": "Interessenname (Englisch)",
+    "interestNameGerman": "Interessenname (Deutsch)",
+    "addNewInterestPH": "Geben Sie den Interessenname auf Englisch ein",
+    "addNewInterestPHDE": "Geben Sie den Interessenname auf Deutsch ein",
+    "create": "Erstellen",
     "backButton": "Zurück",
     "activeUpper": "AKTIV",
     "active": "Aktiv",
-    "suspendedUpper": "GESPERRT",
-    "suspended": "Gesperrt",
+    "suspendedUpper": "SUSPENDIERT",
+    "suspended": "Suspendiert",
     "yes": "Ja",
     "no": "Nein",
     "cancel": "Abbrechen",
+
+    "statistics": {
+      "statisticsPanel": {
+        "title": "Statistiken"
+      },
+      "statisticsBars": {
+        "users": "Benutzer",
+        "events": "Veranstaltungen",
+        "eventParticipants": "V. Teilnehmer",
+        "eventFeedbacks": "V. Rückmeldungen",
+        "eventReports": "V. Berichte",
+        "interests": "Interessen",
+        "addresses": "Adressen",
+        "documents": "Dokumente",
+        "contacts": "Kontakte",
+        "subscriptions": "Abonnements",
+        "conversations": "Unterhaltungen",
+        "messages": "Nachrichten",
+        "noStatistics": "Keine Statistiken gefunden"
+      }
+    },
+
+    "dangerZone": {
+      "title": "Gefahrenzone",
+      "importantWarning": "Wichtiger Hinweis!",
+      "resetDatabaseWarning": "Das Zurücksetzen der Datenbank ist eine kritische Operation, die alle Daten dauerhaft löschen wird. Diese Aktion kann nicht rückgängig gemacht werden. Sie müssen das Zurücksetzen bestätigen, um fortzufahren.",
+      "databaseResetInfo": "Datenbank-Zurücksetzungsinformationen",
+      "databaseResetInfoList": {
+        "first": "Alle Daten werden gelöscht, mit Ausnahme des Admin-Kontos.",
+        "second": "Diese Operation ist irreversibel.",
+        "third": "Bitte bestätigen Sie nur, wenn Sie sich absolut sicher sind, dass Sie die Datenbank zurücksetzen möchten."
+      },
+      "resetDatabaseButton": "Datenbank zurücksetzen",
+      "resetDatabaseConfirm": "Bestätigen Sie das Zurücksetzen der Datenbank",
+      "invalidCode": "Bitte geben Sie einen gültigen Code ein.",
+      "sessionExpired": "Ihre Sitzung ist abgelaufen. Bitte versuchen Sie es erneut.",
+      "confirmReset": "Zurücksetzen bestätigen"
+    },
+
 
     "contacts": {
       "contactPanel": {
         "title": "Kontakte"
       },
       "contactTable": {
-        "header": "Kontakttabelle"
+        "contactId": "Kontakt-ID",
+        "contactIdDL": "Kont.-ID",
+        "name": "Name",
+        "nameDL": "Name",
+        "mail": "E-Mail",
+        "mailDL": "E-Mail",
+        "subject": "Subject",
+        "subjectDL": "Subject",
+        "createdAt": "Erstellt am",
+        "createdAtDL": "Erstellt am",
+        "noContacts": "Keine Kontakte gefunden"
       },
       "singleContactPanel": {
-        "contactId": "Kontakt-ID"
+        "contactId": "Kontakt-ID",
+        "contactInfo": "Kontaktinformationen",
+        "name": "Name",
+        "email": "E-Mail-Adresse",
+        "createdAt": "Erstellt am",
+        "lastUpdatedAt": "Zuletzt aktualisiert am",
+        "contactDetails": "Kontaktdetails",
+        "subject": "Betreff",
+        "message": "Nachricht",
+        "noContacts": "Keine Kontakte gefunden",
+        "deleteContact": "Kontakt löschen",
+        "deleteDescription": "Sind Sie sicher, dass Sie diesen Kontakt löschen möchten?"
       }
     },
     "events": {
@@ -772,16 +833,16 @@
         "title": "Veranstaltungen"
       },
       "eventsTable": {
-        "eventId": "Veranstaltungs-ID",
-        "eventIdDL": "Veranstaltungs-ID",
+        "eventId": "Veranstalt.-ID",
+        "eventIdDL": "V.-ID",
         "status": "Status",
-        "statusDL": "Veranstaltungsstatus",
+        "statusDL": "Veranst. Status",
         "completion": "Abschluss",
         "completionDL": "Abschlussstatus",
         "completed": "Abgeschlossen",
         "waiting": "Warten",
-        "eventTitle": "Veranstaltungstitel",
-        "eventTitleDL": "Veranstaltungstitel",
+        "eventTitle": "Veranstalt.-Titel",
+        "eventTitleDL": "V. Titel",
         "eventCreator": "Veranstalter",
         "eventCreatorDL": "Veranstalter",
         "attendants": "Teilnehmer",
@@ -790,23 +851,25 @@
         "noEvents": "Keine Veranstaltungen gefunden"
       },
       "singleEventPanel": {
-        "eventId": "Veranstaltungs-ID:",
+        "eventId": "V.-ID:",
+        "active": "ACTIV",
+        "suspended": "SUSPENDIERT",
         "eventDetails": "Veranstaltungsdetails",
         "eventPhotoAlt": "Veranstaltungsfoto",
-        "eventName": "Veranstaltungsname: ",
-        "eventDescription": "Veranstaltungsbeschreibung: ",
-        "eventCreator": "Veranstalter: ",
-        "startDate": "Startdatum: ",
-        "endDate": "Enddatum: ",
-        "contactName": "Kontaktname: ",
+        "eventName": "Veranstaltungsname",
+        "eventDescription": "Veranstaltungsbeschreibung",
+        "eventCreator": "Veranstalter",
+        "startDate": "Startdatum",
+        "endDate": "Enddatum",
+        "contactName": "Kontaktname",
         "contactEmail": "Kontakt-E-Mail",
         "contactPhone": "Kontakt-Telefon",
         "languages": "Sprachen",
         "interests": "Interessen",
-        "onlineEvent": "Online-Veranstaltung: ",
-        "eventLocation": "Veranstaltungsort: ",
-        "documents": "Dokumente: ",
-        "documentId": "Dokumenten-ID: ",
+        "onlineEvent": "Online-Veranstaltung",
+        "eventLocation": "Veranstaltungsort",
+        "documents": "Dokumente",
+        "documentId": "Dokumenten-ID",
         "eventParticipants": "Veranstaltungsteilnehmer",
         "participantId": "Teilnehmer-ID",
         "participantIdDL": "Teilnehmer-ID",
@@ -825,60 +888,129 @@
         "joinDate": "Beitrittsdatum",
         "noParticipantYet": "Noch kein Teilnehmer",
         "deleteEvent": "Veranstaltung löschen",
-        "desc": "Sind Sie sicher, dass Sie diese Veranstaltung löschen möchten?"
+        "desc": "Sind Sie sicher, dass Sie diese Veranstaltung löschen möchten?",
+        "noEvent": "Keine Veranstaltung gefunden"
       }
     },
     "feedbacks": {
       "feedbacksPanel": {
-        "title": "Veranstaltungsfeedback"
+        "title": "V. Rückmeldungen"
       },
       "feedbacksTable": {
-        "header": "Feedback-Tabelle"
+        "title": "Veranstaltungstitel",
+        "name": "Name",
+        "email": "E-Mail",
+        "rating": "Bewertung",
+        "createdAt": "Erstellt am",
+        "noFeedbacks": "Keine Rückmeldungen gefunden"
       },
       "singleFeedbackPanel": {
-        "feedbackId": "Feedback-ID "
+        "feedbackId": "Feedback-ID",
+        "feedbackInfo": "Feedback-Informationen",
+        "title": "Titel",
+        "eventId": "Veranstaltungs-ID",
+        "email": "E-Mail-Adresse",
+        "name": "Name",
+        "createdAt": "Erstellt am",
+        "lastUpdatedAt": "Zuletzt aktualisiert am",
+        "feedbackDetails": "Feedback-Details",
+        "rating": "Bewertung",
+        "feedback": "Feedback",
+        "noFeedbacks": "Keine Feedback gefunden",
+        "deleteFeedback": "Feedback löschen",
+        "deleteDescription": "Sind Sie sicher, dass Sie dieses Feedback löschen möchten?"
       }
     },
     "reports": {
       "reportsPanel": {
-        "title": "Veranstaltungsberichte"
+        "title": "V. Berichte"
       },
       "reportsTable": {
-        "header": "Berichtstabelle"
+        "reportId": "Bericht-ID",
+        "reportType": "Berichtstyp",
+        "reportedBy": "Gemeldet von",
+        "reportedByDL": "Gemeldet v.",
+        "eventId": "Veranstaltungs-ID",
+        "eventIdDL": "Veranst.-ID",
+        "createdAt": "Erstellt am",
+        "noReports": "Keine Berichte gefunden"
       },
       "singleReportPanel": {
-        "reportId": "Bericht-ID "
+        "reportId": "Bericht-ID",
+        "reportInfo": "Berichtsinformationen",
+        "reportType": "Berichtstyp",
+        "reportedBy": "Gemeldet von",
+        "guest": "Gastbenutzer",
+        "eventId": "Veranstaltungs-ID",
+        "createdAt": "Erstellt am",
+        "lastUpdatedAt": "Zuletzt aktualisiert am",
+        "reportDetails": "Bericht Details",
+        "content": "Inhalt",
+        "noReport": "Kein Bericht gefunden",
+        "deleteReport": "Bericht löschen",
+        "deleteDescription": "Möchten Sie diesen Bericht wirklich löschen?"
+      }
+    },
+    "subscriptions": {
+      "subscriptionsPanel": {
+        "title": "Abonnements"
+      },
+      "subscriptionsTable": {
+        "subscriptionsId": "Abonnement ID",
+        "subscriptionsIdDL": "Abonn. ID",
+        "email": "Email",
+        "subscripedAt": "Abonniert am",
+        "noSubscriptionsFound": "Keine Abonnements gefunden",
+        "deleteSubscription": "Abonnement löschen",
+        "deleteDescription": "Sind Sie sicher, dass Sie dieses Abonnement löschen möchten?"
+      }
+    },
+    "interests": {
+      "interestsPanel": {
+        "title": "Interessen"
+      },
+      "interestsTable": {
+        "interestsId": "Interesse ID",
+        "name": "Name",
+        "createdAt": "Erstellt am",
+        "updatedAt": "Aktualisiert am",
+        "actions": "Aktionen",
+        "noSubscriptionsFound": "Keine Interesse gefunden",
+        "deleteInterest": "Interesse löschen",
+        "deleteDescription": "Möchten Sie dieses Interesse wirklich löschen?"
       }
     },
     "users": {
       "singleUserPanel": {
-        "userId": "Benutzer-ID: ",
+        "userId": "B.-ID: ",
         "userInformations": "Benutzerinformationen",
         "fullName": "Vollname",
         "orgName": "Organisation Name",
-        "userType": "Benutzertyp: ",
-        "emailAddress": "E-Mail-Adresse: ",
-        "createdAt": "Erstellt am: ",
-        "lastUpdatedAt": "Zuletzt aktualisiert am: ",
+        "userType": "Benutzertyp",
+        "emailAddress": "E-Mail-Adresse",
+        "createdAt": "Erstellt am",
+        "lastUpdatedAt": "Zuletzt aktualisiert am",
         "userDetails": "Benutzerdetails",
-        "fullNameDisplay": "Vollständiger Name: ",
-        "profileSetup": "Profil eingerichtet: ",
-        "emailVerified": "E-Mail verifiziert: ",
-        "languages": "Sprachen: ",
-        "interests": "Interessen: ",
-        "address": "Adresse: ",
-        "documents": "Dokumente: ",
-        "documentId": "Dokumenten-ID: ",
+        "fullNameDisplay": "Vollständiger Name",
+        "profileSetup": "Profil eingerichtet",
+        "emailVerified": "E-Mail verifiziert",
+        "languages": "Sprachen",
+        "interests": "Interessen",
+        "address": "Adresse",
+        "documents": "Dokumente",
+        "documentId": "Dokumenten-ID",
         "noUserFound": "Kein Benutzer gefunden",
         "deleteUser": "Benutzer löschen",
-        "deleteDescription": "Möchten Sie diesen Benutzer wirklich löschen?"
+        "deleteDescription": "Möchten Sie diesen Benutzer wirklich löschen?",
+        "suspendUser": "Benutzer suspendieren",
+        "unsuspendUser": "Benutzer entsuspendieren"
       },
       "usersPanel": {
         "title": "Benutzer"
       },
       "usersTable": {
         "userId": "Benutzer-ID",
-        "userIdDL": "Benutzer-ID",
+        "userIdDL": "Be.-ID",
         "status": "Status",
         "statusDL": "Benutzerstatus",
         "userType": "Benutzertyp",
@@ -894,7 +1026,6 @@
       }
     }
   },
-
   "adminPanelPage": {
     "eventLabel": "Veranstaltungen",
     "userLabel": "Benutzer",
@@ -902,7 +1033,6 @@
     "feedbackLabel": "Feedbacks",
     "reportLabel": "Berichte"
   },
-
   "yup": {
     "required": {
       "userType": "Benutzertyp ist erforderlich!",
@@ -983,5 +1113,6 @@
     "enterMessage": "Bitte geben Sie eine Nachricht ein.",
     "idMissing": "Event-ID oder Teilnehmer-ID fehlen.",
     "setupProfile": "Bitte richten Sie Ihre Profildaten ein, um fortzufahren."
+
   }
 }

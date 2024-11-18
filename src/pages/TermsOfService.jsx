@@ -1,10 +1,13 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Header from "../components/Header/Header";
 import { useTranslation } from 'react-i18next';
 import { translations } from '../locales/translations';
 
 const TermsOfService = () => {
   const { t } = useTranslation();
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
   return (
     <div className="font-poppins bg-white dark:bg-black text-gray-2 dark:text-light-gray min-h-screen">
       <Header />

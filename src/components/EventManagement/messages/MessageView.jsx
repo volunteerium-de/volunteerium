@@ -23,7 +23,6 @@ const MessageView = ({
       onBackClick()
     }
   }
-  console.log(conversations)
 
   return (
     <>
@@ -76,7 +75,7 @@ const MessageView = ({
                         />
                       </div>
                       <p
-                        className={`text-xs mt-[1px] ${
+                        className={`text-xs mt-0.5 ${
                           message.senderId._id === currentUser._id
                             ? "text-light-gray-2"
                             : "text-dark-gray-3"

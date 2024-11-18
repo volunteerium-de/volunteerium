@@ -10,6 +10,7 @@ import { translations } from "../../locales/translations"
 import useChatCall from "../../hooks/useChatCall"
 import i18n from "../../i18n"
 import { enUS, de } from "date-fns/locale"
+import { formatConversation } from "../../helpers/formatConversations"
 
 const MessageMenu = () => {
   const { t } = useTranslation()
@@ -82,6 +83,8 @@ const MessageMenu = () => {
     markAsRead(conversationId)
   }
 
+  const sortedConversations = formatConversation(conversations)
+
   return (
     <div className="" ref={menuRef}>
       <div
@@ -115,9 +118,10 @@ const MessageMenu = () => {
 
           {/* Message List */}
           <div className="max-h-80 overflow-y-auto">
-            {conversations &&
-            conversations.filter(({ messageIds }) => messageIds && messageIds.length > 0).length ? (
-              conversations
+            {sortedConversations &&
+            sortedConversations.filter(({ messageIds }) => messageIds && messageIds.length > 0)
+              .length ? (
+              sortedConversations
                 .filter(({ messageIds }) => messageIds && messageIds.length > 0)
                 .map(({ _id, eventId, createdBy, messageIds }) => {
                   const { unreadCount, latestMessage } = getUnreadCountAndLatestMessage(messageIds)

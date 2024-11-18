@@ -12,7 +12,15 @@ import { formatName } from "../../../helpers/formatName.js"
 
 const defaultEventPhoto = eventPhoto
 
-const ProfileCard = ({ events, loading, eventType, setEventType, setCurrentPage }) => {
+const ProfileCard = ({
+  events,
+  loading,
+  eventType,
+  setEventType,
+  setCurrentPage,
+  organizedFilter,
+  setOrganizedFilter,
+}) => {
   const { t } = useTranslation()
   const navigate = useNavigate()
   const { getTranslatedCategory } = useLanguageOptions()
@@ -21,12 +29,11 @@ const ProfileCard = ({ events, loading, eventType, setEventType, setCurrentPage 
     <div className="py-4">
       <div className="flex gap-10 font-semibold text-xl my-4 text-dark-gray-1 text-center">
         <div
-          className={`text-[0.9375rem] cursor-pointer text-center border-b-2 ${
+          className={`text-[0.9375rem] cursor-pointer border-b-2 ${
             eventType === "Attended Events"
               ? "text-primary-green border-primary-green"
               : "border-transparent dark:text-white"
           }`}
-          disabled={eventType === "Organized Events"}
           onClick={() => {
             setEventType("Attended Events")
             setCurrentPage(1)
@@ -48,6 +55,37 @@ const ProfileCard = ({ events, loading, eventType, setEventType, setCurrentPage 
           {t(translations.profileCard.organizedEvents)}
         </div>
       </div>
+
+      {eventType === "Organized Events" && (
+        <div className="flex gap-4 font-medium text-sm my-2 text-dark-gray-1 text-center justify-end">
+          <button
+            className={`py-1 px-2 rounded-md ${
+              organizedFilter === "Unfinished Events"
+                ? "bg-primary-green text-white hover:bg-primary-green/60"
+                : "bg-light-gray-3 dark:bg-dark-gray-2 text-dark-gray-1 dark:text-white hover:bg-dark-gray-1/20 dark:hover:bg-dark-gray-1"
+            }`}
+            onClick={() => {
+              setOrganizedFilter("Unfinished Events")
+              setCurrentPage(1)
+            }}
+          >
+            {t("profileCard.unfinishedEvents")}
+          </button>
+          <button
+            className={`py-1 px-2 rounded-md ${
+              organizedFilter === "Finished Events"
+                ? "bg-primary-green text-white hover:bg-primary-green/60"
+                : "bg-light-gray-3 dark:bg-dark-gray-2 text-dark-gray-1 dark:text-white hover:bg-dark-gray-1/20 dark:hover:bg-dark-gray-1"
+            }`}
+            onClick={() => {
+              setOrganizedFilter("Finished Events")
+              setCurrentPage(1)
+            }}
+          >
+            {t("profileCard.finishedEvents")}
+          </button>
+        </div>
+      )}
 
       {!loading && (!events || events.length === 0) && (
         <div className="flex flex-col items-center justify-center h-[50vh]">
@@ -92,7 +130,7 @@ const ProfileCard = ({ events, loading, eventType, setEventType, setCurrentPage 
                 {/* Info */}
                 <div className="flex w-full sm:w-1/2 lg:w-3/5 my-2">
                   <div className="flex flex-col gap-2 justify-between w-[45vw] lg:w-full py-2 ml-4 sm:ml-0 text-[0.9375rem]">
-                    <h2 className="text-base md:text-xl font-semibold text-dark-gray-1 dark:text-white">
+                    <h2 className="text-base font-semibold text-dark-gray-1 dark:text-white">
                       {title}
                     </h2>
                     <div className="flex flex-col gap-2">
@@ -112,7 +150,7 @@ const ProfileCard = ({ events, loading, eventType, setEventType, setCurrentPage 
                         <span>
                           {`${eventType === "Attended Events" ? eventParticipantIds.length : approvedCount}/${maxParticipant}`}
                         </span>
-                        <p>{t(translations.profileCard.joined)}</p>
+                        <p> {t(translations.profileCard.joined)}</p>
                       </div>
                     </div>
                     {/* Interest */}

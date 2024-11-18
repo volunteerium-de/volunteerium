@@ -13,8 +13,11 @@ import { UserAvatar } from "../../ui/Avatar/userAvatar"
 import { formatDateWithTime } from "../../../helpers/formatDate"
 import useLanguage from "../../../hooks/useLanguages"
 import { LuMailPlus } from "react-icons/lu"
+import { useTranslation } from "react-i18next"
+import { translations } from "../../../locales/translations"
 
 const SingleUserPanel = ({ userId, setIdentifier }) => {
+  const { t } = useTranslation()
   const navigate = useNavigate()
   const [userData, setUserData] = useState(null)
   const [loading, setLoading] = useState(false)
@@ -23,14 +26,13 @@ const SingleUserPanel = ({ userId, setIdentifier }) => {
   const [isDeleteUserModalOpen, setIsDeleteUserModalOpen] = useState(false)
   const modalRef = useRef(null)
   const settingsButtonRef = useRef(null)
-  const { getLangName } = useLanguage()
+  const { getLangName, getTranslatedCategory } = useLanguage()
 
   const fetchUserData = async () => {
     setLoading(true)
     try {
       const data = await fetchSingleData("users", userId)
       setUserData(data)
-      console.log(data)
     } catch (error) {
       console.error(error)
     } finally {
@@ -107,7 +109,7 @@ const SingleUserPanel = ({ userId, setIdentifier }) => {
         className="absolute -top-8 left-0 md:-left-5 flex items-center gap-1 text-primary-green dark:text-white"
       >
         <IoIosArrowBack className="w-5 h-5" />
-        <span>Back</span>
+        <span> {t(translations.adminPanel.backButton)}</span>
       </button>
       <div>
         {loading ? (
@@ -119,7 +121,7 @@ const SingleUserPanel = ({ userId, setIdentifier }) => {
             <div className="flex justify-between items-center p-4 bg-white dark:bg-dark-gray-1 rounded-lg ">
               <div className="text-sm sm:text-[1.125rem] flex gap-1 md:gap-2 items-center text-dark-gray-1 me-3">
                 <span className="text-primary-green dark:text-white font-semibold w-[50px] sm:w-fit">
-                  User ID:
+                  {t(translations.adminPanel.users.singleUserPanel.userId)}:
                 </span>
                 <span className="w-[100px] md:w-auto overflow-x-scroll scrollbar-hide">
                   {userId}
@@ -134,11 +136,11 @@ const SingleUserPanel = ({ userId, setIdentifier }) => {
               <div className="flex gap-1 md:gap-2 items-center">
                 {userData?.isActive ? (
                   <span className="text-primary-green dark:bg-white text-md sm:text-xl border border-primary-green dark:border-white px-1 sm:px-2 py-1">
-                    ACTIVE
+                    {t(translations.adminPanel.activeUpper)}
                   </span>
                 ) : (
                   <span className="text-warning dark:bg-white text-md sm:text-xl border border-warning px-1 sm:px-2 py-1">
-                    SUSPENDED
+                    {t(translations.adminPanel.suspendedUpper)}
                   </span>
                 )}
                 <button ref={settingsButtonRef} onClick={handleSettingsButtonClick}>
@@ -149,7 +151,7 @@ const SingleUserPanel = ({ userId, setIdentifier }) => {
             <div className="flex flex-col xl:flex-row gap-2 h-full">
               <div className="bg-white dark:bg-dark-gray-1 rounded-lg w-full xl:w-1/2 p-4">
                 <h1 className="text-[1.125rem] font-semibold text-primary-green dark:text-white">
-                  User Informations
+                  {t(translations.adminPanel.users.singleUserPanel.userInformations)}
                 </h1>
                 <ul className="space-y-2 text-dark-gray-1 dark:text-light-gray-2">
                   <li className="flex justify-start my-4">
@@ -157,16 +159,23 @@ const SingleUserPanel = ({ userId, setIdentifier }) => {
                   </li>
                   <li className="flex gap-1 mt-4">
                     <span className="font-semibold">
-                      {userData?.userType === "individual" ? "Full Name:" : "Organization Name"}
+                      {userData?.userType === "individual"
+                        ? t(translations.adminPanel.users.singleUserPanel.fullName)
+                        : t(translations.adminPanel.users.singleUserPanel.orgName)}
+                      :
                     </span>
                     <span>{userData?.fullName || userData?.organizationName}</span>
                   </li>
                   <li className="flex gap-1">
-                    <span className="font-semibold">User Type:</span>
+                    <span className="font-semibold">
+                      {t(translations.adminPanel.users.singleUserPanel.userType)}:
+                    </span>
                     <span>{userData?.userType?.toUpperCase()}</span>
                   </li>
                   <li className="flex flex-col sm:flex-row gap-1">
-                    <span className="font-semibold">Email Address:</span>
+                    <span className="font-semibold">
+                      {t(translations.adminPanel.users.singleUserPanel.emailAddress)}:
+                    </span>
                     <a
                       href={`https://mail.google.com/mail/?view=cm&fs=1&to=${userData?.email}`}
                       target="_blank"
@@ -177,36 +186,60 @@ const SingleUserPanel = ({ userId, setIdentifier }) => {
                     </a>
                   </li>
                   <li className="flex flex-col sm:flex-row gap-1">
-                    <span className="font-semibold">Created At:</span>
+                    <span className="font-semibold">
+                      {t(translations.adminPanel.users.singleUserPanel.createdAt)}:
+                    </span>
                     <span>{formatDateWithTime(userData?.createdAt)}</span>
                   </li>
                   <li className="flex flex-col sm:flex-row gap-1">
-                    <span className="font-semibold">Last Updated At:</span>
+                    <span className="font-semibold">
+                      {t(translations.adminPanel.users.singleUserPanel.lastUpdatedAt)}:
+                    </span>
                     <span>{formatDateWithTime(userData?.updatedAt)}</span>
                   </li>
                 </ul>
               </div>
               <div className="bg-white dark:bg-dark-gray-1 rounded-lg w-full xl:w-1/2 p-4">
                 <h1 className="text-[1.125rem] font-semibold text-primary-green dark:text-white">
-                  User Details
+                  {t(translations.adminPanel.users.singleUserPanel.userDetails)}
                 </h1>
                 <ul className="space-y-2 text-dark-gray-1 dark:text-light-gray-2 mt-4">
                   {userData?.userType === "individual" && (
                     <li className="flex gap-1">
-                      <span className="font-semibold">Full Name Display:</span>
-                      <span>{userData?.userDetailsId?.isFullNameDisplay ? "Yes" : "No"}</span>
+                      <span className="font-semibold">
+                        {t(translations.adminPanel.users.singleUserPanel.fullNameDisplay)}:
+                      </span>
+                      <span>
+                        {userData?.userDetailsId?.isFullNameDisplay
+                          ? t(translations.adminPanel.yes)
+                          : t(translations.adminPanel.no)}
+                      </span>
                     </li>
                   )}
                   <li className="flex gap-1">
-                    <span className="font-semibold">Profile Setup:</span>
-                    <span>{userData?.userDetailsId?.isProfileSetup ? "Yes" : "No"}</span>
+                    <span className="font-semibold">
+                      {t(translations.adminPanel.users.singleUserPanel.profileSetup)}:
+                    </span>
+                    <span>
+                      {userData?.userDetailsId?.isProfileSetup
+                        ? t(translations.adminPanel.yes)
+                        : t(translations.adminPanel.no)}
+                    </span>
                   </li>
                   <li className="flex gap-1">
-                    <span className="font-semibold">Email Verified:</span>
-                    <span>{userData?.userDetailsId?.isEmailVerified ? "Yes" : "No"}</span>
+                    <span className="font-semibold">
+                      {t(translations.adminPanel.users.singleUserPanel.emailVerified)}:
+                    </span>
+                    <span>
+                      {userData?.userDetailsId?.isEmailVerified
+                        ? t(translations.adminPanel.yes)
+                        : t(translations.adminPanel.no)}
+                    </span>
                   </li>
                   <li className="flex flex-col sm:flex-row gap-1">
-                    <span className="font-semibold">Languages:</span>
+                    <span className="font-semibold">
+                      {t(translations.adminPanel.users.singleUserPanel.languages)}:
+                    </span>
                     <span>
                       {userData?.userDetailsId?.languages?.length > 0 &&
                         userData?.userDetailsId?.languages
@@ -216,22 +249,28 @@ const SingleUserPanel = ({ userId, setIdentifier }) => {
                     </span>
                   </li>
                   <li className="flex flex-col sm:flex-row gap-1">
-                    <span className="font-semibold">Interests:</span>
+                    <span className="font-semibold">
+                      {t(translations.adminPanel.users.singleUserPanel.interests)}:
+                    </span>
                     <span>
                       {userData?.userDetailsId?.interestIds.length > 0 &&
                         userData?.userDetailsId?.interestIds
-                          .map((interest) => interest.name)
+                          .map((interest) => getTranslatedCategory(interest.name))
                           .join(" , ")}
                     </span>
                   </li>
                   <li className="flex gap-1">
-                    <span className="font-semibold">Address:</span>
+                    <span className="font-semibold">
+                      {t(translations.adminPanel.users.singleUserPanel.address)}:
+                    </span>
                     <span>
-                      {`${userData?.userDetailsId?.addressId?.userDetailsId?.zipCode || ""} ${userData?.userDetailsId?.addressId?.city || ""} ${userData?.userDetailsId?.addressId?.country || ""}`}
+                      {`${userData?.userDetailsId?.addressId?.userDetailsId?.zipCode || ""} ${userData?.userDetailsId?.addressId?.city || ""}, ${userData?.userDetailsId?.addressId?.country || ""}`}
                     </span>
                   </li>
                   <li className="flex gap-1 flex-col">
-                    <span className="font-semibold">Documents: </span>
+                    <span className="font-semibold">
+                      {t(translations.adminPanel.users.singleUserPanel.documents)}:{" "}
+                    </span>
                     <span>
                       {userData?.documentIds?.length > 0 &&
                         userData?.documentIds.map((document) => {
@@ -247,7 +286,8 @@ const SingleUserPanel = ({ userId, setIdentifier }) => {
                                 - {document.title} <FaExternalLinkAlt />
                               </span>
                               <span className="text-xs text-gray-500">
-                                Document Id: {document._id}
+                                {t(translations.adminPanel.users.singleUserPanel.documentId)}:{" "}
+                                {document._id}
                               </span>
                             </div>
                           )
@@ -259,7 +299,7 @@ const SingleUserPanel = ({ userId, setIdentifier }) => {
             </div>
           </div>
         ) : (
-          <div>No User Found</div>
+          <div>{t(translations.adminPanel.users.singleUserPanel.noUserFound)}</div>
         )}
       </div>
       {isSettingsModalOpen && (
@@ -270,19 +310,21 @@ const SingleUserPanel = ({ userId, setIdentifier }) => {
                 onClick={openDeleteUserModal}
                 className="text-danger hover:text-danger/50 border-b dark:border-gray-2 hover:bg-light-gray-2 w-full py-2"
               >
-                Delete User
+                {t(translations.adminPanel.users.singleUserPanel.deleteUser)}
               </button>
               <button
                 onClick={handleSuspendEvent}
                 className="text-warning hover:text-warning/50 border-b dark:border-gray-2 hover:bg-light-gray-2 w-full py-2"
               >
-                {userData?.isActive ? "Suspend User" : "Unsuspend User"}
+                {userData?.isActive
+                  ? t(translations.adminPanel.users.singleUserPanel.suspendUser)
+                  : t(translations.adminPanel.users.singleUserPanel.unsuspendUser)}
               </button>
               <button
                 onClick={() => setIsSettingsModalOpen(false)}
                 className=" text-primary-green hover:text-primary-green/50 hover:bg-light-gray-2 w-full py-2"
               >
-                Cancel
+                {t(translations.adminPanel.cancel)}
               </button>
             </div>
           </div>
@@ -293,8 +335,8 @@ const SingleUserPanel = ({ userId, setIdentifier }) => {
         <DeleteModal
           onClose={closeDeleteUserModal}
           onDelete={handleDeleteEvent}
-          title={`Delete User`}
-          description={`Are you sure you want to delete this user?`}
+          title={t(translations.adminPanel.users.singleUserPanel.deleteUser)}
+          description={t(translations.adminPanel.users.singleUserPanel.deleteDescription)}
         />
       )}
     </div>

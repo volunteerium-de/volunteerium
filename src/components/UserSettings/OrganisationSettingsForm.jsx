@@ -9,7 +9,6 @@ import useAccountCall from "../../hooks/useAccountCall"
 import { FaExternalLinkAlt } from "react-icons/fa"
 import toastNotify from "../../utils/toastNotify"
 
-
 const OrganisationSettingsForm = () => {
   const { t } = useTranslation()
   const { currentUser } = useSelector((state) => state.auth)
@@ -18,20 +17,20 @@ const OrganisationSettingsForm = () => {
   const { updateUserDetails } = useAccountCall()
 
   // Validation Schema
-const OrganisationSchema = Yup.object().shape({
-  organizationName: Yup.string().required(t(translations.yup.required.organizationName)),
-  // organizationUrl: Yup.string().url("Please enter a valid URL"),
-  streetName: Yup.string().required(t(translations.yup.required.streetName)),
-  streetNumber: Yup.string().required(t(translations.yup.required.streetNumber)),
-  zipCode: Yup.string().required(t(translations.yup.required.zipCode)),
-  city: Yup.string().required(t(translations.yup.required.city)),
-  country: Yup.string().required(t(translations.yup.required.country)),
-  organizationDesc: Yup.string().max(250, t(translations.yup.maxLength.characters250)),
-})
+  const OrganisationSchema = Yup.object().shape({
+    // organizationName: Yup.string().required(t(translations.yup.required.organizationName)),
+    // organizationUrl: Yup.string().url("Please enter a valid URL"),
+    streetName: Yup.string().required(t(translations.yup.required.streetName)),
+    streetNumber: Yup.string().required(t(translations.yup.required.streetNumber)),
+    zipCode: Yup.string().required(t(translations.yup.required.zipCode)),
+    city: Yup.string().required(t(translations.yup.required.city)),
+    country: Yup.string().required(t(translations.yup.required.country)),
+    organizationDesc: Yup.string().max(250, t(translations.yup.maxLength.characters250)),
+  })
 
   const { userDetailsId } = currentUser
   const defaultUserDetails = {
-    organizationName: currentUser.organizationName || "",
+    // organizationName: currentUser.organizationName || "",
     organizationUrl: userDetailsId.organizationUrl || "",
     streetName: userDetailsId.addressId?.streetName || "",
     streetNumber: userDetailsId.addressId?.streetNumber || "",
@@ -47,12 +46,12 @@ const OrganisationSchema = Yup.object().shape({
   }, [currentUser])
 
   const fields = [
-    {
-      name: "organizationName",
-      label: t(translations.orgSettings.label1),
-      placeholder: t(translations.orgSettings.label1PH),
-      type: "text",
-    },
+    // {
+    //   name: "organizationName",
+    //   label: t(translations.orgSettings.label1),
+    //   placeholder: t(translations.orgSettings.label1PH),
+    //   type: "text",
+    // },
     {
       name: "organizationUrl",
       label: t(translations.orgSettings.label2),
@@ -164,7 +163,7 @@ const OrganisationSchema = Yup.object().shape({
                   id="organizationDesc"
                   name="organizationDesc"
                   placeholder={t(translations.orgSettings.label8PH)}
-                  className="w-full h-[100px] p-2 border border-gray-1 rounded focus:outline-none focus:border-primary-green"
+                  className="w-full h-[100px] p-2 border border-gray-1 rounded focus:outline-none focus:border-primary-green resize-none"
                 />
                 <ErrorMessage
                   name="organizationDesc"
@@ -190,7 +189,7 @@ const OrganisationSchema = Yup.object().shape({
                   </p>
                 </div>
 
-                <div className="max-h-[200px] overflow-y-auto p-2 border border-gray-1 rounded focus:outline-none focus:border-primary-green">
+                <div className="max-h-[150px] overflow-y-auto scrollbar p-2 border border-gray-1 rounded focus:outline-none focus:border-primary-green text-blue-400 dark:text-blue-200 bg-light-gray dark:bg-dark-gray-2">
                   {certificates.length === 0 ? (
                     <p className="dark:text-white">{t(translations.indvSettings.label10)}</p>
                   ) : (
@@ -219,7 +218,7 @@ const OrganisationSchema = Yup.object().shape({
                   onClick={() => {
                     resetForm({ values: defaultUserDetails })
                   }}
-                  className="bg-danger flex-1 py-2 px-4 text-[1rem] text-white rounded hover:bg-danger/20"
+                  className="bg-danger flex-1 py-2 px-4 text-[1rem] text-white rounded hover:bg-danger/60"
                 >
                   {t(translations.indvSettings.reset)}
                 </button>
@@ -227,7 +226,7 @@ const OrganisationSchema = Yup.object().shape({
                 <button
                   type="submit"
                   onClick={() => setTimeout(() => console.log("Button clicked"), 0)}
-                  className="bg-primary-green flex-1 py-2 px-4 text-[1rem] text-white rounded hover:bg-light-green"
+                  className="bg-primary-green flex-1 py-2 px-4 text-[1rem] text-white rounded hover:bg-primary-green/60"
                 >
                   {t(translations.orgSettings.save)}
                 </button>
