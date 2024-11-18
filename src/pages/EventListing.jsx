@@ -132,7 +132,6 @@ const EventsListingPage = () => {
         )
       )
     }
-    console.log("Category", categoryFilters)
 
     if (languageFilters.length > 0) {
       resultParts.push(
