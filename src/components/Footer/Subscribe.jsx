@@ -33,21 +33,24 @@ const Subscribe = () => {
         validationSchema={validationSchema}
         onSubmit={handleSubmit}
       >
-        <Form className="relative w-full">
-          <Field
-            type="email"
-            name="email"
-            placeholder={t(translations.subscribe.emailPH)}
-            className="p-3 pr-12 border border-gray-1 rounded-lg w-full focus:outline-none"
-          />
+        <Form className="w-full py-4">
+          <div>
+            <Field
+              type="email"
+              name="email"
+              placeholder={t(translations.subscribe.emailPH)}
+              className="p-3 pr-12 border border-gray-1 rounded-lg w-full focus:outline-none"
+            />
+            <div className="relative">
+              <button
+                type="submit"
+                className="absolute -top-6 right-2 transform -translate-y-1/2 p-2 bg-primary-green text-white rounded-full"
+              >
+                <HiArrowSmRight size={20} />
+              </button>
+            </div>
+          </div>
           <ErrorMessage name="email" component="div" className="text-danger text-sm mt-1" />
-
-          <button
-            type="submit"
-            className="absolute top-1/2 right-2 transform -translate-y-1/2 p-2 bg-primary-green text-white rounded-full"
-          >
-            <HiArrowSmRight size={20} />
-          </button>
         </Form>
       </Formik>
     </div>
