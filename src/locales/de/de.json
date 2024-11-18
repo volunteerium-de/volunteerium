@@ -1009,7 +1009,7 @@
         "createdAt": "Erstellt am",
         "updatedAt": "Aktualisiert am",
         "actions": "Aktionen",
-        "noSubscriptionsFound": "Keine Interesse gefunden",
+        "noInterestsFound": "Keine Interesse gefunden",
         "deleteInterest": "Interesse löschen",
         "deleteDescription": "Möchten Sie dieses Interesse wirklich löschen?"
       }
