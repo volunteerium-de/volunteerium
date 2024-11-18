@@ -1113,6 +1113,7 @@ export const translations = {
 
   yup: {
     required: {
+      ageRange: "yup.required.ageRange",
       userType: "yup.required.userType",
       name: "yup.required.name",
       fullName: "yup.required.fullName",

@@ -17,19 +17,7 @@ import useAuthCall from "../hooks/useAuthCall"
 import { useTranslation } from "react-i18next"
 import { translations } from "../locales/translations"
 
-const OrganizationSchema = Yup.object({
-  organizationLogo: UserDetailSchema.fields.organizationLogo,
-  organizationDesc: UserDetailSchema.organizationDesc,
-  organizationUrl: UserDetailSchema.organizationUrl,
-  streetName: UserDetailSchema.streetName,
-  streetNumber: UserDetailSchema.streetNumber,
-  zipCode: UserDetailSchema.zipCode,
-  city: UserDetailSchema.city,
-  country: UserDetailSchema.country,
-})
-
 const SetupOrganization = () => {
-
   const { currentUser: user } = useSelector((state) => state.auth)
   const [step, setStep] = useState(1)
   const { updateUserDetails } = useAccountCall()
@@ -38,7 +26,18 @@ const SetupOrganization = () => {
   const [logoPreview, setLogoPreview] = useState(null) // For logo preview
   const navigate = useNavigate()
   const location = useLocation()
-  const {t} = useTranslation()
+  const { t } = useTranslation()
+
+  const OrganizationSchema = Yup.object({
+    organizationLogo: UserDetailSchema(t).fields.organizationLogo,
+    organizationDesc: UserDetailSchema(t).organizationDesc,
+    organizationUrl: UserDetailSchema(t).organizationUrl,
+    streetName: UserDetailSchema(t).streetName,
+    streetNumber: UserDetailSchema(t).streetNumber,
+    zipCode: UserDetailSchema(t).zipCode,
+    city: UserDetailSchema(t).city,
+    country: UserDetailSchema(t).country,
+  })
 
   // Toggle between steps
   const handleNext = () => {

@@ -1,161 +1,179 @@
 import { string, date, boolean, object, array } from "yup"
 
-export const AddEventSchema = object().shape({
-  title: string()
-    .trim()
-    .required("Event name is required")
-    .min(10, "Event name must contain at least 10 characters"),
+export const AddEventSchema = (t) => {
+  return object().shape({
+    title: string()
+      .trim()
+      .required(t("newEventValidation.nameRequired"))
+      .min(10, t("newEventValidation.nameMin")),
 
-  date: date().required("Date is required").min(new Date(), "Date cannot be in the past"),
+    date: date()
+      .required(t("newEventValidation.dateRequired"))
+      .min(new Date(), t("newEventValidation.dateInPast")),
 
-  fromTime: string().required("Start time is required"),
+    fromTime: string().required(t("newEventValidation.fromTimeRequired")),
 
-  toTime: string()
-    .required("End time is required")
-    .test("is-greater", "End time should be later than start time", function (value) {
-      const { fromTime } = this.parent
-      return fromTime && value > fromTime
+    toTime: string()
+      .required(t("newEventValidation.toTimeRequired"))
+      .test("is-greater", t("newEventValidation.toTimeLater"), function (value) {
+        const { fromTime } = this.parent
+        return fromTime && value > fromTime
+      }),
+
+    isOnline: boolean().required(),
+
+    streetName: string().when("isOnline", {
+      is: false,
+      then: () =>
+        string()
+          .required(t("newEventValidation.streetNameRequired"))
+          .matches(/^[\p{L}]+$/u, t("newEventValidation.streetNameInvalid")),
     }),
-  isOnline: boolean().required(),
 
-  streetName: string().when("isOnline", {
-    is: false,
-    then: () =>
-      string()
-        .required("Street Name is required when online")
-        .matches(/^[\p{L}]+$/u, "Street Name must contain at least one letter"),
-  }),
-
-  streetNumber: string().when("isOnline", {
-    is: false,
-    then: () =>
-      string()
-        .trim()
-        .matches(/^[0-9]+$/, "Must contain only numbers")
-        .required("Street Number is required"),
-  }),
-
-  zipCode: string().when("isOnline", {
-    is: false,
-    then: () =>
-      string()
-        .trim()
-        .matches(/^[0-9]+$/, "Must contain only numbers")
-        .min(1, "Zip Code must contain at least 1 character")
-        .max(8, "Zip Code cannot exceed 8 characters")
-        .required("Zip code is required"),
-  }),
-
-  city: string().when("isOnline", {
-    is: false,
-    then: () =>
-      string()
-        .required("City is required")
-        .matches(/^[\p{L}]+$/u, "City must contain just letters")
-        .min(3, "City must contain at least 3 characters"),
-  }),
-
-  country: string().when("isOnline", {
-    is: false,
-    then: () =>
-      string()
-        .trim()
-        .required("Country is required")
-        .matches(/^[\p{L}]+$/u, "Country must contain just letters")
-        .min(3, "Country must contain at least 3 characters"),
-  }),
-
-  interestIds: array()
-    .required("Category is required")
-    .min(1, "At least one category must be selected.")
-    .max(3, "You can select up to 3 categories."),
-
-  maxParticipant: string().required("Max Participants is required"),
-
-  languages: array(),
-
-  description: string().required("Description is required"),
-
-  isContactPersonAdded: boolean().required(),
-
-  contactName: string().when("isContactPersonAdded", {
-    is: true,
-    then: () => string().min(3, "Contact Name must be at least 5 characters").required(),
-  }),
-
-  contactEmail: string().when("isContactPersonAdded", {
-    is: true,
-    then: () => string().email("Invalid email format").required(),
-  }),
-
-  contactPhone: string().when("isContactPersonAdded", {
-    is: true,
-    then: () => string().min(10, "Phone number must be at least 10 digits").required(),
-  }),
-})
-
-export const AddEventStep1Schema = object().shape({
-  title: string()
-    .trim()
-    .required("Event name is required")
-    .min(10, "Event name must contain at least 10 characters"),
-
-  date: date().required("Date is required").min(new Date(), "Date cannot be in the past"),
-
-  fromTime: string().required("Start time is required"),
-
-  toTime: string()
-    .required("End time is required")
-    .test("is-greater", "End time should be later than start time", function (value) {
-      const { fromTime } = this.parent
-      return fromTime && value > fromTime
+    streetNumber: string().when("isOnline", {
+      is: false,
+      then: () =>
+        string()
+          .trim()
+          .matches(/^[0-9]+$/, t("newEventValidation.streetNumberInvalid"))
+          .required(t("newEventValidation.streetNumberRequired")),
     }),
-  isOnline: boolean().required(),
 
-  streetName: string().when("isOnline", {
-    is: false,
-    then: () =>
-      string()
-        .required("Street Name is required when online")
-        .matches(/^[\p{L}]+$/u, "Street Name must contain at least one letter"),
-  }),
+    zipCode: string().when("isOnline", {
+      is: false,
+      then: () =>
+        string()
+          .trim()
+          .matches(/^[0-9]+$/, t("newEventValidation.zipCodeInvalid"))
+          .min(1, t("newEventValidation.zipCodeMin"))
+          .max(8, t("newEventValidation.zipCodeMax"))
+          .required(t("newEventValidation.zipCodeRequired")),
+    }),
 
-  streetNumber: string().when("isOnline", {
-    is: false,
-    then: () =>
-      string()
-        .trim()
-        .matches(/^[0-9]+$/, "Must contain only numbers")
-        .required("Street Number is required"),
-  }),
+    city: string().when("isOnline", {
+      is: false,
+      then: () =>
+        string()
+          .required(t("newEventValidation.cityRequired"))
+          .matches(/^[\p{L}]+$/u, t("newEventValidation.cityInvalid"))
+          .min(3, t("newEventValidation.cityMin")),
+    }),
 
-  zipCode: string().when("isOnline", {
-    is: false,
-    then: () =>
-      string()
-        .trim()
-        .matches(/^[0-9]+$/, "Must contain only numbers")
-        .min(1, "Zip Code must contain at least 1 character")
-        .max(8, "Zip Code cannot exceed 8 characters")
-        .required("Zip code is required"),
-  }),
+    country: string().when("isOnline", {
+      is: false,
+      then: () =>
+        string()
+          .trim()
+          .required(t("newEventValidation.countryRequired"))
+          .matches(/^[\p{L}]+$/u, t("newEventValidation.countryInvalid"))
+          .min(3, t("newEventValidation.countryMin")),
+    }),
 
-  city: string().when("isOnline", {
-    is: false,
-    then: () =>
-      string()
-        .required("City is required")
-        .matches(/^[\p{L}]+$/u, "City must contain just letters")
-        .min(3, "City must contain at least 3 characters"),
-  }),
+    interestIds: array()
+      .required(t("newEventValidation.categoryRequired"))
+      .min(1, t("newEventValidation.categoryMin"))
+      .max(3, t("newEventValidation.categoryMax")),
 
-  country: string().when("isOnline", {
-    is: false,
-    then: () =>
-      string()
-        .trim()
-        .required("Country is required")
-        .matches(/^[\p{L}]+$/u, "Country must contain just letters")
-        .min(3, "Country must contain at least 3 characters"),
-  }),
-})
+    maxParticipant: string().required(t("newEventValidation.maxParticipantsRequired")),
+
+    languages: array(),
+
+    description: string().required(t("newEventValidation.descriptionRequired")),
+
+    isContactPersonAdded: boolean().required(),
+
+    contactName: string().when("isContactPersonAdded", {
+      is: true,
+      then: () =>
+        string()
+          .min(3, t("newEventValidation.contactNameMin"))
+          .required(t("newEventValidation.contactNameRequired")),
+    }),
+
+    contactEmail: string().when("isContactPersonAdded", {
+      is: true,
+      then: () =>
+        string()
+          .email(t("newEventValidation.contactEmailInvalid"))
+          .required(t("newEventValidation.contactEmailRequired")),
+    }),
+
+    contactPhone: string().when("isContactPersonAdded", {
+      is: true,
+      then: () =>
+        string()
+          .min(10, t("newEventValidation.contactPhoneMin"))
+          .required(t("newEventValidation.contactPhoneRequired")),
+    }),
+  })
+}
+
+export const AddEventStep1Schema = (t) => {
+  return object().shape({
+    title: string()
+      .trim()
+      .required(t("newEventValidation.nameRequired"))
+      .min(10, t("newEventValidation.nameMin")),
+
+    date: date()
+      .required(t("newEventValidation.dateRequired"))
+      .min(new Date(), t("newEventValidation.dateInPast")),
+
+    fromTime: string().required(t("newEventValidation.fromTimeRequired")),
+
+    toTime: string()
+      .required(t("newEventValidation.toTimeRequired"))
+      .test("is-greater", t("newEventValidation.toTimeLater"), function (value) {
+        const { fromTime } = this.parent
+        return fromTime && value > fromTime
+      }),
+    isOnline: boolean().required(),
+
+    streetName: string().when("isOnline", {
+      is: false,
+      then: () =>
+        string()
+          .required(t("newEventValidation.streetNameRequired"))
+          .matches(/^[\p{L}]+$/u, t("newEventValidation.streetNameInvalid")),
+    }),
+
+    streetNumber: string().when("isOnline", {
+      is: false,
+      then: () =>
+        string()
+          .trim()
+          .matches(/^[0-9]+$/, t("newEventValidation.streetNumberInvalid"))
+          .required(t("newEventValidation.streetNumberRequired")),
+    }),
+
+    zipCode: string().when("isOnline", {
+      is: false,
+      then: () =>
+        string()
+          .trim()
+          .matches(/^[0-9]+$/, t("newEventValidation.zipCodeInvalid"))
+          .min(1, t("newEventValidation.zipCodeMin"))
+          .max(8, t("newEventValidation.zipCodeMax"))
+          .required(t("newEventValidation.zipCodeRequired")),
+    }),
+
+    city: string().when("isOnline", {
+      is: false,
+      then: () =>
+        string()
+          .required(t("newEventValidation.cityRequired"))
+          .matches(/^[\p{L}]+$/u, t("newEventValidation.cityInvalid"))
+          .min(3, t("newEventValidation.cityMin")),
+    }),
+
+    country: string().when("isOnline", {
+      is: false,
+      then: () =>
+        string()
+          .trim()
+          .required(t("newEventValidation.countryRequired"))
+          .matches(/^[\p{L}]+$/u, t("newEventValidation.countryInvalid"))
+          .min(3, t("newEventValidation.countryMin")),
+    }),
+  })
+}
