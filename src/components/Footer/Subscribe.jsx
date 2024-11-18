@@ -50,7 +50,9 @@ const Subscribe = () => {
               </button>
             </div>
           </div>
-          <ErrorMessage name="email" component="div" className="text-danger mt-1" />
+          <div className="h-[26px]">
+            <ErrorMessage name="email" component="div" className="text-danger" />
+          </div>
         </Form>
       </Formik>
     </div>
