@@ -19,7 +19,6 @@ const EventParticipationButtons = ({ toggleFeedbackModal }) => {
       (participant) => participant?.userId?._id === user?._id
     )[0] || null
 
-
   const isEventDone = new Date() > new Date(singleEvent?.startDate)
   const isMaxParticipantsReached =
     singleEvent?.eventParticipantIds.filter((participant) => participant?.isApproved === true)
@@ -73,7 +72,7 @@ const EventParticipationButtons = ({ toggleFeedbackModal }) => {
         return {
           text: t(translations.eventDetails.pendingButton),
           action: () =>
-            navigate(`/event-management/?tab=attended-events&identifier=${singleEvent?._id}`),
+            navigate(`/event-management?tab=attending-events&identifier=${singleEvent?._id}`),
           className: "bg-warning hover:bg-warning/60",
         }
       }
@@ -81,7 +80,7 @@ const EventParticipationButtons = ({ toggleFeedbackModal }) => {
         return {
           text: t(translations.eventDetails.approvedButton),
           action: () =>
-            navigate(`/event-management/?tab=attended-events&identifier=${singleEvent?._id}`),
+            navigate(`/event-management?tab=attending-events&identifier=${singleEvent?._id}`),
           className: "bg-yellow-500 hover:bg-yellow-500/60",
         }
       }
