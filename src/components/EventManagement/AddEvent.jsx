@@ -100,7 +100,6 @@ const AddEvent = ({ onClose, eventData, eventToEdit }) => {
       onClose()
     } catch (error) {
       toastNotify("error", t(translations.toastify.error))
-
     }
   }
 
@@ -108,7 +107,7 @@ const AddEvent = ({ onClose, eventData, eventToEdit }) => {
     <div className="max-w-6xl mx-auto p-8 bg-light-gray mt-3 dark:bg-dark-gray-3 rounded-lg shadow-md">
       <Formik
         initialValues={initialValues}
-        validationSchema={AddEventSchema}
+        validationSchema={() => AddEventSchema(t)}
         onSubmit={handleSubmit}
       >
         {({ setFieldValue, values, isValid }) => (

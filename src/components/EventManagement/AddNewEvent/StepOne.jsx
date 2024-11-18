@@ -41,7 +41,7 @@ const StepOne = ({ setStep, values, setFieldValue, onClose, step, eventData }) =
   useEffect(() => {
     const validateForm = async () => {
       try {
-        await AddEventStep1Schema.validate(values, {
+        await AddEventStep1Schema(t).validate(values, {
           abortEarly: false,
         })
         setIsValidForNext(true)
