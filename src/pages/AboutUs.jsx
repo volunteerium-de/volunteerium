@@ -6,9 +6,15 @@ import Header from "../components/Header/Header"
 import Footer from "../components/Footer/Footer"
 import { useTranslation } from "react-i18next"
 import { translations } from "../locales/translations"
+import { useEffect } from "react"
 
 const AboutUs = () => {
   const { t } = useTranslation()
+
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
+
   return (
     <div>
       <Header />
