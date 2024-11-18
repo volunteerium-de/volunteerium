@@ -54,6 +54,7 @@ const Profile = () => {
   const { userId } = useParams()
   const { getEvents } = useEventCall()
   const [eventType, setEventType] = useState("Attended Events")
+  const [organizedFilter, setOrganizedFilter] = useState("Unfinished Events")
   const [loading, setLoading] = useState(true)
   const [events, setEvents] = useState([])
   const [user, setUser] = useState({})
@@ -64,10 +65,16 @@ const Profile = () => {
   const [currentPage, setCurrentPage] = useState(pageFromUrl > 0 ? pageFromUrl : 1)
   const [totalPages, setTotalPages] = useState(0)
   const { getTranslatedCategory } = useLanguageOptions()
-
-  const [organizedFilter, setOrganizedFilter] = useState("Unfinished Events")
+  const { getEventCategories } = useEventCall()
 
   useEffect(() => {
+    if (user.userType === "organization") {
+      setEventType("Organized Events")
+    }
+  }, [user.userType])
+
+  useEffect(() => {
+    getEventCategories()
     const fetchEvents = async () => {
       setLoading(true)
       try {
@@ -87,10 +94,8 @@ const Profile = () => {
         setTotalPages(eventData.details.pages.total || 1)
         setCurrentPage(eventData.details.pages.current || 1)
 
-        if (!isNaN(currentPage) && currentPage > 0) {
+        if (currentPage > 0) {
           navigate(`?page=${currentPage}`, { replace: true })
-        } else {
-          setCurrentPage(1)
         }
       } catch (error) {
         console.error("Error fetching events:", error)
@@ -124,6 +129,7 @@ const Profile = () => {
       totalPoint,
     } = {},
   } = user
+  console.log(user)
 
   const medalInfoText = [
     {
@@ -169,7 +175,7 @@ const Profile = () => {
     <>
       <Header />
       {loading ? (
-        <div className="h-screen flex flex-col justify-center items-center">
+        <div className=" flex flex-col justify-center items-center min-h-[calc(100vh-116px)]">
           <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-primary-green border-opacity-50 dark:border-light-green"></div>
           <p className="text-2xl font-semibold text-primary-green dark:text-light-gray">
             {t(translations.profile.loading)}
@@ -177,8 +183,8 @@ const Profile = () => {
         </div>
       ) : (
         <>
-          <div className="max-w-[1800px] mx-auto min-h-[90vh] font-poppins block sm:flex justify-center gap-5 dark:bg-black p-3">
-            <div className=" w-full sm:w-[600px] bg-light-gray rounded-t-md sm:rounded-md px-4 sm:px-6 dark:bg-dark-gray-3 dark:text-white">
+          <div className="max-w-[1800px] mx-auto font-poppins block sm:flex justify-center gap-5 dark:bg-black p-3">
+            <div className=" w-full sm:w-[600px] sm:min-h-[calc(100vh-116px)] bg-light-gray rounded-t-md sm:rounded-md px-4 sm:px-6 dark:bg-dark-gray-3 dark:text-white">
               <div className="flex justify-between px-2 ">
                 <UserAvatar
                   user={user}
@@ -247,7 +253,7 @@ const Profile = () => {
                       {t(translations.profile.interests)}
                     </h2>
                     <div className=" flex flex-wrap gap-2 my-2 text-dark-gray-1">
-                      {interestIds.map((interest) => (
+                      {interestIds?.map((interest) => (
                         <div key={interest?._id}>
                           <p className="text-[0.6875rem] text-center text-primary-green border border-primary-green px-2 py-1 rounded-2xl font-bold">
                             {getTranslatedCategory(interest?.name)?.toUpperCase()}
@@ -294,18 +300,75 @@ const Profile = () => {
                 )}
               </div>
             </div>
-            <div className="w-full max-w-full bg-light-gray rounded-b-md sm:rounded-md px-8 sm:px-2 lg:px-12 dark:bg-dark-gray-3 -mt-3 sm:mt-0">
+            <div className="w-full sm:min-h-[calc(100vh-116px)] bg-light-gray rounded-b-md sm:rounded-md px-8  sm:px-4 lg:px-12 dark:bg-dark-gray-3 -mt-4 sm:mt-0 pt-6 sm:pt-0 ">
+              <div className="flex gap-10 font-semibold text-xl my-4 text-dark-gray-1 text-center">
+                {userType !== "organization" && (
+                  <div
+                    className={`text-[0.9375rem] cursor-pointer border-b-2 ${
+                      eventType === "Attended Events"
+                        ? "text-primary-green border-primary-green"
+                        : "border-transparent dark:text-white"
+                    }`}
+                    onClick={() => {
+                      setEventType("Attended Events")
+                      setCurrentPage(1)
+                    }}
+                  >
+                    {t(translations.profileCard.attendEvents)}
+                  </div>
+                )}
+                <div
+                  className={`text-[0.9375rem] cursor-pointer border-b-2 ${
+                    eventType === "Organized Events"
+                      ? "text-primary-green border-primary-green"
+                      : "border-transparent dark:text-white"
+                  }`}
+                  onClick={() => {
+                    setEventType("Organized Events")
+                    setCurrentPage(1)
+                  }}
+                >
+                  {t(translations.profileCard.organizedEvents)}
+                </div>
+              </div>
+
+              {eventType === "Organized Events" && (
+                <div className="flex gap-4 font-medium text-sm my-2 text-dark-gray-1 text-center sm:justify-end">
+                  <button
+                    className={`py-1 px-2 rounded-md ${
+                      organizedFilter === "Unfinished Events"
+                        ? "bg-primary-green text-white hover:bg-primary-green/60"
+                        : "bg-light-gray-3 dark:bg-dark-gray-2 text-dark-gray-1 dark:text-white hover:bg-dark-gray-1/20 dark:hover:bg-dark-gray-1"
+                    }`}
+                    onClick={() => {
+                      setOrganizedFilter("Unfinished Events")
+                      setCurrentPage(1)
+                    }}
+                  >
+                    {t("profileCard.unfinishedEvents")}
+                  </button>
+                  <button
+                    className={`py-1 px-2 rounded-md ${
+                      organizedFilter === "Finished Events"
+                        ? "bg-primary-green text-white hover:bg-primary-green/60"
+                        : "bg-light-gray-3 dark:bg-dark-gray-2 text-dark-gray-1 dark:text-white hover:bg-dark-gray-1/20 dark:hover:bg-dark-gray-1"
+                    }`}
+                    onClick={() => {
+                      setOrganizedFilter("Finished Events")
+                      setCurrentPage(1)
+                    }}
+                  >
+                    {t("profileCard.finishedEvents")}
+                  </button>
+                </div>
+              )}
+
               {eventType === "Attended Events" ? (
-                <div className="flex flex-col justify-between min-h-[55vh] sm:h-full">
+                <div className="flex flex-col justify-between h-[calc(100vh-180px)]">
                   <ProfileCard
                     events={approvedEvents}
                     loading={loading}
                     currentUserId={currentUser?._id}
-                    eventType={eventType}
-                    setEventType={setEventType}
-                    setCurrentPage={setCurrentPage}
-                    organizedFilter={organizedFilter}
-                    setOrganizedFilter={setOrganizedFilter}
                   />
                   {events.length > 0 && (
                     <Pagination
@@ -316,17 +379,8 @@ const Profile = () => {
                   )}
                 </div>
               ) : (
-                <div className="flex flex-col justify-between min-h-[55vh] sm:h-full">
-                  <ProfileCard
-                    events={events}
-                    loading={loading}
-                    currentUserId={currentUser?._id}
-                    eventType={eventType}
-                    setEventType={setEventType}
-                    setCurrentPage={setCurrentPage}
-                    organizedFilter={organizedFilter}
-                    setOrganizedFilter={setOrganizedFilter}
-                  />
+                <div className="flex flex-col justify-between h-[calc(100vh-215px)]">
+                  <ProfileCard events={events} loading={loading} currentUserId={currentUser?._id} />
                   {events.length > 0 && (
                     <Pagination
                       currentPage={currentPage}
