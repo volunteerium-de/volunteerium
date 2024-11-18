@@ -280,7 +280,7 @@
     "edit": "Edit",
     "save": "Save"
   },
-  "newEventValidation":{
+  "newEventValidation": {
     "nameRequired": "Event name is required!",
     "nameMin": "Event name must contain at least 10 characters",
     "dateRequired": "Date is required",
@@ -316,7 +316,6 @@
     "contactPhoneRequired": "Contact Phone is required",
     "contactPhoneMin": "Phone number must be at least 10 digits"
   },
-
   "pswModal": {
     "changePsw": "Change your password",
     "currPsw": "Current Password",
@@ -1121,5 +1120,16 @@
       "ageRange": "Please choose a valid age range",
       "language": "Please choose a valid language"
     }
+  },
+
+  "toastify": {
+    "error": "An error occurred. Please try again.",
+    "verifyFailError": "Verification failed. Please try again!",
+    "verifySecureError": "Security verification is missing. Please try again.",
+    "selectFile": "Please select a file to delete.",
+    "selectConversation": "Please select a conversation.",
+    "enterMessage": "Please enter a message.",
+    "idMissing": "Event ID or participant ID is missing.",
+    "setupProfile": "Please set up your profile data to continue."
   }
 }
