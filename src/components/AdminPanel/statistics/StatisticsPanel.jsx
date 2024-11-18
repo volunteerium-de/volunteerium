@@ -23,7 +23,6 @@ const StatisticsPanel = () => {
     setStatistics(data.data)
   }
 
-  // Maksimum sayıyı bulalım, blokların uzunluğu buna göre orantılı olacak
   const maxCount = Math.max(
     statistics?.User || 0,
     statistics?.Event || 0,
@@ -40,7 +39,7 @@ const StatisticsPanel = () => {
   )
 
   const calculateBarWidth = (count) => {
-    return `${(count / maxCount) * 100}%` // Yüzde olarak hesapla
+    return `${(count / maxCount) * 100}%`
   }
 
   return (
