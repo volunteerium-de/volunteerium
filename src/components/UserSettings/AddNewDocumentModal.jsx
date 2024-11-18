@@ -62,13 +62,13 @@ const AddNewDocumentModal = ({ isOpen, onClose }) => {
   return (
     <div>
       <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
-        <div className="bg-white dark:bg-dark-gray-3  p-6 rounded-lg max-w-[854px] w-full">
-          <h2 className="text-[1.75rem] leading-[1.464] text-center font-semibold mb-4 dark:text-white">
+        <div className="bg-white dark:bg-dark-gray-3 max-h-[420px] p-6 rounded-lg max-w-[854px] w-full px-[20px] py-[40px]">
+          <h2 className="text-[1.75rem] text-center font-semibold mb-4 dark:text-white">
             {t(translations.addNewDoc.newDoc)}
           </h2>
 
           <div className="max-w-[696px] mx-auto">
-            <h1 className="text-gray-2 leading-[1.5625] dark:text-white">
+            <h1 className="text-dark-gray-2 dark:text-white my-8">
               {t(translations.addNewDoc.docTitle)}
             </h1>
             <label htmlFor="certification"></label>
@@ -82,10 +82,10 @@ const AddNewDocumentModal = ({ isOpen, onClose }) => {
             <div className="flex justify-start items-center gap-5">
               <div>
                 {/* FileName */}
-                {fileName && <div className="text-dark-gray-1">{fileName}</div>}
+                {fileName && <div className="text-dark-gray-1 dark:text-white">{fileName}</div>}
                 {/* "Add new +" butonu */}
                 <button
-                  className="block font-medium px-[10px] py-[5px] mt-[20px] border border-primary-green rounded-md text-primary-green hover:bg-primary-green-dark transition duration-300"
+                  className="block md:text-[0.8rem] text-[0.6rem] px-2 sm:py-1 py-2 items-center border hover:bg-dark-green rounded-lg bg-primary-green text-white transition duration-300 mt-8"
                   onClick={file ? handleResetClick : handleAddNewClick}
                 >
                   {file ? t(translations.addNewDoc.reset) : t(translations.addNewDoc.addNew)}
@@ -101,13 +101,16 @@ const AddNewDocumentModal = ({ isOpen, onClose }) => {
             </div>
           </div>
 
-          <div className="flex justify-center gap-3 mt-[25px]">
+          <div className="flex justify-center gap-3 mt-[50px] ">
             {error && <div className="text-danger text-sm text-center mb-2">{error}</div>}
-            <button className="py-2 px-4 text-primary-green" onClick={onClose}>
+            <button
+              className="py-1 px-4 text-primary-green md:text-[1rem] text-[0.6rem]"
+              onClick={onClose}
+            >
               {t(translations.addNewDoc.cancel)}
             </button>
             <button
-              className="bg-primary-green px-4 py-2 rounded text-white  hover:bg-light-green"
+              className="bg-primary-green md:text-[1rem] text-[0.6rem] px-3 py-1 rounded text-white hover:bg-primary-green/60"
               onClick={handleSaveClick}
               disabled={!file}
             >

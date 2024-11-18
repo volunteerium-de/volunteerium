@@ -331,6 +331,8 @@ export const translations = {
     delAlert1: "secSett.delAlert1",
     delAlert2: "secSett.delAlert2",
     userRes: "secSett.userRes",
+    edit: "secSett.edit",
+    save: "secSett.save",
   },
   updateDoc: {
     error: "updateDoc.error",

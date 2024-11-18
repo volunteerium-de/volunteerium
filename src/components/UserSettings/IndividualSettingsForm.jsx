@@ -14,8 +14,6 @@ import SelectInput from "../ui/Selects/SelectInput"
 import useLanguage from "../../hooks/useLanguages"
 import { formatName } from "../../helpers/formatName"
 
-
-
 // Reusable Radio Input Component
 const RadioInput = ({ id, label, checked, onChange }) => (
   <div className="flex flex-1 items-center gap-2 h-[36px] p-2 border border-gray-1 rounded focus:outline-none focus:border-primary-green ">
@@ -48,16 +46,16 @@ const IndividualSettingsForm = () => {
   const { userDetailsId } = currentUser
 
   // Validation Schema
-const IndividualSchema = Yup.object().shape({
-  city: Yup.string().nullable().max(100, t(translations.yup.maxLength.characters100)),
-  country: Yup.string().nullable().max(100, t(translations.yup.maxLength.characters100)),
-  bio: Yup.string().max(250, t(translations.yup.maxLength.characters250Bio)),
-  gender: Yup.string().nullable(),
-  ageRange: Yup.string().nullable(),
-  isFullNameDisplay: Yup.boolean(),
-  languages: Yup.array().nullable(),
-  interestIds: Yup.array().nullable(),
-})
+  const IndividualSchema = Yup.object().shape({
+    city: Yup.string().nullable().max(100, t(translations.yup.maxLength.characters100)),
+    country: Yup.string().nullable().max(100, t(translations.yup.maxLength.characters100)),
+    bio: Yup.string().max(250, t(translations.yup.maxLength.characters250Bio)),
+    gender: Yup.string().nullable(),
+    ageRange: Yup.string().nullable(),
+    isFullNameDisplay: Yup.boolean(),
+    languages: Yup.array().nullable(),
+    interestIds: Yup.array().nullable(),
+  })
 
   const defaultUserDetails = {
     isFullNameDisplay: userDetailsId?.isFullNameDisplay || false,
@@ -254,7 +252,7 @@ const IndividualSchema = Yup.object().shape({
                   name="bio"
                   maxLength="250"
                   placeholder={t(translations.indvSettings.label6PH)}
-                  className="w-full p-2 border border-gray-1 rounded h-[100px] focus:outline-none focus:border-primary-green"
+                  className="w-full p-2 border border-gray-1 rounded h-[100px] focus:outline-none focus:border-primary-green resize-none"
                 />
                 <p className="text-sm text-gray-2 dark:text-white">
                   {values.bio.length}/250 characters
@@ -274,7 +272,7 @@ const IndividualSchema = Yup.object().shape({
                   </p>
                 </div>
                 {/* Files */}
-                <div className="max-h-[200px] overflow-y-auto p-2 border border-gray-1 rounded focus:outline-none focus:border-primary-green">
+                <div className="max-h-[200px] overflow-y-auto p-2 border border-gray-1 rounded focus:outline-none focus:border-primary-green text-blue-400 dark:text-blue-200 bg-light-gray dark:bg-dark-gray-2">
                   {certificates.length === 0 ? (
                     <p className="dark:text-white ">{t(translations.indvSettings.label10)}</p>
                   ) : (
@@ -309,7 +307,7 @@ const IndividualSchema = Yup.object().shape({
                 </button>
                 <button
                   type="submit"
-                  className="bg-primary-green flex-1 py-2 px-4 text-[1rem] text-white rounded hover:bg-light-green"
+                  className="bg-primary-green flex-1 py-2 px-4 text-[1rem] text-white rounded hover:bg-primary-green/60"
                 >
                   {t(translations.indvSettings.save)}
                 </button>

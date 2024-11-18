@@ -142,7 +142,7 @@
       "confirmPassword": "Bestätigen Sie das neue Passwort",
       "confirmPasswordPH": "Bestätigen Sie Ihr neues Passwort",
       "reset": "Zurücksetzen"
-      },
+    },
     "verificationForm": {
       "timerMsg": "Gibt es ein Problem? Fordern Sie den Code erneut an!",
       "backToLogin": "Zurück zum Login",
@@ -212,10 +212,10 @@
     "conversation-desc": "Sind Sie sicher, dass Sie diese Konversation löschen möchten?",
     "cancelButton": "Stornieren",
     "delButton": "Löschen",
-    "deleteEventDesc":"Sind Sie sicher, dass Sie dieses Ereignis löschen möchten?",
-    "leaveButton":"Verlassen",
-    "leaveEvent":"Ereignis verlassen",
-    "leaveEventDesc":"Sind Sie sicher, dass Sie dieses Ereignis verlassen möchten?"
+    "deleteEventDesc": "Sind Sie sicher, dass Sie dieses Ereignis löschen möchten?",
+    "leaveButton": "Verlassen",
+    "leaveEvent": "Ereignis verlassen",
+    "leaveEventDesc": "Sind Sie sicher, dass Sie dieses Ereignis verlassen möchten?"
   },
   "indvSettings": {
     "success": "Daten erfolgreich gespeichert!",
@@ -290,7 +290,7 @@
     "newPsw": "Neues Passwort",
     "confirmPsw": "Passwort bestätigen",
     "cancel": "Abbrechen",
-    "saveChng": "Änderungen speichern"
+    "saveChng": "Speichern"
   },
   "profileSettings": {
     "p": "Ungültiger Benutzertyp"
@@ -301,7 +301,7 @@
     "h1": "Sicherheitseinstellungen",
     "name": "Name",
     "namePH": "Name",
-    "p1": "Ihr vollständiger Name ist für die Kontointegrität dauerhaft und kann nicht geändert werden!",
+    "p1": "Ihr Name ist für die Kontointegrität dauerhaft und kann nicht geändert werden!",
     "orgName": "Organisationsname",
     "orgNamePH": "Organisationsname",
     "email": "E-Mail",
@@ -311,7 +311,9 @@
     "delAccount": "Konto löschen",
     "delAlert1": "Möchten Sie Ihr Konto löschen? Das Löschen Ihres Kontos entfernt alle damit verbundenen Inhalte.",
     "delAlert2": "Möchten Sie Ihre Organisation löschen? Das Löschen Ihrer Organisation entfernt alle damit verbundenen Inhalte.",
-    "userRes": "Ich möchte mein Konto löschen"
+    "userRes": "Ich möchte mein Konto löschen",
+    "edit": "Bearbeiten",
+    "save": "Speichern"
   },
   "updateDoc": {
     "error": "Fehler beim Aktualisieren der Datei.",
@@ -622,7 +624,7 @@
       "option10": "Sonstiges"
     }
   },
-    
+
   "eventManagement": {
     "addNewEvent": "Neues Event hinzufügen",
     "searchInput": "Suchen",
@@ -651,10 +653,10 @@
     "sidebarLabels": {
       "attendingEvents": "Teilnehmende Veranstaltungen",
       "organizedEvents": "Veranstaltungen Organisieren",
-      "messages": "Nachrichten" 
-  }
+      "messages": "Nachrichten"
+    }
   },
-  
+
   "eventMng": {
     "addNew": "Neue Veranstaltung hinzufügen",
     "eventName": "Veranstaltungsname",
@@ -700,7 +702,7 @@
     "messagesComp": {
       "noConversations": "Keine Unterhaltungen gefunden",
       "loading": "Laden..."
-}
+    }
   },
 
   "termsOfService": {
@@ -801,19 +803,19 @@
         "user": "Benutzer",
         "userDL": "Benutzer",
         "joined": "Beigetreten",
-    "pending": "Ausstehend",
-    "approved": "Genehmigt",
-    "rejected": "Abgelehnt",
-    "notJoined": "Nicht beigetreten",
-    "joinDateDL": "Beitrittsdatum",
-    "suspendEvent": "Veranstaltung aussetzen",
-    "unsuspendEvent": "Veranstaltung fortsetzen",
-    "status": "Status",
-    "statusDL": "Teilnehmerstatus",
-    "joinDate": "Beitrittsdatum",
-    "noParticipantYet": "Noch kein Teilnehmer",
-    "deleteEvent": "Veranstaltung löschen",
-    "desc": "Sind Sie sicher, dass Sie diese Veranstaltung löschen möchten?"
+        "pending": "Ausstehend",
+        "approved": "Genehmigt",
+        "rejected": "Abgelehnt",
+        "notJoined": "Nicht beigetreten",
+        "joinDateDL": "Beitrittsdatum",
+        "suspendEvent": "Veranstaltung aussetzen",
+        "unsuspendEvent": "Veranstaltung fortsetzen",
+        "status": "Status",
+        "statusDL": "Teilnehmerstatus",
+        "joinDate": "Beitrittsdatum",
+        "noParticipantYet": "Noch kein Teilnehmer",
+        "deleteEvent": "Veranstaltung löschen",
+        "desc": "Sind Sie sicher, dass Sie diese Veranstaltung löschen möchten?"
       }
     },
     "feedbacks": {
@@ -924,7 +926,6 @@
       "interestId": "InterestIds muss eine gültige Objekt-ID sein",
       "logo": "Firmenzeichen ist erforderlich!",
       "addressId": "AddressId muss eine gültige Objekt-ID sein"
-
     },
     "minLength": {
       "select1": "Mindestens eine Kategorie muss ausgewählt werden.",
@@ -960,6 +961,6 @@
       "gender": "Bitte wählen Sie ein gültiges Geschlecht",
       "ageRange": "Bitte wählen Sie einen gültigen Altersbereich",
       "language": "Bitte wählen Sie eine gültige Sprache"
-    }  
+    }
   }
 }
