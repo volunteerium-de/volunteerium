@@ -28,21 +28,13 @@ const SetupIndividual = () => {
   const { categories } = useSelector((state) => state.search)
   const { getEventCategories } = useEventCall()
   const { userDetailsId } = user
-  const { getTranslatedCategory } = useLanguage();
-
+  const { getTranslatedCategory } = useLanguage()
 
   const defaultUserDetails = {
     gender: userDetailsId?.gender || "",
     ageRange: userDetailsId?.ageRange || "",
     interestIds: userDetailsId?.interestIds.map((x) => x._id) || [],
   }
-
-  // Validation schema
-  const IndividualSchema = Yup.object({
-    gender: UserDetailSchema(t).gender,
-    ageRange: UserDetailSchema(t).ageRange,
-    interests: UserDetailSchema(t).interests,
-  })
 
   const ageRangeOptions = [
     { label: "16-25", value: "16-25" },
@@ -94,7 +86,7 @@ const SetupIndividual = () => {
             gender: defaultUserDetails.gender,
             interests: defaultUserDetails.interestIds,
           }}
-          validationSchema={IndividualSchema}
+          validationSchema={UserDetailSchema(t)}
           onSubmit={(values) => {
             const payload = {
               ...values,
@@ -252,7 +244,7 @@ const SetupIndividual = () => {
                           }
                         }}
                       >
-                       {getTranslatedCategory(category.name)}
+                        {getTranslatedCategory(category.name)}
                       </button>
                     ))}
                   </div>

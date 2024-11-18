@@ -28,17 +28,6 @@ const SetupOrganization = () => {
   const location = useLocation()
   const { t } = useTranslation()
 
-  const OrganizationSchema = Yup.object({
-    organizationLogo: UserDetailSchema(t).fields.organizationLogo,
-    organizationDesc: UserDetailSchema(t).organizationDesc,
-    organizationUrl: UserDetailSchema(t).organizationUrl,
-    streetName: UserDetailSchema(t).streetName,
-    streetNumber: UserDetailSchema(t).streetNumber,
-    zipCode: UserDetailSchema(t).zipCode,
-    city: UserDetailSchema(t).city,
-    country: UserDetailSchema(t).country,
-  })
-
   // Toggle between steps
   const handleNext = () => {
     setStep(step === 1 ? 2 : 1)
@@ -127,7 +116,7 @@ const SetupOrganization = () => {
             state: "",
             country: "",
           }}
-          validationSchema={OrganizationSchema}
+          validationSchema={UserDetailSchema(t)}
           onSubmit={(values) => {
             updateUserDetails({ ...values, isProfileSetup: true }, user.userDetailsId._id)
             navigate("/")
