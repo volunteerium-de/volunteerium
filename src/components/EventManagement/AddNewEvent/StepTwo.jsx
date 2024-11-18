@@ -1,6 +1,6 @@
 // StepTwo.jsx
 import { Field, ErrorMessage } from "formik"
-import { FaCheck } from "react-icons/fa"
+import { FaCheck, FaSpinner } from "react-icons/fa"
 import { HiDotsHorizontal } from "react-icons/hi"
 import { Link } from "react-router-dom"
 import LanguageSelect from "../../ui/Selects/LanguageSelect"
@@ -14,7 +14,7 @@ import { translations } from "../../../locales/translations/"
 
 const StepTwo = ({ setStep, values, step, isValid, setFieldValue }) => {
   const { t } = useTranslation()
-
+  const { loading } = useSelector((state) => state.event)
   const { getEventCategories } = useEventCall()
   const { currentUser: user } = useSelector((state) => state.auth)
   const [addContactPerson, setAddContactPerson] = useState(values?.isContactPersonAdded ?? false)
@@ -47,7 +47,7 @@ const StepTwo = ({ setStep, values, step, isValid, setFieldValue }) => {
               step === 1
                 ? "font-semibold text-white border-2 bg-primary-green dark:text-black dark:bg-white dark:border-primary-green"
                 : "text-gray-2 border-gray-1 dark:text-white dark:border-primary-green"
-            } flex items-center justify-center hover:bg-light-green hover:text-gray-2 transition-colors`}
+            } flex items-center justify-center hover:bg-dark-green hover:text-white transition-colors`}
             onClick={() => setStep(1)}
           >
             1
@@ -65,7 +65,7 @@ const StepTwo = ({ setStep, values, step, isValid, setFieldValue }) => {
               step === 2 && values.title
                 ? "font-semibold text-white border-2 bg-primary-green dark:bg-primary-green dark:border-primary-green"
                 : "text-gray-2 border-gray-1 dark:text-white dark:border-primary-green "
-            } flex items-center justify-center hover:bg-light-green hover:text-gray-2 transition-colors`}
+            } flex items-center justify-center hover:bg-dark-green hover:text-white transition-colors`}
             onClick={(e) => {
               if (!isValid) {
                 e.preventDefault()
@@ -83,7 +83,7 @@ const StepTwo = ({ setStep, values, step, isValid, setFieldValue }) => {
           </div>
 
           {/* Step 3 */}
-          <div className="w-7 h-7 rounded-full border bg-primary-green text-white flex items-center justify-center">
+          <div className="w-7 h-7 rounded-full border bg-primary-green hover:bg-dark-green text-white flex items-center justify-center">
             <FaCheck />
           </div>
         </div>
@@ -128,8 +128,9 @@ const StepTwo = ({ setStep, values, step, isValid, setFieldValue }) => {
 
         {/* Description */}
         <div className="mb-4">
-          {t(translations.eventMng.desc)}*
-          <label className="block text-dark-gray-2 mb-2 dark:text-white"></label>
+          <label className="block text-dark-gray-2 mb-2 dark:text-white">
+            {t(translations.eventMng.desc)}*
+          </label>
           <Field
             as="textarea"
             name="description"
@@ -227,17 +228,25 @@ const StepTwo = ({ setStep, values, step, isValid, setFieldValue }) => {
 
         {/* Buttons */}
         <div className="flex justify-end mt-8">
-          <button type="button" className="py-2 px-4 text-primary-green" onClick={() => setStep(1)}>
+          <button
+            type="button"
+            className="py-2 px-4 text-primary-green hover:text-dark-green"
+            onClick={() => setStep(1)}
+          >
             {t(translations.eventMng.back)}
           </button>
           <button
             type="submit"
-            className={`py-2 px-4 bg-primary-green text-white rounded hover:bg-light-green ${
-              isValid ? "" : "opacity-50 cursor-not-allowed"
+            className={`py-2 px-4 bg-primary-green text-white rounded flex items-center justify-center ${
+              isValid && !loading ? "hover:bg-dark-green" : "opacity-50 cursor-not-allowed"
             }`}
-            disabled={!isValid}
+            disabled={!isValid || loading}
           >
-            {t(translations.eventMng.submit)}
+            {loading ? (
+              <FaSpinner className="animate-spin mr-2" />
+            ) : (
+              t(translations.eventMng.submit)
+            )}
           </button>
         </div>
       </div>
