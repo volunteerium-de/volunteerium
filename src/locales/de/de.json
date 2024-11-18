@@ -281,6 +281,42 @@
     "edit": "Bearbeiten",
     "save": "Speichern"
   },
+  "newEventValidation": {
+    "nameRequired": "Veranstaltungsname ist erforderlich",
+    "nameMin": "Der Veranstaltungsname muss mindestens 10 Zeichen enthalten",
+    "dateRequired": "Datum ist erforderlich",
+    "dateInPast": "Datum darf nicht in der Vergangenheit liegen",
+    "fromTimeRequired": "Startzeit ist erforderlich",
+    "toTimeRequired": "Endzeit ist erforderlich",
+    "toTimeLater": "Die Endzeit muss später als die Startzeit sein",
+    "isOnlineRequired": "Online-Status ist erforderlich",
+    "streetNameRequired": "Straßenname ist erforderlich",
+    "streetNameInvalid": "Der Straßenname muss mindestens einen Buchstaben enthalten",
+    "streetNumberRequired": "Hausnummer ist erforderlich",
+    "streetNumberInvalid": "Darf nur Zahlen enthalten",
+    "zipCodeRequired": "Postleitzahl ist erforderlich",
+    "zipCodeMin": "Die Postleitzahl muss mindestens 1 Zeichen enthalten",
+    "zipCodeMax": "Die Postleitzahl darf maximal 8 Zeichen enthalten",
+    "zipCodeInvalid": "Darf nur Zahlen enthalten",
+    "cityRequired": "Stadt ist erforderlich",
+    "cityInvalid": "Die Stadt darf nur Buchstaben enthalten",
+    "cityMin": "Die Stadt muss mindestens 3 Zeichen enthalten",
+    "countryRequired": "Land ist erforderlich",
+    "countryInvalid": "Das Land darf nur Buchstaben enthalten",
+    "countryMin": "Das Land muss mindestens 3 Zeichen enthalten",
+    "categoryRequired": "Kategorie ist erforderlich",
+    "categoryMin": "Es muss mindestens eine Kategorie ausgewählt werden.",
+    "categoryMax": "Es können bis zu 3 Kategorien ausgewählt werden.",
+    "maxParticipantsRequired": "Maximale Teilnehmerzahl ist erforderlich",
+    "descriptionRequired": "Beschreibung ist erforderlich",
+    "isContactPersonAddedRequired": "Status der Kontaktperson ist erforderlich",
+    "contactNameRequired": "Name der Kontaktperson ist erforderlich",
+    "contactNameMin": "Der Name der Kontaktperson muss mindestens 5 Zeichen enthalten",
+    "contactEmailInvalid": "Ungültiges E-Mail-Format",
+    "contactEmailRequired": "E-Mail der Kontaktperson ist erforderlich",
+    "contactPhoneRequired": "Telefonnummer der Kontaktperson ist erforderlich",
+    "contactPhoneMin": "Die Telefonnummer muss mindestens 10 Ziffern enthalten"
+  },
   "pswModal": {
     "changePsw": "Ändern Sie Ihr Passwort",
     "currPsw": "Aktuelles Passwort",
@@ -445,7 +481,6 @@
     "description": "Um sicherzustellen, dass Ihr Konto sicher ist und Sie in Zukunft problemlos darauf zugreifen können, legen Sie jetzt ein Passwort fest. Dies hilft, Probleme bei zukünftigen Anmeldungen zu vermeiden. Geben Sie Ihr neues Passwort unten ein und bestätigen Sie es.",
     "saveContinue": "Speichern & Fortfahren"
   },
-
 
   "googleAuthFall": {
     "h1": "Authentifizierung fehlgeschlagen.",
@@ -727,7 +762,7 @@
     "li4": "Verbreitung von Malware oder schädlichem Code.",
     "h2Intellectual": "5. Geistiges Eigentum",
     "pIntellectual": "Alle Inhalte, einschließlich, aber nicht beschränkt auf Texte, Bilder, Grafiken und Logos auf Volunteerium, sind Eigentum von Volunteerium oder seinen Lizenzgebern. Die unbefugte Nutzung oder Verbreitung von Inhalten ist strengstens untersagt.",
-    "h2UserGenerated": "6. Benutzererstellte Inhalte",
+    "h2userGenerated": "6. Benutzererstellte Inhalte",
     "pUserGenerated": "Volunteerium kann es Benutzern ermöglichen, Inhalte wie Veranstaltungsdetails, Kommentare und Nachrichten zu posten. Durch das Posten von Inhalten gewähren Sie Volunteerium eine nicht-exklusive, gebührenfreie, weltweite Lizenz zur Nutzung, Vervielfältigung und Anzeige der Inhalte auf unserer Plattform. Sie sind verantwortlich für die von Ihnen veröffentlichten Inhalte und müssen sicherstellen, dass diese keine Gesetze oder Rechte Dritter verletzen.",
     "h2Limitation": "7. Haftungsbeschränkung",
     "pLimitation": "Volunteerium wird auf einer 'wie besehen'- und 'wie verfügbar'-Basis bereitgestellt. Wir garantieren nicht, dass die Plattform fehlerfrei, sicher oder unterbrechungsfrei sein wird. Wir haften nicht für direkte oder indirekte Schäden, die sich aus der Nutzung oder der Unfähigkeit zur Nutzung unserer Plattform ergeben.",
@@ -794,7 +829,6 @@
       "sessionExpired": "Ihre Sitzung ist abgelaufen. Bitte versuchen Sie es erneut.",
       "confirmReset": "Zurücksetzen bestätigen"
     },
-
 
     "contacts": {
       "contactPanel": {
@@ -1035,6 +1069,7 @@
   },
   "yup": {
     "required": {
+      "ageRange": "Alter ist erforderlich",
       "userType": "Benutzertyp ist erforderlich!",
       "name": "Name ist erforderlich!",
       "fullName": "Vollname ist erforderlich!",
@@ -1111,8 +1146,7 @@
     "selectFile": "Bitte wählen Sie eine Datei zum Löschen aus.",
     "selectConversation": "Bitte wählen Sie ein Gespräch aus.",
     "enterMessage": "Bitte geben Sie eine Nachricht ein.",
-    "idMissing": "Event-ID oder Teilnehmer-ID fehlen.",
+    "idMissing": "Veranstaltung-ID oder Teilnehmer-ID fehlen.",
     "setupProfile": "Bitte richten Sie Ihre Profildaten ein, um fortzufahren."
-
   }
 }

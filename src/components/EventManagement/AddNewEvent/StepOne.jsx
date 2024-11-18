@@ -41,7 +41,7 @@ const StepOne = ({ setStep, values, setFieldValue, onClose, step, eventData }) =
   useEffect(() => {
     const validateForm = async () => {
       try {
-        await AddEventStep1Schema.validate(values, {
+        await AddEventStep1Schema(t).validate(values, {
           abortEarly: false,
         })
         setIsValidForNext(true)
@@ -227,12 +227,12 @@ const StepOne = ({ setStep, values, setFieldValue, onClose, step, eventData }) =
                 onClick={() => handleLocationChange(false)}
                 className={`p-2 rounded border ${
                   !isOnlineLocal
-                    ? "bg-primary-green text-white dark:bg-light-green dark:text-black"
+                    ? "bg-primary-green text-white dark:bg-light-green dark:text-white"
                     : "border-gray-1 dark:text-white"
                 }${
                   eventData?.isOnline
-                    ? "disabled:text-gray-1 disabled:border-gray-1 disabled:cursor-not-allowed"
-                    : "disabled:cursor-not-allowed"
+                    ? "disabled:text-gray-1 disabled:border-gray-1 dark:text-white disabled:cursor-not-allowed"
+                    : "disabled:cursor-not-allowed dark:text-white"
                 }`}
               >
                 {t(translations.eventMng.physical)}

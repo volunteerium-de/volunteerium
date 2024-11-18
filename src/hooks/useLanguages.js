@@ -39,7 +39,7 @@ const useLanguage = () => {
     let translatedCategory = categoryName
     if (i18n.language === "de") {
       translatedCategory = categories.filter(
-        (category) => category.name.toLowerCase() === categoryName.toLowerCase()
+        (category) => category?.name?.toLowerCase() === categoryName?.toLowerCase()
       )
       return translatedCategory[0]?.nameDE || translatedCategory[0]?.name
     }
