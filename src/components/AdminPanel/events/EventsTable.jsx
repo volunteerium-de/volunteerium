@@ -5,6 +5,7 @@ import "../../../styles/global.css"
 import { useNavigate } from "react-router-dom"
 import { useTranslation } from "react-i18next"
 import { translations } from "../../../locales/translations"
+import { formatDate } from "../../../helpers/formatDate"
 
 const EventsTable = ({ data, loading }) => {
   const { t } = useTranslation()
@@ -110,7 +111,7 @@ const EventsTable = ({ data, loading }) => {
                       className="td text-center whitespace-nowrap"
                       data-label={t(translations.adminPanel.events.eventsTable.createdAtDL)}
                     >
-                      {new Date(event?.createdAt).toLocaleDateString()}
+                      {formatDate(event?.createdAt)}
                     </td>
                   </tr>
                 ))}

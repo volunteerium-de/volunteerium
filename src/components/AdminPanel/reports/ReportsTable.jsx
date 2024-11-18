@@ -3,6 +3,7 @@ import React from "react"
 import { ImSpinner9 } from "react-icons/im"
 import { useNavigate } from "react-router-dom"
 import { translations } from "../../../locales/translations"
+import { formatDate } from "../../../helpers/formatDate"
 
 const ReportsTable = ({ data, loading }) => {
   const navigate = useNavigate()
@@ -74,7 +75,7 @@ const ReportsTable = ({ data, loading }) => {
                     className="td text-center whitespace-nowrap"
                     data-label={t(translations.adminPanel.reports.reportsTable.createdAt)}
                   >
-                    {new Date(report?.createdAt).toLocaleDateString()}
+                    {formatDate(report?.createdAt)}
                   </td>
                 </tr>
               ))}

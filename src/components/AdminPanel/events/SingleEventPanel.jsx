@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom"
 import useEventCall from "../../../hooks/useEventCall"
 import { ImSpinner9 } from "react-icons/im"
 import { MdOutlineSettings } from "react-icons/md"
-import { formatDateWithTime } from "../../../helpers/formatDate"
+import { formatDate, formatDateWithTime } from "../../../helpers/formatDate"
 import useLanguage from "../../../hooks/useLanguages"
 import { UserAvatar } from "../../ui/Avatar/userAvatar"
 import defaultPhoto from "../../../assets/default-event-photo-.jpg"
@@ -385,7 +385,7 @@ const SingleEventPanel = ({ eventId, setIdentifier }) => {
                                 translations.adminPanel.events.singleEventPanel.joinDateDL
                               )}
                             >
-                              {new Date(participant?.createdAt).toLocaleDateString()}
+                              {formatDate(participant?.createdAt)}
                             </li>
                           </ul>
                         ))}

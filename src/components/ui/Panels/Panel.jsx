@@ -84,6 +84,7 @@ const Panel = ({ title, fetchUrl, TableComponent }) => {
 
   const onClose = () => {
     setInterestName("")
+    setInterestNameDE("")
     setIsOpen(false)
   }
 

@@ -3,6 +3,7 @@ import { useTranslation } from "react-i18next"
 import { ImSpinner9 } from "react-icons/im"
 import { useNavigate } from "react-router-dom"
 import { translations } from "../../../locales/translations"
+import { formatDate } from "../../../helpers/formatDate"
 
 const FeedbacksTable = ({ data, loading }) => {
   const { t } = useTranslation()
@@ -80,7 +81,7 @@ const FeedbacksTable = ({ data, loading }) => {
                     className="td text-center whitespace-nowrap"
                     data-label={t(translations.adminPanel.feedbacks.feedbacksTable.createdAt)}
                   >
-                    {new Date(feedback?.createdAt).toLocaleDateString()}
+                    {formatDate(feedback?.createdAt)}
                   </td>
                 </tr>
               ))}
