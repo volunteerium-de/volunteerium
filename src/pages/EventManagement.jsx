@@ -16,7 +16,7 @@ const EventManagement = () => {
   const location = useLocation()
   const navigate = useNavigate()
   const { conversations } = useSelector((state) => state.chat)
-  const { currentUser, loading } = useSelector((state) => state.auth)
+  const { currentUser } = useSelector((state) => state.auth)
   const [activeTab, setActiveTab] = useState("organized-events")
   const [isAddingEvent, setIsAddingEvent] = useState(false)
   const { t } = useTranslation()

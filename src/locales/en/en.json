@@ -159,6 +159,7 @@
     "loading": "Loading...",
     "interests": "Interests",
     "aboutMe": "About Me",
+    "aboutUs": "About Us",
     "documents": "Certification & Document",
     "medals": {
       "goldenHeart": "Golden Heart",
@@ -531,7 +532,7 @@
     "zipCodePH": "Enter zip code",
     "city": "City*",
     "cityPH": "Enter City",
-    "state": "State*",
+    "state": "State",
     "statePH": "Enter State",
     "country": "Country*",
     "countryPH": "Enter Country",
@@ -1064,7 +1065,7 @@
   },
   "yup": {
     "required": {
-      "ageRange": "Age is required",
+      "ageRange": "Age is required!",
       "userType": "User type is required!",
       "name": "Name is required!",
       "fullName": "Fullname is required!",
@@ -1073,6 +1074,7 @@
       "subject": "Message subject is required!",
       "message": "Message is required!",
       "organizationName": "Organization name is required!",
+      "organizationURL": "Organization URL is required!",
       "streetName": "Street name is required!",
       "streetNumber": "Street number is required!",
       "zipCode": "ZIP code is required!",
@@ -1080,35 +1082,36 @@
       "country": "Country is required!",
       "oldPassword": "Old password is required!",
       "confirmPassword": "Confirm password is required!",
-      "reason": "Please select a reason",
+      "reason": "Please select a reason!",
       "eventName": "Event name is required!",
       "date": "Date isrequired!",
       "startTime": "Start time is required!",
       "endTime": "End time is required!",
-      "endShouldLater": "End time should be later than start time",
-      "streetNameOnline": "Street Name is required when online",
-      "category": "Category is required",
-      "participants": "Max Participants is required",
-      "description": "Description is required",
-      "newDate": "Date cannot be in the past",
-      "onlyNumbers": "Must contain only numbers",
-      "onlyLetters": "Must contain only letters",
-      "interestId": "InterestIds must be a valid ObjectId",
+      "endShouldLater": "End time should be later than start time!",
+      "streetNameOnline": "Street Name is required when online!",
+      "category": "Category is required!",
+      "participants": "Max Participants is required!",
+      "description": "Description is required!",
+      "newDate": "Date cannot be in the past!",
+      "onlyNumbers": "Must contain only numbers!",
+      "onlyLetters": "Must contain only letters!",
+      "interestId": "InterestIds must be a valid ObjectId!",
       "logo": "Logo is required!",
-      "addressId": "AddressId must be a valid ObjectId"
+      "addressId": "AddressId must be a valid ObjectId!"
     },
     "minLength": {
-      "select1": "At least one category must be selected.",
-      "phoneNumber": "Phone number must be at least 10 digits",
-      "totalPoint": "Total point cannot be negative",
+      "select1": "At least one category must be selected!",
+      "phoneNumber": "Phone number must be at least 10 digits!",
+      "totalPoint": "Total point cannot be negative!",
       "characters1": "Must be at least 1 characters!",
       "characters3": "Must be at least 3 characters!",
       "characters8": "Must be at least 8 characters!",
       "characters10": "Must be at least 10 characters!"
     },
     "maxLength": {
-      "select3": "You can select up to 3 categories.",
+      "select3": "You can select up to 3 categories!",
       "characters8": "Can be maximum 8 characters!",
+      "characters15": "Can be maximum 15 characters!",
       "characters30": "Can be maximum 30 characters!",
       "characters50": "Can be maximum 50 characters!",
       "characters100": "Can be maximum 100 characters!",
@@ -1125,18 +1128,19 @@
     },
     "invalid": {
       "email": "Invalid email address!",
-      "url": "Invalid URL format!"
+      "url": "Invalid URL format!",
+      "invalidFormat": "Invalid format!"
     },
     "oneOf": {
-      "gender": "Please choose a valid gender",
-      "ageRange": "Please choose a valid age range",
-      "language": "Please choose a valid language"
+      "gender": "Please choose a valid gender!",
+      "ageRange": "Please choose a valid age range!",
+      "language": "Please choose a valid language!"
     }
   },
 
   "toastify": {
     "error": "An error occurred. Please try again.",
-    "verifyFailError": "Verification failed. Please try again!",
+    "verifyFailError": "Verification failed. Please try again.",
     "verifySecureError": "Security verification is missing. Please try again.",
     "selectFile": "Please select a file to delete.",
     "selectConversation": "Please select a conversation.",

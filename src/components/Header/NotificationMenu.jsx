@@ -114,9 +114,7 @@ const NotificationMenu = () => {
               ))
             ) : (
               <div>
-                <p className="text-center py-3 text-gray-2 dark:text-light-gray-2">
-                  {t(translations.notifMenu.noNotif)}
-                </p>
+                <p className="text-center py-3 text-gray-2">{t(translations.notifMenu.noNotif)}</p>
               </div>
             )}
           </div>

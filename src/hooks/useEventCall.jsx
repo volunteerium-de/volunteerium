@@ -76,11 +76,10 @@ const useEventCall = () => {
           "Content-Type": "multipart/form-data",
         },
       })
-      dispatch(fetchSingleEventSuccess(data.new))
+
       toastNotify("success", data.message)
     } catch (error) {
       toastNotify("error", error?.response?.data?.message)
-      dispatch(fetchEventFail())
     }
   }
 

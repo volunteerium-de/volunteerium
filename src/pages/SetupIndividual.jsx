@@ -3,7 +3,6 @@ import { HiDotsHorizontal } from "react-icons/hi"
 import { FaCheck } from "react-icons/fa"
 import { useState } from "react"
 import { ErrorMessage, Form, Field, Formik } from "formik"
-import { UserDetailSchema } from "../validators/UserDetailValidator"
 import * as Yup from "yup"
 import useAccountCall from "../hooks/useAccountCall"
 import { useSelector } from "react-redux"
@@ -17,8 +16,27 @@ import useEventCall from "../hooks/useEventCall"
 import SelectInput from "../components/ui/Selects/SelectInput"
 import useLanguage from "../hooks/useLanguages"
 
+
 const SetupIndividual = () => {
+
   const { t } = useTranslation()
+  const IndividualSchema = () => {
+    return Yup.object().shape({
+      isFullNameDisplay: Yup.boolean().optional(),
+  
+      gender: Yup.string()
+        .oneOf(["male", "female", "n/a"], t("yup.oneOf.gender"))
+        .required("Gender is required"),
+      ageRange: Yup.string()
+        .oneOf(["16-25", "26-35", "35+"], t("yup.oneOf.ageRange"))
+        .required(t("yup.oneOf.ageRange")),
+      interests: Yup.array().max(3, t("yup.maxLength.select3")),
+      interestIds: Yup.array().of(
+        Yup.string().matches(/^[0-9a-fA-F]{24}$/, t("yup.required.interestId"))
+      ),
+    })
+  }
+
   const { currentUser: user } = useSelector((state) => state.auth)
   const { updateUserDetails } = useAccountCall()
   const { logout } = useAuthCall()
@@ -28,7 +46,8 @@ const SetupIndividual = () => {
   const { categories } = useSelector((state) => state.search)
   const { getEventCategories } = useEventCall()
   const { userDetailsId } = user
-  const { getTranslatedCategory } = useLanguage()
+  const { getTranslatedCategory } = useLanguage();
+
 
   const defaultUserDetails = {
     gender: userDetailsId?.gender || "",
@@ -72,7 +91,7 @@ const SetupIndividual = () => {
   }, [])
 
   useEffect(() => {
-    if (!categories && categories.length === 0) {
+    if (!categories.length > 0) {
       getEventCategories()
     }
   }, [categories])
@@ -86,7 +105,7 @@ const SetupIndividual = () => {
             gender: defaultUserDetails.gender,
             interests: defaultUserDetails.interestIds,
           }}
-          validationSchema={UserDetailSchema(t)}
+          validationSchema={IndividualSchema}
           onSubmit={(values) => {
             const payload = {
               ...values,
@@ -100,7 +119,7 @@ const SetupIndividual = () => {
               delete payload.ageRange
             }
 
-            updateUserDetails(payload)
+            updateUserDetails(payload);
             navigate("/")
           }}
         >
@@ -244,7 +263,7 @@ const SetupIndividual = () => {
                           }
                         }}
                       >
-                        {getTranslatedCategory(category.name)}
+                       {getTranslatedCategory(category.name)}
                       </button>
                     ))}
                   </div>
@@ -257,7 +276,7 @@ const SetupIndividual = () => {
                         navigate("/")
                       }}
                       disabled={!isValid}
-                      className="mt-4 block w-1/4 py-2 text-dark-gray-1 border border-gray-1 text-center  rounded-md transition-colors"
+                      className="mt-4 block w-1/4 py-2 text-dark-gray-1 hover:bg-dark-gray-1/60 hover:text-white border border-gray-1 text-center  rounded-md transition-colors"
                     >
                       {t(translations.setupIndv.skip)}
                     </button>

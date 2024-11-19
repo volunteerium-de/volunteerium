@@ -14,21 +14,19 @@ import { useSelector } from "react-redux"
 const LoginForm = () => {
   const { t } = useTranslation()
 
-const validationSchema = Yup.object({
-  email: Yup
-  .string()
-  .matches(/^[^\s@]+@[^\s@]+\.[^\s@]+$/, t(translations.yup.invalid.email))
-  .required(t(translations.yup.required.email)),
-  password: Yup.string()
-    .min(8, t(translations.yup.minLength.characters8))
-    .max(30, t(translations.yup.maxLength.characters30))
-    .matches(/\d+/, t(translations.yup.password.containsDigit))
-    .matches(/[a-z]/, t(translations.yup.password.containsLowercase))
-    .matches(/[A-Z]/, t(translations.yup.password.containsUppercase))
-    .matches(/[@$?!%&*]+/, t(translations.yup.password.containsSpecialCharacter))
-    .required(t(translations.yup.required.password)),
-})
-
+  const validationSchema = Yup.object({
+    email: Yup.string()
+      .matches(/^[^\s@]+@[^\s@]+\.[^\s@]+$/, t(translations.yup.invalid.email))
+      .required(t(translations.yup.required.email)),
+    password: Yup.string()
+      .min(8, t(translations.yup.minLength.characters8))
+      .max(30, t(translations.yup.maxLength.characters30))
+      .matches(/\d+/, t(translations.yup.password.containsDigit))
+      .matches(/[a-z]/, t(translations.yup.password.containsLowercase))
+      .matches(/[A-Z]/, t(translations.yup.password.containsUppercase))
+      .matches(/[@$?!%&*]+/, t(translations.yup.password.containsSpecialCharacter))
+      .required(t(translations.yup.required.password)),
+  })
 
   const [showPassword, setShowPassword] = useState(false)
   const passwordTimeoutRef = useRef(null)
@@ -51,8 +49,11 @@ const validationSchema = Yup.object({
 
   const handleSubmit = (values, { setSubmitting }) => {
     formValuesRef.current = values // Save form values
-    recaptchaRef.current.execute() // trigger reCAPTCHA
-    setSubmitting(false)
+    if (recaptchaRef.current) {
+      recaptchaRef.current.reset()
+      recaptchaRef.current.execute() // trigger reCAPTCHA
+      setSubmitting(false)
+    }
   }
 
   return (
@@ -161,7 +162,7 @@ const validationSchema = Yup.object({
               sitekey={import.meta.env.VITE_GOOGLE_RECAPTCHA_SITE_KEY}
               size="invisible"
               onChange={(token, resetForm) => {
-                onRecaptchaVerify(token, formValuesRef.current, "login");
+                onRecaptchaVerify(token, formValuesRef.current, "login")
                 resetForm()
               }}
             />

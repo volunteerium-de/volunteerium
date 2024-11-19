@@ -87,7 +87,6 @@ const AdminPanel = () => {
   }, [identifier, debouncedSetIdentifier])
 
   useEffect(() => {
-    // URL değişikliklerini dinleyin ve identifier varsa geri yönlendirme yapın
     const handlePopState = () => {
       const queryParams = new URLSearchParams(window.location.search)
       const tab = queryParams.get("tab")

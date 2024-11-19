@@ -47,7 +47,7 @@ const EventManagementCard = ({
           <img
             src={event?.eventPhoto || defaultEventPhoto}
             alt={event?.title}
-            className="w-full h-full object-cover rounded-l-lg overflow-hidden cursor-pointer"
+            className="w-full h-full max-h-[200px] object-cover rounded-l-lg overflow-hidden cursor-pointer"
             onClick={() => navigate(`/events/${event?._id}`)}
           />
         </div>
