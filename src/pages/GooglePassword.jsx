@@ -91,7 +91,7 @@ const GooglePassword = () => {
                   className="absolute right-2 top-1/2 transform -translate-y-1/2 cursor-pointer"
                   onClick={() => setShowPassword(!showPassword)}
                 >
-                  {showPassword ? <AiFillEye /> : <AiFillEyeInvisible />}
+                  {showPassword ? <AiFillEyeInvisible /> : <AiFillEye />}
                 </span>
                 {formik.errors.password ? (
                   <p className="absolute right-[25%] sm:right-0 -bottom-7 text-danger dark:text-primary-green text-[1rem] md:text-[0.9rem] sm:text-right text-center">
@@ -117,7 +117,7 @@ const GooglePassword = () => {
                   className="absolute right-2 top-1/2 transform -translate-y-1/2 cursor-pointer"
                   onClick={() => setShowConfirmPassword(!showConfirmPassword)}
                 >
-                  {showConfirmPassword ? <AiFillEye /> : <AiFillEyeInvisible />}
+                  {showConfirmPassword ? <AiFillEyeInvisible /> : <AiFillEye />}
                 </span>
                 {formik.errors.confirmPassword ? (
                   <p className="absolute right-[10%] sm:right-0 -bottom-7 text-danger dark:text-primary-green text-[1rem] md:text-[0.9rem] sm:text-right text-center">

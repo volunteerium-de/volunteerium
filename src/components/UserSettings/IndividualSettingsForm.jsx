@@ -88,8 +88,6 @@ const IndividualSettingsForm = () => {
       interestIds: values.interestIds.filter(Boolean),
     }
 
-    console.log("Formatted values before update:", formattedValues)
-
     try {
       const data = await updateUserDetails(formattedValues)
       toastNotify("success", data.message)
@@ -252,7 +250,7 @@ const IndividualSettingsForm = () => {
                   name="bio"
                   maxLength="250"
                   placeholder={t(translations.indvSettings.label6PH)}
-                  className="w-full p-2 border border-gray-1 rounded h-[100px] focus:outline-none focus:border-primary-green resize-none"
+                  className="w-full p-2 border border-gray-1 rounded h-[100px] focus:outline-none focus:border-primary-green scrollbar resize-none"
                 />
                 <p className="text-sm text-gray-2 dark:text-white">
                   {values.bio.length}/250 characters

@@ -81,7 +81,7 @@ const PasswordModal = ({ isOpen, onClose }) => {
                     onClick={() => setShowOldPassword(!showOldPassword)}
                     className="absolute top-2 right-2 cursor-pointer text-dark-gray-2"
                   >
-                    {showOldPassword ? <FaEye /> : <FaEyeSlash />}
+                    {showOldPassword ? <FaEyeSlash /> : <FaEye />}
                   </div>
                 </div>
                 {formik.touched.oldPassword && formik.errors.oldPassword ? (
@@ -112,7 +112,7 @@ const PasswordModal = ({ isOpen, onClose }) => {
                     onClick={() => setShowPassword(!showPassword)}
                     className="absolute top-2 right-2 cursor-pointer text-dark-gray-2"
                   >
-                    {showPassword ? <FaEye /> : <FaEyeSlash />}
+                    {showPassword ? <FaEyeSlash /> : <FaEye />}
                   </div>
                 </div>
                 {formik.touched.password && formik.errors.password ? (
@@ -145,7 +145,7 @@ const PasswordModal = ({ isOpen, onClose }) => {
                     onClick={() => setShowConfirmPassword(!showConfirmPassword)}
                     className="absolute top-2 right-2 cursor-pointer text-dark-gray-2"
                   >
-                    {showConfirmPassword ? <FaEye /> : <FaEyeSlash />}
+                    {showConfirmPassword ? <FaEyeSlash /> : <FaEye />}
                   </div>
                 </div>
                 {formik.touched.confirmPassword && formik.errors.confirmPassword ? (
