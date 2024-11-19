@@ -44,9 +44,9 @@ const Subscribe = () => {
             <div className="relative">
               <button
                 type="submit"
-                className="absolute -top-6 right-2 transform -translate-y-1/2 p-2 bg-primary-green text-white rounded-full"
+                className="absolute -top-6 right-2 transform -translate-y-1/2 p-2 bg-primary-green text-white rounded-full hover:bg-dark-green"
               >
-                <HiArrowSmRight size={14} />
+                <HiArrowSmRight size={16} />
               </button>
             </div>
           </div>
