@@ -118,7 +118,7 @@ const AddEvent = ({ onClose, eventData, eventToEdit }) => {
         validationSchema={() => AddEventSchema(t)}
         onSubmit={handleSubmit}
       >
-        {({ setFieldValue, values, isValid }) => (
+        {({ setFieldValue, values, isValid, errors, touched }) => (
           <Form>
             {/* Step One || Step Two */}
             {step === 1 && (
@@ -140,6 +140,8 @@ const AddEvent = ({ onClose, eventData, eventToEdit }) => {
                 step={step}
                 isValid={isValid}
                 loading={loading}
+                errors={errors}
+                touched={touched}
               />
             )}
           </Form>
