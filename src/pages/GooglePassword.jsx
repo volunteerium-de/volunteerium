@@ -11,6 +11,8 @@ import { useNavigate } from "react-router-dom"
 import logo from "../assets/logo.png"
 import { useEffect } from "react"
 import { useLocation } from "react-router-dom"
+import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai"
+import { useState } from "react"
 
 const GooglePassword = () => {
   const { t } = useTranslation()
@@ -18,6 +20,9 @@ const GooglePassword = () => {
   const { loading, currentUser } = useSelector((state) => state.auth)
   const navigate = useNavigate()
   const location = useLocation()
+
+  const [showPassword, setShowPassword] = useState(false)
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false)
 
   useEffect(() => {
     const queryParams = new URLSearchParams(location.search)
@@ -72,7 +77,7 @@ const GooglePassword = () => {
               <div className="relative flex flex-col sm:flex-row text-center md:text-left  justify-between items-center gap-[3px] mt-[15px] text-[1.3rem] md:text-[1rem]">
                 <p className=" dark:text-white">{t(translations.pswModal.newPsw)}</p>
                 <input
-                  type="password"
+                  type={showPassword ? "text" : "password"}
                   name="password"
                   placeholder="*********"
                   value={formik.values.password}
@@ -82,6 +87,12 @@ const GooglePassword = () => {
                     formik.errors.password ? "border-danger" : "border-gray-1"
                   } focus:ring-2 focus:ring-primary-green text-dark-gray-1 p-2 border border-gray-1 rounded h-[100px] focus:outline-none`}
                 />
+                <span
+                  className="absolute right-2 top-1/2 transform -translate-y-1/2 cursor-pointer"
+                  onClick={() => setShowPassword(!showPassword)}
+                >
+                  {showPassword ? <AiFillEyeInvisible /> : <AiFillEye />}
+                </span>
                 {formik.errors.password ? (
                   <p className="absolute right-[25%] sm:right-0 -bottom-7 text-danger dark:text-primary-green text-[1rem] md:text-[0.9rem] sm:text-right text-center">
                     {formik.errors.password}
@@ -92,7 +103,7 @@ const GooglePassword = () => {
               <div className="relative flex flex-col sm:flex-row text-center md:text-left justify-between items-center gap-[3px] mt-[15px] text-[1.3rem] md:text-[1rem]">
                 <p className="dark:text-white">{t(translations.pswModal.confirmPsw)}</p>
                 <input
-                  type="password"
+                  type={showConfirmPassword ? "text" : "password"}
                   name="confirmPassword"
                   placeholder="*********"
                   value={formik.values.confirmPassword}
@@ -102,6 +113,12 @@ const GooglePassword = () => {
                     formik.errors.confirmPassword ? "border-danger" : "border-gray-1"
                   } focus:ring-2 focus:ring-primary-green text-dark-gray-1 p-2 border border-gray-1 rounded h-[100px] focus:outline-none`}
                 />
+                <span
+                  className="absolute right-2 top-1/2 transform -translate-y-1/2 cursor-pointer"
+                  onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                >
+                  {showConfirmPassword ? <AiFillEyeInvisible /> : <AiFillEye />}
+                </span>
                 {formik.errors.confirmPassword ? (
                   <p className="absolute right-[10%] sm:right-0 -bottom-7 text-danger dark:text-primary-green text-[1rem] md:text-[0.9rem] sm:text-right text-center">
                     {formik.errors.confirmPassword}
