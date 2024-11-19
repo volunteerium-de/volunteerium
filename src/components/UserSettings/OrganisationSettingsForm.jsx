@@ -18,8 +18,7 @@ const OrganisationSettingsForm = () => {
 
   // Validation Schema
   const OrganisationSchema = Yup.object().shape({
-    // organizationName: Yup.string().required(t(translations.yup.required.organizationName)),
-    // organizationUrl: Yup.string().url("Please enter a valid URL"),
+    organizationUrl: Yup.string().url("Please enter a valid URL"),
     streetName: Yup.string().required(t(translations.yup.required.streetName)),
     streetNumber: Yup.string().required(t(translations.yup.required.streetNumber)),
     zipCode: Yup.string().required(t(translations.yup.required.zipCode)),
@@ -29,8 +28,8 @@ const OrganisationSettingsForm = () => {
   })
 
   const { userDetailsId } = currentUser
+  console.log(currentUser)
   const defaultUserDetails = {
-    // organizationName: currentUser.organizationName || "",
     organizationUrl: userDetailsId.organizationUrl || "",
     streetName: userDetailsId.addressId?.streetName || "",
     streetNumber: userDetailsId.addressId?.streetNumber || "",
@@ -46,12 +45,6 @@ const OrganisationSettingsForm = () => {
   }, [currentUser])
 
   const fields = [
-    // {
-    //   name: "organizationName",
-    //   label: t(translations.orgSettings.label1),
-    //   placeholder: t(translations.orgSettings.label1PH),
-    //   type: "text",
-    // },
     {
       name: "organizationUrl",
       label: t(translations.orgSettings.label2),
@@ -123,15 +116,14 @@ const OrganisationSettingsForm = () => {
       toastNotify("error", error.response?.data?.message || t(translations.toastify.error))
     }
   }
+
   return (
     <div>
       <div className="max-w-4xl mx-auto p-8 bg-light-gray dark:bg-dark-gray-3 rounded-lg shadow-md">
         <Formik
           initialValues={defaultUserDetails}
           validationSchema={OrganisationSchema}
-          onSubmit={(values) => {
-            handleSubmit(values)
-          }}
+          onSubmit={handleSubmit}
         >
           {({ values, resetForm }) => (
             <Form>
@@ -163,7 +155,7 @@ const OrganisationSettingsForm = () => {
                   id="organizationDesc"
                   name="organizationDesc"
                   placeholder={t(translations.orgSettings.label8PH)}
-                  className="w-full h-[100px] p-2 border border-gray-1 rounded focus:outline-none focus:border-primary-green resize-none"
+                  className="w-full h-[100px] p-2 border border-gray-1 rounded focus:outline-none focus:border-primary-green  scrollbar resize-none whitespace-pre-line"
                 />
                 <ErrorMessage
                   name="organizationDesc"
@@ -225,7 +217,6 @@ const OrganisationSettingsForm = () => {
 
                 <button
                   type="submit"
-                  onClick={() => setTimeout(() => console.log("Button clicked"), 0)}
                   className="bg-primary-green flex-1 py-2 px-4 text-[1rem] text-white rounded hover:bg-primary-green/60"
                 >
                   {t(translations.orgSettings.save)}

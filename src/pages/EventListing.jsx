@@ -142,11 +142,7 @@ const EventsListingPage = () => {
       )
     }
 
-    if (!totalEventRecord) {
-      resultMessage += `${t(translations.eventsPage.notFound)}`
-    } else {
-      resultMessage += ` ${totalEventRecord} ${totalEventRecord > 1 ? t(translations.eventsPage.events) : t(translations.eventsPage.event)} ${t(translations.eventsPage.found)}`
-    }
+    resultMessage += ` ${totalEventRecord} ${totalEventRecord > 1 ? t(translations.eventsPage.events) : t(translations.eventsPage.event)} ${t(translations.eventsPage.found)}`
 
     return { resultMessage, resultParts }
   }

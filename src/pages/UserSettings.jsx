@@ -5,7 +5,7 @@ import { IoSettingsOutline } from "react-icons/io5"
 import { MdOutlineVisibility, MdOutlineSecurity } from "react-icons/md"
 import ProfileSettings from "../components/UserSettings/ProfileSettings"
 import SecuritySettings from "../components/UserSettings/SecuritySettings"
-import VisibilitySettings from "../components/UserSettings/VisibilitySettings"
+// import VisibilitySettings from "../components/UserSettings/VisibilitySettings"
 import { useSelector } from "react-redux"
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
@@ -13,7 +13,7 @@ import { useTranslation } from "react-i18next"
 import { translations } from "../locales/translations"
 
 const UserSettings = () => {
-  const {t} = useTranslation()
+  const { t } = useTranslation()
   const navigate = useNavigate()
   const { currentUser } = useSelector((state) => state.auth)
   const isAdmin = currentUser.userType === "admin"
@@ -49,6 +49,7 @@ const UserSettings = () => {
         return isAdmin ? <SecuritySettings /> : <ProfileSettings />
     }
   }
+
   const handleTabChange = (newTab) => {
     let tab
     if (isAdmin && newTab === "profile") {
@@ -58,7 +59,7 @@ const UserSettings = () => {
       setActiveTab(newTab)
       tab = newTab
     }
-    navigate(`?tab=${tab}`)
+    navigate(`/settings?tab=${tab}`, { replace: true })
   }
 
   const handleEditAvatar = () => {
