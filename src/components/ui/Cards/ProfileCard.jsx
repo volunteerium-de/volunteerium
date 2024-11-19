@@ -19,8 +19,6 @@ const ProfileCard = ({ events, loading, eventType }) => {
 
   return (
     <div className="py-4">
-<<<<<<< Updated upstream
-=======
       <div className="flex gap-10 font-semibold text-xl my-4 text-dark-gray-1 text-center">
         <div
           className={`text-[0.9375rem] cursor-pointer border-b-2 ${
@@ -81,7 +79,6 @@ const ProfileCard = ({ events, loading, eventType }) => {
         </div>
       )}
 
->>>>>>> Stashed changes
       {!loading && (!events || events.length === 0) && (
         <div className="flex flex-col items-center justify-center h-[50vh]">
           <FaCalendarTimes className="text-6xl text-primary-green mb-4" />
