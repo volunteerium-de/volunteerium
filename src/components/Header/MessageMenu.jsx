@@ -183,9 +183,7 @@ const MessageMenu = () => {
                 })
             ) : (
               <div>
-                <p className="text-center text-gray-2 py-3 dark:text-light-gray-2">
-                  {t(translations.msgMenu.noMsg)}
-                </p>
+                <p className="text-center text-gray-2 py-3">{t(translations.msgMenu.noMsg)}</p>
               </div>
             )}
           </div>
