@@ -14,6 +14,7 @@ const AddEvent = ({ onClose, eventData, eventToEdit }) => {
   const { currentUser: user } = useSelector((state) => state.auth)
   const [step, setStep] = useState(1)
   const { postEvent, editEvent } = useEventCall()
+  const [loading, setLoading] = useState(false)
 
   const initialValues = {
     isActive: eventData?.isActive ?? true,
@@ -96,9 +97,13 @@ const AddEvent = ({ onClose, eventData, eventToEdit }) => {
 
     try {
       if (eventToEdit === null) {
+        setLoading(true)
         await postEvent(body)
+        setLoading(false)
       } else {
+        setLoading(true)
         await editEvent(eventData._id, body)
+        setLoading(false)
       }
       onClose()
     } catch (error) {
@@ -134,6 +139,7 @@ const AddEvent = ({ onClose, eventData, eventToEdit }) => {
                 values={values}
                 step={step}
                 isValid={isValid}
+                loading={loading}
               />
             )}
           </Form>

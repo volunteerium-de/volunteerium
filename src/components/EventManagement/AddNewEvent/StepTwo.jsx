@@ -12,9 +12,8 @@ import { useState } from "react"
 import { useTranslation } from "react-i18next"
 import { translations } from "../../../locales/translations/"
 
-const StepTwo = ({ setStep, values, step, isValid, setFieldValue }) => {
+const StepTwo = ({ setStep, values, step, isValid, setFieldValue, loading }) => {
   const { t } = useTranslation()
-  const { loading } = useSelector((state) => state.event)
   const { getEventCategories } = useEventCall()
   const { currentUser: user } = useSelector((state) => state.auth)
   const [addContactPerson, setAddContactPerson] = useState(values?.isContactPersonAdded ?? false)
