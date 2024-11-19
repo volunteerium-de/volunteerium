@@ -12,81 +12,13 @@ import { formatName } from "../../../helpers/formatName.js"
 
 const defaultEventPhoto = eventPhoto
 
-const ProfileCard = ({
-  events,
-  loading,
-  eventType,
-  setEventType,
-  setCurrentPage,
-  organizedFilter,
-  setOrganizedFilter,
-}) => {
+const ProfileCard = ({ events, loading, eventType }) => {
   const { t } = useTranslation()
   const navigate = useNavigate()
   const { getTranslatedCategory } = useLanguageOptions()
 
   return (
     <div className="py-4">
-      <div className="flex gap-10 font-semibold text-xl my-4 text-dark-gray-1 text-center">
-        <div
-          className={`text-[0.9375rem] cursor-pointer border-b-2 ${
-            eventType === "Attended Events"
-              ? "text-primary-green border-primary-green"
-              : "border-transparent dark:text-white"
-          }`}
-          onClick={() => {
-            setEventType("Attended Events")
-            setCurrentPage(1)
-          }}
-        >
-          {t(translations.profileCard.attendEvents)}
-        </div>
-        <div
-          className={`text-[0.9375rem] cursor-pointer border-b-2 ${
-            eventType === "Organized Events"
-              ? "text-primary-green border-primary-green"
-              : "border-transparent dark:text-white"
-          }`}
-          onClick={() => {
-            setEventType("Organized Events")
-            setCurrentPage(1)
-          }}
-        >
-          {t(translations.profileCard.organizedEvents)}
-        </div>
-      </div>
-
-      {eventType === "Organized Events" && (
-        <div className="flex gap-4 font-medium text-sm my-2 text-dark-gray-1 text-center justify-end">
-          <button
-            className={`py-1 px-2 rounded-md ${
-              organizedFilter === "Unfinished Events"
-                ? "bg-primary-green text-white hover:bg-primary-green/60"
-                : "bg-light-gray-3 dark:bg-dark-gray-2 text-dark-gray-1 dark:text-white hover:bg-dark-gray-1/20 dark:hover:bg-dark-gray-1"
-            }`}
-            onClick={() => {
-              setOrganizedFilter("Unfinished Events")
-              setCurrentPage(1)
-            }}
-          >
-            {t("profileCard.unfinishedEvents")}
-          </button>
-          <button
-            className={`py-1 px-2 rounded-md ${
-              organizedFilter === "Finished Events"
-                ? "bg-primary-green text-white hover:bg-primary-green/60"
-                : "bg-light-gray-3 dark:bg-dark-gray-2 text-dark-gray-1 dark:text-white hover:bg-dark-gray-1/20 dark:hover:bg-dark-gray-1"
-            }`}
-            onClick={() => {
-              setOrganizedFilter("Finished Events")
-              setCurrentPage(1)
-            }}
-          >
-            {t("profileCard.finishedEvents")}
-          </button>
-        </div>
-      )}
-
       {!loading && (!events || events.length === 0) && (
         <div className="flex flex-col items-center justify-center h-[50vh]">
           <FaCalendarTimes className="text-6xl text-primary-green mb-4" />
