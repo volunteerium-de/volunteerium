@@ -5,7 +5,8 @@ export const AddEventSchema = (t) => {
     title: string()
       .trim()
       .required(t("newEventValidation.nameRequired"))
-      .min(10, t("newEventValidation.nameMin")),
+      .min(10, t("newEventValidation.nameMin"))
+      .max(60, t("newEventValidation.nameMin")),
 
     date: date()
       .required(t("newEventValidation.dateRequired"))
@@ -27,7 +28,7 @@ export const AddEventSchema = (t) => {
       then: () =>
         string()
           .required(t("newEventValidation.streetNameRequired"))
-          .matches(/^[\p{L}0-9\s.'-]+$/u, t("newEventValidation.streetNameInvalid")),
+          .matches(/^[\p{L}0-9\s.'/-]+$/u, t("newEventValidation.streetNameInvalid")),
     }),
 
     streetNumber: string().when("isOnline", {
@@ -35,7 +36,7 @@ export const AddEventSchema = (t) => {
       then: () =>
         string()
           .trim()
-          .matches(/^[0-9]+$/, t("newEventValidation.streetNumberInvalid"))
+          .matches(/^[\p{L}0-9\s.'/-]+$/u, t("newEventValidation.streetNumberInvalid"))
           .required(t("newEventValidation.streetNumberRequired")),
     }),
 
@@ -44,9 +45,9 @@ export const AddEventSchema = (t) => {
       then: () =>
         string()
           .trim()
-          .matches(/^[0-9]+$/, t("newEventValidation.zipCodeInvalid"))
+          .matches(/^[\p{L}0-9\s.'/-]+$/u, t("newEventValidation.zipCodeInvalid"))
           .min(1, t("newEventValidation.zipCodeMin"))
-          .max(8, t("newEventValidation.zipCodeMax"))
+          .max(15, t("newEventValidation.zipCodeMax"))
           .required(t("newEventValidation.zipCodeRequired")),
     }),
 
@@ -55,7 +56,7 @@ export const AddEventSchema = (t) => {
       then: () =>
         string()
           .required(t("newEventValidation.cityRequired"))
-          .matches(/^[\p{L}]+$/u, t("newEventValidation.cityInvalid"))
+          .matches(/^[\p{L}\s.'/-]+$/u, t("newEventValidation.cityInvalid"))
           .min(3, t("newEventValidation.cityMin")),
     }),
 
@@ -65,7 +66,7 @@ export const AddEventSchema = (t) => {
         string()
           .trim()
           .required(t("newEventValidation.countryRequired"))
-          .matches(/^[\p{L}]+$/u, t("newEventValidation.countryInvalid"))
+          .matches(/^[\p{L}\s.'/-]+$/u, t("newEventValidation.countryInvalid"))
           .min(3, t("newEventValidation.countryMin")),
     }),
 
@@ -78,7 +79,9 @@ export const AddEventSchema = (t) => {
 
     languages: array(),
 
-    description: string().required(t("newEventValidation.descriptionRequired")),
+    description: string()
+      .required(t("newEventValidation.descriptionRequired"))
+      .max(2000, t("newEventValidation.descriptionMax")),
 
     isContactPersonAdded: boolean().required(),
 
@@ -134,7 +137,7 @@ export const AddEventStep1Schema = (t) => {
       then: () =>
         string()
           .required(t("newEventValidation.streetNameRequired"))
-          .matches(/^[\p{L}0-9\s.'-]+$/u, t("newEventValidation.streetNameInvalid")),
+          .matches(/^[\p{L}0-9\s.'/-]+$/u, t("newEventValidation.streetNameInvalid")),
     }),
 
     streetNumber: string().when("isOnline", {
@@ -142,7 +145,7 @@ export const AddEventStep1Schema = (t) => {
       then: () =>
         string()
           .trim()
-          .matches(/^[0-9]+$/, t("newEventValidation.streetNumberInvalid"))
+          .matches(/^[\p{L}0-9\s.'/-]+$/u, t("newEventValidation.streetNumberInvalid"))
           .required(t("newEventValidation.streetNumberRequired")),
     }),
 
@@ -151,9 +154,9 @@ export const AddEventStep1Schema = (t) => {
       then: () =>
         string()
           .trim()
-          .matches(/^[0-9]+$/, t("newEventValidation.zipCodeInvalid"))
+          .matches(/^[\p{L}0-9\s.'/-]+$/u, t("newEventValidation.zipCodeInvalid"))
           .min(1, t("newEventValidation.zipCodeMin"))
-          .max(8, t("newEventValidation.zipCodeMax"))
+          .max(15, t("newEventValidation.zipCodeMax"))
           .required(t("newEventValidation.zipCodeRequired")),
     }),
 
@@ -162,7 +165,7 @@ export const AddEventStep1Schema = (t) => {
       then: () =>
         string()
           .required(t("newEventValidation.cityRequired"))
-          .matches(/^[\p{L}]+$/u, t("newEventValidation.cityInvalid"))
+          .matches(/^[\p{L}\s.'/-]+$/u, t("newEventValidation.cityInvalid"))
           .min(3, t("newEventValidation.cityMin")),
     }),
 
@@ -172,7 +175,7 @@ export const AddEventStep1Schema = (t) => {
         string()
           .trim()
           .required(t("newEventValidation.countryRequired"))
-          .matches(/^[\p{L}]+$/u, t("newEventValidation.countryInvalid"))
+          .matches(/^[\p{L}\s.'/-]+$/u, t("newEventValidation.countryInvalid"))
           .min(3, t("newEventValidation.countryMin")),
     }),
   })

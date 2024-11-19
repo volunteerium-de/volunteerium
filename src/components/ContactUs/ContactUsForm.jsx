@@ -8,9 +8,8 @@ import toastNotify from "../../utils/toastNotify"
 import { useTranslation } from "react-i18next"
 import { translations } from "../../locales/translations"
 
-
 const ContactUsForm = () => {
-  const {t} = useTranslation()
+  const { t } = useTranslation()
   const validationSchema = Yup.object({
     name: Yup.string()
       .min(3, t(translations.yup.minLength.characters3))
@@ -28,12 +27,12 @@ const ContactUsForm = () => {
       .max(1000, t(translations.yup.maxLength.characters1000))
       .required(t(translations.yup.required.message)),
   })
-  const handleSubmit = async(values) => {
+  const handleSubmit = async (values) => {
     try {
-      const {data}=await axiosWithPublic.post("/contacts",values)
+      const { data } = await axiosWithPublic.post("/contacts", values)
       toastNotify("success", data.message)
     } catch (error) {
-      console.log(error);
+      console.log(error)
       toastNotify("error", error.response?.data?.message)
     }
   }
@@ -63,7 +62,7 @@ const ContactUsForm = () => {
             <Field
               type="text"
               name="name"
-              placeholder=  {t(translations.contactUsForm.namePH)}
+              placeholder={t(translations.contactUsForm.namePH)}
               className={`w-full border rounded-lg text-[1rem] placeholder-gray-2 dark:placeholder-gray-2 dark:bg-black dark:text-white p-3 h-[42px] md:h-[48px] focus:outline-none focus:border-primary-green 
                 ${touched.name && errors.name ? "border-danger dark:border-danger" : "border-gray-1"}`}
             />
@@ -78,12 +77,12 @@ const ContactUsForm = () => {
           {/* Email Field */}
           <div>
             <p className="text-gray-2 dark:text-white text-[0.875rem] md:text-[1rem]">
-            {t(translations.contactUsForm.email)}
+              {t(translations.contactUsForm.email)}
             </p>
             <Field
               type="email"
               name="email"
-              placeholder= {t(translations.contactUsForm.emailPH)}
+              placeholder={t(translations.contactUsForm.emailPH)}
               className={`w-full border rounded-lg text-[1rem] placeholder-gray-2 dark:placeholder-gray-2 dark:bg-black dark:text-white p-3 h-[42px] md:h-[48px] focus:outline-none focus:border-primary-green 
                 ${touched.email && errors.email ? "border-danger dark:border-danger" : "border-gray-1"}`}
             />
@@ -98,12 +97,12 @@ const ContactUsForm = () => {
           {/* Message Subject Field */}
           <div>
             <p className="text-gray-2 dark:text-white text-[0.875rem] md:text-[1rem]">
-            {t(translations.contactUsForm.subject)}
+              {t(translations.contactUsForm.subject)}
             </p>
             <Field
               type="text"
               name="subject"
-              placeholder= {t(translations.contactUsForm.subjectPH)}
+              placeholder={t(translations.contactUsForm.subjectPH)}
               className={`w-full border rounded-lg text-[1rem] placeholder-gray-2 dark:placeholder-gray-2 dark:bg-black dark:text-white p-3 h-[42px] md:h-[48px] focus:outline-none focus:border-primary-green 
                 ${touched.subject && errors.subject ? "border-danger dark:border-danger" : "border-gray-1"}`}
             />
@@ -118,7 +117,7 @@ const ContactUsForm = () => {
           {/* Message Field */}
           <div>
             <p className="text-gray-2 dark:text-white text-[0.875rem] md:text-[1rem] lg:text-[1.125rem]">
-            {t(translations.contactUsForm.message)}
+              {t(translations.contactUsForm.message)}
             </p>
             <Field
               as="textarea"
@@ -135,7 +134,7 @@ const ContactUsForm = () => {
               )}
             </div>
             <p className="text-[0.75rem] text-gray-2 dark:text-light-gray-1 text-right">
-            {t(translations.contactUsForm.messageMaxLength)}
+              {t(translations.contactUsForm.messageMaxLength)}
             </p>
           </div>
 

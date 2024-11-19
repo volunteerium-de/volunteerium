@@ -113,7 +113,7 @@ const EventDetails = () => {
                       </span>
                     ))}
                   </div>
-                  <p className="text-[1rem] md:text-dark-gray-3 dark:text-gray-2 mb-12 pr-3">
+                  <p className="text-[1rem] whitespace-pre-line md:text-dark-gray-3 dark:text-gray-2 mb-12 pr-3">
                     {description}
                   </p>
                   {/* RightSide-Join Operations */}

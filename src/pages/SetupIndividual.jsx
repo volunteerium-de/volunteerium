@@ -91,7 +91,7 @@ const SetupIndividual = () => {
   }, [])
 
   useEffect(() => {
-    if (!categories.length > 0) {
+    if (categories.length === 0) {
       getEventCategories()
     }
   }, [categories])

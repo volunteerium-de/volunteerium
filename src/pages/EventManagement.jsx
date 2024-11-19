@@ -31,7 +31,7 @@ const EventManagement = () => {
   const handleTabChange = (tab) => {
     setIsAddingEvent(false)
     setActiveTab(tab)
-    navigate(`/event-management?tab=${tab}`)
+    navigate(`/event-management?tab=${tab}`, { replace: true })
   }
 
   const getUnreadMessageCount = () => {

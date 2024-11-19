@@ -147,7 +147,7 @@ const StepOne = ({ setStep, values, setFieldValue, onClose, step, eventData }) =
             id="eventPhoto"
             name="eventPhoto"
             type="file"
-            accept="image/*"
+            accept=".jpg,.jpeg,.png"
             onChange={(e) => handleFileChange(e)}
             className={`w-full p-2 border border-gray-1 rounded focus:outline-none dark:bg-white focus:border-primary-green  ${eventData?.eventPhoto && !isPhotoUpdated ? "hidden" : ""}`}
           />
@@ -197,7 +197,12 @@ const StepOne = ({ setStep, values, setFieldValue, onClose, step, eventData }) =
 
         <div className="mb-4">
           <label className="block text-dark-gray-2 dark:text-white mb-2">
-            {t(translations.eventMng.eventLocation)}
+            {t(translations.eventMng.eventLocation)}{" "}
+            {!eventData && (
+              <span className="font-medium">
+                {t(translations.eventMng.eventLocationNonChangable)}{" "}
+              </span>
+            )}
           </label>
           <>
             {/* Location */}
@@ -241,9 +246,9 @@ const StepOne = ({ setStep, values, setFieldValue, onClose, step, eventData }) =
 
             {/* Physical Location Inputs */}
             {!isOnlineLocal && (
-              <div className="mb-4">
+              <div className="mb-6">
                 {/* Street Name and Street Number Fields */}
-                <div className="flex flex-col sm:flex-row sm:space-x-4 mb-4">
+                <div className="flex flex-col sm:flex-row sm:space-x-4 my-4">
                   <div className="flex-1">
                     <label className="block text-dark-gray-2 dark:text-white mb-2">
                       {t(translations.eventMng.strName)}
@@ -325,7 +330,7 @@ const StepOne = ({ setStep, values, setFieldValue, onClose, step, eventData }) =
           </button>
           <button
             type="button"
-            className={`py-2 px-4 bg-primary-green text-white rounded hover:bg-dark-green ${
+            className={`py-2 px-4 bg-primary-green text-white rounded hover:bg-primary-green/60 ${
               isValidForNext ? "" : "opacity-50 cursor-not-allowed"
             }`}
             disabled={!isValidForNext}

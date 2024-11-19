@@ -133,7 +133,7 @@ const StepTwo = ({ setStep, values, step, isValid, setFieldValue, loading }) => 
           <Field
             as="textarea"
             name="description"
-            className="w-full min-h-64 p-2 border border-gray-1 rounded focus:outline-none focus:border-primary-green"
+            className="w-full scrollbar whitespace-pre-line min-h-64 p-2 border border-gray-1 rounded focus:outline-none focus:border-primary-green"
             required
           />
           <ErrorMessage name="description" component="div" className="text-danger" />
@@ -237,7 +237,7 @@ const StepTwo = ({ setStep, values, step, isValid, setFieldValue, loading }) => 
           <button
             type="submit"
             className={`py-2 px-4 bg-primary-green text-white rounded flex items-center justify-center ${
-              isValid && !loading ? "hover:bg-dark-green" : "opacity-50 cursor-not-allowed"
+              isValid && !loading ? "hover:bg-primary-green/60" : "opacity-50 cursor-not-allowed"
             }`}
             disabled={!isValid || loading}
           >

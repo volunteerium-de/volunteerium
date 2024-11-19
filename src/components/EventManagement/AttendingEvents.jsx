@@ -16,6 +16,7 @@ const AttendingEvents = () => {
   const [events, setEvents] = useState([])
   const [refetch, setRefetch] = useState(null)
   const { t } = useTranslation()
+  const [filteredEvents, setFilteredEvents] = useState([])
 
   useEffect(() => {
     const fetchEvents = async () => {
@@ -23,6 +24,7 @@ const AttendingEvents = () => {
       try {
         const eventsResponse = await getEvents(`events/participant/${user._id}`)
         setEvents(eventsResponse.data)
+        setFilteredEvents(eventsResponse.data)
       } catch (error) {
       } finally {
         setLoading(false)
@@ -36,8 +38,14 @@ const AttendingEvents = () => {
     setRefetch(new Date().getTime())
   }
 
-  const upcomingEvents = events?.filter((event) => !event.isDone) || []
-  const pastEvents = events?.filter((event) => event.isDone) || []
+  const handleSearchChange = (e) => {
+    const query = e.target.value.toLowerCase()
+    const filtered = events.filter((event) => event.title.toLowerCase().includes(query))
+    setFilteredEvents(filtered)
+  }
+
+  const upcomingEvents = filteredEvents?.filter((event) => !event.isDone) || []
+  const pastEvents = filteredEvents?.filter((event) => event.isDone) || []
 
   return loading ? (
     <div className="flex mt-12 items-center justify-center text-primary-green text-md font-semibold">
@@ -55,6 +63,7 @@ const AttendingEvents = () => {
           <FaSearch className="mx-2 text-primary-green dark:text-white" />
           <input
             type="text"
+            onChange={handleSearchChange}
             placeholder={t(translations.eventManagement.searchInput)}
             className="text-[0.7rem] border-none rounded-lg focus:outline-none focus:ring-0 text-primary-green font-medium bg-light-gray dark:bg-dark-gray-3 dark:text-white"
           />

@@ -92,7 +92,7 @@ const MessageMenu = () => {
         onClick={toggleMessageMenu}
       >
         {/* Message Icon */}
-        <FaEnvelope className="text-primary-green dark:text-gray-2 h-7 w-7" />
+        <FaEnvelope className="text-primary-green hover:text-dark-green dark:text-gray-2 h-7 w-7" />
 
         {/* Message Count Badge */}
         {totalUnreadCount > 0 && (
