@@ -85,7 +85,7 @@ const NotificationMenu = () => {
           </div>
 
           {/* Notification List */}
-          <div className="max-h-80 overflow-y-auto">
+          <div className="max-h-80 scrollbar overflow-y-auto">
             {notifications.length > 0 ? (
               notifications.map(({ _id, contentEN, contentDE, isRead, createdAt }) => (
                 <div

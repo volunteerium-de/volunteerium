@@ -345,7 +345,7 @@ const Profile = () => {
                   <button
                     className={`py-1 px-2 rounded-md ${
                       organizedFilter === "Unfinished Events"
-                        ? "bg-primary-green text-white hover:bg-primary-green/60"
+                        ? "bg-primary-green text-white hover:bg-dark-green"
                         : "bg-light-gray-3 dark:bg-dark-gray-2 text-dark-gray-1 dark:text-white hover:bg-dark-gray-1/20 dark:hover:bg-dark-gray-1"
                     }`}
                     onClick={() => {
@@ -358,7 +358,7 @@ const Profile = () => {
                   <button
                     className={`py-1 px-2 rounded-md ${
                       organizedFilter === "Finished Events"
-                        ? "bg-primary-green text-white hover:bg-primary-green/60"
+                        ? "bg-primary-green text-white hover:bg-dark-green"
                         : "bg-light-gray-3 dark:bg-dark-gray-2 text-dark-gray-1 dark:text-white hover:bg-dark-gray-1/20 dark:hover:bg-dark-gray-1"
                     }`}
                     onClick={() => {

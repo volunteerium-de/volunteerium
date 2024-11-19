@@ -16,14 +16,12 @@ import useEventCall from "../hooks/useEventCall"
 import SelectInput from "../components/ui/Selects/SelectInput"
 import useLanguage from "../hooks/useLanguages"
 
-
 const SetupIndividual = () => {
-
   const { t } = useTranslation()
   const IndividualSchema = () => {
     return Yup.object().shape({
       isFullNameDisplay: Yup.boolean().optional(),
-  
+
       gender: Yup.string()
         .oneOf(["male", "female", "n/a"], t("yup.oneOf.gender"))
         .required("Gender is required"),
@@ -46,8 +44,7 @@ const SetupIndividual = () => {
   const { categories } = useSelector((state) => state.search)
   const { getEventCategories } = useEventCall()
   const { userDetailsId } = user
-  const { getTranslatedCategory } = useLanguage();
-
+  const { getTranslatedCategory } = useLanguage()
 
   const defaultUserDetails = {
     gender: userDetailsId?.gender || "",
@@ -119,7 +116,7 @@ const SetupIndividual = () => {
               delete payload.ageRange
             }
 
-            updateUserDetails(payload);
+            updateUserDetails(payload)
             navigate("/")
           }}
         >
@@ -263,7 +260,7 @@ const SetupIndividual = () => {
                           }
                         }}
                       >
-                       {getTranslatedCategory(category.name)}
+                        {getTranslatedCategory(category.name)}
                       </button>
                     ))}
                   </div>
@@ -276,7 +273,7 @@ const SetupIndividual = () => {
                         navigate("/")
                       }}
                       disabled={!isValid}
-                      className="mt-4 block w-1/4 py-2 text-dark-gray-1 hover:bg-dark-gray-1/60 hover:text-white border border-gray-1 text-center  rounded-md transition-colors"
+                      className="mt-4 block w-1/4 py-2 text-dark-gray-1 hover:bg-dark-gray-2 hover:text-white border border-gray-1 text-center  rounded-md transition-colors"
                     >
                       {t(translations.setupIndv.skip)}
                     </button>
