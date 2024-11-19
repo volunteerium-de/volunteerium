@@ -155,7 +155,7 @@ const OrganisationSettingsForm = () => {
                   id="organizationDesc"
                   name="organizationDesc"
                   placeholder={t(translations.orgSettings.label8PH)}
-                  className="w-full h-[100px] p-2 border border-gray-1 rounded focus:outline-none focus:border-primary-green  scrollbar resize-none"
+                  className="w-full h-[100px] p-2 border border-gray-1 rounded focus:outline-none focus:border-primary-green  scrollbar resize-none whitespace-pre-line"
                 />
                 <ErrorMessage
                   name="organizationDesc"

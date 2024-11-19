@@ -174,33 +174,28 @@ const SecuritySettings = () => {
       </div>
 
       {/* Delete Account Section */}
-      <div className="text-[0.9rem] sm:text-[1rem] my-[10px]">
-        <h1 className="text-center font-bold my-[20px] text-dark-gray-3">
-          {t(translations.secSett.delAccount)}
-        </h1>
-        <p className="text-dark-gray-2 text-center dark:text-white">
-          {currentUser?.userType === "individual"
-            ? t(translations.secSett.delAlert1)
-            : t(translations.secSett.delAlert2)}
-        </p>
-        <div className="text-center">
-          <button
-            className={`w-[70%] py-2 px-4 rounded my-[50px] duration-200 ${
-              currentUser.userType === "admin"
-                ? "bg-dark-gray-1 cursor-not-allowed"
-                : "bg-danger hover:bg-danger/60"
-            }`}
-            onClick={() => {
-              if (currentUser.userType !== "admin") openDeleteModal()
-            }}
-            disabled={currentUser.userType === "admin"}
-          >
-            <p className="text-[0.9rem] sm:text-[1rem] text-white">
-              {t(translations.secSett.userRes)}
-            </p>
-          </button>
+      {currentUser.userType !== "admin" && (
+        <div className="text-[0.9rem] sm:text-[1rem] my-[10px]">
+          <h1 className="text-center font-bold my-[20px] text-dark-gray-3">
+            {t(translations.secSett.delAccount)}
+          </h1>
+          <p className="text-dark-gray-2 text-center dark:text-white">
+            {currentUser?.userType === "individual"
+              ? t(translations.secSett.delAlert1)
+              : t(translations.secSett.delAlert2)}
+          </p>
+          <div className="text-center">
+            <button
+              className="w-[70%] py-2 px-4 rounded my-[50px] duration-200 bg-danger hover:bg-danger/60"
+              onClick={openDeleteModal}
+            >
+              <p className="text-[0.9rem] sm:text-[1rem] text-white">
+                {t(translations.secSett.userRes)}
+              </p>
+            </button>
+          </div>
         </div>
-      </div>
+      )}
 
       {/* Delete Modal */}
       {isDeleteModalOpen && (
