@@ -172,6 +172,7 @@ export const translations = {
     loading: "profile.loading",
     interests: "profile.interests",
     aboutMe: "profile.aboutMe",
+    aboutUs: "profile.aboutUs",
     documents: "profile.documents",
     medals: {
       goldenHeart: "profile.medals.goldenHeart",
