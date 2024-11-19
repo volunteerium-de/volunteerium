@@ -212,7 +212,7 @@ const SetupIndividual = () => {
                       onClick={() => handleNext(isValid)}
                       className={`w-auto px-14 py-2 rounded-md transition-colors ${
                         isValid && values.ageRange && values.gender
-                          ? "bg-primary-green text-white hover:bg-primary-green/60"
+                          ? "bg-primary-green text-white hover:bg-dark-green"
                           : "bg-gray-200 text-gray-400 cursor-not-allowed"
                       }`}
                       disabled={!(isValid && values.ageRange && values.gender)}
@@ -246,7 +246,7 @@ const SetupIndividual = () => {
                         type="button"
                         className={`w-1/3 sm:w-1/2 md:w-auto px-1 md:px-4 py-2 border rounded-md cursor-pointer ${
                           values.interests.includes(category._id)
-                            ? "bg-light-green hover:bg-light-green/60 text-dark-gray-1 border-1 border-primary-green"
+                            ? "bg-light-green hover:bg-primary-green text-dark-gray-1 border-1 border-primary-green"
                             : "100 text-gray-2"
                         }`}
                         onClick={() => {
@@ -288,7 +288,7 @@ const SetupIndividual = () => {
                         navigate("/")
                       }}
                       disabled={!isValid}
-                      className="mt-4 block w-1/5 py-2 text-center bg-primary-green hover:bg-primary-green/60 text-white rounded-md transition-colors"
+                      className="mt-4 block w-1/5 py-2 text-center bg-primary-green hover:bg-dark-green text-white rounded-md transition-colors"
                     >
                       {t(translations.setupIndv.finish)}
                     </button>

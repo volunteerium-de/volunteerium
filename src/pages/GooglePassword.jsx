@@ -63,7 +63,7 @@ const GooglePassword = () => {
           </h1>
         </div>
         <p className="text-center dark:text-white mb-[1rem] text-[1.2rem] md:text-[1rem] max-w-[700px] lg:max-w-[800px]">
-        {t(translations.googlePassword.description)}
+          {t(translations.googlePassword.description)}
         </p>
         <form onSubmit={formik.handleSubmit}>
           <div className="mt-[20px] max-w-[500px] lg:max-w-[600px] mx-auto">
@@ -112,9 +112,13 @@ const GooglePassword = () => {
                 <button
                   type="submit"
                   disabled={loading}
-                  className={`flex justify-center text-[1.3rem] md:text-[1.0rem] items-center ${loading ? "bg-primary-green/60" : "bg-primary-green hover:bg-primary-green/60"} px-2 py-1 rounded-md text-white w-[250px] h-[45px]`}
+                  className={`flex justify-center text-[1.3rem] md:text-[1.0rem] items-center ${loading ? "bg-light-green" : "bg-primary-green hover:bg-dark-green"} px-2 py-1 rounded-md text-white w-[250px] h-[45px]`}
                 >
-                  {loading ? <ImSpinner9 className="animate-spin" /> : t(translations.googlePassword.saveContinue)}
+                  {loading ? (
+                    <ImSpinner9 className="animate-spin" />
+                  ) : (
+                    t(translations.googlePassword.saveContinue)
+                  )}
                 </button>
               </div>
             </div>

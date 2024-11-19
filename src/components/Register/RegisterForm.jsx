@@ -15,25 +15,24 @@ import { useSelector } from "react-redux"
 const RegisterForm = () => {
   const { t } = useTranslation()
 
-const validationSchema = Yup.object({
-  userType: Yup.string().required(t(translations.registerForm.yup1)),
-  fullName: Yup.string()
-    .min(3, t(translations.yup.minLength.characters3))
-    .max(30, t(translations.yup.maxLength.characters30))
-    .required(t(translations.yup.required.fullName)),
-  email: Yup.string()
-    .matches(/^[^\s@]+@[^\s@]+\.[^\s@]+$/, t(translations.yup.invalid.email))
-    .required(t(translations.yup.required.email)),
-  password: Yup.string()
-    .min(8, t(translations.yup.minLength.characters8))
-    .max(30, t(translations.yup.maxLength.characters30))
-    .matches(/\d+/, t(translations.yup.password.containsDigit))
-    .matches(/[a-z]/, t(translations.yup.password.containsLowercase))
-    .matches(/[A-Z]/, t(translations.yup.password.containsUppercase))
-    .matches(/[@$?!%&*]+/, t(translations.yup.password.containsSpecialCharacter))
-    .required(t(translations.yup.required.password)),
-})
-
+  const validationSchema = Yup.object({
+    userType: Yup.string().required(t(translations.registerForm.yup1)),
+    fullName: Yup.string()
+      .min(3, t(translations.yup.minLength.characters3))
+      .max(30, t(translations.yup.maxLength.characters30))
+      .required(t(translations.yup.required.fullName)),
+    email: Yup.string()
+      .matches(/^[^\s@]+@[^\s@]+\.[^\s@]+$/, t(translations.yup.invalid.email))
+      .required(t(translations.yup.required.email)),
+    password: Yup.string()
+      .min(8, t(translations.yup.minLength.characters8))
+      .max(30, t(translations.yup.maxLength.characters30))
+      .matches(/\d+/, t(translations.yup.password.containsDigit))
+      .matches(/[a-z]/, t(translations.yup.password.containsLowercase))
+      .matches(/[A-Z]/, t(translations.yup.password.containsUppercase))
+      .matches(/[@$?!%&*]+/, t(translations.yup.password.containsSpecialCharacter))
+      .required(t(translations.yup.required.password)),
+  })
 
   const [userType, setUserType] = useState("individual")
   const [showPassword, setShowPassword] = useState(false)
@@ -192,7 +191,7 @@ const validationSchema = Yup.object({
             <div className="flex flex-col items-center">
               <button
                 type="submit"
-                className={`w-full bg-primary-green hover:bg-primary-green/60 text-white text-[1rem] py-3 mt-3 rounded-lg focus:outline-none flex items-center justify-center ${
+                className={`w-full bg-primary-green hover:bg-dark-green text-white text-[1rem] py-3 mt-3 rounded-lg focus:outline-none flex items-center justify-center ${
                   loading ? "opacity-50 cursor-not-allowed" : ""
                 }`}
                 disabled={loading}
@@ -252,7 +251,10 @@ const validationSchema = Yup.object({
         {/* Terms and Conditions */}
         <p className="text-[0.75rem] mt-5 text-gray-2 dark:text-white text-center">
           {t(translations.registerForm.pTerms)}{" "}
-          <Link to="/terms-of-service" className="text-primary-green dark:text-white underline font-semibold">
+          <Link
+            to="/terms-of-service"
+            className="text-primary-green dark:text-white underline font-semibold"
+          >
             {t(translations.registerForm.terms)}
           </Link>{" "}
           <br />

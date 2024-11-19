@@ -13,11 +13,10 @@ import { useTranslation } from "react-i18next"
 import { translations } from "../../../locales/translations"
 
 const ResetPasswordForm = ({ identifier, email }) => {
-  const {t} = useTranslation()
+  const { t } = useTranslation()
   const navigate = useNavigate()
   const [showPassword, setShowPassword] = useState(false)
   const [showConfirmPassword, setShowConfirmPassword] = useState(false)
-  
 
   const resetNewPassword = async (newPassword) => {
     if (email && identifier) {
@@ -69,37 +68,36 @@ const ResetPasswordForm = ({ identifier, email }) => {
       className="flex flex-col items-start space-y-6 p-6 w-full max-w-[44.1875rem] bg-white dark:bg-black rounded-lg relative"
     >
       {/* Mobile & Desktop - Back Arrow and "Back to Login" */}
-      <div
-        className="md:hidden flex flex-row items-center mb-6"
-        onClick={() => navigate("/login")}
-      >
+      <div className="md:hidden flex flex-row items-center mb-6" onClick={() => navigate("/login")}>
         <IoIosArrowBack className="text-black dark:text-white text-3xl cursor-pointer self-start" />
-        <span className="text-lg font-semibold text-black dark:text-white">{t(translations.password.resetPassForm.backToLogin)}</span>
+        <span className="text-lg font-semibold text-black dark:text-white">
+          {t(translations.password.resetPassForm.backToLogin)}
+        </span>
       </div>
 
       {/* Mobile View - Centered Logo */}
       <div className="md:hidden w-full flex justify-center mb-6 mt-[5rem]">
-        <img 
-        src={logo} 
-        alt= {t(translations.password.resetPassForm.logoAlt)} 
-        className="h-16 w-auto" 
+        <img
+          src={logo}
+          alt={t(translations.password.resetPassForm.logoAlt)}
+          className="h-16 w-auto"
         />
       </div>
 
       {/* Title and Description */}
       <div className="flex-grow">
         <h1 className="text-black dark:text-white text-[1.75rem] text-center md:text-center md:text-[2rem] font-semibold mb-6">
-        {t(translations.password.resetPassForm.resetPassword)}
+          {t(translations.password.resetPassForm.resetPassword)}
         </h1>
         <p className="text-left w-full text-[1rem] md:text-[1.125rem] font-normal text-dark-gray-2 dark:text-white leading-snug">
-        {t(translations.password.resetPassForm.resetDesc)}
+          {t(translations.password.resetPassForm.resetDesc)}
         </p>
       </div>
 
       {/* New Password Field */}
       <div className="w-full">
         <p className="text-gray-2 dark:text-white text-[0.875rem] md:text-[1rem]">
-        {t(translations.password.resetPassForm.newPassword)}
+          {t(translations.password.resetPassForm.newPassword)}
         </p>
         <div className="relative">
           <input
@@ -131,7 +129,7 @@ const ResetPasswordForm = ({ identifier, email }) => {
       {/* Confirm New Password Field */}
       <div className="w-full">
         <p className="text-gray-2 dark:text-white text-[0.875rem] md:text-[1rem]">
-        {t(translations.password.resetPassForm.confirmPassword)}
+          {t(translations.password.resetPassForm.confirmPassword)}
         </p>
         <div className="relative">
           <input
@@ -163,7 +161,7 @@ const ResetPasswordForm = ({ identifier, email }) => {
       {/* Reset Button */}
       <button
         type="submit"
-        className="bg-primary-green text-white w-full max-w-[44.18rem] h-[2.8125rem] rounded-lg hover:bg-primary-green/60 transition duration-300 text-center"
+        className="bg-primary-green text-white w-full max-w-[44.18rem] h-[2.8125rem] rounded-lg hover:bg-dark-green transition duration-300 text-center"
       >
         {t(translations.password.resetPassForm.reset)}
       </button>

@@ -56,7 +56,7 @@ const DangerZonePanel = () => {
           {/* Reset Database Button */}
           <button
             onClick={sendResetRequest}
-            className="mt-6 w-[220px] py-2 bg-danger text-white rounded-lg hover:bg-danger/60"
+            className="mt-6 w-[220px] py-2 bg-danger text-white rounded-lg hover:bg-dark-danger"
           >
             {t(translations.adminPanel.dangerZone.resetDatabaseButton)}
           </button>

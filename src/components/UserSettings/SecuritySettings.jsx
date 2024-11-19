@@ -92,7 +92,7 @@ const SecuritySettings = () => {
               />
             </div>
             <button
-              className="flex-shrink-0 mx-2 sm:w-[15%] w-[10%] text-[0.9rem]  px-3 sm:py-1.5 py-2 items-center rounded border border-primary-green hover:bg-primary-green/60 bg-primary-green dark:text-white"
+              className="flex-shrink-0 mx-2 sm:w-[15%] w-[10%] text-[0.9rem]  px-3 sm:py-1.5 py-2 items-center rounded border text-white border-primary-green hover:bg-dark-green bg-primary-green dark:text-white"
               onClick={() => {
                 if (isEditingName) {
                   handleSaveChanges("name")
@@ -130,7 +130,7 @@ const SecuritySettings = () => {
               />
             </div>
             <button
-              className="flex-shrink-0 mx-2 sm:w-[15%] w-[20%] text-[0.9rem] px-3 sm:py-1.5 py-2 items-center rounded border border-primary-green bg-primary-green text-white hover:bg-primary-green/60"
+              className="flex-shrink-0 mx-2 sm:w-[15%] w-[20%] text-[0.9rem] px-3 sm:py-1.5 py-2 items-center rounded border border-primary-green bg-primary-green text-white hover:bg-dark-green"
               onClick={() => {
                 if (isEditingOrgName) {
                   handleSaveChanges("organizationName")
@@ -163,7 +163,7 @@ const SecuritySettings = () => {
       {/* Password Change Button */}
       <div className="text-center">
         <button
-          className="bg-primary-green w-[70%] py-2 px-4 rounded my-[50px] duration-200 hover:bg-primary-green/60"
+          className="bg-primary-green w-[70%] py-2 px-4 rounded my-[50px] duration-200 hover:bg-dark-green"
           onClick={openModal}
         >
           <p className="text-[0.9rem] sm:text-[1rem] text-white">
@@ -184,7 +184,7 @@ const SecuritySettings = () => {
             : t(translations.secSett.delAlert2)}
         </p>
         <div onClick={() => openDeleteModal()} className="text-center">
-          <button className="bg-danger w-[70%] py-2 px-4 rounded my-[50px] duration-200 hover:bg-danger/60">
+          <button className="bg-danger w-[70%] py-2 px-4 rounded my-[50px] duration-200 hover:bg-dark-danger">
             <p className="text-[0.9rem] sm:text-[1rem] text-white">
               {t(translations.secSett.userRes)}
             </p>

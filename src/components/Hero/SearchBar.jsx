@@ -149,7 +149,7 @@ const SearchBar = () => {
 
       <IoSearchCircleSharp
         onClick={handleSearch}
-        className="text-primary-green dark:text-light-green text-4xl cursor-pointer"
+        className="text-primary-green dark:text-light-green hover:text-dark-green text-4xl cursor-pointer"
       />
     </div>
   )

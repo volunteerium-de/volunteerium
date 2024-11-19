@@ -167,8 +167,8 @@ const PasswordModal = ({ isOpen, onClose }) => {
                   type="submit"
                   disabled={loading}
                   className={`flex justify-center items-center ${
-                    loading ? "bg-primary-green/60" : "bg-primary-green"
-                  } rounded-md text-white w-[70px] h-[25px] sm:w-[100px] sm:h-[35px] sm:text-[0.9rem] text-[0.8rem] hover:bg-primary-green/60`}
+                    loading ? "bg-light-green" : "bg-primary-green"
+                  } rounded-md text-white w-[70px] h-[25px] sm:w-[100px] sm:h-[35px] sm:text-[0.9rem] text-[0.8rem] hover:bg-dark-green`}
                 >
                   {loading ? (
                     <ImSpinner9 className="animate-spin" />
