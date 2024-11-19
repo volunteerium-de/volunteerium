@@ -246,11 +246,7 @@ const SetupIndividual = () => {
                             ? "bg-light-green hover:bg-primary-green text-dark-gray-1 border-1 border-primary-green"
                             : "100 text-gray-2"
                         }`}
-                        onClick={() => {
-                          if (
-                            values.interests.includes(category._id) ||
-                            values.interests.length < 10
-                          ) {
+                        onClick={() => {{
                             setFieldValue(
                               "interests",
                               values.interests.includes(category._id)
