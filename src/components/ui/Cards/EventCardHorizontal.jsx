@@ -126,7 +126,7 @@ const EventCardHorizontal = ({ event }) => {
               {/* Event Button */}
               <div className="flex-[0.5] text-end mt-auto pb-2 pr-2">
                 <button
-                  className="font-medium text-white sm:text-[0.7rem] text-[0.6rem] text-center bg-primary-green hover:bg-primary-green/60 px-4 py-1 rounded "
+                  className="font-medium text-white sm:text-[0.7rem] text-[0.6rem] text-center bg-primary-green hover:bg-dark-green px-4 py-1 rounded "
                   onClick={handleNavigate}
                 >
                   {t(translations.eventsPage.more)}

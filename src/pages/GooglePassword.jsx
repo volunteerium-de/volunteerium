@@ -129,7 +129,7 @@ const GooglePassword = () => {
                 <button
                   type="submit"
                   disabled={loading}
-                  className={`flex justify-center text-[1.3rem] md:text-[1.0rem] items-center ${loading ? "bg-primary-green/60" : "bg-primary-green hover:bg-primary-green/60"} px-2 py-1 rounded-md text-white w-[250px] h-[45px]`}
+                  className={`flex justify-center text-[1.3rem] md:text-[1.0rem] items-center ${loading ? "bg-light-green" : "bg-primary-green hover:bg-dark-green"} px-2 py-1 rounded-md text-white w-[250px] h-[45px]`}
                 >
                   {loading ? (
                     <ImSpinner9 className="animate-spin" />

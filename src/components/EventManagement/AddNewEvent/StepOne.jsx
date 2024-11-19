@@ -330,7 +330,7 @@ const StepOne = ({ setStep, values, setFieldValue, onClose, step, eventData }) =
           </button>
           <button
             type="button"
-            className={`py-2 px-4 bg-primary-green text-white rounded hover:bg-primary-green/60 ${
+            className={`py-2 px-4 bg-primary-green text-white rounded hover:bg-dark-green ${
               isValidForNext ? "" : "opacity-50 cursor-not-allowed"
             }`}
             disabled={!isValidForNext}

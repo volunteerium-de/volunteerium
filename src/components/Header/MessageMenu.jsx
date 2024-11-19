@@ -117,7 +117,7 @@ const MessageMenu = () => {
           </div>
 
           {/* Message List */}
-          <div className="max-h-80 overflow-y-auto">
+          <div className="max-h-80 scrollbar overflow-y-auto">
             {sortedConversations &&
             sortedConversations.filter(({ messageIds }) => messageIds && messageIds.length > 0)
               .length ? (

@@ -299,13 +299,13 @@ const IndividualSettingsForm = () => {
                   onClick={() => {
                     resetForm({ values: defaultUserDetails })
                   }}
-                  className="bg-danger flex-1 py-2 px-4 text-[1rem] text-white rounded hover:bg-danger/20"
+                  className="bg-danger flex-1 py-2 px-4 text-[1rem] text-white rounded hover:bg-dark-danger"
                 >
                   {t(translations.indvSettings.reset)}
                 </button>
                 <button
                   type="submit"
-                  className="bg-primary-green flex-1 py-2 px-4 text-[1rem] text-white rounded hover:bg-primary-green/60"
+                  className="bg-primary-green flex-1 py-2 px-4 text-[1rem] text-white rounded hover:bg-dark-green"
                 >
                   {t(translations.indvSettings.save)}
                 </button>

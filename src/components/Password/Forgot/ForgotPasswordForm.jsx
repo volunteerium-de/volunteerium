@@ -99,7 +99,7 @@ const ForgotPasswordForm = ({ setIssue, setIdentifier, setEmail }) => {
       {/* Submit Button */}
       <button
         type="submit"
-        className="bg-primary-green text-white w-full max-w-[44.1875rem] h-[2.8125rem] rounded-lg hover:bg-primary-green/60 transition duration-300"
+        className="bg-primary-green text-white w-full max-w-[44.1875rem] h-[2.8125rem] rounded-lg hover:bg-dark-green transition duration-300"
       >
         {t(translations.password.forgotPassForm.submit)}
       </button>

@@ -158,7 +158,7 @@ const FilterSidebar = () => {
           </div>
           <div className="mx-auto">
             <button
-              className="text-[0.9375rem] font-medium text-white text-center bg-primary-green px-4 py-2 rounded w-[200px] hover:bg-primary-green/60 "
+              className="text-[0.9375rem] font-medium text-white text-center bg-primary-green px-4 py-2 rounded w-[200px] hover:bg-dark-green "
               onClick={() => {
                 dispatch(setStartDate(localStartDate))
                 dispatch(setEndDate(localEndDate))

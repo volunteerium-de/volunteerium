@@ -237,7 +237,7 @@ const StepTwo = ({ setStep, values, step, isValid, setFieldValue, loading }) => 
           <button
             type="submit"
             className={`py-2 px-4 bg-primary-green text-white rounded flex items-center justify-center ${
-              isValid && !loading ? "hover:bg-primary-green/60" : "opacity-50 cursor-not-allowed"
+              isValid && !loading ? "hover:bg-dark-green" : "opacity-50 cursor-not-allowed"
             }`}
             disabled={!isValid || loading}
           >

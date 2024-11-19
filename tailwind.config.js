@@ -19,7 +19,9 @@ export default {
         "primary-green": "#69957B",
         "dark-green": "#4B6D59",
         warning: "#B25E09",
+        "dark-warning": "#8A4A07",
         danger: "#AC242F",
+        "dark-danger": "#8A1D26",
       },
       fontFamily: {
         poppins: ["Poppins", "sans-serif"],
