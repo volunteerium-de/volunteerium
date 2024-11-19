@@ -27,7 +27,7 @@ export const AddEventSchema = (t) => {
       then: () =>
         string()
           .required(t("newEventValidation.streetNameRequired"))
-          .matches(/^[\p{L}]+$/u, t("newEventValidation.streetNameInvalid")),
+          .matches(/^[\p{L}0-9\s.'-]+$/u, t("newEventValidation.streetNameInvalid")),
     }),
 
     streetNumber: string().when("isOnline", {
@@ -134,7 +134,7 @@ export const AddEventStep1Schema = (t) => {
       then: () =>
         string()
           .required(t("newEventValidation.streetNameRequired"))
-          .matches(/^[\p{L}]+$/u, t("newEventValidation.streetNameInvalid")),
+          .matches(/^[\p{L}0-9\s.'-]+$/u, t("newEventValidation.streetNameInvalid")),
     }),
 
     streetNumber: string().when("isOnline", {

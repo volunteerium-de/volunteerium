@@ -3,11 +3,11 @@ import { translations } from "../../locales/translations"
 import { useTranslation } from "react-i18next"
 import { Formik, Form, Field, ErrorMessage } from "formik"
 import * as Yup from "yup"
-import useSubscription from "../../hooks/useSubscription"
+import useAccountCall from "../../hooks/useAccountCall"
 
 const Subscribe = () => {
   const { t } = useTranslation()
-  const { subscribe } = useSubscription()
+  const { subscribe } = useAccountCall()
 
   const validationSchema = Yup.object({
     email: Yup.string()
