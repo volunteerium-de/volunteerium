@@ -1,4 +1,3 @@
-// import React from 'react'
 import { BiUpload } from "react-icons/bi"
 import { Link } from "react-router-dom"
 import { HiDotsHorizontal } from "react-icons/hi"
@@ -7,7 +6,6 @@ import { useState } from "react"
 import { ErrorMessage, Field, Form, Formik } from "formik"
 import * as Yup from "yup"
 import { useNavigate } from "react-router-dom"
-import { UserDetailSchema } from "../validators/UserDetailValidator"
 import { useEffect } from "react"
 import toastNotify from "../utils/toastNotify"
 import { useSelector } from "react-redux"
@@ -17,7 +15,39 @@ import useAuthCall from "../hooks/useAuthCall"
 import { useTranslation } from "react-i18next"
 import { translations } from "../locales/translations"
 
+
+
 const SetupOrganization = () => {
+  const {t} = useTranslation()
+
+  const OrganizationSchema = Yup.object({
+    organizationLogo: Yup.mixed().required(t(translations.yup.required.logo)),
+    organizationDesc: Yup.string()
+      .required(t(translations.yup.required.description))
+      .min(10, t(translations.yup.minLength.characters10)),
+    organizationUrl: Yup.string()
+      .url(t(translations.yup.invalid.url))
+      .required(t(translations.yup.required.organizationURL)),
+    streetName: Yup.string().required(t(translations.yup.required.streetName))
+    .matches(/^[\p{L}0-9\s.'/-]+$/u,  t(translations.yup.invalid.invalidFormat)),
+    streetNumber: Yup.string().required(t(translations.yup.required.streetNumber))
+    .trim()
+    .matches(/^[\p{L}0-9\s.'/-]+$/u, t(translations.yup.invalid.invalidFormat)),
+    zipCode: Yup.string()
+    .trim()
+    .matches(/^[\p{L}0-9\s.'/-]+$/u, t(translations.yup.invalid.invalidFormat))
+    .min(1, t(translations.yup.minLength.characters1))
+    .max(15, t(translations.yup.maxLength.characters15))
+    .required(t(translations.yup.required.zipCode)),
+    city: Yup.string().required(t(translations.yup.required.city))
+    .min(3, t(translations.yup.minLength.characters3))
+    .matches(/^[\p{L}\s.'/-]+$/u, t(translations.yup.invalid.invalidFormat)),
+    country: Yup.string().required(t(translations.yup.required.country))
+    .trim()
+    .matches(/^[\p{L}\s.'/-]+$/u, t(translations.yup.invalid.invalidFormat))
+    .min(3, t(translations.yup.minLength.characters3))
+  })
+
   const { currentUser: user } = useSelector((state) => state.auth)
   const [step, setStep] = useState(1)
   const { updateUserDetails } = useAccountCall()
@@ -26,7 +56,6 @@ const SetupOrganization = () => {
   const [logoPreview, setLogoPreview] = useState(null) // For logo preview
   const navigate = useNavigate()
   const location = useLocation()
-  const { t } = useTranslation()
 
   // Toggle between steps
   const handleNext = () => {
@@ -116,11 +145,12 @@ const SetupOrganization = () => {
             state: "",
             country: "",
           }}
-          validationSchema={UserDetailSchema(t)}
+          validationSchema={OrganizationSchema}
           onSubmit={(values) => {
             updateUserDetails({ ...values, isProfileSetup: true }, user.userDetailsId._id)
             navigate("/")
           }}
+          validateDidMount={false}
         >
           {({ setFieldValue, values, isValid }) => (
             <Form>
