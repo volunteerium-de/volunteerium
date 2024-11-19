@@ -126,6 +126,7 @@ const Profile = () => {
       gender,
       interestIds = [],
       bio,
+      organizationDesc,
       totalPoint,
     } = {},
   } = user
@@ -265,12 +266,19 @@ const Profile = () => {
                 )}
 
                 {/* About */}
-                {bio && (
+                {bio ? (
                   <div>
                     <h2 className="mt-6 font-semibold text-dark-gray-1 dark:text-white dark:font-bold">
                       {t(translations.profile.aboutMe)}
                     </h2>
                     <p className="text-dark-gray-1 my-2 dark:text-white">{bio}</p>
+                  </div>
+                ) : (
+                  <div>
+                    <h2 className="mt-6 font-semibold text-dark-gray-1 dark:text-white dark:font-bold">
+                      {t(translations.profile.aboutMe)}
+                    </h2>
+                    <p className="text-dark-gray-1 my-2 dark:text-white">{organizationDesc}</p>
                   </div>
                 )}
 
