@@ -1122,6 +1122,7 @@ export const translations = {
       subject: "yup.required.subject",
       message: "yup.required.message",
       organizationName: "yup.required.organizationName",
+      organizationURL: "yup.required.organizationURL",
       streetName: "yup.required.streetName",
       streetNumber: "yup.required.streetNumber",
       zipCode: "yup.required.zipCode",
@@ -1158,6 +1159,7 @@ export const translations = {
     maxLength: {
       select3: "yup.maxLength.select3",
       characters8: "yup.maxLength.characters8",
+      characters15: "yup.maxLength.characters15",
       characters30: "yup.maxLength.characters30",
       characters50: "yup.maxLength.characters50",
       characters100: "yup.maxLength.characters100",
@@ -1175,6 +1177,7 @@ export const translations = {
     invalid: {
       email: "yup.invalid.email",
       url: "yup.invalid.url",
+      invalidFormat: "yup.invalid.invalidFormat"
     },
     oneOf: {
       gender: "yup.oneOf.gender",
