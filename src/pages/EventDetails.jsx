@@ -50,7 +50,9 @@ const EventDetails = () => {
 
   const userType = createdBy?.userType
   const isFullNameDisplay = createdBy?.userDetailsId?.isFullNameDisplay
-
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
   return (
     <div>
       <Header />
