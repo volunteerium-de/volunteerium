@@ -80,7 +80,7 @@ const Profile = () => {
       try {
         let query = `events/?filter[createdBy]=${userId}&page=${currentPage}`
         if (eventType === "Attended Events") {
-          query = `events/participant/${userId}?sort[startDate]=desc&page=${currentPage}`
+          query = `events/participant/${userId}?filter[isDone]=true&sort[startDate]=desc&page=${currentPage}`
         } else if (organizedFilter === "Finished Events") {
           query += `&filter[isDone]=true&sort[startDate]=desc`
         } else if (organizedFilter === "Unfinished Events") {
@@ -130,7 +130,6 @@ const Profile = () => {
       totalPoint,
     } = {},
   } = user
-  console.log(user)
 
   const medalInfoText = [
     {
