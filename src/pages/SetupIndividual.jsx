@@ -28,7 +28,7 @@ const SetupIndividual = () => {
       ageRange: Yup.string()
         .oneOf(["16-25", "26-35", "35+"], t("yup.oneOf.ageRange"))
         .required(t("yup.oneOf.ageRange")),
-      interests: Yup.array().max(3, t("yup.maxLength.select3")),
+      interests: Yup.array(),
       interestIds: Yup.array().of(
         Yup.string().matches(/^[0-9a-fA-F]{24}$/, t("yup.required.interestId"))
       ),
@@ -246,11 +246,7 @@ const SetupIndividual = () => {
                             ? "bg-light-green hover:bg-primary-green text-dark-gray-1 border-1 border-primary-green"
                             : "100 text-gray-2"
                         }`}
-                        onClick={() => {
-                          if (
-                            values.interests.includes(category._id) ||
-                            values.interests.length < 3
-                          ) {
+                        onClick={() => {{
                             setFieldValue(
                               "interests",
                               values.interests.includes(category._id)

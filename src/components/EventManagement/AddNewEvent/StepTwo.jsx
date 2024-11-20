@@ -12,7 +12,7 @@ import { useState } from "react"
 import { useTranslation } from "react-i18next"
 import { translations } from "../../../locales/translations/"
 
-const StepTwo = ({ setStep, values, step, isValid, setFieldValue, loading }) => {
+const StepTwo = ({ setStep, values, step, isValid, setFieldValue, loading, errors, touched }) => {
   const { t } = useTranslation()
   const { getEventCategories } = useEventCall()
   const { currentUser: user } = useSelector((state) => state.auth)
@@ -93,6 +93,7 @@ const StepTwo = ({ setStep, values, step, isValid, setFieldValue, loading }) => 
           <label className="block text-dark-gray-2 dark:text-white mb-2">
             {t(translations.eventMng.category)}
           </label>
+
           <SelectInput
             name="interestIds"
             options={categories?.map((category) => ({
@@ -106,7 +107,9 @@ const StepTwo = ({ setStep, values, step, isValid, setFieldValue, loading }) => 
             }
             isMultiple={true}
           />
-          <ErrorMessage name="interestIds" component="div" className="text-danger" />
+          {errors.interestIds && values.interestIds.length > 0 && (
+            <div className="text-danger -mt-3">{errors.interestIds}</div>
+          )}
         </div>
 
         <div className="mb-4">
