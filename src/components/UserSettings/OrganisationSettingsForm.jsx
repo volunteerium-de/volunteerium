@@ -107,12 +107,10 @@ const OrganisationSettingsForm = () => {
   const closeModal = () => setIsModalOpen(false)
 
   const handleSubmit = async (values) => {
-    console.log("Form submitted with values:", values)
     try {
       const data = await updateUserDetails(values)
       toastNotify("success", data.message)
     } catch (error) {
-      console.error("Update failed:", error)
       toastNotify("error", error.response?.data?.message || t(translations.toastify.error))
     }
   }

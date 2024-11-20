@@ -165,7 +165,7 @@ const EventsListingPage = () => {
       <div className={`pt-10 px-4 max-w-[1400px] mx-auto`}>
         <div className="flex justify-between items-center mb-4 mx-2">
           <div>
-            <h1 className="text-xs md:text-sm lg:text-md flex gap-1 ">
+            <h1 className="text-[0.6rem] md:text-[0.9rem] lg:text-md flex gap-1 ">
               <span className="font-semibold dark:text-white">{resultMessage}</span>
               <span className="text-gray-2 hidden lg:block">
                 {" "}
@@ -175,21 +175,21 @@ const EventsListingPage = () => {
               </span>
             </h1>
           </div>
-          <div className="flex justify-end gap-3 items-center">
-            <p className="text-[0.7rem] sm:text-sm font-bold text-black dark:text-white">
+          <div className="flex justify-end gap-1 sm:gap-3 items-center ">
+            <p className="text-[0.6rem] sm:text-[0.9rem] font-bold text-black dark:text-white">
               {t(translations.eventsPage.sort)}:
             </p>
             <select
               value={sortOrder}
               onChange={handleSortChange}
-              className="appearance-none cursor-pointer border border-primary-green rounded-md font-medium  px-2 bg-light-green text-primary-green focus:outline-none focus:ring-2 focus:primary-green text-[0.7rem] sm:text-sm"
+              className="appearance-none cursor-pointer border border-primary-green rounded-md font-medium  px-2 bg-light-green text-primary-green focus:outline-none focus:ring-2 focus:primary-green text-[0.6rem] sm:text-sm"
             >
               <option value="Newest">{t(translations.eventsPage.new)}</option>
               <option value="Oldest">{t(translations.eventsPage.old)}</option>
             </select>
 
             <button
-              className="block lg:hidden text-primary-green mr-5 text-[0.8rem] sm:text-sm"
+              className="block lg:hidden text-primary-green mr-5 text-[0.6rem] sm:text-[0.9rem]"
               onClick={() => setIsFilterSidebarOpen(!isFilterSidebarOpen)}
             >
               {t(translations.eventsPage.filter)}

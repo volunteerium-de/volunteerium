@@ -76,7 +76,7 @@ const OnlineOpportinuties = () => {
   }, [])
 
   return (
-    <div className="px-4  mx-auto  shadow-lg">
+    <div className="px-4  mx-auto mt-4 shadow-lg">
       {/* Latest Card Container */}
       <div className="max-w-[1370px] mx-auto font-poppins dark:text-white dark:black rounded-lg">
         {/* Header */}

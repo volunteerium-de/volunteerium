@@ -188,7 +188,8 @@
     "buttonReset": "Reset",
     "buttonAddNew": "Add New +",
     "cancel": "Cancel",
-    "save": "Save"
+    "save": "Save",
+    "placeholder": "Please enter Title"
   },
   "avatarEdit": {
     "networkError": "Network response was not ok",
@@ -282,9 +283,8 @@
     "edit": "Edit",
     "save": "Save"
   },
-  "newEventValidation": 
-  {
-   "nameRequired": "Event name is required",
+  "newEventValidation": {
+    "nameRequired": "Event name is required",
     "nameMin": "Event name must contain between 10 and 60 characters",
     "dateRequired": "Date is required",
     "dateInPast": "Date cannot be in the past",

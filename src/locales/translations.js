@@ -204,6 +204,7 @@ export const translations = {
     addNew: "addNewDoc.buttonAddNew",
     cancel: "addNewDoc.cancel",
     save: "addNewDoc.save",
+    placeholder: "addNewDoc.placeholder",
   },
 
   avatarEdit: {
@@ -1180,7 +1181,7 @@ export const translations = {
     invalid: {
       email: "yup.invalid.email",
       url: "yup.invalid.url",
-      invalidFormat: "yup.invalid.invalidFormat"
+      invalidFormat: "yup.invalid.invalidFormat",
     },
     oneOf: {
       gender: "yup.oneOf.gender",

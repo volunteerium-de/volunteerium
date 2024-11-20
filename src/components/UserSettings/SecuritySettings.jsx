@@ -113,7 +113,7 @@ const SecuritySettings = () => {
           <label className="block text-dark-gray-2 dark:text-white mb-2" htmlFor="organizationName">
             {t(translations.secSett.orgName)}
           </label>
-          <div className="flex justify-between items-start">
+          <div className="flex justify-between items-center">
             <div className="flex-grow">
               <input
                 type="text"
@@ -130,7 +130,7 @@ const SecuritySettings = () => {
               />
             </div>
             <button
-              className="flex-shrink-0 mx-2 sm:w-[15%] w-[20%] text-[0.9rem] px-3 sm:py-1.5 py-2 items-center rounded border border-primary-green bg-primary-green text-white hover:bg-dark-green"
+              className="flex-shrink-0 mx-2 w-[20%] sm:w-[15%] text-[0.9rem] p-2 items-center rounded  bg-primary-green text-white hover:bg-dark-green"
               onClick={() => {
                 if (isEditingOrgName) {
                   handleSaveChanges("organizationName")

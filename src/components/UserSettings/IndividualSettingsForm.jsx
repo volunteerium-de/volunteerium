@@ -92,7 +92,6 @@ const IndividualSettingsForm = () => {
       const data = await updateUserDetails(formattedValues)
       toastNotify("success", data.message)
     } catch (error) {
-      console.error("Update failed:", error)
       toastNotify("error", error.response?.data?.message || "An error occurred")
     }
   }
