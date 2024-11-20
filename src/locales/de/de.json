@@ -6,7 +6,7 @@
   },
   "searchbar": {
     "event": {
-      "label": "Veranstaltung",
+      "label": "Event",
       "placeholder": "Möglichkeiten suchen"
     },
     "location": {
@@ -19,15 +19,15 @@
     }
   },
   "upcomingOpportunities": {
-    "title": "Bevorstehende Veranstaltungen",
+    "title": "Bevorstehende Events",
     "discoverMore": "Mehr entdecken",
-    "loadingEvents": "Kommende Veranstaltungen werden geladen...",
-    "noEvents": "Keine kommenden Veranstaltungen!"
+    "loadingEvents": "Bevorstehende Events werden geladen...",
+    "noEvents": "Keine bevorstehenden Events!"
   },
   "onlineOpportunities": {
-    "title": "Online Veranstaltungen",
-    "loadingEvents": "Lade bevorstehende Veranstaltungen...",
-    "noEvents": "Keine bevorstehenden Veranstaltungen!"
+    "title": "Online Events",
+    "loadingEvents": "Lade bevorstehenden Events...",
+    "noEvents": "Keine bevorstehenden Events!"
   },
   "getToKnowUs": {
     "h2": "Lernen Sie uns kennen",
@@ -38,7 +38,7 @@
   },
   "subscribe": {
     "h3": "Abonnieren",
-    "p": " Werden Sie Teil unserer Freiwilligengemeinschaft, indem Sie unseren Newsletter abonnieren. Bleiben Sie über bevorstehende Freiwilligenveranstaltungen und besondere Projekte auf dem Laufenden",
+    "p": " Werden Sie Teil unserer Freiwilligengemeinschaft, indem Sie unseren Newsletter abonnieren. Bleiben Sie über bevorstehende Freiwilligenevents und besondere Projekte auf dem Laufenden",
     "emailPH": "Geben Sie Ihre E-Mail-Adresse ein"
   },
   "footer": {
@@ -154,8 +154,8 @@
   "profile": {
     "memberSince": "Mitglied seit",
     "edit": "Bearbeiten",
-    "attendedEvents": "Besuchte Veranstaltungen",
-    "createdEvents": "Erstellte Veranstaltungen",
+    "attendedEvents": "Besuchte Events",
+    "createdEvents": "Erstellte Events",
     "loading": "Laden...",
     "interests": "Interesse",
     "aboutMe": "Über mich",
@@ -172,7 +172,7 @@
     },
     "avatarAlt": "Avatar des Benutzers",
     "logoAlt": "Firmenzeichen der Organisation",
-    "eventImageAlt": "Veranstaltungsbild"
+    "eventImageAlt": "Eventsbild"
   },
   "userSettings": {
     "avatarAlt": "Avatar des Benutzers",
@@ -283,8 +283,8 @@
     "save": "Speichern"
   },
   "newEventValidation": {
-    "nameRequired": "Veranstaltungsname ist erforderlich",
-    "nameMin": "Der Veranstaltungsname muss zwischen 10 und 60 Zeichen enthalten",
+    "nameRequired": "Eventsname ist erforderlich",
+    "nameMin": "Der Eventsname muss zwischen 10 und 60 Zeichen enthalten",
     "dateRequired": "Datum ist erforderlich",
     "dateInPast": "Datum darf nicht in der Vergangenheit liegen",
     "fromTimeRequired": "Startzeit ist erforderlich",
@@ -375,7 +375,7 @@
     "user": "Benutzer",
     "profile": "Profil",
     "adminPanel": "Adminbereich",
-    "eventMng": "Veranst.verwaltung",
+    "eventMng": "Event Management",
     "settings": "Einstellungen",
     "logout": "Abmelden",
     "login": "Anmelden",
@@ -387,18 +387,18 @@
     "aboutUs": "Über uns",
     "p1": "     Wir bringen Menschen zusammen, um zu helfen, zu unterstützen und starke Gemeinschaften aufzubauen, damit sie einen positiven Einfluss schaffen und ein erfülltes Leben führen können.",
     "h2": "Wir sind hier, um so viele Menschen wie möglich für das Ehrenamt zu gewinnen.",
-    "p2": " Ob Sie eine Einzelperson sind, die etwas bewegen möchte, eine gemeinnützige Organisation, die Unterstützung benötigt, oder eine Gemeinschaftsgruppe, die eine Veranstaltung plant – Volunteerium ist hier, um zu helfen. Wir sind ein Team leidenschaftlicher Fachleute, die sich der Förderung einer Kultur des Gebens und der Unterstützung der Gemeinschaft verschrieben haben.",
+    "p2": " Ob Sie eine Einzelperson sind, die etwas bewegen möchte, eine gemeinnützige Organisation, die Unterstützung benötigt, oder eine Gemeinschaftsgruppe, die ein Event plant – Volunteerium ist hier, um zu helfen. Wir sind ein Team leidenschaftlicher Fachleute, die sich der Förderung einer Kultur des Gebens und der Unterstützung der Gemeinschaft verschrieben haben.",
     "howItWorks": "Wir sind hier, um so viele Menschen wie möglich für das Ehrenamt zu gewinnen.",
-    "eventAlt": "Veranstaltungen",
+    "eventAlt": "Events",
     "explore": "Entdecken",
     "opportunities": "Möglichkeiten",
     "p3": "Durchsuchen Sie eine Vielzahl von Freiwilligenmöglichkeiten, die auf Ihre Interessen und Ihren Standort zugeschnitten sind.",
     "join": "Beitreten",
     "toVolunteer": "zum Freiwilliger",
-    "p4": "Sobald Sie eine Veranstaltung gefunden haben, die Sie interessiert, treten Sie bei, um zu helfen. Der Veranstalter wird Ihre Bewerbung prüfen und Ihre Teilnahme bestätigen.",
+    "p4": "Sobald Sie ein Event gefunden haben, die Sie interessiert, treten Sie bei, um zu helfen. Der Event-Ersteller wird Ihre Bewerbung prüfen und Ihre Teilnahme bestätigen.",
     "make": "Machen",
     "aDifference": "einen Unterschied",
-    "p5": " Nehmen Sie an Veranstaltungen teil, tragen Sie zu Ihrer Gemeinschaft bei und erleben Sie die Freude, anderen zu helfen.",
+    "p5": " Nehmen Sie an Events teil, tragen Sie zu Ihrer Gemeinschaft bei und erleben Sie die Freude, anderen zu helfen.",
     "handsAlt": "Hände",
     "volunteerium": "Volunteerium",
     "today": "heute!",
@@ -411,7 +411,7 @@
     "orgCardP1": "30+",
     "orgCardP2": "Organisationen",
     "eventCardP1": "500+",
-    "eventCardP2": "Veranstaltungen"
+    "eventCardP2": "Events"
   },
   "contactUs": {
     "p1": "Ihre Rückmeldung",
@@ -441,14 +441,14 @@
     "q1": "Wie kann ich freiwillig helfen?",
     "a1": "Freiwilligenarbeit ist einfach! Melden Sie sich einfach auf unserer Website an, durchsuchen Sie die verfügbaren Möglichkeiten und wählen Sie die aus, die am besten zu Ihnen passt.",
     "q2": "Kann ich mich sowohl als Freiwilliger als auch als Anfragender registrieren?",
-    "a2": "Absolut! Sobald Sie ein Konto erstellt haben, können Sie sich für Freiwilligenrollen anmelden und auch Veranstaltungen erstellen, um Hilfe von Freiwilligen anzufordern.",
+    "a2": "Absolut! Sobald Sie ein Konto erstellt haben, können Sie sich für Freiwilligenrollen anmelden und auch Events erstellen, um Hilfe von Freiwilligen anzufordern.",
     "q3": "Brauche ich besondere Fähigkeiten oder Qualifikationen?",
-    "a3": "Überhaupt nicht! Viele Freiwilligenmöglichkeiten erfordern nur Ihre Zeit und Begeisterung. Wenn jedoch eine spezielle Fähigkeit benötigt wird, wird dies in den Veranstaltungsdetails angegeben.",
+    "a3": "Überhaupt nicht! Viele Freiwilligenmöglichkeiten erfordern nur Ihre Zeit und Begeisterung. Wenn jedoch eine spezielle Fähigkeit benötigt wird, wird dies in das Eventsdetails angegeben.",
     "q4": "In welchen Bereichen kann ich freiwillig arbeiten?",
-    "a4": "Es gibt viele Möglichkeiten, sich zu engagieren! Von der Veranstaltungsplanung bis zur Gemeindearbeit gibt es für jeden etwas.",
+    "a4": "Es gibt viele Möglichkeiten, sich zu engagieren! Von der Eventsplanung bis zur Gemeindearbeit gibt es für jeden etwas.",
     "q5": "Welche Vorteile hat Freiwilligenarbeit?",
     "a5": "Freiwilligenarbeit gibt Ihnen die Chance, einen Unterschied zu machen, wertvolle Erfahrungen zu sammeln, neue Leute kennenzulernen und Ihrer Gemeinschaft etwas zurückzugeben. Außerdem sieht es gut im Lebenslauf aus!",
-    "q6": "Kann ich meine Teilnahme an einer Veranstaltung später absagen?",
+    "q6": "Kann ich meine Teilnahme an einem Event später absagen?",
     "a6": "Natürlich! Wenn sich Ihre Pläne ändern, können Sie Ihre Anmeldung einfach über Ihr Konto-Dashboard stornieren.",
     "h1": "Häufig gestellte Fragen",
     "p1": "Finden Sie Antworten auf häufig gestellte Fragen zu Volunteerium"
@@ -457,21 +457,21 @@
     "sec1": "Verfügbarkeit",
     "from": "Von",
     "to": "Bis",
-    "check": "Veranstaltungen prüfen",
+    "check": "Events prüfen",
     "sec2": "Kategorien",
     "sec3": "Sprachen",
     "new": "Am nächsten",
     "old": "Am weitesten",
     "result": "Ergebnisse für Ihre Suche",
-    "notFound": "Keine Veranstaltungen gefunden",
+    "notFound": "Keine Events gefunden",
     "more": "Mehr",
-    "event": "Veranstaltung",
-    "events": "Veranstaltungen",
+    "event": "Event",
+    "events": "Events",
     "found": "Gefunden",
     "filter": "Filter",
     "loading": "Laden",
     "people": "Personen",
-    "match": "Keine Veranstaltungen gefunden, die Ihren Filtern entsprechen.",
+    "match": "Keine Events gefunden, die Ihren Filtern entsprechen.",
     "sort": "Sortieren nach",
     "search": "Suche",
     "location": "Standort",
@@ -507,7 +507,7 @@
     "genderLabel3": "Keine Angabe",
     "successMsg": "Bitte geben Sie Ihre Profildaten ein, um fortzufahren",
     "share": "Teilen Sie Ihr Alter und Geschlecht",
-    "p1": "Diese Angaben sind optional, können aber für bestimmte Veranstaltungen nützlich sein",
+    "p1": "Diese Angaben sind optional, können aber für bestimmte Events nützlich sein",
     "ageRange": "Altersbereich*",
     "ageRangePH": "Altersbereich wählen",
     "gender": "Geschlecht*",
@@ -544,12 +544,12 @@
     "finish": "Fertigstellen"
   },
   "profileCard": {
-    "attendEvents": "Teilgenommene Veranstaltungen",
-    "organizedEvents": "Organisierte Veranstaltungen",
-    "unfinishedEvents": "Unvollendete Veranstaltungen",
-    "finishedEvents": "Abgeschlossene Veranstaltungen",
-    "p1": "Keine Veranstaltungen gefunden",
-    "p2": "Es scheint, dass momentan keine Veranstaltungen verfügbar sind.",
+    "attendEvents": "Teilgenommene Events",
+    "organizedEvents": "Organisierte Events",
+    "unfinishedEvents": "Unvollendete Events",
+    "finishedEvents": "Abgeschlossene Events",
+    "p1": "Keine Events gefunden",
+    "p2": "Es scheint, dass momentan keine Events verfügbar sind.",
     "infoAlt": "Organisator-Avatar",
     "joining": "beitreten",
     "joined": "beigetreten"
@@ -572,24 +572,24 @@
     "h1": "Datenschutzrichtlinie",
     "p1": "Veröffentlichungsdatum:",
     "p2": "30.10.2024",
-    "p3": "Vielen Dank, dass Sie Volunteerium nutzen, eine Plattform, die Veranstalter mit Freiwilligen verbindet. Ihre Privatsphäre ist uns wichtig, und wir verpflichten uns, Ihre persönlichen Daten zu schützen. Diese Datenschutzrichtlinie erklärt, wie wir Ihre persönlichen Daten sammeln, verwenden und teilen, wenn Sie unsere Plattform nutzen. Indem Sie Volunteerium verwenden, stimmen Sie den in dieser Richtlinie beschriebenen Praktiken zu.",
+    "p3": "Vielen Dank, dass Sie Volunteerium nutzen, eine Plattform, die Event-Ersteller mit Freiwilligen verbindet. Ihre Privatsphäre ist uns wichtig, und wir verpflichten uns, Ihre persönlichen Daten zu schützen. Diese Datenschutzrichtlinie erklärt, wie wir Ihre persönlichen Daten sammeln, verwenden und teilen, wenn Sie unsere Plattform nutzen. Indem Sie Volunteerium verwenden, stimmen Sie den in dieser Richtlinie beschriebenen Praktiken zu.",
     "h2info": "1. Informationen, die wir sammeln",
     "p4": "Wir sammeln die folgenden Arten von Informationen, wenn Sie Volunteerium nutzen:",
     "p5": "Persönliche Informationen:",
     "p6": "Dazu gehören Ihr Name, Ihre E-Mail-Adresse, Telefonnummer, Profilfoto und alle weiteren Details, die Sie bei der Erstellung eines Kontos angeben.",
-    "p7": "Veranstaltungsinformationen:",
-    "p8": "Wenn Sie ein Veranstalter sind, sammeln wir Details zu den von Ihnen erstellten Veranstaltungen, einschließlich Veranstaltungsbeschreibungen, Daten und Standorte.",
+    "p7": "Eventsinformationen:",
+    "p8": "Wenn Sie ein Event-Ersteller sind, sammeln wir Details zu den von Ihnen erstellten Events, einschließlich Eventsbeschreibungen, Daten und Standorte.",
     "p9": "Aktivitätsdaten:",
-    "p10": "Wir sammeln Daten zu Ihren Aktivitäten auf der Plattform, wie die Veranstaltungen, für die Sie sich anmelden oder erstellen, gesendete Nachrichten und abgegebene Feedbacks.",
+    "p10": "Wir sammeln Daten zu Ihren Aktivitäten auf der Plattform, wie die Events, für die Sie sich anmelden oder erstellen, gesendete Nachrichten und abgegebene Feedbacks.",
     "h2use": "2. Wie wir Ihre Informationen verwenden",
-    "li1": "Verbindungen zwischen Veranstaltern und Freiwilligen erleichtern.",
+    "li1": "Verbindungen zwischen Event-Ersteller und Freiwilligen erleichtern.",
     "li2": "Unsere Dienstleistungen bereitstellen und verbessern.",
-    "li3": "Benachrichtigungen über Veranstaltungen, Aktualisierungen und Möglichkeiten senden.",
+    "li3": "Benachrichtigungen über Events, Aktualisierungen und Möglichkeiten senden.",
     "li4": "Sicherheit und Integrität unserer Plattform gewährleisten.",
     "li5": "Nutzungsanalyse zur Verbesserung der Benutzererfahrung.",
     "h2share": "3. Wie wir Ihre Informationen teilen",
-    "li6": "Mit Veranstaltern:",
-    "li7": "Wenn Sie Freiwilliger sind, werden Ihre Basisinformationen (z. B. Name, E-Mail) den Veranstaltern der Veranstaltungen, für die Sie sich anmelden, zur Verfügung gestellt.",
+    "li6": "Mit Event-Erstellern:",
+    "li7": "Wenn Sie Freiwilliger sind, werden Ihre Basisinformationen (z. B. Name, E-Mail) den Event-Erstellern der Events, für die Sie sich anmelden, zur Verfügung gestellt.",
     "li8": "Rechtliche Verpflichtungen:",
     "li9": "Wir können Ihre Informationen offenlegen, um gesetzlichen Anforderungen nachzukommen oder unsere Rechte zu schützen.",
     "li10": "Dienstleister:",
@@ -614,23 +614,23 @@
   },
   "langSelect": {
     "lang": "Sprache",
-    "PH": "Veranstaltungssprachen hinzufügen"
+    "PH": "Eventssprachen hinzufügen"
   },
   "eventCardVer": {
-    "imgAlt": "Veranstaltung",
+    "imgAlt": "Event",
     "people": "Personen",
     "more": "Mehr"
   },
   "eventDetails": {
     "backButton": "Zurück",
-    "locationLabel": "Veranstaltungsort",
+    "locationLabel": "Eventsort",
     "people": "Personen",
     "attendants": "Teilnehmer",
     "noAttendants": "Noch keine Teilnehmer",
     "sendMessageButton": "Nachricht senden",
     "joinButton": "Anmelden",
     "shareFeedbackButton": "Feedback teilen",
-    "reportEventButton": "Diese Veranstaltung melden",
+    "reportEventButton": "Dieses Event melden",
     "pendingButton": "Ausstehend",
     "approvedButton": "Genehmigt",
     "rejectedButton": "Abgelehnt",
@@ -646,8 +646,8 @@
       "cancel": "Abbrechen"
     },
     "report": {
-      "h2": "Veranstaltung melden",
-      "p1": "Wenn Sie auf Probleme mit dieser Veranstaltung gestoßen sind, lassen Sie es uns bitte wissen. Ihr Bericht hilft uns, eine sichere und respektvolle Umgebung für alle zu erhalten.",
+      "h2": "Event melden",
+      "p1": "Wenn Sie auf Probleme mit diesem Event gestoßen sind, lassen Sie es uns bitte wissen. Ihr Bericht hilft uns, eine sichere und respektvolle Umgebung für alle zu erhalten.",
       "reportReason": "Berichtsgrund*:",
       "placeholder1": "Wählen Sie einen Berichtsgrund",
       "placeholder2": "Schreiben Sie Ihren Bericht hier...",
@@ -668,17 +668,17 @@
   },
 
   "eventManagement": {
-    "addNewEvent": "Neue Veranst. hinzufügen",
+    "addNewEvent": "Neues Event hinzufügen",
     "searchInput": "Suchen",
     "editButton": "Bearbeiten",
     "cancelButton": "Abbrechen",
     "deleteButton": "Löschen",
-    "organizedEvents": "Organisierte Veranstaltungen",
-    "upcomingEvents": "Bevorstehende Veranstaltungen",
-    "noUpcomingEvents": "Keine bevorstehenden Veranstaltungen",
-    "yourPastEvents": "Ihre vergangenen Veranstaltungen",
-    "noPastEvents": "Keine vergangenen Veranstaltungen",
-    "attendingEvents": "Teilnehmende Veranstaltungen",
+    "organizedEvents": "Organisierte Events",
+    "upcomingEvents": "Bevorstehende Events",
+    "noUpcomingEvents": "Keine bevorstehenden Events",
+    "yourPastEvents": "Ihre vergangenen Events",
+    "noPastEvents": "Keine vergangenen Events",
+    "attendingEvents": "Teilnehmende Events",
     "leaveEventButton": "Verlassen",
     "acceptButton": "Akzeptieren",
     "rejectButton": "Ablehnen",
@@ -693,20 +693,20 @@
     "joining": "beitreten",
     "joined": "beigetreten",
     "sidebarLabels": {
-      "attendingEvents": "Teilnehmende Veranstaltungen",
-      "organizedEvents": "Veranstaltungen Organisieren",
+      "attendingEvents": "Teilnehmende Events",
+      "organizedEvents": "Events Organisieren",
       "messages": "Nachrichten"
     }
   },
 
   "eventMng": {
-    "addNew": "Neue Veranstaltung hinzufügen",
-    "eventName": "Veranstaltungsname",
-    "eventPhoto": "Veranstaltungsfoto",
+    "addNew": "Neue Event hinzufügen",
+    "eventName": "Eventsname",
+    "eventPhoto": "Eventsfoto",
     "eventDate": "Datum*",
     "from": "von*",
     "to": "bis*",
-    "eventLocation": "Veranstaltungsort",
+    "eventLocation": "Eventsort",
     "eventLocationNonChangable": "(Typ später nicht änderbar)",
     "virtual": "Online",
     "physical": "Vor Ort",
@@ -735,7 +735,7 @@
         "messagePH1": "Als Organisator können nur Sie Nachrichten an diese Gruppe senden.",
         "messagePH2": "Dieser Bereich ist ausschließlich für Ankündigungen des Organisators reserviert.",
         "messagePH3": "Geben Sie hier Ihre Nachricht ein...",
-        "messagePH4": "Haben Sie eine Frage zur Veranstaltung?"
+        "messagePH4": "Haben Sie eine Frage zur Event?"
       },
       "messageView": {
         "startMsg": "Wählen Sie eine Unterhaltung aus, um Nachrichten zu starten",
@@ -767,7 +767,7 @@
     "h2Intellectual": "5. Geistiges Eigentum",
     "pIntellectual": "Alle Inhalte, einschließlich, aber nicht beschränkt auf Texte, Bilder, Grafiken und Logos auf Volunteerium, sind Eigentum von Volunteerium oder seinen Lizenzgebern. Die unbefugte Nutzung oder Verbreitung von Inhalten ist strengstens untersagt.",
     "h2userGenerated": "6. Benutzererstellte Inhalte",
-    "pUserGenerated": "Volunteerium kann es Benutzern ermöglichen, Inhalte wie Veranstaltungsdetails, Kommentare und Nachrichten zu posten. Durch das Posten von Inhalten gewähren Sie Volunteerium eine nicht-exklusive, gebührenfreie, weltweite Lizenz zur Nutzung, Vervielfältigung und Anzeige der Inhalte auf unserer Plattform. Sie sind verantwortlich für die von Ihnen veröffentlichten Inhalte und müssen sicherstellen, dass diese keine Gesetze oder Rechte Dritter verletzen.",
+    "pUserGenerated": "Volunteerium kann es Benutzern ermöglichen, Inhalte wie Eventsdetails, Kommentare und Nachrichten zu posten. Durch das Posten von Inhalten gewähren Sie Volunteerium eine nicht-exklusive, gebührenfreie, weltweite Lizenz zur Nutzung, Vervielfältigung und Anzeige der Inhalte auf unserer Plattform. Sie sind verantwortlich für die von Ihnen veröffentlichten Inhalte und müssen sicherstellen, dass diese keine Gesetze oder Rechte Dritter verletzen.",
     "h2Limitation": "7. Haftungsbeschränkung",
     "pLimitation": "Volunteerium wird auf einer 'wie besehen'- und 'wie verfügbar'-Basis bereitgestellt. Wir garantieren nicht, dass die Plattform fehlerfrei, sicher oder unterbrechungsfrei sein wird. Wir haften nicht für direkte oder indirekte Schäden, die sich aus der Nutzung oder der Unfähigkeit zur Nutzung unserer Plattform ergeben.",
     "h2Changes": "8. Änderungen der Bedingungen",
@@ -802,10 +802,10 @@
       },
       "statisticsBars": {
         "users": "Benutzer",
-        "events": "Veranstaltungen",
-        "eventParticipants": "V. Teilnehmer",
-        "eventFeedbacks": "V. Rückmeldungen",
-        "eventReports": "V. Berichte",
+        "events": "Events",
+        "eventParticipants": "E. Teilnehmer",
+        "eventFeedbacks": "E. Rückmeldungen",
+        "eventReports": "E. Berichte",
         "interests": "Interessen",
         "addresses": "Adressen",
         "documents": "Dokumente",
@@ -868,35 +868,35 @@
     },
     "events": {
       "eventsPanel": {
-        "title": "Veranstaltungen"
+        "title": "Events"
       },
       "eventsTable": {
-        "eventId": "Veranstalt.-ID",
-        "eventIdDL": "V.-ID",
+        "eventId": "Event ID",
+        "eventIdDL": "Event ID",
         "status": "Status",
-        "statusDL": "Veranst. Status",
+        "statusDL": "Event Status",
         "completion": "Abschluss",
         "completionDL": "Abschlussstatus",
         "completed": "Abgeschlossen",
         "waiting": "Warten",
-        "eventTitle": "Veranstalt.-Titel",
-        "eventTitleDL": "V. Titel",
-        "eventCreator": "Veranstalter",
-        "eventCreatorDL": "Veranstalter",
+        "eventTitle": "Event Titel",
+        "eventTitleDL": "Event Titel",
+        "eventCreator": "Event-Ersteller",
+        "eventCreatorDL": "Event-Ersteller",
         "attendants": "Teilnehmer",
         "createdAt": "Erstellt am",
         "createdAtDL": "Erstellt am",
-        "noEvents": "Keine Veranstaltungen gefunden"
+        "noEvents": "Keine Events gefunden"
       },
       "singleEventPanel": {
-        "eventId": "V.-ID:",
+        "eventId": "Event ID:",
         "active": "ACTIV",
         "suspended": "SUSPENDIERT",
-        "eventDetails": "Veranstaltungsdetails",
-        "eventPhotoAlt": "Veranstaltungsfoto",
-        "eventName": "Veranstaltungsname",
-        "eventDescription": "Veranstaltungsbeschreibung",
-        "eventCreator": "Veranstalter",
+        "eventDetails": "Eventsdetails",
+        "eventPhotoAlt": "Eventsfoto",
+        "eventName": "Eventsname",
+        "eventDescription": "Eventsbeschreibung",
+        "eventCreator": "Event-Ersteller",
         "startDate": "Startdatum",
         "endDate": "Enddatum",
         "contactName": "Kontaktname",
@@ -904,11 +904,11 @@
         "contactPhone": "Kontakt-Telefon",
         "languages": "Sprachen",
         "interests": "Interessen",
-        "onlineEvent": "Online-Veranstaltung",
-        "eventLocation": "Veranstaltungsort",
+        "onlineEvent": "Online-Event",
+        "eventLocation": "Eventsort",
         "documents": "Dokumente",
         "documentId": "Dokumenten-ID",
-        "eventParticipants": "Veranstaltungsteilnehmer",
+        "eventParticipants": "Eventsteilnehmer",
         "participantId": "Teilnehmer-ID",
         "participantIdDL": "Teilnehmer-ID",
         "user": "Benutzer",
@@ -919,23 +919,23 @@
         "rejected": "Abgelehnt",
         "notJoined": "Nicht beigetreten",
         "joinDateDL": "Beitrittsdatum",
-        "suspendEvent": "Veranstaltung aussetzen",
-        "unsuspendEvent": "Veranstaltung fortsetzen",
+        "suspendEvent": "Event aussetzen",
+        "unsuspendEvent": "Event fortsetzen",
         "status": "Status",
         "statusDL": "Teilnehmerstatus",
         "joinDate": "Beitrittsdatum",
         "noParticipantYet": "Noch kein Teilnehmer",
-        "deleteEvent": "Veranstaltung löschen",
-        "desc": "Sind Sie sicher, dass Sie diese Veranstaltung löschen möchten?",
-        "noEvent": "Keine Veranstaltung gefunden"
+        "deleteEvent": "Event löschen",
+        "desc": "Sind Sie sicher, dass Sie dieses Event löschen möchten?",
+        "noEvent": "Kein Event gefunden"
       }
     },
     "feedbacks": {
       "feedbacksPanel": {
-        "title": "V. Rückmeldungen"
+        "title": "Event Rückmeldungen"
       },
       "feedbacksTable": {
-        "title": "Veranstaltungstitel",
+        "title": "Eventstitel",
         "name": "Name",
         "email": "E-Mail",
         "rating": "Bewertung",
@@ -946,7 +946,7 @@
         "feedbackId": "Feedback-ID",
         "feedbackInfo": "Feedback-Informationen",
         "title": "Titel",
-        "eventId": "Veranstaltungs-ID",
+        "eventId": "Event ID",
         "email": "E-Mail-Adresse",
         "name": "Name",
         "createdAt": "Erstellt am",
@@ -961,15 +961,15 @@
     },
     "reports": {
       "reportsPanel": {
-        "title": "V. Berichte"
+        "title": "E. Berichte"
       },
       "reportsTable": {
         "reportId": "Bericht-ID",
         "reportType": "Berichtstyp",
         "reportedBy": "Gemeldet von",
         "reportedByDL": "Gemeldet v.",
-        "eventId": "Veranstaltungs-ID",
-        "eventIdDL": "Veranst.-ID",
+        "eventId": "Event ID",
+        "eventIdDL": "Event ID",
         "createdAt": "Erstellt am",
         "noReports": "Keine Berichte gefunden"
       },
@@ -979,7 +979,7 @@
         "reportType": "Berichtstyp",
         "reportedBy": "Gemeldet von",
         "guest": "Gastbenutzer",
-        "eventId": "Veranstaltungs-ID",
+        "eventId": "Event ID",
         "createdAt": "Erstellt am",
         "lastUpdatedAt": "Zuletzt aktualisiert am",
         "reportDetails": "Bericht Details",
@@ -1065,7 +1065,7 @@
     }
   },
   "adminPanelPage": {
-    "eventLabel": "Veranstaltungen",
+    "eventLabel": "Events",
     "userLabel": "Benutzer",
     "contactLabel": "Kontakte",
     "feedbackLabel": "Feedbacks",
@@ -1091,7 +1091,7 @@
       "oldPassword": "Altes Passwort ist erforderlich!",
       "confirmPassword": "Passwortbestätigung ist erforderlich!",
       "reason": "Bitte wählen Sie einen Grund aus!",
-      "eventName": "Veranstaltungsname ist erforderlich!",
+      "eventName": "Eventsname ist erforderlich!",
       "date": "Datum ist erforderlich!",
       "startTime": "Startzeit ist erforderlich!",
       "endTime": "Endzeit ist erforderlich!",
@@ -1153,7 +1153,7 @@
     "selectFile": "Bitte wählen Sie eine Datei zum Löschen aus.",
     "selectConversation": "Bitte wählen Sie ein Gespräch aus.",
     "enterMessage": "Bitte geben Sie eine Nachricht ein.",
-    "idMissing": "Veranstaltung-ID oder Teilnehmer-ID fehlen.",
+    "idMissing": "Event-ID oder Teilnehmer-ID fehlen.",
     "setupProfile": "Bitte richten Sie Ihre Profildaten ein, um fortzufahren."
   }
 }
