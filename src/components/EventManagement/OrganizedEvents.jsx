@@ -34,7 +34,9 @@ const OrganizedEvents = ({ onAddEvent, setEditEvent }) => {
     const fetchEvents = async () => {
       setLoading(true)
       try {
-        const eventsResponse = await getEvents(`events/?filter[createdBy]=${user._id}`)
+        const eventsResponse = await getEvents(
+          `events/management?clientId=${user._id}&type=organized-events`
+        )
         setEvents(eventsResponse.data)
 
         setFilteredEvents(eventsResponse.data)

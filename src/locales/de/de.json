@@ -1030,6 +1030,7 @@
         "lastUpdatedAt": "Zuletzt aktualisiert am",
         "userDetails": "Benutzerdetails",
         "fullNameDisplay": "Vollständiger Name",
+        "totalPoint": "Gesamtpunktzahl",
         "profileSetup": "Profil eingerichtet",
         "emailVerified": "E-Mail verifiziert",
         "languages": "Sprachen",

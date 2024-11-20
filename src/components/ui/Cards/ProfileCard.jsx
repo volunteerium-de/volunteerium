@@ -6,11 +6,10 @@ import { formatDateWithTime } from "../../../helpers/formatDate"
 import { useTranslation } from "react-i18next"
 import { translations } from "../../../locales/translations"
 import { UserAvatar } from "../Avatar/userAvatar"
-import eventPhoto from "../../../assets/default-event-photo-.jpg"
 import useLanguageOptions from "../../../hooks/useLanguages.js"
 import { formatName } from "../../../helpers/formatName.js"
 
-const defaultEventPhoto = eventPhoto
+const defaultEventPhoto = `${import.meta.env.VITE_AWS_URL}default-event-photo.webp`
 
 const ProfileCard = ({ events, loading, eventType }) => {
   const { t } = useTranslation()

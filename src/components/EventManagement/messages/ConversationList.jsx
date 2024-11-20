@@ -1,4 +1,3 @@
-import eventPhoto from "../../../assets/default-event-photo-.jpg"
 import { formatConversation } from "../../../helpers/formatConversations"
 
 const ConversationList = ({
@@ -9,7 +8,7 @@ const ConversationList = ({
   onDeleteClick,
   getUnreadCount,
 }) => {
-  const defaultEventPhoto = eventPhoto
+  const defaultEventPhoto = `${import.meta.env.VITE_AWS_URL}default-event-photo.webp`
 
   const sortedConversations = formatConversation(conversations)
 

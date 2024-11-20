@@ -1,7 +1,6 @@
 // src/pages/ResetPassword.jsx
 
 import React from "react"
-import resetPasswordImage from "../../../assets/reset-password.png"
 import ResetPasswordForm from "./ResetPasswordForm"
 
 const ResetPassword = ({ identifier, email }) => {
@@ -16,7 +15,7 @@ const ResetPassword = ({ identifier, email }) => {
             <div
               className="flex-grow h-full w-full bg-cover bg-center backdrop-blur-xl relative"
               style={{
-                backgroundImage: `url(${resetPasswordImage})`,
+                backgroundImage: `url(${`${import.meta.env.VITE_AWS_URL}reset-password.webp`})`,
                 backgroundBlendMode: "overlay",
               }}
             >

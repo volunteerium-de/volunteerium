@@ -67,11 +67,16 @@ const ReportEvent = ({ eventTitle, eventId, onClose }) => {
           initialValues={{ reportType: "", content: "" }}
           validationSchema={validationSchema}
           onSubmit={(values) => {
-            sendEventReport({
+            const payload = {
               ...values,
               eventId,
-              reportedBy: currentUser ? currentUser?._id : "",
-            })
+            }
+
+            if (currentUser) {
+              payload.reportedBy = currentUser._id
+            }
+
+            sendEventReport(payload)
             onClose()
           }}
         >
@@ -81,7 +86,7 @@ const ReportEvent = ({ eventTitle, eventId, onClose }) => {
               <SelectInput
                 name="reportType"
                 options={options}
-                label= {t(translations.eventDetails.report.reportReason)}
+                label={t(translations.eventDetails.report.reportReason)}
                 placeholder={t(translations.eventDetails.report.placeholder1)}
               />
               {errors.reportType && touched.reportType && (

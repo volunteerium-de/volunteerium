@@ -1,5 +1,4 @@
 import { IoCalendar, IoHome, IoLocation, IoPeople } from "react-icons/io5"
-import defaulEventPhoto from "../../../assets/default-event-photo-.jpg"
 import { useSelector } from "react-redux"
 import { MdLanguage } from "react-icons/md"
 import useLanguageOptions from "../../../hooks/useLanguages"
@@ -33,7 +32,7 @@ const EventCardVertical = ({ event }) => {
       {/* Event Image */}
       <div>
         <img
-          src={event?.eventPhoto || defaulEventPhoto}
+          src={event?.eventPhoto || `${import.meta.env.VITE_AWS_URL}default-event-photo.webp`}
           alt={t(translations.eventCardVer.imgAlt)}
           className="rounded-t-sm object-cover w-full h-[180px]"
         />

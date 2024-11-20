@@ -22,10 +22,13 @@ const AttendingEvents = () => {
     const fetchEvents = async () => {
       setLoading(true)
       try {
-        const eventsResponse = await getEvents(`events/participant/${user._id}`)
+        const eventsResponse = await getEvents(
+          `events/management?clientId=${user._id}&type=attending-events`
+        )
         setEvents(eventsResponse.data)
         setFilteredEvents(eventsResponse.data)
       } catch (error) {
+        // console.error(error)
       } finally {
         setLoading(false)
       }

@@ -282,9 +282,8 @@
     "edit": "Edit",
     "save": "Save"
   },
-  "newEventValidation": 
-  {
-   "nameRequired": "Event name is required",
+  "newEventValidation": {
+    "nameRequired": "Event name is required",
     "nameMin": "Event name must contain between 10 and 60 characters",
     "dateRequired": "Date is required",
     "dateInPast": "Date cannot be in the past",
@@ -1015,7 +1014,7 @@
     },
     "users": {
       "singleUserPanel": {
-        "userId": "User ID: ",
+        "userId": "User ID",
         "userInformations": "User Informations",
         "fullName": "Full Name",
         "orgName": "Organization Name",
@@ -1025,6 +1024,7 @@
         "lastUpdatedAt": "Last Updated At",
         "userDetails": "User Details",
         "fullNameDisplay": "Full Name Display",
+        "totalPoint": "Total Point",
         "profileSetup": "Profile Setup",
         "emailVerified": "Email Verified",
         "languages": "Languages",
