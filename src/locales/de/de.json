@@ -7,7 +7,7 @@
   "searchbar": {
     "event": {
       "label": "Event",
-      "placeholder": "Möglichkeiten suchen"
+      "placeholder": "Events suchen"
     },
     "location": {
       "label": "Standort",
@@ -319,7 +319,6 @@
     "contactPhoneRequired": "Telefonnummer der Kontaktperson ist erforderlich",
     "contactPhoneMin": "Die Telefonnummer muss mindestens 10 Ziffern enthalten"
   },
-
   "pswModal": {
     "changePsw": "Ändern Sie Ihr Passwort",
     "currPsw": "Aktuelles Passwort",
@@ -478,13 +477,11 @@
     "category": "Kategorie",
     "language": "Sprache"
   },
-
   "googlePassword": {
     "header": "Legen Sie Ihr Passwort fest",
     "description": "Um sicherzustellen, dass Ihr Konto sicher ist und Sie in Zukunft problemlos darauf zugreifen können, legen Sie jetzt ein Passwort fest. Dies hilft, Probleme bei zukünftigen Anmeldungen zu vermeiden. Geben Sie Ihr neues Passwort unten ein und bestätigen Sie es.",
     "saveContinue": "Speichern & Fortfahren"
   },
-
   "googleAuthFall": {
     "h1": "Authentifizierung fehlgeschlagen.",
     "h2": "Bitte versuchen Sie es erneut oder kontaktieren Sie den Support, wenn das Problem weiterhin besteht.",
@@ -666,7 +663,6 @@
       "option10": "Sonstiges"
     }
   },
-
   "eventManagement": {
     "addNewEvent": "Neues Event hinzufügen",
     "searchInput": "Suchen",
@@ -698,7 +694,6 @@
       "messages": "Nachrichten"
     }
   },
-
   "eventMng": {
     "addNew": "Neue Event hinzufügen",
     "eventName": "Eventsname",
@@ -795,7 +790,6 @@
     "yes": "Ja",
     "no": "Nein",
     "cancel": "Abbrechen",
-
     "statistics": {
       "statisticsPanel": {
         "title": "Statistiken"
@@ -816,7 +810,6 @@
         "noStatistics": "Keine Statistiken gefunden"
       }
     },
-
     "dangerZone": {
       "title": "Gefahrenzone",
       "importantWarning": "Wichtiger Hinweis!",
@@ -833,7 +826,6 @@
       "sessionExpired": "Ihre Sitzung ist abgelaufen. Bitte versuchen Sie es erneut.",
       "confirmReset": "Zurücksetzen bestätigen"
     },
-
     "contacts": {
       "contactPanel": {
         "title": "Kontakte"
@@ -1145,7 +1137,6 @@
       "language": "Bitte wählen Sie eine gültige Sprache"
     }
   },
-
   "toastify": {
     "error": "Ein Fehler ist aufgetreten. Bitte versuchen Sie es erneut.",
     "verifyFailError": "Verifizierung fehlgeschlagen. Bitte versuchen Sie es erneut!",

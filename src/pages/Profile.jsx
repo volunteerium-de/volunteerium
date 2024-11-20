@@ -1,4 +1,4 @@
-import { LiaMedalSolid, LiaTrophySolid } from "react-icons/lia"
+import { LiaMedalSolid, LiaSpinnerSolid, LiaTrophySolid } from "react-icons/lia"
 import { FaRegCalendarAlt, FaExternalLinkAlt } from "react-icons/fa"
 import { IoLocationOutline, IoInformationCircleOutline } from "react-icons/io5"
 import { BsGenderAmbiguous } from "react-icons/bs"
@@ -175,11 +175,11 @@ const Profile = () => {
     <>
       <Header />
       {loading ? (
-        <div className=" flex flex-col justify-center items-center min-h-[calc(100vh-116px)]">
-          <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-primary-green border-opacity-50 dark:border-light-green"></div>
-          <p className="text-2xl font-semibold text-primary-green dark:text-light-gray">
-            {t(translations.profile.loading)}
-          </p>
+        <div className="flex text-md justify-center items-center text-center w-[200px] mx-auto mt-14 dark:text-white">
+          {t(translations.profile.loading)}{" "}
+          <span className="animate-spin text-primary-green text-3xl">
+            <LiaSpinnerSolid />
+          </span>
         </div>
       ) : (
         <>
@@ -340,7 +340,7 @@ const Profile = () => {
               </div>
 
               {eventType === "Organized Events" && (
-                <div className="flex gap-4 font-medium text-sm my-2 text-dark-gray-1 text-center sm:justify-end">
+                <div className="flex gap-4 font-medium text-sm my-2 text-dark-gray-1 justify-end">
                   <button
                     className={`py-1 px-2 rounded-md ${
                       organizedFilter === "Unfinished Events"
@@ -371,7 +371,7 @@ const Profile = () => {
               )}
 
               {eventType === "Attended Events" ? (
-                <div className="flex flex-col justify-between h-[calc(100vh-180px)]">
+                <div className="flex flex-col justify-between h-screen">
                   <ProfileCard
                     events={approvedEvents}
                     loading={loading}
@@ -386,7 +386,7 @@ const Profile = () => {
                   )}
                 </div>
               ) : (
-                <div className="flex flex-col justify-between h-[calc(100vh-215px)]">
+                <div className="flex flex-col justify-between h-screen">
                   <ProfileCard events={events} loading={loading} currentUserId={currentUser?._id} />
                   {events.length > 0 && (
                     <Pagination

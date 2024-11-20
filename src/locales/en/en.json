@@ -7,7 +7,7 @@
   "searchbar": {
     "event": {
       "label": "Event",
-      "placeholder": "Search Opportunities"
+      "placeholder": "Search Events"
     },
     "location": {
       "label": "Location",
@@ -282,9 +282,8 @@
     "edit": "Edit",
     "save": "Save"
   },
-  "newEventValidation": 
-  {
-   "nameRequired": "Event name is required",
+  "newEventValidation": {
+    "nameRequired": "Event name is required",
     "nameMin": "Event name must contain between 10 and 60 characters",
     "dateRequired": "Date is required",
     "dateInPast": "Date cannot be in the past",
@@ -789,7 +788,6 @@
     "yes": "Yes",
     "no": "No",
     "cancel": "Cancel",
-
     "statistics": {
       "statisticsPanel": {
         "title": "Statistics"
@@ -810,7 +808,6 @@
         "noStatistics": "No Statistics Found"
       }
     },
-
     "dangerZone": {
       "title": "Danger Zone",
       "importantWarning": "Important Warning!",
@@ -827,7 +824,6 @@
       "sessionExpired": "Your session has expired. Please try again.",
       "confirmReset": "Confirm Reset"
     },
-
     "contacts": {
       "contactPanel": {
         "title": "Contacts"
@@ -1140,7 +1136,6 @@
       "language": "Please choose a valid language!"
     }
   },
-
   "toastify": {
     "error": "An error occurred. Please try again.",
     "verifyFailError": "Verification failed. Please try again.",
