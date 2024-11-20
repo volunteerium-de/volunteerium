@@ -1105,14 +1105,17 @@
       "onlyLetters": "Darf nur  Buchstaben enthalten!",
       "interestId": "InterestIds muss eine gültige Objekt-ID sein!",
       "logo": "Firmenzeichen ist erforderlich!",
-      "addressId": "AddressId muss eine gültige Objekt-ID sein!"
+      "addressId": "AddressId muss eine gültige Objekt-ID sein!",
+      "shortRequired": "Erforderlich!"
     },
     "minLength": {
       "select1": "Mindestens eine Kategorie muss ausgewählt werden!.",
       "phoneNumber": "Die Telefonnummer muss mindestens 10 Ziffern enthalten!",
       "totalPoint": "Gesamtpunktzahl darf nicht negativ sein!",
       "characters1": "Muss mindestens 1 Zeichen lang sein!",
+      "shortCharacters1": "Mind. 1 Zchn.!",
       "characters3": "Muss mindestens 3 Zeichen lang sein!",
+      "shortCharacters3": "Mind. 3 Zchn.!",
       "characters8": "Muss mindestens 8 Zeichen lang sein!",
       "characters10": "Muss mindestens 10 Zeichen lang sein!"
     },
@@ -1120,6 +1123,7 @@
       "select3": "Sie können bis zu 3 Kategorien auswählen!",
       "characters8": "Darf maximal 8 Zeichen lang sein!",
       "characters15": "Darf maximal 15 Zeichen lang sein",
+      "shortCharacters15": "Max 15 Zchn.!",
       "characters30": "Darf maximal 30 Zeichen lang sein!",
       "characters50": "Darf maximal 50 Zeichen lang sein!",
       "characters100": "Darf maximal 100 Zeichen lang sein!",
@@ -1137,7 +1141,8 @@
     "invalid": {
       "email": "Ungültige E-Mail-Adresse!",
       "url": "Ungültiges URL-Format!",
-      "invalidFormat": "Invalid format!"
+      "invalidFormat": "Ungültiges Format!",
+      "shortInvalid": "Ungültig!"
     },
     "oneOf": {
       "gender": "Bitte wählen Sie ein gültiges Geschlecht",

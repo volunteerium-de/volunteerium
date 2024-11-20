@@ -1100,14 +1100,17 @@
       "onlyLetters": "Must contain only letters!",
       "interestId": "InterestIds must be a valid ObjectId!",
       "logo": "Logo is required!",
-      "addressId": "AddressId must be a valid ObjectId!"
+      "addressId": "AddressId must be a valid ObjectId!",
+      "shortRequired": "Required!"
     },
     "minLength": {
       "select1": "At least one category must be selected!",
       "phoneNumber": "Phone number must be at least 10 digits!",
       "totalPoint": "Total point cannot be negative!",
       "characters1": "Must be at least 1 characters!",
+      "shortCharacters1": "Min 1 chars!",
       "characters3": "Must be at least 3 characters!",
+      "shortCharacters3": "Min 3 chars!",
       "characters8": "Must be at least 8 characters!",
       "characters10": "Must be at least 10 characters!"
     },
@@ -1115,6 +1118,7 @@
       "select3": "You can select up to 3 categories!",
       "characters8": "Can be maximum 8 characters!",
       "characters15": "Can be maximum 15 characters!",
+      "shortCharacters15": "Max 15 chars!",
       "characters30": "Can be maximum 30 characters!",
       "characters50": "Can be maximum 50 characters!",
       "characters100": "Can be maximum 100 characters!",
@@ -1132,7 +1136,8 @@
     "invalid": {
       "email": "Invalid email address!",
       "url": "Invalid URL format!",
-      "invalidFormat": "Invalid format!"
+      "invalidFormat": "Invalid format!",
+      "shortInvalid": "Invalid!"
     },
     "oneOf": {
       "gender": "Please choose a valid gender!",

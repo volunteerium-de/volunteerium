@@ -236,12 +236,12 @@ const SetupIndividual = () => {
                     </p>
                   </div>
 
-                  <div className="px:2 md:px-0 flex flex-wrap justify-center gap-2 md:gap-4 mb-8">
+                  <div className="px:2 md:px-0 flex flex-wrap justify-center gap-3 md:gap-4 mb-8">
                     {categories.map((category) => (
                       <button
                         key={category._id}
                         type="button"
-                        className={`w-1/3 sm:w-1/2 md:w-auto px-1 md:px-4 py-2 border rounded-md cursor-pointer ${
+                        className={`w-5/12 sm:w-1/2 md:w-auto px-1 md:px-4 py-2 border rounded-md cursor-pointer ${
                           values.interests.includes(category._id)
                             ? "bg-light-green hover:bg-primary-green text-dark-gray-1 border-1 border-primary-green"
                             : "100 text-gray-2"
@@ -269,7 +269,7 @@ const SetupIndividual = () => {
                         navigate("/")
                       }}
                       disabled={!isValid}
-                      className="mt-4 block w-1/4 py-2 text-dark-gray-1 hover:bg-dark-gray-2 hover:text-white border border-gray-1 text-center  rounded-md transition-colors"
+                      className="mt-4 block w-1/3 sm:w-1/4 py-2 text-dark-gray-1 hover:bg-dark-gray-2 hover:text-white border border-gray-1 text-center  rounded-md transition-colors"
                     >
                       {t(translations.setupIndv.skip)}
                     </button>
@@ -281,7 +281,7 @@ const SetupIndividual = () => {
                         navigate("/")
                       }}
                       disabled={!isValid}
-                      className="mt-4 block w-1/5 py-2 text-center bg-primary-green hover:bg-dark-green text-white rounded-md transition-colors"
+                      className="mt-4 block w-1/4 py-2 text-center bg-primary-green hover:bg-dark-green text-white rounded-md transition-colors"
                     >
                       {t(translations.setupIndv.finish)}
                     </button>
