@@ -211,7 +211,7 @@ const EventsListingPage = () => {
               </button>
             )}
           </div>
-          <div className="flex flex-col justify-between w-full dark:bg-dark-gray-3 rounded-lg px-4 pt-4 shadow-md">
+          <div className="flex flex-col justify-between w-full min-h-[100vh] dark:bg-dark-gray-3 rounded-lg px-4 pt-4 shadow-md">
             {error ? (
               <div>{error}</div>
             ) : loading ? (

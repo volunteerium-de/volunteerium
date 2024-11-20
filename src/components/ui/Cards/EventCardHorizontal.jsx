@@ -49,8 +49,14 @@ const EventCardHorizontal = ({ event }) => {
           {event.title}
         </h2>
         <p className="text-dark-gray-1 dark:text-white sm:text-[0.8125rem] text-[0.7rem] mb-[10px]">
-          {event.description.split(" ").slice(0, 10).join(" ")}
-          {event.description.split(" ").length > 10 ? "..." : ""}
+          <span className="block sm:hidden">
+            {event.description.split(" ").slice(0, 10).join(" ")}
+            {event.description.split(" ").length > 10 ? "..." : ""}
+          </span>
+          <span className="hidden sm:block">
+            {event.description.split(" ").slice(0, 20).join(" ")}
+            {event.description.split(" ").length > 20 ? "..." : ""}
+          </span>
         </p>
 
         {/* Event Details */}

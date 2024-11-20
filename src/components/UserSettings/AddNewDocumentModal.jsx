@@ -84,7 +84,7 @@ const AddNewDocumentModal = ({ isOpen, onClose }) => {
                 {fileName && <div className="text-dark-gray-1  dark:text-white">{fileName}</div>}
                 {/* "Add new +" butonu */}
                 <button
-                  className="block sm:text-[0.8rem] text-[0.6rem] px-2  py-1 items-center border hover:bg-dark-green rounded-lg bg-primary-green text-white transition duration-300 mt-8"
+                  className="block sm:text-[0.8rem] text-[0.7rem] px-2  py-1 items-center border hover:bg-dark-green rounded-lg bg-primary-green text-white transition duration-300 mt-8"
                   onClick={file ? handleResetClick : handleAddNewClick}
                 >
                   {file ? t(translations.addNewDoc.reset) : t(translations.addNewDoc.addNew)}
@@ -102,14 +102,11 @@ const AddNewDocumentModal = ({ isOpen, onClose }) => {
 
           <div className="flex justify-center gap-3 sm:mt-[50px] mt-[20px] ">
             {error && <div className="text-danger text-sm text-center mb-2">{error}</div>}
-            <button
-              className="py-1 px-4 text-primary-green md:text-[1rem] text-[0.6rem]"
-              onClick={onClose}
-            >
+            <button className="py-1 px-4 text-primary-green text-[0.9rem]" onClick={onClose}>
               {t(translations.addNewDoc.cancel)}
             </button>
             <button
-              className="bg-primary-green md:text-[1rem] text-[0.6rem] px-3 py-1 rounded text-white hover:bg-dark-green"
+              className="bg-primary-green text-[0.9rem] px-3 py-1 rounded text-white hover:bg-dark-green"
               onClick={handleSaveClick}
               disabled={!file}
             >

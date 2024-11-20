@@ -98,7 +98,7 @@ const OrganisationSettingsForm = () => {
         id={name}
         name={name}
         placeholder={placeholder}
-        className="h-[36px] p-2 border border-gray-1 rounded focus:outline-none focus:border-primary-green"
+        className="p-2 border border-gray-1 rounded focus:outline-none focus:border-primary-green"
       />
       <ErrorMessage name={name} component="div" className="text-danger text-sm" />
     </div>
