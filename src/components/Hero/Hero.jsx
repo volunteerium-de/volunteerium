@@ -1,6 +1,7 @@
 import { useTranslation } from "react-i18next"
 import SearchBar from "./SearchBar"
 import { translations } from "../../locales/translations"
+import heroImg from "../../assets/hero-bg.jpg"
 
 const Hero = () => {
   const { t } = useTranslation()
@@ -10,8 +11,8 @@ const Hero = () => {
       <div className="relative w-full h-[225px] sm:h-[425px]">
         <img
           className="w-full h-full object-cover"
-          src="/src/assets/hero-bg.jpg"
-          alt=  {t(translations.heroSection.imgAlt)}
+          src={heroImg}
+          alt={t(translations.heroSection.imgAlt)}
         />
         <div className="absolute inset-0 backdrop-blur-sm bg-black/10"></div>
       </div>

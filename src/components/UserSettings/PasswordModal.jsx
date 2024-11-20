@@ -81,7 +81,7 @@ const PasswordModal = ({ isOpen, onClose }) => {
                     onClick={() => setShowOldPassword(!showOldPassword)}
                     className="absolute top-2 right-2 cursor-pointer text-dark-gray-2"
                   >
-                    {showOldPassword ? <FaEye /> : <FaEyeSlash />}
+                    {showOldPassword ? <FaEyeSlash /> : <FaEye />}
                   </div>
                 </div>
                 {formik.touched.oldPassword && formik.errors.oldPassword ? (
@@ -112,7 +112,7 @@ const PasswordModal = ({ isOpen, onClose }) => {
                     onClick={() => setShowPassword(!showPassword)}
                     className="absolute top-2 right-2 cursor-pointer text-dark-gray-2"
                   >
-                    {showPassword ? <FaEye /> : <FaEyeSlash />}
+                    {showPassword ? <FaEyeSlash /> : <FaEye />}
                   </div>
                 </div>
                 {formik.touched.password && formik.errors.password ? (
@@ -145,7 +145,7 @@ const PasswordModal = ({ isOpen, onClose }) => {
                     onClick={() => setShowConfirmPassword(!showConfirmPassword)}
                     className="absolute top-2 right-2 cursor-pointer text-dark-gray-2"
                   >
-                    {showConfirmPassword ? <FaEye /> : <FaEyeSlash />}
+                    {showConfirmPassword ? <FaEyeSlash /> : <FaEye />}
                   </div>
                 </div>
                 {formik.touched.confirmPassword && formik.errors.confirmPassword ? (
@@ -167,8 +167,8 @@ const PasswordModal = ({ isOpen, onClose }) => {
                   type="submit"
                   disabled={loading}
                   className={`flex justify-center items-center ${
-                    loading ? "bg-primary-green/60" : "bg-primary-green"
-                  } rounded-md text-white w-[70px] h-[25px] sm:w-[100px] sm:h-[35px] sm:text-[0.9rem] text-[0.8rem] hover:bg-primary-green/60`}
+                    loading ? "bg-light-green" : "bg-primary-green"
+                  } rounded-md text-white w-[70px] h-[25px] sm:w-[100px] sm:h-[35px] sm:text-[0.9rem] text-[0.8rem] hover:bg-dark-green`}
                 >
                   {loading ? (
                     <ImSpinner9 className="animate-spin" />

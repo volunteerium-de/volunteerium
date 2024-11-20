@@ -69,7 +69,7 @@ const IndividualSettingsForm = () => {
   }
 
   useEffect(() => {
-    if (!categories.length > 0) {
+    if (categories.length === 0) {
       getEventCategories()
     }
   }, [categories])
@@ -87,8 +87,6 @@ const IndividualSettingsForm = () => {
       languages: values.languages.length > 0 ? values.languages : [],
       interestIds: values.interestIds.filter(Boolean),
     }
-
-    console.log("Formatted values before update:", formattedValues)
 
     try {
       const data = await updateUserDetails(formattedValues)
@@ -252,7 +250,7 @@ const IndividualSettingsForm = () => {
                   name="bio"
                   maxLength="250"
                   placeholder={t(translations.indvSettings.label6PH)}
-                  className="w-full p-2 border border-gray-1 rounded h-[100px] focus:outline-none focus:border-primary-green resize-none"
+                  className="w-full p-2 border border-gray-1 rounded h-[100px] focus:outline-none focus:border-primary-green scrollbar resize-none whitespace-pre-line"
                 />
                 <p className="text-sm text-gray-2 dark:text-white">
                   {values.bio.length}/250 characters
@@ -301,13 +299,13 @@ const IndividualSettingsForm = () => {
                   onClick={() => {
                     resetForm({ values: defaultUserDetails })
                   }}
-                  className="bg-danger flex-1 py-2 px-4 text-[1rem] text-white rounded hover:bg-danger/20"
+                  className="bg-danger flex-1 py-2 px-4 text-[1rem] text-white rounded hover:bg-dark-danger"
                 >
                   {t(translations.indvSettings.reset)}
                 </button>
                 <button
                   type="submit"
-                  className="bg-primary-green flex-1 py-2 px-4 text-[1rem] text-white rounded hover:bg-primary-green/60"
+                  className="bg-primary-green flex-1 py-2 px-4 text-[1rem] text-white rounded hover:bg-dark-green"
                 >
                   {t(translations.indvSettings.save)}
                 </button>

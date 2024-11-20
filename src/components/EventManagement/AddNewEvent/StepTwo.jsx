@@ -12,7 +12,7 @@ import { useState } from "react"
 import { useTranslation } from "react-i18next"
 import { translations } from "../../../locales/translations/"
 
-const StepTwo = ({ setStep, values, step, isValid, setFieldValue, loading }) => {
+const StepTwo = ({ setStep, values, step, isValid, setFieldValue, loading, errors, touched }) => {
   const { t } = useTranslation()
   const { getEventCategories } = useEventCall()
   const { currentUser: user } = useSelector((state) => state.auth)
@@ -93,6 +93,7 @@ const StepTwo = ({ setStep, values, step, isValid, setFieldValue, loading }) => 
           <label className="block text-dark-gray-2 dark:text-white mb-2">
             {t(translations.eventMng.category)}
           </label>
+
           <SelectInput
             name="interestIds"
             options={categories?.map((category) => ({
@@ -106,7 +107,9 @@ const StepTwo = ({ setStep, values, step, isValid, setFieldValue, loading }) => 
             }
             isMultiple={true}
           />
-          <ErrorMessage name="interestIds" component="div" className="text-danger" />
+          {errors.interestIds && values.interestIds.length > 0 && (
+            <div className="text-danger -mt-3">{errors.interestIds}</div>
+          )}
         </div>
 
         <div className="mb-4">
@@ -133,7 +136,7 @@ const StepTwo = ({ setStep, values, step, isValid, setFieldValue, loading }) => 
           <Field
             as="textarea"
             name="description"
-            className="w-full min-h-64 p-2 border border-gray-1 rounded focus:outline-none focus:border-primary-green"
+            className="w-full scrollbar whitespace-pre-line min-h-64 p-2 border border-gray-1 rounded focus:outline-none focus:border-primary-green"
             required
           />
           <ErrorMessage name="description" component="div" className="text-danger" />

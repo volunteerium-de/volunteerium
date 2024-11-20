@@ -61,7 +61,7 @@ const Unsubscription = () => {
           </div>
           <button
             onClick={handleUnsubscribe}
-            className="w-[200px] py-2 mt-6 bg-danger text-white font-semibold rounded-lg hover:bg-danger/60 transition duration-300"
+            className="w-[200px] py-2 mt-6 bg-danger text-white font-semibold rounded-lg hover:bg-dark-danger transition duration-300"
           >
             Unsubscribe
           </button>
@@ -75,7 +75,7 @@ const Unsubscription = () => {
           <p className="text-md text-dark-gray-3 dark:text-white my-4">{message}</p>
           <button
             onClick={handleGoHome}
-            className="w-[200px] py-2 mt-6 bg-primary-green text-white font-semibold rounded-lg hover:bg-primary-green/60 transition duration-300"
+            className="w-[200px] py-2 mt-6 bg-primary-green text-white font-semibold rounded-lg hover:bg-dark-green transition duration-300"
           >
             Home
           </button>

@@ -110,7 +110,7 @@ const AddNewDocumentModal = ({ isOpen, onClose }) => {
               {t(translations.addNewDoc.cancel)}
             </button>
             <button
-              className="bg-primary-green md:text-[1rem] text-[0.6rem] px-3 py-1 rounded text-white hover:bg-primary-green/60"
+              className="bg-primary-green md:text-[1rem] text-[0.6rem] px-3 py-1 rounded text-white hover:bg-dark-green"
               onClick={handleSaveClick}
               disabled={!file}
             >

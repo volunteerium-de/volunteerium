@@ -80,7 +80,7 @@ const Profile = () => {
       try {
         let query = `events/?filter[createdBy]=${userId}&page=${currentPage}`
         if (eventType === "Attended Events") {
-          query = `events/participant/${userId}?sort[startDate]=desc&page=${currentPage}`
+          query = `events/participant/${userId}?filter[isDone]=true&sort[startDate]=desc&page=${currentPage}`
         } else if (organizedFilter === "Finished Events") {
           query += `&filter[isDone]=true&sort[startDate]=desc`
         } else if (organizedFilter === "Unfinished Events") {
@@ -130,7 +130,6 @@ const Profile = () => {
       totalPoint,
     } = {},
   } = user
-  console.log(user)
 
   const medalInfoText = [
     {
@@ -195,7 +194,7 @@ const Profile = () => {
                 {_id === currentUser?._id && (
                   <button
                     onClick={() => navigate("/settings")}
-                    className="w-auto px-2 h-8 sm:h-[30px] text-[0.9375rem] rounded-md bg-primary-green text-white mt-4 sm:mt-8 hover:bg-primary-green/60"
+                    className="w-auto px-2 h-8 sm:h-[30px] text-[0.9375rem] rounded-md bg-primary-green text-white mt-4 sm:mt-8 hover:bg-dark-green"
                   >
                     {t(translations.profile.edit)}
                   </button>
@@ -345,7 +344,7 @@ const Profile = () => {
                   <button
                     className={`py-1 px-2 rounded-md ${
                       organizedFilter === "Unfinished Events"
-                        ? "bg-primary-green text-white hover:bg-primary-green/60"
+                        ? "bg-primary-green text-white hover:bg-dark-green"
                         : "bg-light-gray-3 dark:bg-dark-gray-2 text-dark-gray-1 dark:text-white hover:bg-dark-gray-1/20 dark:hover:bg-dark-gray-1"
                     }`}
                     onClick={() => {
@@ -358,7 +357,7 @@ const Profile = () => {
                   <button
                     className={`py-1 px-2 rounded-md ${
                       organizedFilter === "Finished Events"
-                        ? "bg-primary-green text-white hover:bg-primary-green/60"
+                        ? "bg-primary-green text-white hover:bg-dark-green"
                         : "bg-light-gray-3 dark:bg-dark-gray-2 text-dark-gray-1 dark:text-white hover:bg-dark-gray-1/20 dark:hover:bg-dark-gray-1"
                     }`}
                     onClick={() => {

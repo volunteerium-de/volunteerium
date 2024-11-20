@@ -125,7 +125,7 @@ const LoginForm = () => {
             <div className="flex flex-col items-center">
               <button
                 type="submit"
-                className={`w-full bg-primary-green hover:bg-primary-green/60 text-white text-[1rem] py-3 mt-3 rounded-lg focus:outline-none  flex justify-center items-center ${
+                className={`w-full bg-primary-green hover:bg-dark-green text-white text-[1rem] py-3 mt-3 rounded-lg focus:outline-none  flex justify-center items-center ${
                   loading ? "opacity-50 cursor-not-allowed" : ""
                 }`}
                 disabled={loading}

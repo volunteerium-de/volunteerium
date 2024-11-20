@@ -47,7 +47,7 @@ const UserMenu = ({ user }) => {
   return (
     <div className="relative" ref={menuRef}>
       <div
-        className="flex items-center justify-center border-2 dark:border-gray-2 border-primary-green dark:border-primary-white rounded-full py-1 px-2 cursor-pointer"
+        className="flex items-center justify-center border-2 hover:bg-light-gray-2 dark:hover:bg-dark-gray-2 dark:border-gray-2 border-primary-green dark:border-primary-white rounded-full py-1 px-2 cursor-pointer"
         onClick={toggleMenu}
       >
         {/* Menu Icon */}
@@ -76,7 +76,9 @@ const UserMenu = ({ user }) => {
                       navigate(`/${user.userType === "admin" ? "admin-panel" : "event-management"}`)
                     }
                   >
-                    {user.userType === "admin" ? t(translations.userMenu.adminPanel) : t(translations.userMenu.eventMng)}
+                    {user.userType === "admin"
+                      ? t(translations.userMenu.adminPanel)
+                      : t(translations.userMenu.eventMng)}
                   </button>
                   <button
                     className="block w-full text-left p-1 hover:text-primary-green"

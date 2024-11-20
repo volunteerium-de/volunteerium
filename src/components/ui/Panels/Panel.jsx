@@ -120,7 +120,7 @@ const Panel = ({ title, fetchUrl, TableComponent }) => {
                   onClick={() => setIsOpen(true)}
                   className="absolute right-[90px] sm:right-[95px] md:right-[160px]"
                 >
-                  <FaCirclePlus className="w-8 h-8 text-primary-green dark:text-light-gray hover:text-primary-green/60 dark:hover:text-light-gray/60 rounded-full" />
+                  <FaCirclePlus className="w-8 h-8 text-primary-green dark:text-light-gray hover:text-dark-green dark:hover:text-light-gray-2 rounded-full" />
                 </button>
               )}
               <h1 className="text-lg sm:text-xl md:text-2xl font-bold text-primary-green dark:text-light-gray">

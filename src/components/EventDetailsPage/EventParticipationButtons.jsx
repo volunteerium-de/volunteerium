@@ -42,7 +42,7 @@ const EventParticipationButtons = ({ toggleFeedbackModal }) => {
           navigate(
             `/${isAdmin ? "admin-panel" : "event-management"}/?tab=${isAdmin ? "events" : "organized-events"}&identifier=${singleEvent?._id}`
           ),
-        className: "bg-purple-400 hover:bg-purple-400/60",
+        className: "bg-purple-400 hover:bg-purple-700",
       }
     }
 
@@ -50,7 +50,7 @@ const EventParticipationButtons = ({ toggleFeedbackModal }) => {
       return {
         text: t(translations.eventDetails.joinButton),
         action: () => joinEvent(singleEvent?._id),
-        className: "bg-primary-green hover:bg-primary-green/60",
+        className: "bg-primary-green hover:bg-dark-green",
       }
     }
 
@@ -73,7 +73,7 @@ const EventParticipationButtons = ({ toggleFeedbackModal }) => {
           text: t(translations.eventDetails.pendingButton),
           action: () =>
             navigate(`/event-management?tab=attending-events&identifier=${singleEvent?._id}`),
-          className: "bg-warning hover:bg-warning/60",
+          className: "bg-warning hover:bg-dark-warning",
         }
       }
       if (!isEventDone && isApproved && !isPending) {
@@ -81,7 +81,7 @@ const EventParticipationButtons = ({ toggleFeedbackModal }) => {
           text: t(translations.eventDetails.approvedButton),
           action: () =>
             navigate(`/event-management?tab=attending-events&identifier=${singleEvent?._id}`),
-          className: "bg-yellow-500 hover:bg-yellow-500/60",
+          className: "bg-yellow-500 hover:bg-yellow-700",
         }
       }
       if (!isEventDone && isRejected) {

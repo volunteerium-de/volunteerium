@@ -142,11 +142,7 @@ const EventsListingPage = () => {
       )
     }
 
-    if (!totalEventRecord) {
-      resultMessage += `${t(translations.eventsPage.notFound)}`
-    } else {
-      resultMessage += ` ${totalEventRecord} ${totalEventRecord > 1 ? t(translations.eventsPage.events) : t(translations.eventsPage.event)} ${t(translations.eventsPage.found)}`
-    }
+    resultMessage += ` ${totalEventRecord} ${totalEventRecord > 1 ? t(translations.eventsPage.events) : t(translations.eventsPage.event)} ${t(translations.eventsPage.found)}`
 
     return { resultMessage, resultParts }
   }
@@ -186,7 +182,7 @@ const EventsListingPage = () => {
             <select
               value={sortOrder}
               onChange={handleSortChange}
-              className="appearance-none border border-primary-green rounded-md font-medium  px-2 bg-light-green text-primary-green focus:outline-none focus:ring-2 focus:primary-green text-[0.7rem] sm:text-sm"
+              className="appearance-none cursor-pointer border border-primary-green rounded-md font-medium  px-2 bg-light-green text-primary-green focus:outline-none focus:ring-2 focus:primary-green text-[0.7rem] sm:text-sm"
             >
               <option value="Newest">{t(translations.eventsPage.new)}</option>
               <option value="Oldest">{t(translations.eventsPage.old)}</option>

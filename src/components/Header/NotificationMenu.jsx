@@ -60,7 +60,7 @@ const NotificationMenu = () => {
         onClick={toggleNotificationMenu}
       >
         {/* Notification Icon */}
-        <FaBell className="text-primary-green dark:text-gray-2 h-7 w-7" />
+        <FaBell className="text-primary-green hover:text-dark-green dark:text-gray-2 h-7 w-7" />
 
         {/* Notification Count Badge */}
         {notifications.length > 0 && (
@@ -85,7 +85,7 @@ const NotificationMenu = () => {
           </div>
 
           {/* Notification List */}
-          <div className="max-h-80 overflow-y-auto">
+          <div className="max-h-80 scrollbar overflow-y-auto">
             {notifications.length > 0 ? (
               notifications.map(({ _id, contentEN, contentDE, isRead, createdAt }) => (
                 <div

@@ -256,7 +256,7 @@ const SetupOrganization = () => {
                           handleNext()
                         }
                       }}
-                      className="w-auto px-14 py-2 bg-primary-green hover:bg-primary-green/60 text-white rounded-md transition-colors"
+                      className="w-auto px-14 py-2 bg-primary-green hover:bg-dark-green text-white rounded-md transition-colors"
                     >
                       {t(translations.setupOrg.nextButton)}
                     </button>
@@ -408,8 +408,8 @@ const SetupOrganization = () => {
                       disabled={!isValid}
                       className={`w-auto px-14 py-2 ${
                         !isValid
-                          ? "bg-gray-400 hover:bg-gray-400/60 cursor-not-allowed"
-                          : "bg-primary-green hover:bg-primary-green/60"
+                          ? "bg-gray-2 hover:bg-dark-gray-1 cursor-not-allowed"
+                          : "bg-primary-green hover:bg-dark-green"
                       } text-white rounded-md transition-colors`}
                     >
                       {t(translations.setupOrg.finish)}

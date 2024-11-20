@@ -118,7 +118,7 @@ const ResetDatabaseModal = ({ isOpen, setIsOpen, resetToken, setResetToken }) =>
         <button
           onClick={handleResetDatabase}
           disabled={code.some((digit) => digit === "")}
-          className={`mt-6 w-full py-3 bg-danger text-white rounded-lg hover:bg-danger/60 ${code.some((digit) => digit === "") && "opacity-50 cursor-not-allowed"}`}
+          className={`mt-6 w-full py-3 bg-danger text-white rounded-lg hover:bg-dark-danger ${code.some((digit) => digit === "") && "opacity-50 cursor-not-allowed"}`}
         >
           {t(translations.adminPanel.dangerZone.confirmReset)}
         </button>

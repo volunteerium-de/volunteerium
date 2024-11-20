@@ -92,7 +92,7 @@ const MessageMenu = () => {
         onClick={toggleMessageMenu}
       >
         {/* Message Icon */}
-        <FaEnvelope className="text-primary-green dark:text-gray-2 h-7 w-7" />
+        <FaEnvelope className="text-primary-green hover:text-dark-green dark:text-gray-2 h-7 w-7" />
 
         {/* Message Count Badge */}
         {totalUnreadCount > 0 && (
@@ -117,7 +117,7 @@ const MessageMenu = () => {
           </div>
 
           {/* Message List */}
-          <div className="max-h-80 overflow-y-auto">
+          <div className="max-h-80 scrollbar overflow-y-auto">
             {sortedConversations &&
             sortedConversations.filter(({ messageIds }) => messageIds && messageIds.length > 0)
               .length ? (

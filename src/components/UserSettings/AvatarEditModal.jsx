@@ -85,10 +85,12 @@ const AvatarEditModal = ({ isOpen, onClose, currentUser }) => {
             <ImSpinner9 size={32} className="animate-spin" />
           </div>
         ) : (
-          <UserAvatar
-            user={currentUser}
-            size="w-[100px] h-[100px] mx-auto sm:w-[150px] sm:h-[150px]"
-          />
+          <div className=" mx-auto w-[100px] h-[100px] sm:w-[150px] sm:h-[150px] overflow-hidden rounded-full">
+            <UserAvatar
+              user={currentUser}
+              size="w-full h-full w-[100px] h-[100px] sm:w-[150px] sm:h-[150px]  object-cover"
+            />
+          </div>
         )}
 
         <hr className="mt-[75px] border-primary-green" />

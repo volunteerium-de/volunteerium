@@ -159,7 +159,7 @@ const VerificationForm = ({ setIssue, identifier, setIdentifier, email }) => {
       <button
         type="submit"
         className={`w-full max-w-[44.18rem] h-[2.8125rem] rounded-lg transition duration-300
-        ${isCodeComplete ? "bg-primary-green hover:bg-primary-green/60 text-white cursor-pointer" : "bg-primary-green cursor-not-allowed"}`}
+        ${isCodeComplete ? "bg-primary-green hover:bg-dark-green text-white cursor-pointer" : "bg-primary-green cursor-not-allowed"}`}
         disabled={!isCodeComplete}
       >
         {t(translations.password.verificationForm.verify)}
