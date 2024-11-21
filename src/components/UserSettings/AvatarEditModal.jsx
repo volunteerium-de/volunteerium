@@ -38,9 +38,7 @@ const AvatarEditModal = ({ isOpen, onClose, currentUser }) => {
         if (updatedData) {
           toastNotify("success", updatedData.message)
         }
-      } catch (error) {
-        console.error("Error uploading file:", error)
-      }
+      } catch (error) {}
     }
   }
 
@@ -58,9 +56,7 @@ const AvatarEditModal = ({ isOpen, onClose, currentUser }) => {
       if (updatedData) {
         toastNotify("success", updatedData.message)
       }
-    } catch (error) {
-      console.error("Error deleting avatar:", error)
-    }
+    } catch (error) {}
   }
 
   return (

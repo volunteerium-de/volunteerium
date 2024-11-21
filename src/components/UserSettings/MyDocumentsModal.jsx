@@ -45,7 +45,7 @@ const MyDocumentsModal = ({ isOpen, onClose, certificates }) => {
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 backdrop-blur-sm">
-      <div className="bg-white dark:bg-dark-gray-3 max-h-[270px] sm:max-h-[420px]  rounded-lg max-w-[854px] w-full p-4 sm:px-[20px] sm:py-[40px]">
+      <div className="bg-white dark:bg-dark-gray-3 max-h-[300px] sm:max-h-[420px]  rounded-lg max-w-[854px] w-full p-4 sm:px-[20px] sm:py-[40px]">
         <h2 className="sm:text-[1.75rem] text-[1.2rem] dark:text-white leading-[1.4642] font-semibold mb-4 text-center">
           {t(translations.myDocs.h2)}
         </h2>
@@ -56,14 +56,14 @@ const MyDocumentsModal = ({ isOpen, onClose, certificates }) => {
         <div className="max-w-[669px] mx-auto ">
           <div className="flex justify-end items-center mb-[15px] mt-[10px]">
             <button
-              className="md:text-[0.8rem] text-[0.7rem] px-2 sm:py-1 py-2 items-center border hover:bg-dark-green rounded-lg bg-primary-green text-white"
+              className="md:text-[0.8rem] text-[0.7rem] px-2 py-1 items-center border hover:bg-dark-green rounded-lg bg-primary-green text-white"
               onClick={openAddNewModal}
             >
               {t(translations.myDocs.addNew)}
             </button>
           </div>
           <AddNewDocumentModal isOpen={isAddNewModalOpen} onClose={closeAddNewModal} />
-          <div className="max-h-[150px] overflow-y-auto scrollbar p-2 border border-gray-1 rounded focus:outline-none text-blue-400 dark:text-blue-200 bg-light-gray dark:bg-dark-gray-2">
+          <div className="max-h-[90px] sm:max-h-[150px] overflow-y-auto scrollbar p-2 border border-gray-1 rounded focus:outline-none text-blue-400 dark:text-blue-200 bg-light-gray dark:bg-dark-gray-2">
             {certificates.length === 0 ? (
               <p className="dark:text-white">{t(translations.indvSettings.label10)}</p>
             ) : (

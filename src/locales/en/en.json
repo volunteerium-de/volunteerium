@@ -188,7 +188,8 @@
     "buttonReset": "Reset",
     "buttonAddNew": "Add New +",
     "cancel": "Cancel",
-    "save": "Save"
+    "save": "Save",
+    "placeholder": "Please enter Title"
   },
   "avatarEdit": {
     "networkError": "Network response was not ok",

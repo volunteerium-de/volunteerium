@@ -204,6 +204,7 @@ export const translations = {
     addNew: "addNewDoc.buttonAddNew",
     cancel: "addNewDoc.cancel",
     save: "addNewDoc.save",
+    placeholder: "addNewDoc.placeholder",
   },
 
   avatarEdit: {
