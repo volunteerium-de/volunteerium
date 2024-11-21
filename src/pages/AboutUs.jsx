@@ -1,7 +1,4 @@
 import React from "react"
-import backgroundImage from "../assets/about-us-hero.jpg"
-import eventsImage from "../assets/about-events.png"
-import handshakeImage from "../assets/hand-image.jpg"
 import Header from "../components/Header/Header"
 import Footer from "../components/Footer/Footer"
 import { useTranslation } from "react-i18next"
@@ -26,7 +23,9 @@ const AboutUs = () => {
               {/* Background Image with Blur Effect */}
               <div
                 className="bg-center bg-cover w-full min-h-[200px] sm:min-h-[368px] block mx-auto relative"
-                style={{ backgroundImage: `url(${backgroundImage})` }}
+                style={{
+                  backgroundImage: `url(${`${import.meta.env.VITE_AWS_URL}about-us-hero-desktop.webp`})`,
+                }}
               >
                 <div className="absolute inset-0 bg-black opacity-40 backdrop-blur-[8px] z-[1]" />
 
@@ -55,7 +54,7 @@ const AboutUs = () => {
                 {/* Image Section */}
                 <div className="w-full max-w-[262px] sm:max-w-[562px]">
                   <img
-                    src={eventsImage}
+                    src={`${import.meta.env.VITE_AWS_URL}about-events.webp`}
                     alt={t(translations.aboutUs.eventAlt)}
                     className="w-full h-auto"
                   />
@@ -95,7 +94,7 @@ const AboutUs = () => {
             <div className="flex flex-col sm:flex-row justify-center items-center w-full min-h-[300px] sm:min-h-[450px] mx-auto gap-5 sm:gap-10 my-5 px-5">
               <div className="w-full max-w-[300px] sm:max-w-[400px]">
                 <img
-                  src={handshakeImage}
+                  src={`${import.meta.env.VITE_AWS_URL}hand-image-500.webp`}
                   alt={t(translations.aboutUs.handsAlt)}
                   className="w-full rounded-lg"
                 />

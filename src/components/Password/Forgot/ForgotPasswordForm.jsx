@@ -1,21 +1,24 @@
 // src/components/Password/Forgot/ForgotPasswordForm.jsx
 
-import React from "react"
+import React, { useState } from "react"
 import { useFormik } from "formik"
 import * as Yup from "yup"
 import { IoIosArrowBack } from "react-icons/io"
 import { useNavigate } from "react-router-dom"
-import logo from "../../../assets/logo.png"
 import toastNotify from "../../../utils/toastNotify"
 import { axiosWithPublic } from "../../../hooks/useAxios"
 import { translations } from "../../../locales/translations"
+import { ImSpinner9 } from "react-icons/im"
 import { useTranslation } from "react-i18next"
+import { useSelector } from "react-redux"
 
 const ForgotPasswordForm = ({ setIssue, setIdentifier, setEmail }) => {
   const navigate = useNavigate()
   const { t } = useTranslation()
+  const [loading, setLoading] = useState(false)
 
   const forgotPassword = async (email) => {
+    setLoading(true)
     try {
       const { data } = await axiosWithPublic.post("auth/forgot-password", { email })
 
@@ -24,6 +27,8 @@ const ForgotPasswordForm = ({ setIssue, setIdentifier, setEmail }) => {
       toastNotify("success", data.message)
     } catch (error) {
       toastNotify("error", error.response?.data?.message)
+    } finally {
+      setLoading(false)
     }
   }
 
@@ -44,7 +49,7 @@ const ForgotPasswordForm = ({ setIssue, setIdentifier, setEmail }) => {
   return (
     <form
       onSubmit={formik.handleSubmit}
-      className="flex flex-col items-start space-y-6 p-6 w-full max-w-[44.1875rem] bg-white dark:bg-black rounded-lg relative"
+      className="flex flex-col items-start space-y-6 w-full max-w-[44.1875rem] bg-white dark:bg-black rounded-lg relative"
     >
       {/* Mobile View - Back Arrow and Back to Login */}
       <div className="md:hidden flex flex-row items-center mb-6" onClick={() => navigate("/login")}>
@@ -57,7 +62,7 @@ const ForgotPasswordForm = ({ setIssue, setIdentifier, setEmail }) => {
       {/* Mobile View - Logo Centered */}
       <div className="md:hidden w-full flex justify-center mb-6 mt-[5rem]">
         <img
-          src={logo}
+          src={`${import.meta.env.VITE_AWS_URL}logo.webp`}
           alt={t(translations.password.forgotPassForm.logoAlt)}
           className="h-16 w-auto"
         />
@@ -88,7 +93,7 @@ const ForgotPasswordForm = ({ setIssue, setIdentifier, setEmail }) => {
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
           value={formik.values.email}
-          className="border border-gray-2 p-2 rounded-lg dark:bg-black dark:text-white focus:border-primary-green focus:outline-none"
+          className="w-full border rounded-lg text-[1rem] placeholder-gray-2 dark:placeholder-gray-2 dark:bg-black dark:text-white p-3 h-[42px] md:h-[48px] focus:outline-none focus:border-primary-green"
           placeholder={t(translations.password.forgotPassForm.emailPH)}
         />
         {formik.touched.email && formik.errors.email && (
@@ -99,9 +104,19 @@ const ForgotPasswordForm = ({ setIssue, setIdentifier, setEmail }) => {
       {/* Submit Button */}
       <button
         type="submit"
-        className="bg-primary-green text-white w-full max-w-[44.1875rem] h-[2.8125rem] rounded-lg hover:bg-dark-green transition duration-300"
-      >
-        {t(translations.password.forgotPassForm.submit)}
+        className={`w-full bg-primary-green hover:bg-dark-green text-white text-[1rem] py-3 mt-3 rounded-lg focus:outline-none  flex justify-center items-center ${
+                  loading ? "opacity-50 cursor-not-allowed" : ""
+                }`}
+                disabled={loading}
+              >
+                {loading ? (
+                  <>
+                    <ImSpinner9 className="animate-spin mr-2" />
+                    {t(translations.registerForm.loading)}
+                  </>
+                ) : (
+                  t(translations.password.forgotPassForm.submit)
+                )}
       </button>
 
       {/* Sign Up Link */}

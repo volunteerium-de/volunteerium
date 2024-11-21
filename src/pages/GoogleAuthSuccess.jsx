@@ -5,8 +5,6 @@ import { useEffect } from "react"
 import { useDispatch } from "react-redux"
 import { useNavigate } from "react-router-dom"
 import { useLocation } from "react-router-dom"
-import googleAuthSuccessDesktop from "../assets/google-success-desktop.png"
-import googleAuthSuccessMobile from "../assets/google-success-mobile.png"
 import { ImSpinner9 } from "react-icons/im"
 import { useState } from "react"
 import { useTranslation } from "react-i18next"
@@ -93,8 +91,14 @@ const GoogleAuthSuccess = () => {
       <div className="w-[90%] md:w-[80%] xl:w-[70%] max-w-[1200px] mx-auto">
         {/* Different success images based on windows with */}
         <picture>
-          <source media="(max-width: 400px)" srcSet={googleAuthSuccessMobile} />
-          <img src={googleAuthSuccessDesktop} alt="google-auth-success" />
+          <source
+            media="(max-width: 400px)"
+            srcSet={`${import.meta.env.VITE_AWS_URL}google-success-mobile.webp`}
+          />
+          <img
+            src={`${import.meta.env.VITE_AWS_URL}google-success-desktop.webp`}
+            alt="google-auth-success"
+          />
         </picture>
       </div>
       <div className="text-center mt-[4rem] space-y-2">

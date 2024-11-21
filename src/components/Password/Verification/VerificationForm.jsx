@@ -2,25 +2,24 @@
 
 import React, { useState, useEffect, useRef } from "react"
 import { IoIosArrowBack } from "react-icons/io"
-import logo from "../../../assets/logo.png"
 import { useNavigate } from "react-router-dom"
 import { axiosWithPublic } from "../../../hooks/useAxios"
 import toastNotify from "../../../utils/toastNotify"
 import { translations } from "../../../locales/translations"
 import { useTranslation } from "react-i18next"
+import { ImSpinner9 } from "react-icons/im"
 
 const VerificationForm = ({ setIssue, identifier, setIdentifier, email }) => {
   const { t } = useTranslation()
   const [code, setCode] = useState(["", "", "", "", "", ""])
   const [timeLeft, setTimeLeft] = useState(90) // 01:30 seconds (90 seconds)
-  const [timerMessage, setTimerMessage] = useState(
-    t(translations.password.verificationForm.didntRecive)
-  ) // Message changes when time runs out
   const inputRefs = useRef([]) // References for code input boxes
   const navigate = useNavigate()
+  const [loading, setLoading] = useState(false)
 
   const resendForgotPassword = async () => {
     if (email) {
+      setLoading(true)
       try {
         const { data } = await axiosWithPublic.post("auth/forgot-password", { email })
 
@@ -29,6 +28,8 @@ const VerificationForm = ({ setIssue, identifier, setIdentifier, email }) => {
         toastNotify("success", data.message)
       } catch (error) {
         toastNotify("error", error.response?.data?.message)
+      } finally {
+        setLoading(false)
       }
     } else {
       toastNotify("error", "Please provide an email address.")
@@ -60,8 +61,6 @@ const VerificationForm = ({ setIssue, identifier, setIdentifier, email }) => {
     if (timeLeft > 0) {
       const timer = setTimeout(() => setTimeLeft(timeLeft - 1), 1000)
       return () => clearTimeout(timer)
-    } else {
-      setTimerMessage(t(translations.password.verificationForm.timerMsg))
     }
   }, [timeLeft])
 
@@ -103,7 +102,7 @@ const VerificationForm = ({ setIssue, identifier, setIdentifier, email }) => {
   return (
     <form
       onSubmit={handleSubmit}
-      className="flex flex-col items-start space-y-6 p-6 w-full max-w-[44.1875rem] bg-white dark:bg-black rounded-lg relative"
+      className="flex flex-col items-start space-y-6 w-full max-w-[44.1875rem] bg-white dark:bg-black rounded-lg relative"
     >
       {/* Mobile View - Back Arrow and "Back to Login" (Below Header) */}
       <div className="md:hidden flex flex-row items-center mb-6" onClick={() => navigate("/login")}>
@@ -116,7 +115,7 @@ const VerificationForm = ({ setIssue, identifier, setIdentifier, email }) => {
       {/* Mobile View - Centered Logo */}
       <div className="md:hidden w-full flex justify-center mb-6 mt-[5rem]">
         <img
-          src={logo}
+          src={`${import.meta.env.VITE_AWS_URL}logo.webp`}
           alt={t(translations.password.verificationForm.logoAlt)}
           className="h-16 w-auto"
         />
@@ -158,16 +157,26 @@ const VerificationForm = ({ setIssue, identifier, setIdentifier, email }) => {
       {/* Submit Button */}
       <button
         type="submit"
-        className={`w-full max-w-[44.18rem] h-[2.8125rem] rounded-lg transition duration-300
-        ${isCodeComplete ? "bg-primary-green hover:bg-dark-green text-white cursor-pointer" : "bg-primary-green cursor-not-allowed"}`}
-        disabled={!isCodeComplete}
+        className={`w-full bg-primary-green hover:bg-dark-green text-white text-[1rem] py-3 mt-3 rounded-lg focus:outline-none  flex justify-center items-center
+        ${isCodeComplete || loading ? "bg-primary-green hover:bg-dark-green text-white cursor-pointer" : "bg-primary-green cursor-not-allowed"}`}
+        disabled={!isCodeComplete || loading}
       >
-        {t(translations.password.verificationForm.verify)}
+        {loading ? (
+                  <>
+                    <ImSpinner9 className="animate-spin mr-2" />
+                    {t(translations.registerForm.loading)}
+                  </>
+                ) : (
+                  t(translations.password.verificationForm.verify)
+                )}
+        
       </button>
 
       {/* Resend Code Option */}
       <p className="mt-4 text-center text-sm dark:text-white w-full">
-        {timerMessage}{" "}
+        {timeLeft
+          ? t(translations.password.verificationForm.didntRecive)
+          : t(translations.password.verificationForm.timerMsg)}{" "}
         <span
           onClick={() => resendForgotPassword()}
           className="text-primary-green cursor-pointer underline"

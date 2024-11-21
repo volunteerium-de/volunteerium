@@ -22,10 +22,13 @@ const AttendingEvents = () => {
     const fetchEvents = async () => {
       setLoading(true)
       try {
-        const eventsResponse = await getEvents(`events/participant/${user._id}`)
+        const eventsResponse = await getEvents(
+          `events/management?clientId=${user._id}&type=attending-events`
+        )
         setEvents(eventsResponse.data)
         setFilteredEvents(eventsResponse.data)
       } catch (error) {
+        // console.error(error)
       } finally {
         setLoading(false)
       }
@@ -53,9 +56,9 @@ const AttendingEvents = () => {
       {t(translations.registerForm.loading)}
     </div>
   ) : (
-    <div className="mt-3 p-4 max-w-[77vw] min-h-[calc(100vh-116px)] rounded-lg bg-light-gray dark:bg-dark-gray-3 ">
+    <div className="mt-3  p-3 max-w-[99%] min-h-[calc(100vh-116px)] rounded-lg bg-light-gray dark:bg-dark-gray-3 ">
       <div className="flex justify-between items-center mb-8">
-        <h2 className="text-primary-green text-[1.5rem] font-semibold">
+        <h2 className="text-primary-green break-words text-[1.1rem] pr-2  font-semibold">
           {t(translations.eventManagement.attendingEvents)}
         </h2>
 

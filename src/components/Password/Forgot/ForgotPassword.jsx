@@ -1,7 +1,6 @@
 // src/pages/ForgotPassword.jsx
 
 import React from "react"
-import forgotPasswordImage from "../../../assets/forgot-password.png"
 import ForgotPasswordForm from "./ForgotPasswordForm"
 
 const ForgotPassword = ({ setIssue, setIdentifier, setEmail }) => {
@@ -12,11 +11,11 @@ const ForgotPassword = ({ setIssue, setIdentifier, setEmail }) => {
         {/* Main Container Wrapping the Image and Form Areas */}
         <div className="flex flex-col md:flex-row pt-8 max-w-[1440px] justify-center items-center h-full">
           {/* Left Side - Image Area */}
-          <div className="hidden md:flex w-full md:max-w-[608px] mx-2 md:mx-4 lg:mx-8 mb-8 bg-primary-green overflow-hidden rounded-lg h-[calc(100vh-150px)] lg:h-[780px]">
+          <div className="hidden md:block max-w-full md:max-w-[608px] mx-2 md:mx-4 lg:mx-8 mb-8 w-full bg-primary-green overflow-hidden rounded-lg h-[780px]">
             <div
               className="flex-grow h-full w-full bg-cover bg-center backdrop-blur-xl relative"
               style={{
-                backgroundImage: `url(${forgotPasswordImage})`,
+                backgroundImage: `url(${`${import.meta.env.VITE_AWS_URL}forgot-password.webp`})`,
                 backgroundBlendMode: "overlay",
               }}
             >
@@ -26,7 +25,7 @@ const ForgotPassword = ({ setIssue, setIdentifier, setEmail }) => {
           </div>
 
           {/* Right Side - Form Area */}
-          <div className="flex-grow flex flex-col justify-center my-auto p-4 md:px-8">
+          <div className="flex-grow flex flex-col justify-center my-auto p-4 md:px-8 w-full ">
             {/* Form Content */}
             <ForgotPasswordForm
               setIssue={setIssue}

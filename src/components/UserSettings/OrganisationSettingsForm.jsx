@@ -98,7 +98,7 @@ const OrganisationSettingsForm = () => {
         id={name}
         name={name}
         placeholder={placeholder}
-        className="h-[36px] p-2 border border-gray-1 rounded focus:outline-none focus:border-primary-green"
+        className="p-2 border border-gray-1 rounded focus:outline-none focus:border-primary-green"
       />
       <ErrorMessage name={name} component="div" className="text-danger text-sm" />
     </div>
@@ -107,12 +107,10 @@ const OrganisationSettingsForm = () => {
   const closeModal = () => setIsModalOpen(false)
 
   const handleSubmit = async (values) => {
-    console.log("Form submitted with values:", values)
     try {
       const data = await updateUserDetails(values)
       toastNotify("success", data.message)
     } catch (error) {
-      console.error("Update failed:", error)
       toastNotify("error", error.response?.data?.message || t(translations.toastify.error))
     }
   }

@@ -20,7 +20,8 @@ const useEventCall = () => {
 
   const getEvents = async (url) => {
     try {
-      const { data } = await axiosWithPublic(url)
+      const axiosInstance = user ? axiosWithBearer : axiosWithPublic
+      const { data } = await axiosInstance(url)
       return data
     } catch (error) {
       console.error(

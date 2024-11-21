@@ -204,6 +204,7 @@ export const translations = {
     addNew: "addNewDoc.buttonAddNew",
     cancel: "addNewDoc.cancel",
     save: "addNewDoc.save",
+    placeholder: "addNewDoc.placeholder",
   },
 
   avatarEdit: {
@@ -1076,6 +1077,7 @@ export const translations = {
         lastUpdatedAt: "adminPanel.users.singleUserPanel.lastUpdatedAt",
         userDetails: "adminPanel.users.singleUserPanel.userDetails",
         fullNameDisplay: "adminPanel.users.singleUserPanel.fullNameDisplay",
+        totalPoint: "adminPanel.users.singleUserPanel.totalPoint",
         profileSetup: "adminPanel.users.singleUserPanel.profileSetup",
         emailVerified: "adminPanel.users.singleUserPanel.emailVerified",
         languages: "adminPanel.users.singleUserPanel.languages",
@@ -1153,13 +1155,16 @@ export const translations = {
       interestId: "yup.required.interestId",
       logo: "yup.required.logo",
       addressId: "yup.required.addressId",
+      shortRequired: "yup.required.shortRequired",
     },
     minLength: {
       select1: "yup.minLength.select1",
       phoneNumber: "yup.minLength.phoneNumber",
       totalPoint: "yup.minLength.totalPoint",
       characters1: "yup.minLength.characters1",
+      shortCharacters1: "yup.minLength.shortCharacters1",
       characters3: "yup.minLength.characters3",
+      shortCharacters3: "yup.minLength.shortCharacters3",
       characters8: "yup.minLength.characters8",
       characters10: "yup.minLength.characters10",
     },
@@ -1167,6 +1172,7 @@ export const translations = {
       select3: "yup.maxLength.select3",
       characters8: "yup.maxLength.characters8",
       characters15: "yup.maxLength.characters15",
+      shortCharacters15: "yup.maxLength.shortCharacters15",
       characters30: "yup.maxLength.characters30",
       characters50: "yup.maxLength.characters50",
       characters100: "yup.maxLength.characters100",
@@ -1185,6 +1191,8 @@ export const translations = {
       email: "yup.invalid.email",
       url: "yup.invalid.url",
       invalidFormat: "yup.invalid.invalidFormat",
+      shortInvalid: "yup.invalid.shortInvalid"
+
     },
     oneOf: {
       gender: "yup.oneOf.gender",

@@ -6,7 +6,6 @@ import { useSelector } from "react-redux"
 import { translations } from "../locales/translations"
 import { useTranslation } from "react-i18next"
 import useLanguageOptions from "../hooks/useLanguages"
-import defaultEventPhoto from "../assets/default-event-photo-.jpg"
 import useEventCall from "../hooks/useEventCall"
 import ReportEvent from "../components/EventDetailsPage/ReportEvent"
 import EventOverview from "../components/EventDetailsPage/EventOverview"
@@ -79,7 +78,7 @@ const EventDetails = () => {
               {/* Event Photo */}
               <div className="w-full mb-6 md:mb-10">
                 <img
-                  src={eventPhoto || defaultEventPhoto}
+                  src={eventPhoto || `${import.meta.env.VITE_AWS_URL}default-event-photo.webp`}
                   alt="event photo"
                   className="w-full max-h-[30vh] md:max-h-[40vh] object-cover object-center rounded-md shadow-md"
                 />

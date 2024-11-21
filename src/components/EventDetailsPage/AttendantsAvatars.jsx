@@ -53,7 +53,7 @@ const AttendantsAvatars = ({
         {visibleParticipants.length > 0 ? (
           visibleParticipants.map(({ userId }, index) => (
             <div key={index} onClick={() => handleAvatarClick(userId._id)}>
-              <UserAvatar user={userId} size="h-6 w-6" backgroundActive={true} />
+              <UserAvatar user={userId} size="h-6 w-6 cursor-pointer" backgroundActive={true} />
             </div>
           ))
         ) : (
@@ -62,7 +62,7 @@ const AttendantsAvatars = ({
 
         {/* Show the +N circle if there are hidden participants */}
         {remainingCount > 0 && (
-          <div className="flex items-center justify-center w-10 h-10  rounded-full bg-gray-200 text-primary-green font-semibold p-1.5">
+          <div className="flex items-center justify-center h-6 w-6 rounded-full bg-gray-200 text-primary-green font-semibold p-1.5">
             +{remainingCount}
           </div>
         )}

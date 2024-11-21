@@ -110,7 +110,7 @@ const FilterSidebar = () => {
 
   return (
     <div className="p-4 rounded-lg shadow-lg h-full overflow-auto dark:bg-dark-gray-3 dark:text-white ">
-      <div className="lg:max-w-[700px] mb-4 shadow-lg bg-white dark:bg-dark-gray-1 p-5 max-w-[400px] mx-auto  dark:text-white rounded">
+      <div className="lg:max-w-[700px] mb-4 shadow-lg bg-white dark:bg-dark-gray-1 p-5 max-w-[300px] sm:max-w-[400px] mx-auto  dark:text-white rounded">
         <h2 className="text-left font-semibold mb-2 p-2 text-black dark:text-white text-[0.9375rem] ">
           {t(translations.eventsPage.sec1)}
         </h2>
@@ -171,12 +171,12 @@ const FilterSidebar = () => {
       </div>
 
       {/* Categories */}
-      <div className="mt-10 m-auto shadow-lgbg-light-white p-5 max-w-[400px] mx-auto dark:bg-dark-gray-1 rounded">
+      <div className="mt-10 m-auto shadow-lg bg-light-white p-5 max-w-[300px] sm:max-w-[400px] mx-auto dark:bg-dark-gray-1 rounded">
         <h3 className="font-semibold mb-2 p-2 text-black dark:text-white text-[0.9375rem] lg:text-left">
           {t(translations.eventsPage.sec2)}
         </h3>
         <hr className="border border-light-gray-3 mb-3" />
-        <div className="max-h-[200px] overflow-y-scroll scrollbar">
+        <div className="max-h-[230px] overflow-y-scroll scrollbar">
           {categories.map((category) => (
             <label key={category._id} className="flex items-center gap-2 mt-3">
               <input
@@ -194,12 +194,12 @@ const FilterSidebar = () => {
       </div>
 
       {/* Languages */}
-      <div className="mt-10 m-auto shadow-lg bg-light-white p-5 max-w-[400px] mx-auto dark:bg-dark-gray-1 rounded  ">
+      <div className="mt-10 m-auto shadow-lg bg-light-white p-5 max-w-[300px] sm:max-w-[400px] mx-auto dark:bg-dark-gray-1 rounded  ">
         <h3 className="font-semibold mb-2 p-2 text-black dark:text-white text-[0.9375rem] lg:text-left">
           {t(translations.eventsPage.sec3)}
         </h3>
         <hr className="border border-light-gray-3 mb-3" />
-        <div className="max-h-[200px] overflow-y-scroll scrollbar">
+        <div className="max-h-[230px] overflow-y-scroll scrollbar">
           {eventLanguages.map((language) => (
             <label key={language.langCode} className="flex items-center gap-2 mt-3">
               <input

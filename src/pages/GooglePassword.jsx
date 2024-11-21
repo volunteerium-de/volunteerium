@@ -8,7 +8,6 @@ import { ImSpinner9 } from "react-icons/im"
 import { useSelector } from "react-redux"
 import { getLoginRedirectLink } from "./GoogleAuthSuccess"
 import { useNavigate } from "react-router-dom"
-import logo from "../assets/logo.png"
 import { useEffect } from "react"
 import { useLocation } from "react-router-dom"
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai"
@@ -62,7 +61,11 @@ const GooglePassword = () => {
     <div className="w-screen h-screen flex justify-center items-center">
       <div className="rounded-[8px] px-5 md:px-0">
         <div className="flex flex-col justify-center items-center gap-5">
-          <img src={logo} alt="Volunteerium Logo" className="h-[30px] w-fit sm:h-[40px]" />
+          <img
+            src={`${import.meta.env.VITE_AWS_URL}logo.webp`}
+            alt="Volunteerium Logo"
+            className="h-[30px] w-fit sm:h-[40px]"
+          />
           <h1 className="text-center dark:text-white mb-[1rem] text-[2rem] md:text-[1.6rem] font-bold">
             {t(translations.googlePassword.header)}
           </h1>

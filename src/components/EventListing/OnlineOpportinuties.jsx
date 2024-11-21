@@ -76,7 +76,7 @@ const OnlineOpportinuties = () => {
   }, [])
 
   return (
-    <div className="px-4  mx-auto  shadow-lg">
+    <div className="px-4  mx-auto mt-4 shadow-lg">
       {/* Latest Card Container */}
       <div className="max-w-[1370px] mx-auto font-poppins dark:text-white dark:black rounded-lg">
         {/* Header */}
@@ -89,7 +89,7 @@ const OnlineOpportinuties = () => {
         <div className="relative rounded-lg">
           {/* Arrow Left */}
           <button
-            className={`absolute top-[calc(60%-25px)] left-[-50px] ${isLeftDisabled ? "hidden" : "block"}`}
+            className={`absolute top-[calc(60%-25px)] left-[-50px] ${isLeftDisabled ? "hidden" : "block"} hidden lg:block`}
             onClick={handleScrollLeft}
             disabled={isLeftDisabled}
           >
@@ -97,7 +97,7 @@ const OnlineOpportinuties = () => {
           </button>
           {/* Arrow Right */}
           <button
-            className={`absolute top-[calc(60%-25px)] right-[-50px] ${isRightDisabled ? "hidden" : "block"}`}
+            className={`absolute top-[calc(60%-25px)] right-[-50px] ${isRightDisabled ? "hidden" : "block"} hidden lg:block`}
             onClick={handleScrollRight}
             disabled={isRightDisabled}
           >

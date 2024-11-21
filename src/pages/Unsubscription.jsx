@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react"
 import { useLocation, useNavigate } from "react-router-dom"
-import logo from "../assets/logo.png"
 import toastNotify from "../utils/toastNotify"
 import { axiosWithPublic } from "../hooks/useAxios"
 
@@ -48,7 +47,11 @@ const Unsubscription = () => {
     <div className="max-w-xl mx-10 sm:mx-auto p-6 mt-10 rounded-lg shadow-lg text-center">
       {!isUnsubscribed ? (
         <div className="flex flex-col justify-center items-center gap-2">
-          <img src={logo} alt="Volunterium Logo" className="h-[30px] w-fit sm:h-[40px]" />
+          <img
+            src={`${import.meta.env.VITE_AWS_URL}logo.webp`}
+            alt="Volunterium Logo"
+            className="h-[30px] w-fit sm:h-[40px]"
+          />
           <h2 className="text-2xl font-semibold text-danger mb-6">
             We&apos;re sorry to see you go!
           </h2>
@@ -71,7 +74,11 @@ const Unsubscription = () => {
         </div>
       ) : (
         <div className="flex flex-col justify-center items-center text-center gap-2">
-          <img src={logo} alt="Volunterium Logo" className="h-[30px] w-fit sm:h-[40px]" />
+          <img
+            src={`${import.meta.env.VITE_AWS_URL}logo.webp`}
+            alt="Volunterium Logo"
+            className="h-[30px] w-fit sm:h-[40px]"
+          />
           <p className="text-md text-dark-gray-3 dark:text-white my-4">{message}</p>
           <button
             onClick={handleGoHome}

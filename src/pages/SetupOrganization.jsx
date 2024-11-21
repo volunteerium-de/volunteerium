@@ -15,37 +15,70 @@ import useAuthCall from "../hooks/useAuthCall"
 import { useTranslation } from "react-i18next"
 import { translations } from "../locales/translations"
 
-
-
 const SetupOrganization = () => {
-  const {t} = useTranslation()
+  const { t } = useTranslation()
+
+  const useScreenSize = (breakpoint = 826) => {
+    const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth < breakpoint);
+  
+    useEffect(() => {
+      const handleResize = () => {
+        setIsSmallScreen(window.innerWidth < breakpoint);
+      };
+  
+      window.addEventListener("resize", handleResize);
+      return () => window.removeEventListener("resize", handleResize);
+    }, [breakpoint]);
+  
+    return isSmallScreen;
+  };
+  const isSmallScreen = useScreenSize(826);
 
   const OrganizationSchema = Yup.object({
-    organizationLogo: Yup.mixed().required(t(translations.yup.required.logo)),
+    organizationLogo: Yup.mixed().required(
+    t(translations.yup.required.logo)
+    ),
     organizationDesc: Yup.string()
       .required(t(translations.yup.required.description))
       .min(10, t(translations.yup.minLength.characters10)),
     organizationUrl: Yup.string()
       .url(t(translations.yup.invalid.url))
-      .required(t(translations.yup.required.organizationURL)),
-    streetName: Yup.string().required(t(translations.yup.required.streetName))
-    .matches(/^[\p{L}0-9\s.'/-]+$/u,  t(translations.yup.invalid.invalidFormat)),
-    streetNumber: Yup.string().required(t(translations.yup.required.streetNumber))
-    .trim()
-    .matches(/^[\p{L}0-9\s.'/-]+$/u, t(translations.yup.invalid.invalidFormat)),
+      .required( t(translations.yup.required.organizationURL)),
+    streetName: Yup.string()
+      .required(isSmallScreen ? t(translations.yup.required.shortRequired) : t(translations.yup.required.streetName))
+      .matches(
+        /^[\p{L}0-9\s.'/-]+$/u,
+        isSmallScreen ? t(translations.yup.invalid.shortInvalid) : t(translations.yup.invalid.invalidFormat)
+      ),
+    streetNumber: Yup.string()
+      .required(isSmallScreen ? t(translations.yup.required.shortRequired) : t(translations.yup.required.streetNumber))
+      .matches(
+        /^[\p{L}0-9\s.'/-]+$/u,
+        isSmallScreen ? t(translations.yup.invalid.shortInvalid) : t(translations.yup.invalid.invalidFormat)
+      ),
     zipCode: Yup.string()
-    .trim()
-    .matches(/^[\p{L}0-9\s.'/-]+$/u, t(translations.yup.invalid.invalidFormat))
-    .min(1, t(translations.yup.minLength.characters1))
-    .max(15, t(translations.yup.maxLength.characters15))
-    .required(t(translations.yup.required.zipCode)),
-    city: Yup.string().required(t(translations.yup.required.city))
-    .min(3, t(translations.yup.minLength.characters3))
-    .matches(/^[\p{L}\s.'/-]+$/u, t(translations.yup.invalid.invalidFormat)),
-    country: Yup.string().required(t(translations.yup.required.country))
-    .trim()
-    .matches(/^[\p{L}\s.'/-]+$/u, t(translations.yup.invalid.invalidFormat))
-    .min(3, t(translations.yup.minLength.characters3))
+      .trim()
+      .matches(
+        /^[\p{L}0-9\s.'/-]+$/u,
+        isSmallScreen ? t(translations.yup.invalid.shortInvalid) : t(translations.yup.invalid.invalidFormat)
+      )
+      .min(1, isSmallScreen ? t(translations.yup.minLength.shortCharacters1) : t(translations.yup.minLength.characters1))
+      .max(15, isSmallScreen ? t(translations.yup.maxLength.shortCharacters15) : t(translations.yup.maxLength.characters15))
+      .required(isSmallScreen ? t(translations.yup.required.shortRequired) : t(translations.yup.required.zipCode)),
+    city: Yup.string()
+      .required(isSmallScreen ? t(translations.yup.required.shortRequired) : t(translations.yup.required.city))
+      .min(3, isSmallScreen ? t(translations.yup.minLength.shortCharacters3) : t(translations.yup.minLength.characters3))
+      .matches(
+        /^[\p{L}\s.'/-]+$/u,
+        isSmallScreen ? t(translations.yup.invalid.shortInvalid) : t(translations.yup.invalid.invalidFormat)
+      ),
+    country: Yup.string()
+      .required(isSmallScreen ? t(translations.yup.required.shortRequired) : t(translations.yup.required.country))
+      .matches(
+        /^[\p{L}\s.'/-]+$/u,
+        isSmallScreen ? t(translations.yup.invalid.shortInvalid) : t(translations.yup.invalid.invalidFormat)
+      )
+      .min(3, isSmallScreen ? t(translations.yup.minLength.shortCharacters3) : t(translations.yup.minLength.characters3)),
   })
 
   const { currentUser: user } = useSelector((state) => state.auth)
@@ -309,7 +342,11 @@ const SetupOrganization = () => {
                           className="w-full px-4 py-2 border border-gray-2 rounded-md dark:bg-black dark:text-white focus:outline-none focus:ring-1 focus:ring-primary-green"
                         />
                         <div className="min-h-[1.5rem] text-sm">
-                          <ErrorMessage name="streetName" component="div" className="text-danger" />
+                          <ErrorMessage
+                            name="streetName"
+                            component="div"
+                            className="text-danger text-sm text-danger overflow-hidden text-ellipsis whitespace-nowrap "
+                          />
                         </div>
                       </div>
 

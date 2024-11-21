@@ -1,6 +1,5 @@
 import React from "react"
 import { Link } from "react-router-dom"
-import notFoundImage from "/src/assets/not-found.png" // Not Found image
 import Header from "../components/Header/Header"
 import { useTranslation } from "react-i18next"
 import { translations } from "../locales/translations"
@@ -22,7 +21,7 @@ const NotFound = () => {
           style={{ height: "58.2vh" }}
         >
           <img
-            src={notFoundImage}
+            src={`${import.meta.env.VITE_AWS_URL}not-found.webp`}
             alt={t(translations.notFound.imgAlt)}
             className="
             w-[100vw] 

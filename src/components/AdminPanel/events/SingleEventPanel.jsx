@@ -9,7 +9,6 @@ import { MdOutlineSettings } from "react-icons/md"
 import { formatDate, formatDateWithTime } from "../../../helpers/formatDate"
 import useLanguage from "../../../hooks/useLanguages"
 import { UserAvatar } from "../../ui/Avatar/userAvatar"
-import defaultPhoto from "../../../assets/default-event-photo-.jpg"
 import { Link } from "react-router-dom"
 import { FaExternalLinkAlt } from "react-icons/fa"
 import { useState } from "react"
@@ -100,7 +99,7 @@ const SingleEventPanel = ({ eventId, setIdentifier }) => {
       </button>
       <div>
         {loading ? (
-          <div className="my-4 flex h-max justify-center items-start pt-24">
+          <div className="my-8 mb:my-4 flex h-max justify-center items-start pt-24">
             <ImSpinner9 className="animate-spin h-8 w-8 text-primary-green dark:text-white" />
           </div>
         ) : singleEvent ? (
@@ -143,7 +142,7 @@ const SingleEventPanel = ({ eventId, setIdentifier }) => {
                 <ul className="space-y-2 text-dark-gray-1 dark:text-light-gray-2">
                   <li className="flex gap-1 rounded-md overflow-hidden mt-2">
                     <img
-                      src={singleEvent?.eventPhoto || defaultPhoto}
+                      src={singleEvent?.eventPhoto || `${import.meta.env.VITE_AWS_URL}logo.webp`}
                       alt="Event-Photo"
                       className="object-cover"
                     />
@@ -307,9 +306,11 @@ const SingleEventPanel = ({ eventId, setIdentifier }) => {
                         <div className="py-3 text-center flex-[1]">
                           {t(translations.adminPanel.events.singleEventPanel.status)}
                         </div>
-                        <div className="py-3 text-center flex-[1]">
-                          {t(translations.adminPanel.events.singleEventPanel.joinDate)}
-                        </div>
+                        {window.innerWidth > 500 && (
+                          <div className="py-3 text-center flex-[1]">
+                            {t(translations.adminPanel.events.singleEventPanel.joinDate)}
+                          </div>
+                        )}
                       </div>
 
                       {/* Data Rows */}
@@ -379,14 +380,16 @@ const SingleEventPanel = ({ eventId, setIdentifier }) => {
                                         )}
                             </li>
                             {/* Join Date */}
-                            <li
-                              className="text-center flex-[1] py-3 overflow-x-scroll scrollbar-hide"
-                              data-label={t(
-                                translations.adminPanel.events.singleEventPanel.joinDateDL
-                              )}
-                            >
-                              {formatDate(participant?.createdAt)}
-                            </li>
+                            {window.innerWidth > 500 && (
+                              <li
+                                className="text-center flex-[1] py-3 overflow-x-scroll scrollbar-hide"
+                                data-label={t(
+                                  translations.adminPanel.events.singleEventPanel.joinDateDL
+                                )}
+                              >
+                                {formatDate(participant?.createdAt)}
+                              </li>
+                            )}
                           </ul>
                         ))}
                       </div>

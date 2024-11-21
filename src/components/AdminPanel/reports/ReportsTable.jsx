@@ -63,7 +63,8 @@ const ReportsTable = ({ data, loading }) => {
                     className={"td text-left 2xl:w-[150px] whitespace-nowrap"}
                     data-label={t(translations.adminPanel.reports.reportsTable.reportedByDL)}
                   >
-                    {report?.reportedBy}
+                    {report?.reportedBy ||
+                      t(translations.adminPanel.reports.singleReportPanel.guest)}
                   </td>
                   <td
                     className={"td text-left 2xl:w-[150px] whitespace-nowrap"}
