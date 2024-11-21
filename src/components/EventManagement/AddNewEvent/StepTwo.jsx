@@ -11,12 +11,14 @@ import useEventCall from "../../../hooks/useEventCall"
 import { useState } from "react"
 import { useTranslation } from "react-i18next"
 import { translations } from "../../../locales/translations/"
+import useLanguage from "../../../hooks/useLanguages"
 
 const StepTwo = ({ setStep, values, step, isValid, setFieldValue, loading, errors, touched }) => {
   const { t } = useTranslation()
   const { getEventCategories } = useEventCall()
   const { currentUser: user } = useSelector((state) => state.auth)
   const [addContactPerson, setAddContactPerson] = useState(values?.isContactPersonAdded ?? false)
+  const { getTranslatedCategory } = useLanguage()
 
   useEffect(() => {
     getEventCategories()
@@ -97,7 +99,7 @@ const StepTwo = ({ setStep, values, step, isValid, setFieldValue, loading, error
           <SelectInput
             name="interestIds"
             options={categories?.map((category) => ({
-              label: category.name,
+              label: getTranslatedCategory(category.name),
               value: category._id,
             }))}
             placeholder={
@@ -143,7 +145,6 @@ const StepTwo = ({ setStep, values, step, isValid, setFieldValue, loading, error
         </div>
 
         {/* Contact Person */}
-
         {user.userType === "organization" && (
           <div className="mb-4">
             <label className="block text-dark-gray-2 mb-2 dark:text-white">

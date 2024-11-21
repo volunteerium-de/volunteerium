@@ -22,16 +22,36 @@ const EventManagement = () => {
   const { t } = useTranslation()
   const [eventToEdit, setEventToEdit] = useState(null)
 
+  const availableTabs = ["organized-events", "messages"]
+
+  if (currentUser?.userType === "individual") {
+    availableTabs.push("attending-events")
+  }
+
   useEffect(() => {
     const queryParams = new URLSearchParams(location.search)
-    const tab = queryParams.get("tab")
-    if (tab) setActiveTab(tab)
+    let tab = queryParams.get("tab")
+
+    if (!availableTabs.includes(tab)) {
+      tab = availableTabs[0]
+      navigate(`/event-management?tab=${tab}`, { replace: true })
+    }
+
+    if (tab) {
+      setActiveTab(tab)
+    }
   }, [location.search])
 
   const handleTabChange = (tab) => {
+    let requestedTab = tab
+    if (!availableTabs.includes(tab)) {
+      requestedTab = null
+    }
+
     setIsAddingEvent(false)
-    setActiveTab(tab)
-    navigate(`/event-management?tab=${tab}`, { replace: true })
+    navigate(`/event-management${requestedTab && requestedTab ? `?tab=${requestedTab}` : ""}`, {
+      replace: true,
+    })
   }
 
   const getUnreadMessageCount = () => {

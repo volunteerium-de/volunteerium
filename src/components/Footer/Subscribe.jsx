@@ -21,7 +21,7 @@ const Subscribe = () => {
   }
 
   return (
-    <div className="flex flex-col items-center justify-center px-6 py-8 bg-light-green dark:bg-dark-gray-3 rounded-md shadow-md max-w-[60%] mx-auto">
+    <div className="flex flex-col items-center justify-center px-6 py-8 bg-light-green dark:bg-dark-gray-3 rounded-md shadow-md sm:max-w-[60%] max-w-[85%] mx-auto">
       <h3 className="text-xl font-bold mb-2 text-dark-gray-3 dark:text-white">
         {t(translations.subscribe.h3)}
       </h3>

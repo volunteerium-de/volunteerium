@@ -662,7 +662,7 @@
     }
   },
   "eventManagement": {
-    "addNewEvent": "Add new event",
+    "addNewEvent": "New event",
     "searchInput": "Search",
     "editButton": "Edit",
     "cancelButton": "Cancel",
