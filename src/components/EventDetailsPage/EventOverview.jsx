@@ -101,7 +101,7 @@ const EventOverview = () => {
         showAll={false}
       />
       {/* Buttons */}
-      <div className="flex justify-center xl:justify-end space-x-4 lg:px-2">
+      {/* <div className="flex justify-center xl:justify-end space-x-4 lg:px-2">
         {canSendMessage && (
           <button
             onClick={handleSendMessage}
@@ -111,7 +111,45 @@ const EventOverview = () => {
           </button>
         )}
         <EventParticipationButtons event={singleEvent} toggleFeedbackModal={toggleFeedbackModal} />
-      </div>
+      </div> */}
+
+      {user ? (
+        <div className="flex justify-center xl:justify-end space-x-4 lg:px-2">
+          {canSendMessage && (
+            <button
+              onClick={handleSendMessage}
+              className="border border-gray-1 hover:bg-light-gray lg:px-2 py-1 font-medium text-center w-[8rem] h-8 rounded-lg text-xs md:text-[0.75rem]"
+            >
+              {t(translations.eventDetails.sendMessageButton)}
+            </button>
+          )}
+          <EventParticipationButtons
+            event={singleEvent}
+            toggleFeedbackModal={toggleFeedbackModal}
+          />
+        </div>
+      ) : (
+        <div className="flex justify-center items-center pr-4">
+          <p className="text-[0.9rem] text-center">
+            {t(translations.eventDetails.loginPrompt)}{" "}
+            <span
+              className="text-primary-green font-bold cursor-pointer underline"
+              onClick={() => navigate("/login")}
+            >
+              {t(translations.eventDetails.login)}
+            </span>{" "}
+            {t(translations.eventDetails.or)}{" "}
+            <span
+              className="text-primary-green font-bold cursor-pointer underline"
+              onClick={() => navigate("/register")}
+            >
+              {t(translations.eventDetails.signUp)}
+            </span>
+          </p>
+        </div>
+      )}
+
+      {/* Feedback Modal */}
       {isFeedbackOpen && (
         <EventFeedback
           eventName={singleEvent.title}

@@ -676,6 +676,10 @@ export const translations = {
     completedButton: "eventDetails.completedButton",
     maxReacedButton: "eventDetails.maxReacedButton",
     manageButton: "eventDetails.manageButton",
+    loginPrompt: "eventDetails.loginPrompt",
+    login: "eventDetails.login",
+    signUp: "eventDetails.signUp",
+    or: "eventDetails.or",
     feedback: {
       h2: "eventDetails.feedback.h2",
       p1: "eventDetails.feedback.p1",
@@ -1180,7 +1184,7 @@ export const translations = {
     invalid: {
       email: "yup.invalid.email",
       url: "yup.invalid.url",
-      invalidFormat: "yup.invalid.invalidFormat"
+      invalidFormat: "yup.invalid.invalidFormat",
     },
     oneOf: {
       gender: "yup.oneOf.gender",

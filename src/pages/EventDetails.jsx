@@ -88,7 +88,7 @@ const EventDetails = () => {
               {/* Main Content Section */}
               <div className="flex flex-col md:flex-row gap-8 font-poppins">
                 {/* Left Side - General Info and Map */}
-                <div className="lg:w-8/12 md:border-r md:border-b md:border-light-gray-3 rounded my-1 px-2">
+                <div className="md:w-8/12 md:border-r md:border-b md:border-light-gray-3 rounded my-1 px-2">
                   <h2 className="text-[1.75rem] md:text-[1.75rem] text-dark-gray-2 dark:text-white font-semibold mb-1">
                     {title}
                   </h2>
@@ -167,7 +167,7 @@ const EventDetails = () => {
                 </div>
 
                 {/* Right Side - Date, Location, Language Toggle, Attendants List, and Buttons */}
-                <div className="hidden md:block lg:w-4/12 ">
+                <div className="hidden md:block md:w-4/12 ">
                   <EventOverview />
                   {/* Report Button */}
                   <div className="sm:flex items-center justify-center text-gray-2 text-[0.75rem] md:text-[0.875rem] mt-3">
