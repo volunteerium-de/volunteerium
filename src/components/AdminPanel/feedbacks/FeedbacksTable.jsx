@@ -49,10 +49,12 @@ const FeedbacksTable = ({ data, loading }) => {
                   className="border-b border-light-gray dark:border-dark-gray-1 hover:bg-gray-100 dark:hover:bg-dark-gray-2 text-sm cursor-pointer"
                 >
                   <td
-                    className="td text-left whitespace-nowrap 2xl:max-w-[140px] overflow-x-scroll scrollbar-hide"
+                    className="td text-left whitespace-nowrap max-w-[calc(100vw - 300px)] 2xl:max-w-[300px] overflow-x-auto scrollbar-hide"
                     data-label={t(translations.adminPanel.feedbacks.feedbacksTable.title)}
                   >
-                    {feedback?.eventId.title || "N/A"}
+                    <span className="max-w-[150px] md:max-w-[300px]">
+                      {feedback?.eventId.title || "N/A"}
+                    </span>
                   </td>
 
                   <td

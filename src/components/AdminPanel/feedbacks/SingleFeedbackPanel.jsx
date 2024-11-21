@@ -7,7 +7,6 @@ import useAdminCall from "../../../hooks/useAdminCall"
 import DeleteModal from "../../ui/Modals/DeleteModal"
 import { UserAvatar } from "../../ui/Avatar/userAvatar"
 import { formatDateWithTime } from "../../../helpers/formatDate"
-import useLanguage from "../../../hooks/useLanguages"
 import { MdOutlineSettings } from "react-icons/md"
 import { LuMailPlus } from "react-icons/lu"
 import { AiFillStar, AiOutlineStar } from "react-icons/ai"
@@ -96,7 +95,7 @@ const SingleFeedbackPanel = ({ feedbackId, setIdentifier }) => {
       </button>
       <div>
         {loading ? (
-          <div className="my-4 flex h-max justify-center items-start pt-24">
+          <div className="my-8 mb:my-4 flex h-max justify-center items-start pt-24">
             <ImSpinner9 className="animate-spin h-8 w-8 text-primary-green dark:text-white" />
           </div>
         ) : feedbackData ? (

@@ -204,6 +204,7 @@ export const translations = {
     addNew: "addNewDoc.buttonAddNew",
     cancel: "addNewDoc.cancel",
     save: "addNewDoc.save",
+    placeholder: "addNewDoc.placeholder",
   },
 
   avatarEdit: {
@@ -1072,6 +1073,7 @@ export const translations = {
         lastUpdatedAt: "adminPanel.users.singleUserPanel.lastUpdatedAt",
         userDetails: "adminPanel.users.singleUserPanel.userDetails",
         fullNameDisplay: "adminPanel.users.singleUserPanel.fullNameDisplay",
+        totalPoint: "adminPanel.users.singleUserPanel.totalPoint",
         profileSetup: "adminPanel.users.singleUserPanel.profileSetup",
         emailVerified: "adminPanel.users.singleUserPanel.emailVerified",
         languages: "adminPanel.users.singleUserPanel.languages",
@@ -1180,7 +1182,7 @@ export const translations = {
     invalid: {
       email: "yup.invalid.email",
       url: "yup.invalid.url",
-      invalidFormat: "yup.invalid.invalidFormat"
+      invalidFormat: "yup.invalid.invalidFormat",
     },
     oneOf: {
       gender: "yup.oneOf.gender",

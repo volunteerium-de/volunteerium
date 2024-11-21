@@ -1,11 +1,9 @@
-import EmailVerify from "../../assets/EmailVerification.png"
 import { translations } from "../../locales/translations"
 import Header from "../Header/Header"
 import { useTranslation } from "react-i18next"
 
-
 const RegisterSuccess = () => {
-  const {t} = useTranslation()
+  const { t } = useTranslation()
   return (
     <div>
       <Header />
@@ -14,8 +12,8 @@ const RegisterSuccess = () => {
           {/* Left Side (Image) */}
           <div className="flex flex-col justify-center items-center w-[45%] sm:md:h-[85vh]  mt-6 md:bg-light-green mx-2 md:mx-4 lg:mx-8 overflow-hidden rounded-lg md:border">
             <img
-              src={EmailVerify}
-              alt= {t(translations.registerSuccess.emailVerifyAlt)}
+              src={`${import.meta.env.VITE_AWS_URL}emailverification.webp`}
+              alt={t(translations.registerSuccess.emailVerifyAlt)}
               className="w-[200px] md:w-[400px] h-auto object-contain"
             />
           </div>
@@ -26,12 +24,10 @@ const RegisterSuccess = () => {
               {t(translations.registerSuccess.h1)}
             </h1>
             <p className="text-dark-gray-1 text-[1rem] mt-4">
-            {t(translations.registerSuccess.p1)} <br />
-            {t(translations.registerSuccess.p2)} <br /> <br />
+              {t(translations.registerSuccess.p1)} <br />
+              {t(translations.registerSuccess.p2)} <br /> <br />
             </p>
-            <p className="text-dark-green text-[1rem] mt-6">
-            {t(translations.registerSuccess.p3)}
-            </p>
+            <p className="text-dark-green text-[1rem] mt-6">{t(translations.registerSuccess.p3)}</p>
           </div>
         </div>
       </div>

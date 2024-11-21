@@ -2,7 +2,6 @@
 
 import React, { useState, useEffect, useRef } from "react"
 import { IoIosArrowBack } from "react-icons/io"
-import logo from "../../../assets/logo.png"
 import { useNavigate } from "react-router-dom"
 import { axiosWithPublic } from "../../../hooks/useAxios"
 import toastNotify from "../../../utils/toastNotify"
@@ -13,9 +12,6 @@ const VerificationForm = ({ setIssue, identifier, setIdentifier, email }) => {
   const { t } = useTranslation()
   const [code, setCode] = useState(["", "", "", "", "", ""])
   const [timeLeft, setTimeLeft] = useState(90) // 01:30 seconds (90 seconds)
-  const [timerMessage, setTimerMessage] = useState(
-    t(translations.password.verificationForm.didntRecive)
-  ) // Message changes when time runs out
   const inputRefs = useRef([]) // References for code input boxes
   const navigate = useNavigate()
 
@@ -60,8 +56,6 @@ const VerificationForm = ({ setIssue, identifier, setIdentifier, email }) => {
     if (timeLeft > 0) {
       const timer = setTimeout(() => setTimeLeft(timeLeft - 1), 1000)
       return () => clearTimeout(timer)
-    } else {
-      setTimerMessage(t(translations.password.verificationForm.timerMsg))
     }
   }, [timeLeft])
 
@@ -116,7 +110,7 @@ const VerificationForm = ({ setIssue, identifier, setIdentifier, email }) => {
       {/* Mobile View - Centered Logo */}
       <div className="md:hidden w-full flex justify-center mb-6 mt-[5rem]">
         <img
-          src={logo}
+          src={`${import.meta.env.VITE_AWS_URL}logo.webp`}
           alt={t(translations.password.verificationForm.logoAlt)}
           className="h-16 w-auto"
         />
@@ -167,7 +161,9 @@ const VerificationForm = ({ setIssue, identifier, setIdentifier, email }) => {
 
       {/* Resend Code Option */}
       <p className="mt-4 text-center text-sm dark:text-white w-full">
-        {timerMessage}{" "}
+        {timeLeft
+          ? t(translations.password.verificationForm.didntRecive)
+          : t(translations.password.verificationForm.timerMsg)}{" "}
         <span
           onClick={() => resendForgotPassword()}
           className="text-primary-green cursor-pointer underline"

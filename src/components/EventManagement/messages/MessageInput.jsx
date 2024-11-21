@@ -4,7 +4,7 @@ import { FaArrowRight } from "react-icons/fa"
 import { translations } from "../../../locales/translations"
 
 const MessageInput = ({ isAnnouncement, isOwner, sendMessage }) => {
-  const {t} = useTranslation()
+  const { t } = useTranslation()
   const [message, setMessage] = useState("")
 
   const handleSend = () => {
@@ -15,19 +15,19 @@ const MessageInput = ({ isAnnouncement, isOwner, sendMessage }) => {
   }
 
   const handleKeyDown = (e) => {
-    if (e.key === "Enter") {
-      e.preventDefault()
+    // If Enter is pressed and Shift is not held down, send the message
+    if (e.key === "Enter" && !e.shiftKey) {
+      e.preventDefault() // Prevent the default behavior (new line)
       handleSend()
     }
   }
 
   return (
     <div className="flex items-center">
-      <input
-        type="text"
+      <textarea
         value={message}
         onChange={(e) => setMessage(e.target.value)}
-        onKeyDown={handleKeyDown}
+        onKeyDown={handleKeyDown} // Enable the key down handler
         placeholder={
           isAnnouncement
             ? isOwner
@@ -37,8 +37,11 @@ const MessageInput = ({ isAnnouncement, isOwner, sendMessage }) => {
               ? t(translations.eventMng.messages.messageInput.messagePH3)
               : t(translations.eventMng.messages.messageInput.messagePH4)
         }
-        className={`text-sm md:text-base border rounded-lg focus:outline-none p-2 mb-2 flex-grow bg-light-gray-2 ${isAnnouncement && !isOwner && "opacity-70 cursor-not-allowed"}`}
+        className={`text-sm md:text-base placeholder:border rounded-lg focus:outline-none p-2 mb-2 flex-grow min-h-[40px] max-h-[50px] scrollbar bg-light-gray-2 ${isAnnouncement && !isOwner && "opacity-70 cursor-not-allowed"}`}
         disabled={isAnnouncement && !isOwner}
+        style={{
+          resize: "none", // Disable resizing of the textarea
+        }}
       />
       <button
         onClick={handleSend}
