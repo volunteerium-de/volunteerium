@@ -9,7 +9,7 @@ export const UserAvatar = ({ user, size, backgroundActive }) => {
           <img
             src={avatarSrc}
             alt={user ? user.fullName || user.organizationName : "User"}
-            className={`${size} rounded-full object-cover cursor-pointer`}
+            className={`${size} rounded-full object-cover`}
           />
         ) : (
           <div

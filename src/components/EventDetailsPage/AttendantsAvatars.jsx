@@ -53,7 +53,7 @@ const AttendantsAvatars = ({
         {visibleParticipants.length > 0 ? (
           visibleParticipants.map(({ userId }, index) => (
             <div key={index} onClick={() => handleAvatarClick(userId._id)}>
-              <UserAvatar user={userId} size="h-6 w-6" backgroundActive={true} />
+              <UserAvatar user={userId} size="h-6 w-6 cursor-pointer" backgroundActive={true} />
             </div>
           ))
         ) : (

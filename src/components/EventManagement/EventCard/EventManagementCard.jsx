@@ -119,7 +119,11 @@ const EventManagementCard = ({
                       <>
                         {approvedParticipants.slice(0, 4).map(({ userId }, index) => (
                           <div key={index} onClick={() => handleAvatarClick(userId._id)}>
-                            <UserAvatar user={userId} size="h-5 w-5" backgroundActive={true} />
+                            <UserAvatar
+                              user={userId}
+                              size="h-5 w-5 cursor-pointer"
+                              backgroundActive={true}
+                            />
                           </div>
                         ))}
                         {approvedParticipants.length > 4 && (
