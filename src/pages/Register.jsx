@@ -3,9 +3,13 @@ import RegisterForm from "../components/Register/RegisterForm"
 import Header from "../components/Header/Header"
 import { useTranslation } from "react-i18next"
 import { translations } from "../locales/translations"
+import { useNavigate } from "react-router-dom"
 
 const Register = () => {
   const { t } = useTranslation()
+  const navigate = useNavigate()
+
+
 
   return (
     <div>
@@ -14,7 +18,7 @@ const Register = () => {
         {/* Header component */}
 
         {/* Main Div */}
-        <div className="flex flex-col md:flex-row pt-8 max-w-[1440px]justify-center">
+        <div className="flex flex-col md:flex-row pt-8 max-w-[1440px]justify-center items-center h-full ">
           {/* Left side */}
           <div className="hidden md:block max-w-full md:max-w-[608px] mx-2 md:mx-4 lg:mx-8 mb-8 w-full bg-primary-green overflow-hidden rounded-lg h-[780px] ">
             <div
@@ -47,15 +51,14 @@ const Register = () => {
           </div>
 
           {/* Right Side */}
-          <div className="flex-grow flex flex-col justify-start p-4 md:p-8 w-full">
+          <div className="flex-grow flex flex-col justify-start p-4 my-auto md:px-8 w-full">
             {/* ArrowBack Icon and Logo for Mobile Design */}
             <div className="md:hidden flex flex-col items-center mb-6">
-              <IoIosArrowBack className="text-black text-3xl cursor-pointer self-start" />
-              <img
-                src={`${import.meta.env.VITE_AWS_URL}logo.webp`}
-                alt="Logo"
-                className="h-16 w-auto"
+              <IoIosArrowBack 
+              className="text-black dark:text-white text-3xl cursor-pointer self-start" 
+              onClick={() => navigate(-1)}
               />
+              <img src={`${import.meta.env.VITE_AWS_URL}logo.webp`} alt="Logo" className="h-16 w-auto" />
             </div>
 
             <div className="flex-grow">

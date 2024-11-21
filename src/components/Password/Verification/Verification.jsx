@@ -25,7 +25,7 @@ const Verification = ({ setIssue, identifier, setIdentifier, email }) => {
           </div>
 
           {/* Right Side - Form Area */}
-          <div className="flex-grow flex flex-col justify-center my-auto p-4 md:px-8">
+          <div className="flex-grow flex flex-col justify-center my-auto p-4 md:px-8 w-full">
             {/* Form Content */}
 
             <VerificationForm

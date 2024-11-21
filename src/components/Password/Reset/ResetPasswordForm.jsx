@@ -10,15 +10,19 @@ import { axiosWithPublic } from "../../../hooks/useAxios"
 import toastNotify from "../../../utils/toastNotify"
 import { useTranslation } from "react-i18next"
 import { translations } from "../../../locales/translations"
+import { useSelector } from "react-redux"
+import { ImSpinner9 } from "react-icons/im"
 
 const ResetPasswordForm = ({ identifier, email }) => {
   const { t } = useTranslation()
   const navigate = useNavigate()
   const [showPassword, setShowPassword] = useState(false)
   const [showConfirmPassword, setShowConfirmPassword] = useState(false)
+  const [loading, setLoading] = useState(false)
 
   const resetNewPassword = async (newPassword) => {
     if (email && identifier) {
+      setLoading(true)
       try {
         const { data } = await axiosWithPublic.post(`auth/reset/${identifier}`, {
           email,
@@ -29,6 +33,8 @@ const ResetPasswordForm = ({ identifier, email }) => {
         navigate("/login")
       } catch (error) {
         toastNotify("error", error.response?.data?.message)
+      } finally {
+        setLoading(false)
       }
     } else {
       toastNotify("error", "Reset password failed. Please try again!")
@@ -64,7 +70,7 @@ const ResetPasswordForm = ({ identifier, email }) => {
   return (
     <form
       onSubmit={formik.handleSubmit}
-      className="flex flex-col items-start space-y-6 p-6 w-full max-w-[44.1875rem] bg-white dark:bg-black rounded-lg relative"
+      className="flex flex-col items-start space-y-6 w-full max-w-[44.1875rem] bg-white dark:bg-black rounded-lg relative"
     >
       {/* Mobile & Desktop - Back Arrow and "Back to Login" */}
       <div className="md:hidden flex flex-row items-center mb-6" onClick={() => navigate("/login")}>
@@ -107,7 +113,7 @@ const ResetPasswordForm = ({ identifier, email }) => {
             onBlur={formik.handleBlur}
             value={formik.values.newPassword}
             placeholder={t(translations.password.resetPassForm.newPasswordPH)}
-            className={`w-full focus:outline-none border border-gray-2 p-2 rounded-lg dark:bg-black dark:text-white focus:border-primary-green
+            className={`w-full border rounded-lg text-[1rem] placeholder-gray-2 dark:placeholder-gray-2 dark:bg-black dark:text-white p-3 h-[42px] md:h-[48px] focus:outline-none focus:border-primary-green 
               ${formik.touched.newPassword && formik.errors.newPassword ? "border-danger" : "border-gray-1"}`}
           />
           <div className="absolute inset-y-0 text-primary-green dark:text-light-green right-3 pr-3 flex items-center text-2xl cursor-pointer">
@@ -139,7 +145,7 @@ const ResetPasswordForm = ({ identifier, email }) => {
             onBlur={formik.handleBlur}
             value={formik.values.confirmPassword}
             placeholder={t(translations.password.resetPassForm.confirmPasswordPH)}
-            className={`w-full focus:outline-none border border-gray-2 p-2 rounded-lg dark:bg-black dark:text-white focus:border-primary-green
+            className={`w-full border rounded-lg text-[1rem] placeholder-gray-2 dark:placeholder-gray-2 dark:bg-black dark:text-white p-3 h-[42px] md:h-[48px] focus:outline-none focus:border-primary-green 
               ${formik.touched.confirmPassword && formik.errors.confirmPassword ? "border-danger" : "border-gray-1"}`}
           />
           <div className="absolute inset-y-0 text-primary-green dark:text-light-green right-3 pr-3 flex items-center text-2xl cursor-pointer">
@@ -160,9 +166,19 @@ const ResetPasswordForm = ({ identifier, email }) => {
       {/* Reset Button */}
       <button
         type="submit"
-        className="bg-primary-green text-white w-full max-w-[44.18rem] h-[2.8125rem] rounded-lg hover:bg-dark-green transition duration-300 text-center"
+        className={`w-full bg-primary-green hover:bg-dark-green text-white text-[1rem] py-3 mt-3 rounded-lg focus:outline-none  flex justify-center items-center ${
+                  loading ? "opacity-50 cursor-not-allowed" : ""
+                }`}
+                disabled={loading}
       >
-        {t(translations.password.resetPassForm.reset)}
+       {loading ? (
+                  <>
+                    <ImSpinner9 className="animate-spin mr-2" />
+                    {t(translations.registerForm.loading)}
+                  </>
+                ) : (
+                  t(translations.password.resetPassForm.reset)
+                )}
       </button>
     </form>
   )
