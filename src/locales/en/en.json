@@ -633,6 +633,10 @@
     "completedButton": "Completed",
     "maxReacedButton": "Full Capacity",
     "manageButton": "Manage",
+    "loginPrompt": "Want to join?",
+    "login": "Login",
+    "signUp": "Sign Up",
+    "or": "or",
     "feedback": {
       "h2": "Thank you for your participation!",
       "p1": "Please share your experience about",

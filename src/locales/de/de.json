@@ -635,6 +635,10 @@
     "completedButton": "Abgeschlossen",
     "maxReacedButton": "Volle Kapazität",
     "manageButton": "Verwalten",
+    "loginPrompt": "Lust auf Mitmachen?",
+    "login": "Anmelden",
+    "signUp": "Registrieren",
+    "or": "oder",
     "feedback": {
       "h2": "Vielen Dank für Ihre Teilnahme!",
       "p1": "Bitte teilen Sie Ihre Erfahrungen über",
