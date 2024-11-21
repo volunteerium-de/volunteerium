@@ -103,7 +103,7 @@ const VerificationForm = ({ setIssue, identifier, setIdentifier, email }) => {
   return (
     <form
       onSubmit={handleSubmit}
-      className="flex flex-col items-start space-y-6 p-6 w-full max-w-[44.1875rem] bg-white dark:bg-black rounded-lg relative"
+      className="flex flex-col items-start space-y-6 w-full max-w-[44.1875rem] bg-white dark:bg-black rounded-lg relative"
     >
       {/* Mobile View - Back Arrow and "Back to Login" (Below Header) */}
       <div className="md:hidden flex flex-row items-center mb-6" onClick={() => navigate("/login")}>
@@ -158,7 +158,7 @@ const VerificationForm = ({ setIssue, identifier, setIdentifier, email }) => {
       {/* Submit Button */}
       <button
         type="submit"
-        className={`w-full max-w-[44.18rem] h-[2.8125rem] rounded-lg transition duration-300
+        className={`w-full bg-primary-green hover:bg-dark-green text-white text-[1rem] py-3 mt-3 rounded-lg focus:outline-none  flex justify-center items-center
         ${isCodeComplete ? "bg-primary-green hover:bg-dark-green text-white cursor-pointer" : "bg-primary-green cursor-not-allowed"}`}
         disabled={!isCodeComplete}
       >
