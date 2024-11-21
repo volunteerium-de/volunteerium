@@ -5,7 +5,6 @@ import { useFormik } from "formik"
 import * as Yup from "yup"
 import { IoIosArrowBack } from "react-icons/io"
 import { useNavigate } from "react-router-dom"
-import logo from "../../../assets/logo.png"
 import toastNotify from "../../../utils/toastNotify"
 import { axiosWithPublic } from "../../../hooks/useAxios"
 import { translations } from "../../../locales/translations"
@@ -63,7 +62,7 @@ const ForgotPasswordForm = ({ setIssue, setIdentifier, setEmail }) => {
       {/* Mobile View - Logo Centered */}
       <div className="md:hidden w-full flex justify-center mb-6 mt-[5rem]">
         <img
-          src={logo}
+          src={`${import.meta.env.VITE_AWS_URL}logo.webp`}
           alt={t(translations.password.forgotPassForm.logoAlt)}
           className="h-16 w-auto"
         />

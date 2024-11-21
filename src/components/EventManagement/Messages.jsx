@@ -78,7 +78,7 @@ const Messages = ({ conversations, currentUser }) => {
           <div className="flex flex-col items-center">
             <BiConversation className="text-6xl opacity-70 text-dark-gray-3 dark:text-white mb-4" />
             <p className="text-lg font-semibold text-dark-gray-1 dark:text-white text-center">
-            {t(translations.eventMng.messagesComp.noConversations)}
+              {t(translations.eventMng.messagesComp.noConversations)}
             </p>
           </div>
         </div>

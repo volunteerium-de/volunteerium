@@ -7,7 +7,7 @@
   "searchbar": {
     "event": {
       "label": "Event",
-      "placeholder": "Search Opportunities"
+      "placeholder": "Search Events"
     },
     "location": {
       "label": "Location",
@@ -188,7 +188,8 @@
     "buttonReset": "Reset",
     "buttonAddNew": "Add New +",
     "cancel": "Cancel",
-    "save": "Save"
+    "save": "Save",
+    "placeholder": "Please enter Title"
   },
   "avatarEdit": {
     "networkError": "Network response was not ok",
@@ -282,9 +283,8 @@
     "edit": "Edit",
     "save": "Save"
   },
-  "newEventValidation": 
-  {
-   "nameRequired": "Event name is required",
+  "newEventValidation": {
+    "nameRequired": "Event name is required",
     "nameMin": "Event name must contain between 10 and 60 characters",
     "dateRequired": "Date is required",
     "dateInPast": "Date cannot be in the past",
@@ -663,7 +663,7 @@
     }
   },
   "eventManagement": {
-    "addNewEvent": "Add new event",
+    "addNewEvent": "New event",
     "searchInput": "Search",
     "editButton": "Edit",
     "cancelButton": "Cancel",
@@ -705,7 +705,7 @@
     "virtual": "Online",
     "physical": "Onsite",
     "strName": "Street Name*",
-    "strNumbr": "Street Number*",
+    "strNumbr": "House/Str. Number*",
     "city": "City*",
     "country": "Country*",
     "code": "Zip Code*",
@@ -789,7 +789,6 @@
     "yes": "Yes",
     "no": "No",
     "cancel": "Cancel",
-
     "statistics": {
       "statisticsPanel": {
         "title": "Statistics"
@@ -810,7 +809,6 @@
         "noStatistics": "No Statistics Found"
       }
     },
-
     "dangerZone": {
       "title": "Danger Zone",
       "importantWarning": "Important Warning!",
@@ -827,7 +825,6 @@
       "sessionExpired": "Your session has expired. Please try again.",
       "confirmReset": "Confirm Reset"
     },
-
     "contacts": {
       "contactPanel": {
         "title": "Contacts"
@@ -1015,7 +1012,7 @@
     },
     "users": {
       "singleUserPanel": {
-        "userId": "User ID: ",
+        "userId": "User ID",
         "userInformations": "User Informations",
         "fullName": "Full Name",
         "orgName": "Organization Name",
@@ -1025,6 +1022,7 @@
         "lastUpdatedAt": "Last Updated At",
         "userDetails": "User Details",
         "fullNameDisplay": "Full Name Display",
+        "totalPoint": "Total Point",
         "profileSetup": "Profile Setup",
         "emailVerified": "Email Verified",
         "languages": "Languages",
@@ -1145,7 +1143,6 @@
       "language": "Please choose a valid language!"
     }
   },
-
   "toastify": {
     "error": "An error occurred. Please try again.",
     "verifyFailError": "Verification failed. Please try again.",

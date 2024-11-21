@@ -87,7 +87,7 @@ const SubscriptionsTable = ({ data, loading, refreshData }) => {
                       translations.adminPanel.subscriptions.subscriptionsTable.subscripedAt
                     )}
                   >
-                    {formatDateWithTime(subscription?.subscripedAt)}
+                    {formatDateWithTime(subscription?.subscribedAt)}
                   </td>
                 </tr>
               ))}

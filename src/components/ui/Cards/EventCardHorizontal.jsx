@@ -1,6 +1,5 @@
 import React from "react"
 import { IoCalendar, IoLocation, IoPeople } from "react-icons/io5"
-import defaultEventPhoto from "../../../assets/default-event-photo-.jpg"
 import { RxDividerVertical } from "react-icons/rx"
 import { MdLanguage } from "react-icons/md"
 import useLanguageOptions from "../../../hooks/useLanguages"
@@ -12,6 +11,7 @@ import { useNavigate } from "react-router-dom"
 import { useTranslation } from "react-i18next"
 import { translations } from "../../../locales/translations"
 import { validateLocation } from "../../../utils/functions"
+import { useEffect } from "react"
 
 const EventCardHorizontal = ({ event }) => {
   const { t } = useTranslation()
@@ -27,15 +27,24 @@ const EventCardHorizontal = ({ event }) => {
 
   const locationText = validateLocation(event)
 
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.matchMedia("(min-width: 768px)").matches) {
+        window.scrollTo(520, 520)
+      }
+    }
+    handleScroll()
+  }, [])
+
   return (
     <div
       key={event._id}
-      className="shadow-[0_1px_1px_rgba(0,0,0,.25)] mb-2 flex justify-center items-center gap-5 dark:bg-dark-gray-1 rounded-lg "
+      className="shadow-[0_1px_1px_rgba(0,0,0,.25)] mb-2 flex justify-center items-center gap-1 sm:gap-3 dark:bg-dark-gray-1 rounded-lg "
     >
       {/* Event Image */}
       <div className="w-full max-w-[250px] h-[235px] sm:h-[200px] flex justify-center items-center overflow-hidden rounded-l-lg ">
         <img
-          src={event.eventPhoto || defaultEventPhoto}
+          src={event.eventPhoto || `${import.meta.env.VITE_AWS_URL}default-event-photo.webp`}
           alt="event"
           className="w-full h-full object-cover"
         />
@@ -49,8 +58,14 @@ const EventCardHorizontal = ({ event }) => {
           {event.title}
         </h2>
         <p className="text-dark-gray-1 dark:text-white sm:text-[0.8125rem] text-[0.7rem] mb-[10px]">
-          {event.description.split(" ").slice(0, 10).join(" ")}
-          {event.description.split(" ").length > 10 ? "..." : ""}
+          <span className="block sm:hidden">
+            {event.description.split(" ").slice(0, 10).join(" ")}
+            {event.description.split(" ").length > 10 ? "..." : ""}
+          </span>
+          <span className="hidden sm:block">
+            {event.description.split(" ").slice(0, 20).join(" ")}
+            {event.description.split(" ").length > 20 ? "..." : ""}
+          </span>
         </p>
 
         {/* Event Details */}

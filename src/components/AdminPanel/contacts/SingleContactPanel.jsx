@@ -92,7 +92,7 @@ const SingleContactPanel = ({ contactId, setIdentifier }) => {
       </button>
       <div>
         {loading ? (
-          <div className="my-4 flex h-max justify-center items-start pt-24">
+          <div className="my-8 mb:my-4 flex h-max justify-center items-start pt-24">
             <ImSpinner9 className="animate-spin h-8 w-8 text-primary-green dark:text-white" />
           </div>
         ) : contactData ? (

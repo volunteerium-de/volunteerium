@@ -2,15 +2,14 @@ import { FaRegCalendarAlt, FaCalendarTimes } from "react-icons/fa"
 import { HiOutlineUserGroup } from "react-icons/hi2"
 import { MdKeyboardArrowRight } from "react-icons/md"
 import { useNavigate } from "react-router-dom"
-import { formatDateWithTime } from "../../../helpers/formatDate"
+import { formatDate, formatDateWithTime } from "../../../helpers/formatDate"
 import { useTranslation } from "react-i18next"
 import { translations } from "../../../locales/translations"
 import { UserAvatar } from "../Avatar/userAvatar"
-import eventPhoto from "../../../assets/default-event-photo-.jpg"
 import useLanguageOptions from "../../../hooks/useLanguages.js"
 import { formatName } from "../../../helpers/formatName.js"
 
-const defaultEventPhoto = eventPhoto
+const defaultEventPhoto = `${import.meta.env.VITE_AWS_URL}default-event-photo.webp`
 
 const ProfileCard = ({ events, loading, eventType }) => {
   const { t } = useTranslation()
@@ -48,14 +47,14 @@ const ProfileCard = ({ events, loading, eventType }) => {
             return (
               <div
                 key={_id}
-                className="group flex rounded-md shadow-md text-dark-gray-1 sm:gap-4 bg-light-gray-2 dark:bg-dark-gray-2"
+                className="group flex rounded-md shadow-md text-dark-gray-1 sm:gap-4 bg-light-gray-2 dark:bg-dark-gray-2 h-[180px] sm:h-[210px] md:h-[200px]"
               >
                 {/* Image */}
                 <div className="w-full sm:w-1/2 lg:w-2/5">
                   <img
                     src={eventPhoto || defaultEventPhoto}
                     alt={title}
-                    className="w-full h-full lg:h-[190px] object-cover rounded-l-lg overflow-hidden"
+                    className="w-full h-full object-cover rounded-l-lg overflow-hidden"
                   />
                 </div>
 
@@ -73,9 +72,13 @@ const ProfileCard = ({ events, loading, eventType }) => {
                           createdBy?.userDetailsId?.isFullNameDisplay
                         )}
                       </div>
-                      <div className="flex gap-2 text-sm sm:text-[0.9375rem] text-gray-2 dark:text-white">
+                      <div className="hidden lg:flex gap-2 text-sm sm:text-[0.9375rem] text-gray-2 dark:text-white">
                         <FaRegCalendarAlt className="mt-0.5 ml-0.5 text-[1.1rem] text-primary-green dark:text-light-gray" />
                         {formatDateWithTime(startDate)}
+                      </div>
+                      <div className="flex lg:hidden gap-2 text-sm sm:text-[0.9375rem] text-gray-2 dark:text-white">
+                        <FaRegCalendarAlt className="mt-0.5 ml-0.5 text-[1.1rem] text-primary-green dark:text-light-gray" />
+                        {formatDate(startDate)}
                       </div>
                       <div className="flex gap-2 ml-0.5 text-sm sm:text-[0.9375rem] text-gray-2 dark:text-white">
                         <HiOutlineUserGroup className="text-[1.1rem] text-primary-green dark:text-light-gray" />

@@ -38,9 +38,7 @@ const AvatarEditModal = ({ isOpen, onClose, currentUser }) => {
         if (updatedData) {
           toastNotify("success", updatedData.message)
         }
-      } catch (error) {
-        console.error("Error uploading file:", error)
-      }
+      } catch (error) {}
     }
   }
 
@@ -58,9 +56,7 @@ const AvatarEditModal = ({ isOpen, onClose, currentUser }) => {
       if (updatedData) {
         toastNotify("success", updatedData.message)
       }
-    } catch (error) {
-      console.error("Error deleting avatar:", error)
-    }
+    } catch (error) {}
   }
 
   return (
@@ -88,7 +84,7 @@ const AvatarEditModal = ({ isOpen, onClose, currentUser }) => {
           <div className=" mx-auto w-[100px] h-[100px] sm:w-[150px] sm:h-[150px] overflow-hidden rounded-full">
             <UserAvatar
               user={currentUser}
-              size="w-full h-full w-[100px] h-[100px] sm:w-[150px] sm:h-[150px]  object-cover"
+              size="w-full h-full w-[100px] h-[100px] sm:w-[150px] sm:h-[150px] object-cover"
             />
           </div>
         )}

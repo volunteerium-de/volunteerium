@@ -1,7 +1,6 @@
 // src/pages/Verification.jsx
 
 import React from "react"
-import verificationImage from "../../../assets/forgot-password.png"
 import VerificationForm from "./VerificationForm"
 
 const Verification = ({ setIssue, identifier, setIdentifier, email }) => {
@@ -16,7 +15,7 @@ const Verification = ({ setIssue, identifier, setIdentifier, email }) => {
             <div
               className="flex-grow h-full w-full bg-cover bg-center backdrop-blur-xl relative"
               style={{
-                backgroundImage: `url(${verificationImage})`,
+                backgroundImage: `url(${`${import.meta.env.VITE_AWS_URL}forgot-password.webp`})`,
                 backgroundBlendMode: "overlay",
               }}
             >

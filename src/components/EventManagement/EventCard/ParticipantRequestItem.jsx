@@ -2,6 +2,7 @@ import useEventCall from "../../../hooks/useEventCall"
 import { UserAvatar } from "../../ui/Avatar/userAvatar"
 import { useTranslation } from "react-i18next"
 import { translations } from "../../../locales/translations"
+import { Link } from "react-router-dom"
 
 const ParticipantRequestItem = ({ user, event, refetch }) => {
   const { approveParticipant, rejectParticipant, deleteEventParticipation } = useEventCall()
@@ -24,11 +25,10 @@ const ParticipantRequestItem = ({ user, event, refetch }) => {
 
   return (
     <div className="flex items-center w-full justify-between bg-light-gray-2 dark:bg-dark-gray-2 rounded-md py-2 px-2">
-      <div className="flex items-center gap-3 justify-center">
+      <Link className="flex items-center gap-3 justify-center" to={`/profile/${user.userId._id}`}>
         <UserAvatar user={user.userId} size="h-10 w-10" backgroundActive={true} />
-
         <span className="flex text-primary-green font-medium">{user.userId.fullName}</span>
-      </div>
+      </Link>
       <div className="flex space-x-2">
         {!user.isApproved && (
           <>

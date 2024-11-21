@@ -6,7 +6,6 @@ import * as Yup from "yup"
 import { IoIosArrowBack } from "react-icons/io"
 import { MdVisibility, MdVisibilityOff } from "react-icons/md"
 import { useNavigate } from "react-router-dom"
-import logo from "../../../assets/logo.png"
 import { axiosWithPublic } from "../../../hooks/useAxios"
 import toastNotify from "../../../utils/toastNotify"
 import { useTranslation } from "react-i18next"
@@ -84,7 +83,7 @@ const ResetPasswordForm = ({ identifier, email }) => {
       {/* Mobile View - Centered Logo */}
       <div className="md:hidden w-full flex justify-center mb-6 mt-[5rem]">
         <img
-          src={logo}
+          src={`${import.meta.env.VITE_AWS_URL}logo.webp`}
           alt={t(translations.password.resetPassForm.logoAlt)}
           className="h-16 w-auto"
         />

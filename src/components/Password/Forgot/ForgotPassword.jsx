@@ -1,7 +1,6 @@
 // src/pages/ForgotPassword.jsx
 
 import React from "react"
-import forgotPasswordImage from "../../../assets/forgot-password.png"
 import ForgotPasswordForm from "./ForgotPasswordForm"
 
 const ForgotPassword = ({ setIssue, setIdentifier, setEmail }) => {
@@ -16,7 +15,7 @@ const ForgotPassword = ({ setIssue, setIdentifier, setEmail }) => {
             <div
               className="flex-grow h-full w-full bg-cover bg-center backdrop-blur-xl relative"
               style={{
-                backgroundImage: `url(${forgotPasswordImage})`,
+                backgroundImage: `url(${`${import.meta.env.VITE_AWS_URL}forgot-password.webp`})`,
                 backgroundBlendMode: "overlay",
               }}
             >

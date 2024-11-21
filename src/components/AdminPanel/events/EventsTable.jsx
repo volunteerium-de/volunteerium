@@ -81,10 +81,10 @@ const EventsTable = ({ data, loading }) => {
                         : t(translations.adminPanel.events.eventsTable.waiting)}
                     </td>
                     <td
-                      className="td text-left whitespace-nowrap overflow-ellipsis overflow-hidden"
+                      className="td text-left whitespace-nowrap max-w-[calc(100vw - 300px)] 2xl:max-w-[300px] overflow-x-auto scrollbar-hide"
                       data-label={t(translations.adminPanel.events.eventsTable.eventTitleDL)}
                     >
-                      {event?.title}
+                      <span className="max-w-[150px] md:max-w-[300px]">{event?.title}</span>
                     </td>
                     <td
                       className="td text-left 2xl:w-[100px] whitespace-nowrap"
@@ -101,7 +101,7 @@ const EventsTable = ({ data, loading }) => {
                           participants={event?.eventParticipantIds}
                           totalParticipants={event?.eventParticipantIds?.length}
                           maxParticipant={event?.maxParticipant}
-                          avatarCount={4}
+                          avatarCount={2}
                           gap={1}
                           showAll={true}
                         />
