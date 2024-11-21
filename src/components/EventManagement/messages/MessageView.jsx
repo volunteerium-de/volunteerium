@@ -14,7 +14,7 @@ const MessageView = ({
   onSendMessage,
   bottomRef,
 }) => {
-  const {t} = useTranslation()
+  const { t } = useTranslation()
   const selectedConversationId = conversations.find(
     (conv) => conv._id === selectedConversation?._id
   )
@@ -60,7 +60,7 @@ const MessageView = ({
                     className={`p-3 mx-4 w-[250px] md:w-[400px] lg:w-[250px] xl:w-[450px] rounded ${message.senderId._id === currentUser._id ? "bg-primary-green ml-auto" : "bg-light-gray-2"}`}
                   >
                     <p
-                      className={` ${message.senderId._id === currentUser._id ? "text-white" : "text-black"} whitespace-normal break-words`}
+                      className={`whitespace-pre-line ${message.senderId._id === currentUser._id ? "text-white" : "text-black"} whitespace-normal break-words`}
                     >
                       {message.content}
                     </p>

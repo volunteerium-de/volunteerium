@@ -270,14 +270,18 @@ const Profile = () => {
                     <h2 className="mt-6 font-semibold text-dark-gray-1 dark:text-white dark:font-bold">
                       {t(translations.profile.aboutMe)}
                     </h2>
-                    <p className="text-dark-gray-1 my-2 dark:text-white">{bio}</p>
+                    <p className="text-dark-gray-1 my-2 dark:text-white whitespace-pre-line">
+                      {bio}
+                    </p>
                   </div>
                 ) : (
                   <div>
                     <h2 className="mt-6 font-semibold text-dark-gray-1 dark:text-white dark:font-bold">
                       {t(translations.profile.aboutUs)}
                     </h2>
-                    <p className="text-dark-gray-1 my-2 dark:text-white">{organizationDesc}</p>
+                    <p className="text-dark-gray-1 my-2 dark:text-white whitespace-pre-line">
+                      {organizationDesc}
+                    </p>
                   </div>
                 )}
 
