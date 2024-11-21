@@ -79,7 +79,7 @@ const OnlineOpportinuties = () => {
     <div className="px-4  mx-auto mt-4 shadow-lg">
       {/* Latest Card Container */}
       <div className="max-w-[1370px] mx-auto font-poppins dark:text-white dark:black rounded-lg">
-        {/* Header */}
+        
         <div className="flex justify-between flex-wrap mb-[5px]">
           <h2 className="text-[1.5rem] font-semibold text-dark-gray-1 dark:text-white py-3">
             {t(translations.onlineOpp.title)}
@@ -89,7 +89,7 @@ const OnlineOpportinuties = () => {
         <div className="relative rounded-lg">
           {/* Arrow Left */}
           <button
-            className={`absolute top-[calc(60%-25px)] left-[-50px] ${isLeftDisabled ? "hidden" : "block"} hidden lg:block`}
+            className={`absolute top-[calc(60%-25px)] left-[0] ${isLeftDisabled ? "hidden" : "block"} hidden lg:block`}
             onClick={handleScrollLeft}
             disabled={isLeftDisabled}
           >
@@ -97,7 +97,7 @@ const OnlineOpportinuties = () => {
           </button>
           {/* Arrow Right */}
           <button
-            className={`absolute top-[calc(60%-25px)] right-[-50px] ${isRightDisabled ? "hidden" : "block"} hidden lg:block`}
+            className={`absolute top-[calc(60%-25px)] right-[0px] ${isRightDisabled ? "hidden" : "block"} hidden lg:block`}
             onClick={handleScrollRight}
             disabled={isRightDisabled}
           >
@@ -107,7 +107,7 @@ const OnlineOpportinuties = () => {
           <div
             id="opportunities"
             ref={sliderRef}
-            className="flex gap-x-4 overflow-x-auto scrollbar-hide items-start scroll-smooth"
+            className="flex gap-x-4 overflow-x-auto xl:mx-8 scrollbar-hide items-start scroll-smooth"
           >
             {/* Map through event data */}
             <div className="flex flex-row flex-grow gap-6 p-2 pb-8 min-h-[200px] rounded-md">

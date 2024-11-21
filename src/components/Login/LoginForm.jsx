@@ -43,8 +43,6 @@ const LoginForm = () => {
 
   const togglePasswordVisibility = () => {
     setShowPassword((prev) => !prev)
-    clearTimeout(passwordTimeoutRef.current)
-    passwordTimeoutRef.current = setTimeout(() => setShowPassword(false), 5000)
   }
 
   const handleSubmit = (values, { setSubmitting }) => {
