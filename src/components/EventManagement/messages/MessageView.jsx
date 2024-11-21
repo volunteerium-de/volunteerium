@@ -5,6 +5,7 @@ import { IoChevronBackOutline } from "react-icons/io5"
 import { FiMessageCircle } from "react-icons/fi"
 import { useTranslation } from "react-i18next"
 import { translations } from "../../../locales/translations"
+import { Link } from "react-router-dom"
 
 const MessageView = ({
   conversations,
@@ -15,9 +16,17 @@ const MessageView = ({
   bottomRef,
 }) => {
   const { t } = useTranslation()
+
   const selectedConversationId = conversations.find(
     (conv) => conv._id === selectedConversation?._id
   )
+
+  const DisplayNameId = selectedConversation?.participantIds?.map((participant) => {
+    if (participant._id === currentUser._id) {
+      return selectedConversation.createdBy._id
+    } else return participant._id
+  })
+
   const handleSelectPromptClick = () => {
     if (!selectedConversationId) {
       onBackClick()
@@ -45,12 +54,22 @@ const MessageView = ({
                   onClick={onBackClick}
                   className="block lg:hidden dark:text-white text-xl mt-0.5 cursor-pointer"
                 />
-                {selectedConversationId.eventId.title}
+                <Link to={`/events/${selectedConversationId.eventId._id}`}>
+                  {selectedConversationId.eventId.title}
+                </Link>
               </h3>
-              <p className="text-[0.8rem] text-primary-green mb-1 ml-6 lg:ml-0">
-                {selectedConversationId.displayName ||
-                  selectedConversationId.createdBy?.organizationName}
-              </p>
+              <Link
+                className={`text-[0.8rem] text-primary-green mb-1 ml-6 lg:ml-0 cursor-pointer`}
+                to={
+                  selectedConversationId?.displayName !== t(translations.msgMenu.announce)
+                    ? `/profile/${DisplayNameId}`
+                    : `/events/${selectedConversationId.eventId._id}`
+                }
+              >
+                {selectedConversationId?.displayName ||
+                  selectedConversationId?.createdBy?.organizationName}
+              </Link>
+
               <div className="border-b mb-5 -ml-4 w-full dark:border-dark-gray-1" />
             </div>
             <div className="flex-grow overflow-y-auto scrollbar">
@@ -70,7 +89,7 @@ const MessageView = ({
                       >
                         <UserAvatar
                           user={message.senderId}
-                          size="w-4 h-4 rounded-full mt-0.5"
+                          size={`w-4 h-4 rounded-full mt-0.5`}
                           backgroundActive={true}
                         />
                       </div>
@@ -81,9 +100,13 @@ const MessageView = ({
                             : "text-dark-gray-3"
                         }`}
                       >
-                        {message?.senderId?._id === currentUser._id
-                          ? t(translations.eventMng.messages.messageView.you)
-                          : selectedConversationId.displayName}
+                        {message?.senderId?._id === currentUser._id ? (
+                          t(translations.eventMng.messages.messageView.you)
+                        ) : (
+                          <Link to={`/profile/${DisplayNameId}`}>
+                            {selectedConversationId.displayName}
+                          </Link>
+                        )}
                       </p>
                     </div>
                   </div>

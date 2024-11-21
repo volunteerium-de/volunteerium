@@ -7,6 +7,7 @@ import { HiOutlineUserGroup } from "react-icons/hi"
 import { UserAvatar } from "../../ui/Avatar/userAvatar"
 import MoreOptionsMenu from "./MoreOptionMenu"
 import { translations } from "../../../locales/translations"
+import useLanguage from "../../../hooks/useLanguages"
 import { useSelector } from "react-redux"
 
 const EventManagementCard = ({
@@ -19,6 +20,7 @@ const EventManagementCard = ({
 }) => {
   const { t } = useTranslation()
   const navigate = useNavigate()
+  const { getTranslatedCategory } = useLanguage()
   const { currentUser: user } = useSelector((state) => state.auth)
 
   const handleAvatarClick = (userId) => {
@@ -39,14 +41,14 @@ const EventManagementCard = ({
     <div>
       <div
         key={event?._id}
-        className="w-full flex rounded-md text-dark-gray-1 sm:gap-6 bg-light-gray-2 dark:bg-dark-gray-2"
+        className="w-full flex rounded-md text-dark-gray-1 sm:gap-6 bg-light-gray-2 dark:bg-dark-gray-2 h-[165px] sm:h-[210px] md:h-[200px]"
       >
         {/* Image */}
         <div className="w-[25%]">
           <img
             src={event?.eventPhoto || `${import.meta.env.VITE_AWS_URL}default-event-photo.webp`}
             alt={event?.title}
-            className="w-full h-full max-h-[200px] object-cover rounded-l-lg overflow-hidden cursor-pointer"
+            className="w-full h-full object-cover rounded-l-lg overflow-hidden cursor-pointer"
             onClick={() => navigate(`/events/${event?._id}`)}
           />
         </div>
@@ -58,7 +60,7 @@ const EventManagementCard = ({
             <div className="flex w-full justify-between">
               <h2
                 onClick={() => navigate(`/events/${event?._id}`)}
-                className="text-[1.2rem] font-semibold text-dark-gray-1 dark:text-white cursor-pointer"
+                className="text-[1rem] font-semibold pr-3 break-words text-dark-gray-1 dark:text-white cursor-pointer"
               >
                 {event?.title}
 
@@ -77,7 +79,7 @@ const EventManagementCard = ({
                 />
               )}
             </div>
-            <div className="flex flex-col gap-3">
+            <div className="flex flex-col gap-1">
               {/* Date */}
               <div className="flex gap-2 items-center text-[0.66rem] sm:text-[0.9rem] font-medium text-gray-2 dark:text-white">
                 <FaRegCalendarAlt className="text-[1rem] mb-[0.1rem] text-primary-green dark:text-light-gray" />
@@ -88,7 +90,7 @@ const EventManagementCard = ({
               {!event?.isDone && isOrganized && (
                 <div>
                   <div className="flex flex-wrap sm:items-center gap-4 mt-5">
-                    <div className="text-dark-gray-1 font-semibold text-[1.1rem] dark:text-white">
+                    <div className="text-dark-gray-1 font-semibold text-[1rem] dark:text-white">
                       {t(translations.eventManagement.attendants)}
                     </div>
                     <button
@@ -116,7 +118,11 @@ const EventManagementCard = ({
                       <>
                         {approvedParticipants.slice(0, 4).map(({ userId }, index) => (
                           <div key={index} onClick={() => handleAvatarClick(userId._id)}>
-                            <UserAvatar user={userId} size="h-5 w-5" backgroundActive={true} />
+                            <UserAvatar
+                              user={userId}
+                              size="h-5 w-5 cursor-pointer"
+                              backgroundActive={true}
+                            />
                           </div>
                         ))}
                         {approvedParticipants.length > 4 && (
@@ -160,13 +166,13 @@ const EventManagementCard = ({
                     </div>
                   </div>
 
-                  <div className="flex flex-wrap gap-2 my-2">
+                  <div className="flex flex-wrap gap-2 mt-2">
                     {event?.interestIds?.map((interest) => (
                       <span
                         key={interest._id}
                         className="flex flex-wrap text-[0.6rem] border border-primary-green text-primary-green px-2 py-1 rounded-2xl font-bold dark:text-light-green dark:border-2"
                       >
-                        {interest.name.toUpperCase()}
+                        {(getTranslatedCategory(interest.name) || interest.name).toUpperCase()}
                       </span>
                     ))}
                   </div>

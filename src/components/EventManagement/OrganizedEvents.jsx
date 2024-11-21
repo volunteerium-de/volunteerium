@@ -78,18 +78,18 @@ const OrganizedEvents = ({ onAddEvent, setEditEvent }) => {
       {t(translations.registerForm.loading)}
     </div>
   ) : (
-    <div className="mt-3 p-4 max-w-[77vw] min-h-[calc(100vh-116px)] rounded-lg bg-light-gray dark:bg-dark-gray-3 ">
+    <div className="mt-3 p-3 max-w-[99%] min-h-[calc(100vh-116px)] rounded-lg bg-light-gray dark:bg-dark-gray-3 ">
       <div className="flex justify-between items-center mb-8">
-        <h2 className="text-primary-green text-[1.5rem] font-semibold">
+        <h2 className="text-primary-green break-words text-[1.1rem] pr-2 font-semibold">
           {t(translations.eventManagement.organizedEvents)}
         </h2>
-        <div className="flex flex-col md:flex-row gap-2">
+        <div className="flex md:flex-row gap-2">
           <button
             onClick={handleAddNewEventButton}
-            className="flex md:text-[0.8rem] text-[0.6rem] px-2 sm:py-1 py-2 items-center border hover:bg-dark-green rounded-lg bg-primary-green text-white"
+            className="flex text-[0.8rem] px-2 sm:py-1 py-2 items-center border hover:bg-dark-green rounded-lg bg-primary-green text-white"
           >
-            <FaPlus className="mr-2" />
-            {t(translations.eventManagement.addNewEvent)}
+            <FaPlus className="sm:mr-2 mr-0" />
+            <p className="hidden sm:inline">{t(translations.eventManagement.addNewEvent)}</p>
           </button>
           <div className="flex items-center border border-primary-green dark:border-white rounded-lg">
             <FaSearch className="mx-2 text-primary-green dark:text-white" />

@@ -665,7 +665,7 @@
     }
   },
   "eventManagement": {
-    "addNewEvent": "Neues Event hinzufügen",
+    "addNewEvent": "Neues Event",
     "searchInput": "Suchen",
     "editButton": "Bearbeiten",
     "cancelButton": "Abbrechen",
