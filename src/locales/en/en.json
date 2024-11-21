@@ -705,7 +705,7 @@
     "virtual": "Online",
     "physical": "Onsite",
     "strName": "Street Name*",
-    "strNumbr": "Street Number*",
+    "strNumbr": "House/Str. Number*",
     "city": "City*",
     "country": "Country*",
     "code": "Zip Code*",
