@@ -12,6 +12,7 @@ import { useNavigate } from "react-router-dom"
 import { useTranslation } from "react-i18next"
 import { translations } from "../../../locales/translations"
 import { validateLocation } from "../../../utils/functions"
+import { useEffect } from "react"
 
 const EventCardHorizontal = ({ event }) => {
   const { t } = useTranslation()
@@ -26,6 +27,15 @@ const EventCardHorizontal = ({ event }) => {
   }
 
   const locationText = validateLocation(event)
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.matchMedia("(min-width: 768px)").matches) {
+        window.scrollTo(520, 520)
+      }
+    }
+    handleScroll()
+  }, [])
 
   return (
     <div
