@@ -101,6 +101,7 @@ const EventOverview = () => {
         showAll={false}
       />
       {/* Buttons */}
+
       {user ? (
         <div className="flex justify-center xl:justify-end space-x-4 lg:px-2">
           {canSendMessage && (
@@ -119,14 +120,14 @@ const EventOverview = () => {
       ) : (
         <div className="flex justify-center items-center pr-4">
           <p className="text-[0.9rem] text-center">
-            {t(translations.eventDetails.loginPrompt)}
+            {t(translations.eventDetails.loginPrompt)}{" "}
             <span
               className="text-primary-green font-bold cursor-pointer underline"
               onClick={() => navigate("/login")}
             >
               {t(translations.eventDetails.login)}
-            </span>
-            {t(translations.eventDetails.or)}
+            </span>{" "}
+            {t(translations.eventDetails.or)}{" "}
             <span
               className="text-primary-green font-bold cursor-pointer underline"
               onClick={() => navigate("/register")}
