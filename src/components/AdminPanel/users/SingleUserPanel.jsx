@@ -15,6 +15,8 @@ import useLanguage from "../../../hooks/useLanguages"
 import { LuMailPlus } from "react-icons/lu"
 import { useTranslation } from "react-i18next"
 import { translations } from "../../../locales/translations"
+import { getMedalInfo } from "../../../pages/Profile"
+import { IoInformationCircleOutline } from "react-icons/io5"
 
 const SingleUserPanel = ({ userId, setIdentifier }) => {
   const { t } = useTranslation()
@@ -102,6 +104,23 @@ const SingleUserPanel = ({ userId, setIdentifier }) => {
     }
   }, [])
 
+  const medalInfoText = [
+    {
+      label: t(translations.profile.medals.bronzeInfo),
+      className: "text-[#CD7F32]",
+    },
+    {
+      label: t(translations.profile.medals.silverInfo),
+      className: "text-[#b0aeae]",
+    },
+    {
+      label: t(translations.profile.medals.goldenInfo),
+      className: "text-[#FCB434]",
+    },
+  ]
+
+  const medalInfo = getMedalInfo(userData?.userDetailsId?.totalPoint, t)
+
   return (
     <div className="relative">
       <button
@@ -113,7 +132,7 @@ const SingleUserPanel = ({ userId, setIdentifier }) => {
       </button>
       <div>
         {loading ? (
-          <div className="my-4 flex h-max justify-center items-start pt-24">
+          <div className="my-8 mb:my-4 flex h-max justify-center items-start pt-24">
             <ImSpinner9 className="animate-spin h-8 w-8 text-primary-green dark:text-white" />
           </div>
         ) : userData ? (
@@ -154,6 +173,29 @@ const SingleUserPanel = ({ userId, setIdentifier }) => {
                   {t(translations.adminPanel.users.singleUserPanel.userInformations)}
                 </h1>
                 <ul className="space-y-2 text-dark-gray-1 dark:text-light-gray-2">
+                  <li className="flex">
+                    {medalInfo?.medal && (
+                      <li className="flex gap-1 items-center">
+                        <div className="flex">
+                          <h5
+                            className={`italic font-semibold flex gap-1 mt-1 ${medalInfo.textClass}`}
+                          >
+                            {medalInfo.medal} {medalInfo.icon}
+                          </h5>
+                          <div className="relative inline-block group">
+                            <IoInformationCircleOutline className="absolute left-2 opacity-50 cursor-pointer group-hover:opacity-100" />
+                            <div className="absolute mb-2 top-7 -left-14 sm:-left-10 w-[180px] md:w-[281px] h-[170px] md:h-[140px] rounded-md bg-light-gray-2 text-white text-sm px-3 py-2 opacity-0 translate-y-4 transition-all duration-500 ease-in-out group-hover:opacity-100 group-hover:translate-y-0 font-semibold pointer-events-none group-hover:pointer-events-auto dark:bg-dark-gray-2 dark:text-dark-gray-2">
+                              {medalInfoText.map((item, i) => (
+                                <p key={i} className={item.className}>
+                                  {item.label}
+                                </p>
+                              ))}
+                            </div>
+                          </div>
+                        </div>
+                      </li>
+                    )}
+                  </li>
                   <li className="flex justify-start my-4">
                     <UserAvatar user={userData} size="h-24 w-24" backgroundActive={true} />
                   </li>
@@ -205,16 +247,25 @@ const SingleUserPanel = ({ userId, setIdentifier }) => {
                 </h1>
                 <ul className="space-y-2 text-dark-gray-1 dark:text-light-gray-2 mt-4">
                   {userData?.userType === "individual" && (
-                    <li className="flex gap-1">
-                      <span className="font-semibold">
-                        {t(translations.adminPanel.users.singleUserPanel.fullNameDisplay)}:
-                      </span>
-                      <span>
-                        {userData?.userDetailsId?.isFullNameDisplay
-                          ? t(translations.adminPanel.yes)
-                          : t(translations.adminPanel.no)}
-                      </span>
-                    </li>
+                    <>
+                      <li className="flex gap-1 items-center">
+                        <span className="font-semibold">
+                          {t(translations.adminPanel.users.singleUserPanel.totalPoint)}:
+                        </span>
+                        <span>{userData?.userDetailsId?.totalPoint || 0}</span>
+                      </li>
+
+                      <li className="flex gap-1">
+                        <span className="font-semibold">
+                          {t(translations.adminPanel.users.singleUserPanel.fullNameDisplay)}:
+                        </span>
+                        <span>
+                          {userData?.userDetailsId?.isFullNameDisplay
+                            ? t(translations.adminPanel.yes)
+                            : t(translations.adminPanel.no)}
+                        </span>
+                      </li>
+                    </>
                   )}
                   <li className="flex gap-1">
                     <span className="font-semibold">

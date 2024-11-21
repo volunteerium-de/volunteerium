@@ -3,9 +3,7 @@
 import React, { useEffect } from "react"
 import { IoIosArrowBack } from "react-icons/io"
 import { useNavigate } from "react-router-dom"
-import feedbackImg from "../assets/login-img.png"
 import ContactUsForm from "../components/ContactUs/ContactUsForm"
-import logo from "../assets/logo.png"
 import Header from "../components/Header/Header"
 import { useTranslation } from "react-i18next"
 import { translations } from "../locales/translations"
@@ -30,7 +28,7 @@ const ContactUs = () => {
             <div
               className="flex-grow h-full w-full bg-cover bg-center backdrop-blur-xl relative"
               style={{
-                backgroundImage: `url(${feedbackImg})`,
+                backgroundImage: `url(${`${import.meta.env.VITE_AWS_URL}login-img.webp`})`,
                 backgroundBlendMode: "overlay",
               }}
             >
@@ -67,7 +65,11 @@ const ContactUs = () => {
                 className="text-black dark:text-white text-3xl cursor-pointer self-start"
                 onClick={() => navigate(-1)}
               />
-              <img src={logo} alt="Logo" className="h-16 w-auto" />
+              <img
+                src={`${import.meta.env.VITE_AWS_URL}logo.webp`}
+                alt="Logo"
+                className="h-16 w-auto"
+              />
             </div>
 
             {/* Form Title */}

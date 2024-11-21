@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom"
 import { formatDateWithTime } from "../../../helpers/formatDate"
 import { useTranslation } from "react-i18next"
 import { MdOutlineLocationOn } from "react-icons/md"
-import defaultEventPhoto from "../../../assets/default-event-photo-.jpg"
 import { HiOutlineUserGroup } from "react-icons/hi"
 import { UserAvatar } from "../../ui/Avatar/userAvatar"
 import MoreOptionsMenu from "./MoreOptionMenu"
@@ -45,7 +44,7 @@ const EventManagementCard = ({
         {/* Image */}
         <div className="w-[25%]">
           <img
-            src={event?.eventPhoto || defaultEventPhoto}
+            src={event?.eventPhoto || `${import.meta.env.VITE_AWS_URL}default-event-photo.webp`}
             alt={event?.title}
             className="w-full h-full max-h-[200px] object-cover rounded-l-lg overflow-hidden cursor-pointer"
             onClick={() => navigate(`/events/${event?._id}`)}

@@ -2,7 +2,6 @@
 
 import React, { useState, useEffect, useRef } from "react"
 import { IoIosArrowBack } from "react-icons/io"
-import logo from "../../../assets/logo.png"
 import { useNavigate } from "react-router-dom"
 import { axiosWithPublic } from "../../../hooks/useAxios"
 import toastNotify from "../../../utils/toastNotify"
@@ -111,7 +110,7 @@ const VerificationForm = ({ setIssue, identifier, setIdentifier, email }) => {
       {/* Mobile View - Centered Logo */}
       <div className="md:hidden w-full flex justify-center mb-6 mt-[5rem]">
         <img
-          src={logo}
+          src={`${import.meta.env.VITE_AWS_URL}logo.webp`}
           alt={t(translations.password.verificationForm.logoAlt)}
           className="h-16 w-auto"
         />

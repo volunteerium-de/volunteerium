@@ -1,6 +1,5 @@
 import React from "react"
 import { IoCalendar, IoLocation, IoPeople } from "react-icons/io5"
-import defaultEventPhoto from "../../../assets/default-event-photo-.jpg"
 import { RxDividerVertical } from "react-icons/rx"
 import { MdLanguage } from "react-icons/md"
 import useLanguageOptions from "../../../hooks/useLanguages"
@@ -35,7 +34,7 @@ const EventCardHorizontal = ({ event }) => {
       {/* Event Image */}
       <div className="w-full max-w-[250px] h-[235px] sm:h-[200px] flex justify-center items-center overflow-hidden rounded-l-lg ">
         <img
-          src={event.eventPhoto || defaultEventPhoto}
+          src={event.eventPhoto || `${import.meta.env.VITE_AWS_URL}default-event-photo.webp`}
           alt="event"
           className="w-full h-full object-cover"
         />

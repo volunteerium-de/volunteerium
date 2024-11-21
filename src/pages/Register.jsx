@@ -1,16 +1,11 @@
 import { IoIosArrowBack } from "react-icons/io"
-import signUpImg from "../assets/login-img.png"
 import RegisterForm from "../components/Register/RegisterForm"
-import logo from "../assets/logo.png"
 import Header from "../components/Header/Header"
 import { useTranslation } from "react-i18next"
 import { translations } from "../locales/translations"
 
 const Register = () => {
-
-  const {t} = useTranslation()
-  {t(translations.register.h2)}
-
+  const { t } = useTranslation()
 
   return (
     <div>
@@ -25,7 +20,7 @@ const Register = () => {
             <div
               className="flex-grow h-full w-full bg-cover bg-center backdrop-blur-xl relative"
               style={{
-                backgroundImage: `url(${signUpImg})`,
+                backgroundImage: `url(${`${import.meta.env.VITE_AWS_URL}login-img.webp`})`,
                 backgroundBlendMode: "overlay",
               }}
             >
@@ -33,18 +28,18 @@ const Register = () => {
                 <div className="absolute top-0 left-0 w-full h-full bg-primary-green opacity-[0.4]" />
                 <div className="relative text-left ps-6 lg:px-8">
                   <p className="text-white text-[1.5rem] lg:text-[3rem] leading-8 font-semibold">
-                  {t(translations.register.p1)}  <br />
+                    {t(translations.register.p1)} <br />
                     <span className="text-[2.5rem] lg:text-[4.125rem] md:leading-none">
-                    {t(translations.register.p2)} 
+                      {t(translations.register.p2)}
                     </span>
                   </p>
                   <p className="text-white mt-4 text-[1rem] lg:text-[1.125rem] font-normal">
-                  {t(translations.register.p3)} <b>  {t(translations.register.p4)}</b>.<br />
+                    {t(translations.register.p3)} <b> {t(translations.register.p4)}</b>.<br />
                     <span className="text-[0.8rem] lg:text-[1rem]">
-                    {t(translations.register.p5)}  <b>  {t(translations.register.p6)}</b>.<br />
+                      {t(translations.register.p5)} <b> {t(translations.register.p6)}</b>.<br />
                       <br />
                     </span>
-                    <b>  {t(translations.register.p7)} </b>
+                    <b> {t(translations.register.p7)} </b>
                   </p>
                 </div>
               </div>
@@ -56,15 +51,19 @@ const Register = () => {
             {/* ArrowBack Icon and Logo for Mobile Design */}
             <div className="md:hidden flex flex-col items-center mb-6">
               <IoIosArrowBack className="text-black text-3xl cursor-pointer self-start" />
-              <img src={logo} alt="Logo" className="h-16 w-auto" />
+              <img
+                src={`${import.meta.env.VITE_AWS_URL}logo.webp`}
+                alt="Logo"
+                className="h-16 w-auto"
+              />
             </div>
 
             <div className="flex-grow">
               <h1 className="text-black dark:text-white text-[1.75rem] text-center md:text-left md:text-[2rem] font-semibold mb-6">
-              {t(translations.register.createAccount)}
+                {t(translations.register.createAccount)}
               </h1>
               <p className="text-gray-2 dark:text-white text-[1rem] mb-2">
-              {t(translations.register.creatingAs)}
+                {t(translations.register.creatingAs)}
               </p>
 
               {/* RegisterForm Component */}

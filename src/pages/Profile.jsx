@@ -20,7 +20,7 @@ import { translations } from "../locales/translations"
 import { UserAvatar } from "../components/ui/Avatar/userAvatar"
 import useLanguageOptions from "../hooks/useLanguages"
 
-const getMedalInfo = (totalPoints, t) => {
+export const getMedalInfo = (totalPoints, t) => {
   if (totalPoints >= 70) {
     return {
       medal: t(translations.profile.medals.goldenHeart),

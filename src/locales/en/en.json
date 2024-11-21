@@ -1011,7 +1011,7 @@
     },
     "users": {
       "singleUserPanel": {
-        "userId": "User ID: ",
+        "userId": "User ID",
         "userInformations": "User Informations",
         "fullName": "Full Name",
         "orgName": "Organization Name",
@@ -1021,6 +1021,7 @@
         "lastUpdatedAt": "Last Updated At",
         "userDetails": "User Details",
         "fullNameDisplay": "Full Name Display",
+        "totalPoint": "Total Point",
         "profileSetup": "Profile Setup",
         "emailVerified": "Email Verified",
         "languages": "Languages",

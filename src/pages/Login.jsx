@@ -1,6 +1,4 @@
 import { IoIosArrowBack } from "react-icons/io"
-import signUpImg from "../assets/login-img.png"
-import logo from "../assets/logo.png"
 import LoginForm from "../components/Login/LoginForm"
 import Header from "../components/Header/Header"
 import { useTranslation } from "react-i18next"
@@ -22,7 +20,7 @@ const Login = () => {
             <div
               className="flex-grow h-full w-full bg-cover bg-center backdrop-blur-xl relative"
               style={{
-                backgroundImage: `url(${signUpImg})`,
+                backgroundImage: `url(${`${import.meta.env.VITE_AWS_URL}login-img.webp`})`,
                 backgroundBlendMode: "overlay",
               }}
             >
@@ -57,7 +55,11 @@ const Login = () => {
                 className="text-black dark:text-white text-3xl cursor-pointer self-start"
                 onClick={() => navigate(-1)}
               />
-              <img src={logo} alt="Logo" className="h-16 w-auto" />
+              <img
+                src={`${import.meta.env.VITE_AWS_URL}logo.webp`}
+                alt="Logo"
+                className="h-16 w-auto"
+              />
             </div>
 
             <div className="flex-grow">
