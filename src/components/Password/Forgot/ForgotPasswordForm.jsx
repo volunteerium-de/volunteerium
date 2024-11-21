@@ -1,6 +1,6 @@
 // src/components/Password/Forgot/ForgotPasswordForm.jsx
 
-import React from "react"
+import React, { useState } from "react"
 import { useFormik } from "formik"
 import * as Yup from "yup"
 import { IoIosArrowBack } from "react-icons/io"
@@ -16,9 +16,10 @@ import { useSelector } from "react-redux"
 const ForgotPasswordForm = ({ setIssue, setIdentifier, setEmail }) => {
   const navigate = useNavigate()
   const { t } = useTranslation()
-  const loading = useSelector((state) => state.auth.loading)
+  const [loading, setLoading] = useState(false)
 
   const forgotPassword = async (email) => {
+    setLoading(true)
     try {
       const { data } = await axiosWithPublic.post("auth/forgot-password", { email })
 
@@ -27,6 +28,8 @@ const ForgotPasswordForm = ({ setIssue, setIdentifier, setEmail }) => {
       toastNotify("success", data.message)
     } catch (error) {
       toastNotify("error", error.response?.data?.message)
+    } finally {
+      setLoading(false)
     }
   }
 

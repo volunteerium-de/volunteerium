@@ -8,6 +8,7 @@ import { axiosWithPublic } from "../../../hooks/useAxios"
 import toastNotify from "../../../utils/toastNotify"
 import { translations } from "../../../locales/translations"
 import { useTranslation } from "react-i18next"
+import { ImSpinner9 } from "react-icons/im"
 
 const VerificationForm = ({ setIssue, identifier, setIdentifier, email }) => {
   const { t } = useTranslation()
@@ -18,9 +19,11 @@ const VerificationForm = ({ setIssue, identifier, setIdentifier, email }) => {
   ) // Message changes when time runs out
   const inputRefs = useRef([]) // References for code input boxes
   const navigate = useNavigate()
+  const [loading, setLoading] = useState(false)
 
   const resendForgotPassword = async () => {
     if (email) {
+      setLoading(true)
       try {
         const { data } = await axiosWithPublic.post("auth/forgot-password", { email })
 
@@ -29,6 +32,8 @@ const VerificationForm = ({ setIssue, identifier, setIdentifier, email }) => {
         toastNotify("success", data.message)
       } catch (error) {
         toastNotify("error", error.response?.data?.message)
+      } finally {
+        setLoading(false)
       }
     } else {
       toastNotify("error", "Please provide an email address.")
@@ -159,10 +164,18 @@ const VerificationForm = ({ setIssue, identifier, setIdentifier, email }) => {
       <button
         type="submit"
         className={`w-full bg-primary-green hover:bg-dark-green text-white text-[1rem] py-3 mt-3 rounded-lg focus:outline-none  flex justify-center items-center
-        ${isCodeComplete ? "bg-primary-green hover:bg-dark-green text-white cursor-pointer" : "bg-primary-green cursor-not-allowed"}`}
-        disabled={!isCodeComplete}
+        ${isCodeComplete || loading ? "bg-primary-green hover:bg-dark-green text-white cursor-pointer" : "bg-primary-green cursor-not-allowed"}`}
+        disabled={!isCodeComplete || loading}
       >
-        {t(translations.password.verificationForm.verify)}
+        {loading ? (
+                  <>
+                    <ImSpinner9 className="animate-spin mr-2" />
+                    {t(translations.registerForm.loading)}
+                  </>
+                ) : (
+                  t(translations.password.verificationForm.verify)
+                )}
+        
       </button>
 
       {/* Resend Code Option */}

@@ -19,10 +19,11 @@ const ResetPasswordForm = ({ identifier, email }) => {
   const navigate = useNavigate()
   const [showPassword, setShowPassword] = useState(false)
   const [showConfirmPassword, setShowConfirmPassword] = useState(false)
-  const loading = useSelector((state) => state.auth.loading)
+  const [loading, setLoading] = useState(false)
 
   const resetNewPassword = async (newPassword) => {
     if (email && identifier) {
+      setLoading(true)
       try {
         const { data } = await axiosWithPublic.post(`auth/reset/${identifier}`, {
           email,
@@ -33,6 +34,8 @@ const ResetPasswordForm = ({ identifier, email }) => {
         navigate("/login")
       } catch (error) {
         toastNotify("error", error.response?.data?.message)
+      } finally {
+        setLoading(false)
       }
     } else {
       toastNotify("error", "Reset password failed. Please try again!")
