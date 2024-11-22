@@ -92,9 +92,7 @@ const GooglePassword = () => {
                       onChange={formik.handleChange}
                       onBlur={formik.handleBlur}
                       className={`h-[36px] w-full border ${
-                        formik.errors.password
-                          ? "border-danger focus:ring-2 focus:ring-danger"
-                          : "border-gray-1 focus:ring-2  focus:ring-primary-green"
+                        formik.errors.password ? "border-danger" : "border-gray-1"
                       } focus:ring-2 focus:ring-primary-green text-dark-gray-1 p-2 rounded-md focus:outline-none`}
                     />
                     <span
@@ -131,9 +129,9 @@ const GooglePassword = () => {
                       onChange={formik.handleChange}
                       onBlur={formik.handleBlur}
                       className={`h-[36px] w-full border ${
-                        formik.errors.confirmPassword
-                          ? "border-danger focus:ring-2 focus:ring-danger"
-                          : "border-gray-1 focus:ring-2  focus:ring-primary-green"
+                        formik.touched.password && formik.errors.confirmPassword
+                          ? "border-danger"
+                          : "border-gray-1"
                       } focus:ring-2 text-dark-gray-1 p-2 rounded-md focus:outline-none`}
                     />
                     <span
@@ -145,7 +143,7 @@ const GooglePassword = () => {
                   </div>
 
                   {/* Error Message */}
-                  {formik.errors.confirmPassword && (
+                  {formik.touched.password && formik.errors.confirmPassword && (
                     <p className="mt-1 text-danger dark:text-primary-green text-[1rem] md:text-[0.9rem]">
                       {formik.errors.confirmPassword}
                     </p>
