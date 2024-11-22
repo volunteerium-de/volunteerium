@@ -1086,7 +1086,7 @@
       "zipCode": "Postleitzahl ist erforderlich!",
       "city": "Stadt ist erforderlich!",
       "country": "Land ist erforderlich!",
-      "oldPassword": "Altes Passwort ist erforderlich!",
+      "oldPassword": "Neues Passwort ist erforderlich!",
       "confirmPassword": "Passwortbestätigung ist erforderlich!",
       "reason": "Bitte wählen Sie einen Grund aus!",
       "eventName": "Eventsname ist erforderlich!",
