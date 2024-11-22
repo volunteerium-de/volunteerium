@@ -56,7 +56,7 @@ const ResetPasswordForm = ({ identifier, email }) => {
         .matches(/[a-z]/, t(translations.yup.password.containsLowercase))
         .matches(/[0-9]/, t(translations.yup.password.containsDigit))
         .matches(/[@$?!%&*]+/, t(translations.yup.password.containsSpecialCharacter))
-        .required(t(translations.yup.required.oldPassword)),
+        .required(t(translations.yup.required.newPassword)),
       confirmPassword: Yup.string()
         .oneOf([Yup.ref("newPassword"), null], t(translations.yup.password.match))
         .required(t(translations.yup.required.confirmPassword)),

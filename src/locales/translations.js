@@ -1137,6 +1137,7 @@ export const translations = {
       zipCode: "yup.required.zipCode",
       city: "yup.required.city",
       country: "yup.required.country",
+      newPassword: "yup.required.newPassword",
       oldPassword: "yup.required.oldPassword",
       confirmPassword: "yup.required.confirmPassword",
       reason: "yup.required.reason",

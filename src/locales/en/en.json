@@ -1085,6 +1085,7 @@
       "zipCode": "ZIP code is required!",
       "city": "City is required!",
       "country": "Country is required!",
+      "newPassword": "New password is required!",
       "oldPassword": "Old password is required!",
       "confirmPassword": "Confirm password is required!",
       "reason": "Please select a reason!",
