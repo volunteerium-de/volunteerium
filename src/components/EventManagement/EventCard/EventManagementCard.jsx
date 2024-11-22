@@ -55,7 +55,7 @@ const EventManagementCard = ({
 
         {/* Info */}
         <div className="flex flex-wrap w-[75%] p-2 ml-2 sm:ml-0 ">
-          <div className="flex flex-col gap-3 w-[45vw] lg:w-full py-3 text-[0.9375rem]">
+          <div className="flex flex-col gap-3 lg:w-full py-3 text-[0.9375rem]">
             {/* Title */}
             <div className="flex w-full justify-between">
               <h2
