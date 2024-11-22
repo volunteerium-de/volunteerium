@@ -77,57 +77,82 @@ const GooglePassword = () => {
           <div className="mt-[20px] max-w-[500px] lg:max-w-[600px] mx-auto">
             <div className="flex flex-col gap-5">
               {/* New Password Field */}
-              <div className="relative flex flex-col sm:flex-row text-center md:text-left  justify-between items-center gap-[3px] mt-[15px] text-[1.3rem] md:text-[1rem]">
-                <p className=" dark:text-white">{t(translations.pswModal.newPsw)}</p>
-                <input
-                  type={showPassword ? "text" : "password"}
-                  name="password"
-                  placeholder="*********"
-                  value={formik.values.password}
-                  onChange={formik.handleChange}
-                  onBlur={formik.handleBlur}
-                  className={`h-[36px] md:w-[300px] border ${
-                    formik.errors.password ? "border-danger" : "border-gray-1"
-                  } focus:ring-2 focus:ring-primary-green text-dark-gray-1 p-2 border border-gray-1 rounded h-[100px] focus:outline-none`}
-                />
-                <span
-                  className="absolute right-2 top-1/2 transform -translate-y-1/2 cursor-pointer"
-                  onClick={() => setShowPassword(!showPassword)}
-                >
-                  {showPassword ? <AiFillEyeInvisible /> : <AiFillEye />}
-                </span>
-                {formik.errors.password ? (
-                  <p className="absolute right-[25%] sm:right-0 -bottom-7 text-danger dark:text-primary-green text-[1rem] md:text-[0.9rem] sm:text-right text-center">
-                    {formik.errors.password}
-                  </p>
-                ) : null}
+              <div className="flex flex-col sm:flex-row justify-between items-start gap-2 mt-[15px] text-[1.3rem] md:text-[1rem]">
+                {/* Label */}
+                <p className="dark:text-white min-w-[120px]">{t(translations.pswModal.newPsw)}</p>
+
+                {/* Input and Eye Icon */}
+                <div className="w-full sm:w-[300px]">
+                  <div className="relative flex items-center">
+                    <input
+                      type={showPassword ? "text" : "password"}
+                      name="password"
+                      placeholder="*********"
+                      value={formik.values.password}
+                      onChange={formik.handleChange}
+                      onBlur={formik.handleBlur}
+                      className={`h-[36px] w-full border ${
+                        formik.errors.password
+                          ? "border-danger focus:ring-2 focus:ring-danger"
+                          : "border-gray-1 focus:ring-2  focus:ring-primary-green"
+                      } focus:ring-2 focus:ring-primary-green text-dark-gray-1 p-2 rounded-md focus:outline-none`}
+                    />
+                    <span
+                      className="absolute right-2 cursor-pointer"
+                      onClick={() => setShowPassword(!showPassword)}
+                    >
+                      {showPassword ? <AiFillEyeInvisible /> : <AiFillEye />}
+                    </span>
+                  </div>
+
+                  {/* Error Message */}
+                  {formik.errors.password && (
+                    <p className="mt-1 text-danger dark:text-primary-green text-[1rem] md:text-[0.9rem]">
+                      {formik.errors.password}
+                    </p>
+                  )}
+                </div>
               </div>
-              {/* Confirm Password Field */}
-              <div className="relative flex flex-col sm:flex-row text-center md:text-left justify-between items-center gap-[3px] mt-[15px] text-[1.3rem] md:text-[1rem]">
-                <p className="dark:text-white">{t(translations.pswModal.confirmPsw)}</p>
-                <input
-                  type={showConfirmPassword ? "text" : "password"}
-                  name="confirmPassword"
-                  placeholder="*********"
-                  value={formik.values.confirmPassword}
-                  onChange={formik.handleChange}
-                  onBlur={formik.handleBlur}
-                  className={`h-[36px] md:w-[300px] border ${
-                    formik.errors.confirmPassword ? "border-danger" : "border-gray-1"
-                  } focus:ring-2 focus:ring-primary-green text-dark-gray-1 p-2 border border-gray-1 rounded h-[100px] focus:outline-none`}
-                />
-                <span
-                  className="absolute right-2 top-1/2 transform -translate-y-1/2 cursor-pointer"
-                  onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                >
-                  {showConfirmPassword ? <AiFillEyeInvisible /> : <AiFillEye />}
-                </span>
-                {formik.errors.confirmPassword ? (
-                  <p className="absolute right-[10%] sm:right-0 -bottom-7 text-danger dark:text-primary-green text-[1rem] md:text-[0.9rem] sm:text-right text-center">
-                    {formik.errors.confirmPassword}
-                  </p>
-                ) : null}
+
+              <div className="flex flex-col sm:flex-row justify-between items-start gap-2 mt-[15px] text-[1.3rem] md:text-[1rem]">
+                {/* Label */}
+                <p className="dark:text-white min-w-[120px]">
+                  {t(translations.pswModal.confirmPsw)}
+                </p>
+
+                {/* Input and Eye Icon */}
+                <div className="w-full sm:w-[300px]">
+                  <div className="relative flex items-center">
+                    <input
+                      type={showConfirmPassword ? "text" : "password"}
+                      name="confirmPassword"
+                      placeholder="*********"
+                      value={formik.values.confirmPassword}
+                      onChange={formik.handleChange}
+                      onBlur={formik.handleBlur}
+                      className={`h-[36px] w-full border ${
+                        formik.errors.confirmPassword
+                          ? "border-danger focus:ring-2 focus:ring-danger"
+                          : "border-gray-1 focus:ring-2  focus:ring-primary-green"
+                      } focus:ring-2 text-dark-gray-1 p-2 rounded-md focus:outline-none`}
+                    />
+                    <span
+                      className="absolute right-2 cursor-pointer"
+                      onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                    >
+                      {showConfirmPassword ? <AiFillEyeInvisible /> : <AiFillEye />}
+                    </span>
+                  </div>
+
+                  {/* Error Message */}
+                  {formik.errors.confirmPassword && (
+                    <p className="mt-1 text-danger dark:text-primary-green text-[1rem] md:text-[0.9rem]">
+                      {formik.errors.confirmPassword}
+                    </p>
+                  )}
+                </div>
               </div>
+
               <div className="flex justify-center gap-3 mt-[50px]">
                 <button
                   type="submit"
