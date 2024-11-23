@@ -56,7 +56,7 @@ const EventsListingPage = () => {
       }
     }
     handleScroll()
-  }, [queryParams])
+  }, [currentPage])
 
   useEffect(() => {
     const fetchEvents = async () => {
