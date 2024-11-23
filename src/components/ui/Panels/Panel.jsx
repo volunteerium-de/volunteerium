@@ -31,6 +31,10 @@ const Panel = ({ title, fetchUrl, TableComponent }) => {
   const [isOpen, setIsOpen] = useState(false)
   const addRef = useRef(null)
 
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [currentPage])
+
   const refreshData = () => {
     setLoading(true)
     fetchAllData(

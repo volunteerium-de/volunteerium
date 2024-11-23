@@ -144,7 +144,7 @@ const SingleEventPanel = ({ eventId, setIdentifier }) => {
                     <img
                       src={singleEvent?.eventPhoto || `${import.meta.env.VITE_AWS_URL}logo.webp`}
                       alt="Event-Photo"
-                      className="object-cover"
+                      className="object-cover h-[300px] w-full"
                     />
                   </li>
                   <li className="flex flex-col gap-1">
