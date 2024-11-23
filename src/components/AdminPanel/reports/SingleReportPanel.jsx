@@ -125,7 +125,7 @@ const SingleReportPanel = ({ reportId, setIdentifier }) => {
                     <span className="font-semibold">
                       {t(translations.adminPanel.reports.singleReportPanel.reportType)}:
                     </span>
-                    <span>{reportData?.reportType}</span>
+                    <span className="font-semibold text-danger">{reportData?.reportType}</span>
                   </li>
                   <li className="flex gap-1 flex-col sm:flex-row mt-4">
                     <span className="font-semibold">

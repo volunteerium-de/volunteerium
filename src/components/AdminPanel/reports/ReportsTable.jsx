@@ -57,7 +57,7 @@ const ReportsTable = ({ data, loading }) => {
                     className={"td text-left 2xl:w-[150px] whitespace-nowrap"}
                     data-label={t(translations.adminPanel.reports.reportsTable.reportType)}
                   >
-                    {report?.reportType}
+                    <span className="font-semibold text-danger">{report?.reportType}</span>
                   </td>
                   <td
                     className={"td text-left 2xl:w-[150px] whitespace-nowrap"}

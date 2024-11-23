@@ -147,7 +147,7 @@ const SingleEventPanel = ({ eventId, setIdentifier }) => {
                       className="object-cover"
                     />
                   </li>
-                  <li className="flex gap-1 flex-col sm:flex-row">
+                  <li className="flex flex-col gap-1">
                     <span className="font-semibold">
                       {t(translations.adminPanel.events.singleEventPanel.eventName)}:
                     </span>
@@ -296,11 +296,11 @@ const SingleEventPanel = ({ eventId, setIdentifier }) => {
                   {singleEvent?.eventParticipantIds.length > 0 ? (
                     <div className="min-w-full bg-white dark:bg-dark-gray-1">
                       {/* Header Row */}
-                      <div className="w-full border-b text-gray-600 dark:text-light-gray uppercase text-xs leading-normal flex">
-                        <div className="py-3 text-left flex-[2]">
+                      <div className="w-full border-b text-gray-600 dark:text-light-gray uppercase text-xs leading-normal flex gap-2">
+                        <div className="py-3 text-left flex-[2] max-w-[130px]">
                           {t(translations.adminPanel.events.singleEventPanel.participantId)}
                         </div>
-                        <div className="py-3 text-left flex-[2]">
+                        <div className="py-3 text-left flex-[2] max-w-[130px]">
                           {t(translations.adminPanel.events.singleEventPanel.user)}
                         </div>
                         <div className="py-3 text-center flex-[1]">
@@ -318,11 +318,11 @@ const SingleEventPanel = ({ eventId, setIdentifier }) => {
                         {singleEvent?.eventParticipantIds.map((participant) => (
                           <ul
                             key={participant?._id}
-                            className="border-b border-gray-200 dark:border-gray-600 flex gap-2"
+                            className="border-b border-gray-200 dark:border-gray-600 flex gap-2 items-center"
                           >
                             {/* Participant ID */}
                             <li
-                              className="text-left flex-[2] whitespace-nowrap overflow-x-scroll scrollbar-hide py-3"
+                              className="text-left flex-[2] max-w-[130px] whitespace-nowrap overflow-x-scroll scrollbar-hide py-3"
                               data-label={t(
                                 translations.adminPanel.events.singleEventPanel.participantIdDL
                               )}
@@ -336,7 +336,7 @@ const SingleEventPanel = ({ eventId, setIdentifier }) => {
                                   `/admin-panel?tab=users&identifier=${participant?.userId?._id}`
                                 )
                               }
-                              className="text-center flex-[2] whitespace-nowrap overflow-x-scroll scrollbar-hide py-3"
+                              className="text-center flex-[2] max-w-[130px] whitespace-nowrap overflow-x-scroll scrollbar-hide py-3"
                               data-label={t(translations.adminPanel.events.singleEventPanel.userDL)}
                             >
                               <div className="flex gap-1 items-center w-full cursor-pointer">
