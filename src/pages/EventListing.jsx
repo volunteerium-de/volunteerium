@@ -15,6 +15,7 @@ import useLanguageOptions from "../hooks/useLanguages"
 import { useTranslation } from "react-i18next"
 import { translations } from "../locales/translations"
 import OnlineOpportinuties from "../components/EventListing/OnlineOpportinuties"
+import { useMemo } from "react"
 
 const EventsListingPage = () => {
   const { t } = useTranslation()
@@ -37,7 +38,7 @@ const EventsListingPage = () => {
   const navigate = useNavigate()
   const location = useLocation()
 
-  const queryParams = new URLSearchParams(location.search)
+  const queryParams = useMemo(() => new URLSearchParams(location.search), [location.search])
   const pageFromUrl = queryParams.get("page") || 1
   const [currentPage, setCurrentPage] = useState(pageFromUrl > 0 ? pageFromUrl : 1)
   const [totalPages, setTotalPages] = useState(0)
@@ -46,14 +47,16 @@ const EventsListingPage = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.matchMedia("(max-width: 767px)").matches) {
-        window.scrollTo(285, 285)
-      } else if (window.matchMedia("(min-width: 768px)").matches) {
-        window.scrollTo(520, 520)
+      if (queryParams.get("page")) {
+        if (window.matchMedia("(max-width: 767px)").matches) {
+          window.scrollTo(285, 285)
+        } else if (window.matchMedia("(min-width: 768px)").matches) {
+          window.scrollTo(520, 520)
+        }
       }
     }
     handleScroll()
-  }, [currentPage])
+  }, [queryParams])
 
   useEffect(() => {
     const fetchEvents = async () => {
