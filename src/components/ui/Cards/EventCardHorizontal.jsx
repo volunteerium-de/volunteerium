@@ -11,7 +11,6 @@ import { useNavigate } from "react-router-dom"
 import { useTranslation } from "react-i18next"
 import { translations } from "../../../locales/translations"
 import { validateLocation } from "../../../utils/functions"
-import { useEffect } from "react"
 
 const EventCardHorizontal = ({ event }) => {
   const { t } = useTranslation()
@@ -26,17 +25,6 @@ const EventCardHorizontal = ({ event }) => {
   }
 
   const locationText = validateLocation(event)
-
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.matchMedia("(max-width: 767px)").matches) {
-        window.scrollTo(285, 285);
-      } else if (window.matchMedia("(min-width: 768px)").matches) {
-        window.scrollTo(520, 520);
-      }
-    };
-    handleScroll()
-  }, [])
 
   return (
     <div
@@ -73,17 +61,17 @@ const EventCardHorizontal = ({ event }) => {
         {/* Event Details */}
         <div>
           {/* Organizer Information */}
-          {event.createdBy && event.createdBy.userDetailsId && (
+          {event.createdBy && event.createdBy?.userDetailsId && (
             <Link to={`/profile/${event.createdBy?._id}`} className="flex items-center">
               <div className="flex gap-x-1 items-center mb-[7px] py-1 cursor-pointer ">
                 <UserAvatar user={event.createdBy} size="w-6 h-6" backgroundActive={true} />
                 <p className="text-gray-2 dark:text-white text-[0.7rem]">
                   {event.createdBy.userType === "individual"
                     ? formatName(
-                        event.createdBy.fullName,
-                        event.createdBy.userDetailsId.isFullNameDisplay
+                        event?.createdBy?.fullName,
+                        event?.createdBy?.userDetailsId.isFullNameDisplay
                       )
-                    : event.createdBy.organizationName}
+                    : event?.createdBy?.organizationName}
                 </p>
               </div>
             </Link>

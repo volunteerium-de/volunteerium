@@ -45,6 +45,17 @@ const EventsListingPage = () => {
   const { getLangName, getTranslatedCategory } = useLanguageOptions()
 
   useEffect(() => {
+    const handleScroll = () => {
+      if (window.matchMedia("(max-width: 767px)").matches) {
+        window.scrollTo(285, 285)
+      } else if (window.matchMedia("(min-width: 768px)").matches) {
+        window.scrollTo(520, 520)
+      }
+    }
+    handleScroll()
+  }, [currentPage])
+
+  useEffect(() => {
     const fetchEvents = async () => {
       setLoading(true)
       setError(null)
