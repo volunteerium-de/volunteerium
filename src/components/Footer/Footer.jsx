@@ -54,7 +54,7 @@ const Footer = () => {
               <div className="flex space-x-4">
                 {/* GitHub */}
                 <a
-                  href="https://github.com/volunteerium-de"
+                  href="https://github.com"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-gray-2 hover:text-primary-green transition-colors duration-300"
